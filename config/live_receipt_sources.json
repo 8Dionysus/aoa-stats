@@ -1,7 +1,7 @@
 {
   "schema_version": 1,
   "profile": "session-growth-live",
-  "description": "Canonical owner-local live receipt sources for automatic session-growth refresh under /srv.",
+  "description": "Canonical owner-local live receipt sources for automatic session-growth refresh under /srv across skills, evals, playbooks, techniques, and memo.",
   "sources": [
     {
       "name": "session_harvest_family_live_log",
@@ -14,6 +14,27 @@
       "name": "eval_result_live_log",
       "repo": "aoa-evals",
       "relative_path": ".aoa/live_receipts/eval-result-receipts.jsonl",
+      "payload_shape": "jsonl",
+      "required": true
+    },
+    {
+      "name": "playbook_live_log",
+      "repo": "aoa-playbooks",
+      "relative_path": ".aoa/live_receipts/playbook-receipts.jsonl",
+      "payload_shape": "jsonl",
+      "required": true
+    },
+    {
+      "name": "technique_live_log",
+      "repo": "aoa-techniques",
+      "relative_path": ".aoa/live_receipts/technique-receipts.jsonl",
+      "payload_shape": "jsonl",
+      "required": true
+    },
+    {
+      "name": "memo_writeback_live_log",
+      "repo": "aoa-memo",
+      "relative_path": ".aoa/live_receipts/memo-writeback-receipts.jsonl",
       "payload_shape": "jsonl",
       "required": true
     }

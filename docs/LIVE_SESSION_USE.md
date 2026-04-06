@@ -78,10 +78,13 @@ python scripts/install_live_refresh_units.py --enable
 This installs `aoa-stats-live-refresh.path` and
 `aoa-stats-live-refresh.service` into `~/.config/systemd/user/`, ensures the
 canonical owner-local live receipt logs exist, and refreshes `aoa-stats` every
-time either watched JSONL file changes:
+time any watched JSONL file changes:
 
 - `/srv/aoa-skills/.aoa/live_receipts/session-harvest-family.jsonl`
 - `/srv/aoa-evals/.aoa/live_receipts/eval-result-receipts.jsonl`
+- `/srv/aoa-playbooks/.aoa/live_receipts/playbook-receipts.jsonl`
+- `/srv/aoa-techniques/.aoa/live_receipts/technique-receipts.jsonl`
+- `/srv/aoa-memo/.aoa/live_receipts/memo-writeback-receipts.jsonl`
 
 ## Boundary reminder
 
