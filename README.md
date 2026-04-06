@@ -5,7 +5,7 @@ Derived observability and machine-first summary layer for the AoA federation.
 `aoa-stats` is the downstream adjunct that consumes source-owned receipts,
 evidence refs, and bounded eval verdicts to build machine-readable summaries
 without taking ownership away from `aoa-skills`, `aoa-evals`, `aoa-playbooks`,
-`aoa-agents`, or `aoa-memo`.
+`aoa-techniques`, `aoa-agents`, or `aoa-memo`.
 
 This repository exists so project growth can stay visible during real work and
 real sessions while preserving the canonical split:
@@ -113,6 +113,14 @@ an owner-local receipt log changes:
 ```bash
 python scripts/install_live_refresh_units.py --enable
 ```
+
+The canonical watcher currently listens to these owner-local logs:
+
+- `/srv/aoa-skills/.aoa/live_receipts/session-harvest-family.jsonl`
+- `/srv/aoa-evals/.aoa/live_receipts/eval-result-receipts.jsonl`
+- `/srv/aoa-playbooks/.aoa/live_receipts/playbook-receipts.jsonl`
+- `/srv/aoa-techniques/.aoa/live_receipts/technique-receipts.jsonl`
+- `/srv/aoa-memo/.aoa/live_receipts/memo-writeback-receipts.jsonl`
 
 ## Go elsewhere when...
 
