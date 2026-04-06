@@ -1,0 +1,19 @@
+{
+  "schema_version": 1,
+  "profile": "session-growth-live",
+  "description": "Owner-local live receipt sources for the current session-harvest and eval telemetry wave.",
+  "sources": [
+    {
+      "name": "session_harvest_family",
+      "repo": "aoa-skills",
+      "relative_path": "examples/session_harvest_family.receipts.example.json",
+      "payload_shape": "array"
+    },
+    {
+      "name": "eval_result_example",
+      "repo": "aoa-evals",
+      "relative_path": "examples/eval_result_receipt.example.json",
+      "payload_shape": "object"
+    }
+  ]
+}
