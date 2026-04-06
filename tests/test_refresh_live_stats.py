@@ -20,8 +20,8 @@ def load_refresh_module():
 def test_refresh_live_state_combines_repo_relative_sources(tmp_path: Path) -> None:
     module = load_refresh_module()
     federation_root = tmp_path / "srv"
-    skills_dir = federation_root / "aoa-skills" / "examples"
-    evals_dir = federation_root / "aoa-evals" / "examples"
+    skills_dir = federation_root / "aoa-skills" / ".aoa" / "live_receipts"
+    evals_dir = federation_root / "aoa-evals" / ".aoa" / "live_receipts"
     skills_dir.mkdir(parents=True)
     evals_dir.mkdir(parents=True)
 
@@ -79,12 +79,12 @@ def test_refresh_live_state_combines_repo_relative_sources(tmp_path: Path) -> No
         },
     }
 
-    (skills_dir / "session_harvest_family.receipts.example.json").write_text(
-        json.dumps(skill_receipt, indent=2) + "\n",
+    (skills_dir / "session-harvest-family.jsonl").write_text(
+        "\n".join(json.dumps(item) for item in skill_receipt) + "\n",
         encoding="utf-8",
     )
-    (evals_dir / "eval_result_receipt.example.json").write_text(
-        json.dumps(eval_receipt, indent=2) + "\n",
+    (evals_dir / "eval-result-receipts.jsonl").write_text(
+        json.dumps(eval_receipt) + "\n",
         encoding="utf-8",
     )
 
@@ -97,12 +97,12 @@ def test_refresh_live_state_combines_repo_relative_sources(tmp_path: Path) -> No
                     {
                         "name": "skills",
                         "repo": "aoa-skills",
-                        "relative_path": "examples/session_harvest_family.receipts.example.json",
+                        "relative_path": ".aoa/live_receipts/session-harvest-family.jsonl",
                     },
                     {
                         "name": "evals",
                         "repo": "aoa-evals",
-                        "relative_path": "examples/eval_result_receipt.example.json",
+                        "relative_path": ".aoa/live_receipts/eval-result-receipts.jsonl",
                     },
                 ],
             },
@@ -122,8 +122,8 @@ def test_refresh_live_state_combines_repo_relative_sources(tmp_path: Path) -> No
     )
 
     assert source_labels == [
-        "aoa-skills/examples/session_harvest_family.receipts.example.json",
-        "aoa-evals/examples/eval_result_receipt.example.json",
+        "aoa-skills/.aoa/live_receipts/session-harvest-family.jsonl",
+        "aoa-evals/.aoa/live_receipts/eval-result-receipts.jsonl",
     ]
     assert receipt_count == 2
 
@@ -135,3 +135,61 @@ def test_refresh_live_state_combines_repo_relative_sources(tmp_path: Path) -> No
     assert pipeline_summary["generated_from"]["receipt_input_paths"] == source_labels
     assert pipeline_summary["generated_from"]["total_receipts"] == 2
     assert pipeline_summary["pipelines"][0]["pipeline_ref"] == "pipeline:test"
+
+
+def test_refresh_live_state_clears_previous_outputs_when_sources_are_empty(tmp_path: Path) -> None:
+    module = load_refresh_module()
+    federation_root = tmp_path / "srv"
+    skills_log = federation_root / "aoa-skills" / ".aoa" / "live_receipts"
+    evals_log = federation_root / "aoa-evals" / ".aoa" / "live_receipts"
+    skills_log.mkdir(parents=True)
+    evals_log.mkdir(parents=True)
+    (skills_log / "session-harvest-family.jsonl").write_text("", encoding="utf-8")
+    (evals_log / "eval-result-receipts.jsonl").write_text("", encoding="utf-8")
+
+    registry_path = tmp_path / "live_receipt_sources.json"
+    registry_path.write_text(
+        json.dumps(
+            {
+                "schema_version": 1,
+                "sources": [
+                    {
+                        "name": "skills",
+                        "repo": "aoa-skills",
+                        "relative_path": ".aoa/live_receipts/session-harvest-family.jsonl",
+                    },
+                    {
+                        "name": "evals",
+                        "repo": "aoa-evals",
+                        "relative_path": ".aoa/live_receipts/eval-result-receipts.jsonl",
+                    },
+                ],
+            },
+            indent=2,
+        )
+        + "\n",
+        encoding="utf-8",
+    )
+
+    feed_output = tmp_path / "state" / "live_receipts.min.json"
+    summary_output_dir = tmp_path / "state" / "generated"
+    summary_output_dir.mkdir(parents=True)
+    feed_output.write_text("[]\n", encoding="utf-8")
+    (summary_output_dir / "summary_surface_catalog.min.json").write_text(
+        '{"schema_version":"aoa_stats_summary_surface_catalog_v1"}\n', encoding="utf-8"
+    )
+
+    source_labels, receipt_count = module.refresh_live_state(
+        registry_path=registry_path,
+        federation_root=federation_root,
+        feed_output=feed_output,
+        summary_output_dir=summary_output_dir,
+    )
+
+    assert source_labels == [
+        "aoa-skills/.aoa/live_receipts/session-harvest-family.jsonl",
+        "aoa-evals/.aoa/live_receipts/eval-result-receipts.jsonl",
+    ]
+    assert receipt_count == 0
+    assert feed_output.exists() is False
+    assert (summary_output_dir / "summary_surface_catalog.min.json").exists() is False

@@ -15,10 +15,18 @@ if str(SCRIPT_DIR) not in sys.path:
 from build_views import build_all_views, load_receipts, stable_json  # noqa: E402
 
 
-DEFAULT_REGISTRY = REPO_ROOT / "config" / "live_receipt_sources.example.json"
+DEFAULT_REGISTRY = REPO_ROOT / "config" / "live_receipt_sources.json"
 DEFAULT_FEDERATION_ROOT = REPO_ROOT.parent
 DEFAULT_FEED_OUTPUT = REPO_ROOT / "state" / "live_receipts.min.json"
 DEFAULT_SUMMARY_OUTPUT_DIR = REPO_ROOT / "state" / "generated"
+SUMMARY_OUTPUT_NAMES = (
+    "object_summary.min.json",
+    "repeated_window_summary.min.json",
+    "route_progression_summary.min.json",
+    "fork_calibration_summary.min.json",
+    "automation_pipeline_summary.min.json",
+    "summary_surface_catalog.min.json",
+)
 
 
 def parse_args(argv: list[str] | None = None) -> argparse.Namespace:
@@ -89,6 +97,15 @@ def write_receipt_feed(path: Path, receipts: list[dict]) -> None:
     path.write_text(json.dumps(receipts, indent=2) + "\n", encoding="utf-8")
 
 
+def clear_live_state(*, feed_output: Path, summary_output_dir: Path) -> None:
+    if feed_output.exists():
+        feed_output.unlink()
+    for name in SUMMARY_OUTPUT_NAMES:
+        target = summary_output_dir / name
+        if target.exists():
+            target.unlink()
+
+
 def refresh_live_state(
     *,
     registry_path: Path,
@@ -106,14 +123,23 @@ def refresh_live_state(
         label, path = resolve_source_path(
             source, registry_path=registry_path, federation_root=federation_root
         )
+        required = source.get("required", True)
+        if not isinstance(required, bool):
+            raise ValueError(f"{registry_path}: source {source.get('name')!r} required must be boolean")
         if not path.exists():
+            if required is False:
+                continue
             raise FileNotFoundError(f"missing live receipt source: {path}")
         source_labels.append(label)
         source_paths.append(path)
 
+    if not source_paths:
+        raise ValueError("no live receipt sources were resolved from the configured registry")
+
     receipts = load_receipts(source_paths)
     if not receipts:
-        raise ValueError("no receipts were loaded from the configured live sources")
+        clear_live_state(feed_output=feed_output, summary_output_dir=summary_output_dir)
+        return source_labels, 0
 
     write_receipt_feed(feed_output, receipts)
     outputs = build_all_views(receipts, source_labels)
@@ -136,6 +162,11 @@ def main(argv: list[str] | None = None) -> int:
         feed_output=feed_output,
         summary_output_dir=summary_output_dir,
     )
+    if receipt_count == 0:
+        print(f"[ok] cleared live stats because no receipts were found across {len(source_labels)} sources")
+        print(f"[feed-cleared] {feed_output}")
+        print(f"[summaries-cleared] {summary_output_dir}")
+        return 0
     print(
         f"[ok] refreshed live stats from {len(source_labels)} sources and {receipt_count} receipts"
     )
