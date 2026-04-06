@@ -381,3 +381,189 @@ def test_load_receipts_accepts_jsonl_and_deduplicates_event_ids(tmp_path: Path) 
 
     assert len(receipts) == 1
     assert receipts[0]["observed_at"] == "2026-04-05T10:21:00Z"
+
+
+def test_resolve_active_receipts_collapses_supersedes_chain() -> None:
+    module = load_build_views_module()
+    receipts = [
+        {
+            "event_kind": "automation_candidate_receipt",
+            "event_id": "evt-auto-0001",
+            "observed_at": "2026-04-06T10:00:00Z",
+            "run_ref": "run-001",
+            "session_ref": "session:test-supersedes",
+            "actor_ref": "aoa-skills:automation-opportunity-scan",
+            "object_ref": {"repo": "aoa-skills", "kind": "skill", "id": "aoa-automation-opportunity-scan"},
+            "evidence_refs": [{"kind": "packet", "ref": "tmp/a.json"}],
+            "payload": {"pipeline_ref": "pipeline:test", "seed_ready": False},
+        },
+        {
+            "event_kind": "automation_candidate_receipt",
+            "event_id": "evt-auto-0002",
+            "observed_at": "2026-04-06T10:01:00Z",
+            "run_ref": "run-002",
+            "session_ref": "session:test-supersedes",
+            "actor_ref": "aoa-skills:automation-opportunity-scan",
+            "object_ref": {"repo": "aoa-skills", "kind": "skill", "id": "aoa-automation-opportunity-scan"},
+            "evidence_refs": [{"kind": "packet", "ref": "tmp/b.json"}],
+            "payload": {"pipeline_ref": "pipeline:test", "seed_ready": True},
+            "supersedes": "evt-auto-0001",
+        },
+        {
+            "event_kind": "automation_candidate_receipt",
+            "event_id": "evt-auto-0003",
+            "observed_at": "2026-04-06T10:02:00Z",
+            "run_ref": "run-003",
+            "session_ref": "session:test-supersedes",
+            "actor_ref": "aoa-skills:automation-opportunity-scan",
+            "object_ref": {"repo": "aoa-skills", "kind": "skill", "id": "aoa-automation-opportunity-scan"},
+            "evidence_refs": [{"kind": "packet", "ref": "tmp/c.json"}],
+            "payload": {"pipeline_ref": "pipeline:test", "seed_ready": True},
+            "supersedes": "evt-auto-0002",
+        },
+    ]
+
+    active = module.resolve_active_receipts(receipts)
+
+    assert [receipt["event_id"] for receipt in active] == ["evt-auto-0003"]
+
+
+def test_resolve_active_receipts_keeps_latest_sibling_correction_only() -> None:
+    module = load_build_views_module()
+    receipts = [
+        {
+            "event_kind": "harvest_packet_receipt",
+            "event_id": "evt-harvest-0001",
+            "observed_at": "2026-04-06T11:00:00Z",
+            "run_ref": "run-001",
+            "session_ref": "session:test-sibling",
+            "actor_ref": "aoa-skills:session-donor-harvest",
+            "object_ref": {"repo": "aoa-skills", "kind": "skill", "id": "aoa-session-donor-harvest"},
+            "evidence_refs": [{"kind": "packet", "ref": "tmp/root.json"}],
+            "payload": {"route_ref": "route:test"},
+        },
+        {
+            "event_kind": "harvest_packet_receipt",
+            "event_id": "evt-harvest-0002",
+            "observed_at": "2026-04-06T11:01:00Z",
+            "run_ref": "run-002",
+            "session_ref": "session:test-sibling",
+            "actor_ref": "aoa-skills:session-donor-harvest",
+            "object_ref": {"repo": "aoa-skills", "kind": "skill", "id": "aoa-session-donor-harvest"},
+            "evidence_refs": [{"kind": "packet", "ref": "tmp/older.json"}],
+            "payload": {"route_ref": "route:test"},
+            "supersedes": "evt-harvest-0001",
+        },
+        {
+            "event_kind": "harvest_packet_receipt",
+            "event_id": "evt-harvest-0003",
+            "observed_at": "2026-04-06T11:02:00Z",
+            "run_ref": "run-003",
+            "session_ref": "session:test-sibling",
+            "actor_ref": "aoa-skills:session-donor-harvest",
+            "object_ref": {"repo": "aoa-skills", "kind": "skill", "id": "aoa-session-donor-harvest"},
+            "evidence_refs": [{"kind": "packet", "ref": "tmp/newer.json"}],
+            "payload": {"route_ref": "route:test"},
+            "supersedes": "evt-harvest-0001",
+        },
+    ]
+
+    active = module.resolve_active_receipts(receipts)
+
+    assert [receipt["event_id"] for receipt in active] == ["evt-harvest-0003"]
+
+
+def test_resolve_active_receipts_keeps_missing_target_and_cycle_receipts_active() -> None:
+    module = load_build_views_module()
+    receipts = [
+        {
+            "event_kind": "skill_run_receipt",
+            "event_id": "evt-diagnose-0001",
+            "observed_at": "2026-04-06T12:00:00Z",
+            "run_ref": "run-001",
+            "session_ref": "session:test-cycles",
+            "actor_ref": "aoa-skills:session-self-diagnose",
+            "object_ref": {"repo": "aoa-skills", "kind": "skill", "id": "aoa-session-self-diagnose"},
+            "evidence_refs": [{"kind": "packet", "ref": "tmp/a.json"}],
+            "payload": {"route_ref": "route:test"},
+            "supersedes": "evt-missing-9999",
+        },
+        {
+            "event_kind": "repair_cycle_receipt",
+            "event_id": "evt-repair-0001",
+            "observed_at": "2026-04-06T12:01:00Z",
+            "run_ref": "run-002",
+            "session_ref": "session:test-cycles",
+            "actor_ref": "aoa-skills:session-self-repair",
+            "object_ref": {"repo": "aoa-skills", "kind": "skill", "id": "aoa-session-self-repair"},
+            "evidence_refs": [{"kind": "packet", "ref": "tmp/b.json"}],
+            "payload": {"route_ref": "route:test"},
+            "supersedes": "evt-repair-0002",
+        },
+        {
+            "event_kind": "repair_cycle_receipt",
+            "event_id": "evt-repair-0002",
+            "observed_at": "2026-04-06T12:02:00Z",
+            "run_ref": "run-003",
+            "session_ref": "session:test-cycles",
+            "actor_ref": "aoa-skills:session-self-repair",
+            "object_ref": {"repo": "aoa-skills", "kind": "skill", "id": "aoa-session-self-repair"},
+            "evidence_refs": [{"kind": "packet", "ref": "tmp/c.json"}],
+            "payload": {"route_ref": "route:test"},
+            "supersedes": "evt-repair-0001",
+        },
+    ]
+
+    active = module.resolve_active_receipts(receipts)
+
+    assert [receipt["event_id"] for receipt in active] == [
+        "evt-diagnose-0001",
+        "evt-repair-0001",
+        "evt-repair-0002",
+    ]
+
+
+def test_build_all_views_uses_active_receipt_count_after_supersedes() -> None:
+    module = load_build_views_module()
+    receipts = [
+        {
+            "event_kind": "core_skill_application_receipt",
+            "event_id": "evt-core-0001",
+            "observed_at": "2026-04-06T13:00:00Z",
+            "run_ref": "run-001",
+            "session_ref": "session:test-active-count",
+            "actor_ref": "aoa-skills:session-donor-harvest",
+            "object_ref": {"repo": "aoa-skills", "kind": "skill", "id": "aoa-session-donor-harvest"},
+            "evidence_refs": [{"kind": "receipt", "ref": "tmp/a.json"}],
+            "payload": {
+                "kernel_id": "project-core-session-growth-v1",
+                "skill_name": "aoa-session-donor-harvest",
+                "application_stage": "finish",
+                "detail_event_kind": "harvest_packet_receipt",
+                "detail_receipt_ref": "tmp/a.json",
+            },
+        },
+        {
+            "event_kind": "core_skill_application_receipt",
+            "event_id": "evt-core-0002",
+            "observed_at": "2026-04-06T13:01:00Z",
+            "run_ref": "run-002",
+            "session_ref": "session:test-active-count",
+            "actor_ref": "aoa-skills:session-donor-harvest",
+            "object_ref": {"repo": "aoa-skills", "kind": "skill", "id": "aoa-session-donor-harvest"},
+            "evidence_refs": [{"kind": "receipt", "ref": "tmp/b.json"}],
+            "payload": {
+                "kernel_id": "project-core-session-growth-v1",
+                "skill_name": "aoa-session-donor-harvest",
+                "application_stage": "finish",
+                "detail_event_kind": "harvest_packet_receipt",
+                "detail_receipt_ref": "tmp/b.json",
+            },
+            "supersedes": "evt-core-0001",
+        },
+    ]
+
+    outputs = module.build_all_views(receipts, ["memory"])
+
+    assert outputs["core_skill_application_summary.min.json"]["generated_from"]["total_receipts"] == 1
+    assert outputs["core_skill_application_summary.min.json"]["skills"][0]["application_count"] == 1

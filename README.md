@@ -85,6 +85,10 @@ These are built from one bounded receipt feed and are intended to stay
 machine-first, evidence-linked, and weaker than the owner-local source
 surfaces they summarize.
 
+Raw logs stay append-only. When receipts carry `supersedes`, the committed and
+live summaries read from the active receipt view after local correction
+collapse, not from raw line volume.
+
 For real local session work, keep the committed `generated/` surfaces stable
 and refresh ephemeral live state under `state/`.
 

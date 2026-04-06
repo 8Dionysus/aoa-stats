@@ -22,6 +22,10 @@ Examples:
 
 These are facts, not proof.
 
+Corrections stay append-only too. If a newer receipt sets `supersedes`, the raw
+log keeps both events while the active stats view collapses to the latest
+resolvable correction inside the current feed.
+
 ### 2. Evidence links
 
 Each receipt should point to inspectable artifacts through `evidence_refs`
@@ -59,3 +63,6 @@ Current v0 derived views:
 - verdicts answer: how well on one bounded surface
 - progression answers: what changed on named axes
 - evidence refs answer: where to inspect next
+
+`object_summary` and `repeated_window_summary` are inclusive of active receipts
+only, not of superseded raw history.

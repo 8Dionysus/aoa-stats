@@ -12,7 +12,7 @@ REPO_ROOT = SCRIPT_DIR.parents[0]
 if str(SCRIPT_DIR) not in sys.path:
     sys.path.insert(0, str(SCRIPT_DIR))
 
-from build_views import build_all_views, load_receipts, stable_json  # noqa: E402
+from build_views import build_all_views, load_receipts, resolve_active_receipts, stable_json  # noqa: E402
 
 
 DEFAULT_REGISTRY = REPO_ROOT / "config" / "live_receipt_sources.json"
@@ -139,16 +139,17 @@ def refresh_live_state(
         raise ValueError("no live receipt sources were resolved from the configured registry")
 
     receipts = load_receipts(source_paths)
-    if not receipts:
+    active_receipts = resolve_active_receipts(receipts)
+    if not active_receipts:
         clear_live_state(feed_output=feed_output, summary_output_dir=summary_output_dir)
         return source_labels, 0
 
-    write_receipt_feed(feed_output, receipts)
+    write_receipt_feed(feed_output, active_receipts)
     outputs = build_all_views(receipts, source_labels)
     summary_output_dir.mkdir(parents=True, exist_ok=True)
     for name, payload in outputs.items():
         (summary_output_dir / name).write_text(stable_json(payload), encoding="utf-8")
-    return source_labels, len(receipts)
+    return source_labels, len(active_receipts)
 
 
 def main(argv: list[str] | None = None) -> int:

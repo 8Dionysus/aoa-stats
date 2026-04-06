@@ -72,6 +72,10 @@ def core_skill_identity(receipt: dict[str, Any]) -> tuple[str, str]:
     return "unknown-kernel", "unknown-skill"
 
 
+def receipt_sort_key(receipt: dict[str, Any]) -> tuple[str, str]:
+    return receipt["observed_at"], receipt["event_id"]
+
+
 def parse_args(argv: list[str] | None = None) -> argparse.Namespace:
     parser = argparse.ArgumentParser(description="Build aoa-stats derived views.")
     parser.add_argument(
@@ -117,9 +121,7 @@ def load_receipts(paths: list[Path]) -> list[dict[str, Any]]:
     deduped: dict[str, dict[str, Any]] = {}
     for receipt in receipts:
         deduped[receipt["event_id"]] = receipt
-    return sorted(
-        deduped.values(), key=lambda receipt: (receipt["observed_at"], receipt["event_id"])
-    )
+    return sorted(deduped.values(), key=receipt_sort_key)
 
 
 def load_receipts_from_jsonl(path: Path) -> list[dict[str, Any]]:
@@ -193,6 +195,70 @@ def validate_receipt(receipt: dict[str, Any], *, location: str) -> None:
 
     if not isinstance(receipt["payload"], dict):
         raise ReceiptValidationError(f"{location}.payload: must be an object")
+    supersedes = receipt.get("supersedes")
+    if supersedes is not None and (not isinstance(supersedes, str) or not supersedes):
+        raise ReceiptValidationError(f"{location}.supersedes: must be omitted or a non-empty string")
+
+
+def resolve_active_receipts(receipts: list[dict[str, Any]]) -> list[dict[str, Any]]:
+    receipt_by_id = {receipt["event_id"]: receipt for receipt in receipts}
+    supersedes_by_id = {
+        receipt["event_id"]: receipt["supersedes"]
+        for receipt in receipts
+        if isinstance(receipt.get("supersedes"), str)
+        and receipt["supersedes"] in receipt_by_id
+        and receipt["supersedes"] != receipt["event_id"]
+    }
+    cycle_nodes = find_supersedes_cycle_nodes(supersedes_by_id)
+    effective_supersedes = {
+        event_id: target_id
+        for event_id, target_id in supersedes_by_id.items()
+        if event_id not in cycle_nodes and target_id not in cycle_nodes
+    }
+
+    grouped: dict[str, list[dict[str, Any]]] = defaultdict(list)
+    for receipt in receipts:
+        family_root = resolve_receipt_family_root(
+            receipt["event_id"], effective_supersedes
+        )
+        grouped[family_root].append(receipt)
+
+    active = [
+        max(group, key=receipt_sort_key)
+        for group in grouped.values()
+    ]
+    return sorted(active, key=receipt_sort_key)
+
+
+def find_supersedes_cycle_nodes(supersedes_by_id: dict[str, str]) -> set[str]:
+    cycle_nodes: set[str] = set()
+    seen_done: set[str] = set()
+
+    for start in supersedes_by_id:
+        if start in seen_done:
+            continue
+        order: list[str] = []
+        positions: dict[str, int] = {}
+        current = start
+        while current in supersedes_by_id:
+            if current in seen_done:
+                break
+            if current in positions:
+                cycle_nodes.update(order[positions[current] :])
+                break
+            positions[current] = len(order)
+            order.append(current)
+            current = supersedes_by_id[current]
+        seen_done.update(order)
+
+    return cycle_nodes
+
+
+def resolve_receipt_family_root(event_id: str, supersedes_by_id: dict[str, str]) -> str:
+    current = event_id
+    while current in supersedes_by_id:
+        current = supersedes_by_id[current]
+    return current
 
 
 def generated_from(receipts: list[dict[str, Any]], input_paths: list[str]) -> dict[str, Any]:
@@ -617,19 +683,20 @@ def build_summary_surface_catalog(source: dict[str, Any]) -> dict[str, Any]:
 def build_all_views(
     receipts: list[dict[str, Any]], input_paths: list[str]
 ) -> dict[str, dict[str, Any]]:
-    source = generated_from(receipts, input_paths)
+    active_receipts = resolve_active_receipts(receipts)
+    source = generated_from(active_receipts, input_paths)
     return {
-        "object_summary.min.json": build_object_summary(receipts, source),
+        "object_summary.min.json": build_object_summary(active_receipts, source),
         "core_skill_application_summary.min.json": build_core_skill_application_summary(
-            receipts, source
+            active_receipts, source
         ),
-        "repeated_window_summary.min.json": build_repeated_window_summary(receipts, source),
-        "route_progression_summary.min.json": build_route_progression_summary(receipts, source),
-        "fork_calibration_summary.min.json": build_fork_calibration_summary(receipts, source),
+        "repeated_window_summary.min.json": build_repeated_window_summary(active_receipts, source),
+        "route_progression_summary.min.json": build_route_progression_summary(active_receipts, source),
+        "fork_calibration_summary.min.json": build_fork_calibration_summary(active_receipts, source),
         "automation_pipeline_summary.min.json": build_automation_pipeline_summary(
-            receipts, source
+            active_receipts, source
         ),
-        "runtime_closeout_summary.min.json": build_runtime_closeout_summary(receipts, source),
+        "runtime_closeout_summary.min.json": build_runtime_closeout_summary(active_receipts, source),
         "summary_surface_catalog.min.json": build_summary_surface_catalog(source),
     }
 

@@ -52,6 +52,10 @@ Each receipt should include:
 - `evidence_refs`
 - `payload`
 
+Optional correction field:
+
+- `supersedes`
+
 ## Canonical repo surfaces
 
 The committed builder refreshes:
@@ -70,6 +74,10 @@ The committed builder refreshes:
 The live refresh path writes the same shape under `state/generated/` so the
 repo can keep deterministic committed outputs while the local operator keeps a
 current working read.
+
+The live feed and committed builders keep raw logs append-only, but the
+generated summaries read from the active receipt view after local
+`supersedes` resolution.
 
 ## Automatic watcher
 
