@@ -424,3 +424,96 @@ def test_refresh_live_state_combines_playbook_technique_memo_and_runtime_sources
     assert runtime_summary["closeouts"][0]["program_id"] == "pilot-v1"
     assert runtime_summary["closeouts"][0]["wave_id"] == "W4"
     assert runtime_summary["closeouts"][0]["latest_gate_result"] == "pass"
+
+
+def test_refresh_live_state_applies_supersedes_before_summary_counts(tmp_path: Path) -> None:
+    module = load_refresh_module()
+    federation_root = tmp_path / "srv"
+    skills_dir = federation_root / "aoa-skills" / ".aoa" / "live_receipts"
+    skills_dir.mkdir(parents=True)
+
+    receipts = [
+        {
+            "event_kind": "core_skill_application_receipt",
+            "event_id": "evt-core-0001",
+            "observed_at": "2026-04-06T14:00:00Z",
+            "run_ref": "run-001",
+            "session_ref": "session:test-supersedes-refresh",
+            "actor_ref": "aoa-skills:session-donor-harvest",
+            "object_ref": {
+                "repo": "aoa-skills",
+                "kind": "skill",
+                "id": "aoa-session-donor-harvest",
+                "version": "main",
+            },
+            "evidence_refs": [{"kind": "receipt", "ref": "tmp/a.json"}],
+            "payload": {
+                "kernel_id": "project-core-session-growth-v1",
+                "skill_name": "aoa-session-donor-harvest",
+                "application_stage": "finish",
+                "detail_event_kind": "harvest_packet_receipt",
+                "detail_receipt_ref": "tmp/a.json",
+            },
+        },
+        {
+            "event_kind": "core_skill_application_receipt",
+            "event_id": "evt-core-0002",
+            "observed_at": "2026-04-06T14:01:00Z",
+            "run_ref": "run-002",
+            "session_ref": "session:test-supersedes-refresh",
+            "actor_ref": "aoa-skills:session-donor-harvest",
+            "object_ref": {
+                "repo": "aoa-skills",
+                "kind": "skill",
+                "id": "aoa-session-donor-harvest",
+                "version": "main",
+            },
+            "evidence_refs": [{"kind": "receipt", "ref": "tmp/b.json"}],
+            "payload": {
+                "kernel_id": "project-core-session-growth-v1",
+                "skill_name": "aoa-session-donor-harvest",
+                "application_stage": "finish",
+                "detail_event_kind": "harvest_packet_receipt",
+                "detail_receipt_ref": "tmp/b.json",
+            },
+            "supersedes": "evt-core-0001",
+        },
+    ]
+    (skills_dir / "core-skill-applications.jsonl").write_text(
+        "\n".join(json.dumps(item) for item in receipts) + "\n",
+        encoding="utf-8",
+    )
+
+    registry_path = tmp_path / "live_receipt_sources.json"
+    registry_path.write_text(
+        json.dumps(
+            {
+                "schema_version": 1,
+                "sources": [
+                    {"name": "skills-core", "repo": "aoa-skills", "relative_path": ".aoa/live_receipts/core-skill-applications.jsonl"},
+                ],
+            },
+            indent=2,
+        )
+        + "\n",
+        encoding="utf-8",
+    )
+
+    feed_output = tmp_path / "state" / "live_receipts.min.json"
+    summary_output_dir = tmp_path / "state" / "generated"
+    source_labels, receipt_count = module.refresh_live_state(
+        registry_path=registry_path,
+        federation_root=federation_root,
+        feed_output=feed_output,
+        summary_output_dir=summary_output_dir,
+    )
+
+    assert source_labels == ["aoa-skills/.aoa/live_receipts/core-skill-applications.jsonl"]
+    assert receipt_count == 1
+    feed = json.loads(feed_output.read_text(encoding="utf-8"))
+    assert [item["event_id"] for item in feed] == ["evt-core-0002"]
+    summary = json.loads(
+        (summary_output_dir / "core_skill_application_summary.min.json").read_text(encoding="utf-8")
+    )
+    assert summary["generated_from"]["total_receipts"] == 1
+    assert summary["skills"][0]["application_count"] == 1
