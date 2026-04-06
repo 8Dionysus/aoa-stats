@@ -32,7 +32,7 @@ def test_build_views_produces_expected_surface_counts() -> None:
         "automation_pipeline_summary.min.json",
         "summary_surface_catalog.min.json",
     }
-    assert outputs["object_summary.min.json"]["generated_from"]["total_receipts"] == 10
+    assert outputs["object_summary.min.json"]["generated_from"]["total_receipts"] == 11
     assert len(outputs["repeated_window_summary.min.json"]["windows"]) == 2
     assert len(outputs["route_progression_summary.min.json"]["routes"]) == 1
     assert len(outputs["fork_calibration_summary.min.json"]["routes"]) == 1
@@ -52,6 +52,86 @@ def test_automation_pipeline_summary_tracks_seed_readiness() -> None:
     assert pipeline["seed_ready_count"] == 1
     assert pipeline["checkpoint_required_count"] == 1
     assert pipeline["next_artifact_hints"] == ["repair-prompt", "seed-pack"]
+
+
+def test_automation_pipeline_summary_falls_back_to_manual_route_ref() -> None:
+    module = load_build_views_module()
+    receipts = [
+        {
+            "event_kind": "automation_candidate_receipt",
+            "event_id": "evt-auto-manual-route-0001",
+            "observed_at": "2026-04-06T09:00:00Z",
+            "run_ref": "run-manual-route-001",
+            "session_ref": "session:test-manual-route",
+            "actor_ref": "aoa-skills:automation-opportunity-scan",
+            "object_ref": {
+                "repo": "aoa-skills",
+                "kind": "skill",
+                "id": "aoa-automation-opportunity-scan",
+                "version": "main",
+            },
+            "evidence_refs": [
+                {
+                    "kind": "skill",
+                    "ref": "repo:aoa-skills/skills/aoa-automation-opportunity-scan/SKILL.md",
+                }
+            ],
+            "payload": {
+                "manual_route_ref": "route:manual-closeout-loop",
+                "repeat_signal": "present",
+                "deterministic_ready": True,
+                "reversible_ready": True,
+                "checkpoint_required": False,
+                "seed_ready": True,
+                "next_artifact_hint": "playbook_seed",
+            },
+        }
+    ]
+
+    summary = module.build_automation_pipeline_summary(
+        receipts, {"receipt_input_paths": ["memory"], "total_receipts": len(receipts)}
+    )
+
+    assert summary["pipelines"][0]["pipeline_ref"] == "route:manual-closeout-loop"
+    assert summary["pipelines"][0]["candidate_count"] == 1
+
+
+def test_fork_calibration_summary_falls_back_to_branch_id_count() -> None:
+    module = load_build_views_module()
+    receipts = [
+        {
+            "event_kind": "decision_fork_receipt",
+            "event_id": "evt-fork-test-0001",
+            "observed_at": "2026-04-06T09:10:00Z",
+            "run_ref": "run-fork-001",
+            "session_ref": "session:test-fork-count",
+            "actor_ref": "aoa-skills:session-route-forks",
+            "object_ref": {
+                "repo": "aoa-skills",
+                "kind": "skill",
+                "id": "aoa-session-route-forks",
+                "version": "main",
+            },
+            "evidence_refs": [
+                {
+                    "kind": "skill",
+                    "ref": "repo:aoa-skills/skills/aoa-session-route-forks/SKILL.md",
+                }
+            ],
+            "payload": {
+                "route_ref": "route:test-fork-calibration",
+                "branch_ids": ["branch:keep", "branch:playbook", "branch:defer"],
+                "chosen_branch": "branch:keep",
+            },
+        }
+    ]
+
+    summary = module.build_fork_calibration_summary(
+        receipts, {"receipt_input_paths": ["memory"], "total_receipts": len(receipts)}
+    )
+
+    assert summary["routes"][0]["route_ref"] == "route:test-fork-calibration"
+    assert summary["routes"][0]["max_option_count"] == 3
 
 
 def test_load_receipts_accepts_jsonl_and_deduplicates_event_ids(tmp_path: Path) -> None:

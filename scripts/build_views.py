@@ -28,6 +28,25 @@ class ReceiptValidationError(ValueError):
     pass
 
 
+def automation_pipeline_ref(receipt: dict[str, Any]) -> str:
+    payload = receipt["payload"]
+    for key in ("pipeline_ref", "manual_route_ref"):
+        value = payload.get(key)
+        if isinstance(value, str) and value:
+            return value
+    return receipt["session_ref"]
+
+
+def fork_option_count(payload: dict[str, Any]) -> int:
+    option_count = payload.get("branch_options_count")
+    if isinstance(option_count, int) and option_count > 0:
+        return option_count
+    branch_ids = payload.get("branch_ids")
+    if isinstance(branch_ids, list):
+        return len([branch_id for branch_id in branch_ids if isinstance(branch_id, str) and branch_id])
+    return 0
+
+
 def parse_args(argv: list[str] | None = None) -> argparse.Namespace:
     parser = argparse.ArgumentParser(description="Build aoa-stats derived views.")
     parser.add_argument(
@@ -333,8 +352,8 @@ def build_fork_calibration_summary(
             payload = receipt["payload"]
             branch = payload.get("chosen_branch") or "unrecorded"
             branch_counts[str(branch)] += 1
-            option_count = payload.get("branch_options_count", 0)
-            if isinstance(option_count, int) and option_count > max_options:
+            option_count = fork_option_count(payload)
+            if option_count > max_options:
                 max_options = option_count
             realized_refs = payload.get("realized_outcome_refs", [])
             if isinstance(realized_refs, list):
@@ -365,7 +384,7 @@ def build_automation_pipeline_summary(
     for receipt in receipts:
         if receipt["event_kind"] != "automation_candidate_receipt":
             continue
-        pipeline_ref = receipt["payload"].get("pipeline_ref") or receipt["session_ref"]
+        pipeline_ref = automation_pipeline_ref(receipt)
         grouped[pipeline_ref].append(receipt)
 
     pipelines: list[dict[str, Any]] = []

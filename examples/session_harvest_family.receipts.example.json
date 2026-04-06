@@ -316,6 +316,34 @@
         "repo:aoa-skills/skills/aoa-automation-opportunity-scan/SKILL.md"
       ]
     }
+  },
+  {
+    "event_kind": "quest_promotion_receipt",
+    "event_id": "evt-quest-0001",
+    "observed_at": "2026-04-06T09:38:00Z",
+    "run_ref": "run-session-growth-002",
+    "session_ref": "session:2026-04-06-beta",
+    "actor_ref": "aoa-skills:quest-harvest",
+    "object_ref": {
+      "repo": "aoa-skills",
+      "kind": "skill",
+      "id": "aoa-quest-harvest",
+      "version": "main"
+    },
+    "evidence_refs": [
+      {
+        "kind": "promotion_triage",
+        "ref": "repo:aoa-skills/skills/aoa-quest-harvest/SKILL.md",
+        "role": "primary"
+      }
+    ],
+    "payload": {
+      "promotion_verdict": "promote_to_playbook",
+      "owner_repo": "aoa-playbooks",
+      "next_surface": "PLAYBOOK.md",
+      "nearest_wrong_target": "promote_to_skill",
+      "repeat_shape": "route",
+      "bounded_unit_ref": "route:session-growth"
+    }
   }
 ]
-
