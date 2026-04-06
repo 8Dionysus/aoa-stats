@@ -54,7 +54,9 @@ The most important objects in this repository are:
 
 - `schemas/*.json`
 - `generated/*.json`
+- `config/live_receipt_sources.example.json`
 - `scripts/build_views.py`
+- `scripts/refresh_live_stats.py`
 - `scripts/validate_repo.py`
 - `examples/session_harvest_family.receipts.example.json`
 - tests that prove derivation and boundary integrity
@@ -96,6 +98,12 @@ python scripts/validate_repo.py
 python -m pytest -q tests
 ```
 
+Optional live-loop verification:
+
+```bash
+python scripts/refresh_live_stats.py
+```
+
 ### REPORT
 
 Summarize:
@@ -109,4 +117,3 @@ Summarize:
 ## Validation
 
 Do not claim checks you did not run.
-

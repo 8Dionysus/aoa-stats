@@ -34,7 +34,7 @@ def parse_args(argv: list[str] | None = None) -> argparse.Namespace:
         "--input",
         action="append",
         default=[],
-        help="Path to a JSON file containing an array of receipt envelopes.",
+        help="Path to a JSON file containing one receipt object or an array of receipt envelopes.",
     )
     parser.add_argument(
         "--output-dir",
@@ -53,8 +53,12 @@ def load_receipts(paths: list[Path]) -> list[dict[str, Any]]:
     receipts: list[dict[str, Any]] = []
     for path in paths:
         payload = json.loads(path.read_text(encoding="utf-8"))
+        if isinstance(payload, dict):
+            validate_receipt(payload, location=str(path))
+            receipts.append(payload)
+            continue
         if not isinstance(payload, list):
-            raise ReceiptValidationError(f"{path}: receipt feed must be a JSON array")
+            raise ReceiptValidationError(f"{path}: receipt feed must be a JSON object or array")
         for index, item in enumerate(payload):
             if not isinstance(item, dict):
                 raise ReceiptValidationError(f"{path}[{index}]: receipt must be an object")
@@ -474,4 +478,3 @@ def main(argv: list[str] | None = None) -> int:
 
 if __name__ == "__main__":
     raise SystemExit(main())
-

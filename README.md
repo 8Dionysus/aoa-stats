@@ -27,8 +27,11 @@ Use the shortest route by need:
 
 - current derived schemas: `schemas/`
 - example receipt feed: `examples/session_harvest_family.receipts.example.json`
+- live source registry for owner-local receipts:
+  `config/live_receipt_sources.example.json`
 - generated summary surfaces: `generated/`
-- builders and validators: `scripts/build_views.py` and
+- builders and validators: `scripts/build_views.py`,
+  `scripts/refresh_live_stats.py`, and
   `scripts/validate_repo.py`
 - local verification path: `python scripts/build_views.py --check`,
   `python scripts/validate_repo.py`, and `python -m pytest -q tests`
@@ -74,6 +77,9 @@ These are built from one bounded receipt feed and are intended to stay
 machine-first, evidence-linked, and weaker than the owner-local source
 surfaces they summarize.
 
+For real local session work, keep the committed `generated/` surfaces stable
+and refresh ephemeral live state under `state/`.
+
 ## Verify current repo state
 
 ```bash
@@ -92,6 +98,12 @@ python scripts/build_views.py \
   --output-dir generated
 ```
 
+Refresh the local live state from owner-local source feeds under `/srv`:
+
+```bash
+python scripts/refresh_live_stats.py
+```
+
 ## Go elsewhere when...
 
 - you need the workflow that emitted the receipt: `aoa-skills`
@@ -104,4 +116,3 @@ python scripts/build_views.py \
 ## License
 
 Apache-2.0
-
