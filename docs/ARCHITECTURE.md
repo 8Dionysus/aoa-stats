@@ -44,6 +44,7 @@ Derived views stay machine-first.
 
 Current v0 derived views:
 
+- core-skill-application summary
 - object summary
 - repeated-window summary
 - route-progression summary
@@ -54,6 +55,7 @@ Current v0 derived views:
 ## Canonical split
 
 - counts answer: how often and how widely
+- kernel usage answers: which project-core skills are really finishing and with which bounded detail receipts
 - verdicts answer: how well on one bounded surface
 - progression answers: what changed on named axes
 - evidence refs answer: where to inspect next

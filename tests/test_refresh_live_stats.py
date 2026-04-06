@@ -201,13 +201,22 @@ def test_refresh_live_state_combines_playbook_technique_memo_and_runtime_sources
     module = load_refresh_module()
     federation_root = tmp_path / "srv"
     skills_dir = federation_root / "aoa-skills" / ".aoa" / "live_receipts"
+    skills_core_dir = federation_root / "aoa-skills" / ".aoa" / "live_receipts"
     evals_dir = federation_root / "aoa-evals" / ".aoa" / "live_receipts"
     playbooks_dir = federation_root / "aoa-playbooks" / ".aoa" / "live_receipts"
     techniques_dir = federation_root / "aoa-techniques" / ".aoa" / "live_receipts"
     memo_dir = federation_root / "aoa-memo" / ".aoa" / "live_receipts"
     runtime_dir = federation_root / "abyss-stack" / ".aoa" / "live_receipts"
-    for path in (skills_dir, evals_dir, playbooks_dir, techniques_dir, memo_dir, runtime_dir):
-        path.mkdir(parents=True)
+    for path in (
+        skills_dir,
+        skills_core_dir,
+        evals_dir,
+        playbooks_dir,
+        techniques_dir,
+        memo_dir,
+        runtime_dir,
+    ):
+        path.mkdir(parents=True, exist_ok=True)
 
     receipts_by_path = {
         skills_dir / "session-harvest-family.jsonl": {
@@ -225,6 +234,29 @@ def test_refresh_live_state_combines_playbook_technique_memo_and_runtime_sources
             },
             "evidence_refs": [{"kind": "skill", "ref": "repo:aoa-skills/skills/aoa-session-donor-harvest/SKILL.md"}],
             "payload": {"route_ref": "route:test-multi-owner"},
+        },
+        skills_core_dir / "core-skill-applications.jsonl": {
+            "event_kind": "core_skill_application_receipt",
+            "event_id": "evt-core-skill-test-0001",
+            "observed_at": "2026-04-06T20:00:30Z",
+            "run_ref": "run-skill-001",
+            "session_ref": "session:test-002",
+            "actor_ref": "aoa-skills:session-donor-harvest",
+            "object_ref": {
+                "repo": "aoa-skills",
+                "kind": "skill",
+                "id": "aoa-session-donor-harvest",
+                "version": "main",
+            },
+            "evidence_refs": [{"kind": "receipt", "ref": "repo:aoa-skills/tmp/HARVEST_PACKET_RECEIPT.json"}],
+            "payload": {
+                "kernel_id": "project-core-session-growth-v1",
+                "skill_name": "aoa-session-donor-harvest",
+                "application_stage": "finish",
+                "detail_event_kind": "harvest_packet_receipt",
+                "detail_receipt_ref": "repo:aoa-skills/tmp/HARVEST_PACKET_RECEIPT.json",
+                "route_ref": "route:test-multi-owner",
+            },
         },
         evals_dir / "eval-result-receipts.jsonl": {
             "event_kind": "eval_result_receipt",
@@ -332,6 +364,7 @@ def test_refresh_live_state_combines_playbook_technique_memo_and_runtime_sources
                 "schema_version": 1,
                 "sources": [
                     {"name": "skills", "repo": "aoa-skills", "relative_path": ".aoa/live_receipts/session-harvest-family.jsonl"},
+                    {"name": "skills-core", "repo": "aoa-skills", "relative_path": ".aoa/live_receipts/core-skill-applications.jsonl"},
                     {"name": "evals", "repo": "aoa-evals", "relative_path": ".aoa/live_receipts/eval-result-receipts.jsonl"},
                     {"name": "playbooks", "repo": "aoa-playbooks", "relative_path": ".aoa/live_receipts/playbook-receipts.jsonl"},
                     {"name": "techniques", "repo": "aoa-techniques", "relative_path": ".aoa/live_receipts/technique-receipts.jsonl"},
@@ -354,16 +387,17 @@ def test_refresh_live_state_combines_playbook_technique_memo_and_runtime_sources
         summary_output_dir=summary_output_dir,
     )
 
-    assert len(source_labels) == 6
-    assert receipt_count == 6
+    assert len(source_labels) == 7
+    assert receipt_count == 7
 
     feed = json.loads(feed_output.read_text(encoding="utf-8"))
-    assert len(feed) == 6
+    assert len(feed) == 7
 
     repeated = json.loads(
         (summary_output_dir / "repeated_window_summary.min.json").read_text(encoding="utf-8")
     )
     counts = repeated["windows"][0]["event_counts_by_kind"]
+    assert counts["core_skill_application_receipt"] == 1
     assert counts["playbook_review_harvest_receipt"] == 1
     assert counts["technique_promotion_receipt"] == 1
     assert counts["memo_writeback_receipt"] == 1
@@ -376,6 +410,13 @@ def test_refresh_live_state_combines_playbook_technique_memo_and_runtime_sources
     assert by_repo["aoa-techniques"]["receipt_counts_by_event_kind"]["technique_promotion_receipt"] == 1
     assert by_repo["aoa-memo"]["receipt_counts_by_event_kind"]["memo_writeback_receipt"] == 1
     assert by_repo["abyss-stack"]["receipt_counts_by_event_kind"]["runtime_wave_closeout_receipt"] == 1
+
+    core_summary = json.loads(
+        (summary_output_dir / "core_skill_application_summary.min.json").read_text(encoding="utf-8")
+    )
+    assert core_summary["skills"][0]["kernel_id"] == "project-core-session-growth-v1"
+    assert core_summary["skills"][0]["skill_name"] == "aoa-session-donor-harvest"
+    assert core_summary["skills"][0]["application_count"] == 1
 
     runtime_summary = json.loads(
         (summary_output_dir / "runtime_closeout_summary.min.json").read_text(encoding="utf-8")

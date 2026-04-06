@@ -24,6 +24,7 @@ sources under the current federation root, writes one combined local feed to
 `state/live_receipts.min.json`, and rebuilds:
 
 - `state/generated/object_summary.min.json`
+- `state/generated/core_skill_application_summary.min.json`
 - `state/generated/repeated_window_summary.min.json`
 - `state/generated/route_progression_summary.min.json`
 - `state/generated/fork_calibration_summary.min.json`
@@ -56,6 +57,7 @@ Each receipt should include:
 The committed builder refreshes:
 
 - `generated/object_summary.min.json`
+- `generated/core_skill_application_summary.min.json`
 - `generated/repeated_window_summary.min.json`
 - `generated/route_progression_summary.min.json`
 - `generated/fork_calibration_summary.min.json`
@@ -83,6 +85,7 @@ canonical owner-local live receipt logs exist, and refreshes `aoa-stats` every
 time any watched JSONL file changes:
 
 - `/srv/aoa-skills/.aoa/live_receipts/session-harvest-family.jsonl`
+- `/srv/aoa-skills/.aoa/live_receipts/core-skill-applications.jsonl`
 - `/srv/aoa-evals/.aoa/live_receipts/eval-result-receipts.jsonl`
 - `/srv/aoa-playbooks/.aoa/live_receipts/playbook-receipts.jsonl`
 - `/srv/aoa-techniques/.aoa/live_receipts/technique-receipts.jsonl`

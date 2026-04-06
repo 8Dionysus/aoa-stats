@@ -60,6 +60,18 @@ def runtime_closeout_identity(receipt: dict[str, Any]) -> tuple[str, str]:
     return "unknown-program", receipt["session_ref"]
 
 
+def core_skill_identity(receipt: dict[str, Any]) -> tuple[str, str]:
+    payload = receipt["payload"]
+    kernel_id = payload.get("kernel_id")
+    skill_name = payload.get("skill_name")
+    if isinstance(kernel_id, str) and kernel_id and isinstance(skill_name, str) and skill_name:
+        return kernel_id, skill_name
+    object_id = receipt["object_ref"].get("id")
+    if isinstance(object_id, str) and object_id:
+        return "unknown-kernel", object_id
+    return "unknown-kernel", "unknown-skill"
+
+
 def parse_args(argv: list[str] | None = None) -> argparse.Namespace:
     parser = argparse.ArgumentParser(description="Build aoa-stats derived views.")
     parser.add_argument(
@@ -256,6 +268,44 @@ def build_object_summary(
         "schema_version": "aoa_stats_object_summary_v1",
         "generated_from": source,
         "objects": objects,
+    }
+
+
+def build_core_skill_application_summary(
+    receipts: list[dict[str, Any]], source: dict[str, Any]
+) -> dict[str, Any]:
+    grouped: dict[tuple[str, str], list[dict[str, Any]]] = defaultdict(list)
+    for receipt in receipts:
+        if receipt["event_kind"] != "core_skill_application_receipt":
+            continue
+        grouped[core_skill_identity(receipt)].append(receipt)
+
+    skills: list[dict[str, Any]] = []
+    for key in sorted(grouped):
+        kernel_id, skill_name = key
+        group = grouped[key]
+        latest = max(group, key=lambda receipt: (receipt["observed_at"], receipt["event_id"]))
+        detail_counts: Counter[str] = Counter()
+        for receipt in group:
+            detail_event_kind = receipt["payload"].get("detail_event_kind")
+            if isinstance(detail_event_kind, str) and detail_event_kind:
+                detail_counts[detail_event_kind] += 1
+        skills.append(
+            {
+                "kernel_id": kernel_id,
+                "skill_name": skill_name,
+                "application_count": len(group),
+                "latest_observed_at": latest["observed_at"],
+                "latest_session_ref": latest["session_ref"],
+                "latest_run_ref": latest["run_ref"],
+                "detail_event_kind_counts": dict(sorted(detail_counts.items())),
+            }
+        )
+
+    return {
+        "schema_version": "aoa_stats_core_skill_application_summary_v1",
+        "generated_from": source,
+        "skills": skills,
     }
 
 
@@ -512,6 +562,13 @@ def build_summary_surface_catalog(source: dict[str, Any]) -> dict[str, Any]:
         "generated_from": source,
         "surfaces": [
             {
+                "name": "core_skill_application_summary",
+                "path": "generated/core_skill_application_summary.min.json",
+                "schema_ref": "schemas/core-skill-application-summary.schema.json",
+                "primary_question": "Which project-core kernel skills are actually finishing and how often, without inferring usage from general receipt volume?",
+                "derivation_rule": "aggregate core_skill_application_receipt payloads by kernel_id and skill_name",
+            },
+            {
                 "name": "object_summary",
                 "path": "generated/object_summary.min.json",
                 "schema_ref": "schemas/object-summary.schema.json",
@@ -563,6 +620,9 @@ def build_all_views(
     source = generated_from(receipts, input_paths)
     return {
         "object_summary.min.json": build_object_summary(receipts, source),
+        "core_skill_application_summary.min.json": build_core_skill_application_summary(
+            receipts, source
+        ),
         "repeated_window_summary.min.json": build_repeated_window_summary(receipts, source),
         "route_progression_summary.min.json": build_route_progression_summary(receipts, source),
         "fork_calibration_summary.min.json": build_fork_calibration_summary(receipts, source),

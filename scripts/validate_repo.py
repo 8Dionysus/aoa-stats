@@ -11,6 +11,7 @@ from jsonschema import Draft202012Validator, SchemaError
 REPO_ROOT = Path(__file__).resolve().parents[1]
 SCHEMAS = {
     "object_summary.min.json": "object-summary.schema.json",
+    "core_skill_application_summary.min.json": "core-skill-application-summary.schema.json",
     "repeated_window_summary.min.json": "repeated-window-summary.schema.json",
     "route_progression_summary.min.json": "route-progression-summary.schema.json",
     "fork_calibration_summary.min.json": "fork-calibration-summary.schema.json",

@@ -13,6 +13,8 @@ real sessions while preserving the canonical split:
 - owner repos say what happened and what it means
 - `aoa-stats` derives how often, how broadly, and how movement looks across
   named windows and pipelines
+- project-core kernel usage is read from its own summary surface rather than
+  inferred from total receipt volume
 
 ## Start here
 
@@ -71,6 +73,7 @@ quest-state authority, the layer is drifting out of bounds.
 The first usable derived summaries are:
 
 - `generated/object_summary.min.json`
+- `generated/core_skill_application_summary.min.json`
 - `generated/repeated_window_summary.min.json`
 - `generated/route_progression_summary.min.json`
 - `generated/fork_calibration_summary.min.json`
@@ -119,6 +122,7 @@ python scripts/install_live_refresh_units.py --enable
 The canonical watcher currently listens to these owner-local logs:
 
 - `/srv/aoa-skills/.aoa/live_receipts/session-harvest-family.jsonl`
+- `/srv/aoa-skills/.aoa/live_receipts/core-skill-applications.jsonl`
 - `/srv/aoa-evals/.aoa/live_receipts/eval-result-receipts.jsonl`
 - `/srv/aoa-playbooks/.aoa/live_receipts/playbook-receipts.jsonl`
 - `/srv/aoa-techniques/.aoa/live_receipts/technique-receipts.jsonl`
