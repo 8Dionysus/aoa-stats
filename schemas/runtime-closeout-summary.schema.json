@@ -1,0 +1,161 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://aoa-stats/schemas/runtime-closeout-summary.schema.json",
+  "title": "aoa-stats runtime closeout summary",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema_version",
+    "generated_from",
+    "closeouts"
+  ],
+  "properties": {
+    "schema_version": {
+      "const": "aoa_stats_runtime_closeout_summary_v1"
+    },
+    "generated_from": {
+      "$ref": "#/$defs/generated_from"
+    },
+    "closeouts": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "program_id",
+          "wave_id",
+          "closeout_receipt_count",
+          "latest_gate_result",
+          "gate_result_counts",
+          "latest_reviewed_closeout_handoff_status",
+          "reviewed_closeout_handoff_status_counts",
+          "latest_reviewed_closeout_audit_only",
+          "latest_case_count",
+          "latest_next_action",
+          "latest_truth_status",
+          "first_observed_at",
+          "last_observed_at",
+          "evidence_ref_count"
+        ],
+        "properties": {
+          "program_id": {
+            "type": "string",
+            "minLength": 1
+          },
+          "wave_id": {
+            "type": "string",
+            "minLength": 1
+          },
+          "closeout_receipt_count": {
+            "type": "integer",
+            "minimum": 1
+          },
+          "latest_gate_result": {
+            "type": "string",
+            "minLength": 1
+          },
+          "gate_result_counts": {
+            "$ref": "#/$defs/string_count_map"
+          },
+          "latest_reviewed_closeout_handoff_status": {
+            "type": "string",
+            "minLength": 1
+          },
+          "reviewed_closeout_handoff_status_counts": {
+            "$ref": "#/$defs/string_count_map"
+          },
+          "latest_reviewed_closeout_audit_only": {
+            "type": "boolean"
+          },
+          "latest_case_count": {
+            "type": "integer",
+            "minimum": 0
+          },
+          "latest_next_action": {
+            "type": "string",
+            "minLength": 1
+          },
+          "latest_truth_status": {
+            "$ref": "#/$defs/truth_status"
+          },
+          "first_observed_at": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "last_observed_at": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "evidence_ref_count": {
+            "type": "integer",
+            "minimum": 0
+          }
+        }
+      }
+    }
+  },
+  "$defs": {
+    "generated_from": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "receipt_input_paths",
+        "total_receipts",
+        "latest_observed_at"
+      ],
+      "properties": {
+        "receipt_input_paths": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "type": "string",
+            "minLength": 1
+          }
+        },
+        "total_receipts": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "latest_observed_at": {
+          "type": "string",
+          "format": "date-time"
+        }
+      }
+    },
+    "string_count_map": {
+      "type": "object",
+      "propertyNames": {
+        "type": "string",
+        "minLength": 1
+      },
+      "additionalProperties": {
+        "type": "integer",
+        "minimum": 0
+      }
+    },
+    "truth_status": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "source_authored",
+        "deployed",
+        "trial_proven",
+        "live_available"
+      ],
+      "properties": {
+        "source_authored": {
+          "type": "boolean"
+        },
+        "deployed": {
+          "type": "boolean"
+        },
+        "trial_proven": {
+          "type": "boolean"
+        },
+        "live_available": {
+          "type": "boolean"
+        }
+      }
+    }
+  }
+}

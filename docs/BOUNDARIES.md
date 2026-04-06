@@ -13,6 +13,7 @@ must not pretend to own.
 - `aoa-playbooks` owns scenario composition
 - `aoa-agents` owns role and checkpoint contract meaning
 - `aoa-memo` owns memory and provenance-thread support surfaces
+- `abyss-stack` owns runtime-local trial and closeout truth
 
 ## Stats posture
 
@@ -32,6 +33,7 @@ It may emit:
 - route-progression summaries
 - fork-calibration summaries
 - automation-pipeline summaries
+- runtime-closeout summaries
 
 It must not emit:
 
@@ -47,4 +49,3 @@ It must not emit:
 - progression stays bounded and multi-axis
 - evidence stays linked rather than duplicated
 - derived summaries stay weaker than owner-local meaning
-

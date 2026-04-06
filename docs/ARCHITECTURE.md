@@ -18,6 +18,7 @@ Examples:
 - a repair cycle ended
 - an automation candidate was detected
 - one bounded eval publication happened
+- one runtime wave closeout reached a gate and attempted a reviewed handoff
 
 These are facts, not proof.
 
@@ -48,6 +49,7 @@ Current v0 derived views:
 - route-progression summary
 - fork-calibration summary
 - automation-pipeline summary
+- runtime-closeout summary
 
 ## Canonical split
 
@@ -55,4 +57,3 @@ Current v0 derived views:
 - verdicts answer: how well on one bounded surface
 - progression answers: what changed on named axes
 - evidence refs answer: where to inspect next
-

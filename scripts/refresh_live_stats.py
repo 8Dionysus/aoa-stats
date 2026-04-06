@@ -25,6 +25,7 @@ SUMMARY_OUTPUT_NAMES = (
     "route_progression_summary.min.json",
     "fork_calibration_summary.min.json",
     "automation_pipeline_summary.min.json",
+    "runtime_closeout_summary.min.json",
     "summary_surface_catalog.min.json",
 )
 

@@ -28,6 +28,7 @@ sources under the current federation root, writes one combined local feed to
 - `state/generated/route_progression_summary.min.json`
 - `state/generated/fork_calibration_summary.min.json`
 - `state/generated/automation_pipeline_summary.min.json`
+- `state/generated/runtime_closeout_summary.min.json`
 - `state/generated/summary_surface_catalog.min.json`
 
 ## What the builder accepts
@@ -59,6 +60,7 @@ The committed builder refreshes:
 - `generated/route_progression_summary.min.json`
 - `generated/fork_calibration_summary.min.json`
 - `generated/automation_pipeline_summary.min.json`
+- `generated/runtime_closeout_summary.min.json`
 - `generated/summary_surface_catalog.min.json`
 
 ## Live local surfaces
@@ -85,6 +87,7 @@ time any watched JSONL file changes:
 - `/srv/aoa-playbooks/.aoa/live_receipts/playbook-receipts.jsonl`
 - `/srv/aoa-techniques/.aoa/live_receipts/technique-receipts.jsonl`
 - `/srv/aoa-memo/.aoa/live_receipts/memo-writeback-receipts.jsonl`
+- `/srv/abyss-stack/.aoa/live_receipts/runtime-wave-closeouts.jsonl`
 
 ## Boundary reminder
 
