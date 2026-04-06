@@ -3,6 +3,7 @@ Description=Watch owner-local live receipt logs for aoa-stats refresh
 
 [Path]
 PathModified=/srv/aoa-skills/.aoa/live_receipts/session-harvest-family.jsonl
+PathModified=/srv/aoa-skills/.aoa/live_receipts/core-skill-applications.jsonl
 PathModified=/srv/aoa-evals/.aoa/live_receipts/eval-result-receipts.jsonl
 PathModified=/srv/aoa-playbooks/.aoa/live_receipts/playbook-receipts.jsonl
 PathModified=/srv/aoa-techniques/.aoa/live_receipts/technique-receipts.jsonl

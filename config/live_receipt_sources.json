@@ -1,12 +1,19 @@
 {
   "schema_version": 1,
   "profile": "session-growth-live",
-  "description": "Canonical owner-local live receipt sources for automatic session-growth refresh under /srv across skills, evals, playbooks, techniques, memo, and runtime closeouts.",
+  "description": "Canonical owner-local live receipt sources for automatic session-growth refresh under /srv across detail skill receipts, project-core kernel skill applications, evals, playbooks, techniques, memo, and runtime closeouts.",
   "sources": [
     {
       "name": "session_harvest_family_live_log",
       "repo": "aoa-skills",
       "relative_path": ".aoa/live_receipts/session-harvest-family.jsonl",
+      "payload_shape": "jsonl",
+      "required": true
+    },
+    {
+      "name": "project_core_kernel_live_log",
+      "repo": "aoa-skills",
+      "relative_path": ".aoa/live_receipts/core-skill-applications.jsonl",
       "payload_shape": "jsonl",
       "required": true
     },

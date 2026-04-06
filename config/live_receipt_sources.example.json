@@ -1,13 +1,20 @@
 {
   "schema_version": 1,
   "profile": "session-growth-live",
-  "description": "Owner-local live receipt sources for the current session-harvest, eval, and runtime telemetry wave.",
+  "description": "Owner-local live receipt sources for the current detail session-harvest, project-core kernel, eval, and runtime telemetry wave.",
   "sources": [
     {
       "name": "session_harvest_family",
       "repo": "aoa-skills",
       "relative_path": "examples/session_harvest_family.receipts.example.json",
       "payload_shape": "array"
+    },
+    {
+      "name": "project_core_kernel_live_log_optional",
+      "repo": "aoa-skills",
+      "relative_path": ".aoa/live_receipts/core-skill-applications.jsonl",
+      "payload_shape": "jsonl",
+      "required": false
     },
     {
       "name": "eval_result_example",

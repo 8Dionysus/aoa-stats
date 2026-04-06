@@ -26,6 +26,7 @@ def test_build_views_produces_expected_surface_counts() -> None:
 
     assert set(outputs) == {
         "object_summary.min.json",
+        "core_skill_application_summary.min.json",
         "repeated_window_summary.min.json",
         "route_progression_summary.min.json",
         "fork_calibration_summary.min.json",
@@ -34,6 +35,7 @@ def test_build_views_produces_expected_surface_counts() -> None:
         "summary_surface_catalog.min.json",
     }
     assert outputs["object_summary.min.json"]["generated_from"]["total_receipts"] == 11
+    assert outputs["core_skill_application_summary.min.json"]["skills"] == []
     assert len(outputs["repeated_window_summary.min.json"]["windows"]) == 2
     assert len(outputs["route_progression_summary.min.json"]["routes"]) == 1
     assert len(outputs["fork_calibration_summary.min.json"]["routes"]) == 1
@@ -225,6 +227,80 @@ def test_runtime_closeout_summary_tracks_latest_handoff_posture() -> None:
     assert closeout["latest_next_action"] == "review-complete"
     assert closeout["latest_reviewed_closeout_handoff_status"] == "submitted"
     assert closeout["latest_reviewed_closeout_audit_only"] is True
+
+
+def test_core_skill_application_summary_tracks_kernel_usage() -> None:
+    module = load_build_views_module()
+    receipts = [
+        {
+            "event_kind": "core_skill_application_receipt",
+            "event_id": "evt-core-skill-test-0001",
+            "observed_at": "2026-04-06T20:20:00Z",
+            "run_ref": "run-core-skill-001",
+            "session_ref": "session:test-core-kernel",
+            "actor_ref": "aoa-skills:session-donor-harvest",
+            "object_ref": {
+                "repo": "aoa-skills",
+                "kind": "skill",
+                "id": "aoa-session-donor-harvest",
+                "version": "main",
+            },
+            "evidence_refs": [
+                {
+                    "kind": "receipt",
+                    "ref": "repo:aoa-skills/tmp/HARVEST_PACKET_RECEIPT.json",
+                }
+            ],
+            "payload": {
+                "kernel_id": "project-core-session-growth-v1",
+                "skill_name": "aoa-session-donor-harvest",
+                "application_stage": "finish",
+                "detail_event_kind": "harvest_packet_receipt",
+                "detail_receipt_ref": "repo:aoa-skills/tmp/HARVEST_PACKET_RECEIPT.json",
+                "route_ref": "route:test-core-kernel",
+            },
+        },
+        {
+            "event_kind": "core_skill_application_receipt",
+            "event_id": "evt-core-skill-test-0002",
+            "observed_at": "2026-04-06T20:22:00Z",
+            "run_ref": "run-core-skill-002",
+            "session_ref": "session:test-core-kernel-2",
+            "actor_ref": "aoa-skills:session-donor-harvest",
+            "object_ref": {
+                "repo": "aoa-skills",
+                "kind": "skill",
+                "id": "aoa-session-donor-harvest",
+                "version": "main",
+            },
+            "evidence_refs": [
+                {
+                    "kind": "receipt",
+                    "ref": "repo:aoa-skills/tmp/HARVEST_PACKET_RECEIPT_2.json",
+                }
+            ],
+            "payload": {
+                "kernel_id": "project-core-session-growth-v1",
+                "skill_name": "aoa-session-donor-harvest",
+                "application_stage": "finish",
+                "detail_event_kind": "harvest_packet_receipt",
+                "detail_receipt_ref": "repo:aoa-skills/tmp/HARVEST_PACKET_RECEIPT_2.json",
+                "route_ref": "route:test-core-kernel",
+            },
+        },
+    ]
+
+    summary = module.build_core_skill_application_summary(
+        receipts, {"receipt_input_paths": ["memory"], "total_receipts": len(receipts)}
+    )
+
+    assert summary["skills"][0]["kernel_id"] == "project-core-session-growth-v1"
+    assert summary["skills"][0]["skill_name"] == "aoa-session-donor-harvest"
+    assert summary["skills"][0]["application_count"] == 2
+    assert summary["skills"][0]["latest_session_ref"] == "session:test-core-kernel-2"
+    assert summary["skills"][0]["detail_event_kind_counts"] == {
+        "harvest_packet_receipt": 2
+    }
 
 
 def test_load_receipts_accepts_jsonl_and_deduplicates_event_ids(tmp_path: Path) -> None:
