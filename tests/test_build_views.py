@@ -30,6 +30,7 @@ def test_build_views_produces_expected_surface_counts() -> None:
         "route_progression_summary.min.json",
         "fork_calibration_summary.min.json",
         "automation_pipeline_summary.min.json",
+        "runtime_closeout_summary.min.json",
         "summary_surface_catalog.min.json",
     }
     assert outputs["object_summary.min.json"]["generated_from"]["total_receipts"] == 11
@@ -37,6 +38,7 @@ def test_build_views_produces_expected_surface_counts() -> None:
     assert len(outputs["route_progression_summary.min.json"]["routes"]) == 1
     assert len(outputs["fork_calibration_summary.min.json"]["routes"]) == 1
     assert len(outputs["automation_pipeline_summary.min.json"]["pipelines"]) == 1
+    assert outputs["runtime_closeout_summary.min.json"]["closeouts"] == []
 
 
 def test_automation_pipeline_summary_tracks_seed_readiness() -> None:
@@ -132,6 +134,97 @@ def test_fork_calibration_summary_falls_back_to_branch_id_count() -> None:
 
     assert summary["routes"][0]["route_ref"] == "route:test-fork-calibration"
     assert summary["routes"][0]["max_option_count"] == 3
+
+
+def test_runtime_closeout_summary_tracks_latest_handoff_posture() -> None:
+    module = load_build_views_module()
+    receipts = [
+        {
+            "event_kind": "runtime_wave_closeout_receipt",
+            "event_id": "evt-runtime-closeout-0001",
+            "observed_at": "2026-04-06T20:10:00Z",
+            "run_ref": "run:abyss-stack:pilot:W4:closeout",
+            "session_ref": "session:abyss-stack:pilot:W4:closeout",
+            "actor_ref": "abyss-stack:aoa-local-ai-trials",
+            "object_ref": {
+                "repo": "abyss-stack",
+                "kind": "runtime_wave_closeout",
+                "id": "pilot-v1:W4",
+                "version": "runtime",
+            },
+            "evidence_refs": [
+                {
+                    "kind": "wave_closeout_json",
+                    "ref": "/srv/abyss-stack/Logs/local-ai-trials/pilot-v1/W4-closeout.json",
+                }
+            ],
+            "payload": {
+                "program_id": "pilot-v1",
+                "wave_id": "W4",
+                "gate_result": "pass",
+                "case_count": 3,
+                "status_counts": {"pass": 3},
+                "next_action": "continue-to-review",
+                "truth_status": {
+                    "source_authored": True,
+                    "deployed": True,
+                    "trial_proven": True,
+                    "live_available": True,
+                },
+                "reviewed_closeout_handoff_status": "submitted",
+                "reviewed_closeout_audit_only": True,
+            },
+        },
+        {
+            "event_kind": "runtime_wave_closeout_receipt",
+            "event_id": "evt-runtime-closeout-0002",
+            "observed_at": "2026-04-06T20:12:00Z",
+            "run_ref": "run:abyss-stack:pilot:W4:closeout",
+            "session_ref": "session:abyss-stack:pilot:W4:closeout",
+            "actor_ref": "abyss-stack:aoa-local-ai-trials",
+            "object_ref": {
+                "repo": "abyss-stack",
+                "kind": "runtime_wave_closeout",
+                "id": "pilot-v1:W4",
+                "version": "runtime",
+            },
+            "evidence_refs": [
+                {
+                    "kind": "closeout_submit_status",
+                    "ref": "/srv/abyss-stack/Logs/local-ai-trials/pilot-v1/W4-closeout.submit.json",
+                }
+            ],
+            "payload": {
+                "program_id": "pilot-v1",
+                "wave_id": "W4",
+                "gate_result": "pass",
+                "case_count": 3,
+                "status_counts": {"pass": 3},
+                "next_action": "review-complete",
+                "truth_status": {
+                    "source_authored": True,
+                    "deployed": True,
+                    "trial_proven": True,
+                    "live_available": True,
+                },
+                "reviewed_closeout_handoff_status": "submitted",
+                "reviewed_closeout_audit_only": True,
+            },
+        },
+    ]
+
+    summary = module.build_runtime_closeout_summary(
+        receipts, {"receipt_input_paths": ["memory"], "total_receipts": len(receipts)}
+    )
+
+    closeout = summary["closeouts"][0]
+    assert closeout["program_id"] == "pilot-v1"
+    assert closeout["wave_id"] == "W4"
+    assert closeout["closeout_receipt_count"] == 2
+    assert closeout["latest_gate_result"] == "pass"
+    assert closeout["latest_next_action"] == "review-complete"
+    assert closeout["latest_reviewed_closeout_handoff_status"] == "submitted"
+    assert closeout["latest_reviewed_closeout_audit_only"] is True
 
 
 def test_load_receipts_accepts_jsonl_and_deduplicates_event_ids(tmp_path: Path) -> None:

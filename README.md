@@ -5,7 +5,7 @@ Derived observability and machine-first summary layer for the AoA federation.
 `aoa-stats` is the downstream adjunct that consumes source-owned receipts,
 evidence refs, and bounded eval verdicts to build machine-readable summaries
 without taking ownership away from `aoa-skills`, `aoa-evals`, `aoa-playbooks`,
-`aoa-techniques`, `aoa-agents`, or `aoa-memo`.
+`aoa-techniques`, `aoa-agents`, `aoa-memo`, or `abyss-stack`.
 
 This repository exists so project growth can stay visible during real work and
 real sessions while preserving the canonical split:
@@ -56,6 +56,7 @@ This repository is the source of truth for:
 - It does not own scenario composition from `aoa-playbooks`.
 - It does not own role or checkpoint contracts from `aoa-agents`.
 - It does not own memory or provenance-thread meaning from `aoa-memo`.
+- It does not own runtime execution or closeout meaning from `abyss-stack`.
 - It does not become a sovereign score empire or dashboard authority.
 
 ## Core rule
@@ -74,6 +75,7 @@ The first usable derived summaries are:
 - `generated/route_progression_summary.min.json`
 - `generated/fork_calibration_summary.min.json`
 - `generated/automation_pipeline_summary.min.json`
+- `generated/runtime_closeout_summary.min.json`
 - `generated/summary_surface_catalog.min.json`
 
 These are built from one bounded receipt feed and are intended to stay
@@ -121,6 +123,7 @@ The canonical watcher currently listens to these owner-local logs:
 - `/srv/aoa-playbooks/.aoa/live_receipts/playbook-receipts.jsonl`
 - `/srv/aoa-techniques/.aoa/live_receipts/technique-receipts.jsonl`
 - `/srv/aoa-memo/.aoa/live_receipts/memo-writeback-receipts.jsonl`
+- `/srv/abyss-stack/.aoa/live_receipts/runtime-wave-closeouts.jsonl`
 
 ## Go elsewhere when...
 
@@ -130,6 +133,7 @@ The canonical watcher currently listens to these owner-local logs:
 - you need scenario composition: `aoa-playbooks`
 - you need role or checkpoint meaning: `aoa-agents`
 - you need memory or provenance ownership: `aoa-memo`
+- you need runtime-local trial or closeout truth: `abyss-stack`
 
 ## License
 

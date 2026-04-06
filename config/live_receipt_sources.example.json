@@ -1,7 +1,7 @@
 {
   "schema_version": 1,
   "profile": "session-growth-live",
-  "description": "Owner-local live receipt sources for the current session-harvest and eval telemetry wave.",
+  "description": "Owner-local live receipt sources for the current session-harvest, eval, and runtime telemetry wave.",
   "sources": [
     {
       "name": "session_harvest_family",
@@ -14,6 +14,13 @@
       "repo": "aoa-evals",
       "relative_path": "examples/eval_result_receipt.example.json",
       "payload_shape": "object"
+    },
+    {
+      "name": "runtime_closeout_live_log_optional",
+      "repo": "abyss-stack",
+      "relative_path": ".aoa/live_receipts/runtime-wave-closeouts.jsonl",
+      "payload_shape": "jsonl",
+      "required": false
     }
   ]
 }

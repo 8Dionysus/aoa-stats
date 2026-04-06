@@ -15,6 +15,7 @@ SCHEMAS = {
     "route_progression_summary.min.json": "route-progression-summary.schema.json",
     "fork_calibration_summary.min.json": "fork-calibration-summary.schema.json",
     "automation_pipeline_summary.min.json": "automation-pipeline-summary.schema.json",
+    "runtime_closeout_summary.min.json": "runtime-closeout-summary.schema.json",
     "summary_surface_catalog.min.json": "summary-surface-catalog.schema.json",
 }
 REQUIRED_TEXT_FILES = (
@@ -98,4 +99,3 @@ def main() -> int:
 
 if __name__ == "__main__":
     raise SystemExit(main())
-

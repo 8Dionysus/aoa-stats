@@ -195,7 +195,9 @@ def test_refresh_live_state_clears_previous_outputs_when_sources_are_empty(tmp_p
     assert (summary_output_dir / "summary_surface_catalog.min.json").exists() is False
 
 
-def test_refresh_live_state_combines_playbook_technique_and_memo_sources(tmp_path: Path) -> None:
+def test_refresh_live_state_combines_playbook_technique_memo_and_runtime_sources(
+    tmp_path: Path,
+) -> None:
     module = load_refresh_module()
     federation_root = tmp_path / "srv"
     skills_dir = federation_root / "aoa-skills" / ".aoa" / "live_receipts"
@@ -203,7 +205,8 @@ def test_refresh_live_state_combines_playbook_technique_and_memo_sources(tmp_pat
     playbooks_dir = federation_root / "aoa-playbooks" / ".aoa" / "live_receipts"
     techniques_dir = federation_root / "aoa-techniques" / ".aoa" / "live_receipts"
     memo_dir = federation_root / "aoa-memo" / ".aoa" / "live_receipts"
-    for path in (skills_dir, evals_dir, playbooks_dir, techniques_dir, memo_dir):
+    runtime_dir = federation_root / "abyss-stack" / ".aoa" / "live_receipts"
+    for path in (skills_dir, evals_dir, playbooks_dir, techniques_dir, memo_dir, runtime_dir):
         path.mkdir(parents=True)
 
     receipts_by_path = {
@@ -287,6 +290,37 @@ def test_refresh_live_state_combines_playbook_technique_and_memo_sources(tmp_pat
             "evidence_refs": [{"kind": "memory_object", "ref": "repo:aoa-memo/generated/memory_object_catalog.min.json"}],
             "payload": {"target_kind": "decision"},
         },
+        runtime_dir / "runtime-wave-closeouts.jsonl": {
+            "event_kind": "runtime_wave_closeout_receipt",
+            "event_id": "evt-runtime-closeout-test-0001",
+            "observed_at": "2026-04-06T20:05:00Z",
+            "run_ref": "run:abyss-stack:pilot-v1:W4:closeout",
+            "session_ref": "session:abyss-stack:pilot-v1:W4:closeout",
+            "actor_ref": "abyss-stack:aoa-local-ai-trials",
+            "object_ref": {
+                "repo": "abyss-stack",
+                "kind": "runtime_wave_closeout",
+                "id": "pilot-v1:W4",
+                "version": "runtime",
+            },
+            "evidence_refs": [{"kind": "wave_closeout_json", "ref": "/srv/abyss-stack/Logs/local-ai-trials/pilot-v1/W4-closeout.json"}],
+            "payload": {
+                "program_id": "pilot-v1",
+                "wave_id": "W4",
+                "gate_result": "pass",
+                "case_count": 3,
+                "status_counts": {"pass": 3},
+                "next_action": "review-complete",
+                "truth_status": {
+                    "source_authored": True,
+                    "deployed": True,
+                    "trial_proven": True,
+                    "live_available": True,
+                },
+                "reviewed_closeout_handoff_status": "submitted",
+                "reviewed_closeout_audit_only": True,
+            },
+        },
     }
     for path, receipt in receipts_by_path.items():
         path.write_text(json.dumps(receipt) + "\n", encoding="utf-8")
@@ -302,6 +336,7 @@ def test_refresh_live_state_combines_playbook_technique_and_memo_sources(tmp_pat
                     {"name": "playbooks", "repo": "aoa-playbooks", "relative_path": ".aoa/live_receipts/playbook-receipts.jsonl"},
                     {"name": "techniques", "repo": "aoa-techniques", "relative_path": ".aoa/live_receipts/technique-receipts.jsonl"},
                     {"name": "memo", "repo": "aoa-memo", "relative_path": ".aoa/live_receipts/memo-writeback-receipts.jsonl"},
+                    {"name": "runtime", "repo": "abyss-stack", "relative_path": ".aoa/live_receipts/runtime-wave-closeouts.jsonl"},
                 ],
             },
             indent=2,
@@ -319,11 +354,11 @@ def test_refresh_live_state_combines_playbook_technique_and_memo_sources(tmp_pat
         summary_output_dir=summary_output_dir,
     )
 
-    assert len(source_labels) == 5
-    assert receipt_count == 5
+    assert len(source_labels) == 6
+    assert receipt_count == 6
 
     feed = json.loads(feed_output.read_text(encoding="utf-8"))
-    assert len(feed) == 5
+    assert len(feed) == 6
 
     repeated = json.loads(
         (summary_output_dir / "repeated_window_summary.min.json").read_text(encoding="utf-8")
@@ -340,3 +375,11 @@ def test_refresh_live_state_combines_playbook_technique_and_memo_sources(tmp_pat
     assert by_repo["aoa-playbooks"]["receipt_counts_by_event_kind"]["playbook_review_harvest_receipt"] == 1
     assert by_repo["aoa-techniques"]["receipt_counts_by_event_kind"]["technique_promotion_receipt"] == 1
     assert by_repo["aoa-memo"]["receipt_counts_by_event_kind"]["memo_writeback_receipt"] == 1
+    assert by_repo["abyss-stack"]["receipt_counts_by_event_kind"]["runtime_wave_closeout_receipt"] == 1
+
+    runtime_summary = json.loads(
+        (summary_output_dir / "runtime_closeout_summary.min.json").read_text(encoding="utf-8")
+    )
+    assert runtime_summary["closeouts"][0]["program_id"] == "pilot-v1"
+    assert runtime_summary["closeouts"][0]["wave_id"] == "W4"
+    assert runtime_summary["closeouts"][0]["latest_gate_result"] == "pass"
