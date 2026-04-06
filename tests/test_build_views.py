@@ -1,6 +1,7 @@
 from __future__ import annotations
 
 import importlib.util
+import json
 from pathlib import Path
 
 
@@ -51,3 +52,83 @@ def test_automation_pipeline_summary_tracks_seed_readiness() -> None:
     assert pipeline["seed_ready_count"] == 1
     assert pipeline["checkpoint_required_count"] == 1
     assert pipeline["next_artifact_hints"] == ["repair-prompt", "seed-pack"]
+
+
+def test_load_receipts_accepts_jsonl_and_deduplicates_event_ids(tmp_path: Path) -> None:
+    module = load_build_views_module()
+    jsonl_path = tmp_path / "live_receipts.jsonl"
+    jsonl_path.write_text(
+        "\n".join(
+            [
+                json.dumps(
+                    {
+                        "event_kind": "automation_candidate_receipt",
+                        "event_id": "evt-auto-test-0001",
+                        "observed_at": "2026-04-05T10:20:00Z",
+                        "run_ref": "run-test-001",
+                        "session_ref": "session:test-001",
+                        "actor_ref": "aoa-skills:automation-opportunity-scan",
+                        "object_ref": {
+                            "repo": "aoa-skills",
+                            "kind": "skill",
+                            "id": "aoa-automation-opportunity-scan",
+                            "version": "main",
+                        },
+                        "evidence_refs": [
+                            {
+                                "kind": "skill",
+                                "ref": "repo:aoa-skills/skills/aoa-automation-opportunity-scan/SKILL.md",
+                            }
+                        ],
+                        "payload": {
+                            "pipeline_ref": "pipeline:test",
+                            "repeat_signal": "present",
+                            "deterministic_ready": True,
+                            "reversible_ready": True,
+                            "checkpoint_required": False,
+                            "seed_ready": True,
+                            "next_artifact_hint": "seed-pack",
+                        },
+                    }
+                ),
+                json.dumps(
+                    {
+                        "event_kind": "automation_candidate_receipt",
+                        "event_id": "evt-auto-test-0001",
+                        "observed_at": "2026-04-05T10:21:00Z",
+                        "run_ref": "run-test-001",
+                        "session_ref": "session:test-001",
+                        "actor_ref": "aoa-skills:automation-opportunity-scan",
+                        "object_ref": {
+                            "repo": "aoa-skills",
+                            "kind": "skill",
+                            "id": "aoa-automation-opportunity-scan",
+                            "version": "main",
+                        },
+                        "evidence_refs": [
+                            {
+                                "kind": "skill",
+                                "ref": "repo:aoa-skills/skills/aoa-automation-opportunity-scan/SKILL.md",
+                            }
+                        ],
+                        "payload": {
+                            "pipeline_ref": "pipeline:test",
+                            "repeat_signal": "present",
+                            "deterministic_ready": True,
+                            "reversible_ready": True,
+                            "checkpoint_required": False,
+                            "seed_ready": True,
+                            "next_artifact_hint": "seed-pack",
+                        },
+                    }
+                ),
+            ]
+        )
+        + "\n",
+        encoding="utf-8",
+    )
+
+    receipts = module.load_receipts([jsonl_path])
+
+    assert len(receipts) == 1
+    assert receipts[0]["observed_at"] == "2026-04-05T10:21:00Z"

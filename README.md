@@ -27,11 +27,14 @@ Use the shortest route by need:
 
 - current derived schemas: `schemas/`
 - example receipt feed: `examples/session_harvest_family.receipts.example.json`
-- live source registry for owner-local receipts:
+- canonical live source registry for owner-local receipts:
+  `config/live_receipt_sources.json`
+- example live source registry for bounded docs/testing:
   `config/live_receipt_sources.example.json`
 - generated summary surfaces: `generated/`
 - builders and validators: `scripts/build_views.py`,
-  `scripts/refresh_live_stats.py`, and
+  `scripts/refresh_live_stats.py`,
+  `scripts/install_live_refresh_units.py`, and
   `scripts/validate_repo.py`
 - local verification path: `python scripts/build_views.py --check`,
   `python scripts/validate_repo.py`, and `python -m pytest -q tests`
@@ -102,6 +105,13 @@ Refresh the local live state from owner-local source feeds under `/srv`:
 
 ```bash
 python scripts/refresh_live_stats.py
+```
+
+Install the user-level watcher so live summaries refresh automatically whenever
+an owner-local receipt log changes:
+
+```bash
+python scripts/install_live_refresh_units.py --enable
 ```
 
 ## Go elsewhere when...

@@ -34,7 +34,10 @@ def parse_args(argv: list[str] | None = None) -> argparse.Namespace:
         "--input",
         action="append",
         default=[],
-        help="Path to a JSON file containing one receipt object or an array of receipt envelopes.",
+        help=(
+            "Path to a JSON or JSONL file containing one receipt object, an array "
+            "of receipt envelopes, or one JSON receipt envelope per line."
+        ),
     )
     parser.add_argument(
         "--output-dir",
@@ -52,6 +55,9 @@ def parse_args(argv: list[str] | None = None) -> argparse.Namespace:
 def load_receipts(paths: list[Path]) -> list[dict[str, Any]]:
     receipts: list[dict[str, Any]] = []
     for path in paths:
+        if path.suffix == ".jsonl":
+            receipts.extend(load_receipts_from_jsonl(path))
+            continue
         payload = json.loads(path.read_text(encoding="utf-8"))
         if isinstance(payload, dict):
             validate_receipt(payload, location=str(path))
@@ -64,7 +70,30 @@ def load_receipts(paths: list[Path]) -> list[dict[str, Any]]:
                 raise ReceiptValidationError(f"{path}[{index}]: receipt must be an object")
             validate_receipt(item, location=f"{path}[{index}]")
             receipts.append(item)
-    receipts.sort(key=lambda receipt: (receipt["observed_at"], receipt["event_id"]))
+    deduped: dict[str, dict[str, Any]] = {}
+    for receipt in receipts:
+        deduped[receipt["event_id"]] = receipt
+    return sorted(
+        deduped.values(), key=lambda receipt: (receipt["observed_at"], receipt["event_id"])
+    )
+
+
+def load_receipts_from_jsonl(path: Path) -> list[dict[str, Any]]:
+    receipts: list[dict[str, Any]] = []
+    for line_number, raw_line in enumerate(path.read_text(encoding="utf-8").splitlines(), start=1):
+        line = raw_line.strip()
+        if not line:
+            continue
+        try:
+            item = json.loads(line)
+        except json.JSONDecodeError as exc:
+            raise ReceiptValidationError(
+                f"{path}:{line_number}: invalid JSONL receipt line"
+            ) from exc
+        if not isinstance(item, dict):
+            raise ReceiptValidationError(f"{path}:{line_number}: receipt must be an object")
+        validate_receipt(item, location=f"{path}:{line_number}")
+        receipts.append(item)
     return receipts
 
 

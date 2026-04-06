@@ -19,7 +19,7 @@ python scripts/refresh_live_stats.py
 ```
 
 By default this reads the registry at
-`config/live_receipt_sources.example.json`, resolves sibling owner-local
+`config/live_receipt_sources.json`, resolves sibling owner-local
 sources under the current federation root, writes one combined local feed to
 `state/live_receipts.min.json`, and rebuilds:
 
@@ -36,6 +36,7 @@ The current builder accepts one or more JSON files that contain either:
 
 - one receipt envelope object
 - one array of receipt envelopes
+- one JSONL file with one receipt envelope object per line
 
 Each receipt should include:
 
@@ -65,6 +66,22 @@ The committed builder refreshes:
 The live refresh path writes the same shape under `state/generated/` so the
 repo can keep deterministic committed outputs while the local operator keeps a
 current working read.
+
+## Automatic watcher
+
+Install the user-level watcher once:
+
+```bash
+python scripts/install_live_refresh_units.py --enable
+```
+
+This installs `aoa-stats-live-refresh.path` and
+`aoa-stats-live-refresh.service` into `~/.config/systemd/user/`, ensures the
+canonical owner-local live receipt logs exist, and refreshes `aoa-stats` every
+time either watched JSONL file changes:
+
+- `/srv/aoa-skills/.aoa/live_receipts/session-harvest-family.jsonl`
+- `/srv/aoa-evals/.aoa/live_receipts/eval-result-receipts.jsonl`
 
 ## Boundary reminder
 
