@@ -1,0 +1,170 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://aoa-stats/schemas/object-summary.schema.json",
+  "title": "aoa-stats object summary",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema_version",
+    "generated_from",
+    "objects"
+  ],
+  "properties": {
+    "schema_version": {
+      "const": "aoa_stats_object_summary_v1"
+    },
+    "generated_from": {
+      "$ref": "#/$defs/generated_from"
+    },
+    "objects": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "object_ref",
+          "receipt_count_total",
+          "receipt_counts_by_event_kind",
+          "first_observed_at",
+          "last_observed_at",
+          "latest_session_ref",
+          "latest_run_ref",
+          "evidence_ref_count",
+          "automation_candidate_counts"
+        ],
+        "properties": {
+          "object_ref": {
+            "$ref": "#/$defs/object_ref"
+          },
+          "receipt_count_total": {
+            "type": "integer",
+            "minimum": 1
+          },
+          "receipt_counts_by_event_kind": {
+            "$ref": "#/$defs/count_map"
+          },
+          "first_observed_at": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "last_observed_at": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "latest_session_ref": {
+            "type": "string",
+            "minLength": 1
+          },
+          "latest_run_ref": {
+            "type": "string",
+            "minLength": 1
+          },
+          "evidence_ref_count": {
+            "type": "integer",
+            "minimum": 0
+          },
+          "latest_eval_verdict": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "latest_progression_verdict": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "automation_candidate_counts": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+              "total",
+              "seed_ready",
+              "checkpoint_required"
+            ],
+            "properties": {
+              "total": {
+                "type": "integer",
+                "minimum": 0
+              },
+              "seed_ready": {
+                "type": "integer",
+                "minimum": 0
+              },
+              "checkpoint_required": {
+                "type": "integer",
+                "minimum": 0
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "$defs": {
+    "generated_from": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "receipt_input_paths",
+        "total_receipts",
+        "latest_observed_at"
+      ],
+      "properties": {
+        "receipt_input_paths": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "type": "string",
+            "minLength": 1
+          }
+        },
+        "total_receipts": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "latest_observed_at": {
+          "type": "string",
+          "format": "date-time"
+        }
+      }
+    },
+    "object_ref": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "repo",
+        "kind",
+        "id"
+      ],
+      "properties": {
+        "repo": {
+          "type": "string",
+          "minLength": 1
+        },
+        "kind": {
+          "type": "string",
+          "minLength": 1
+        },
+        "id": {
+          "type": "string",
+          "minLength": 1
+        },
+        "version": {
+          "type": "string",
+          "minLength": 1
+        }
+      }
+    },
+    "count_map": {
+      "type": "object",
+      "additionalProperties": {
+        "type": "integer",
+        "minimum": 0
+      }
+    }
+  }
+}
+

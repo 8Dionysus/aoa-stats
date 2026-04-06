@@ -1,0 +1,58 @@
+# Architecture
+
+## One sentence
+
+`aoa-stats` is an evidence-linked observability layer built from owner-local
+receipts, bounded eval verdicts, and small progression deltas.
+
+## Five layers
+
+### 1. Event facts
+
+Append-only receipts say what happened.
+
+Examples:
+
+- a harvest packet closed
+- a fork was offered and one branch was chosen
+- a repair cycle ended
+- an automation candidate was detected
+- one bounded eval publication happened
+
+These are facts, not proof.
+
+### 2. Evidence links
+
+Each receipt should point to inspectable artifacts through `evidence_refs`
+instead of copying raw patches, logs, or reports.
+
+### 3. Bounded evaluations
+
+Quality enters through bounded eval verdicts and review surfaces.
+`aoa-stats` may quote or summarize verdicts, but it must not replace them.
+
+### 4. Progression readings
+
+Progression stays route-scoped or quest-scoped and multi-axis.
+The stats layer may accumulate deltas, cautions, holds, advances, reanchors,
+and downgrades without pretending one total score explains everything.
+
+### 5. Derived views
+
+Derived views stay machine-first.
+
+Current v0 derived views:
+
+- object summary
+- repeated-window summary
+- route-progression summary
+- fork-calibration summary
+- automation-pipeline summary
+
+## Canonical split
+
+- counts answer: how often and how widely
+- verdicts answer: how well on one bounded surface
+- progression answers: what changed on named axes
+- evidence refs answer: where to inspect next
+

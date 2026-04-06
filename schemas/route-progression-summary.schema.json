@@ -1,0 +1,131 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://aoa-stats/schemas/route-progression-summary.schema.json",
+  "title": "aoa-stats route progression summary",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema_version",
+    "generated_from",
+    "routes"
+  ],
+  "properties": {
+    "schema_version": {
+      "const": "aoa_stats_route_progression_summary_v1"
+    },
+    "generated_from": {
+      "$ref": "#/$defs/generated_from"
+    },
+    "routes": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "route_ref",
+          "total_progression_receipts",
+          "latest_verdict",
+          "latest_observed_at",
+          "cumulative_axis_deltas",
+          "caution_count",
+          "evidence_ref_count"
+        ],
+        "properties": {
+          "route_ref": {
+            "type": "string",
+            "minLength": 1
+          },
+          "total_progression_receipts": {
+            "type": "integer",
+            "minimum": 1
+          },
+          "latest_verdict": {
+            "type": "string",
+            "minLength": 1
+          },
+          "latest_observed_at": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "cumulative_axis_deltas": {
+            "$ref": "#/$defs/axis_deltas"
+          },
+          "caution_count": {
+            "type": "integer",
+            "minimum": 0
+          },
+          "evidence_ref_count": {
+            "type": "integer",
+            "minimum": 0
+          }
+        }
+      }
+    }
+  },
+  "$defs": {
+    "generated_from": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "receipt_input_paths",
+        "total_receipts",
+        "latest_observed_at"
+      ],
+      "properties": {
+        "receipt_input_paths": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "type": "string",
+            "minLength": 1
+          }
+        },
+        "total_receipts": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "latest_observed_at": {
+          "type": "string",
+          "format": "date-time"
+        }
+      }
+    },
+    "axis_deltas": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "boundary_integrity",
+        "execution_reliability",
+        "change_legibility",
+        "review_sharpness",
+        "proof_discipline",
+        "provenance_hygiene",
+        "deep_readiness"
+      ],
+      "properties": {
+        "boundary_integrity": {
+          "type": "integer"
+        },
+        "execution_reliability": {
+          "type": "integer"
+        },
+        "change_legibility": {
+          "type": "integer"
+        },
+        "review_sharpness": {
+          "type": "integer"
+        },
+        "proof_discipline": {
+          "type": "integer"
+        },
+        "provenance_hygiene": {
+          "type": "integer"
+        },
+        "deep_readiness": {
+          "type": "integer"
+        }
+      }
+    }
+  }
+}
+

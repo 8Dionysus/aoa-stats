@@ -1,0 +1,113 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://aoa-stats/schemas/repeated-window-summary.schema.json",
+  "title": "aoa-stats repeated window summary",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema_version",
+    "generated_from",
+    "windows"
+  ],
+  "properties": {
+    "schema_version": {
+      "const": "aoa_stats_repeated_window_summary_v1"
+    },
+    "generated_from": {
+      "$ref": "#/$defs/generated_from"
+    },
+    "windows": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "window_id",
+          "window_date",
+          "total_receipts",
+          "unique_objects",
+          "event_counts_by_kind",
+          "eval_result_count",
+          "progression_delta_count",
+          "automation_candidate_count",
+          "evidence_ref_count"
+        ],
+        "properties": {
+          "window_id": {
+            "type": "string",
+            "minLength": 1
+          },
+          "window_date": {
+            "type": "string",
+            "format": "date"
+          },
+          "total_receipts": {
+            "type": "integer",
+            "minimum": 1
+          },
+          "unique_objects": {
+            "type": "integer",
+            "minimum": 1
+          },
+          "event_counts_by_kind": {
+            "$ref": "#/$defs/count_map"
+          },
+          "eval_result_count": {
+            "type": "integer",
+            "minimum": 0
+          },
+          "progression_delta_count": {
+            "type": "integer",
+            "minimum": 0
+          },
+          "automation_candidate_count": {
+            "type": "integer",
+            "minimum": 0
+          },
+          "evidence_ref_count": {
+            "type": "integer",
+            "minimum": 0
+          }
+        }
+      }
+    }
+  },
+  "$defs": {
+    "generated_from": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "receipt_input_paths",
+        "total_receipts",
+        "latest_observed_at"
+      ],
+      "properties": {
+        "receipt_input_paths": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "type": "string",
+            "minLength": 1
+          }
+        },
+        "total_receipts": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "latest_observed_at": {
+          "type": "string",
+          "format": "date-time"
+        }
+      }
+    },
+    "count_map": {
+      "type": "object",
+      "additionalProperties": {
+        "type": "integer",
+        "minimum": 0
+      }
+    }
+  }
+}
+
