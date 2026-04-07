@@ -344,6 +344,9 @@ def build_core_skill_application_summary(
     for receipt in receipts:
         if receipt["event_kind"] != "core_skill_application_receipt":
             continue
+        payload = receipt.get("payload")
+        if not isinstance(payload, dict) or payload.get("application_stage") != "finish":
+            continue
         grouped[core_skill_identity(receipt)].append(receipt)
 
     skills: list[dict[str, Any]] = []
