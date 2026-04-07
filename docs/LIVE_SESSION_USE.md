@@ -30,6 +30,7 @@ sources under the current federation root, writes one combined local feed to
 - `state/generated/fork_calibration_summary.min.json`
 - `state/generated/automation_pipeline_summary.min.json`
 - `state/generated/runtime_closeout_summary.min.json`
+- `state/generated/surface_detection_summary.min.json`
 - `state/generated/summary_surface_catalog.min.json`
 
 ## What the builder accepts
@@ -71,6 +72,7 @@ The committed builder refreshes:
 - `generated/fork_calibration_summary.min.json`
 - `generated/automation_pipeline_summary.min.json`
 - `generated/runtime_closeout_summary.min.json`
+- `generated/surface_detection_summary.min.json`
 - `generated/summary_surface_catalog.min.json`
 
 ## Live local surfaces
@@ -82,6 +84,11 @@ current working read.
 The live feed and committed builders keep raw logs append-only, but the
 generated summaries read from the active receipt view after local
 `supersedes` resolution.
+
+Second-wave surface detection stays descriptive here as well. If owner-local
+core-skill receipts preserve `surface_detection_context`, the builder may
+derive shortlist ambiguity and closeout-handoff counts, but those counts do
+not become routing or promotion authority.
 
 ## Automatic watcher
 

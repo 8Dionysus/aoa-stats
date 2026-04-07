@@ -84,11 +84,17 @@ The first usable derived summaries are:
 - `generated/fork_calibration_summary.min.json`
 - `generated/automation_pipeline_summary.min.json`
 - `generated/runtime_closeout_summary.min.json`
+- `generated/surface_detection_summary.min.json`
 - `generated/summary_surface_catalog.min.json`
 
 These are built from one bounded receipt feed and are intended to stay
 machine-first, evidence-linked, and weaker than the owner-local source
 surfaces they summarize.
+
+`surface_detection_summary.min.json` is second-wave descriptive only. It may
+count shortlist ambiguity, candidate posture, and closeout-handoff volume when
+owner receipts preserve that context, but it does not decide promotion or
+owner meaning.
 
 Raw logs stay append-only. When receipts carry `supersedes`, the committed and
 live summaries read from the active receipt view after local correction
