@@ -1,0 +1,197 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://aoa.local/aoa-stats/schemas/antifragility_vector_v1.json",
+  "title": "antifragility_vector_v1",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema_version",
+    "generated_at_utc",
+    "scope",
+    "inputs",
+    "sample_size",
+    "vector"
+  ],
+  "properties": {
+    "schema_version": {
+      "const": "antifragility_vector_v1"
+    },
+    "generated_at_utc": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "scope": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "repo",
+        "window_label"
+      ],
+      "properties": {
+        "repo": {
+          "type": "string",
+          "minLength": 1
+        },
+        "surface": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "window_label": {
+          "type": "string",
+          "minLength": 1
+        }
+      }
+    },
+    "inputs": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "receipt_refs",
+        "eval_report_refs"
+      ],
+      "properties": {
+        "receipt_refs": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "minLength": 1
+          }
+        },
+        "eval_report_refs": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "minLength": 1
+          }
+        }
+      }
+    },
+    "sample_size": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "receipt_count",
+        "adaptation_count",
+        "eval_count"
+      ],
+      "properties": {
+        "receipt_count": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "adaptation_count": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "eval_count": {
+          "type": "integer",
+          "minimum": 0
+        }
+      }
+    },
+    "suppression": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "status"
+      ],
+      "properties": {
+        "status": {
+          "enum": [
+            "none",
+            "low_sample",
+            "insufficient_evidence"
+          ]
+        },
+        "reason": {
+          "type": [
+            "string",
+            "null"
+          ]
+        }
+      }
+    },
+    "vector": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "containment",
+        "reversibility",
+        "fallback_fidelity",
+        "recovery_latency",
+        "evidence_density",
+        "adaptation_gain",
+        "operator_burden",
+        "trust_calibration"
+      ],
+      "properties": {
+        "containment": {
+          "type": [
+            "number",
+            "null"
+          ],
+          "minimum": 0,
+          "maximum": 1
+        },
+        "reversibility": {
+          "type": [
+            "number",
+            "null"
+          ],
+          "minimum": 0,
+          "maximum": 1
+        },
+        "fallback_fidelity": {
+          "type": [
+            "number",
+            "null"
+          ],
+          "minimum": 0,
+          "maximum": 1
+        },
+        "recovery_latency": {
+          "type": [
+            "number",
+            "null"
+          ],
+          "minimum": 0,
+          "maximum": 1
+        },
+        "evidence_density": {
+          "type": [
+            "number",
+            "null"
+          ],
+          "minimum": 0,
+          "maximum": 1
+        },
+        "adaptation_gain": {
+          "type": [
+            "number",
+            "null"
+          ],
+          "minimum": 0,
+          "maximum": 1
+        },
+        "operator_burden": {
+          "type": [
+            "number",
+            "null"
+          ],
+          "minimum": 0,
+          "maximum": 1
+        },
+        "trust_calibration": {
+          "type": [
+            "number",
+            "null"
+          ],
+          "minimum": 0,
+          "maximum": 1
+        }
+      }
+    }
+  }
+}

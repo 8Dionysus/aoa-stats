@@ -7,6 +7,7 @@ Use this map when you want to know which stats-layer document to open next.
 - boundary and ownership split: `BOUNDARIES.md`
 - architecture and layer model: `ARCHITECTURE.md`
 - live intake and update loop: `LIVE_SESSION_USE.md`
+- first-wave derived antifragility posture: `ANTIFRAGILITY_VECTOR.md`
 
 ## Notes
 
