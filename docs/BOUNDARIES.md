@@ -19,6 +19,11 @@ must not pretend to own.
 
 `aoa-stats` is derived.
 
+`aoa-stats` also owns the canonical shared receipt envelope and active
+cross-repo event-kind vocabulary used by stats builders and live refresh.
+Owner repos still own payload schemas and payload meaning inside that shared
+envelope.
+
 It may consume:
 
 - source-owned receipts

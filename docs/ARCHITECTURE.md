@@ -11,6 +11,11 @@ receipts, bounded eval verdicts, and small progression deltas.
 
 Append-only receipts say what happened.
 
+The canonical shared receipt envelope and active event family live in
+`schemas/stats-event-envelope.schema.json`.
+`aoa-stats` owns that shared input contract for cross-repo derivation only.
+Owner repos still own the payload contracts that travel inside the envelope.
+
 Examples:
 
 - a harvest packet closed

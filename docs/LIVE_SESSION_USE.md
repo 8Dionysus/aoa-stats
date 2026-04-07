@@ -56,6 +56,10 @@ Optional correction field:
 
 - `supersedes`
 
+`event_kind` must belong to the canonical shared event family in
+`schemas/stats-event-envelope.schema.json`.
+Unknown or misspelled kinds fail validation before any summary is built.
+
 ## Canonical repo surfaces
 
 The committed builder refreshes:
@@ -99,6 +103,18 @@ time any watched JSONL file changes:
 - `/srv/aoa-techniques/.aoa/live_receipts/technique-receipts.jsonl`
 - `/srv/aoa-memo/.aoa/live_receipts/memo-writeback-receipts.jsonl`
 - `/srv/abyss-stack/.aoa/live_receipts/runtime-wave-closeouts.jsonl`
+
+## Readiness audit
+
+Audit all required live publishers before or after a refresh:
+
+```bash
+python scripts/check_live_publishers.py
+```
+
+This command checks that required sources named in
+`config/live_receipt_sources.json` exist, are readable, and parse as receipts
+compatible with the canonical shared envelope and event family.
 
 ## Boundary reminder
 

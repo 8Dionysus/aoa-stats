@@ -15,8 +15,13 @@
     "evidence_refs": [
       {
         "kind": "harvest_packet",
-        "ref": "repo:aoa-skills/skills/aoa-session-donor-harvest/SKILL.md",
+        "ref": "repo:aoa-skills/examples/session_growth_artifacts/harvest_packet.alpha.json",
         "role": "primary"
+      },
+      {
+        "kind": "skill_contract",
+        "ref": "repo:aoa-skills/skills/aoa-session-donor-harvest/SKILL.md",
+        "role": "contract"
       }
     ],
     "payload": {
@@ -52,8 +57,13 @@
     "evidence_refs": [
       {
         "kind": "fork_card",
-        "ref": "repo:aoa-skills/skills/aoa-session-route-forks/SKILL.md",
+        "ref": "repo:aoa-skills/examples/session_growth_artifacts/decision_fork.alpha.json",
         "role": "primary"
+      },
+      {
+        "kind": "skill_contract",
+        "ref": "repo:aoa-skills/skills/aoa-session-route-forks/SKILL.md",
+        "role": "contract"
       }
     ],
     "payload": {
@@ -81,8 +91,13 @@
     "evidence_refs": [
       {
         "kind": "progression_packet",
-        "ref": "repo:aoa-skills/skills/aoa-session-progression-lift/SKILL.md",
+        "ref": "repo:aoa-skills/examples/session_growth_artifacts/progression_delta.alpha.json",
         "role": "primary"
+      },
+      {
+        "kind": "skill_contract",
+        "ref": "repo:aoa-skills/skills/aoa-session-progression-lift/SKILL.md",
+        "role": "contract"
       }
     ],
     "payload": {
@@ -119,8 +134,13 @@
     "evidence_refs": [
       {
         "kind": "automation_candidate",
-        "ref": "repo:aoa-skills/skills/aoa-automation-opportunity-scan/SKILL.md",
+        "ref": "repo:aoa-skills/examples/session_growth_artifacts/automation_candidate.alpha.json",
         "role": "primary"
+      },
+      {
+        "kind": "skill_contract",
+        "ref": "repo:aoa-skills/skills/aoa-automation-opportunity-scan/SKILL.md",
+        "role": "contract"
       }
     ],
     "payload": {
@@ -151,6 +171,11 @@
         "kind": "bundle_report",
         "ref": "repo:aoa-evals/bundles/aoa-bounded-change-quality/reports/example-report.json",
         "role": "primary"
+      },
+      {
+        "kind": "bundle_contract",
+        "ref": "repo:aoa-evals/bundles/aoa-bounded-change-quality/EVAL.md",
+        "role": "verdict-meaning"
       }
     ],
     "payload": {
@@ -167,7 +192,7 @@
     }
   },
   {
-    "event_kind": "skill_run_receipt",
+    "event_kind": "diagnosis_packet_receipt",
     "event_id": "evt-diagnose-0001",
     "observed_at": "2026-04-06T09:00:00Z",
     "run_ref": "run-session-growth-002",
@@ -182,16 +207,77 @@
     "evidence_refs": [
       {
         "kind": "diagnosis_packet",
-        "ref": "repo:aoa-skills/skills/aoa-session-self-diagnose/SKILL.md",
+        "ref": "repo:aoa-skills/examples/session_growth_artifacts/diagnosis_packet.beta.json",
         "role": "primary"
+      },
+      {
+        "kind": "skill_contract",
+        "ref": "repo:aoa-skills/skills/aoa-session-self-diagnose/SKILL.md",
+        "role": "contract"
       }
     ],
     "payload": {
       "route_ref": "route:session-growth",
-      "diagnosis_type": "handoff-gap",
-      "symptom": "useful residue stays local to one session",
-      "probable_cause": "no derived layer for session receipts",
-      "confidence_band": "high"
+      "skill_name": "aoa-session-self-diagnose",
+      "result_kind": "diagnosis_packet",
+      "diagnosis_types": [
+        "handoff_gap",
+        "derived_layer_gap"
+      ],
+      "symptom_refs": [
+        "artifact:session-growth-beta/handoff-gap",
+        "artifact:session-growth-beta/reuse-locality"
+      ],
+      "probable_cause_hypotheses": [
+        "missing shared derived observability layer",
+        "core finish telemetry not yet connected to derived stats"
+      ],
+      "confidence_band": "high",
+      "owner_hints": [
+        "aoa-stats",
+        "aoa-skills"
+      ],
+      "blocked_automation_causes": [
+        "checkpoint gap before live publisher parity"
+      ],
+      "repair_handoff": "aoa-session-self-repair",
+      "unknowns": [
+        "playbook and memo publishers still need live exercise"
+      ]
+    }
+  },
+  {
+    "event_kind": "core_skill_application_receipt",
+    "event_id": "evt-core-0001",
+    "observed_at": "2026-04-06T09:03:00Z",
+    "run_ref": "run-session-growth-002",
+    "session_ref": "session:2026-04-06-beta",
+    "actor_ref": "aoa-skills:session-self-diagnose",
+    "object_ref": {
+      "repo": "aoa-skills",
+      "kind": "skill",
+      "id": "aoa-session-self-diagnose",
+      "version": "main"
+    },
+    "evidence_refs": [
+      {
+        "kind": "detail_receipt",
+        "ref": "repo:aoa-skills/examples/session_growth_artifacts/diagnosis_packet_receipt.beta.json",
+        "role": "primary"
+      },
+      {
+        "kind": "kernel_contract",
+        "ref": "repo:aoa-skills/config/project_core_skill_kernel.json",
+        "role": "contract"
+      }
+    ],
+    "payload": {
+      "kernel_id": "project-core-session-growth-v1",
+      "skill_name": "aoa-session-self-diagnose",
+      "application_stage": "finish",
+      "detail_event_kind": "diagnosis_packet_receipt",
+      "detail_receipt_ref": "repo:aoa-skills/examples/session_growth_artifacts/diagnosis_packet_receipt.beta.json",
+      "route_ref": "route:session-growth"
     }
   },
   {
@@ -210,8 +296,13 @@
     "evidence_refs": [
       {
         "kind": "repair_packet",
-        "ref": "repo:aoa-skills/skills/aoa-session-self-repair/SKILL.md",
+        "ref": "repo:aoa-skills/examples/session_growth_artifacts/repair_cycle.beta.json",
         "role": "primary"
+      },
+      {
+        "kind": "skill_contract",
+        "ref": "repo:aoa-skills/skills/aoa-session-self-repair/SKILL.md",
+        "role": "contract"
       }
     ],
     "payload": {
@@ -236,8 +327,13 @@
     "evidence_refs": [
       {
         "kind": "progression_packet",
-        "ref": "repo:aoa-skills/skills/aoa-session-progression-lift/SKILL.md",
+        "ref": "repo:aoa-skills/examples/session_growth_artifacts/progression_delta.beta.json",
         "role": "primary"
+      },
+      {
+        "kind": "skill_contract",
+        "ref": "repo:aoa-skills/skills/aoa-session-progression-lift/SKILL.md",
+        "role": "contract"
       }
     ],
     "payload": {
@@ -272,8 +368,13 @@
     "evidence_refs": [
       {
         "kind": "automation_candidate",
-        "ref": "repo:aoa-skills/skills/aoa-automation-opportunity-scan/SKILL.md",
+        "ref": "repo:aoa-skills/examples/session_growth_artifacts/automation_candidate.beta.json",
         "role": "primary"
+      },
+      {
+        "kind": "skill_contract",
+        "ref": "repo:aoa-skills/skills/aoa-automation-opportunity-scan/SKILL.md",
+        "role": "contract"
       }
     ],
     "payload": {
@@ -302,8 +403,13 @@
     "evidence_refs": [
       {
         "kind": "fork_card",
-        "ref": "repo:aoa-skills/skills/aoa-session-route-forks/SKILL.md",
+        "ref": "repo:aoa-skills/examples/session_growth_artifacts/decision_fork.beta.json",
         "role": "primary"
+      },
+      {
+        "kind": "skill_contract",
+        "ref": "repo:aoa-skills/skills/aoa-session-route-forks/SKILL.md",
+        "role": "contract"
       }
     ],
     "payload": {
@@ -313,7 +419,7 @@
       "predicted_gain": "live derived stats layer",
       "predicted_risk": "moderate",
       "realized_outcome_refs": [
-        "repo:aoa-skills/skills/aoa-automation-opportunity-scan/SKILL.md"
+        "repo:aoa-skills/examples/session_growth_artifacts/automation_candidate.beta.json"
       ]
     }
   },
@@ -333,8 +439,13 @@
     "evidence_refs": [
       {
         "kind": "promotion_triage",
-        "ref": "repo:aoa-skills/skills/aoa-quest-harvest/SKILL.md",
+        "ref": "repo:aoa-skills/examples/session_growth_artifacts/quest_promotion.beta.json",
         "role": "primary"
+      },
+      {
+        "kind": "skill_contract",
+        "ref": "repo:aoa-skills/skills/aoa-quest-harvest/SKILL.md",
+        "role": "contract"
       }
     ],
     "payload": {
@@ -344,6 +455,46 @@
       "nearest_wrong_target": "promote_to_skill",
       "repeat_shape": "route",
       "bounded_unit_ref": "route:session-growth"
+    }
+  },
+  {
+    "event_kind": "runtime_wave_closeout_receipt",
+    "event_id": "evt-runtime-closeout-0001",
+    "observed_at": "2026-04-06T09:45:00Z",
+    "run_ref": "run:abyss-stack:session-growth-v1:W2:closeout",
+    "session_ref": "session:abyss-stack:session-growth-v1:W2:closeout",
+    "actor_ref": "abyss-stack:aoa-local-ai-trials",
+    "object_ref": {
+      "repo": "abyss-stack",
+      "kind": "runtime_wave_closeout",
+      "id": "session-growth-v1:W2",
+      "version": "runtime"
+    },
+    "evidence_refs": [
+      {
+        "kind": "runtime_closeout_receipt_log",
+        "ref": "repo:abyss-stack/.aoa/live_receipts/runtime-wave-closeouts.jsonl",
+        "role": "primary"
+      }
+    ],
+    "payload": {
+      "program_id": "session-growth-v1",
+      "wave_id": "W2",
+      "gate_result": "pass",
+      "case_count": 2,
+      "status_counts": {
+        "pass": 2
+      },
+      "next_action": "review-complete",
+      "truth_status": {
+        "source_authored": true,
+        "deployed": true,
+        "trial_proven": true,
+        "live_available": true
+      },
+      "terminal_gate": true,
+      "reviewed_closeout_handoff_status": "submitted",
+      "reviewed_closeout_audit_only": true
     }
   }
 ]

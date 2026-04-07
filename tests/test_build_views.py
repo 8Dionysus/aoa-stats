@@ -4,6 +4,8 @@ import importlib.util
 import json
 from pathlib import Path
 
+import pytest
+
 
 REPO_ROOT = Path(__file__).resolve().parents[1]
 MODULE_PATH = REPO_ROOT / "scripts" / "build_views.py"
@@ -34,13 +36,17 @@ def test_build_views_produces_expected_surface_counts() -> None:
         "runtime_closeout_summary.min.json",
         "summary_surface_catalog.min.json",
     }
-    assert outputs["object_summary.min.json"]["generated_from"]["total_receipts"] == 11
-    assert outputs["core_skill_application_summary.min.json"]["skills"] == []
+    assert outputs["object_summary.min.json"]["generated_from"]["total_receipts"] == 13
+    assert len(outputs["core_skill_application_summary.min.json"]["skills"]) == 1
     assert len(outputs["repeated_window_summary.min.json"]["windows"]) == 2
     assert len(outputs["route_progression_summary.min.json"]["routes"]) == 1
     assert len(outputs["fork_calibration_summary.min.json"]["routes"]) == 1
     assert len(outputs["automation_pipeline_summary.min.json"]["pipelines"]) == 1
-    assert outputs["runtime_closeout_summary.min.json"]["closeouts"] == []
+    assert len(outputs["runtime_closeout_summary.min.json"]["closeouts"]) == 1
+    assert outputs["core_skill_application_summary.min.json"]["skills"][0]["detail_event_kind_counts"] == {
+        "diagnosis_packet_receipt": 1
+    }
+    assert outputs["runtime_closeout_summary.min.json"]["closeouts"][0]["wave_id"] == "W2"
 
 
 def test_automation_pipeline_summary_tracks_seed_readiness() -> None:
@@ -56,6 +62,51 @@ def test_automation_pipeline_summary_tracks_seed_readiness() -> None:
     assert pipeline["seed_ready_count"] == 1
     assert pipeline["checkpoint_required_count"] == 1
     assert pipeline["next_artifact_hints"] == ["repair-prompt", "seed-pack"]
+
+
+def test_validate_receipt_accepts_known_unsummarized_event_kind() -> None:
+    module = load_build_views_module()
+    receipt = {
+        "event_kind": "memo_writeback_receipt",
+        "event_id": "evt-memo-known-0001",
+        "observed_at": "2026-04-06T09:00:00Z",
+        "run_ref": "run-memo-001",
+        "session_ref": "session:test-known-kind",
+        "actor_ref": "aoa-memo:writeback",
+        "object_ref": {
+            "repo": "aoa-memo",
+            "kind": "memory_object",
+            "id": "memo.test.known-kind",
+            "version": "main",
+        },
+        "evidence_refs": [{"kind": "memory_object", "ref": "repo:aoa-memo/generated/memory_object_catalog.min.json"}],
+        "payload": {"target_kind": "decision"},
+    }
+
+    module.validate_receipt(receipt, location="memory")
+
+
+def test_validate_receipt_rejects_unknown_event_kind_with_canonical_ref() -> None:
+    module = load_build_views_module()
+    receipt = {
+        "event_kind": "memo_writeback_receipt_typo",
+        "event_id": "evt-memo-typo-0001",
+        "observed_at": "2026-04-06T09:00:00Z",
+        "run_ref": "run-memo-002",
+        "session_ref": "session:test-unknown-kind",
+        "actor_ref": "aoa-memo:writeback",
+        "object_ref": {
+            "repo": "aoa-memo",
+            "kind": "memory_object",
+            "id": "memo.test.unknown-kind",
+            "version": "main",
+        },
+        "evidence_refs": [{"kind": "memory_object", "ref": "repo:aoa-memo/generated/memory_object_catalog.min.json"}],
+        "payload": {"target_kind": "decision"},
+    }
+
+    with pytest.raises(module.ReceiptValidationError, match="schemas/stats-event-envelope.schema.json"):
+        module.validate_receipt(receipt, location="memory")
 
 
 def test_automation_pipeline_summary_falls_back_to_manual_route_ref() -> None:
@@ -537,7 +588,7 @@ def test_resolve_active_receipts_keeps_missing_target_and_cycle_receipts_active(
     module = load_build_views_module()
     receipts = [
         {
-            "event_kind": "skill_run_receipt",
+            "event_kind": "diagnosis_packet_receipt",
             "event_id": "evt-diagnose-0001",
             "observed_at": "2026-04-06T12:00:00Z",
             "run_ref": "run-001",

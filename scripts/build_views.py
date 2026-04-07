@@ -6,12 +6,15 @@ import json
 import sys
 from collections import Counter, defaultdict
 from datetime import datetime
+from functools import lru_cache
 from pathlib import Path
 from typing import Any
 
 REPO_ROOT = Path(__file__).resolve().parents[1]
 DEFAULT_INPUT = REPO_ROOT / "examples" / "session_harvest_family.receipts.example.json"
 DEFAULT_OUTPUT_DIR = REPO_ROOT / "generated"
+CANONICAL_ENVELOPE_SCHEMA_PATH = REPO_ROOT / "schemas" / "stats-event-envelope.schema.json"
+CANONICAL_ENVELOPE_SCHEMA_REF = "schemas/stats-event-envelope.schema.json"
 
 AXES = (
     "boundary_integrity",
@@ -26,6 +29,36 @@ AXES = (
 
 class ReceiptValidationError(ValueError):
     pass
+
+
+@lru_cache(maxsize=1)
+def supported_event_kinds() -> frozenset[str]:
+    payload = json.loads(CANONICAL_ENVELOPE_SCHEMA_PATH.read_text(encoding="utf-8"))
+    if not isinstance(payload, dict):
+        raise ReceiptValidationError(
+            f"{CANONICAL_ENVELOPE_SCHEMA_REF}: canonical envelope schema must be a JSON object"
+        )
+    properties = payload.get("properties")
+    if not isinstance(properties, dict):
+        raise ReceiptValidationError(
+            f"{CANONICAL_ENVELOPE_SCHEMA_REF}: missing properties object"
+        )
+    event_kind = properties.get("event_kind")
+    if not isinstance(event_kind, dict):
+        raise ReceiptValidationError(
+            f"{CANONICAL_ENVELOPE_SCHEMA_REF}: missing properties.event_kind object"
+        )
+    enum = event_kind.get("enum")
+    if not isinstance(enum, list) or not enum:
+        raise ReceiptValidationError(
+            f"{CANONICAL_ENVELOPE_SCHEMA_REF}: properties.event_kind.enum must be a non-empty list"
+        )
+    supported = {item for item in enum if isinstance(item, str) and item}
+    if len(supported) != len(enum):
+        raise ReceiptValidationError(
+            f"{CANONICAL_ENVELOPE_SCHEMA_REF}: properties.event_kind.enum must contain only non-empty strings"
+        )
+    return frozenset(supported)
 
 
 def automation_pipeline_ref(receipt: dict[str, Any]) -> str:
@@ -162,6 +195,11 @@ def validate_receipt(receipt: dict[str, Any], *, location: str) -> None:
     for field in ("event_kind", "event_id", "run_ref", "session_ref", "actor_ref"):
         if not isinstance(receipt[field], str) or not receipt[field]:
             raise ReceiptValidationError(f"{location}.{field}: must be a non-empty string")
+    if receipt["event_kind"] not in supported_event_kinds():
+        raise ReceiptValidationError(
+            f"{location}.event_kind: unsupported event kind {receipt['event_kind']!r}; "
+            f"see {CANONICAL_ENVELOPE_SCHEMA_REF}"
+        )
 
     try:
         datetime.fromisoformat(receipt["observed_at"].replace("Z", "+00:00"))

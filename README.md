@@ -28,6 +28,8 @@ Use the shortest route by need:
 ## Route by need
 
 - current derived schemas: `schemas/`
+- canonical shared receipt envelope and active event family:
+  `schemas/stats-event-envelope.schema.json`
 - example receipt feed: `examples/session_harvest_family.receipts.example.json`
 - canonical live source registry for owner-local receipts:
   `config/live_receipt_sources.json`
@@ -36,6 +38,7 @@ Use the shortest route by need:
 - generated summary surfaces: `generated/`
 - builders and validators: `scripts/build_views.py`,
   `scripts/refresh_live_stats.py`,
+  `scripts/check_live_publishers.py`,
   `scripts/install_live_refresh_units.py`, and
   `scripts/validate_repo.py`
 - local verification path: `python scripts/build_views.py --check`,
@@ -46,6 +49,8 @@ Use the shortest route by need:
 This repository is the source of truth for:
 
 - derived summary schemas for cross-repo stats read models
+- the canonical shared receipt envelope and cross-repo event-kind vocabulary
+  consumed by stats builders
 - machine-first generated summary surfaces built from source-owned receipts
 - deterministic builders and validators for derived views
 - docs that define how counts, verdicts, progression, and evidence stay
@@ -114,6 +119,12 @@ Refresh the local live state from owner-local source feeds under `/srv`:
 
 ```bash
 python scripts/refresh_live_stats.py
+```
+
+Audit all required live publishers before or after a refresh:
+
+```bash
+python scripts/check_live_publishers.py
 ```
 
 Install the user-level watcher so live summaries refresh automatically whenever

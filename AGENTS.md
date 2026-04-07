@@ -53,9 +53,11 @@ If a deeper directory defines its own `AGENTS.md`, follow the nearest one.
 The most important objects in this repository are:
 
 - `schemas/*.json`
+- `schemas/stats-event-envelope.schema.json`
 - `generated/*.json`
 - `config/live_receipt_sources.example.json`
 - `scripts/build_views.py`
+- `scripts/check_live_publishers.py`
 - `scripts/refresh_live_stats.py`
 - `scripts/validate_repo.py`
 - `examples/session_harvest_family.receipts.example.json`

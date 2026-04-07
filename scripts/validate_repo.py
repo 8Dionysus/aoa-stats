@@ -19,6 +19,9 @@ SCHEMAS = {
     "runtime_closeout_summary.min.json": "runtime-closeout-summary.schema.json",
     "summary_surface_catalog.min.json": "summary-surface-catalog.schema.json",
 }
+EXTRA_SCHEMA_FILES = (
+    "stats-event-envelope.schema.json",
+)
 REQUIRED_TEXT_FILES = (
     "README.md",
     "AGENTS.md",
@@ -41,7 +44,7 @@ def main() -> int:
         if not path.exists():
             errors.append(f"missing required text surface: {relative_path}")
 
-    for schema_name in sorted({*SCHEMAS.values()}):
+    for schema_name in sorted({*SCHEMAS.values(), *EXTRA_SCHEMA_FILES}):
         schema_path = REPO_ROOT / "schemas" / schema_name
         if not schema_path.exists():
             errors.append(f"missing schema: schemas/{schema_name}")
