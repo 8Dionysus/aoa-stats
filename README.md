@@ -28,6 +28,10 @@ Use the shortest route by need:
 ## Route by need
 
 - current derived schemas: `schemas/`
+- first-wave derived antifragility vector doctrine and contract:
+  `docs/ANTIFRAGILITY_VECTOR.md`,
+  `schemas/antifragility_vector_v1.json`, and
+  `examples/antifragility_vector.example.json`
 - canonical shared receipt envelope and active event family:
   `schemas/stats-event-envelope.schema.json`
 - example receipt feed: `examples/session_harvest_family.receipts.example.json`

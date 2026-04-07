@@ -1,0 +1,36 @@
+{
+  "schema_version": "antifragility_vector_v1",
+  "generated_at_utc": "2026-04-10T18:05:00Z",
+  "scope": {
+    "repo": "ATM10-Agent",
+    "surface": "hybrid-query",
+    "window_label": "2026-W15"
+  },
+  "inputs": {
+    "receipt_refs": [
+      "atm10:hybrid-query:2026-04-07T14:12:33Z:retrieval-only-fallback"
+    ],
+    "eval_report_refs": [
+      "aoa-evals:atm10-hybrid-query:2026-W15"
+    ]
+  },
+  "sample_size": {
+    "receipt_count": 1,
+    "adaptation_count": 1,
+    "eval_count": 1
+  },
+  "suppression": {
+    "status": "low_sample",
+    "reason": "Single stressor family observation in window"
+  },
+  "vector": {
+    "containment": 0.93,
+    "reversibility": 0.7,
+    "fallback_fidelity": 0.88,
+    "recovery_latency": 0.62,
+    "evidence_density": 0.85,
+    "adaptation_gain": null,
+    "operator_burden": 0.68,
+    "trust_calibration": 0.9
+  }
+}
