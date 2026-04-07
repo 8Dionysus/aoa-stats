@@ -303,6 +303,66 @@ def test_core_skill_application_summary_tracks_kernel_usage() -> None:
     }
 
 
+def test_core_skill_application_summary_ignores_non_finish_events() -> None:
+    module = load_build_views_module()
+    receipts = [
+        {
+            "event_kind": "core_skill_application_receipt",
+            "event_id": "evt-core-skill-finish-0001",
+            "observed_at": "2026-04-06T20:20:00Z",
+            "run_ref": "run-core-skill-001",
+            "session_ref": "session:test-core-kernel",
+            "actor_ref": "aoa-skills:session-donor-harvest",
+            "object_ref": {
+                "repo": "aoa-skills",
+                "kind": "skill",
+                "id": "aoa-session-donor-harvest",
+                "version": "main",
+            },
+            "evidence_refs": [{"kind": "receipt", "ref": "repo:aoa-skills/tmp/HARVEST_PACKET_RECEIPT.json"}],
+            "payload": {
+                "kernel_id": "project-core-session-growth-v1",
+                "skill_name": "aoa-session-donor-harvest",
+                "application_stage": "finish",
+                "detail_event_kind": "harvest_packet_receipt",
+                "detail_receipt_ref": "repo:aoa-skills/tmp/HARVEST_PACKET_RECEIPT.json",
+            },
+        },
+        {
+            "event_kind": "core_skill_application_receipt",
+            "event_id": "evt-core-skill-start-0002",
+            "observed_at": "2026-04-06T20:30:00Z",
+            "run_ref": "run-core-skill-002",
+            "session_ref": "session:test-core-kernel-start",
+            "actor_ref": "aoa-skills:session-donor-harvest",
+            "object_ref": {
+                "repo": "aoa-skills",
+                "kind": "skill",
+                "id": "aoa-session-donor-harvest",
+                "version": "main",
+            },
+            "evidence_refs": [{"kind": "receipt", "ref": "repo:aoa-skills/tmp/HARVEST_PACKET_RECEIPT_START.json"}],
+            "payload": {
+                "kernel_id": "project-core-session-growth-v1",
+                "skill_name": "aoa-session-donor-harvest",
+                "application_stage": "start",
+                "detail_event_kind": "harvest_packet_receipt",
+                "detail_receipt_ref": "repo:aoa-skills/tmp/HARVEST_PACKET_RECEIPT_START.json",
+            },
+        },
+    ]
+
+    summary = module.build_core_skill_application_summary(
+        receipts, {"receipt_input_paths": ["memory"], "total_receipts": len(receipts)}
+    )
+
+    assert summary["skills"][0]["application_count"] == 1
+    assert summary["skills"][0]["latest_session_ref"] == "session:test-core-kernel"
+    assert summary["skills"][0]["detail_event_kind_counts"] == {
+        "harvest_packet_receipt": 1
+    }
+
+
 def test_load_receipts_accepts_jsonl_and_deduplicates_event_ids(tmp_path: Path) -> None:
     module = load_build_views_module()
     jsonl_path = tmp_path / "live_receipts.jsonl"
