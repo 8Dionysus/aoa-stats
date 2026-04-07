@@ -34,6 +34,7 @@ def test_build_views_produces_expected_surface_counts() -> None:
         "fork_calibration_summary.min.json",
         "automation_pipeline_summary.min.json",
         "runtime_closeout_summary.min.json",
+        "surface_detection_summary.min.json",
         "summary_surface_catalog.min.json",
     }
     assert outputs["object_summary.min.json"]["generated_from"]["total_receipts"] == 13
@@ -43,10 +44,81 @@ def test_build_views_produces_expected_surface_counts() -> None:
     assert len(outputs["fork_calibration_summary.min.json"]["routes"]) == 1
     assert len(outputs["automation_pipeline_summary.min.json"]["pipelines"]) == 1
     assert len(outputs["runtime_closeout_summary.min.json"]["closeouts"]) == 1
+    assert len(outputs["surface_detection_summary.min.json"]["windows"]) == 1
     assert outputs["core_skill_application_summary.min.json"]["skills"][0]["detail_event_kind_counts"] == {
         "diagnosis_packet_receipt": 1
     }
     assert outputs["runtime_closeout_summary.min.json"]["closeouts"][0]["wave_id"] == "W2"
+
+
+def test_surface_detection_summary_tracks_second_wave_observability_signals() -> None:
+    module = load_build_views_module()
+    receipts = [
+        {
+            "event_kind": "core_skill_application_receipt",
+            "event_id": "evt-surface-obs-0001",
+            "observed_at": "2026-04-06T20:20:00Z",
+            "run_ref": "run-surface-obs-001",
+            "session_ref": "session:test-surface-obs",
+            "actor_ref": "aoa-skills:session-donor-harvest",
+            "object_ref": {
+                "repo": "aoa-skills",
+                "kind": "skill",
+                "id": "aoa-session-donor-harvest",
+                "version": "main",
+            },
+            "evidence_refs": [
+                {"kind": "receipt", "ref": "repo:aoa-skills/tmp/HARVEST_PACKET_RECEIPT.json"}
+            ],
+            "payload": {
+                "kernel_id": "project-core-session-growth-v1",
+                "skill_name": "aoa-session-donor-harvest",
+                "application_stage": "finish",
+                "detail_event_kind": "harvest_packet_receipt",
+                "detail_receipt_ref": "repo:aoa-skills/tmp/HARVEST_PACKET_RECEIPT.json",
+                "surface_detection_context": {
+                    "activation_truth": "manual-equivalent-adjacent",
+                    "adjacent_owner_repos": ["aoa-playbooks", "aoa-techniques"],
+                    "owner_layer_ambiguity": True,
+                    "family_entry_refs": [
+                        "aoa-playbooks.playbook_registry.min",
+                        "aoa-techniques.technique_promotion_readiness.min"
+                    ],
+                    "candidate_counts": {
+                        "candidate_now": 1,
+                        "candidate_later": 2
+                    },
+                    "suggested_handoff_targets": [
+                        "aoa-session-donor-harvest",
+                        "aoa-quest-harvest"
+                    ],
+                    "repeated_pattern_signal": True,
+                    "promotion_discussion_required": True
+                },
+            },
+        }
+    ]
+
+    summary = module.build_surface_detection_summary(
+        receipts, {"receipt_input_paths": ["memory"], "total_receipts": len(receipts)}
+    )
+
+    window = summary["windows"][0]
+    assert window["manual_equivalent_adjacent_count"] == 1
+    assert window["activated_count"] == 0
+    assert window["candidate_now_count"] == 1
+    assert window["candidate_later_count"] == 2
+    assert window["owner_layer_ambiguity_count"] == 1
+    assert window["adjacent_owner_repo_counts"] == {
+        "aoa-playbooks": 1,
+        "aoa-techniques": 1,
+    }
+    assert window["handoff_target_counts"] == {
+        "aoa-quest-harvest": 1,
+        "aoa-session-donor-harvest": 1,
+    }
+    assert window["repeated_pattern_signal_count"] == 1
+    assert window["promotion_discussion_count"] == 1
 
 
 def test_automation_pipeline_summary_tracks_seed_readiness() -> None:

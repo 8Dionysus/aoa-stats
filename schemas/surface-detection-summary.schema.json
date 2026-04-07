@@ -1,0 +1,149 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://aoa-stats/schemas/surface-detection-summary.schema.json",
+  "title": "aoa-stats surface detection summary",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema_version",
+    "generated_from",
+    "windows"
+  ],
+  "properties": {
+    "schema_version": {
+      "const": "aoa_stats_surface_detection_summary_v1"
+    },
+    "generated_from": {
+      "$ref": "#/$defs/generated_from"
+    },
+    "windows": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "window_id",
+          "window_date",
+          "core_skill_receipt_count",
+          "activated_count",
+          "manual_equivalent_adjacent_count",
+          "candidate_now_count",
+          "candidate_later_count",
+          "owner_layer_ambiguity_count",
+          "adjacent_owner_repo_counts",
+          "handoff_target_counts",
+          "repeated_pattern_signal_count",
+          "promotion_discussion_count",
+          "family_entry_ref_count",
+          "evidence_ref_count",
+          "first_observed_at",
+          "last_observed_at"
+        ],
+        "properties": {
+          "window_id": {
+            "type": "string",
+            "minLength": 1
+          },
+          "window_date": {
+            "type": "string",
+            "format": "date"
+          },
+          "core_skill_receipt_count": {
+            "type": "integer",
+            "minimum": 1
+          },
+          "activated_count": {
+            "type": "integer",
+            "minimum": 0
+          },
+          "manual_equivalent_adjacent_count": {
+            "type": "integer",
+            "minimum": 0
+          },
+          "candidate_now_count": {
+            "type": "integer",
+            "minimum": 0
+          },
+          "candidate_later_count": {
+            "type": "integer",
+            "minimum": 0
+          },
+          "owner_layer_ambiguity_count": {
+            "type": "integer",
+            "minimum": 0
+          },
+          "adjacent_owner_repo_counts": {
+            "$ref": "#/$defs/string_count_map"
+          },
+          "handoff_target_counts": {
+            "$ref": "#/$defs/string_count_map"
+          },
+          "repeated_pattern_signal_count": {
+            "type": "integer",
+            "minimum": 0
+          },
+          "promotion_discussion_count": {
+            "type": "integer",
+            "minimum": 0
+          },
+          "family_entry_ref_count": {
+            "type": "integer",
+            "minimum": 0
+          },
+          "evidence_ref_count": {
+            "type": "integer",
+            "minimum": 0
+          },
+          "first_observed_at": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "last_observed_at": {
+            "type": "string",
+            "format": "date-time"
+          }
+        }
+      }
+    }
+  },
+  "$defs": {
+    "generated_from": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "receipt_input_paths",
+        "total_receipts",
+        "latest_observed_at"
+      ],
+      "properties": {
+        "receipt_input_paths": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "type": "string",
+            "minLength": 1
+          }
+        },
+        "total_receipts": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "latest_observed_at": {
+          "type": "string",
+          "format": "date-time"
+        }
+      }
+    },
+    "string_count_map": {
+      "type": "object",
+      "propertyNames": {
+        "type": "string",
+        "minLength": 1
+      },
+      "additionalProperties": {
+        "type": "integer",
+        "minimum": 0
+      }
+    }
+  }
+}

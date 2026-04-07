@@ -60,6 +60,7 @@ Current v0 derived views:
 - fork-calibration summary
 - automation-pipeline summary
 - runtime-closeout summary
+- surface-detection summary
 
 ## Canonical split
 
@@ -69,5 +70,6 @@ Current v0 derived views:
 - progression answers: what changed on named axes
 - evidence refs answer: where to inspect next
 
-`object_summary` and `repeated_window_summary` are inclusive of active receipts
-only, not of superseded raw history.
+`object_summary`, `repeated_window_summary`, and
+`surface_detection_summary` are inclusive of active receipts only, not of
+superseded raw history.
