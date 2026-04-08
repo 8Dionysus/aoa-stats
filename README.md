@@ -37,6 +37,8 @@ Use the shortest route by need:
   `docs/DERIVED_SIGNAL_HYGIENE.md`,
   `schemas/stress_recovery_window_summary_v1.json`, and
   `examples/stress_recovery_window_summary.example.json`
+- via negativa pruning checklist:
+  `docs/VIA_NEGATIVA_CHECKLIST.md`
 - canonical shared receipt envelope and active event family:
   `schemas/stats-event-envelope.schema.json`
 - example receipt feed: `examples/session_harvest_family.receipts.example.json`
