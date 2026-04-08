@@ -61,6 +61,11 @@ Current v0 derived views:
 - automation-pipeline summary
 - runtime-closeout summary
 - surface-detection summary
+- summary-surface catalog
+
+`generated/summary_surface_catalog.min.json` is the compact owner-owned
+runtime-entry capsule for `aoa-stats`. It points back to derived view families
+without replacing the underlying receipts or owner-local authority.
 
 ## Canonical split
 

@@ -103,6 +103,9 @@ These are built from one bounded receipt feed and are intended to stay
 machine-first, evidence-linked, and weaker than the owner-local source
 surfaces they summarize.
 
+`generated/summary_surface_catalog.min.json` is also the compact runtime-entry
+capsule that federation routing should inspect first for `aoa-stats`.
+
 `surface_detection_summary.min.json` is second-wave descriptive only. It may
 count shortlist ambiguity, candidate posture, and closeout-handoff volume when
 owner receipts preserve that context, but it does not decide promotion or
