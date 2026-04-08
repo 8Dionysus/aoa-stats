@@ -1,0 +1,64 @@
+{
+  "schema_version": "stress_recovery_window_summary_v1",
+  "generated_at_utc": "2026-04-07T15:47:00Z",
+  "window": {
+    "label": "kag-regrounding-window-2026w14",
+    "start_utc": "2026-04-01T00:00:00Z",
+    "end_utc": "2026-04-07T00:00:00Z"
+  },
+  "scope": {
+    "repo_family": [
+      "ATM10-Agent",
+      "aoa-agents",
+      "aoa-playbooks",
+      "aoa-kag",
+      "aoa-routing",
+      "aoa-memo"
+    ],
+    "stressor_family": "hybrid-query-kag-unhealthy",
+    "owner_surface": "hybrid-query",
+    "surface_family": "kag-regrounding"
+  },
+  "inputs": {
+    "receipt_refs": [
+      "ATM10-Agent/examples/stressor_receipt.retrieval_only_fallback.example.json"
+    ],
+    "eval_report_refs": [
+      "aoa-evals/bundles/aoa-stress-recovery-window/reports/example-report.json"
+    ],
+    "route_hint_refs": [
+      "aoa-routing/examples/composite_stress_route_hint.example.json"
+    ],
+    "memo_context_refs": [
+      "aoa-memo/examples/recovery_pattern_memory.example.json"
+    ]
+  },
+  "counts": {
+    "receipt_count": 5,
+    "handoff_count": 3,
+    "playbook_lane_count": 2,
+    "reentry_gate_count": 2,
+    "projection_health_count": 3,
+    "regrounding_ticket_count": 2,
+    "eval_count": 1
+  },
+  "suppression": {
+    "status": "none",
+    "reason": null
+  },
+  "summary": {
+    "containment": 0.9,
+    "route_discipline": 0.87,
+    "reentry_quality": 0.74,
+    "regrounding_effectiveness": 0.7,
+    "evidence_continuity": 0.92,
+    "adaptation_followthrough": 0.68,
+    "operator_burden": 0.63,
+    "trust_calibration": 0.88
+  },
+  "trend_flags": [
+    "quarantine-exit-does-not-equal-health",
+    "reentry-still-review-heavy",
+    "route-posture-improved-after-playbook-lanes-became-explicit"
+  ]
+}

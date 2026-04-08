@@ -32,6 +32,11 @@ Use the shortest route by need:
   `docs/ANTIFRAGILITY_VECTOR.md`,
   `schemas/antifragility_vector_v1.json`, and
   `examples/antifragility_vector.example.json`
+- fourth-wave derived stress recovery doctrine and contracts:
+  `docs/STRESS_RECOVERY_WINDOW_SUMMARIES.md`,
+  `docs/DERIVED_SIGNAL_HYGIENE.md`,
+  `schemas/stress_recovery_window_summary_v1.json`, and
+  `examples/stress_recovery_window_summary.example.json`
 - canonical shared receipt envelope and active event family:
   `schemas/stats-event-envelope.schema.json`
 - example receipt feed: `examples/session_harvest_family.receipts.example.json`
@@ -88,6 +93,7 @@ The first usable derived summaries are:
 - `generated/fork_calibration_summary.min.json`
 - `generated/automation_pipeline_summary.min.json`
 - `generated/runtime_closeout_summary.min.json`
+- `generated/stress_recovery_window_summary.min.json`
 - `generated/surface_detection_summary.min.json`
 - `generated/summary_surface_catalog.min.json`
 

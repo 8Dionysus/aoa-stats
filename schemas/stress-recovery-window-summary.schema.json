@@ -1,0 +1,322 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://aoa-stats/schemas/stress-recovery-window-summary.schema.json",
+  "title": "aoa-stats stress recovery window summary",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema_version",
+    "generated_from",
+    "window",
+    "scope",
+    "inputs",
+    "counts",
+    "suppression",
+    "summary",
+    "trend_flags"
+  ],
+  "properties": {
+    "schema_version": {
+      "const": "aoa_stats_stress_recovery_window_summary_v1"
+    },
+    "generated_from": {
+      "$ref": "#/$defs/generated_from"
+    },
+    "window": {
+      "$ref": "#/$defs/window"
+    },
+    "scope": {
+      "$ref": "#/$defs/scope"
+    },
+    "inputs": {
+      "$ref": "#/$defs/inputs"
+    },
+    "counts": {
+      "$ref": "#/$defs/counts"
+    },
+    "suppression": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "status",
+        "reason"
+      ],
+      "properties": {
+        "status": {
+          "enum": [
+            "none",
+            "low_sample",
+            "insufficient_evidence"
+          ]
+        },
+        "reason": {
+          "type": [
+            "string",
+            "null"
+          ]
+        }
+      }
+    },
+    "summary": {
+      "$ref": "#/$defs/summary"
+    },
+    "trend_flags": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "minLength": 1
+      }
+    }
+  },
+  "$defs": {
+    "generated_from": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "receipt_input_paths",
+        "total_receipts",
+        "latest_observed_at"
+      ],
+      "properties": {
+        "receipt_input_paths": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "type": "string",
+            "minLength": 1
+          }
+        },
+        "total_receipts": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "latest_observed_at": {
+          "type": "string",
+          "format": "date-time"
+        }
+      }
+    },
+    "window": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "label",
+        "start_utc",
+        "end_utc"
+      ],
+      "properties": {
+        "label": {
+          "type": "string",
+          "minLength": 1
+        },
+        "start_utc": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "end_utc": {
+          "type": "string",
+          "format": "date-time"
+        }
+      }
+    },
+    "scope": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "repo_family",
+        "stressor_family",
+        "owner_surface",
+        "surface_family"
+      ],
+      "properties": {
+        "repo_family": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "type": "string",
+            "minLength": 1
+          }
+        },
+        "stressor_family": {
+          "type": "string",
+          "minLength": 1
+        },
+        "owner_surface": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "surface_family": {
+          "type": [
+            "string",
+            "null"
+          ]
+        }
+      }
+    },
+    "inputs": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "receipt_refs",
+        "eval_report_refs",
+        "route_hint_refs",
+        "memo_context_refs"
+      ],
+      "properties": {
+        "receipt_refs": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "minLength": 1
+          }
+        },
+        "eval_report_refs": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "minLength": 1
+          }
+        },
+        "route_hint_refs": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "minLength": 1
+          }
+        },
+        "memo_context_refs": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "minLength": 1
+          }
+        }
+      }
+    },
+    "counts": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "receipt_count",
+        "handoff_count",
+        "playbook_lane_count",
+        "reentry_gate_count",
+        "projection_health_count",
+        "regrounding_ticket_count",
+        "eval_count"
+      ],
+      "properties": {
+        "receipt_count": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "handoff_count": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "playbook_lane_count": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "reentry_gate_count": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "projection_health_count": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "regrounding_ticket_count": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "eval_count": {
+          "type": "integer",
+          "minimum": 0
+        }
+      }
+    },
+    "summary": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "containment",
+        "route_discipline",
+        "reentry_quality",
+        "regrounding_effectiveness",
+        "evidence_continuity",
+        "adaptation_followthrough",
+        "operator_burden",
+        "trust_calibration"
+      ],
+      "properties": {
+        "containment": {
+          "type": [
+            "number",
+            "null"
+          ],
+          "minimum": 0,
+          "maximum": 1
+        },
+        "route_discipline": {
+          "type": [
+            "number",
+            "null"
+          ],
+          "minimum": 0,
+          "maximum": 1
+        },
+        "reentry_quality": {
+          "type": [
+            "number",
+            "null"
+          ],
+          "minimum": 0,
+          "maximum": 1
+        },
+        "regrounding_effectiveness": {
+          "type": [
+            "number",
+            "null"
+          ],
+          "minimum": 0,
+          "maximum": 1
+        },
+        "evidence_continuity": {
+          "type": [
+            "number",
+            "null"
+          ],
+          "minimum": 0,
+          "maximum": 1
+        },
+        "adaptation_followthrough": {
+          "type": [
+            "number",
+            "null"
+          ],
+          "minimum": 0,
+          "maximum": 1
+        },
+        "operator_burden": {
+          "type": [
+            "number",
+            "null"
+          ],
+          "minimum": 0,
+          "maximum": 1
+        },
+        "trust_calibration": {
+          "type": [
+            "number",
+            "null"
+          ],
+          "minimum": 0,
+          "maximum": 1
+        }
+      }
+    }
+  }
+}

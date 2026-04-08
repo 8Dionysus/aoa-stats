@@ -458,6 +458,44 @@
     }
   },
   {
+    "event_kind": "eval_result_receipt",
+    "event_id": "evt-eval-0002",
+    "observed_at": "2026-04-06T09:42:00Z",
+    "run_ref": "eval-run-stress-window-001",
+    "session_ref": "session:2026-04-06-beta",
+    "actor_ref": "aoa-evals:reviewer",
+    "object_ref": {
+      "repo": "aoa-evals",
+      "kind": "eval_bundle",
+      "id": "aoa-stress-recovery-window",
+      "version": "draft"
+    },
+    "evidence_refs": [
+      {
+        "kind": "bundle_report",
+        "ref": "repo:aoa-evals/bundles/aoa-stress-recovery-window/reports/example-report.json",
+        "role": "primary"
+      },
+      {
+        "kind": "bundle_contract",
+        "ref": "repo:aoa-evals/bundles/aoa-stress-recovery-window/EVAL.md",
+        "role": "verdict-meaning"
+      }
+    ],
+    "payload": {
+      "eval_name": "aoa-stress-recovery-window",
+      "bundle_status": "draft",
+      "report_format": "comparative-summary",
+      "verdict": "mixed",
+      "claim_scope": "window_scoped",
+      "bundle_ref": "repo:aoa-evals/bundles/aoa-stress-recovery-window/EVAL.md",
+      "report_ref": "repo:aoa-evals/bundles/aoa-stress-recovery-window/reports/example-report.json",
+      "case_count": 1,
+      "score": null,
+      "interpretation_bound": "Repeated-window stress recovery claim only on one named stressor family."
+    }
+  },
+  {
     "event_kind": "runtime_wave_closeout_receipt",
     "event_id": "evt-runtime-closeout-0001",
     "observed_at": "2026-04-06T09:45:00Z",

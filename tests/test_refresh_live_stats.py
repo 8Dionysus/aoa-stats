@@ -135,6 +135,10 @@ def test_refresh_live_state_combines_repo_relative_sources(tmp_path: Path) -> No
     assert pipeline_summary["generated_from"]["receipt_input_paths"] == source_labels
     assert pipeline_summary["generated_from"]["total_receipts"] == 2
     assert pipeline_summary["pipelines"][0]["pipeline_ref"] == "pipeline:test"
+    stress_summary = json.loads(
+        (summary_output_dir / "stress_recovery_window_summary.min.json").read_text(encoding="utf-8")
+    )
+    assert stress_summary["suppression"]["status"] == "insufficient_evidence"
 
 
 def test_refresh_live_state_clears_previous_outputs_when_sources_are_empty(tmp_path: Path) -> None:
@@ -193,6 +197,7 @@ def test_refresh_live_state_clears_previous_outputs_when_sources_are_empty(tmp_p
     assert receipt_count == 0
     assert feed_output.exists() is False
     assert (summary_output_dir / "summary_surface_catalog.min.json").exists() is False
+    assert (summary_output_dir / "stress_recovery_window_summary.min.json").exists() is False
 
 
 def test_refresh_live_state_combines_playbook_technique_memo_and_runtime_sources(

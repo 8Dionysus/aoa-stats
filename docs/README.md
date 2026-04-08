@@ -8,6 +8,8 @@ Use this map when you want to know which stats-layer document to open next.
 - architecture and layer model: `ARCHITECTURE.md`
 - live intake and update loop: `LIVE_SESSION_USE.md`
 - first-wave derived antifragility posture: `ANTIFRAGILITY_VECTOR.md`
+- fourth-wave repeated stress recovery derivation: `STRESS_RECOVERY_WINDOW_SUMMARIES.md`
+- derived signal precedence and anti-loop hygiene: `DERIVED_SIGNAL_HYGIENE.md`
 
 ## Notes
 
