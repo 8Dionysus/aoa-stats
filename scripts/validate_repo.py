@@ -17,11 +17,13 @@ SCHEMAS = {
     "fork_calibration_summary.min.json": "fork-calibration-summary.schema.json",
     "automation_pipeline_summary.min.json": "automation-pipeline-summary.schema.json",
     "runtime_closeout_summary.min.json": "runtime-closeout-summary.schema.json",
+    "stress_recovery_window_summary.min.json": "stress-recovery-window-summary.schema.json",
     "surface_detection_summary.min.json": "surface-detection-summary.schema.json",
     "summary_surface_catalog.min.json": "summary-surface-catalog.schema.json",
 }
 EXTRA_SCHEMA_FILES = (
     "stats-event-envelope.schema.json",
+    "stress_recovery_window_summary_v1.json",
 )
 REQUIRED_TEXT_FILES = (
     "README.md",

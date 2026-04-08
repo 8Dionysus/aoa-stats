@@ -13,6 +13,7 @@ from typing import Any
 REPO_ROOT = Path(__file__).resolve().parents[1]
 DEFAULT_INPUT = REPO_ROOT / "examples" / "session_harvest_family.receipts.example.json"
 DEFAULT_OUTPUT_DIR = REPO_ROOT / "generated"
+DEFAULT_EVALS_ROOT = REPO_ROOT.parent / "aoa-evals"
 CANONICAL_ENVELOPE_SCHEMA_PATH = REPO_ROOT / "schemas" / "stats-event-envelope.schema.json"
 CANONICAL_ENVELOPE_SCHEMA_REF = "schemas/stats-event-envelope.schema.json"
 
@@ -132,6 +133,11 @@ def parse_args(argv: list[str] | None = None) -> argparse.Namespace:
         "--output-dir",
         default=str(DEFAULT_OUTPUT_DIR),
         help="Directory where generated summary JSON files should live.",
+    )
+    parser.add_argument(
+        "--evals-root",
+        default=str(DEFAULT_EVALS_ROOT),
+        help="Path to the aoa-evals repository root used to resolve linked report_ref payloads.",
     )
     parser.add_argument(
         "--check",
@@ -313,6 +319,303 @@ def generated_from(receipts: list[dict[str, Any]], input_paths: list[str]) -> di
         "receipt_input_paths": input_paths,
         "total_receipts": len(receipts),
         "latest_observed_at": latest_observed_at,
+    }
+
+
+def is_nonempty_string(value: Any) -> bool:
+    return isinstance(value, str) and bool(value)
+
+
+def is_number(value: Any) -> bool:
+    return isinstance(value, (int, float)) and not isinstance(value, bool)
+
+
+def ensure_repo_relative_ref_path(raw_path: str) -> str | None:
+    if not is_nonempty_string(raw_path):
+        return None
+    normalized = raw_path.strip().replace("\\", "/")
+    if normalized.startswith("/") or normalized.startswith("./"):
+        return None
+    parts = normalized.split("/")
+    if any(part in {"", ".", ".."} for part in parts):
+        return None
+    return normalized
+
+
+def resolve_repo_ref_path(raw_ref: Any, repo_roots: dict[str, Path]) -> Path | None:
+    if not is_nonempty_string(raw_ref):
+        return None
+    ref = raw_ref.strip()
+    if not ref.startswith("repo:"):
+        return None
+    repo_and_path = ref[len("repo:") :]
+    repo_name, separator, relative_path = repo_and_path.partition("/")
+    if not separator or repo_name not in repo_roots:
+        return None
+    normalized = ensure_repo_relative_ref_path(relative_path)
+    if normalized is None:
+        return None
+    return repo_roots[repo_name] / Path(normalized)
+
+
+def load_optional_json_object(path: Path | None) -> dict[str, Any] | None:
+    if path is None or not path.is_file():
+        return None
+    payload = json.loads(path.read_text(encoding="utf-8"))
+    if not isinstance(payload, dict):
+        return None
+    return payload
+
+
+def stress_summary_template() -> dict[str, Any]:
+    return {
+        "containment": None,
+        "route_discipline": None,
+        "reentry_quality": None,
+        "regrounding_effectiveness": None,
+        "evidence_continuity": None,
+        "adaptation_followthrough": None,
+        "operator_burden": None,
+        "trust_calibration": None,
+    }
+
+
+def empty_stress_counts() -> dict[str, int]:
+    return {
+        "receipt_count": 0,
+        "handoff_count": 0,
+        "playbook_lane_count": 0,
+        "reentry_gate_count": 0,
+        "projection_health_count": 0,
+        "regrounding_ticket_count": 0,
+        "eval_count": 0,
+    }
+
+
+def report_axis_score(report: dict[str, Any], axis_name: str) -> float | None:
+    axes = report.get("axes")
+    if not isinstance(axes, dict):
+        return None
+    axis = axes.get(axis_name)
+    if not isinstance(axis, dict):
+        return None
+    score = axis.get("score")
+    if not is_number(score):
+        return None
+    return round(float(score), 2)
+
+
+def average_scores(values: list[float | None]) -> float | None:
+    present = [value for value in values if value is not None]
+    if not present:
+        return None
+    return round(sum(present) / len(present), 2)
+
+
+def latest_or_source_time(receipts: list[dict[str, Any]], source: dict[str, Any]) -> str:
+    if receipts:
+        return max(receipt["observed_at"] for receipt in receipts)
+    return str(source.get("latest_observed_at") or "1970-01-01T00:00:00Z")
+
+
+def build_suppressed_stress_recovery_window_summary(
+    receipts: list[dict[str, Any]],
+    source: dict[str, Any],
+    *,
+    status: str,
+    reason: str,
+) -> dict[str, Any]:
+    observed_at = latest_or_source_time(receipts, source)
+    trend_flags = ["stress-recovery-window-unavailable"]
+    if status == "low_sample":
+        trend_flags = ["low-sample-window"]
+    return {
+        "schema_version": "aoa_stats_stress_recovery_window_summary_v1",
+        "generated_from": source,
+        "window": {
+            "label": "stress-recovery-window-unavailable",
+            "start_utc": observed_at,
+            "end_utc": observed_at,
+        },
+        "scope": {
+            "repo_family": ["aoa-evals"],
+            "stressor_family": "unresolved",
+            "owner_surface": None,
+            "surface_family": None,
+        },
+        "inputs": {
+            "receipt_refs": [],
+            "eval_report_refs": [],
+            "route_hint_refs": [],
+            "memo_context_refs": [],
+        },
+        "counts": empty_stress_counts(),
+        "suppression": {
+            "status": status,
+            "reason": reason,
+        },
+        "summary": stress_summary_template(),
+        "trend_flags": trend_flags,
+    }
+
+
+def build_stress_recovery_window_metrics(
+    report: dict[str, Any],
+    *,
+    suppression_status: str,
+) -> dict[str, Any]:
+    if suppression_status != "none":
+        return stress_summary_template()
+
+    reentry_quality = report_axis_score(report, "reentry_quality")
+    regrounding_effectiveness = report_axis_score(report, "regrounding_effectiveness")
+    operator_burden = report_axis_score(report, "operator_burden")
+    return {
+        "containment": report_axis_score(report, "handoff_fidelity"),
+        "route_discipline": report_axis_score(report, "route_discipline"),
+        "reentry_quality": reentry_quality,
+        "regrounding_effectiveness": regrounding_effectiveness,
+        "evidence_continuity": report_axis_score(report, "evidence_continuity"),
+        "adaptation_followthrough": average_scores(
+            [reentry_quality, regrounding_effectiveness, operator_burden]
+        ),
+        "operator_burden": operator_burden,
+        "trust_calibration": report_axis_score(report, "trust_calibration"),
+    }
+
+
+def build_stress_recovery_window_summary(
+    receipts: list[dict[str, Any]],
+    source: dict[str, Any],
+    *,
+    evals_root: Path,
+) -> dict[str, Any]:
+    relevant_receipts = [
+        receipt
+        for receipt in receipts
+        if receipt["event_kind"] == "eval_result_receipt"
+        and isinstance(receipt.get("payload"), dict)
+        and receipt["payload"].get("eval_name") == "aoa-stress-recovery-window"
+    ]
+    if not relevant_receipts:
+        return build_suppressed_stress_recovery_window_summary(
+            receipts,
+            source,
+            status="insufficient_evidence",
+            reason="no aoa-stress-recovery-window eval_result_receipt was found in the active receipt feed",
+        )
+
+    latest_receipt = max(relevant_receipts, key=receipt_sort_key)
+    payload = latest_receipt["payload"]
+    report_ref = payload.get("report_ref")
+    report_path = resolve_repo_ref_path(report_ref, {"aoa-evals": evals_root})
+    report = load_optional_json_object(report_path)
+    if report is None:
+        return build_suppressed_stress_recovery_window_summary(
+            relevant_receipts,
+            source,
+            status="insufficient_evidence",
+            reason="report_ref for aoa-stress-recovery-window could not be resolved into a readable aoa-evals JSON report",
+        )
+
+    window = report.get("window")
+    scope = report.get("scope")
+    inputs = report.get("inputs")
+    if not isinstance(window, dict) or not isinstance(scope, dict) or not isinstance(inputs, dict):
+        return build_suppressed_stress_recovery_window_summary(
+            relevant_receipts,
+            source,
+            status="insufficient_evidence",
+            reason="resolved aoa-stress-recovery-window report is missing required window, scope, or inputs objects",
+        )
+
+    counts = {
+        "receipt_count": len([item for item in inputs.get("source_receipt_refs", []) if is_nonempty_string(item)]),
+        "handoff_count": len([item for item in inputs.get("handoff_refs", []) if is_nonempty_string(item)]),
+        "playbook_lane_count": len([item for item in inputs.get("playbook_lane_refs", []) if is_nonempty_string(item)]),
+        "reentry_gate_count": len([item for item in inputs.get("reentry_gate_refs", []) if is_nonempty_string(item)]),
+        "projection_health_count": len([item for item in inputs.get("projection_health_refs", []) if is_nonempty_string(item)]),
+        "regrounding_ticket_count": len([item for item in inputs.get("regrounding_ticket_refs", []) if is_nonempty_string(item)]),
+        "eval_count": 1,
+    }
+
+    adjacent_signal_count = (
+        counts["handoff_count"]
+        + counts["playbook_lane_count"]
+        + counts["reentry_gate_count"]
+        + counts["projection_health_count"]
+        + counts["regrounding_ticket_count"]
+    )
+    suppression_status = "none"
+    suppression_reason: str | None = None
+    if counts["receipt_count"] < 1:
+        suppression_status = "insufficient_evidence"
+        suppression_reason = "owner receipts are missing from the resolved stress recovery window report"
+    elif counts["receipt_count"] < 2 or adjacent_signal_count < 4:
+        suppression_status = "low_sample"
+        suppression_reason = (
+            "owner and adjacent stress signals stay too sparse for a confident repeated-window derived read"
+        )
+
+    report_refs = [report_ref] if is_nonempty_string(report_ref) else []
+    route_hint_refs = [
+        item for item in inputs.get("route_hint_refs", []) if is_nonempty_string(item)
+    ]
+    memo_context_refs = [
+        item for item in inputs.get("memo_context_refs", []) if is_nonempty_string(item)
+    ]
+
+    trend_flags: list[str] = []
+    overall_posture = report.get("overall_posture")
+    if isinstance(overall_posture, str) and overall_posture:
+        trend_flags.append(f"overall-posture-{overall_posture}")
+    if suppression_status == "low_sample":
+        trend_flags.append("low-sample-window")
+    elif suppression_status == "insufficient_evidence":
+        trend_flags.append("insufficient-evidence-window")
+    if report_axis_score(report, "false_promotion_prevention") is not None:
+        score = report_axis_score(report, "false_promotion_prevention")
+        if score is not None and score >= 0.8:
+            trend_flags.append("false-promotion-guard-held")
+
+    return {
+        "schema_version": "aoa_stats_stress_recovery_window_summary_v1",
+        "generated_from": source,
+        "window": {
+            "label": str(window.get("label") or "stress-recovery-window"),
+            "start_utc": str(window.get("start_utc") or source["latest_observed_at"]),
+            "end_utc": str(window.get("end_utc") or source["latest_observed_at"]),
+        },
+        "scope": {
+            "repo_family": [
+                item for item in scope.get("repo_roots", []) if is_nonempty_string(item)
+            ]
+            or ["aoa-evals"],
+            "stressor_family": str(scope.get("stressor_family") or "unresolved"),
+            "owner_surface": scope.get("owner_surface")
+            if scope.get("owner_surface") is None or is_nonempty_string(scope.get("owner_surface"))
+            else None,
+            "surface_family": scope.get("surface_family")
+            if scope.get("surface_family") is None or is_nonempty_string(scope.get("surface_family"))
+            else None,
+        },
+        "inputs": {
+            "receipt_refs": [
+                item for item in inputs.get("source_receipt_refs", []) if is_nonempty_string(item)
+            ],
+            "eval_report_refs": report_refs,
+            "route_hint_refs": route_hint_refs,
+            "memo_context_refs": memo_context_refs,
+        },
+        "counts": counts,
+        "suppression": {
+            "status": suppression_status,
+            "reason": suppression_reason,
+        },
+        "summary": build_stress_recovery_window_metrics(
+            report, suppression_status=suppression_status
+        ),
+        "trend_flags": trend_flags,
     }
 
 
@@ -817,6 +1120,13 @@ def build_summary_surface_catalog(source: dict[str, Any]) -> dict[str, Any]:
                 "derivation_rule": "aggregate runtime_wave_closeout_receipt payloads by program_id and wave_id and keep the latest gate plus handoff posture",
             },
             {
+                "name": "stress_recovery_window_summary",
+                "path": "generated/stress_recovery_window_summary.min.json",
+                "schema_ref": "schemas/stress-recovery-window-summary.schema.json",
+                "primary_question": "What does the current repeated-window stress recovery proof family say without inventing a new canonical event kind or outranking owner evidence?",
+                "derivation_rule": "resolve aoa-stress-recovery-window eval_result_receipt report_ref paths through aoa-evals and derive one bounded summary plus suppression posture",
+            },
+            {
                 "name": "surface_detection_summary",
                 "path": "generated/surface_detection_summary.min.json",
                 "schema_ref": "schemas/surface-detection-summary.schema.json",
@@ -828,10 +1138,13 @@ def build_summary_surface_catalog(source: dict[str, Any]) -> dict[str, Any]:
 
 
 def build_all_views(
-    receipts: list[dict[str, Any]], input_paths: list[str]
+    receipts: list[dict[str, Any]], input_paths: list[str], *, evals_root: Path | None = None
 ) -> dict[str, dict[str, Any]]:
     active_receipts = resolve_active_receipts(receipts)
     source = generated_from(active_receipts, input_paths)
+    resolved_evals_root = (
+        evals_root.expanduser().resolve() if evals_root is not None else DEFAULT_EVALS_ROOT.resolve()
+    )
     return {
         "object_summary.min.json": build_object_summary(active_receipts, source),
         "core_skill_application_summary.min.json": build_core_skill_application_summary(
@@ -844,6 +1157,9 @@ def build_all_views(
             active_receipts, source
         ),
         "runtime_closeout_summary.min.json": build_runtime_closeout_summary(active_receipts, source),
+        "stress_recovery_window_summary.min.json": build_stress_recovery_window_summary(
+            active_receipts, source, evals_root=resolved_evals_root
+        ),
         "surface_detection_summary.min.json": build_surface_detection_summary(active_receipts, source),
         "summary_surface_catalog.min.json": build_summary_surface_catalog(source),
     }
@@ -857,8 +1173,13 @@ def main(argv: list[str] | None = None) -> int:
     args = parse_args(argv)
     input_paths = [Path(path).expanduser().resolve() for path in args.input] or [DEFAULT_INPUT]
     output_dir = Path(args.output_dir).expanduser().resolve()
+    evals_root = Path(args.evals_root).expanduser().resolve()
     receipts = load_receipts(input_paths)
-    outputs = build_all_views(receipts, [path.name for path in input_paths])
+    outputs = build_all_views(
+        receipts,
+        [path.name for path in input_paths],
+        evals_root=evals_root,
+    )
 
     if args.check:
         mismatches: list[str] = []

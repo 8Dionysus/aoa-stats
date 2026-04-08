@@ -34,21 +34,228 @@ def test_build_views_produces_expected_surface_counts() -> None:
         "fork_calibration_summary.min.json",
         "automation_pipeline_summary.min.json",
         "runtime_closeout_summary.min.json",
+        "stress_recovery_window_summary.min.json",
         "surface_detection_summary.min.json",
         "summary_surface_catalog.min.json",
     }
-    assert outputs["object_summary.min.json"]["generated_from"]["total_receipts"] == 13
+    assert outputs["object_summary.min.json"]["generated_from"]["total_receipts"] == 14
     assert len(outputs["core_skill_application_summary.min.json"]["skills"]) == 1
     assert len(outputs["repeated_window_summary.min.json"]["windows"]) == 2
     assert len(outputs["route_progression_summary.min.json"]["routes"]) == 1
     assert len(outputs["fork_calibration_summary.min.json"]["routes"]) == 1
     assert len(outputs["automation_pipeline_summary.min.json"]["pipelines"]) == 1
     assert len(outputs["runtime_closeout_summary.min.json"]["closeouts"]) == 1
+    assert outputs["stress_recovery_window_summary.min.json"]["suppression"]["status"] == "low_sample"
     assert len(outputs["surface_detection_summary.min.json"]["windows"]) == 1
     assert outputs["core_skill_application_summary.min.json"]["skills"][0]["detail_event_kind_counts"] == {
         "diagnosis_packet_receipt": 1
     }
     assert outputs["runtime_closeout_summary.min.json"]["closeouts"][0]["wave_id"] == "W2"
+
+
+def test_stress_recovery_window_summary_resolves_eval_report_ref(tmp_path: Path) -> None:
+    module = load_build_views_module()
+    evals_root = tmp_path / "aoa-evals"
+    report_path = (
+        evals_root
+        / "bundles"
+        / "aoa-stress-recovery-window"
+        / "reports"
+        / "example-report.json"
+    )
+    report_path.parent.mkdir(parents=True)
+    report_path.write_text(
+        json.dumps(
+            {
+                "eval_name": "aoa-stress-recovery-window",
+                "bundle_status": "draft",
+                "object_under_evaluation": "ordered stress recovery posture on one named owner surface and adjacent evidence family",
+                "comparison_mode": "longitudinal-window",
+                "report_id": "eval-stress-window-test",
+                "generated_at_utc": "2026-04-07T18:00:00Z",
+                "window": {
+                    "label": "window-test",
+                    "start_utc": "2026-04-01T00:00:00Z",
+                    "end_utc": "2026-04-07T00:00:00Z"
+                },
+                "scope": {
+                    "stressor_family": "hybrid-query-kag-unhealthy",
+                    "repo_roots": [
+                        "ATM10-Agent",
+                        "aoa-routing",
+                        "aoa-memo"
+                    ],
+                    "owner_surface": "hybrid-query",
+                    "surface_family": "kag-regrounding"
+                },
+                "inputs": {
+                    "source_receipt_refs": [
+                        "r1",
+                        "r2"
+                    ],
+                    "handoff_refs": [
+                        "h1"
+                    ],
+                    "playbook_lane_refs": [
+                        "p1"
+                    ],
+                    "reentry_gate_refs": [
+                        "g1"
+                    ],
+                    "projection_health_refs": [
+                        "ph1"
+                    ],
+                    "regrounding_ticket_refs": [
+                        "rt1"
+                    ],
+                    "route_hint_refs": [
+                        "route1"
+                    ],
+                    "memo_context_refs": [
+                        "memo1"
+                    ]
+                },
+                "axes": {
+                    "handoff_fidelity": {
+                        "status": "pass",
+                        "score": 0.9,
+                        "rationale": "ok"
+                    },
+                    "route_discipline": {
+                        "status": "pass",
+                        "score": 0.88,
+                        "rationale": "ok"
+                    },
+                    "reentry_quality": {
+                        "status": "warn",
+                        "score": 0.72,
+                        "rationale": "ok"
+                    },
+                    "regrounding_effectiveness": {
+                        "status": "warn",
+                        "score": 0.69,
+                        "rationale": "ok"
+                    },
+                    "evidence_continuity": {
+                        "status": "pass",
+                        "score": 0.91,
+                        "rationale": "ok"
+                    },
+                    "false_promotion_prevention": {
+                        "status": "pass",
+                        "score": 0.93,
+                        "rationale": "ok"
+                    },
+                    "operator_burden": {
+                        "status": "warn",
+                        "score": 0.64,
+                        "rationale": "ok"
+                    },
+                    "trust_calibration": {
+                        "status": "pass",
+                        "score": 0.89,
+                        "rationale": "ok"
+                    }
+                },
+                "overall_posture": "mixed",
+                "blind_spots": [
+                    "one"
+                ],
+                "evidence_gaps": [
+                    "two"
+                ]
+            },
+            indent=2
+        )
+        + "\n",
+        encoding="utf-8",
+    )
+    receipts = [
+        {
+            "event_kind": "eval_result_receipt",
+            "event_id": "evt-stress-window-0001",
+            "observed_at": "2026-04-07T18:01:00Z",
+            "run_ref": "run-stress-window-001",
+            "session_ref": "session:test-stress-window",
+            "actor_ref": "aoa-evals:reviewer",
+            "object_ref": {
+                "repo": "aoa-evals",
+                "kind": "eval_bundle",
+                "id": "aoa-stress-recovery-window",
+                "version": "draft"
+            },
+            "evidence_refs": [
+                {
+                    "kind": "bundle_report",
+                    "ref": "repo:aoa-evals/bundles/aoa-stress-recovery-window/reports/example-report.json"
+                }
+            ],
+            "payload": {
+                "eval_name": "aoa-stress-recovery-window",
+                "report_ref": "repo:aoa-evals/bundles/aoa-stress-recovery-window/reports/example-report.json"
+            }
+        }
+    ]
+
+    summary = module.build_stress_recovery_window_summary(
+        receipts,
+        {
+            "receipt_input_paths": [
+                "memory"
+            ],
+            "total_receipts": 1,
+            "latest_observed_at": "2026-04-07T18:01:00Z"
+        },
+        evals_root=evals_root,
+    )
+
+    assert summary["suppression"]["status"] == "none"
+    assert summary["scope"]["stressor_family"] == "hybrid-query-kag-unhealthy"
+    assert summary["inputs"]["eval_report_refs"] == [
+        "repo:aoa-evals/bundles/aoa-stress-recovery-window/reports/example-report.json"
+    ]
+    assert summary["summary"]["containment"] == 0.9
+    assert summary["summary"]["adaptation_followthrough"] == 0.68
+
+
+def test_stress_recovery_window_summary_suppresses_when_report_ref_is_missing(tmp_path: Path) -> None:
+    module = load_build_views_module()
+    receipts = [
+        {
+            "event_kind": "eval_result_receipt",
+            "event_id": "evt-stress-window-0002",
+            "observed_at": "2026-04-07T18:05:00Z",
+            "run_ref": "run-stress-window-002",
+            "session_ref": "session:test-stress-window-missing",
+            "actor_ref": "aoa-evals:reviewer",
+            "object_ref": {
+                "repo": "aoa-evals",
+                "kind": "eval_bundle",
+                "id": "aoa-stress-recovery-window",
+                "version": "draft"
+            },
+            "evidence_refs": [],
+            "payload": {
+                "eval_name": "aoa-stress-recovery-window",
+                "report_ref": "repo:aoa-evals/bundles/aoa-stress-recovery-window/reports/missing-report.json"
+            }
+        }
+    ]
+
+    summary = module.build_stress_recovery_window_summary(
+        receipts,
+        {
+            "receipt_input_paths": [
+                "memory"
+            ],
+            "total_receipts": 1,
+            "latest_observed_at": "2026-04-07T18:05:00Z"
+        },
+        evals_root=tmp_path / "aoa-evals",
+    )
+
+    assert summary["suppression"]["status"] == "insufficient_evidence"
+    assert summary["summary"]["containment"] is None
 
 
 def test_surface_detection_summary_tracks_second_wave_observability_signals() -> None:
