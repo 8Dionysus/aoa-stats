@@ -2,6 +2,7 @@
 from __future__ import annotations
 
 import json
+import os
 import subprocess
 import sys
 from pathlib import Path
@@ -9,6 +10,7 @@ from pathlib import Path
 from jsonschema import Draft202012Validator, SchemaError
 
 REPO_ROOT = Path(__file__).resolve().parents[1]
+DEFAULT_EVALS_ROOT = REPO_ROOT.parent / "aoa-evals"
 SCHEMAS = {
     "object_summary.min.json": "object-summary.schema.json",
     "core_skill_application_summary.min.json": "core-skill-application-summary.schema.json",
@@ -64,8 +66,14 @@ def main() -> int:
             errors.append(f"invalid JSON schema in schemas/{schema_name}: {exc.message}")
 
     try:
+        build_views_command = [sys.executable, "scripts/build_views.py", "--check"]
+        configured_evals_root = os.environ.get("AOA_EVALS_ROOT")
+        if configured_evals_root:
+            build_views_command.extend(["--evals-root", configured_evals_root])
+        elif DEFAULT_EVALS_ROOT.exists():
+            build_views_command.extend(["--evals-root", str(DEFAULT_EVALS_ROOT)])
         result = subprocess.run(
-            [sys.executable, "scripts/build_views.py", "--check"],
+            build_views_command,
             cwd=REPO_ROOT,
             check=False,
             capture_output=True,
