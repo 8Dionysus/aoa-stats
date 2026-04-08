@@ -13,7 +13,7 @@ from typing import Any
 REPO_ROOT = Path(__file__).resolve().parents[1]
 DEFAULT_INPUT = REPO_ROOT / "examples" / "session_harvest_family.receipts.example.json"
 DEFAULT_OUTPUT_DIR = REPO_ROOT / "generated"
-DEFAULT_EVALS_ROOT = REPO_ROOT.parent / "aoa-evals"
+DEFAULT_EVALS_ROOT = REPO_ROOT / "aoa-evals" if (REPO_ROOT / "aoa-evals").exists() else REPO_ROOT.parent / "aoa-evals"
 CANONICAL_ENVELOPE_SCHEMA_PATH = REPO_ROOT / "schemas" / "stats-event-envelope.schema.json"
 CANONICAL_ENVELOPE_SCHEMA_REF = "schemas/stats-event-envelope.schema.json"
 
