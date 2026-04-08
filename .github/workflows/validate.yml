@@ -13,6 +13,13 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
 
+      - name: Checkout aoa-evals
+        uses: actions/checkout@v4
+        with:
+          repository: 8Dionysus/aoa-evals
+          ref: be8475bc5095b8797f736cfc8a60ef3d2a9e9d79
+          path: aoa-evals
+
       - name: Set up Python
         uses: actions/setup-python@v5
         with:
@@ -24,9 +31,13 @@ jobs:
           python -m pip install -r requirements-dev.txt
 
       - name: Check generated views
-        run: python scripts/build_views.py --check
+        env:
+          AOA_EVALS_ROOT: ./aoa-evals
+        run: python scripts/build_views.py --check --evals-root ./aoa-evals
 
       - name: Validate repo surfaces
+        env:
+          AOA_EVALS_ROOT: ./aoa-evals
         run: python scripts/validate_repo.py
 
       - name: Run tests
