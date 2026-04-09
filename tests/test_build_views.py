@@ -51,6 +51,28 @@ def test_build_views_produces_expected_surface_counts() -> None:
         "diagnosis_packet_receipt": 1
     }
     assert outputs["runtime_closeout_summary.min.json"]["closeouts"][0]["wave_id"] == "W2"
+    catalog = outputs["summary_surface_catalog.min.json"]
+    assert catalog["schema_version"] == "aoa_stats_summary_surface_catalog_v2"
+    assert catalog["schema_ref"] == "schemas/summary-surface-catalog.schema.json"
+    assert catalog["owner_repo"] == "aoa-stats"
+    assert catalog["surface_kind"] == "runtime_surface"
+    assert catalog["authority_ref"] == "docs/ARCHITECTURE.md"
+    assert catalog["validation_refs"] == [
+        "scripts/build_views.py",
+        "scripts/validate_repo.py",
+        "tests/test_summary_surface_catalog.py",
+    ]
+    assert [entry["surface_ref"] for entry in catalog["surfaces"]] == [
+        "generated/core_skill_application_summary.min.json",
+        "generated/object_summary.min.json",
+        "generated/repeated_window_summary.min.json",
+        "generated/route_progression_summary.min.json",
+        "generated/fork_calibration_summary.min.json",
+        "generated/automation_pipeline_summary.min.json",
+        "generated/runtime_closeout_summary.min.json",
+        "generated/stress_recovery_window_summary.min.json",
+        "generated/surface_detection_summary.min.json",
+    ]
 
 
 def test_stress_recovery_window_summary_resolves_eval_report_ref(tmp_path: Path) -> None:

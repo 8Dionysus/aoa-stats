@@ -104,7 +104,10 @@ machine-first, evidence-linked, and weaker than the owner-local source
 surfaces they summarize.
 
 `generated/summary_surface_catalog.min.json` is also the compact runtime-entry
-capsule that federation routing should inspect first for `aoa-stats`.
+capsule that federation routing should inspect first for `aoa-stats`. It now
+ships as the schema-backed v2 runtime capsule with explicit `schema_ref`,
+`owner_repo`, `surface_kind`, `authority_ref`, top-level `validation_refs`,
+and route-level `surface_ref` fields for low-context readers.
 
 `surface_detection_summary.min.json` is second-wave descriptive only. It may
 count shortlist ambiguity, candidate posture, and closeout-handoff volume when

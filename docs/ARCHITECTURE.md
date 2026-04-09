@@ -67,6 +67,25 @@ Current v0 derived views:
 runtime-entry capsule for `aoa-stats`. It points back to derived view families
 without replacing the underlying receipts or owner-local authority.
 
+The published runtime-entry capsule is the schema-backed v2 contract:
+
+- `schema_version`
+- `schema_ref`
+- `owner_repo`
+- `surface_kind`
+- `authority_ref`
+- `generated_from`
+- `validation_refs`
+- `surfaces`
+
+Each entry in `surfaces` stays compact and low-context:
+
+- `name`
+- `surface_ref`
+- `schema_ref`
+- `primary_question`
+- `derivation_rule`
+
 ## Canonical split
 
 - counts answer: how often and how widely
