@@ -361,7 +361,10 @@ def resolve_repo_ref_path(raw_ref: Any, repo_roots: dict[str, Path]) -> Path | N
 def load_optional_json_object(path: Path | None) -> dict[str, Any] | None:
     if path is None or not path.is_file():
         return None
-    payload = json.loads(path.read_text(encoding="utf-8"))
+    try:
+        payload = json.loads(path.read_text(encoding="utf-8"))
+    except (OSError, UnicodeDecodeError, json.JSONDecodeError):
+        return None
     if not isinstance(payload, dict):
         return None
     return payload

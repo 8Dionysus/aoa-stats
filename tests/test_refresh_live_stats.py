@@ -200,6 +200,140 @@ def test_refresh_live_state_clears_previous_outputs_when_sources_are_empty(tmp_p
     assert (summary_output_dir / "stress_recovery_window_summary.min.json").exists() is False
 
 
+def test_refresh_live_state_resolves_stress_report_from_federation_root(tmp_path: Path) -> None:
+    module = load_refresh_module()
+    federation_root = tmp_path / "srv"
+    evals_dir = federation_root / "aoa-evals" / ".aoa" / "live_receipts"
+    evals_dir.mkdir(parents=True)
+    report_path = (
+        federation_root
+        / "aoa-evals"
+        / "bundles"
+        / "aoa-stress-recovery-window"
+        / "reports"
+        / "example-report.json"
+    )
+    report_path.parent.mkdir(parents=True, exist_ok=True)
+    report_path.write_text(
+        json.dumps(
+            {
+                "eval_name": "aoa-stress-recovery-window",
+                "bundle_status": "draft",
+                "object_under_evaluation": "ordered stress recovery posture",
+                "comparison_mode": "longitudinal-window",
+                "report_id": "eval-stress-window-live",
+                "generated_at_utc": "2026-04-07T18:00:00Z",
+                "window": {
+                    "label": "window-live",
+                    "start_utc": "2026-04-01T00:00:00Z",
+                    "end_utc": "2026-04-07T00:00:00Z",
+                },
+                "scope": {
+                    "stressor_family": "hybrid-query-kag-unhealthy",
+                    "repo_roots": ["aoa-routing", "aoa-memo"],
+                    "owner_surface": "hybrid-query",
+                    "surface_family": "kag-regrounding",
+                },
+                "inputs": {
+                    "source_receipt_refs": ["r1"],
+                    "handoff_refs": ["h1"],
+                    "playbook_lane_refs": ["p1"],
+                    "reentry_gate_refs": ["g1"],
+                    "projection_health_refs": ["ph1"],
+                    "regrounding_ticket_refs": ["rt1"],
+                    "route_hint_refs": ["route1"],
+                    "memo_context_refs": ["memo1"],
+                },
+                "axes": {
+                    "handoff_fidelity": {"status": "pass", "score": 0.9, "rationale": "ok"},
+                    "route_discipline": {"status": "pass", "score": 0.88, "rationale": "ok"},
+                    "reentry_quality": {"status": "warn", "score": 0.72, "rationale": "ok"},
+                    "regrounding_effectiveness": {"status": "warn", "score": 0.69, "rationale": "ok"},
+                    "evidence_continuity": {"status": "pass", "score": 0.91, "rationale": "ok"},
+                    "false_promotion_prevention": {"status": "pass", "score": 0.93, "rationale": "ok"},
+                    "operator_burden": {"status": "warn", "score": 0.64, "rationale": "ok"},
+                    "trust_calibration": {"status": "pass", "score": 0.89, "rationale": "ok"},
+                },
+                "overall_posture": "mixed",
+                "blind_spots": ["one"],
+                "evidence_gaps": ["two"],
+            },
+            indent=2,
+        )
+        + "\n",
+        encoding="utf-8",
+    )
+    (evals_dir / "eval-result-receipts.jsonl").write_text(
+        json.dumps(
+            {
+                "event_kind": "eval_result_receipt",
+                "event_id": "evt-stress-live-0001",
+                "observed_at": "2026-04-07T18:01:00Z",
+                "run_ref": "run-stress-live-001",
+                "session_ref": "session:test-stress-live",
+                "actor_ref": "aoa-evals:reviewer",
+                "object_ref": {
+                    "repo": "aoa-evals",
+                    "kind": "eval_bundle",
+                    "id": "aoa-stress-recovery-window",
+                    "version": "draft",
+                },
+                "evidence_refs": [
+                    {
+                        "kind": "bundle_report",
+                        "ref": "repo:aoa-evals/bundles/aoa-stress-recovery-window/reports/example-report.json",
+                    }
+                ],
+                "payload": {
+                    "eval_name": "aoa-stress-recovery-window",
+                    "report_ref": "repo:aoa-evals/bundles/aoa-stress-recovery-window/reports/example-report.json",
+                },
+            }
+        )
+        + "\n",
+        encoding="utf-8",
+    )
+
+    registry_path = tmp_path / "live_receipt_sources.stress.json"
+    registry_path.write_text(
+        json.dumps(
+            {
+                "schema_version": 1,
+                "sources": [
+                    {
+                        "name": "evals",
+                        "repo": "aoa-evals",
+                        "relative_path": ".aoa/live_receipts/eval-result-receipts.jsonl",
+                    }
+                ],
+            },
+            indent=2,
+        )
+        + "\n",
+        encoding="utf-8",
+    )
+
+    feed_output = tmp_path / "state" / "live_receipts.min.json"
+    summary_output_dir = tmp_path / "state" / "generated"
+    source_labels, receipt_count = module.refresh_live_state(
+        registry_path=registry_path,
+        federation_root=federation_root,
+        feed_output=feed_output,
+        summary_output_dir=summary_output_dir,
+    )
+
+    assert source_labels == ["aoa-evals/.aoa/live_receipts/eval-result-receipts.jsonl"]
+    assert receipt_count == 1
+    stress_summary = json.loads(
+        (summary_output_dir / "stress_recovery_window_summary.min.json").read_text(encoding="utf-8")
+    )
+    assert stress_summary["suppression"]["status"] == "low_sample"
+    assert stress_summary["scope"]["stressor_family"] == "hybrid-query-kag-unhealthy"
+    assert stress_summary["inputs"]["eval_report_refs"] == [
+        "repo:aoa-evals/bundles/aoa-stress-recovery-window/reports/example-report.json"
+    ]
+
+
 def test_refresh_live_state_combines_playbook_technique_memo_and_runtime_sources(
     tmp_path: Path,
 ) -> None:
