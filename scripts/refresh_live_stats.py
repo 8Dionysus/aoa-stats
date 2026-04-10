@@ -147,7 +147,7 @@ def refresh_live_state(
         return source_labels, 0
 
     write_receipt_feed(feed_output, active_receipts)
-    outputs = build_all_views(receipts, source_labels)
+    outputs = build_all_views(receipts, source_labels, evals_root=federation_root / "aoa-evals")
     summary_output_dir.mkdir(parents=True, exist_ok=True)
     for name, payload in outputs.items():
         (summary_output_dir / name).write_text(stable_json(payload), encoding="utf-8")

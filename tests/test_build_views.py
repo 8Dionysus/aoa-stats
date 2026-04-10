@@ -5,6 +5,7 @@ import json
 from pathlib import Path
 
 import pytest
+from jsonschema import Draft202012Validator
 
 
 REPO_ROOT = Path(__file__).resolve().parents[1]
@@ -278,6 +279,66 @@ def test_stress_recovery_window_summary_suppresses_when_report_ref_is_missing(tm
 
     assert summary["suppression"]["status"] == "insufficient_evidence"
     assert summary["summary"]["containment"] is None
+
+
+def test_stress_recovery_window_summary_suppresses_on_malformed_report_json(tmp_path: Path) -> None:
+    module = load_build_views_module()
+    evals_root = tmp_path / "aoa-evals"
+    report_path = (
+        evals_root
+        / "bundles"
+        / "aoa-stress-recovery-window"
+        / "reports"
+        / "broken-report.json"
+    )
+    report_path.parent.mkdir(parents=True)
+    report_path.write_text("{not valid json}\n", encoding="utf-8")
+    receipts = [
+        {
+            "event_kind": "eval_result_receipt",
+            "event_id": "evt-stress-window-0003",
+            "observed_at": "2026-04-07T18:07:00Z",
+            "run_ref": "run-stress-window-003",
+            "session_ref": "session:test-stress-window-broken",
+            "actor_ref": "aoa-evals:reviewer",
+            "object_ref": {
+                "repo": "aoa-evals",
+                "kind": "eval_bundle",
+                "id": "aoa-stress-recovery-window",
+                "version": "draft",
+            },
+            "evidence_refs": [],
+            "payload": {
+                "eval_name": "aoa-stress-recovery-window",
+                "report_ref": "repo:aoa-evals/bundles/aoa-stress-recovery-window/reports/broken-report.json",
+            },
+        }
+    ]
+
+    summary = module.build_stress_recovery_window_summary(
+        receipts,
+        {
+            "receipt_input_paths": ["memory"],
+            "total_receipts": 1,
+            "latest_observed_at": "2026-04-07T18:07:00Z",
+        },
+        evals_root=evals_root,
+    )
+
+    assert summary["suppression"]["status"] == "insufficient_evidence"
+    assert summary["summary"]["containment"] is None
+
+
+def test_antifragility_vector_schema_requires_nonempty_source_refs() -> None:
+    schema = json.loads((REPO_ROOT / "schemas" / "antifragility_vector_v1.json").read_text(encoding="utf-8"))
+    payload = json.loads((REPO_ROOT / "examples" / "antifragility_vector.example.json").read_text(encoding="utf-8"))
+    payload["inputs"]["receipt_refs"] = []
+    payload["inputs"]["eval_report_refs"] = []
+
+    errors = list(Draft202012Validator(schema).iter_errors(payload))
+
+    assert any(list(error.absolute_path) == ["inputs", "receipt_refs"] for error in errors)
+    assert any(list(error.absolute_path) == ["inputs", "eval_report_refs"] for error in errors)
 
 
 def test_surface_detection_summary_tracks_second_wave_observability_signals() -> None:
