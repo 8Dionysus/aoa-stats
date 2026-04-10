@@ -43,6 +43,15 @@ This changelog entry uses the release-prep merge date.
 - `10` committed generated summary surfaces under `generated/`
 - current stats-layer docs under `docs/`
 - current schemas, examples, scripts, tests, and live-refresh support files
+- derived summary buildout across `generated/`, `schemas/`, `config/`,
+  `scripts/`, `systemd/`, `examples/`, and `docs/`, including core-skill
+  application summaries, supersedes-aware active views, surface-detection
+  summaries, antifragility vectors, stress-recovery summaries, and the v2
+  runtime capsule
+- repo operating surfaces under `.agents/`, `.github/`, `AGENTS.md`,
+  `README.md`, `CONTRIBUTING.md`, `SECURITY.md`, `CODE_OF_CONDUCT.md`,
+  `tests/`, and `requirements-dev.txt`, including validate workflow, publisher
+  audits, boundedness tightening, and release-ready community docs
 
 ### Validation
 
