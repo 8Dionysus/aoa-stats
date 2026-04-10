@@ -68,6 +68,12 @@ Then branch by task:
   `scripts/refresh_live_stats.py`,
   `scripts/check_live_publishers.py`, and
   `scripts/install_live_refresh_units.py`
+- release prep or public repo hygiene:
+  `docs/RELEASING.md`,
+  `CHANGELOG.md`,
+  `SECURITY.md`,
+  `CONTRIBUTING.md`, and
+  `CODE_OF_CONDUCT.md`
 
 If a deeper directory defines its own `AGENTS.md`, follow the nearest one.
 
@@ -78,6 +84,8 @@ The most important objects in this repository are:
 - `schemas/*.json`
 - `schemas/stats-event-envelope.schema.json`
 - `generated/*.json`
+- `CHANGELOG.md`
+- `docs/RELEASING.md`
 - `config/live_receipt_sources*.json`
 - `scripts/build_views.py`
 - `scripts/check_live_publishers.py`

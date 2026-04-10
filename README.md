@@ -23,6 +23,7 @@ Use the shortest route by need:
 - ownership and anti-collapse rule: `docs/BOUNDARIES.md`
 - five-layer architecture and derived posture: `docs/ARCHITECTURE.md`
 - live receipt intake and generation loop: `docs/LIVE_SESSION_USE.md`
+- release and publication posture: `docs/RELEASING.md` and `CHANGELOG.md`
 - local agent instructions: `AGENTS.md`
 
 ## Route by need
@@ -52,6 +53,9 @@ Use the shortest route by need:
   `scripts/check_live_publishers.py`,
   `scripts/install_live_refresh_units.py`, and
   `scripts/validate_repo.py`
+- release and contribution guidance: `docs/RELEASING.md`,
+  `CHANGELOG.md`, `CONTRIBUTING.md`, `SECURITY.md`, and
+  `CODE_OF_CONDUCT.md`
 - local verification path: `python scripts/build_views.py --check`,
   `python scripts/validate_repo.py`, and `python -m pytest -q tests`
 
