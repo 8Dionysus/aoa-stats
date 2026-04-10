@@ -1,4 +1,4 @@
-name: validate
+name: Release Audit
 
 on:
   push:
@@ -7,7 +7,8 @@ on:
   pull_request:
 
 jobs:
-  validate:
+  release_audit:
+    name: Release Audit
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
@@ -30,15 +31,7 @@ jobs:
           python -m pip install --upgrade pip
           python -m pip install -r requirements-dev.txt
 
-      - name: Check generated views
+      - name: Run release audit
         env:
           AOA_EVALS_ROOT: ./aoa-evals
-        run: python scripts/build_views.py --check --evals-root ./aoa-evals
-
-      - name: Validate repo surfaces
-        env:
-          AOA_EVALS_ROOT: ./aoa-evals
-        run: python scripts/validate_repo.py
-
-      - name: Run tests
-        run: python -m pytest -q tests
+        run: python scripts/release_check.py

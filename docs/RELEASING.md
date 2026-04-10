@@ -27,6 +27,7 @@ A release should make it easy to answer:
 1. Confirm the release scope stays bounded.
 2. Update `CHANGELOG.md` with the section that will anchor the human release narrative.
 3. Run the repo-level validation loop:
+   - `python scripts/release_check.py`
    - `python -m pip install -r requirements-dev.txt`
    - `python scripts/build_views.py --check`
    - `python scripts/validate_repo.py`
