@@ -110,6 +110,13 @@ def clear_live_state(*, feed_output: Path, summary_output_dir: Path) -> None:
             target.unlink()
 
 
+def resolve_live_evals_root(*, federation_root: Path) -> Path:
+    vendored_evals_root = REPO_ROOT / "aoa-evals"
+    if vendored_evals_root.exists():
+        return vendored_evals_root.resolve()
+    return (federation_root / "aoa-evals").resolve()
+
+
 def refresh_live_state(
     *,
     registry_path: Path,
@@ -147,7 +154,11 @@ def refresh_live_state(
         return source_labels, 0
 
     write_receipt_feed(feed_output, active_receipts)
-    outputs = build_all_views(receipts, source_labels, evals_root=federation_root / "aoa-evals")
+    outputs = build_all_views(
+        receipts,
+        source_labels,
+        evals_root=resolve_live_evals_root(federation_root=federation_root),
+    )
     summary_output_dir.mkdir(parents=True, exist_ok=True)
     for name, payload in outputs.items():
         (summary_output_dir / name).write_text(stable_json(payload), encoding="utf-8")
