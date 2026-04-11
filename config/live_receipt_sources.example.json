@@ -1,7 +1,7 @@
 {
   "schema_version": 1,
   "profile": "session-growth-live",
-  "description": "Owner-local live receipt sources for the current detail session-harvest, project-core kernel, eval, and runtime telemetry wave.",
+  "description": "Owner-local live receipt sources for the current detail session-harvest, project-core kernel, eval, and runtime telemetry wave. Growth-refinery candidate lineage summary stays reviewed-owner-local only and excludes raw checkpoint-note intake.",
   "sources": [
     {
       "name": "session_harvest_family",

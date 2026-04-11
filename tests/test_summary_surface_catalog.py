@@ -47,6 +47,7 @@ def test_summary_surface_catalog_contract_is_exact() -> None:
     assert [entry["name"] for entry in payload["surfaces"]] == [
         "core_skill_application_summary",
         "object_summary",
+        "candidate_lineage_summary",
         "repeated_window_summary",
         "route_progression_summary",
         "fork_calibration_summary",

@@ -29,6 +29,7 @@ def test_build_views_produces_expected_surface_counts() -> None:
 
     assert set(outputs) == {
         "object_summary.min.json",
+        "candidate_lineage_summary.min.json",
         "core_skill_application_summary.min.json",
         "repeated_window_summary.min.json",
         "route_progression_summary.min.json",
@@ -40,6 +41,21 @@ def test_build_views_produces_expected_surface_counts() -> None:
         "summary_surface_catalog.min.json",
     }
     assert outputs["object_summary.min.json"]["generated_from"]["total_receipts"] == 14
+    assert outputs["candidate_lineage_summary.min.json"]["stage_counts"] == {
+        "observed": 2,
+        "checkpointed": 2,
+        "reviewed": 2,
+        "harvested": 1,
+        "seeded": 0,
+        "planted": 0,
+        "proved": 0,
+        "promoted": 0,
+        "superseded_or_dropped": 1,
+    }
+    assert outputs["candidate_lineage_summary.min.json"]["owner_target_counts"] == {
+        "aoa-playbooks": 1,
+        "aoa-skills": 1,
+    }
     assert len(outputs["core_skill_application_summary.min.json"]["skills"]) == 1
     assert len(outputs["repeated_window_summary.min.json"]["windows"]) == 2
     assert len(outputs["route_progression_summary.min.json"]["routes"]) == 1
@@ -66,6 +82,7 @@ def test_build_views_produces_expected_surface_counts() -> None:
     assert [entry["surface_ref"] for entry in catalog["surfaces"]] == [
         "generated/core_skill_application_summary.min.json",
         "generated/object_summary.min.json",
+        "generated/candidate_lineage_summary.min.json",
         "generated/repeated_window_summary.min.json",
         "generated/route_progression_summary.min.json",
         "generated/fork_calibration_summary.min.json",
@@ -74,6 +91,40 @@ def test_build_views_produces_expected_surface_counts() -> None:
         "generated/stress_recovery_window_summary.min.json",
         "generated/surface_detection_summary.min.json",
     ]
+
+
+def test_candidate_lineage_summary_stays_reviewed_only_and_no_score() -> None:
+    module = load_build_views_module()
+    receipts = module.load_receipts(
+        [REPO_ROOT / "examples" / "session_harvest_family.receipts.example.json"]
+    )
+
+    summary = module.build_candidate_lineage_summary(
+        receipts,
+        {
+            "receipt_input_paths": ["examples/session_harvest_family.receipts.example.json"],
+            "total_receipts": len(receipts),
+            "latest_observed_at": max(receipt["observed_at"] for receipt in receipts),
+        },
+    )
+
+    assert summary["schema_version"] == "aoa_stats_candidate_lineage_summary_v1"
+    assert "total_score" not in summary
+    assert summary["status_posture_counts"] == {
+        "early": 1,
+        "reanchor": 1,
+    }
+    assert summary["misroute_counts"] == {
+        "total": 1,
+        "by_target": {
+            "aoa-playbooks": 1,
+        },
+        "owner_ambiguity_total": 0,
+    }
+    assert summary["supersession_counts"] == {
+        "superseded_total": 0,
+        "dropped_total": 1,
+    }
 
 
 def test_stress_recovery_window_summary_resolves_eval_report_ref(tmp_path: Path) -> None:

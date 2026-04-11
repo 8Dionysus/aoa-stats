@@ -55,6 +55,7 @@ Current v0 derived views:
 
 - core-skill-application summary
 - object summary
+- candidate-lineage summary
 - repeated-window summary
 - route-progression summary
 - fork-calibration summary
@@ -66,6 +67,10 @@ Current v0 derived views:
 `generated/summary_surface_catalog.min.json` is the compact owner-owned
 runtime-entry capsule for `aoa-stats`. It points back to derived view families
 without replacing the underlying receipts or owner-local authority.
+
+`generated/candidate_lineage_summary.min.json` is the first growth-refinery
+funnel slice. It reads reviewed owner-local lineage entries only and does not
+pull raw checkpoint carry into stats.
 
 The published runtime-entry capsule is the schema-backed v2 contract:
 

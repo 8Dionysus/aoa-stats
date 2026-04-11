@@ -19,6 +19,11 @@
         "role": "primary"
       },
       {
+        "kind": "candidate_lineage_receipt",
+        "ref": "repo:aoa-skills/examples/session_growth_artifacts/candidate_lineage_receipt.alpha.json",
+        "role": "candidate-lineage"
+      },
+      {
         "kind": "skill_contract",
         "ref": "repo:aoa-skills/skills/aoa-session-donor-harvest/SKILL.md",
         "role": "contract"
@@ -26,19 +31,92 @@
     ],
     "payload": {
       "route_ref": "route:session-growth",
-      "extract_counts": {
-        "skill": 2,
-        "technique": 1,
-        "memo": 1
+      "extract_kind_counts": {
+        "skill": 1,
+        "hold": 1
       },
       "owner_layer_distribution": {
-        "aoa-skills": 2,
-        "aoa-techniques": 1,
-        "aoa-memo": 1
+        "aoa-skills": 1,
+        "hold": 1
       },
-      "promotion_candidates": 2,
-      "deferrals": 1,
-      "evidence_density": "reviewed"
+      "accepted_candidate_refs": [
+        "candidate:session-growth:reviewed-donor-harvest"
+      ],
+      "deferred_or_dropped_refs": [
+        "deferred:session-growth:theme-only-residue"
+      ],
+      "candidate_lineage_refs": [
+        "repo:aoa-skills/examples/session_growth_artifacts/candidate_lineage_receipt.alpha.json"
+      ],
+      "candidate_lineage_entries": [
+        {
+          "candidate_ref": "candidate:session-growth:reviewed-donor-harvest",
+          "cluster_ref": "cluster:growth:aoa-sdk-checkpoint-auto-capture-verify-green",
+          "owner_hypothesis": "aoa-skills",
+          "owner_shape": "skill",
+          "nearest_wrong_target": "aoa-playbooks",
+          "status_posture": "early",
+          "axis_pressure": [
+            "execution_reliability",
+            "change_legibility",
+            "proof_discipline"
+          ],
+          "supersedes": [],
+          "merged_into": null,
+          "drop_reason": null,
+          "evidence_refs": [
+            "repo:aoa-skills/examples/session_growth_artifacts/candidate_lineage_receipt.alpha.json",
+            "repo:aoa-skills/examples/session_growth_artifacts/harvest_packet.alpha.json"
+          ],
+          "stages": {
+            "observed": "2026-04-05T09:40:00Z",
+            "checkpointed": "2026-04-05T09:45:00Z",
+            "reviewed": "2026-04-05T09:52:00Z",
+            "harvested": "2026-04-05T10:00:00Z",
+            "seeded": null,
+            "planted": null,
+            "proved": null,
+            "promoted": null,
+            "superseded_or_dropped": null
+          }
+        },
+        {
+          "candidate_ref": "candidate:session-growth:nearest-wrong-playbook-route",
+          "cluster_ref": "cluster:growth:aoa-sdk-checkpoint-auto-capture-verify-green",
+          "owner_hypothesis": "aoa-playbooks",
+          "owner_shape": "recurring-playbook-route",
+          "nearest_wrong_target": "aoa-playbooks",
+          "status_posture": "reanchor",
+          "axis_pressure": [
+            "boundary_integrity",
+            "change_legibility"
+          ],
+          "supersedes": [],
+          "merged_into": null,
+          "drop_reason": "nearest_wrong_target_rejected_during_reviewed_harvest",
+          "evidence_refs": [
+            "repo:aoa-skills/examples/session_growth_artifacts/harvest_packet.alpha.json"
+          ],
+          "stages": {
+            "observed": "2026-04-05T09:40:00Z",
+            "checkpointed": "2026-04-05T09:45:00Z",
+            "reviewed": "2026-04-05T09:52:00Z",
+            "harvested": null,
+            "seeded": null,
+            "planted": null,
+            "proved": null,
+            "promoted": null,
+            "superseded_or_dropped": "2026-04-05T10:00:00Z"
+          }
+        }
+      ],
+      "chosen_next_artifact_refs": [
+        "skills/aoa-session-donor-harvest/SKILL.md"
+      ],
+      "handoff_targets": [
+        "aoa-session-route-forks"
+      ],
+      "evidence_density_summary": "reviewed"
     }
   },
   {

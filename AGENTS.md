@@ -60,6 +60,10 @@ Then branch by task:
 - stress recovery or derived signal hygiene:
   `docs/STRESS_RECOVERY_WINDOW_SUMMARIES.md` and
   `docs/DERIVED_SIGNAL_HYGIENE.md`
+- growth-refinery lineage funnel:
+  `docs/GROWTH_FUNNEL_SUMMARY.md`,
+  `schemas/candidate_lineage_summary.schema.json`, and
+  `generated/candidate_lineage_summary.min.json`
 - repo-local Codex MCP behavior:
   `docs/CODEX_MCP.md`,
   `scripts/aoa_stats_mcp_server.py`,

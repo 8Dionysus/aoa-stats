@@ -41,6 +41,11 @@ Use the shortest route by need:
   `docs/DERIVED_SIGNAL_HYGIENE.md`,
   `schemas/stress_recovery_window_summary_v1.json`, and
   `examples/stress_recovery_window_summary.example.json`
+- growth-refinery funnel doctrine and contracts:
+  `docs/GROWTH_FUNNEL_SUMMARY.md`,
+  `schemas/candidate_lineage_summary.schema.json`,
+  `examples/candidate_lineage_summary.example.json`, and
+  `generated/candidate_lineage_summary.min.json`
 - via negativa pruning checklist:
   `docs/VIA_NEGATIVA_CHECKLIST.md`
 - canonical shared receipt envelope and active event family:
@@ -114,6 +119,11 @@ The first usable derived summaries are:
 These are built from one bounded receipt feed and are intended to stay
 machine-first, evidence-linked, and weaker than the owner-local source
 surfaces they summarize.
+
+`generated/candidate_lineage_summary.min.json` is the first v1
+growth-refinery funnel slice. It reads only reviewed owner-local lineage
+entries carried by receipts, keeps the stage route explicit, and excludes raw
+checkpoint-note intake.
 
 `generated/summary_surface_catalog.min.json` is also the compact runtime-entry
 capsule that federation routing should inspect first for `aoa-stats`. It now
