@@ -7,6 +7,20 @@ Tracking starts with the first public release-prep baseline for this repository.
 
 ## [Unreleased]
 
+### Added
+
+- narrow repo-local `aoa_stats` MCP surface for Codex under
+  `src/aoa_stats_mcp/` and `scripts/aoa_stats_mcp_server.py`, scoped to the
+  summary catalog, generated surfaces, source registry, and boundary bundle
+- focused MCP state tests under `tests/test_aoa_stats_mcp_state.py`
+- optional MCP dependency surface in `requirements-mcp.txt`
+
+### Documentation
+
+- repo-local MCP posture and launch guidance in `docs/CODEX_MCP.md`
+- README, docs map, and AGENTS routing updates so the MCP stays bounded and
+  visibly derived-only
+
 ## [0.1.0] - 2026-04-10
 
 First public release of `aoa-stats` as the derived observability layer in the

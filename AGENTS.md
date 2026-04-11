@@ -60,6 +60,11 @@ Then branch by task:
 - stress recovery or derived signal hygiene:
   `docs/STRESS_RECOVERY_WINDOW_SUMMARIES.md` and
   `docs/DERIVED_SIGNAL_HYGIENE.md`
+- repo-local Codex MCP behavior:
+  `docs/CODEX_MCP.md`,
+  `scripts/aoa_stats_mcp_server.py`,
+  `src/aoa_stats_mcp/`, and
+  `tests/test_aoa_stats_mcp_state.py`
 - receipt envelope or source-registry changes:
   `schemas/stats-event-envelope.schema.json`,
   `config/live_receipt_sources.json`, and
@@ -81,6 +86,7 @@ If a deeper directory defines its own `AGENTS.md`, follow the nearest one.
 
 The most important objects in this repository are:
 
+- `docs/CODEX_MCP.md`
 - `schemas/*.json`
 - `schemas/stats-event-envelope.schema.json`
 - `generated/*.json`
@@ -91,9 +97,25 @@ The most important objects in this repository are:
 - `scripts/check_live_publishers.py`
 - `scripts/refresh_live_stats.py`
 - `scripts/install_live_refresh_units.py`
+- `scripts/aoa_stats_mcp_server.py`
 - `scripts/validate_repo.py`
+- `src/aoa_stats_mcp/`
 - example receipt feeds under `examples/`
 - tests that prove derivation and boundary integrity
+
+## aoa-stats MCP posture
+
+- Treat the `aoa_stats` MCP server as derived-only context.
+- Start with `stats_catalog` before reading any specific surface.
+- Prefer `stats_surface_read(..., mode="preview")` first; expand to `full`
+  only when truly necessary.
+- Use `stats_boundary_rules` whenever there is risk of treating counts or
+  summaries as owner meaning.
+- Never let `aoa-stats` override canonical meaning from `aoa-skills`,
+  `aoa-evals`, `aoa-playbooks`, `aoa-techniques`, `aoa-agents`, `aoa-memo`,
+  or `abyss-stack`.
+- Do not extend this server toward raw receipt tailing, write actions, route
+  authority, proof authority, or quest-state authority.
 
 ## Hard NO
 
