@@ -127,6 +127,50 @@ def test_candidate_lineage_summary_stays_reviewed_only_and_no_score() -> None:
     }
 
 
+def test_candidate_lineage_summary_orders_mixed_timezone_timestamps() -> None:
+    module = load_build_views_module()
+    receipts = [
+        {
+            "event_kind": "harvest_packet_receipt",
+            "observed_at": "2026-04-11T12:00:00",
+            "payload": {
+                "evidence_density_summary": "reviewed",
+                "candidate_lineage_entries": [
+                    {
+                        "candidate_ref": "candidate:growth:mixed-timezone",
+                        "cluster_ref": "cluster:growth:mixed-timezone",
+                        "owner_hypothesis": "aoa-skills",
+                        "owner_shape": "skill",
+                        "nearest_wrong_target": "aoa-playbooks",
+                        "status_posture": "early",
+                        "axis_pressure": ["change_legibility"],
+                        "supersedes": [],
+                        "merged_into": None,
+                        "drop_reason": None,
+                        "evidence_refs": ["repo:aoa-skills/examples/session_growth_artifacts/harvest_packet.alpha.json"],
+                        "stages": {
+                            "observed": "2026-04-11T12:00:00",
+                            "checkpointed": "2026-04-11T12:05:00Z",
+                        },
+                    }
+                ],
+            },
+        }
+    ]
+
+    summary = module.build_candidate_lineage_summary(
+        receipts,
+        {
+            "receipt_input_paths": ["mixed-timezone"],
+            "total_receipts": len(receipts),
+            "latest_observed_at": "2026-04-11T12:00:00",
+        },
+    )
+
+    assert summary["stage_counts"]["observed"] == 1
+    assert summary["stage_counts"]["checkpointed"] == 1
+
+
 def test_stress_recovery_window_summary_resolves_eval_report_ref(tmp_path: Path) -> None:
     module = load_build_views_module()
     evals_root = tmp_path / "aoa-evals"

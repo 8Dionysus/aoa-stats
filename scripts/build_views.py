@@ -5,7 +5,7 @@ import argparse
 import json
 import sys
 from collections import Counter, defaultdict
-from datetime import datetime
+from datetime import UTC, datetime
 from functools import lru_cache
 from pathlib import Path
 from statistics import median
@@ -356,9 +356,12 @@ def parse_iso_datetime(value: Any) -> datetime | None:
     if not is_nonempty_string(value):
         return None
     try:
-        return datetime.fromisoformat(value.replace("Z", "+00:00"))
+        parsed = datetime.fromisoformat(value.replace("Z", "+00:00"))
     except ValueError:
         return None
+    if parsed.tzinfo is None:
+        return parsed.replace(tzinfo=UTC)
+    return parsed.astimezone(UTC)
 
 
 def normalize_string_list(value: Any) -> list[str]:
