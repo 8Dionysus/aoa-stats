@@ -8,6 +8,7 @@ from collections import Counter, defaultdict
 from datetime import datetime
 from functools import lru_cache
 from pathlib import Path
+from statistics import median
 from typing import Any
 
 REPO_ROOT = Path(__file__).resolve().parents[1]
@@ -26,6 +27,27 @@ AXES = (
     "provenance_hygiene",
     "deep_readiness",
 )
+FUNNEL_STAGES = (
+    "observed",
+    "checkpointed",
+    "reviewed",
+    "harvested",
+    "seeded",
+    "planted",
+    "proved",
+    "promoted",
+    "superseded_or_dropped",
+)
+TIME_TO_STAGE_KEYS = (
+    "checkpointed",
+    "reviewed",
+    "harvested",
+    "seeded",
+    "planted",
+    "proved",
+    "promoted",
+)
+AMBIGUOUS_OWNER_TARGETS = {"hold", "unknown", "unresolved"}
 
 
 class ReceiptValidationError(ValueError):
@@ -328,6 +350,21 @@ def is_nonempty_string(value: Any) -> bool:
 
 def is_number(value: Any) -> bool:
     return isinstance(value, (int, float)) and not isinstance(value, bool)
+
+
+def parse_iso_datetime(value: Any) -> datetime | None:
+    if not is_nonempty_string(value):
+        return None
+    try:
+        return datetime.fromisoformat(value.replace("Z", "+00:00"))
+    except ValueError:
+        return None
+
+
+def normalize_string_list(value: Any) -> list[str]:
+    if not isinstance(value, list):
+        return []
+    return [item for item in value if is_nonempty_string(item)]
 
 
 def ensure_repo_relative_ref_path(raw_path: str) -> str | None:
@@ -686,6 +723,167 @@ def build_object_summary(
         "schema_version": "aoa_stats_object_summary_v1",
         "generated_from": source,
         "objects": objects,
+    }
+
+
+def empty_stage_counts() -> dict[str, int]:
+    return {stage: 0 for stage in FUNNEL_STAGES}
+
+
+def empty_time_to_stage() -> dict[str, float | None]:
+    return {stage: None for stage in TIME_TO_STAGE_KEYS}
+
+
+def normalize_lineage_stages(raw_stages: Any, *, fallback_observed_at: str) -> dict[str, str | None]:
+    stages = {stage: None for stage in FUNNEL_STAGES}
+    if isinstance(raw_stages, dict):
+        for stage in FUNNEL_STAGES:
+            timestamp = raw_stages.get(stage)
+            if parse_iso_datetime(timestamp) is not None:
+                stages[stage] = str(timestamp)
+    if stages["observed"] is None and parse_iso_datetime(fallback_observed_at) is not None:
+        stages["observed"] = fallback_observed_at
+    return stages
+
+
+def lineage_latest_datetime(entry: dict[str, Any]) -> datetime:
+    latest = parse_iso_datetime(entry.get("receipt_observed_at"))
+    for timestamp in entry["stages"].values():
+        current = parse_iso_datetime(timestamp)
+        if current is not None and (latest is None or current > latest):
+            latest = current
+    return latest or datetime.min
+
+
+def collect_candidate_lineage_entries(receipts: list[dict[str, Any]]) -> list[dict[str, Any]]:
+    latest_by_candidate: dict[str, dict[str, Any]] = {}
+    for receipt in receipts:
+        if receipt["event_kind"] != "harvest_packet_receipt":
+            continue
+        payload = receipt["payload"]
+        evidence_density = payload.get("evidence_density_summary") or payload.get("evidence_density")
+        if evidence_density != "reviewed":
+            continue
+        raw_entries = payload.get("candidate_lineage_entries")
+        if not isinstance(raw_entries, list):
+            continue
+        for item in raw_entries:
+            if not isinstance(item, dict):
+                continue
+            candidate_ref = item.get("candidate_ref")
+            if not is_nonempty_string(candidate_ref):
+                continue
+            owner_hypothesis = item.get("owner_hypothesis")
+            owner_shape = item.get("owner_shape")
+            status_posture = item.get("status_posture")
+            if not (
+                is_nonempty_string(owner_hypothesis)
+                and is_nonempty_string(owner_shape)
+                and is_nonempty_string(status_posture)
+            ):
+                continue
+            normalized = {
+                "candidate_ref": candidate_ref,
+                "cluster_ref": item.get("cluster_ref") if is_nonempty_string(item.get("cluster_ref")) else None,
+                "owner_hypothesis": owner_hypothesis,
+                "owner_shape": owner_shape,
+                "nearest_wrong_target": (
+                    item.get("nearest_wrong_target")
+                    if is_nonempty_string(item.get("nearest_wrong_target"))
+                    else None
+                ),
+                "status_posture": status_posture,
+                "axis_pressure": normalize_string_list(item.get("axis_pressure")),
+                "supersedes": normalize_string_list(item.get("supersedes")),
+                "merged_into": item.get("merged_into") if is_nonempty_string(item.get("merged_into")) else None,
+                "drop_reason": item.get("drop_reason") if is_nonempty_string(item.get("drop_reason")) else None,
+                "evidence_refs": normalize_string_list(item.get("evidence_refs")),
+                "stages": normalize_lineage_stages(item.get("stages"), fallback_observed_at=receipt["observed_at"]),
+                "receipt_observed_at": receipt["observed_at"],
+            }
+            previous = latest_by_candidate.get(candidate_ref)
+            if previous is None or lineage_latest_datetime(normalized) >= lineage_latest_datetime(previous):
+                latest_by_candidate[candidate_ref] = normalized
+    return sorted(
+        latest_by_candidate.values(),
+        key=lambda entry: (lineage_latest_datetime(entry), entry["candidate_ref"]),
+    )
+
+
+def median_days(values: list[float]) -> float | None:
+    if not values:
+        return None
+    return round(float(median(values)), 2)
+
+
+def stage_duration_days(entry: dict[str, Any], stage: str) -> float | None:
+    observed = parse_iso_datetime(entry["stages"].get("observed"))
+    target = parse_iso_datetime(entry["stages"].get(stage))
+    if observed is None or target is None or target < observed:
+        return None
+    return (target - observed).total_seconds() / 86400
+
+
+def build_candidate_lineage_summary(
+    receipts: list[dict[str, Any]], source: dict[str, Any]
+) -> dict[str, Any]:
+    entries = collect_candidate_lineage_entries(receipts)
+    stage_counts = empty_stage_counts()
+    owner_target_counts: Counter[str] = Counter()
+    owner_shape_counts: Counter[str] = Counter()
+    status_posture_counts: Counter[str] = Counter()
+    misroute_target_counts: Counter[str] = Counter()
+    axis_pressure_counts: Counter[str] = Counter()
+    time_to_stage_values: dict[str, list[float]] = {stage: [] for stage in TIME_TO_STAGE_KEYS}
+    owner_ambiguity_total = 0
+    superseded_total = 0
+    dropped_total = 0
+
+    for entry in entries:
+        for stage in FUNNEL_STAGES:
+            if entry["stages"].get(stage) is not None:
+                stage_counts[stage] += 1
+
+        owner_target_counts[entry["owner_hypothesis"]] += 1
+        owner_shape_counts[entry["owner_shape"]] += 1
+        status_posture_counts[entry["status_posture"]] += 1
+        if entry["owner_hypothesis"] in AMBIGUOUS_OWNER_TARGETS:
+            owner_ambiguity_total += 1
+
+        if entry["drop_reason"] is not None:
+            dropped_total += 1
+            if entry["nearest_wrong_target"] is not None:
+                misroute_target_counts[entry["nearest_wrong_target"]] += 1
+        if entry["merged_into"] is not None or entry["supersedes"]:
+            superseded_total += 1
+
+        for axis in entry["axis_pressure"]:
+            axis_pressure_counts[axis] += 1
+        for stage in TIME_TO_STAGE_KEYS:
+            duration = stage_duration_days(entry, stage)
+            if duration is not None:
+                time_to_stage_values[stage].append(duration)
+
+    return {
+        "schema_version": "aoa_stats_candidate_lineage_summary_v1",
+        "generated_from": source,
+        "stage_counts": stage_counts,
+        "owner_target_counts": dict(sorted(owner_target_counts.items())),
+        "owner_shape_counts": dict(sorted(owner_shape_counts.items())),
+        "status_posture_counts": dict(sorted(status_posture_counts.items())),
+        "time_to_stage_median_days": {
+            stage: median_days(values) for stage, values in time_to_stage_values.items()
+        },
+        "misroute_counts": {
+            "total": sum(misroute_target_counts.values()),
+            "by_target": dict(sorted(misroute_target_counts.items())),
+            "owner_ambiguity_total": owner_ambiguity_total,
+        },
+        "supersession_counts": {
+            "superseded_total": superseded_total,
+            "dropped_total": dropped_total,
+        },
+        "axis_pressure_counts": dict(sorted(axis_pressure_counts.items())),
     }
 
 
@@ -1097,6 +1295,13 @@ def build_summary_surface_catalog(source: dict[str, Any]) -> dict[str, Any]:
                 "derivation_rule": "group receipts by object_ref and keep counts, latest timestamps, and bounded posture flags",
             },
             {
+                "name": "candidate_lineage_summary",
+                "surface_ref": "generated/candidate_lineage_summary.min.json",
+                "schema_ref": "schemas/candidate_lineage_summary.schema.json",
+                "primary_question": "How far are reviewed growth-refinery candidates actually moving without turning stats into routing or proof authority?",
+                "derivation_rule": "aggregate reviewed-only candidate_lineage_entries carried on harvest_packet_receipt payloads into stage, owner-target, posture, misroute, supersession, and time-to-stage summaries",
+            },
+            {
                 "name": "repeated_window_summary",
                 "surface_ref": "generated/repeated_window_summary.min.json",
                 "schema_ref": "schemas/repeated-window-summary.schema.json",
@@ -1159,6 +1364,9 @@ def build_all_views(
     )
     return {
         "object_summary.min.json": build_object_summary(active_receipts, source),
+        "candidate_lineage_summary.min.json": build_candidate_lineage_summary(
+            active_receipts, source
+        ),
         "core_skill_application_summary.min.json": build_core_skill_application_summary(
             active_receipts, source
         ),

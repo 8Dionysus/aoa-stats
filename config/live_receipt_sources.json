@@ -1,7 +1,7 @@
 {
   "schema_version": 1,
   "profile": "session-growth-live",
-  "description": "Canonical owner-local live receipt sources for automatic session-growth refresh under /srv across detail skill receipts, project-core kernel skill applications, evals, playbooks, techniques, memo, and runtime closeouts.",
+  "description": "Canonical owner-local live receipt sources for automatic session-growth refresh under /srv across detail skill receipts, project-core kernel skill applications, evals, playbooks, techniques, memo, and runtime closeouts. Growth-refinery candidate lineage summary stays reviewed-owner-local only and does not read raw checkpoint notes directly.",
   "sources": [
     {
       "name": "session_harvest_family_live_log",

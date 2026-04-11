@@ -13,6 +13,7 @@ REPO_ROOT = Path(__file__).resolve().parents[1]
 DEFAULT_EVALS_ROOT = REPO_ROOT.parent / "aoa-evals"
 SCHEMAS = {
     "object_summary.min.json": "object-summary.schema.json",
+    "candidate_lineage_summary.min.json": "candidate_lineage_summary.schema.json",
     "core_skill_application_summary.min.json": "core-skill-application-summary.schema.json",
     "repeated_window_summary.min.json": "repeated-window-summary.schema.json",
     "route_progression_summary.min.json": "route-progression-summary.schema.json",
@@ -33,6 +34,7 @@ REQUIRED_TEXT_FILES = (
     "docs/README.md",
     "docs/BOUNDARIES.md",
     "docs/ARCHITECTURE.md",
+    "docs/GROWTH_FUNNEL_SUMMARY.md",
     "docs/CODEX_MCP.md",
     "docs/LIVE_SESSION_USE.md",
 )

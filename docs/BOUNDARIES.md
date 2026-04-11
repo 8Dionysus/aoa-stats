@@ -34,6 +34,7 @@ It may consume:
 It may emit:
 
 - object summaries
+- candidate-lineage summaries
 - repeated-window summaries
 - route-progression summaries
 - fork-calibration summaries
@@ -52,5 +53,6 @@ It must not emit:
 - counts do not become proof
 - proof does not collapse into one score
 - progression stays bounded and multi-axis
+- raw checkpoint notes stay out unless an owner-local reviewed receipt carries the needed lineage forward
 - evidence stays linked rather than duplicated
 - derived summaries stay weaker than owner-local meaning

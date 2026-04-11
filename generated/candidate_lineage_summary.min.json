@@ -1,0 +1,59 @@
+{
+  "schema_version": "aoa_stats_candidate_lineage_summary_v1",
+  "generated_from": {
+    "receipt_input_paths": [
+      "session_harvest_family.receipts.example.json"
+    ],
+    "total_receipts": 14,
+    "latest_observed_at": "2026-04-06T09:45:00Z"
+  },
+  "stage_counts": {
+    "observed": 2,
+    "checkpointed": 2,
+    "reviewed": 2,
+    "harvested": 1,
+    "seeded": 0,
+    "planted": 0,
+    "proved": 0,
+    "promoted": 0,
+    "superseded_or_dropped": 1
+  },
+  "owner_target_counts": {
+    "aoa-playbooks": 1,
+    "aoa-skills": 1
+  },
+  "owner_shape_counts": {
+    "recurring-playbook-route": 1,
+    "skill": 1
+  },
+  "status_posture_counts": {
+    "early": 1,
+    "reanchor": 1
+  },
+  "time_to_stage_median_days": {
+    "checkpointed": 0.0,
+    "reviewed": 0.01,
+    "harvested": 0.01,
+    "seeded": null,
+    "planted": null,
+    "proved": null,
+    "promoted": null
+  },
+  "misroute_counts": {
+    "total": 1,
+    "by_target": {
+      "aoa-playbooks": 1
+    },
+    "owner_ambiguity_total": 0
+  },
+  "supersession_counts": {
+    "superseded_total": 0,
+    "dropped_total": 1
+  },
+  "axis_pressure_counts": {
+    "boundary_integrity": 1,
+    "change_legibility": 2,
+    "execution_reliability": 1,
+    "proof_discipline": 1
+  }
+}

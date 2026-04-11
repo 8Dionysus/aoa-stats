@@ -9,6 +9,7 @@ Use this map when you want to know which stats-layer document to open next.
 - repo-local Codex MCP usage and launch: `CODEX_MCP.md`
 - live intake and update loop: `LIVE_SESSION_USE.md`
 - release flow and public release narrative: `RELEASING.md` and `../CHANGELOG.md`
+- growth-refinery funnel summary: `GROWTH_FUNNEL_SUMMARY.md`
 - first-wave derived antifragility posture: `ANTIFRAGILITY_VECTOR.md`
 - fourth-wave repeated stress recovery derivation: `STRESS_RECOVERY_WINDOW_SUMMARIES.md`
 - derived signal precedence and anti-loop hygiene: `DERIVED_SIGNAL_HYGIENE.md`
