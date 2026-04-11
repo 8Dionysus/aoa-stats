@@ -24,6 +24,7 @@ Use the shortest route by need:
 
 - ownership and anti-collapse rule: `docs/BOUNDARIES.md`
 - five-layer architecture and derived posture: `docs/ARCHITECTURE.md`
+- repo-local Codex MCP surface: `docs/CODEX_MCP.md`
 - live receipt intake and generation loop: `docs/LIVE_SESSION_USE.md`
 - release and publication posture: `docs/RELEASING.md` and `CHANGELOG.md`
 - local agent instructions: `AGENTS.md`
@@ -49,6 +50,11 @@ Use the shortest route by need:
   `config/live_receipt_sources.json`
 - example live source registry for bounded docs/testing:
   `config/live_receipt_sources.example.json`
+- repo-local Codex MCP entrypoint:
+  `scripts/aoa_stats_mcp_server.py`,
+  `src/aoa_stats_mcp/`,
+  `tests/test_aoa_stats_mcp_state.py`, and
+  `requirements-mcp.txt`
 - generated summary surfaces: `generated/`
 - builders and validators: `scripts/build_views.py`,
   `scripts/refresh_live_stats.py`,
@@ -133,6 +139,13 @@ and refresh ephemeral live state under `state/`.
 python scripts/build_views.py --check
 python scripts/validate_repo.py
 python -m pytest -q tests
+```
+
+For the optional repo-local MCP slice:
+
+```bash
+python -m pytest -q tests/test_aoa_stats_mcp_state.py
+python scripts/aoa_stats_mcp_server.py
 ```
 
 ## Local build

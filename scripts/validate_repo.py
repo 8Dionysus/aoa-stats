@@ -33,6 +33,7 @@ REQUIRED_TEXT_FILES = (
     "docs/README.md",
     "docs/BOUNDARIES.md",
     "docs/ARCHITECTURE.md",
+    "docs/CODEX_MCP.md",
     "docs/LIVE_SESSION_USE.md",
 )
 

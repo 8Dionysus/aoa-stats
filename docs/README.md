@@ -6,6 +6,7 @@ Use this map when you want to know which stats-layer document to open next.
 
 - boundary and ownership split: `BOUNDARIES.md`
 - architecture and layer model: `ARCHITECTURE.md`
+- repo-local Codex MCP usage and launch: `CODEX_MCP.md`
 - live intake and update loop: `LIVE_SESSION_USE.md`
 - release flow and public release narrative: `RELEASING.md` and `../CHANGELOG.md`
 - first-wave derived antifragility posture: `ANTIFRAGILITY_VECTOR.md`
@@ -17,6 +18,8 @@ Use this map when you want to know which stats-layer document to open next.
 - Open `BOUNDARIES.md` first if the question is "should this live here at all?"
 - Open `ARCHITECTURE.md` first if the question is "how do facts, proof,
   progression, and summaries stay separate?"
+- Open `CODEX_MCP.md` first if the question is "how should Codex inspect
+  aoa-stats without treating it like authority?"
 - Open `LIVE_SESSION_USE.md` first if the question is "how do I refresh the
   derived summaries while real sessions are happening?"
 - Open `RELEASING.md` first if the question is "what do I need to verify
