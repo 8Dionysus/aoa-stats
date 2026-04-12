@@ -1,0 +1,29 @@
+{
+  "schema_version": "aoa_stats_session_growth_branch_summary_v1",
+  "generated_from": {
+    "receipt_input_paths": [
+      "session_harvest_family.receipts.example.json"
+    ],
+    "total_receipts": 16,
+    "latest_observed_at": "2026-04-06T09:45:00Z"
+  },
+  "window_ref": "window:2026-04",
+  "counts_by_recommended_next_skill": {
+    "aoa-automation-opportunity-scan": 1,
+    "aoa-session-route-forks": 1
+  },
+  "defer_count": 1,
+  "counts_by_owner_target": {
+    "aoa-playbooks": 1,
+    "aoa-skills": 1
+  },
+  "counts_by_status_posture": {
+    "reanchor": 1,
+    "thin-evidence": 1
+  },
+  "reason_code_aggregates": {
+    "approval_ambiguity": 1,
+    "multiple_plausible_next_moves": 1,
+    "repeated_manual_route": 1
+  }
+}

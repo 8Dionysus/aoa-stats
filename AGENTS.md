@@ -64,6 +64,13 @@ Then branch by task:
   `docs/GROWTH_FUNNEL_SUMMARY.md`,
   `schemas/candidate_lineage_summary.schema.json`, and
   `generated/candidate_lineage_summary.min.json`
+- fourth-wave next-kernel branch and automation follow-through:
+  `docs/SESSION_GROWTH_BRANCH_SUMMARY.md`,
+  `docs/AUTOMATION_FOLLOWTHROUGH_SUMMARY.md`,
+  `schemas/session-growth-branch-summary.schema.json`,
+  `schemas/automation-followthrough-summary.schema.json`,
+  `generated/session_growth_branch_summary.min.json`, and
+  `generated/automation_followthrough_summary.min.json`
 - growth-refinery owner landing and pruning followthrough:
   `docs/OWNER_LANDING_SUMMARY.md`,
   `docs/SUPERSESSION_DROP_SUMMARY.md`,
@@ -100,6 +107,8 @@ The most important objects in this repository are:
 - `docs/CODEX_MCP.md`
 - `schemas/*.json`
 - `schemas/stats-event-envelope.schema.json`
+- `generated/session_growth_branch_summary.min.json`
+- `generated/automation_followthrough_summary.min.json`
 - `generated/*.json`
 - `CHANGELOG.md`
 - `docs/RELEASING.md`

@@ -213,7 +213,9 @@ def test_build_views_produces_expected_surface_counts() -> None:
         "repeated_window_summary.min.json",
         "route_progression_summary.min.json",
         "fork_calibration_summary.min.json",
+        "session_growth_branch_summary.min.json",
         "automation_pipeline_summary.min.json",
+        "automation_followthrough_summary.min.json",
         "runtime_closeout_summary.min.json",
         "stress_recovery_window_summary.min.json",
         "surface_detection_summary.min.json",
@@ -254,7 +256,13 @@ def test_build_views_produces_expected_surface_counts() -> None:
     assert len(outputs["repeated_window_summary.min.json"]["windows"]) == 2
     assert len(outputs["route_progression_summary.min.json"]["routes"]) == 1
     assert len(outputs["fork_calibration_summary.min.json"]["routes"]) == 1
+    assert outputs["session_growth_branch_summary.min.json"]["counts_by_recommended_next_skill"] == {
+        "aoa-automation-opportunity-scan": 1,
+        "aoa-session-route-forks": 1,
+    }
     assert len(outputs["automation_pipeline_summary.min.json"]["pipelines"]) == 1
+    assert outputs["automation_followthrough_summary.min.json"]["playbook_seed_candidate_count"] == 1
+    assert outputs["automation_followthrough_summary.min.json"]["real_run_reviewed_count"] == 1
     assert len(outputs["runtime_closeout_summary.min.json"]["closeouts"]) == 1
     assert outputs["stress_recovery_window_summary.min.json"]["suppression"]["status"] == "low_sample"
     assert len(outputs["surface_detection_summary.min.json"]["windows"]) == 1
@@ -282,7 +290,9 @@ def test_build_views_produces_expected_surface_counts() -> None:
         "generated/repeated_window_summary.min.json",
         "generated/route_progression_summary.min.json",
         "generated/fork_calibration_summary.min.json",
+        "generated/session_growth_branch_summary.min.json",
         "generated/automation_pipeline_summary.min.json",
+        "generated/automation_followthrough_summary.min.json",
         "generated/runtime_closeout_summary.min.json",
         "generated/stress_recovery_window_summary.min.json",
         "generated/surface_detection_summary.min.json",
@@ -1035,7 +1045,76 @@ def test_automation_pipeline_summary_tracks_seed_readiness() -> None:
     assert pipeline["candidate_count"] == 2
     assert pipeline["seed_ready_count"] == 1
     assert pipeline["checkpoint_required_count"] == 1
-    assert pipeline["next_artifact_hints"] == ["repair-prompt", "seed-pack"]
+    assert pipeline["next_artifact_hints"] == ["playbook_seed", "repair-prompt"]
+
+
+def test_session_growth_branch_summary_tracks_reviewed_followthrough_hints() -> None:
+    module = load_build_views_module()
+    receipts = module.load_receipts(
+        [REPO_ROOT / "examples" / "session_harvest_family.receipts.example.json"]
+    )
+
+    summary = module.build_session_growth_branch_summary(
+        receipts,
+        {
+            "receipt_input_paths": ["examples/session_harvest_family.receipts.example.json"],
+            "total_receipts": len(receipts),
+            "latest_observed_at": max(receipt["observed_at"] for receipt in receipts),
+        },
+    )
+
+    assert summary["schema_version"] == "aoa_stats_session_growth_branch_summary_v1"
+    assert summary["window_ref"] == "window:2026-04"
+    assert "total_score" not in summary
+    assert summary["counts_by_recommended_next_skill"] == {
+        "aoa-automation-opportunity-scan": 1,
+        "aoa-session-route-forks": 1,
+    }
+    assert summary["defer_count"] == 1
+    assert summary["counts_by_owner_target"] == {
+        "aoa-playbooks": 1,
+        "aoa-skills": 1,
+    }
+    assert summary["counts_by_status_posture"] == {
+        "reanchor": 1,
+        "thin-evidence": 1,
+    }
+    assert summary["reason_code_aggregates"] == {
+        "approval_ambiguity": 1,
+        "multiple_plausible_next_moves": 1,
+        "repeated_manual_route": 1,
+    }
+
+
+def test_automation_followthrough_summary_tracks_blockers_and_real_run_review() -> None:
+    module = load_build_views_module()
+    receipts = module.load_receipts(
+        [REPO_ROOT / "examples" / "session_harvest_family.receipts.example.json"]
+    )
+
+    summary = module.build_automation_followthrough_summary(
+        receipts,
+        {
+            "receipt_input_paths": ["examples/session_harvest_family.receipts.example.json"],
+            "total_receipts": len(receipts),
+            "latest_observed_at": max(receipt["observed_at"] for receipt in receipts),
+        },
+    )
+
+    assert summary["schema_version"] == "aoa_stats_automation_followthrough_summary_v1"
+    assert summary["window_ref"] == "window:2026-04"
+    assert "total_score" not in summary
+    assert summary["automation_candidate_count"] == 2
+    assert summary["seed_ready_count"] == 1
+    assert summary["not_now_count"] == 1
+    assert summary["checkpoint_required_count"] == 1
+    assert summary["playbook_seed_candidate_count"] == 1
+    assert summary["real_run_reviewed_count"] == 1
+    assert summary["defer_count"] == 1
+    assert summary["blocker_aggregates"] == {
+        "approval_ambiguity": 1,
+        "schedule_out_of_scope": 2,
+    }
 
 
 def test_validate_receipt_accepts_known_unsummarized_event_kind() -> None:

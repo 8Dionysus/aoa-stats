@@ -1,0 +1,22 @@
+{
+  "schema_version": "aoa_stats_automation_followthrough_summary_v1",
+  "generated_from": {
+    "receipt_input_paths": [
+      "session_harvest_family.receipts.example.json"
+    ],
+    "total_receipts": 16,
+    "latest_observed_at": "2026-04-06T09:45:00Z"
+  },
+  "window_ref": "window:2026-04",
+  "automation_candidate_count": 2,
+  "seed_ready_count": 1,
+  "not_now_count": 1,
+  "checkpoint_required_count": 1,
+  "playbook_seed_candidate_count": 1,
+  "real_run_reviewed_count": 1,
+  "defer_count": 1,
+  "blocker_aggregates": {
+    "approval_ambiguity": 1,
+    "schedule_out_of_scope": 2
+  }
+}

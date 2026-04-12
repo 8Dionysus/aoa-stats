@@ -35,12 +35,14 @@ It may emit:
 
 - object summaries
 - candidate-lineage summaries
+- session-growth branch summaries
 - owner-landing summaries
 - supersession-drop summaries
 - repeated-window summaries
 - route-progression summaries
 - fork-calibration summaries
 - automation-pipeline summaries
+- automation-followthrough summaries
 - runtime-closeout summaries
 
 It must not emit:

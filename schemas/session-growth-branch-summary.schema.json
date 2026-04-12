@@ -1,0 +1,85 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://aoa-stats/schemas/session-growth-branch-summary.schema.json",
+  "title": "aoa-stats session growth branch summary",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema_version",
+    "generated_from",
+    "window_ref",
+    "counts_by_recommended_next_skill",
+    "defer_count",
+    "counts_by_owner_target",
+    "counts_by_status_posture",
+    "reason_code_aggregates"
+  ],
+  "properties": {
+    "schema_version": {
+      "const": "aoa_stats_session_growth_branch_summary_v1"
+    },
+    "generated_from": {
+      "$ref": "#/$defs/generated_from"
+    },
+    "window_ref": {
+      "type": "string",
+      "minLength": 1
+    },
+    "counts_by_recommended_next_skill": {
+      "$ref": "#/$defs/string_count_map"
+    },
+    "defer_count": {
+      "type": "integer",
+      "minimum": 0
+    },
+    "counts_by_owner_target": {
+      "$ref": "#/$defs/string_count_map"
+    },
+    "counts_by_status_posture": {
+      "$ref": "#/$defs/string_count_map"
+    },
+    "reason_code_aggregates": {
+      "$ref": "#/$defs/string_count_map"
+    }
+  },
+  "$defs": {
+    "generated_from": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "receipt_input_paths",
+        "total_receipts",
+        "latest_observed_at"
+      ],
+      "properties": {
+        "receipt_input_paths": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "type": "string",
+            "minLength": 1
+          }
+        },
+        "total_receipts": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "latest_observed_at": {
+          "type": "string",
+          "format": "date-time"
+        }
+      }
+    },
+    "string_count_map": {
+      "type": "object",
+      "propertyNames": {
+        "type": "string",
+        "minLength": 1
+      },
+      "additionalProperties": {
+        "type": "integer",
+        "minimum": 0
+      }
+    }
+  }
+}

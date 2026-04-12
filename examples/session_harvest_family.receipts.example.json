@@ -147,6 +147,14 @@
     "payload": {
       "route_ref": "route:session-growth",
       "chosen_branch": "automation-first",
+      "recommended_next_skill": "aoa-automation-opportunity-scan",
+      "reason_codes": [
+        "repeated_manual_route",
+        "approval_ambiguity"
+      ],
+      "defer_allowed": true,
+      "owner_hypothesis": "aoa-playbooks",
+      "status_posture": "thin-evidence",
       "branch_options_count": 3,
       "predicted_gain": "higher post-session reuse",
       "predicted_risk": "bounded",
@@ -223,12 +231,17 @@
     ],
     "payload": {
       "pipeline_ref": "pipeline:session-growth",
+      "verdict": "not_now",
       "repeat_signal": "present",
       "deterministic_ready": true,
       "reversible_ready": true,
       "checkpoint_required": true,
       "seed_ready": false,
-      "next_artifact_hint": "repair-prompt"
+      "next_artifact_hint": "repair-prompt",
+      "blocker_codes": [
+        "approval_ambiguity",
+        "schedule_out_of_scope"
+      ]
     }
   },
   {
@@ -457,12 +470,18 @@
     ],
     "payload": {
       "pipeline_ref": "pipeline:session-growth",
+      "verdict": "seed_ready",
       "repeat_signal": "strong",
       "deterministic_ready": true,
       "reversible_ready": true,
       "checkpoint_required": false,
       "seed_ready": true,
-      "next_artifact_hint": "seed-pack"
+      "playbook_seed_candidate": "reviewed-automation-followthrough",
+      "real_run_reviewed": true,
+      "next_artifact_hint": "playbook_seed",
+      "blocker_codes": [
+        "schedule_out_of_scope"
+      ]
     }
   },
   {
@@ -493,6 +512,13 @@
     "payload": {
       "route_ref": "route:session-growth",
       "chosen_branch": "ship-adjunct",
+      "recommended_next_skill": "aoa-session-route-forks",
+      "reason_codes": [
+        "multiple_plausible_next_moves"
+      ],
+      "defer_allowed": false,
+      "owner_hypothesis": "aoa-skills",
+      "status_posture": "reanchor",
       "branch_options_count": 2,
       "predicted_gain": "live derived stats layer",
       "predicted_risk": "moderate",
