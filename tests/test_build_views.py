@@ -216,6 +216,7 @@ def test_build_views_produces_expected_surface_counts() -> None:
         "session_growth_branch_summary.min.json",
         "automation_pipeline_summary.min.json",
         "automation_followthrough_summary.min.json",
+        "codex_plane_deployment_summary.min.json",
         "runtime_closeout_summary.min.json",
         "stress_recovery_window_summary.min.json",
         "surface_detection_summary.min.json",
@@ -263,6 +264,15 @@ def test_build_views_produces_expected_surface_counts() -> None:
     assert len(outputs["automation_pipeline_summary.min.json"]["pipelines"]) == 1
     assert outputs["automation_followthrough_summary.min.json"]["playbook_seed_candidate_count"] == 1
     assert outputs["automation_followthrough_summary.min.json"]["real_run_reviewed_count"] == 1
+    assert outputs["codex_plane_deployment_summary.min.json"]["latest_rollout_state"] == "verified"
+    assert outputs["codex_plane_deployment_summary.min.json"]["trust_posture_counts"] == {
+        "unknown": 0,
+        "root_mismatch": 0,
+        "config_inactive": 0,
+        "trusted_ready": 1,
+        "rollout_active": 0,
+        "rollback_recommended": 0,
+    }
     assert len(outputs["runtime_closeout_summary.min.json"]["closeouts"]) == 1
     assert outputs["stress_recovery_window_summary.min.json"]["suppression"]["status"] == "low_sample"
     assert len(outputs["surface_detection_summary.min.json"]["windows"]) == 1
@@ -293,6 +303,7 @@ def test_build_views_produces_expected_surface_counts() -> None:
         "generated/session_growth_branch_summary.min.json",
         "generated/automation_pipeline_summary.min.json",
         "generated/automation_followthrough_summary.min.json",
+        "generated/codex_plane_deployment_summary.min.json",
         "generated/runtime_closeout_summary.min.json",
         "generated/stress_recovery_window_summary.min.json",
         "generated/surface_detection_summary.min.json",

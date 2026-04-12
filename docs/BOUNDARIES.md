@@ -43,6 +43,7 @@ It may emit:
 - fork-calibration summaries
 - automation-pipeline summaries
 - automation-followthrough summaries
+- codex-plane deployment summaries
 - runtime-closeout summaries
 
 It must not emit:
