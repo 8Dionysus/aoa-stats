@@ -46,6 +46,15 @@ Use the shortest route by need:
   `schemas/candidate_lineage_summary.schema.json`,
   `examples/candidate_lineage_summary.example.json`, and
   `generated/candidate_lineage_summary.min.json`
+- growth-refinery owner landing and pruning followthrough:
+  `docs/OWNER_LANDING_SUMMARY.md`,
+  `docs/SUPERSESSION_DROP_SUMMARY.md`,
+  `schemas/owner-landing-summary.schema.json`,
+  `schemas/supersession-drop-summary.schema.json`,
+  `examples/owner_landing_summary.example.json`,
+  `examples/supersession_drop_summary.example.json`,
+  `generated/owner_landing_summary.min.json`, and
+  `generated/supersession_drop_summary.min.json`
 - via negativa pruning checklist:
   `docs/VIA_NEGATIVA_CHECKLIST.md`
 - canonical shared receipt envelope and active event family:
@@ -107,6 +116,9 @@ The first usable derived summaries are:
 
 - `generated/object_summary.min.json`
 - `generated/core_skill_application_summary.min.json`
+- `generated/candidate_lineage_summary.min.json`
+- `generated/owner_landing_summary.min.json`
+- `generated/supersession_drop_summary.min.json`
 - `generated/repeated_window_summary.min.json`
 - `generated/route_progression_summary.min.json`
 - `generated/fork_calibration_summary.min.json`
@@ -124,6 +136,12 @@ surfaces they summarize.
 growth-refinery funnel slice. It reads only reviewed owner-local lineage
 entries carried by receipts, keeps the stage route explicit, and excludes raw
 checkpoint-note intake.
+
+`generated/owner_landing_summary.min.json` and
+`generated/supersession_drop_summary.min.json` are the bounded followthrough
+companions for that funnel slice. They stay downstream of owner-local reviewed
+landings and seed-owner traces, so `aoa-stats` can expose landing and pruning
+legibility without becoming owner truth.
 
 `generated/summary_surface_catalog.min.json` is also the compact runtime-entry
 capsule that federation routing should inspect first for `aoa-stats`. It now

@@ -1,0 +1,28 @@
+{
+  "schema_version": "aoa_stats_supersession_drop_summary_v1",
+  "generated_from": {
+    "receipt_input_paths": [
+      "session_harvest_family.receipts.example.json"
+    ],
+    "total_receipts": 16,
+    "latest_observed_at": "2026-04-06T09:45:00Z"
+  },
+  "drop_reason_counts": {
+    "nearest_wrong_target_rejected_during_reviewed_harvest": 1
+  },
+  "supersession_counts": {
+    "superseded_total": 0,
+    "replacing_total": 0,
+    "dropped_total": 1
+  },
+  "merge_counts": {
+    "total": 0,
+    "by_owner_repo": {}
+  },
+  "owner_repo_counts": {
+    "aoa-playbooks": 1
+  },
+  "reanchor_after_drop_counts": {
+    "aoa-playbooks": 1
+  }
+}

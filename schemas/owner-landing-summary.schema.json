@@ -1,0 +1,132 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://aoa-stats/schemas/owner-landing-summary.schema.json",
+  "title": "aoa-stats owner landing summary",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema_version",
+    "generated_from",
+    "owner_repo_counts",
+    "owner_shape_counts",
+    "status_posture_counts",
+    "landing_outcome_counts",
+    "time_to_outcome_median_days"
+  ],
+  "properties": {
+    "schema_version": {
+      "const": "aoa_stats_owner_landing_summary_v1"
+    },
+    "generated_from": {
+      "$ref": "#/$defs/generated_from"
+    },
+    "owner_repo_counts": {
+      "$ref": "#/$defs/string_count_map"
+    },
+    "owner_shape_counts": {
+      "$ref": "#/$defs/string_count_map"
+    },
+    "status_posture_counts": {
+      "$ref": "#/$defs/string_count_map"
+    },
+    "landing_outcome_counts": {
+      "$ref": "#/$defs/string_count_map"
+    },
+    "time_to_outcome_median_days": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "landed_owner_status",
+        "landed_owner_object",
+        "reanchored",
+        "merged",
+        "deferred",
+        "dropped"
+      ],
+      "properties": {
+        "landed_owner_status": {
+          "type": [
+            "number",
+            "null"
+          ],
+          "minimum": 0
+        },
+        "landed_owner_object": {
+          "type": [
+            "number",
+            "null"
+          ],
+          "minimum": 0
+        },
+        "reanchored": {
+          "type": [
+            "number",
+            "null"
+          ],
+          "minimum": 0
+        },
+        "merged": {
+          "type": [
+            "number",
+            "null"
+          ],
+          "minimum": 0
+        },
+        "deferred": {
+          "type": [
+            "number",
+            "null"
+          ],
+          "minimum": 0
+        },
+        "dropped": {
+          "type": [
+            "number",
+            "null"
+          ],
+          "minimum": 0
+        }
+      }
+    }
+  },
+  "$defs": {
+    "generated_from": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "receipt_input_paths",
+        "total_receipts",
+        "latest_observed_at"
+      ],
+      "properties": {
+        "receipt_input_paths": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "type": "string",
+            "minLength": 1
+          }
+        },
+        "total_receipts": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "latest_observed_at": {
+          "type": "string",
+          "format": "date-time"
+        }
+      }
+    },
+    "string_count_map": {
+      "type": "object",
+      "propertyNames": {
+        "type": "string",
+        "minLength": 1
+      },
+      "additionalProperties": {
+        "type": "integer",
+        "minimum": 0
+      }
+    }
+  }
+}

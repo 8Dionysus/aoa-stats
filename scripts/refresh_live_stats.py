@@ -22,6 +22,8 @@ DEFAULT_SUMMARY_OUTPUT_DIR = REPO_ROOT / "state" / "generated"
 SUMMARY_OUTPUT_NAMES = (
     "object_summary.min.json",
     "candidate_lineage_summary.min.json",
+    "owner_landing_summary.min.json",
+    "supersession_drop_summary.min.json",
     "core_skill_application_summary.min.json",
     "repeated_window_summary.min.json",
     "route_progression_summary.min.json",

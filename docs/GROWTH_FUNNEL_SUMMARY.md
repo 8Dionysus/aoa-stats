@@ -6,6 +6,11 @@
 
 - `generated/candidate_lineage_summary.min.json`
 
+The owner-landing and pruning followthrough slices live next to it:
+
+- `generated/owner_landing_summary.min.json`
+- `generated/supersession_drop_summary.min.json`
+
 This surface exists to show how reviewed candidates move through the refinery
 without turning stats into routing authority, proof authority, or seed truth.
 
@@ -59,3 +64,7 @@ Later receipts may make `seeded`, `planted`, `proved`, and `promoted` visible.
 
 That later extension should still keep the same rule:
 owner-local reviewed receipts first, derived stats second.
+
+Owner landing and pruning followthrough remain separate bounded summaries.
+They read reviewed owner landings and explicit turnover signals without
+collapsing the funnel into final owner truth.

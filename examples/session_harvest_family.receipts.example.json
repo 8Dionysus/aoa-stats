@@ -502,6 +502,99 @@
     }
   },
   {
+    "event_kind": "reviewed_owner_landing_receipt",
+    "event_id": "evt-owner-landing-0001",
+    "observed_at": "2026-04-06T09:34:00Z",
+    "run_ref": "run-session-growth-002",
+    "session_ref": "session:2026-04-06-beta",
+    "actor_ref": "aoa-skills:reviewed-owner-landing",
+    "object_ref": {
+      "repo": "aoa-skills",
+      "kind": "owner_status_surface",
+      "id": "reviewed_owner_landing_bundle",
+      "version": "v1"
+    },
+    "evidence_refs": [
+      {
+        "kind": "owner_landing_bundle",
+        "ref": "repo:aoa-skills/examples/reviewed_owner_landing_bundle.example.json",
+        "role": "primary"
+      },
+      {
+        "kind": "lineage_receipt",
+        "ref": "repo:aoa-skills/examples/session_growth_artifacts/candidate_lineage_receipt.alpha.json",
+        "role": "lineage"
+      }
+    ],
+    "payload": {
+      "schema_version": "reviewed_owner_landing_bundle_v1",
+      "bundle_kind": "reviewed_owner_landing_bundle",
+      "cluster_ref": "cluster:growth:aoa-sdk-checkpoint-auto-capture-verify-green",
+      "candidate_ref": "candidate:session-growth:reviewed-donor-harvest",
+      "owner_repo": "aoa-skills",
+      "owner_shape": "skill",
+      "nearest_wrong_target": "aoa-playbooks",
+      "status_posture": "early",
+      "reviewed_at": "2026-04-06T09:34:00Z",
+      "evidence_refs": [
+        "repo:aoa-skills/examples/session_growth_artifacts/candidate_lineage_receipt.alpha.json",
+        "repo:aoa-sdk/examples/closeout_owner_followthrough_map.example.json#owner_followthrough_map[0]"
+      ],
+      "status_note": "first reviewed owner-local landing for the bounded skill candidate before stable object truth exists",
+      "supersedes": [],
+      "superseded_by": null,
+      "merged_into": null,
+      "drop_reason": null,
+      "drop_stage": null,
+      "drop_evidence_refs": []
+    }
+  },
+  {
+    "event_kind": "seed_owner_landing_trace_receipt",
+    "event_id": "evt-seed-owner-trace-0001",
+    "observed_at": "2026-04-06T09:36:00Z",
+    "run_ref": "run-session-growth-002",
+    "session_ref": "session:2026-04-06-beta",
+    "actor_ref": "Dionysus:seed-owner-landing-trace",
+    "object_ref": {
+      "repo": "Dionysus",
+      "kind": "seed_owner_landing_trace",
+      "id": "reviewed-donor-harvest",
+      "version": "v1"
+    },
+    "evidence_refs": [
+      {
+        "kind": "seed_owner_landing_trace",
+        "ref": "repo:Dionysus/examples/seed_owner_landing_trace.example.json",
+        "role": "primary"
+      },
+      {
+        "kind": "seed_lineage_entry",
+        "ref": "repo:Dionysus/examples/seed_lineage_entry.example.json",
+        "role": "lineage"
+      }
+    ],
+    "payload": {
+      "schema_version": "dionysus_seed_owner_landing_trace_v1",
+      "cluster_ref": "cluster:growth:aoa-sdk-checkpoint-auto-capture-verify-green",
+      "candidate_ref": "candidate:session-growth:reviewed-donor-harvest",
+      "seed_ref": "seed:aoa:session-growth:reviewed-donor-harvest:v1",
+      "owner_repo": "aoa-skills",
+      "owner_shape": "skill",
+      "outcome": "landed_owner_status",
+      "owner_status_ref": "repo:aoa-skills/examples/reviewed_owner_landing_bundle.example.json",
+      "object_ref": null,
+      "merged_into": null,
+      "superseded_by": null,
+      "drop_reason": null,
+      "observed_at": "2026-04-06T09:36:00Z",
+      "evidence_refs": [
+        "repo:Dionysus/examples/seed_lineage_entry.example.json",
+        "repo:aoa-skills/examples/reviewed_owner_landing_bundle.example.json"
+      ]
+    }
+  },
+  {
     "event_kind": "quest_promotion_receipt",
     "event_id": "evt-quest-0001",
     "observed_at": "2026-04-06T09:38:00Z",

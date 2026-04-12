@@ -64,6 +64,13 @@ Then branch by task:
   `docs/GROWTH_FUNNEL_SUMMARY.md`,
   `schemas/candidate_lineage_summary.schema.json`, and
   `generated/candidate_lineage_summary.min.json`
+- growth-refinery owner landing and pruning followthrough:
+  `docs/OWNER_LANDING_SUMMARY.md`,
+  `docs/SUPERSESSION_DROP_SUMMARY.md`,
+  `schemas/owner-landing-summary.schema.json`,
+  `schemas/supersession-drop-summary.schema.json`,
+  `generated/owner_landing_summary.min.json`, and
+  `generated/supersession_drop_summary.min.json`
 - repo-local Codex MCP behavior:
   `docs/CODEX_MCP.md`,
   `scripts/aoa_stats_mcp_server.py`,
