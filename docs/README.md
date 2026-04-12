@@ -18,6 +18,8 @@ Use this map when you want to know which stats-layer document to open next.
   `ROLLOUT_CAMPAIGN_SUMMARY.md` and `DRIFT_REVIEW_SUMMARY.md`
 - wave-nine self-agency continuity summary:
   `CONTINUITY_WINDOW_SUMMARY.md`
+- wave-ten component refresh summary:
+  `COMPONENT_REFRESH_SUMMARIES.md`
 - growth-refinery owner landing and pruning followthrough:
   `OWNER_LANDING_SUMMARY.md` and `SUPERSESSION_DROP_SUMMARY.md`
 - first-wave derived antifragility posture: `ANTIFRAGILITY_VECTOR.md`

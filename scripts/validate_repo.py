@@ -31,6 +31,7 @@ SCHEMAS = {
     "drift_review_summary.min.json": "drift-review-summary.schema.json",
     "runtime_closeout_summary.min.json": "runtime-closeout-summary.schema.json",
     "stress_recovery_window_summary.min.json": "stress-recovery-window-summary.schema.json",
+    "component_refresh_summary.min.json": "component-refresh-summary.schema.json",
     "surface_detection_summary.min.json": "surface-detection-summary.schema.json",
     "summary_surface_catalog.min.json": "summary-surface-catalog.schema.json",
 }
@@ -51,6 +52,7 @@ REQUIRED_TEXT_FILES = (
     "docs/ROLLOUT_CAMPAIGN_SUMMARY.md",
     "docs/DRIFT_REVIEW_SUMMARY.md",
     "docs/CONTINUITY_WINDOW_SUMMARY.md",
+    "docs/COMPONENT_REFRESH_SUMMARIES.md",
     "docs/OWNER_LANDING_SUMMARY.md",
     "docs/SUPERSESSION_DROP_SUMMARY.md",
     "docs/CODEX_MCP.md",

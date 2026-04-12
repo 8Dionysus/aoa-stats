@@ -62,6 +62,7 @@ def test_summary_surface_catalog_contract_is_exact() -> None:
         "rollout_campaign_summary",
         "drift_review_summary",
         "continuity_window_summary",
+        "component_refresh_summary",
         "runtime_closeout_summary",
         "stress_recovery_window_summary",
         "surface_detection_summary",

@@ -80,6 +80,12 @@ growth-refinery followthrough slices. They read reviewed owner landing bundles,
 seed-owner landing traces, and explicit reviewed turnover signals without
 claiming owner truth.
 
+`generated/component_refresh_summary.min.json` is the wave-ten component
+refresh slice. It reads reviewed `aoa-sdk` drift hints and reviewed
+followthrough decisions only, keeps owner counts and refresh-status posture
+descriptive, and does not outrank owner laws, owner receipts, or refresh
+validation.
+
 The published runtime-entry capsule is the schema-backed v2 contract:
 
 - `schema_version`
