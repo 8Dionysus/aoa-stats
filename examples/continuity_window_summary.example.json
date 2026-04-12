@@ -1,0 +1,21 @@
+{
+  "schema_version": "aoa_stats_continuity_window_summary_v1",
+  "generated_from": {
+    "receipt_input_paths": [
+      "aoa-agents/examples/self_agent_checkpoint/self_agency_continuity_window.example.json",
+      "aoa-playbooks/playbooks/self-agency-continuity-cycle/PLAYBOOK.md",
+      "aoa-memo/examples/provenance_thread.self-agency-continuity.example.json",
+      "aoa-evals/generated/eval_catalog.min.json"
+    ],
+    "total_receipts": 1,
+    "latest_observed_at": "2026-04-12T14:20:00Z"
+  },
+  "continuity_ref": "CONT-20260412-architect-01",
+  "current_status": "active",
+  "open_revision_windows": 1,
+  "successful_reanchors": 0,
+  "failed_reanchors": 0,
+  "last_anchor_artifact_ref": "artifact:verification_result:AOA-VERIFY-20260412-0001",
+  "drift_flags": [],
+  "bounded_revision_count": 1
+}

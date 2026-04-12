@@ -17,6 +17,9 @@ DEFAULT_INPUT = REPO_ROOT / "examples" / "session_harvest_family.receipts.exampl
 DEFAULT_OUTPUT_DIR = REPO_ROOT / "generated"
 DEFAULT_EVALS_ROOT = REPO_ROOT / "aoa-evals" if (REPO_ROOT / "aoa-evals").exists() else REPO_ROOT.parent / "aoa-evals"
 DEFAULT_PUBLIC_PROFILE_ROOT = REPO_ROOT.parent / "8Dionysus"
+DEFAULT_AOA_AGENTS_ROOT = REPO_ROOT.parent / "aoa-agents"
+DEFAULT_AOA_PLAYBOOKS_ROOT = REPO_ROOT.parent / "aoa-playbooks"
+DEFAULT_AOA_MEMO_ROOT = REPO_ROOT.parent / "aoa-memo"
 DEFAULT_AOA_SDK_ROOT = REPO_ROOT.parent / "aoa-sdk"
 CANONICAL_ENVELOPE_SCHEMA_PATH = REPO_ROOT / "schemas" / "stats-event-envelope.schema.json"
 CANONICAL_ENVELOPE_SCHEMA_REF = "schemas/stats-event-envelope.schema.json"
@@ -76,6 +79,12 @@ TRUST_POSTURES = (
     "trusted_ready",
     "rollout_active",
     "rollback_recommended",
+)
+CONTINUITY_STATUSES = ("active", "reanchor_needed", "reanchored", "closed")
+CONTINUITY_EVAL_ANCHORS = (
+    "aoa-continuity-anchor-integrity",
+    "aoa-reflective-revision-boundedness",
+    "aoa-self-reanchor-correctness",
 )
 
 
@@ -490,6 +499,16 @@ def load_jsonl_objects(path: Path, *, label: str) -> list[dict[str, Any]]:
     return rows
 
 
+def load_text_surface(path: Path, *, label: str) -> str:
+    try:
+        text = path.read_text(encoding="utf-8")
+    except FileNotFoundError as exc:
+        raise ReceiptValidationError(f"missing {label}: {path}") from exc
+    if not text.strip():
+        raise ReceiptValidationError(f"{label} must not be empty: {path}")
+    return text
+
+
 def codex_plane_example_paths() -> tuple[Path, Path, Path]:
     public_profile_root = repo_root_from_env("AOA_8DIONYSUS_ROOT", DEFAULT_PUBLIC_PROFILE_ROOT)
     sdk_root = repo_root_from_env("AOA_SDK_ROOT", DEFAULT_AOA_SDK_ROOT)
@@ -637,6 +656,170 @@ def codex_rollout_campaign_generated_from() -> tuple[dict[str, Any], dict[str, A
         "latest_observed_at": latest_observed_at,
     }
     return source, campaign, review, rollback
+
+
+def continuity_window_source_paths() -> tuple[Path, Path, Path, Path]:
+    agents_root = repo_root_from_env("AOA_AGENTS_ROOT", DEFAULT_AOA_AGENTS_ROOT)
+    playbooks_root = repo_root_from_env("AOA_PLAYBOOKS_ROOT", DEFAULT_AOA_PLAYBOOKS_ROOT)
+    memo_root = repo_root_from_env("AOA_MEMO_ROOT", DEFAULT_AOA_MEMO_ROOT)
+    evals_root = repo_root_from_env("AOA_EVALS_ROOT", DEFAULT_EVALS_ROOT)
+    return (
+        agents_root
+        / "examples"
+        / "self_agent_checkpoint"
+        / "self_agency_continuity_window.example.json",
+        playbooks_root / "playbooks" / "self-agency-continuity-cycle" / "PLAYBOOK.md",
+        memo_root / "examples" / "provenance_thread.self-agency-continuity.example.json",
+        evals_root / "generated" / "eval_catalog.min.json",
+    )
+
+
+def continuity_window_generated_from() -> tuple[dict[str, Any], dict[str, Any], dict[str, Any]]:
+    continuity_path, playbook_path, memo_path, eval_catalog_path = continuity_window_source_paths()
+    agents_root = repo_root_from_env("AOA_AGENTS_ROOT", DEFAULT_AOA_AGENTS_ROOT)
+    playbooks_root = repo_root_from_env("AOA_PLAYBOOKS_ROOT", DEFAULT_AOA_PLAYBOOKS_ROOT)
+    memo_root = repo_root_from_env("AOA_MEMO_ROOT", DEFAULT_AOA_MEMO_ROOT)
+    evals_root = repo_root_from_env("AOA_EVALS_ROOT", DEFAULT_EVALS_ROOT)
+
+    continuity_window = load_json_object(
+        continuity_path,
+        label="self-agency continuity window example",
+    )
+    playbook_text = load_text_surface(
+        playbook_path,
+        label="self-agency continuity playbook",
+    )
+    memo_thread = load_json_object(
+        memo_path,
+        label="self-agency continuity provenance thread example",
+    )
+    eval_catalog = load_json_object(
+        eval_catalog_path,
+        label="continuity eval catalog",
+    )
+
+    continuity_ref = continuity_window.get("continuity_ref")
+    revision_window_ref = continuity_window.get("revision_window_ref")
+    anchor_artifact_ref = continuity_window.get("anchor_artifact_ref")
+    current_status = continuity_window.get("continuity_status")
+
+    if continuity_window.get("schema_version") != "self_agency_continuity_window_v1":
+        raise ReceiptValidationError(
+            "self-agency continuity window example must keep schema_version self_agency_continuity_window_v1"
+        )
+    if not is_nonempty_string(continuity_ref):
+        raise ReceiptValidationError("self-agency continuity window example must expose continuity_ref")
+    if not is_nonempty_string(revision_window_ref):
+        raise ReceiptValidationError(
+            "self-agency continuity window example must expose revision_window_ref"
+        )
+    if not is_nonempty_string(anchor_artifact_ref):
+        raise ReceiptValidationError(
+            "self-agency continuity window example must expose anchor_artifact_ref"
+        )
+    if current_status not in CONTINUITY_STATUSES:
+        raise ReceiptValidationError(
+            "self-agency continuity window example must keep continuity_status inside the published grammar"
+        )
+    if memo_thread.get("continuity_ref") != continuity_ref:
+        raise ReceiptValidationError(
+            "self-agency continuity provenance thread must preserve the continuity_ref from aoa-agents"
+        )
+    if memo_thread.get("revision_window_ref") != revision_window_ref:
+        raise ReceiptValidationError(
+            "self-agency continuity provenance thread must preserve the revision_window_ref from aoa-agents"
+        )
+    if memo_thread.get("anchor_artifact_ref") != anchor_artifact_ref:
+        raise ReceiptValidationError(
+            "self-agency continuity provenance thread must preserve the anchor_artifact_ref from aoa-agents"
+        )
+    for token in (
+        "AOA-P-0029",
+        "continuity_window",
+        "reanchor_decision",
+        "continuity_writeback_record",
+    ):
+        if token not in playbook_text:
+            raise ReceiptValidationError(
+                f"self-agency continuity playbook must mention {token}"
+            )
+    eval_entries = eval_catalog.get("evals")
+    if not isinstance(eval_entries, list):
+        raise ReceiptValidationError("continuity eval catalog must expose evals")
+    eval_names = {
+        item.get("name")
+        for item in eval_entries
+        if isinstance(item, dict) and is_nonempty_string(item.get("name"))
+    }
+    missing_eval_names = [
+        name for name in CONTINUITY_EVAL_ANCHORS if name not in eval_names
+    ]
+    if missing_eval_names:
+        raise ReceiptValidationError(
+            "continuity eval catalog is missing continuity anchors: "
+            + ", ".join(missing_eval_names)
+        )
+
+    timeline = memo_thread.get("timeline")
+    if not isinstance(timeline, list) or not timeline:
+        raise ReceiptValidationError(
+            "self-agency continuity provenance thread must expose a non-empty timeline"
+        )
+    latest_observed_at = max(
+        parse_iso_datetime_or_min(item.get("at"))
+        for item in timeline
+        if isinstance(item, dict)
+    ).isoformat().replace("+00:00", "Z")
+    repo_roots = (
+        ("aoa-agents", agents_root),
+        ("aoa-playbooks", playbooks_root),
+        ("aoa-memo", memo_root),
+        ("aoa-evals", evals_root),
+    )
+    source = {
+        "receipt_input_paths": [
+            display_repo_input_path(continuity_path, repo_roots=repo_roots),
+            display_repo_input_path(playbook_path, repo_roots=repo_roots),
+            display_repo_input_path(memo_path, repo_roots=repo_roots),
+            display_repo_input_path(eval_catalog_path, repo_roots=repo_roots),
+        ],
+        "total_receipts": 1,
+        "latest_observed_at": latest_observed_at,
+    }
+    return source, continuity_window, memo_thread
+
+
+def continuity_reanchor_counts(
+    memo_thread: dict[str, Any], current_status: str
+) -> tuple[int, int]:
+    successful = 0
+    failed = 0
+    timeline = memo_thread.get("timeline")
+    if not isinstance(timeline, list):
+        return successful, failed
+    for item in timeline:
+        if not isinstance(item, dict):
+            continue
+        text = " ".join(str(item.get(key) or "") for key in ("action", "note")).lower()
+        if "failed reanchor" in text or "reanchor failed" in text:
+            failed += 1
+            continue
+        if "reanchor" in text and any(
+            token in text for token in ("captured", "recorded", "completed", "returned")
+        ):
+            successful += 1
+    if current_status == "reanchored" and successful == 0:
+        successful = 1
+    return successful, failed
+
+
+def continuity_drift_flags(current_status: str, failed_reanchors: int) -> list[str]:
+    flags: list[str] = []
+    if current_status == "reanchor_needed":
+        flags.append("reanchor_needed")
+    if failed_reanchors > 0:
+        flags.append("failed_reanchor_present")
+    return flags
 
 
 def normalized_code_list(value: Any) -> list[str]:
@@ -1997,6 +2180,31 @@ def build_drift_review_summary() -> dict[str, Any]:
     }
 
 
+def build_continuity_window_summary() -> dict[str, Any]:
+    source, continuity_window, memo_thread = continuity_window_generated_from()
+    current_status = str(continuity_window.get("continuity_status") or "closed")
+    successful_reanchors, failed_reanchors = continuity_reanchor_counts(
+        memo_thread, current_status
+    )
+    revision_window_ref = continuity_window.get("revision_window_ref")
+    open_revision_windows = (
+        1 if current_status != "closed" and is_nonempty_string(revision_window_ref) else 0
+    )
+    bounded_revision_count = 1 if is_nonempty_string(revision_window_ref) else 0
+    return {
+        "schema_version": "aoa_stats_continuity_window_summary_v1",
+        "generated_from": source,
+        "continuity_ref": str(continuity_window.get("continuity_ref") or ""),
+        "current_status": current_status,
+        "open_revision_windows": open_revision_windows,
+        "successful_reanchors": successful_reanchors,
+        "failed_reanchors": failed_reanchors,
+        "last_anchor_artifact_ref": str(continuity_window.get("anchor_artifact_ref") or ""),
+        "drift_flags": continuity_drift_flags(current_status, failed_reanchors),
+        "bounded_revision_count": bounded_revision_count,
+    }
+
+
 def build_runtime_closeout_summary(
     receipts: list[dict[str, Any]], source: dict[str, Any]
 ) -> dict[str, Any]:
@@ -2278,6 +2486,13 @@ def build_summary_surface_catalog(source: dict[str, Any]) -> dict[str, Any]:
                 "derivation_rule": "derive one bounded drift-review summary from the current 8Dionysus cadence windows and keep rollback readiness descriptive only",
             },
             {
+                "name": "continuity_window_summary",
+                "surface_ref": "generated/continuity_window_summary.min.json",
+                "schema_ref": "schemas/continuity-window-summary.schema.json",
+                "primary_question": "What is the current bounded self-agency continuity posture without turning stats into continuity truth or self-agency proof?",
+                "derivation_rule": "derive one bounded continuity snapshot from the aoa-agents continuity window example, the sovereign continuity playbook, the memo-side provenance thread example, and the landed continuity eval anchors",
+            },
+            {
                 "name": "runtime_closeout_summary",
                 "surface_ref": "generated/runtime_closeout_summary.min.json",
                 "schema_ref": "schemas/runtime-closeout-summary.schema.json",
@@ -2339,6 +2554,7 @@ def build_all_views(
         "codex_rollout_drift_summary.min.json": build_codex_rollout_drift_summary(),
         "rollout_campaign_summary.min.json": build_rollout_campaign_summary(),
         "drift_review_summary.min.json": build_drift_review_summary(),
+        "continuity_window_summary.min.json": build_continuity_window_summary(),
         "runtime_closeout_summary.min.json": build_runtime_closeout_summary(active_receipts, source),
         "stress_recovery_window_summary.min.json": build_stress_recovery_window_summary(
             active_receipts, source, evals_root=resolved_evals_root
