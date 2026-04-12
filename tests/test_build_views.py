@@ -222,6 +222,7 @@ def test_build_views_produces_expected_surface_counts() -> None:
         "rollout_campaign_summary.min.json",
         "drift_review_summary.min.json",
         "continuity_window_summary.min.json",
+        "component_refresh_summary.min.json",
         "runtime_closeout_summary.min.json",
         "stress_recovery_window_summary.min.json",
         "surface_detection_summary.min.json",
@@ -268,6 +269,19 @@ def test_build_views_produces_expected_surface_counts() -> None:
     assert outputs["continuity_window_summary.min.json"]["current_status"] == "active"
     assert outputs["continuity_window_summary.min.json"]["open_revision_windows"] == 1
     assert outputs["continuity_window_summary.min.json"]["drift_flags"] == []
+    assert outputs["component_refresh_summary.min.json"]["owner_repo_counts"] == {
+        "8Dionysus": 1,
+        "aoa-agents": 1,
+        "aoa-skills": 1,
+        "aoa-stats": 1,
+    }
+    assert outputs["component_refresh_summary.min.json"]["status_counts"] == {
+        "refresh_recommended": 1,
+        "refresh_active": 2,
+        "current": 0,
+        "deferred": 1,
+        "recovered": 0,
+    }
     assert len(outputs["core_skill_application_summary.min.json"]["skills"]) == 1
     assert len(outputs["repeated_window_summary.min.json"]["windows"]) == 2
     assert len(outputs["route_progression_summary.min.json"]["routes"]) == 1
@@ -333,6 +347,7 @@ def test_build_views_produces_expected_surface_counts() -> None:
         "generated/rollout_campaign_summary.min.json",
         "generated/drift_review_summary.min.json",
         "generated/continuity_window_summary.min.json",
+        "generated/component_refresh_summary.min.json",
         "generated/runtime_closeout_summary.min.json",
         "generated/stress_recovery_window_summary.min.json",
         "generated/surface_detection_summary.min.json",
@@ -358,6 +373,122 @@ def test_continuity_window_summary_stays_derived_and_non_sovereign() -> None:
         "artifact:verification_result:AOA-VERIFY-20260412-0001"
     )
     assert summary["bounded_revision_count"] == 1
+
+
+def test_component_refresh_summary_stays_derived_and_non_sovereign(
+    tmp_path: Path, monkeypatch: pytest.MonkeyPatch
+) -> None:
+    module = load_build_views_module()
+    sdk_root = tmp_path / ".deps" / "aoa-sdk"
+    examples_root = sdk_root / "examples"
+    examples_root.mkdir(parents=True)
+    (examples_root / "component_drift_hints.example.json").write_text(
+        json.dumps(
+            {
+                "schema_version": "aoa_component_drift_hint_set_v1",
+                "session_ref": "session:component-refresh-test",
+                "repo_root": "/srv",
+                "hints": [
+                    {
+                        "hint_ref": "hint:root",
+                        "component_ref": "component:codex-plane:shared-root",
+                        "owner_repo": "8Dionysus",
+                        "observed_at": "2026-04-12T16:20:00Z",
+                        "observed_by": "workspace_root",
+                        "severity": "medium",
+                        "signals": [
+                            "doctor_fail_after_render",
+                            "same_hand_patch_repeated"
+                        ],
+                        "repeat_count": 2,
+                        "evidence_refs": ["artifact:root"],
+                        "recommended_route_class": "regenerate",
+                        "review_required": True
+                    },
+                    {
+                        "hint_ref": "hint:stats",
+                        "component_ref": "component:stats-derived-summaries:growth-refinery",
+                        "owner_repo": "aoa-stats",
+                        "observed_at": "2026-04-12T16:31:00Z",
+                        "observed_by": "stats_reread",
+                        "severity": "high",
+                        "signals": [
+                            "latest_observed_at_stale",
+                            "summary_family_out_of_sync"
+                        ],
+                        "repeat_count": 1,
+                        "evidence_refs": ["artifact:stats"],
+                        "recommended_route_class": "rebuild",
+                        "review_required": True
+                    }
+                ]
+            }
+        ),
+        encoding="utf-8",
+    )
+    (examples_root / "component_refresh_followthrough_decision.example.json").write_text(
+        json.dumps(
+            {
+                "schema_version": "aoa_component_refresh_followthrough_decision_set_v1",
+                "decision_ref": "decision:test",
+                "reviewed": True,
+                "session_ref": "session:component-refresh-test",
+                "decisions": [
+                    {
+                        "component_ref": "component:codex-plane:shared-root",
+                        "owner_repo": "8Dionysus",
+                        "route_class": "regenerate",
+                        "decision_status": "chosen",
+                        "selected_refresh_path": ["python root.py"],
+                        "reason": "root drift",
+                        "evidence_refs": ["hint:root"],
+                        "rollback_anchor": "docs/CODEX_PLANE_ROLLOUT.md",
+                        "stats_should_refresh": True,
+                        "memo_writeback_candidate": False
+                    },
+                    {
+                        "component_ref": "component:stats-derived-summaries:growth-refinery",
+                        "owner_repo": "aoa-stats",
+                        "route_class": "rebuild",
+                        "decision_status": "chosen",
+                        "selected_refresh_path": ["python scripts/build_views.py"],
+                        "reason": "stale summary",
+                        "evidence_refs": ["hint:stats"],
+                        "rollback_anchor": "docs/ARCHITECTURE.md",
+                        "stats_should_refresh": True,
+                        "memo_writeback_candidate": True
+                    }
+                ]
+            }
+        ),
+        encoding="utf-8",
+    )
+
+    monkeypatch.setenv("AOA_SDK_ROOT", str(sdk_root))
+
+    summary = module.build_component_refresh_summary()
+
+    assert summary["schema_version"] == "aoa_stats_component_refresh_summary_v1"
+    assert summary["generated_from"]["receipt_input_paths"] == [
+        "aoa-sdk/examples/component_drift_hints.example.json",
+        "aoa-sdk/examples/component_refresh_followthrough_decision.example.json",
+    ]
+    assert summary["generated_from"]["total_receipts"] == 2
+    assert summary["owner_repo_counts"] == {"8Dionysus": 1, "aoa-stats": 1}
+    assert summary["status_counts"] == {
+        "refresh_recommended": 1,
+        "refresh_active": 1,
+        "current": 0,
+        "deferred": 0,
+        "recovered": 0,
+    }
+    assert summary["drift_class_counts"] == {
+        "doctor_drift": 1,
+        "family_drift": 1,
+        "manual_repeat": 1,
+        "root_drift": 1,
+        "staleness_window": 1,
+    }
 
 
 def test_candidate_lineage_summary_stays_reviewed_only_and_no_score() -> None:
@@ -658,11 +789,13 @@ def test_build_all_views_skips_missing_optional_sibling_surfaces(
     assert "rollout_campaign_summary.min.json" not in outputs
     assert "drift_review_summary.min.json" not in outputs
     assert "continuity_window_summary.min.json" not in outputs
+    assert "component_refresh_summary.min.json" not in outputs
     catalog_surface_refs = [
         entry["surface_ref"] for entry in outputs["summary_surface_catalog.min.json"]["surfaces"]
     ]
     assert "generated/codex_plane_deployment_summary.min.json" not in catalog_surface_refs
     assert "generated/continuity_window_summary.min.json" not in catalog_surface_refs
+    assert "generated/component_refresh_summary.min.json" not in catalog_surface_refs
 
 
 def test_owner_landing_summary_reads_reviewed_owner_landings_and_seed_traces() -> None:

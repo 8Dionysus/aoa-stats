@@ -32,6 +32,7 @@ sources under the current federation root, writes one combined local feed to
 - `state/generated/route_progression_summary.min.json`
 - `state/generated/fork_calibration_summary.min.json`
 - `state/generated/automation_pipeline_summary.min.json`
+- `state/generated/component_refresh_summary.min.json`
 - `state/generated/runtime_closeout_summary.min.json`
 - `state/generated/surface_detection_summary.min.json`
 - `state/generated/summary_surface_catalog.min.json`
@@ -77,6 +78,7 @@ The committed builder refreshes:
 - `generated/route_progression_summary.min.json`
 - `generated/fork_calibration_summary.min.json`
 - `generated/automation_pipeline_summary.min.json`
+- `generated/component_refresh_summary.min.json`
 - `generated/runtime_closeout_summary.min.json`
 - `generated/surface_detection_summary.min.json`
 - `generated/summary_surface_catalog.min.json`

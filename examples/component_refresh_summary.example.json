@@ -1,0 +1,68 @@
+{
+  "schema_version": "aoa_stats_component_refresh_summary_v1",
+  "generated_from": {
+    "receipt_input_paths": [
+      "aoa-sdk/examples/component_drift_hints.example.json",
+      "aoa-sdk/examples/component_refresh_followthrough_decision.example.json"
+    ],
+    "total_receipts": 2,
+    "latest_observed_at": "2026-04-12T16:31:00Z"
+  },
+  "owner_repo_counts": {
+    "8Dionysus": 1,
+    "aoa-skills": 1,
+    "aoa-agents": 1,
+    "aoa-stats": 1
+  },
+  "status_counts": {
+    "refresh_recommended": 1,
+    "refresh_active": 2,
+    "current": 0,
+    "deferred": 1,
+    "recovered": 0
+  },
+  "drift_class_counts": {
+    "root_drift": 1,
+    "doctor_drift": 1,
+    "manual_repeat": 1,
+    "export_drift": 1,
+    "validation_drift": 1,
+    "projection_drift": 1,
+    "staleness_window": 1,
+    "family_drift": 1
+  },
+  "components": [
+    {
+      "component_ref": "component:codex-plane:shared-root",
+      "owner_repo": "8Dionysus",
+      "latest_decision_status": "chosen",
+      "current_status": "refresh_active",
+      "latest_route_class": "regenerate",
+      "latest_observed_at": "2026-04-12T16:20:00Z"
+    },
+    {
+      "component_ref": "component:skills-export:foundation",
+      "owner_repo": "aoa-skills",
+      "latest_decision_status": "chosen",
+      "current_status": "refresh_active",
+      "latest_route_class": "reexport",
+      "latest_observed_at": "2026-04-12T16:24:00Z"
+    },
+    {
+      "component_ref": "component:codex-subagents:projection",
+      "owner_repo": "aoa-agents",
+      "latest_decision_status": "deferred",
+      "current_status": "deferred",
+      "latest_route_class": "regenerate",
+      "latest_observed_at": "2026-04-12T16:28:00Z"
+    },
+    {
+      "component_ref": "component:stats-derived-summaries:growth-refinery",
+      "owner_repo": "aoa-stats",
+      "latest_decision_status": "chosen",
+      "current_status": "refresh_recommended",
+      "latest_route_class": "rebuild",
+      "latest_observed_at": "2026-04-12T16:31:00Z"
+    }
+  ]
+}

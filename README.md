@@ -77,6 +77,12 @@ Use the shortest route by need:
   `schemas/continuity-window-summary.schema.json`,
   `examples/continuity_window_summary.example.json`, and
   `generated/continuity_window_summary.min.json`
+- wave-ten component refresh summary and stats-owned refresh law:
+  `docs/COMPONENT_REFRESH_SUMMARIES.md`,
+  `schemas/component-refresh-summary.schema.json`,
+  `examples/summary_refresh_law.example.json`,
+  `examples/component_refresh_summary.example.json`, and
+  `generated/component_refresh_summary.min.json`
 - growth-refinery funnel doctrine and contracts:
   `docs/GROWTH_FUNNEL_SUMMARY.md`,
   `schemas/candidate_lineage_summary.schema.json`,
@@ -167,6 +173,7 @@ The first usable derived summaries are:
 - `generated/rollout_campaign_summary.min.json`
 - `generated/drift_review_summary.min.json`
 - `generated/continuity_window_summary.min.json`
+- `generated/component_refresh_summary.min.json`
 - `generated/runtime_closeout_summary.min.json`
 - `generated/stress_recovery_window_summary.min.json`
 - `generated/surface_detection_summary.min.json`
@@ -218,6 +225,12 @@ public `aoa-agents` continuity window example, the sovereign continuity
 playbook, a memo-side provenance thread, and the landed continuity eval
 anchors. It stays descriptive, static-snapshot scoped, and weaker than all of
 those owner-owned surfaces.
+
+`generated/component_refresh_summary.min.json` is the wave-ten component
+refresh companion. It derives one bounded refresh snapshot from the reviewed
+`aoa-sdk` drift-hint and followthrough-decision examples, keeps owner repo and
+status windows explicit, and stays weaker than owner laws, owner receipts, and
+any real refresh validation.
 
 `generated/summary_surface_catalog.min.json` is also the compact runtime-entry
 capsule that federation routing should inspect first for `aoa-stats`. It now

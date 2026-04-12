@@ -78,6 +78,12 @@ Then branch by task:
   `schemas/supersession-drop-summary.schema.json`,
   `generated/owner_landing_summary.min.json`, and
   `generated/supersession_drop_summary.min.json`
+- component refresh summary and stats-owned refresh law:
+  `docs/COMPONENT_REFRESH_SUMMARIES.md`,
+  `schemas/component-refresh-summary.schema.json`,
+  `examples/summary_refresh_law.example.json`,
+  `examples/component_refresh_summary.example.json`, and
+  `generated/component_refresh_summary.min.json`
 - repo-local Codex MCP behavior:
   `docs/CODEX_MCP.md`,
   `scripts/aoa_stats_mcp_server.py`,

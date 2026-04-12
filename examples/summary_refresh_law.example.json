@@ -1,0 +1,75 @@
+{
+  "schema_version": "aoa_component_refresh_law_v1",
+  "component_ref": "component:stats-derived-summaries:growth-refinery",
+  "component_title": "AoA growth-refinery derived summaries",
+  "owner_repo": "aoa-stats",
+  "source_authored_inputs": [
+    "config/live_receipt_sources.json",
+    "scripts/build_views.py",
+    "docs/COMPONENT_REFRESH_SUMMARIES.md",
+    "tests/test_build_views.py"
+  ],
+  "generated_surfaces": [
+    "generated/candidate_lineage_summary.min.json",
+    "generated/owner_landing_summary.min.json",
+    "generated/supersession_drop_summary.min.json",
+    "generated/continuity_window_summary.min.json",
+    "generated/component_refresh_summary.min.json",
+    "generated/summary_surface_catalog.min.json"
+  ],
+  "projected_or_installed_surfaces": [],
+  "drift_signals": [
+    {
+      "signal": "receipt_input_changed_without_summary_refresh",
+      "drift_class": "summary_drift",
+      "meaning": "upstream receipt or reviewed handoff inputs changed while one or more summary surfaces remained stale",
+      "recommended_route_class": "rebuild"
+    },
+    {
+      "signal": "latest_observed_at_stale",
+      "drift_class": "staleness_window",
+      "meaning": "latest observed timestamps moved outside the declared freshness window",
+      "recommended_route_class": "rebuild"
+    },
+    {
+      "signal": "summary_family_out_of_sync",
+      "drift_class": "family_drift",
+      "meaning": "related summary surfaces disagree about refresh or growth-refinery posture",
+      "recommended_route_class": "repair"
+    },
+    {
+      "signal": "component_refresh_window_open",
+      "drift_class": "refresh_lag",
+      "meaning": "a reviewed refresh decision exists but the derived summary still exposes the older posture",
+      "recommended_route_class": "rebuild"
+    }
+  ],
+  "refresh_routes": {
+    "check": [
+      "python scripts/build_views.py --check"
+    ],
+    "execute": [
+      "python scripts/build_views.py"
+    ],
+    "validate": [
+      "python scripts/validate_repo.py",
+      "python -m pytest -q tests"
+    ]
+  },
+  "proof_commands": [
+    "python scripts/build_views.py --check",
+    "python scripts/validate_repo.py",
+    "python -m pytest -q tests"
+  ],
+  "rollback_anchors": [
+    "docs/ARCHITECTURE.md",
+    "docs/COMPONENT_REFRESH_SUMMARIES.md",
+    "config/live_receipt_sources.json"
+  ],
+  "refresh_window": {
+    "stale_after_days": 3,
+    "repeat_trigger_threshold": 1,
+    "open_window_days": 2
+  },
+  "followthrough_home": "aoa-playbooks:component-refresh-cycle"
+}

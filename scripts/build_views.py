@@ -110,6 +110,36 @@ CONTINUITY_EVAL_ANCHORS = (
     "aoa-reflective-revision-boundedness",
     "aoa-self-reanchor-correctness",
 )
+COMPONENT_REFRESH_ROUTE_CLASSES = (
+    "observe",
+    "revalidate",
+    "rebuild",
+    "reexport",
+    "regenerate",
+    "reproject",
+    "repair",
+    "defer",
+)
+COMPONENT_REFRESH_DECISION_STATUSES = ("chosen", "deferred", "safe_stop", "unreviewed")
+COMPONENT_REFRESH_CURRENT_STATUSES = (
+    "refresh_recommended",
+    "refresh_active",
+    "current",
+    "deferred",
+    "recovered",
+)
+COMPONENT_REFRESH_SIGNAL_DRIFT_CLASSES = {
+    "doctor_fail_after_render": "doctor_drift",
+    "same_hand_patch_repeated": "manual_repeat",
+    "skill_source_changed_without_export_refresh": "export_drift",
+    "skill_validation_failed": "validation_drift",
+    "profile_changed_without_projection_refresh": "projection_drift",
+    "latest_observed_at_stale": "staleness_window",
+    "summary_family_out_of_sync": "family_drift",
+}
+COMPONENT_REFRESH_COMPONENT_DRIFT_CLASSES = {
+    "component:codex-plane:shared-root": ("root_drift",),
+}
 
 
 def repo_root_from_env(env_name: str, default: Path) -> Path:
@@ -838,6 +868,151 @@ def continuity_window_generated_from() -> tuple[dict[str, Any], dict[str, Any], 
         "latest_observed_at": latest_observed_at,
     }
     return source, continuity_window, memo_thread
+
+
+def component_refresh_source_paths() -> tuple[Path, Path]:
+    sdk_root = repo_root_from_env("AOA_SDK_ROOT", DEFAULT_AOA_SDK_ROOT)
+    return (
+        sdk_root / "examples" / "component_drift_hints.example.json",
+        sdk_root / "examples" / "component_refresh_followthrough_decision.example.json",
+    )
+
+
+def component_refresh_generated_from() -> tuple[dict[str, Any], list[dict[str, Any]], list[dict[str, Any]]]:
+    hint_path, decision_path = component_refresh_source_paths()
+    sdk_root = repo_root_from_env("AOA_SDK_ROOT", DEFAULT_AOA_SDK_ROOT)
+    hint_set = load_json_object(hint_path, label="component drift hint example")
+    decision_set = load_json_object(
+        decision_path,
+        label="component refresh followthrough decision example",
+    )
+
+    if hint_set.get("schema_version") != "aoa_component_drift_hint_set_v1":
+        raise ReceiptValidationError(
+            "component drift hint example must keep schema_version aoa_component_drift_hint_set_v1"
+        )
+    if decision_set.get("schema_version") != "aoa_component_refresh_followthrough_decision_set_v1":
+        raise ReceiptValidationError(
+            "component refresh followthrough decision example must keep schema_version "
+            "aoa_component_refresh_followthrough_decision_set_v1"
+        )
+    if decision_set.get("reviewed") is not True:
+        raise ReceiptValidationError(
+            "component refresh followthrough decision example must stay reviewed before stats summarize it"
+        )
+
+    hints = hint_set.get("hints")
+    if not isinstance(hints, list) or not hints:
+        raise ReceiptValidationError("component drift hint example must expose a non-empty hints list")
+    decisions = decision_set.get("decisions")
+    if not isinstance(decisions, list) or not decisions:
+        raise ReceiptValidationError(
+            "component refresh followthrough decision example must expose a non-empty decisions list"
+        )
+
+    latest_hint_observed_at: datetime | None = None
+    for index, hint in enumerate(hints):
+        if not isinstance(hint, dict):
+            raise ReceiptValidationError(f"component drift hint example hints[{index}] must be an object")
+        component_ref = hint.get("component_ref")
+        owner_repo = hint.get("owner_repo")
+        observed_at = hint.get("observed_at")
+        route_class = hint.get("recommended_route_class")
+        signals = normalize_string_list(hint.get("signals"))
+        if not is_nonempty_string(component_ref):
+            raise ReceiptValidationError(f"component drift hint example hints[{index}] must expose component_ref")
+        if not is_nonempty_string(owner_repo):
+            raise ReceiptValidationError(f"component drift hint example hints[{index}] must expose owner_repo")
+        parsed_observed_at = parse_iso_datetime(observed_at)
+        if parsed_observed_at is None:
+            raise ReceiptValidationError(
+                f"component drift hint example hints[{index}] must expose observed_at as date-time"
+            )
+        if route_class not in COMPONENT_REFRESH_ROUTE_CLASSES:
+            raise ReceiptValidationError(
+                f"component drift hint example hints[{index}] recommended_route_class is outside the published grammar"
+            )
+        if not signals:
+            raise ReceiptValidationError(
+                f"component drift hint example hints[{index}] must expose at least one signal"
+            )
+        if latest_hint_observed_at is None or parsed_observed_at > latest_hint_observed_at:
+            latest_hint_observed_at = parsed_observed_at
+
+    for index, decision in enumerate(decisions):
+        if not isinstance(decision, dict):
+            raise ReceiptValidationError(
+                f"component refresh followthrough decision example decisions[{index}] must be an object"
+            )
+        component_ref = decision.get("component_ref")
+        owner_repo = decision.get("owner_repo")
+        route_class = decision.get("route_class")
+        decision_status = decision.get("decision_status")
+        if not is_nonempty_string(component_ref):
+            raise ReceiptValidationError(
+                f"component refresh followthrough decision example decisions[{index}] must expose component_ref"
+            )
+        if not is_nonempty_string(owner_repo):
+            raise ReceiptValidationError(
+                f"component refresh followthrough decision example decisions[{index}] must expose owner_repo"
+            )
+        if route_class not in COMPONENT_REFRESH_ROUTE_CLASSES:
+            raise ReceiptValidationError(
+                f"component refresh followthrough decision example decisions[{index}] route_class is outside the published grammar"
+            )
+        if decision_status not in COMPONENT_REFRESH_DECISION_STATUSES[:-1]:
+            raise ReceiptValidationError(
+                f"component refresh followthrough decision example decisions[{index}] decision_status is outside the published grammar"
+            )
+
+    assert latest_hint_observed_at is not None
+    source = {
+        "receipt_input_paths": [
+            display_repo_input_path(hint_path, repo_roots=(("aoa-sdk", sdk_root),)),
+            display_repo_input_path(decision_path, repo_roots=(("aoa-sdk", sdk_root),)),
+        ],
+        "total_receipts": 2,
+        "latest_observed_at": latest_hint_observed_at.isoformat().replace("+00:00", "Z"),
+    }
+    return source, hints, decisions
+
+
+def component_refresh_status(decision: dict[str, Any] | None, *, owner_repo: str) -> str:
+    if not isinstance(decision, dict):
+        return "refresh_recommended"
+    decision_status = str(decision.get("decision_status") or "unreviewed")
+    if decision_status == "deferred":
+        return "deferred"
+    if decision_status == "safe_stop":
+        return "current"
+    if decision_status != "chosen":
+        return "refresh_recommended"
+    if owner_repo == "aoa-stats":
+        return "refresh_recommended"
+    return "refresh_active"
+
+
+def component_refresh_route_class(
+    hint: dict[str, Any] | None, decision: dict[str, Any] | None
+) -> str:
+    if isinstance(decision, dict):
+        route_class = decision.get("route_class")
+        if route_class in COMPONENT_REFRESH_ROUTE_CLASSES:
+            return str(route_class)
+    if isinstance(hint, dict):
+        route_class = hint.get("recommended_route_class")
+        if route_class in COMPONENT_REFRESH_ROUTE_CLASSES:
+            return str(route_class)
+    return "observe"
+
+
+def component_refresh_drift_classes(component_ref: str, signals: list[str]) -> list[str]:
+    classes = list(COMPONENT_REFRESH_COMPONENT_DRIFT_CLASSES.get(component_ref, ()))
+    for signal in signals:
+        drift_class = COMPONENT_REFRESH_SIGNAL_DRIFT_CLASSES.get(signal)
+        if drift_class is not None:
+            classes.append(drift_class)
+    return classes
 
 
 def continuity_reanchor_counts(
@@ -2259,6 +2434,88 @@ def build_continuity_window_summary() -> dict[str, Any]:
     }
 
 
+def build_component_refresh_summary() -> dict[str, Any]:
+    source, hints, decisions = component_refresh_generated_from()
+    hints_by_component = {
+        str(hint["component_ref"]): hint for hint in hints if isinstance(hint, dict)
+    }
+    decisions_by_component = {
+        str(decision["component_ref"]): decision
+        for decision in decisions
+        if isinstance(decision, dict)
+    }
+
+    component_order: list[str] = []
+    seen: set[str] = set()
+    for payload in (*hints, *decisions):
+        if not isinstance(payload, dict):
+            continue
+        component_ref = payload.get("component_ref")
+        if not is_nonempty_string(component_ref) or component_ref in seen:
+            continue
+        seen.add(str(component_ref))
+        component_order.append(str(component_ref))
+
+    owner_repo_counts: Counter[str] = Counter()
+    status_counts: Counter[str] = Counter(
+        {status: 0 for status in COMPONENT_REFRESH_CURRENT_STATUSES}
+    )
+    drift_class_counts: Counter[str] = Counter()
+    components: list[dict[str, Any]] = []
+
+    for component_ref in component_order:
+        hint = hints_by_component.get(component_ref)
+        decision = decisions_by_component.get(component_ref)
+        owner_repo = ""
+        if isinstance(decision, dict) and is_nonempty_string(decision.get("owner_repo")):
+            owner_repo = str(decision.get("owner_repo"))
+        elif isinstance(hint, dict) and is_nonempty_string(hint.get("owner_repo")):
+            owner_repo = str(hint.get("owner_repo"))
+        if not owner_repo:
+            raise ReceiptValidationError(
+                f"component refresh summary could not resolve owner_repo for {component_ref}"
+            )
+
+        owner_repo_counts[owner_repo] += 1
+        signals = normalize_string_list(hint.get("signals")) if isinstance(hint, dict) else []
+        for drift_class in component_refresh_drift_classes(component_ref, signals):
+            drift_class_counts[drift_class] += 1
+
+        current_status = component_refresh_status(decision, owner_repo=owner_repo)
+        status_counts[current_status] += 1
+        latest_decision_status = (
+            str(decision.get("decision_status") or "unreviewed")
+            if isinstance(decision, dict)
+            else "unreviewed"
+        )
+        latest_observed_at = (
+            str(hint.get("observed_at"))
+            if isinstance(hint, dict) and is_nonempty_string(hint.get("observed_at"))
+            else str(source["latest_observed_at"])
+        )
+        components.append(
+            {
+                "component_ref": component_ref,
+                "owner_repo": owner_repo,
+                "latest_decision_status": latest_decision_status,
+                "current_status": current_status,
+                "latest_route_class": component_refresh_route_class(hint, decision),
+                "latest_observed_at": latest_observed_at,
+            }
+        )
+
+    return {
+        "schema_version": "aoa_stats_component_refresh_summary_v1",
+        "generated_from": source,
+        "owner_repo_counts": string_count_map(owner_repo_counts),
+        "status_counts": {
+            status: status_counts.get(status, 0) for status in COMPONENT_REFRESH_CURRENT_STATUSES
+        },
+        "drift_class_counts": string_count_map(drift_class_counts),
+        "components": components,
+    }
+
+
 def build_runtime_closeout_summary(
     receipts: list[dict[str, Any]], source: dict[str, Any]
 ) -> dict[str, Any]:
@@ -2537,6 +2794,13 @@ def build_summary_surface_catalog(
             "derivation_rule": "derive one bounded continuity snapshot from the aoa-agents continuity window example, the sovereign continuity playbook, the memo-side provenance thread example, and the landed continuity eval anchors",
         },
         {
+            "name": "component_refresh_summary",
+            "surface_ref": "generated/component_refresh_summary.min.json",
+            "schema_ref": "schemas/component-refresh-summary.schema.json",
+            "primary_question": "What is the current bounded component refresh posture across named owner repos without letting stats become refresh truth or maintenance authority?",
+            "derivation_rule": "derive one bounded component refresh snapshot from reviewed aoa-sdk drift hints and reviewed followthrough decisions while keeping owner validation stronger",
+        },
+        {
             "name": "runtime_closeout_summary",
             "surface_ref": "generated/runtime_closeout_summary.min.json",
             "schema_ref": "schemas/runtime-closeout-summary.schema.json",
@@ -2625,6 +2889,7 @@ def build_all_views(
         ("rollout_campaign_summary.min.json", build_rollout_campaign_summary),
         ("drift_review_summary.min.json", build_drift_review_summary),
         ("continuity_window_summary.min.json", build_continuity_window_summary),
+        ("component_refresh_summary.min.json", build_component_refresh_summary),
     ):
         try:
             outputs[name] = builder()
