@@ -16,7 +16,7 @@ real sessions while preserving the canonical split:
 - project-core kernel usage is read from its own summary surface rather than
   inferred from total receipt volume
 
-> Current release: `v0.1.0`. See [CHANGELOG](CHANGELOG.md) for release notes.
+> Current release: `v0.1.1`. See [CHANGELOG](CHANGELOG.md) for release notes.
 
 ## Start here
 

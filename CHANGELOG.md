@@ -7,6 +7,16 @@ Tracking starts with the first public release-prep baseline for this repository.
 
 ## [Unreleased]
 
+## [0.1.1] - 2026-04-12
+
+### Summary
+
+- this patch adds repo-local Codex MCP disclosure and new rollout/continuity
+  summary surfaces
+- release-audit continuity dependencies and rollout builder behavior are
+  hardened across the derived observability lane
+- `aoa-stats` remains a bounded derived layer rather than workflow authority
+
 ### Added
 
 - narrow repo-local `aoa_stats` MCP surface for Codex under
@@ -20,6 +30,17 @@ Tracking starts with the first public release-prep baseline for this repository.
 - repo-local MCP posture and launch guidance in `docs/CODEX_MCP.md`
 - README, docs map, and AGENTS routing updates so the MCP stays bounded and
   visibly derived-only
+
+### Changed
+
+- added Codex rollout operations summaries, campaign cadence summaries, and
+  continuity-window summaries to the derived observability layer.
+- wired release-audit continuity dependencies, fixed continuity-summary
+  discovery, and hardened rollout stats builders.
+
+### Validation
+
+- `python scripts/release_check.py`
 
 ## [0.1.0] - 2026-04-10
 
