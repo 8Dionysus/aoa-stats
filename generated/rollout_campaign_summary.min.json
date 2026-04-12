@@ -1,0 +1,27 @@
+{
+  "schema_version": "aoa_stats_rollout_campaign_summary_v1",
+  "generated_from": {
+    "receipt_input_paths": [
+      "8Dionysus/examples/rollout_campaign_window.example.json",
+      "8Dionysus/examples/drift_review_window.example.json",
+      "8Dionysus/examples/rollback_followthrough_window.example.json"
+    ],
+    "total_receipts": 1,
+    "latest_observed_at": "2026-04-12T20:12:00Z"
+  },
+  "campaign_ref": "CAMP-20260412-codex-cadence-01",
+  "campaign_state": "open",
+  "open_batches": 1,
+  "pending_reviews": 1,
+  "rollback_ready_windows": 1,
+  "stage_counts": {
+    "candidate_refs": 0,
+    "seed_refs": 0,
+    "object_refs": 0
+  },
+  "source_refs": [
+    "8Dionysus/examples/rollout_campaign_window.example.json",
+    "8Dionysus/examples/drift_review_window.example.json",
+    "8Dionysus/examples/rollback_followthrough_window.example.json"
+  ]
+}

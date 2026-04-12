@@ -1,0 +1,102 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://aoa-stats/schemas/rollout-campaign-summary.schema.json",
+  "title": "aoa-stats rollout campaign summary",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema_version",
+    "generated_from",
+    "campaign_ref",
+    "campaign_state",
+    "open_batches",
+    "pending_reviews",
+    "rollback_ready_windows",
+    "stage_counts",
+    "source_refs"
+  ],
+  "properties": {
+    "schema_version": {
+      "const": "aoa_stats_rollout_campaign_summary_v1"
+    },
+    "generated_from": {
+      "$ref": "#/$defs/generated_from"
+    },
+    "campaign_ref": {
+      "type": "string",
+      "minLength": 1
+    },
+    "campaign_state": {
+      "enum": [
+        "open",
+        "paused",
+        "closed",
+        "review_required"
+      ]
+    },
+    "open_batches": {
+      "type": "integer",
+      "minimum": 0
+    },
+    "pending_reviews": {
+      "type": "integer",
+      "minimum": 0
+    },
+    "rollback_ready_windows": {
+      "type": "integer",
+      "minimum": 0
+    },
+    "stage_counts": {
+      "$ref": "#/$defs/string_count_map"
+    },
+    "source_refs": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "string",
+        "minLength": 1
+      },
+      "uniqueItems": true
+    }
+  },
+  "$defs": {
+    "generated_from": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "receipt_input_paths",
+        "total_receipts",
+        "latest_observed_at"
+      ],
+      "properties": {
+        "receipt_input_paths": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "type": "string",
+            "minLength": 1
+          }
+        },
+        "total_receipts": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "latest_observed_at": {
+          "type": "string",
+          "format": "date-time"
+        }
+      }
+    },
+    "string_count_map": {
+      "type": "object",
+      "propertyNames": {
+        "type": "string",
+        "minLength": 1
+      },
+      "additionalProperties": {
+        "type": "integer",
+        "minimum": 0
+      }
+    }
+  }
+}
