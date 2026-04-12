@@ -463,6 +463,33 @@ def load_json_object(path: Path, *, label: str) -> dict[str, Any]:
     return payload
 
 
+def load_jsonl_objects(path: Path, *, label: str) -> list[dict[str, Any]]:
+    try:
+        lines = path.read_text(encoding="utf-8").splitlines()
+    except FileNotFoundError as exc:
+        raise ReceiptValidationError(f"missing {label}: {path}") from exc
+
+    rows: list[dict[str, Any]] = []
+    for line_number, raw_line in enumerate(lines, start=1):
+        line = raw_line.strip()
+        if not line:
+            continue
+        try:
+            payload = json.loads(line)
+        except json.JSONDecodeError as exc:
+            raise ReceiptValidationError(
+                f"invalid JSON line in {label}: {path}:{line_number}"
+            ) from exc
+        if not isinstance(payload, dict):
+            raise ReceiptValidationError(
+                f"{label} entries must be JSON objects: {path}:{line_number}"
+            )
+        rows.append(payload)
+    if not rows:
+        raise ReceiptValidationError(f"{label} must expose at least one JSON object: {path}")
+    return rows
+
+
 def codex_plane_example_paths() -> tuple[Path, Path, Path]:
     public_profile_root = repo_root_from_env("AOA_8DIONYSUS_ROOT", DEFAULT_PUBLIC_PROFILE_ROOT)
     sdk_root = repo_root_from_env("AOA_SDK_ROOT", DEFAULT_AOA_SDK_ROOT)
@@ -504,6 +531,80 @@ def codex_plane_generated_from() -> tuple[dict[str, Any], dict[str, Any], dict[s
         "latest_observed_at": latest_observed_at,
     }
     return source, trust, status, receipt
+
+
+def codex_trusted_rollout_paths() -> tuple[Path, Path, Path, Path]:
+    public_profile_root = repo_root_from_env("AOA_8DIONYSUS_ROOT", DEFAULT_PUBLIC_PROFILE_ROOT)
+    rollout_root = public_profile_root / "generated" / "codex" / "rollout"
+    return (
+        rollout_root / "deploy_history.jsonl",
+        rollout_root / "regeneration_campaigns.min.json",
+        rollout_root / "rollback_windows.min.json",
+        rollout_root / "rollout_latest.min.json",
+    )
+
+
+def codex_trusted_rollout_generated_from() -> tuple[
+    dict[str, Any], list[dict[str, Any]], dict[str, Any], dict[str, Any], dict[str, Any]
+]:
+    (
+        deploy_history_path,
+        regeneration_path,
+        rollback_path,
+        latest_path,
+    ) = codex_trusted_rollout_paths()
+    public_profile_root = repo_root_from_env("AOA_8DIONYSUS_ROOT", DEFAULT_PUBLIC_PROFILE_ROOT)
+    deploy_history = load_jsonl_objects(
+        deploy_history_path,
+        label="codex trusted rollout deploy history",
+    )
+    regeneration = load_json_object(
+        regeneration_path,
+        label="codex trusted rollout regeneration campaigns",
+    )
+    rollback = load_json_object(
+        rollback_path,
+        label="codex trusted rollout rollback windows",
+    )
+    latest = load_json_object(
+        latest_path,
+        label="codex trusted rollout latest summary",
+    )
+    observed_candidates = [
+        parse_iso_datetime_or_min(row.get("activated_at"))
+        for row in deploy_history
+    ]
+    rollback_windows = rollback.get("rollback_windows")
+    if isinstance(rollback_windows, list):
+        observed_candidates.extend(
+            parse_iso_datetime_or_min(item.get("closed_at"))
+            for item in rollback_windows
+            if isinstance(item, dict)
+        )
+    latest_observed_at = max(observed_candidates).isoformat().replace("+00:00", "Z")
+    source = {
+        "receipt_input_paths": [
+            display_repo_input_path(
+                deploy_history_path,
+                repo_roots=(("8Dionysus", public_profile_root),),
+            ),
+            display_repo_input_path(
+                regeneration_path,
+                repo_roots=(("8Dionysus", public_profile_root),),
+            ),
+            display_repo_input_path(
+                rollback_path,
+                repo_roots=(("8Dionysus", public_profile_root),),
+            ),
+            display_repo_input_path(
+                latest_path,
+                repo_roots=(("8Dionysus", public_profile_root),),
+            ),
+        ],
+        "total_receipts": len(deploy_history),
+        "latest_observed_at": latest_observed_at,
+    }
+    return source, deploy_history, regeneration, rollback, latest
 
 
 def normalized_code_list(value: Any) -> list[str]:
@@ -1775,6 +1876,47 @@ def build_codex_plane_deployment_summary() -> dict[str, Any]:
     }
 
 
+def build_codex_rollout_operations_summary() -> dict[str, Any]:
+    source, deploy_history, _, _, latest = codex_trusted_rollout_generated_from()
+    counts_by_state = Counter(
+        str(row.get("state"))
+        for row in deploy_history
+        if isinstance(row.get("state"), str) and row.get("state")
+    )
+    return {
+        "schema_version": "aoa_stats_codex_rollout_operations_summary_v1",
+        "generated_from": source,
+        "latest_rollout_campaign_ref": latest.get("latest_rollout_campaign_ref") or "",
+        "latest_state": latest.get("latest_state") or "unknown",
+        "active_drift_window_ref": latest.get("active_drift_window_ref"),
+        "active_rollback_window_ref": latest.get("active_rollback_window_ref"),
+        "latest_stable_rollout_campaign_ref": latest.get("latest_stable_rollout_campaign_ref") or "",
+        "counts_by_state": dict(sorted(counts_by_state.items())),
+        "source_refs": list(normalize_string_list(latest.get("source_refs"))),
+    }
+
+
+def build_codex_rollout_drift_summary() -> dict[str, Any]:
+    source, deploy_history, _, _, latest = codex_trusted_rollout_generated_from()
+    latest_history = deploy_history[-1]
+    drift_refs = normalize_string_list(latest_history.get("drift_window_refs"))
+    rollback_refs = normalize_string_list(latest_history.get("rollback_window_refs"))
+    latest_state = str(latest.get("latest_state") or latest_history.get("state") or "unknown")
+    return {
+        "schema_version": "aoa_stats_codex_rollout_drift_summary_v1",
+        "generated_from": source,
+        "latest_rollout_campaign_ref": latest.get("latest_rollout_campaign_ref") or "",
+        "drift_window_ref": drift_refs[0] if drift_refs else None,
+        "drift_state": str(latest_history.get("drift_state") or "quiet"),
+        "repair_attempted": bool(latest_history.get("repair_attempted")),
+        "rollback_required": bool(rollback_refs) or latest_state in {"rollback_open", "rolled_back"},
+        "source_refs": [
+            "8Dionysus/generated/codex/rollout/deploy_history.jsonl",
+            "8Dionysus/generated/codex/rollout/rollback_windows.min.json",
+        ],
+    }
+
+
 def build_runtime_closeout_summary(
     receipts: list[dict[str, Any]], source: dict[str, Any]
 ) -> dict[str, Any]:
@@ -2028,6 +2170,20 @@ def build_summary_surface_catalog(source: dict[str, Any]) -> dict[str, Any]:
                 "derivation_rule": "derive one bounded deployment summary from the 8Dionysus trust-state and rollout receipt examples plus the aoa-sdk deploy-status example",
             },
             {
+                "name": "codex_rollout_operations_summary",
+                "surface_ref": "generated/codex_rollout_operations_summary.min.json",
+                "schema_ref": "schemas/codex-rollout-operations-summary.schema.json",
+                "primary_question": "What checked-in trusted rollout campaign posture is currently visible for the shared-root Codex plane without turning stats into rollout authority?",
+                "derivation_rule": "derive bounded rollout state counts and latest campaign posture from 8Dionysus checked-in generated/codex/rollout source surfaces",
+            },
+            {
+                "name": "codex_rollout_drift_summary",
+                "surface_ref": "generated/codex_rollout_drift_summary.min.json",
+                "schema_ref": "schemas/codex-rollout-drift-summary.schema.json",
+                "primary_question": "What is the current bounded drift and rollback posture of the latest trusted Codex rollout campaign without replacing source-owned campaign history?",
+                "derivation_rule": "derive the latest drift window, drift state, repair attempt posture, and rollback requirement from 8Dionysus checked-in rollout history and rollback windows",
+            },
+            {
                 "name": "runtime_closeout_summary",
                 "surface_ref": "generated/runtime_closeout_summary.min.json",
                 "schema_ref": "schemas/runtime-closeout-summary.schema.json",
@@ -2085,6 +2241,8 @@ def build_all_views(
             active_receipts, source
         ),
         "codex_plane_deployment_summary.min.json": build_codex_plane_deployment_summary(),
+        "codex_rollout_operations_summary.min.json": build_codex_rollout_operations_summary(),
+        "codex_rollout_drift_summary.min.json": build_codex_rollout_drift_summary(),
         "runtime_closeout_summary.min.json": build_runtime_closeout_summary(active_receipts, source),
         "stress_recovery_window_summary.min.json": build_stress_recovery_window_summary(
             active_receipts, source, evals_root=resolved_evals_root

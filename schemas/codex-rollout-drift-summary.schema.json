@@ -1,0 +1,94 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://aoa-stats/schemas/codex-rollout-drift-summary.schema.json",
+  "title": "aoa-stats codex rollout drift summary",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema_version",
+    "generated_from",
+    "latest_rollout_campaign_ref",
+    "drift_window_ref",
+    "drift_state",
+    "repair_attempted",
+    "rollback_required",
+    "source_refs"
+  ],
+  "properties": {
+    "schema_version": {
+      "const": "aoa_stats_codex_rollout_drift_summary_v1"
+    },
+    "generated_from": {
+      "$ref": "#/$defs/generated_from"
+    },
+    "latest_rollout_campaign_ref": {
+      "type": "string",
+      "minLength": 1
+    },
+    "drift_window_ref": {
+      "anyOf": [
+        {
+          "type": "string",
+          "minLength": 1
+        },
+        {
+          "type": "null"
+        }
+      ]
+    },
+    "drift_state": {
+      "enum": [
+        "quiet",
+        "watch",
+        "material",
+        "repairing",
+        "resolved",
+        "rolled_back"
+      ]
+    },
+    "repair_attempted": {
+      "type": "boolean"
+    },
+    "rollback_required": {
+      "type": "boolean"
+    },
+    "source_refs": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "string",
+        "minLength": 1
+      },
+      "uniqueItems": true
+    }
+  },
+  "$defs": {
+    "generated_from": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "receipt_input_paths",
+        "total_receipts",
+        "latest_observed_at"
+      ],
+      "properties": {
+        "receipt_input_paths": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "type": "string",
+            "minLength": 1
+          }
+        },
+        "total_receipts": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "latest_observed_at": {
+          "type": "string",
+          "format": "date-time"
+        }
+      }
+    }
+  }
+}

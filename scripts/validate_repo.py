@@ -24,6 +24,8 @@ SCHEMAS = {
     "automation_pipeline_summary.min.json": "automation-pipeline-summary.schema.json",
     "automation_followthrough_summary.min.json": "automation-followthrough-summary.schema.json",
     "codex_plane_deployment_summary.min.json": "codex-plane-deployment-summary.schema.json",
+    "codex_rollout_operations_summary.min.json": "codex-rollout-operations-summary.schema.json",
+    "codex_rollout_drift_summary.min.json": "codex-rollout-drift-summary.schema.json",
     "runtime_closeout_summary.min.json": "runtime-closeout-summary.schema.json",
     "stress_recovery_window_summary.min.json": "stress-recovery-window-summary.schema.json",
     "surface_detection_summary.min.json": "surface-detection-summary.schema.json",

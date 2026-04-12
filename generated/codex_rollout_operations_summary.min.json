@@ -1,0 +1,27 @@
+{
+  "schema_version": "aoa_stats_codex_rollout_operations_summary_v1",
+  "generated_from": {
+    "receipt_input_paths": [
+      "8Dionysus/generated/codex/rollout/deploy_history.jsonl",
+      "8Dionysus/generated/codex/rollout/regeneration_campaigns.min.json",
+      "8Dionysus/generated/codex/rollout/rollback_windows.min.json",
+      "8Dionysus/generated/codex/rollout/rollout_latest.min.json"
+    ],
+    "total_receipts": 2,
+    "latest_observed_at": "2026-04-11T21:36:00Z"
+  },
+  "latest_rollout_campaign_ref": "ROLL-20260411-codex-hooks-tighten-02",
+  "latest_state": "rolled_back",
+  "active_drift_window_ref": null,
+  "active_rollback_window_ref": null,
+  "latest_stable_rollout_campaign_ref": "ROLL-20260411-codex-plane-regen-01",
+  "counts_by_state": {
+    "rolled_back": 1,
+    "stabilized": 1
+  },
+  "source_refs": [
+    "generated/codex/rollout/deploy_history.jsonl",
+    "generated/codex/rollout/regeneration_campaigns.min.json",
+    "generated/codex/rollout/rollback_windows.min.json"
+  ]
+}
