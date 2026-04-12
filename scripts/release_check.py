@@ -11,15 +11,44 @@ REPO_ROOT = Path(__file__).resolve().parents[1]
 
 def _env() -> dict[str, str]:
     env = os.environ.copy()
-    candidates = [
-        env.get("AOA_EVALS_ROOT"),
-        str((REPO_ROOT / "aoa-evals").resolve()),
-        str((REPO_ROOT.parent / "aoa-evals").resolve()),
-    ]
-    for candidate in candidates:
-        if candidate and Path(candidate).exists():
-            env["AOA_EVALS_ROOT"] = str(Path(candidate).resolve())
-            break
+    repo_candidates = {
+        "AOA_EVALS_ROOT": (
+            env.get("AOA_EVALS_ROOT"),
+            str((REPO_ROOT / "aoa-evals").resolve()),
+            str((REPO_ROOT / ".deps" / "aoa-evals").resolve()),
+            str((REPO_ROOT.parent / "aoa-evals").resolve()),
+        ),
+        "AOA_AGENTS_ROOT": (
+            env.get("AOA_AGENTS_ROOT"),
+            str((REPO_ROOT / ".deps" / "aoa-agents").resolve()),
+            str((REPO_ROOT.parent / "aoa-agents").resolve()),
+        ),
+        "AOA_PLAYBOOKS_ROOT": (
+            env.get("AOA_PLAYBOOKS_ROOT"),
+            str((REPO_ROOT / ".deps" / "aoa-playbooks").resolve()),
+            str((REPO_ROOT.parent / "aoa-playbooks").resolve()),
+        ),
+        "AOA_MEMO_ROOT": (
+            env.get("AOA_MEMO_ROOT"),
+            str((REPO_ROOT / ".deps" / "aoa-memo").resolve()),
+            str((REPO_ROOT.parent / "aoa-memo").resolve()),
+        ),
+        "AOA_SDK_ROOT": (
+            env.get("AOA_SDK_ROOT"),
+            str((REPO_ROOT / ".deps" / "aoa-sdk").resolve()),
+            str((REPO_ROOT.parent / "aoa-sdk").resolve()),
+        ),
+        "AOA_8DIONYSUS_ROOT": (
+            env.get("AOA_8DIONYSUS_ROOT"),
+            str((REPO_ROOT / ".deps" / "8Dionysus").resolve()),
+            str((REPO_ROOT.parent / "8Dionysus").resolve()),
+        ),
+    }
+    for env_name, candidates in repo_candidates.items():
+        for candidate in candidates:
+            if candidate and Path(candidate).exists():
+                env[env_name] = str(Path(candidate).resolve())
+                break
     return env
 
 

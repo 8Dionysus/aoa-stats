@@ -21,19 +21,40 @@ jobs:
           ref: d80eac5e8ad2aa4cd1cf3546db030cafdaedda3d
           path: .deps/8Dionysus
 
+      - name: Checkout aoa-agents
+        uses: actions/checkout@v4
+        with:
+          repository: 8Dionysus/aoa-agents
+          ref: c84916099b3200659b57a752a44f8e5972f948d8
+          path: .deps/aoa-agents
+
+      - name: Checkout aoa-playbooks
+        uses: actions/checkout@v4
+        with:
+          repository: 8Dionysus/aoa-playbooks
+          ref: cb1b5b83a87621f7891a3fdc61265d2dde0fb7cf
+          path: .deps/aoa-playbooks
+
+      - name: Checkout aoa-memo
+        uses: actions/checkout@v4
+        with:
+          repository: 8Dionysus/aoa-memo
+          ref: 06eb973bd5ee5d5bac1c3613d932d1e8940d8b0a
+          path: .deps/aoa-memo
+
       - name: Checkout aoa-sdk
         uses: actions/checkout@v4
         with:
           repository: 8Dionysus/aoa-sdk
-          ref: 154b007338e1d1a65269532aa13c463214fa09d6
+          ref: f80efd52db3d3fa735a228276f968c420737de53
           path: .deps/aoa-sdk
 
       - name: Checkout aoa-evals
         uses: actions/checkout@v4
         with:
           repository: 8Dionysus/aoa-evals
-          ref: be8475bc5095b8797f736cfc8a60ef3d2a9e9d79
-          path: aoa-evals
+          ref: 991097f9e0d1c5dc8bcf4bb9864d29f7c515e2b4
+          path: .deps/aoa-evals
 
       - name: Set up Python
         uses: actions/setup-python@v5
@@ -48,6 +69,9 @@ jobs:
       - name: Run release audit
         env:
           AOA_8DIONYSUS_ROOT: ./.deps/8Dionysus
+          AOA_AGENTS_ROOT: ./.deps/aoa-agents
+          AOA_PLAYBOOKS_ROOT: ./.deps/aoa-playbooks
+          AOA_MEMO_ROOT: ./.deps/aoa-memo
           AOA_SDK_ROOT: ./.deps/aoa-sdk
-          AOA_EVALS_ROOT: ./aoa-evals
+          AOA_EVALS_ROOT: ./.deps/aoa-evals
         run: python scripts/release_check.py

@@ -221,6 +221,7 @@ def test_build_views_produces_expected_surface_counts() -> None:
         "codex_rollout_drift_summary.min.json",
         "rollout_campaign_summary.min.json",
         "drift_review_summary.min.json",
+        "continuity_window_summary.min.json",
         "runtime_closeout_summary.min.json",
         "stress_recovery_window_summary.min.json",
         "surface_detection_summary.min.json",
@@ -261,6 +262,12 @@ def test_build_views_produces_expected_surface_counts() -> None:
     assert outputs["rollout_campaign_summary.min.json"]["pending_reviews"] == 1
     assert outputs["drift_review_summary.min.json"]["review_ref"] == "DREV-20260412-codex-cadence-01"
     assert outputs["drift_review_summary.min.json"]["signals_seen"]["hook_drift"] == 1
+    assert outputs["continuity_window_summary.min.json"]["continuity_ref"] == (
+        "CONT-20260412-architect-01"
+    )
+    assert outputs["continuity_window_summary.min.json"]["current_status"] == "active"
+    assert outputs["continuity_window_summary.min.json"]["open_revision_windows"] == 1
+    assert outputs["continuity_window_summary.min.json"]["drift_flags"] == []
     assert len(outputs["core_skill_application_summary.min.json"]["skills"]) == 1
     assert len(outputs["repeated_window_summary.min.json"]["windows"]) == 2
     assert len(outputs["route_progression_summary.min.json"]["routes"]) == 1
@@ -325,10 +332,32 @@ def test_build_views_produces_expected_surface_counts() -> None:
         "generated/codex_rollout_drift_summary.min.json",
         "generated/rollout_campaign_summary.min.json",
         "generated/drift_review_summary.min.json",
+        "generated/continuity_window_summary.min.json",
         "generated/runtime_closeout_summary.min.json",
         "generated/stress_recovery_window_summary.min.json",
         "generated/surface_detection_summary.min.json",
     ]
+
+
+def test_continuity_window_summary_stays_derived_and_non_sovereign() -> None:
+    module = load_build_views_module()
+
+    summary = module.build_continuity_window_summary()
+
+    assert summary["schema_version"] == "aoa_stats_continuity_window_summary_v1"
+    assert summary["generated_from"]["receipt_input_paths"] == [
+        "aoa-agents/examples/self_agent_checkpoint/self_agency_continuity_window.example.json",
+        "aoa-playbooks/playbooks/self-agency-continuity-cycle/PLAYBOOK.md",
+        "aoa-memo/examples/provenance_thread.self-agency-continuity.example.json",
+        "aoa-evals/generated/eval_catalog.min.json",
+    ]
+    assert summary["current_status"] == "active"
+    assert summary["successful_reanchors"] == 0
+    assert summary["failed_reanchors"] == 0
+    assert summary["last_anchor_artifact_ref"] == (
+        "artifact:verification_result:AOA-VERIFY-20260412-0001"
+    )
+    assert summary["bounded_revision_count"] == 1
 
 
 def test_candidate_lineage_summary_stays_reviewed_only_and_no_score() -> None:
