@@ -911,18 +911,32 @@ def component_refresh_generated_from() -> tuple[dict[str, Any], list[dict[str, A
         )
 
     latest_hint_observed_at: datetime | None = None
+    hint_refs: set[str] = set()
+    hint_components: set[str] = set()
     for index, hint in enumerate(hints):
         if not isinstance(hint, dict):
             raise ReceiptValidationError(f"component drift hint example hints[{index}] must be an object")
+        hint_ref = hint.get("hint_ref")
         component_ref = hint.get("component_ref")
         owner_repo = hint.get("owner_repo")
         observed_at = hint.get("observed_at")
         route_class = hint.get("recommended_route_class")
         signals = normalize_string_list(hint.get("signals"))
+        evidence_refs = normalize_string_list(hint.get("evidence_refs"))
+        if not is_nonempty_string(hint_ref):
+            raise ReceiptValidationError(f"component drift hint example hints[{index}] must expose hint_ref")
         if not is_nonempty_string(component_ref):
             raise ReceiptValidationError(f"component drift hint example hints[{index}] must expose component_ref")
         if not is_nonempty_string(owner_repo):
             raise ReceiptValidationError(f"component drift hint example hints[{index}] must expose owner_repo")
+        if str(hint_ref) in hint_refs:
+            raise ReceiptValidationError(
+                f"component drift hint example hints[{index}] must not duplicate hint_ref {hint_ref!r}"
+            )
+        if str(component_ref) in hint_components:
+            raise ReceiptValidationError(
+                f"component drift hint example hints[{index}] must not duplicate component_ref {component_ref!r}"
+            )
         parsed_observed_at = parse_iso_datetime(observed_at)
         if parsed_observed_at is None:
             raise ReceiptValidationError(
@@ -936,9 +950,16 @@ def component_refresh_generated_from() -> tuple[dict[str, Any], list[dict[str, A
             raise ReceiptValidationError(
                 f"component drift hint example hints[{index}] must expose at least one signal"
             )
+        if not evidence_refs:
+            raise ReceiptValidationError(
+                f"component drift hint example hints[{index}] must expose at least one evidence_ref"
+            )
+        hint_refs.add(str(hint_ref))
+        hint_components.add(str(component_ref))
         if latest_hint_observed_at is None or parsed_observed_at > latest_hint_observed_at:
             latest_hint_observed_at = parsed_observed_at
 
+    decision_components: set[str] = set()
     for index, decision in enumerate(decisions):
         if not isinstance(decision, dict):
             raise ReceiptValidationError(
@@ -948,6 +969,7 @@ def component_refresh_generated_from() -> tuple[dict[str, Any], list[dict[str, A
         owner_repo = decision.get("owner_repo")
         route_class = decision.get("route_class")
         decision_status = decision.get("decision_status")
+        evidence_refs = normalize_string_list(decision.get("evidence_refs"))
         if not is_nonempty_string(component_ref):
             raise ReceiptValidationError(
                 f"component refresh followthrough decision example decisions[{index}] must expose component_ref"
@@ -964,6 +986,19 @@ def component_refresh_generated_from() -> tuple[dict[str, Any], list[dict[str, A
             raise ReceiptValidationError(
                 f"component refresh followthrough decision example decisions[{index}] decision_status is outside the published grammar"
             )
+        if str(component_ref) in decision_components:
+            raise ReceiptValidationError(
+                f"component refresh followthrough decision example decisions[{index}] must not duplicate component_ref {component_ref!r}"
+            )
+        if not evidence_refs:
+            raise ReceiptValidationError(
+                f"component refresh followthrough decision example decisions[{index}] must expose at least one evidence_ref"
+            )
+        if not any(ref in hint_refs for ref in evidence_refs):
+            raise ReceiptValidationError(
+                f"component refresh followthrough decision example decisions[{index}] must reference at least one known hint_ref"
+            )
+        decision_components.add(str(component_ref))
 
     assert latest_hint_observed_at is not None
     source = {

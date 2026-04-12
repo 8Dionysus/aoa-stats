@@ -491,6 +491,146 @@ def test_component_refresh_summary_stays_derived_and_non_sovereign(
     }
 
 
+def test_component_refresh_summary_rejects_empty_hint_evidence_refs(
+    tmp_path: Path, monkeypatch: pytest.MonkeyPatch
+) -> None:
+    module = load_build_views_module()
+    sdk_root = tmp_path / ".deps" / "aoa-sdk"
+    examples_root = sdk_root / "examples"
+    examples_root.mkdir(parents=True)
+    (examples_root / "component_drift_hints.example.json").write_text(
+        json.dumps(
+            {
+                "schema_version": "aoa_component_drift_hint_set_v1",
+                "session_ref": "session:component-refresh-test",
+                "repo_root": "/srv",
+                "hints": [
+                    {
+                        "hint_ref": "hint:root",
+                        "component_ref": "component:codex-plane:shared-root",
+                        "owner_repo": "8Dionysus",
+                        "observed_at": "2026-04-12T16:20:00Z",
+                        "observed_by": "workspace_root",
+                        "severity": "medium",
+                        "signals": ["doctor_fail_after_render"],
+                        "repeat_count": 1,
+                        "evidence_refs": [],
+                        "recommended_route_class": "regenerate",
+                        "review_required": True,
+                    }
+                ],
+            }
+        ),
+        encoding="utf-8",
+    )
+    (examples_root / "component_refresh_followthrough_decision.example.json").write_text(
+        json.dumps(
+            {
+                "schema_version": "aoa_component_refresh_followthrough_decision_set_v1",
+                "decision_ref": "decision:test",
+                "reviewed": True,
+                "session_ref": "session:component-refresh-test",
+                "decisions": [
+                    {
+                        "component_ref": "component:codex-plane:shared-root",
+                        "owner_repo": "8Dionysus",
+                        "route_class": "regenerate",
+                        "decision_status": "chosen",
+                        "selected_refresh_path": ["python root.py"],
+                        "reason": "root drift",
+                        "evidence_refs": ["hint:root"],
+                        "rollback_anchor": "docs/CODEX_PLANE_ROLLOUT.md",
+                        "stats_should_refresh": True,
+                        "memo_writeback_candidate": False,
+                    }
+                ],
+            }
+        ),
+        encoding="utf-8",
+    )
+
+    monkeypatch.setenv("AOA_SDK_ROOT", str(sdk_root))
+
+    with pytest.raises(module.ReceiptValidationError, match="must expose at least one evidence_ref"):
+        module.build_component_refresh_summary()
+
+
+def test_component_refresh_summary_rejects_duplicate_decisions_for_component(
+    tmp_path: Path, monkeypatch: pytest.MonkeyPatch
+) -> None:
+    module = load_build_views_module()
+    sdk_root = tmp_path / ".deps" / "aoa-sdk"
+    examples_root = sdk_root / "examples"
+    examples_root.mkdir(parents=True)
+    (examples_root / "component_drift_hints.example.json").write_text(
+        json.dumps(
+            {
+                "schema_version": "aoa_component_drift_hint_set_v1",
+                "session_ref": "session:component-refresh-test",
+                "repo_root": "/srv",
+                "hints": [
+                    {
+                        "hint_ref": "hint:root",
+                        "component_ref": "component:codex-plane:shared-root",
+                        "owner_repo": "8Dionysus",
+                        "observed_at": "2026-04-12T16:20:00Z",
+                        "observed_by": "workspace_root",
+                        "severity": "medium",
+                        "signals": ["doctor_fail_after_render"],
+                        "repeat_count": 1,
+                        "evidence_refs": ["artifact:root"],
+                        "recommended_route_class": "regenerate",
+                        "review_required": True,
+                    }
+                ],
+            }
+        ),
+        encoding="utf-8",
+    )
+    (examples_root / "component_refresh_followthrough_decision.example.json").write_text(
+        json.dumps(
+            {
+                "schema_version": "aoa_component_refresh_followthrough_decision_set_v1",
+                "decision_ref": "decision:test",
+                "reviewed": True,
+                "session_ref": "session:component-refresh-test",
+                "decisions": [
+                    {
+                        "component_ref": "component:codex-plane:shared-root",
+                        "owner_repo": "8Dionysus",
+                        "route_class": "regenerate",
+                        "decision_status": "chosen",
+                        "selected_refresh_path": ["python root.py"],
+                        "reason": "root drift",
+                        "evidence_refs": ["hint:root"],
+                        "rollback_anchor": "docs/CODEX_PLANE_ROLLOUT.md",
+                        "stats_should_refresh": True,
+                        "memo_writeback_candidate": False,
+                    },
+                    {
+                        "component_ref": "component:codex-plane:shared-root",
+                        "owner_repo": "8Dionysus",
+                        "route_class": "repair",
+                        "decision_status": "deferred",
+                        "selected_refresh_path": ["python repair.py"],
+                        "reason": "contradictory duplicate",
+                        "evidence_refs": ["hint:root"],
+                        "rollback_anchor": "docs/CODEX_PLANE_ROLLOUT.md",
+                        "stats_should_refresh": False,
+                        "memo_writeback_candidate": False,
+                    },
+                ],
+            }
+        ),
+        encoding="utf-8",
+    )
+
+    monkeypatch.setenv("AOA_SDK_ROOT", str(sdk_root))
+
+    with pytest.raises(module.ReceiptValidationError, match="must not duplicate component_ref"):
+        module.build_component_refresh_summary()
+
+
 def test_candidate_lineage_summary_stays_reviewed_only_and_no_score() -> None:
     module = load_build_views_module()
     receipts = module.load_receipts(
