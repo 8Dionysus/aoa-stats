@@ -48,6 +48,8 @@ def test_summary_surface_catalog_contract_is_exact() -> None:
         "core_skill_application_summary",
         "object_summary",
         "candidate_lineage_summary",
+        "owner_landing_summary",
+        "supersession_drop_summary",
         "repeated_window_summary",
         "route_progression_summary",
         "fork_calibration_summary",

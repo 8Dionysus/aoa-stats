@@ -10,6 +10,8 @@ Use this map when you want to know which stats-layer document to open next.
 - live intake and update loop: `LIVE_SESSION_USE.md`
 - release flow and public release narrative: `RELEASING.md` and `../CHANGELOG.md`
 - growth-refinery funnel summary: `GROWTH_FUNNEL_SUMMARY.md`
+- growth-refinery owner landing and pruning followthrough:
+  `OWNER_LANDING_SUMMARY.md` and `SUPERSESSION_DROP_SUMMARY.md`
 - first-wave derived antifragility posture: `ANTIFRAGILITY_VECTOR.md`
 - fourth-wave repeated stress recovery derivation: `STRESS_RECOVERY_WINDOW_SUMMARIES.md`
 - derived signal precedence and anti-loop hygiene: `DERIVED_SIGNAL_HYGIENE.md`

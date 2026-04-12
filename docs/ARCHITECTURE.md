@@ -56,6 +56,8 @@ Current v0 derived views:
 - core-skill-application summary
 - object summary
 - candidate-lineage summary
+- owner-landing summary
+- supersession-drop summary
 - repeated-window summary
 - route-progression summary
 - fork-calibration summary
@@ -71,6 +73,12 @@ without replacing the underlying receipts or owner-local authority.
 `generated/candidate_lineage_summary.min.json` is the first growth-refinery
 funnel slice. It reads reviewed owner-local lineage entries only and does not
 pull raw checkpoint carry into stats.
+
+`generated/owner_landing_summary.min.json` and
+`generated/supersession_drop_summary.min.json` are the next bounded
+growth-refinery followthrough slices. They read reviewed owner landing bundles,
+seed-owner landing traces, and explicit reviewed turnover signals without
+claiming owner truth.
 
 The published runtime-entry capsule is the schema-backed v2 contract:
 

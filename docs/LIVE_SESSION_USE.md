@@ -25,6 +25,9 @@ sources under the current federation root, writes one combined local feed to
 
 - `state/generated/object_summary.min.json`
 - `state/generated/core_skill_application_summary.min.json`
+- `state/generated/candidate_lineage_summary.min.json`
+- `state/generated/owner_landing_summary.min.json`
+- `state/generated/supersession_drop_summary.min.json`
 - `state/generated/repeated_window_summary.min.json`
 - `state/generated/route_progression_summary.min.json`
 - `state/generated/fork_calibration_summary.min.json`
@@ -67,6 +70,9 @@ The committed builder refreshes:
 
 - `generated/object_summary.min.json`
 - `generated/core_skill_application_summary.min.json`
+- `generated/candidate_lineage_summary.min.json`
+- `generated/owner_landing_summary.min.json`
+- `generated/supersession_drop_summary.min.json`
 - `generated/repeated_window_summary.min.json`
 - `generated/route_progression_summary.min.json`
 - `generated/fork_calibration_summary.min.json`

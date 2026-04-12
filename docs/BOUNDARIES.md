@@ -35,6 +35,8 @@ It may emit:
 
 - object summaries
 - candidate-lineage summaries
+- owner-landing summaries
+- supersession-drop summaries
 - repeated-window summaries
 - route-progression summaries
 - fork-calibration summaries
