@@ -219,6 +219,8 @@ def test_build_views_produces_expected_surface_counts() -> None:
         "codex_plane_deployment_summary.min.json",
         "codex_rollout_operations_summary.min.json",
         "codex_rollout_drift_summary.min.json",
+        "rollout_campaign_summary.min.json",
+        "drift_review_summary.min.json",
         "runtime_closeout_summary.min.json",
         "stress_recovery_window_summary.min.json",
         "surface_detection_summary.min.json",
@@ -255,6 +257,10 @@ def test_build_views_produces_expected_surface_counts() -> None:
     assert outputs["supersession_drop_summary.min.json"]["reanchor_after_drop_counts"] == {
         "aoa-playbooks": 1,
     }
+    assert outputs["rollout_campaign_summary.min.json"]["campaign_ref"] == "CAMP-20260412-codex-cadence-01"
+    assert outputs["rollout_campaign_summary.min.json"]["pending_reviews"] == 1
+    assert outputs["drift_review_summary.min.json"]["review_ref"] == "DREV-20260412-codex-cadence-01"
+    assert outputs["drift_review_summary.min.json"]["signals_seen"]["hook_drift"] == 1
     assert len(outputs["core_skill_application_summary.min.json"]["skills"]) == 1
     assert len(outputs["repeated_window_summary.min.json"]["windows"]) == 2
     assert len(outputs["route_progression_summary.min.json"]["routes"]) == 1
@@ -317,6 +323,8 @@ def test_build_views_produces_expected_surface_counts() -> None:
         "generated/codex_plane_deployment_summary.min.json",
         "generated/codex_rollout_operations_summary.min.json",
         "generated/codex_rollout_drift_summary.min.json",
+        "generated/rollout_campaign_summary.min.json",
+        "generated/drift_review_summary.min.json",
         "generated/runtime_closeout_summary.min.json",
         "generated/stress_recovery_window_summary.min.json",
         "generated/surface_detection_summary.min.json",

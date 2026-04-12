@@ -37,14 +37,34 @@ These summaries may expose:
 They remain descriptive only.
 They do not authorize rollout, stabilization, or rollback.
 
+When `8Dionysus` also publishes source-owned cadence windows under
+`examples/rollout_campaign_window.example.json`,
+`examples/drift_review_window.example.json`, and
+`examples/rollback_followthrough_window.example.json`, `aoa-stats` may derive:
+
+- `generated/rollout_campaign_summary.min.json`
+- `generated/drift_review_summary.min.json`
+
+These cadence companions may expose:
+
+- one current campaign ref and campaign state
+- whether one bounded review is still pending
+- whether one rollback-followthrough window is ready
+- simple lineage-ref counts when stronger upstream refs already exist
+- named drift-signal counts and decision counts
+
+They remain descriptive only.
+They do not authorize campaign decisions, cadence closure, or rollback posture.
+
 ## Source precedence
 
 Prefer:
 
 1. live trust-state and rollout receipt contracts in `8Dionysus`
 2. checked-in trusted rollout history in `8Dionysus/generated/codex/rollout/`
-3. typed deploy-status snapshots in `aoa-sdk`
-4. other derived counters only as secondary shaping signals
+3. source-owned cadence windows in `8Dionysus/examples/*.example.json`
+4. typed deploy-status snapshots in `aoa-sdk`
+5. other derived counters only as secondary shaping signals
 
 `aoa-stats` may summarize this family, but it does not overrule live trust
 evidence.

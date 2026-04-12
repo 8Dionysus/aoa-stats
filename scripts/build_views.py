@@ -607,6 +607,38 @@ def codex_trusted_rollout_generated_from() -> tuple[
     return source, deploy_history, regeneration, rollback, latest
 
 
+def codex_rollout_campaign_paths() -> tuple[Path, Path, Path]:
+    public_profile_root = repo_root_from_env("AOA_8DIONYSUS_ROOT", DEFAULT_PUBLIC_PROFILE_ROOT)
+    return (
+        public_profile_root / "examples" / "rollout_campaign_window.example.json",
+        public_profile_root / "examples" / "drift_review_window.example.json",
+        public_profile_root / "examples" / "rollback_followthrough_window.example.json",
+    )
+
+
+def codex_rollout_campaign_generated_from() -> tuple[dict[str, Any], dict[str, Any], dict[str, Any], dict[str, Any]]:
+    campaign_path, review_path, rollback_path = codex_rollout_campaign_paths()
+    public_profile_root = repo_root_from_env("AOA_8DIONYSUS_ROOT", DEFAULT_PUBLIC_PROFILE_ROOT)
+    campaign = load_json_object(campaign_path, label="rollout campaign window example")
+    review = load_json_object(review_path, label="drift review window example")
+    rollback = load_json_object(rollback_path, label="rollback followthrough window example")
+    latest_observed_at = max(
+        parse_iso_datetime_or_min(campaign.get("window_opened_at")),
+        parse_iso_datetime_or_min(review.get("reviewed_at")),
+        parse_iso_datetime_or_min(rollback.get("prepared_at")),
+    ).isoformat().replace("+00:00", "Z")
+    source = {
+        "receipt_input_paths": [
+            display_repo_input_path(campaign_path, repo_roots=(("8Dionysus", public_profile_root),)),
+            display_repo_input_path(review_path, repo_roots=(("8Dionysus", public_profile_root),)),
+            display_repo_input_path(rollback_path, repo_roots=(("8Dionysus", public_profile_root),)),
+        ],
+        "total_receipts": 1,
+        "latest_observed_at": latest_observed_at,
+    }
+    return source, campaign, review, rollback
+
+
 def normalized_code_list(value: Any) -> list[str]:
     return [
         item.strip()
@@ -1917,6 +1949,54 @@ def build_codex_rollout_drift_summary() -> dict[str, Any]:
     }
 
 
+def build_rollout_campaign_summary() -> dict[str, Any]:
+    source, campaign, review, rollback = codex_rollout_campaign_generated_from()
+    lineage_refs = campaign.get("lineage_refs")
+    if not isinstance(lineage_refs, dict):
+        lineage_refs = {}
+    review_status = str(review.get("status") or "closed")
+    rollback_status = str(rollback.get("status") or "retired")
+    return {
+        "schema_version": "aoa_stats_rollout_campaign_summary_v1",
+        "generated_from": source,
+        "campaign_ref": str(campaign.get("campaign_ref") or ""),
+        "campaign_state": str(campaign.get("state") or "review_required"),
+        "open_batches": 1 if campaign.get("state") == "open" else 0,
+        "pending_reviews": 1 if review_status in {"review_required", "reanchor", "rollback_considered"} else 0,
+        "rollback_ready_windows": 1 if rollback_status in {"ready_if_needed", "armed"} else 0,
+        "stage_counts": {
+            "candidate_refs": len(normalize_string_list(lineage_refs.get("candidate_refs"))),
+            "seed_refs": len(normalize_string_list(lineage_refs.get("seed_refs"))),
+            "object_refs": len(normalize_string_list(lineage_refs.get("object_refs"))),
+        },
+        "source_refs": list(source["receipt_input_paths"]),
+    }
+
+
+def build_drift_review_summary() -> dict[str, Any]:
+    source, campaign, review, rollback = codex_rollout_campaign_generated_from()
+    signals = review.get("signals")
+    signal_counts: Counter[str] = Counter()
+    if isinstance(signals, dict):
+        for name in sorted(signals):
+            signal_counts[name] = 1 if signals.get(name) is True else 0
+    decision = str(review.get("decision") or "safe_stop")
+    rollback_status = str(rollback.get("status") or "retired")
+    return {
+        "schema_version": "aoa_stats_drift_review_summary_v1",
+        "generated_from": source,
+        "campaign_ref": str(campaign.get("campaign_ref") or ""),
+        "review_ref": str(review.get("review_ref") or ""),
+        "review_status": str(review.get("status") or "closed"),
+        "review_windows_total": 1,
+        "signals_seen": dict(sorted(signal_counts.items())),
+        "decision_counts": {decision: 1},
+        "rollback_ref": str(rollback.get("rollback_ref") or ""),
+        "rollback_ready": rollback_status in {"ready_if_needed", "armed"},
+        "source_refs": list(source["receipt_input_paths"]),
+    }
+
+
 def build_runtime_closeout_summary(
     receipts: list[dict[str, Any]], source: dict[str, Any]
 ) -> dict[str, Any]:
@@ -2184,6 +2264,20 @@ def build_summary_surface_catalog(source: dict[str, Any]) -> dict[str, Any]:
                 "derivation_rule": "derive the latest drift window, drift state, repair attempt posture, and rollback requirement from 8Dionysus checked-in rollout history and rollback windows",
             },
             {
+                "name": "rollout_campaign_summary",
+                "surface_ref": "generated/rollout_campaign_summary.min.json",
+                "schema_ref": "schemas/rollout-campaign-summary.schema.json",
+                "primary_question": "What is the current bounded campaign cadence posture for the shared-root Codex plane without turning stats into cadence authority?",
+                "derivation_rule": "derive one current campaign-cadence summary from 8Dionysus source-owned rollout campaign, drift-review, and rollback-followthrough window examples",
+            },
+            {
+                "name": "drift_review_summary",
+                "surface_ref": "generated/drift_review_summary.min.json",
+                "schema_ref": "schemas/drift-review-summary.schema.json",
+                "primary_question": "What named drift signals and explicit review decisions are currently visible in the source-owned cadence windows without replacing rollout or campaign truth?",
+                "derivation_rule": "derive one bounded drift-review summary from the current 8Dionysus cadence windows and keep rollback readiness descriptive only",
+            },
+            {
                 "name": "runtime_closeout_summary",
                 "surface_ref": "generated/runtime_closeout_summary.min.json",
                 "schema_ref": "schemas/runtime-closeout-summary.schema.json",
@@ -2243,6 +2337,8 @@ def build_all_views(
         "codex_plane_deployment_summary.min.json": build_codex_plane_deployment_summary(),
         "codex_rollout_operations_summary.min.json": build_codex_rollout_operations_summary(),
         "codex_rollout_drift_summary.min.json": build_codex_rollout_drift_summary(),
+        "rollout_campaign_summary.min.json": build_rollout_campaign_summary(),
+        "drift_review_summary.min.json": build_drift_review_summary(),
         "runtime_closeout_summary.min.json": build_runtime_closeout_summary(active_receipts, source),
         "stress_recovery_window_summary.min.json": build_stress_recovery_window_summary(
             active_receipts, source, evals_root=resolved_evals_root

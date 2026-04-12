@@ -63,6 +63,15 @@ Use the shortest route by need:
   `examples/codex_rollout_drift_summary.example.json`,
   `generated/codex_rollout_operations_summary.min.json`, and
   `generated/codex_rollout_drift_summary.min.json`
+- rollout campaign cadence companions:
+  `docs/ROLLOUT_CAMPAIGN_SUMMARY.md`,
+  `docs/DRIFT_REVIEW_SUMMARY.md`,
+  `schemas/rollout-campaign-summary.schema.json`,
+  `schemas/drift-review-summary.schema.json`,
+  `examples/rollout_campaign_summary.example.json`,
+  `examples/drift_review_summary.example.json`,
+  `generated/rollout_campaign_summary.min.json`, and
+  `generated/drift_review_summary.min.json`
 - growth-refinery funnel doctrine and contracts:
   `docs/GROWTH_FUNNEL_SUMMARY.md`,
   `schemas/candidate_lineage_summary.schema.json`,
@@ -150,6 +159,8 @@ The first usable derived summaries are:
 - `generated/codex_plane_deployment_summary.min.json`
 - `generated/codex_rollout_operations_summary.min.json`
 - `generated/codex_rollout_drift_summary.min.json`
+- `generated/rollout_campaign_summary.min.json`
+- `generated/drift_review_summary.min.json`
 - `generated/runtime_closeout_summary.min.json`
 - `generated/stress_recovery_window_summary.min.json`
 - `generated/surface_detection_summary.min.json`
@@ -187,6 +198,13 @@ authority.
 for checked-in trusted rollout campaign history in `8Dionysus/generated/codex/rollout/`.
 They stay descriptive, current-campaign bounded, and weaker than source-owned
 rollout history.
+
+`generated/rollout_campaign_summary.min.json` and
+`generated/drift_review_summary.min.json` are the wave-eight cadence
+companions for source-owned campaign windows in
+`8Dionysus/examples/*.example.json`. They stay descriptive, review-window
+bounded, and weaker than both checked-in rollout history and source-owned
+cadence windows.
 
 `generated/summary_surface_catalog.min.json` is also the compact runtime-entry
 capsule that federation routing should inspect first for `aoa-stats`. It now

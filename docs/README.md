@@ -14,6 +14,8 @@ Use this map when you want to know which stats-layer document to open next.
   `SESSION_GROWTH_BRANCH_SUMMARY.md` and `AUTOMATION_FOLLOWTHROUGH_SUMMARY.md`
 - wave-six deployment continuity summary:
   `CODEX_PLANE_DEPLOYMENT_SUMMARIES.md`
+- wave-eight rollout campaign cadence companions:
+  `ROLLOUT_CAMPAIGN_SUMMARY.md` and `DRIFT_REVIEW_SUMMARY.md`
 - growth-refinery owner landing and pruning followthrough:
   `OWNER_LANDING_SUMMARY.md` and `SUPERSESSION_DROP_SUMMARY.md`
 - first-wave derived antifragility posture: `ANTIFRAGILITY_VECTOR.md`

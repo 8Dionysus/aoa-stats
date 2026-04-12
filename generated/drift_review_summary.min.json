@@ -1,0 +1,33 @@
+{
+  "schema_version": "aoa_stats_drift_review_summary_v1",
+  "generated_from": {
+    "receipt_input_paths": [
+      "8Dionysus/examples/rollout_campaign_window.example.json",
+      "8Dionysus/examples/drift_review_window.example.json",
+      "8Dionysus/examples/rollback_followthrough_window.example.json"
+    ],
+    "total_receipts": 1,
+    "latest_observed_at": "2026-04-12T20:12:00Z"
+  },
+  "campaign_ref": "CAMP-20260412-codex-cadence-01",
+  "review_ref": "DREV-20260412-codex-cadence-01",
+  "review_status": "review_required",
+  "review_windows_total": 1,
+  "signals_seen": {
+    "hook_drift": 1,
+    "marketplace_drift": 0,
+    "mcp_drift": 0,
+    "path_drift": 0,
+    "trust_drift": 0
+  },
+  "decision_counts": {
+    "reanchor_then_regenerate": 1
+  },
+  "rollback_ref": "RFU-20260412-codex-cadence-01",
+  "rollback_ready": true,
+  "source_refs": [
+    "8Dionysus/examples/rollout_campaign_window.example.json",
+    "8Dionysus/examples/drift_review_window.example.json",
+    "8Dionysus/examples/rollback_followthrough_window.example.json"
+  ]
+}
