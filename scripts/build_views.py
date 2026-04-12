@@ -15,12 +15,36 @@ from typing import Any
 REPO_ROOT = Path(__file__).resolve().parents[1]
 DEFAULT_INPUT = REPO_ROOT / "examples" / "session_harvest_family.receipts.example.json"
 DEFAULT_OUTPUT_DIR = REPO_ROOT / "generated"
-DEFAULT_EVALS_ROOT = REPO_ROOT / "aoa-evals" if (REPO_ROOT / "aoa-evals").exists() else REPO_ROOT.parent / "aoa-evals"
-DEFAULT_PUBLIC_PROFILE_ROOT = REPO_ROOT.parent / "8Dionysus"
-DEFAULT_AOA_AGENTS_ROOT = REPO_ROOT.parent / "aoa-agents"
-DEFAULT_AOA_PLAYBOOKS_ROOT = REPO_ROOT.parent / "aoa-playbooks"
-DEFAULT_AOA_MEMO_ROOT = REPO_ROOT.parent / "aoa-memo"
-DEFAULT_AOA_SDK_ROOT = REPO_ROOT.parent / "aoa-sdk"
+DEFAULT_EVALS_ROOT = (
+    REPO_ROOT / "aoa-evals"
+    if (REPO_ROOT / "aoa-evals").exists()
+    else (REPO_ROOT / ".deps" / "aoa-evals" if (REPO_ROOT / ".deps" / "aoa-evals").exists() else REPO_ROOT.parent / "aoa-evals")
+)
+DEFAULT_PUBLIC_PROFILE_ROOT = (
+    REPO_ROOT / ".deps" / "8Dionysus"
+    if (REPO_ROOT / ".deps" / "8Dionysus").exists()
+    else REPO_ROOT.parent / "8Dionysus"
+)
+DEFAULT_AOA_AGENTS_ROOT = (
+    REPO_ROOT / ".deps" / "aoa-agents"
+    if (REPO_ROOT / ".deps" / "aoa-agents").exists()
+    else REPO_ROOT.parent / "aoa-agents"
+)
+DEFAULT_AOA_PLAYBOOKS_ROOT = (
+    REPO_ROOT / ".deps" / "aoa-playbooks"
+    if (REPO_ROOT / ".deps" / "aoa-playbooks").exists()
+    else REPO_ROOT.parent / "aoa-playbooks"
+)
+DEFAULT_AOA_MEMO_ROOT = (
+    REPO_ROOT / ".deps" / "aoa-memo"
+    if (REPO_ROOT / ".deps" / "aoa-memo").exists()
+    else REPO_ROOT.parent / "aoa-memo"
+)
+DEFAULT_AOA_SDK_ROOT = (
+    REPO_ROOT / ".deps" / "aoa-sdk"
+    if (REPO_ROOT / ".deps" / "aoa-sdk").exists()
+    else REPO_ROOT.parent / "aoa-sdk"
+)
 CANONICAL_ENVELOPE_SCHEMA_PATH = REPO_ROOT / "schemas" / "stats-event-envelope.schema.json"
 CANONICAL_ENVELOPE_SCHEMA_REF = "schemas/stats-event-envelope.schema.json"
 
