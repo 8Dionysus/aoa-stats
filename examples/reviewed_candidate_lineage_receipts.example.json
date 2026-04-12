@@ -1,0 +1,167 @@
+[
+  {
+    "event_kind": "harvest_packet_receipt",
+    "event_id": "evt-harvest-lineage-2001",
+    "observed_at": "2026-04-17T00:00:00Z",
+    "run_ref": "run-growth-funnel-rich-001",
+    "session_ref": "session:2026-04-17-rich",
+    "actor_ref": "aoa-skills:session-donor-harvest",
+    "object_ref": {
+      "repo": "aoa-skills",
+      "kind": "skill",
+      "id": "aoa-session-donor-harvest",
+      "version": "main"
+    },
+    "evidence_refs": [
+      {
+        "kind": "candidate_lineage_receipt",
+        "ref": "repo:aoa-skills/examples/session_growth_artifacts/candidate_lineage_receipt.alpha.json",
+        "role": "primary"
+      }
+    ],
+    "payload": {
+      "evidence_density_summary": "reviewed",
+      "candidate_lineage_entries": [
+        {
+          "candidate_ref": "candidate:session-growth:session-growth-cycle",
+          "cluster_ref": "cluster:growth:aoa-sdk-checkpoint-auto-capture-session-growth-cycle",
+          "owner_hypothesis": "aoa-playbooks",
+          "owner_shape": "playbook",
+          "nearest_wrong_target": "aoa-skills",
+          "status_posture": "stable",
+          "axis_pressure": [
+            "change_legibility",
+            "proof_discipline"
+          ],
+          "supersedes": [],
+          "merged_into": null,
+          "drop_reason": null,
+          "evidence_refs": [
+            "repo:aoa-playbooks/playbooks/session-growth-cycle/PLAYBOOK.md"
+          ],
+          "stages": {
+            "observed": "2026-04-12T00:00:00Z",
+            "checkpointed": "2026-04-12T12:00:00Z",
+            "reviewed": "2026-04-13T00:00:00Z",
+            "harvested": "2026-04-13T12:00:00Z",
+            "seeded": "2026-04-14T00:00:00Z",
+            "planted": "2026-04-15T00:00:00Z",
+            "proved": "2026-04-16T00:00:00Z",
+            "promoted": "2026-04-17T00:00:00Z",
+            "superseded_or_dropped": null
+          }
+        }
+      ]
+    }
+  },
+  {
+    "event_kind": "harvest_packet_receipt",
+    "event_id": "evt-harvest-lineage-2002",
+    "observed_at": "2026-04-13T12:00:00Z",
+    "run_ref": "run-growth-funnel-rich-001",
+    "session_ref": "session:2026-04-17-rich",
+    "actor_ref": "aoa-skills:session-donor-harvest",
+    "object_ref": {
+      "repo": "aoa-skills",
+      "kind": "skill",
+      "id": "aoa-session-donor-harvest",
+      "version": "main"
+    },
+    "evidence_refs": [
+      {
+        "kind": "harvest_packet",
+        "ref": "repo:aoa-skills/examples/session_growth_artifacts/harvest_packet.alpha.json",
+        "role": "primary"
+      }
+    ],
+    "payload": {
+      "evidence_density_summary": "reviewed",
+      "candidate_lineage_entries": [
+        {
+          "candidate_ref": "candidate:session-growth:skill-first-drift",
+          "cluster_ref": "cluster:growth:skill-first-drift",
+          "owner_hypothesis": "aoa-playbooks",
+          "owner_shape": "recurring-playbook-route",
+          "nearest_wrong_target": "aoa-skills",
+          "status_posture": "reanchor",
+          "axis_pressure": [
+            "boundary_integrity",
+            "change_legibility"
+          ],
+          "supersedes": [],
+          "merged_into": null,
+          "drop_reason": "wrong_owner_shape",
+          "evidence_refs": [
+            "repo:aoa-skills/examples/session_growth_artifacts/harvest_packet.alpha.json"
+          ],
+          "stages": {
+            "observed": "2026-04-12T00:00:00Z",
+            "checkpointed": "2026-04-12T06:00:00Z",
+            "reviewed": "2026-04-12T12:00:00Z",
+            "harvested": "2026-04-13T00:00:00Z",
+            "seeded": null,
+            "planted": null,
+            "proved": null,
+            "promoted": null,
+            "superseded_or_dropped": "2026-04-13T12:00:00Z"
+          }
+        }
+      ]
+    }
+  },
+  {
+    "event_kind": "harvest_packet_receipt",
+    "event_id": "evt-harvest-lineage-2003",
+    "observed_at": "2026-04-16T00:00:00Z",
+    "run_ref": "run-growth-funnel-rich-001",
+    "session_ref": "session:2026-04-17-rich",
+    "actor_ref": "aoa-skills:session-donor-harvest",
+    "object_ref": {
+      "repo": "aoa-skills",
+      "kind": "skill",
+      "id": "aoa-session-donor-harvest",
+      "version": "main"
+    },
+    "evidence_refs": [
+      {
+        "kind": "candidate_lineage_receipt",
+        "ref": "repo:aoa-evals/bundles/aoa-candidate-lineage-integrity/EVAL.md",
+        "role": "primary"
+      }
+    ],
+    "payload": {
+      "evidence_density_summary": "reviewed",
+      "candidate_lineage_entries": [
+        {
+          "candidate_ref": "candidate:session-growth:repair-route-v1",
+          "cluster_ref": "cluster:growth:repair-route-v1",
+          "owner_hypothesis": "aoa-evals",
+          "owner_shape": "eval_bundle",
+          "nearest_wrong_target": "aoa-playbooks",
+          "status_posture": "stable",
+          "axis_pressure": [
+            "change_legibility",
+            "proof_discipline"
+          ],
+          "supersedes": [],
+          "merged_into": "candidate:session-growth:repair-route-v2",
+          "drop_reason": null,
+          "evidence_refs": [
+            "repo:aoa-evals/bundles/aoa-candidate-lineage-integrity/EVAL.md"
+          ],
+          "stages": {
+            "observed": "2026-04-12T00:00:00Z",
+            "checkpointed": "2026-04-12T18:00:00Z",
+            "reviewed": "2026-04-13T12:00:00Z",
+            "harvested": "2026-04-14T00:00:00Z",
+            "seeded": "2026-04-15T00:00:00Z",
+            "planted": null,
+            "proved": null,
+            "promoted": null,
+            "superseded_or_dropped": "2026-04-16T00:00:00Z"
+          }
+        }
+      ]
+    }
+  }
+]
