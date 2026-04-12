@@ -600,22 +600,23 @@ def test_drift_review_summary_keeps_decision_counts_empty_when_decision_is_missi
     public_profile_root = tmp_path / ".deps" / "8Dionysus"
     examples_root = public_profile_root / "examples"
     examples_root.mkdir(parents=True)
-    campaign = json.loads(
-        (REPO_ROOT.parent / "8Dionysus" / "examples" / "rollout_campaign_window.example.json").read_text(
-            encoding="utf-8"
-        )
-    )
-    review = json.loads(
-        (REPO_ROOT.parent / "8Dionysus" / "examples" / "drift_review_window.example.json").read_text(
-            encoding="utf-8"
-        )
-    )
-    rollback = json.loads(
-        (REPO_ROOT.parent / "8Dionysus" / "examples" / "rollback_followthrough_window.example.json").read_text(
-            encoding="utf-8"
-        )
-    )
-    del review["decision"]
+    campaign = {
+        "campaign_ref": "ROLL-20260412-codex-hooks-tighten-02",
+        "state": "review_required",
+        "window_opened_at": "2026-04-12T20:00:00Z",
+        "lineage_refs": {"candidate_refs": ["candidate:rollout:hooks-tighten-02"]},
+    }
+    review = {
+        "review_ref": "DRIFT-20260412-codex-hooks-tighten-02",
+        "status": "review_required",
+        "reviewed_at": "2026-04-12T20:15:00Z",
+        "signals": {"doctor_clean": True, "hooks_active": False},
+    }
+    rollback = {
+        "rollback_ref": "RBK-20260412-codex-hooks-tighten-02",
+        "status": "ready_if_needed",
+        "prepared_at": "2026-04-12T20:30:00Z",
+    }
     (examples_root / "rollout_campaign_window.example.json").write_text(
         json.dumps(campaign), encoding="utf-8"
     )
