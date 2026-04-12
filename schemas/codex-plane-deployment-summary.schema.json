@@ -1,0 +1,103 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://aoa-stats/schemas/codex-plane-deployment-summary.schema.json",
+  "title": "aoa-stats codex plane deployment summary",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema_version",
+    "generated_from",
+    "workspaces_total",
+    "latest_rollout_state",
+    "trust_posture_counts",
+    "drift_count",
+    "rollback_recommended_count",
+    "stable_mcp_name_set",
+    "latest_receipt_ref"
+  ],
+  "properties": {
+    "schema_version": {
+      "const": "aoa_stats_codex_plane_deployment_summary_v1"
+    },
+    "generated_from": {
+      "$ref": "#/$defs/generated_from"
+    },
+    "workspaces_total": {
+      "type": "integer",
+      "minimum": 0
+    },
+    "latest_rollout_state": {
+      "enum": [
+        "render_only",
+        "dry_run_ready",
+        "applied",
+        "verified",
+        "drifted",
+        "rollback_recommended"
+      ]
+    },
+    "trust_posture_counts": {
+      "$ref": "#/$defs/string_count_map"
+    },
+    "drift_count": {
+      "type": "integer",
+      "minimum": 0
+    },
+    "rollback_recommended_count": {
+      "type": "integer",
+      "minimum": 0
+    },
+    "stable_mcp_name_set": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "minLength": 1
+      },
+      "uniqueItems": true
+    },
+    "latest_receipt_ref": {
+      "type": "string",
+      "minLength": 1
+    }
+  },
+  "$defs": {
+    "generated_from": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "receipt_input_paths",
+        "total_receipts",
+        "latest_observed_at"
+      ],
+      "properties": {
+        "receipt_input_paths": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "type": "string",
+            "minLength": 1
+          }
+        },
+        "total_receipts": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "latest_observed_at": {
+          "type": "string",
+          "format": "date-time"
+        }
+      }
+    },
+    "string_count_map": {
+      "type": "object",
+      "propertyNames": {
+        "type": "string",
+        "minLength": 1
+      },
+      "additionalProperties": {
+        "type": "integer",
+        "minimum": 0
+      }
+    }
+  }
+}

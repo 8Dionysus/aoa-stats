@@ -14,6 +14,20 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
 
+      - name: Checkout 8Dionysus
+        uses: actions/checkout@v4
+        with:
+          repository: 8Dionysus/8Dionysus
+          ref: a11b0f766817a177422db5feff43ecec70f15107
+          path: .deps/8Dionysus
+
+      - name: Checkout aoa-sdk
+        uses: actions/checkout@v4
+        with:
+          repository: 8Dionysus/aoa-sdk
+          ref: 138d0df1c69df97fa806411ec903431724a8b1f1
+          path: .deps/aoa-sdk
+
       - name: Checkout aoa-evals
         uses: actions/checkout@v4
         with:
@@ -33,5 +47,7 @@ jobs:
 
       - name: Run release audit
         env:
+          AOA_8DIONYSUS_ROOT: ./.deps/8Dionysus
+          AOA_SDK_ROOT: ./.deps/aoa-sdk
           AOA_EVALS_ROOT: ./aoa-evals
         run: python scripts/release_check.py

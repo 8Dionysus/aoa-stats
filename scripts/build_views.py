@@ -3,6 +3,7 @@ from __future__ import annotations
 
 import argparse
 import json
+import os
 import sys
 from collections import Counter, defaultdict
 from datetime import UTC, datetime
@@ -15,6 +16,8 @@ REPO_ROOT = Path(__file__).resolve().parents[1]
 DEFAULT_INPUT = REPO_ROOT / "examples" / "session_harvest_family.receipts.example.json"
 DEFAULT_OUTPUT_DIR = REPO_ROOT / "generated"
 DEFAULT_EVALS_ROOT = REPO_ROOT / "aoa-evals" if (REPO_ROOT / "aoa-evals").exists() else REPO_ROOT.parent / "aoa-evals"
+DEFAULT_PUBLIC_PROFILE_ROOT = REPO_ROOT.parent / "8Dionysus"
+DEFAULT_AOA_SDK_ROOT = REPO_ROOT.parent / "aoa-sdk"
 CANONICAL_ENVELOPE_SCHEMA_PATH = REPO_ROOT / "schemas" / "stats-event-envelope.schema.json"
 CANONICAL_ENVELOPE_SCHEMA_REF = "schemas/stats-event-envelope.schema.json"
 
@@ -56,6 +59,31 @@ OWNER_LANDING_OUTCOMES = (
     "deferred",
     "dropped",
 )
+FOLLOWTHROUGH_SKILL_NAMES = frozenset(
+    {
+        "aoa-session-route-forks",
+        "aoa-session-self-diagnose",
+        "aoa-session-self-repair",
+        "aoa-session-progression-lift",
+        "aoa-automation-opportunity-scan",
+        "aoa-quest-harvest",
+    }
+)
+TRUST_POSTURES = (
+    "unknown",
+    "root_mismatch",
+    "config_inactive",
+    "trusted_ready",
+    "rollout_active",
+    "rollback_recommended",
+)
+
+
+def repo_root_from_env(env_name: str, default: Path) -> Path:
+    override = os.environ.get(env_name)
+    if not override:
+        return default
+    return Path(override).expanduser().resolve()
 
 
 class ReceiptValidationError(ValueError):
@@ -383,6 +411,124 @@ def parse_iso_datetime_or_min(value: Any) -> datetime:
     if parsed is None:
         return datetime.min.replace(tzinfo=UTC)
     return parsed
+
+
+def summary_window_ref(receipts: list[dict[str, Any]]) -> str:
+    months = sorted(
+        {
+            parsed.strftime("%Y-%m")
+            for receipt in receipts
+            if (parsed := parse_iso_datetime(receipt.get("observed_at"))) is not None
+        }
+    )
+    if not months:
+        return "window:unknown"
+    if len(months) == 1:
+        return f"window:{months[0]}"
+    return f"window:{months[0]}..{months[-1]}"
+
+
+def string_count_map(counter: Counter[str]) -> dict[str, int]:
+    return dict(sorted(counter.items()))
+
+
+def display_input_path(path: Path) -> str:
+    for base in (REPO_ROOT, REPO_ROOT.parent):
+        try:
+            return str(path.relative_to(base))
+        except ValueError:
+            continue
+    return str(path)
+
+
+def display_repo_input_path(path: Path, *, repo_roots: tuple[tuple[str, Path], ...]) -> str:
+    for repo_name, repo_root in repo_roots:
+        try:
+            relative_path = path.relative_to(repo_root)
+        except ValueError:
+            continue
+        return f"{repo_name}/{relative_path.as_posix()}"
+    return display_input_path(path)
+
+
+def load_json_object(path: Path, *, label: str) -> dict[str, Any]:
+    try:
+        payload = json.loads(path.read_text(encoding="utf-8"))
+    except FileNotFoundError as exc:
+        raise ReceiptValidationError(f"missing {label}: {path}") from exc
+    except json.JSONDecodeError as exc:
+        raise ReceiptValidationError(f"invalid JSON in {label}: {path}") from exc
+    if not isinstance(payload, dict):
+        raise ReceiptValidationError(f"{label} must be a JSON object: {path}")
+    return payload
+
+
+def codex_plane_example_paths() -> tuple[Path, Path, Path]:
+    public_profile_root = repo_root_from_env("AOA_8DIONYSUS_ROOT", DEFAULT_PUBLIC_PROFILE_ROOT)
+    sdk_root = repo_root_from_env("AOA_SDK_ROOT", DEFAULT_AOA_SDK_ROOT)
+    return (
+        public_profile_root / "examples" / "codex_plane_trust_state.example.json",
+        sdk_root / "examples" / "codex_plane_deploy_status_snapshot.example.json",
+        public_profile_root / "examples" / "codex_plane_rollout_receipt.example.json",
+    )
+
+
+def codex_plane_generated_from() -> tuple[dict[str, Any], dict[str, Any], dict[str, Any], dict[str, Any]]:
+    trust_path, status_path, receipt_path = codex_plane_example_paths()
+    public_profile_root = repo_root_from_env("AOA_8DIONYSUS_ROOT", DEFAULT_PUBLIC_PROFILE_ROOT)
+    sdk_root = repo_root_from_env("AOA_SDK_ROOT", DEFAULT_AOA_SDK_ROOT)
+    trust = load_json_object(trust_path, label="codex plane trust-state example")
+    status = load_json_object(status_path, label="codex plane deploy-status example")
+    receipt = load_json_object(receipt_path, label="codex plane rollout receipt example")
+    latest_observed_at = max(
+        parse_iso_datetime_or_min(trust.get("captured_at")),
+        parse_iso_datetime_or_min(status.get("observed_at")),
+        parse_iso_datetime_or_min(receipt.get("verified_at")),
+    ).isoformat().replace("+00:00", "Z")
+    source = {
+        "receipt_input_paths": [
+            display_repo_input_path(
+                trust_path,
+                repo_roots=(("8Dionysus", public_profile_root), ("aoa-sdk", sdk_root)),
+            ),
+            display_repo_input_path(
+                status_path,
+                repo_roots=(("8Dionysus", public_profile_root), ("aoa-sdk", sdk_root)),
+            ),
+            display_repo_input_path(
+                receipt_path,
+                repo_roots=(("8Dionysus", public_profile_root), ("aoa-sdk", sdk_root)),
+            ),
+        ],
+        "total_receipts": 1,
+        "latest_observed_at": latest_observed_at,
+    }
+    return source, trust, status, receipt
+
+
+def normalized_code_list(value: Any) -> list[str]:
+    return [
+        item.strip()
+        for item in normalize_string_list(value)
+        if is_nonempty_string(item) and item.strip()
+    ]
+
+
+def followthrough_recommended_next_skill(payload: dict[str, Any]) -> str | None:
+    recommended = payload.get("recommended_next_skill")
+    if isinstance(recommended, str) and recommended in FOLLOWTHROUGH_SKILL_NAMES:
+        return recommended
+    chosen_branch = payload.get("chosen_branch")
+    if isinstance(chosen_branch, str) and chosen_branch in FOLLOWTHROUGH_SKILL_NAMES:
+        return chosen_branch
+    return None
+
+
+def automation_blocker_codes(payload: dict[str, Any]) -> list[str]:
+    blocker_codes = normalized_code_list(payload.get("blocker_codes"))
+    if blocker_codes:
+        return blocker_codes
+    return normalized_code_list(payload.get("blockers"))
 
 
 def ensure_repo_relative_ref_path(raw_path: str) -> str | None:
@@ -1459,6 +1605,45 @@ def build_fork_calibration_summary(
     }
 
 
+def build_session_growth_branch_summary(
+    receipts: list[dict[str, Any]], source: dict[str, Any]
+) -> dict[str, Any]:
+    recommended_next_skill_counts: Counter[str] = Counter()
+    owner_target_counts: Counter[str] = Counter()
+    status_posture_counts: Counter[str] = Counter()
+    reason_code_aggregates: Counter[str] = Counter()
+    defer_count = 0
+
+    for receipt in receipts:
+        if receipt["event_kind"] != "decision_fork_receipt":
+            continue
+        payload = receipt["payload"]
+        recommended_next_skill = followthrough_recommended_next_skill(payload)
+        if is_nonempty_string(recommended_next_skill):
+            recommended_next_skill_counts[recommended_next_skill] += 1
+        owner_target = payload.get("owner_hypothesis") or payload.get("owner_target")
+        if is_nonempty_string(owner_target):
+            owner_target_counts[str(owner_target)] += 1
+        status_posture = payload.get("status_posture")
+        if is_nonempty_string(status_posture):
+            status_posture_counts[str(status_posture)] += 1
+        for reason_code in normalized_code_list(payload.get("reason_codes")):
+            reason_code_aggregates[reason_code] += 1
+        if payload.get("defer_allowed") is True or payload.get("defer_recommended") is True:
+            defer_count += 1
+
+    return {
+        "schema_version": "aoa_stats_session_growth_branch_summary_v1",
+        "generated_from": source,
+        "window_ref": summary_window_ref(receipts),
+        "counts_by_recommended_next_skill": string_count_map(recommended_next_skill_counts),
+        "defer_count": defer_count,
+        "counts_by_owner_target": string_count_map(owner_target_counts),
+        "counts_by_status_posture": string_count_map(status_posture_counts),
+        "reason_code_aggregates": string_count_map(reason_code_aggregates),
+    }
+
+
 def build_automation_pipeline_summary(
     receipts: list[dict[str, Any]], source: dict[str, Any]
 ) -> dict[str, Any]:
@@ -1509,6 +1694,84 @@ def build_automation_pipeline_summary(
         "schema_version": "aoa_stats_automation_pipeline_summary_v1",
         "generated_from": source,
         "pipelines": pipelines,
+    }
+
+
+def build_automation_followthrough_summary(
+    receipts: list[dict[str, Any]], source: dict[str, Any]
+) -> dict[str, Any]:
+    automation_candidate_count = 0
+    seed_ready_count = 0
+    not_now_count = 0
+    checkpoint_required_count = 0
+    playbook_seed_candidate_count = 0
+    real_run_reviewed_count = 0
+    blocker_aggregates: Counter[str] = Counter()
+
+    for receipt in receipts:
+        if receipt["event_kind"] != "automation_candidate_receipt":
+            continue
+        payload = receipt["payload"]
+        automation_candidate_count += 1
+        if payload.get("seed_ready") is True:
+            seed_ready_count += 1
+        else:
+            not_now_count += 1
+        if payload.get("checkpoint_required") is True:
+            checkpoint_required_count += 1
+        if is_nonempty_string(payload.get("playbook_seed_candidate")):
+            playbook_seed_candidate_count += 1
+        if payload.get("real_run_reviewed") is True:
+            real_run_reviewed_count += 1
+        for blocker_code in automation_blocker_codes(payload):
+            blocker_aggregates[blocker_code] += 1
+
+    return {
+        "schema_version": "aoa_stats_automation_followthrough_summary_v1",
+        "generated_from": source,
+        "window_ref": summary_window_ref(receipts),
+        "automation_candidate_count": automation_candidate_count,
+        "seed_ready_count": seed_ready_count,
+        "not_now_count": not_now_count,
+        "checkpoint_required_count": checkpoint_required_count,
+        "playbook_seed_candidate_count": playbook_seed_candidate_count,
+        "real_run_reviewed_count": real_run_reviewed_count,
+        "defer_count": not_now_count,
+        "blocker_aggregates": string_count_map(blocker_aggregates),
+    }
+
+
+def build_codex_plane_deployment_summary() -> dict[str, Any]:
+    source, trust, status, receipt = codex_plane_generated_from()
+    trust_posture = str(trust.get("trust_posture") or "unknown")
+    trust_posture_counts = {posture: 0 for posture in TRUST_POSTURES}
+    if trust_posture in trust_posture_counts:
+        trust_posture_counts[trust_posture] = 1
+
+    stable_mcp_name_set = sorted(
+        {
+            str(name)
+            for name in status.get("active_mcp_servers", [])
+            if isinstance(name, str) and name
+        }
+    )
+    drift_count = 1 if status.get("drift_detected") is True or receipt.get("deployment_state") == "drifted" else 0
+    rollback_recommended_count = 1 if (
+        trust_posture == "rollback_recommended"
+        or receipt.get("deployment_state") == "rollback_recommended"
+        or status.get("next_action") == "rollback"
+    ) else 0
+
+    return {
+        "schema_version": "aoa_stats_codex_plane_deployment_summary_v1",
+        "generated_from": source,
+        "workspaces_total": 1,
+        "latest_rollout_state": receipt.get("deployment_state") or "render_only",
+        "trust_posture_counts": trust_posture_counts,
+        "drift_count": drift_count,
+        "rollback_recommended_count": rollback_recommended_count,
+        "stable_mcp_name_set": stable_mcp_name_set,
+        "latest_receipt_ref": receipt.get("rollout_receipt_id") or "",
     }
 
 
@@ -1737,11 +2000,32 @@ def build_summary_surface_catalog(source: dict[str, Any]) -> dict[str, Any]:
                 "derivation_rule": "aggregate decision_fork_receipt payloads by route_ref and chosen_branch",
             },
             {
+                "name": "session_growth_branch_summary",
+                "surface_ref": "generated/session_growth_branch_summary.min.json",
+                "schema_ref": "schemas/session-growth-branch-summary.schema.json",
+                "primary_question": "What reviewed next-kernel branches are being recommended after closeout without turning stats into route authority?",
+                "derivation_rule": "aggregate reviewed followthrough hints carried on decision_fork_receipt payloads into next-skill, owner-target, posture, defer, and reason-code counts",
+            },
+            {
                 "name": "automation_pipeline_summary",
                 "surface_ref": "generated/automation_pipeline_summary.min.json",
                 "schema_ref": "schemas/automation-pipeline-summary.schema.json",
                 "primary_question": "How close is a named automation pipeline to seed-ready bounded use?",
                 "derivation_rule": "aggregate automation_candidate_receipt payloads by pipeline_ref and readiness flags",
+            },
+            {
+                "name": "automation_followthrough_summary",
+                "surface_ref": "generated/automation_followthrough_summary.min.json",
+                "schema_ref": "schemas/automation-followthrough-summary.schema.json",
+                "primary_question": "How far are reviewed automation candidates moving through bounded follow-through without implying scheduler authority?",
+                "derivation_rule": "aggregate automation_candidate_receipt payloads into seed-ready, defer, checkpoint, playbook-seed, real-run-review, and blocker counts",
+            },
+            {
+                "name": "codex_plane_deployment_summary",
+                "surface_ref": "generated/codex_plane_deployment_summary.min.json",
+                "schema_ref": "schemas/codex-plane-deployment-summary.schema.json",
+                "primary_question": "What is the current derived deployment continuity posture for the shared-root Codex plane without letting stats overrule live trust evidence?",
+                "derivation_rule": "derive one bounded deployment summary from the 8Dionysus trust-state and rollout receipt examples plus the aoa-sdk deploy-status example",
             },
             {
                 "name": "runtime_closeout_summary",
@@ -1791,9 +2075,16 @@ def build_all_views(
         "repeated_window_summary.min.json": build_repeated_window_summary(active_receipts, source),
         "route_progression_summary.min.json": build_route_progression_summary(active_receipts, source),
         "fork_calibration_summary.min.json": build_fork_calibration_summary(active_receipts, source),
+        "session_growth_branch_summary.min.json": build_session_growth_branch_summary(
+            active_receipts, source
+        ),
         "automation_pipeline_summary.min.json": build_automation_pipeline_summary(
             active_receipts, source
         ),
+        "automation_followthrough_summary.min.json": build_automation_followthrough_summary(
+            active_receipts, source
+        ),
+        "codex_plane_deployment_summary.min.json": build_codex_plane_deployment_summary(),
         "runtime_closeout_summary.min.json": build_runtime_closeout_summary(active_receipts, source),
         "stress_recovery_window_summary.min.json": build_stress_recovery_window_summary(
             active_receipts, source, evals_root=resolved_evals_root

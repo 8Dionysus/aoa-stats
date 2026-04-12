@@ -1,0 +1,30 @@
+{
+  "schema_version": "aoa_stats_codex_plane_deployment_summary_v1",
+  "generated_from": {
+    "receipt_input_paths": [
+      "8Dionysus/examples/codex_plane_trust_state.example.json",
+      "aoa-sdk/examples/codex_plane_deploy_status_snapshot.example.json",
+      "8Dionysus/examples/codex_plane_rollout_receipt.example.json"
+    ],
+    "total_receipts": 1,
+    "latest_observed_at": "2026-04-11T21:07:00Z"
+  },
+  "workspaces_total": 1,
+  "latest_rollout_state": "verified",
+  "trust_posture_counts": {
+    "unknown": 0,
+    "root_mismatch": 0,
+    "config_inactive": 0,
+    "trusted_ready": 1,
+    "rollout_active": 0,
+    "rollback_recommended": 0
+  },
+  "drift_count": 0,
+  "rollback_recommended_count": 0,
+  "stable_mcp_name_set": [
+    "aoa_stats",
+    "aoa_workspace",
+    "dionysus"
+  ],
+  "latest_receipt_ref": "cprollout-2026-04-11T210700Z-root-srv"
+}
