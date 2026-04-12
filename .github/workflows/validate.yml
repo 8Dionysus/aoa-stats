@@ -46,7 +46,7 @@ jobs:
         uses: actions/checkout@v4
         with:
           repository: 8Dionysus/aoa-sdk
-          ref: f80efd52db3d3fa735a228276f968c420737de53
+          ref: 9a112a15541278c644e326cb5ae98a03657c3367
           path: .deps/aoa-sdk
 
       - name: Checkout aoa-evals
