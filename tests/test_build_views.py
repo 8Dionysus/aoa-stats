@@ -344,6 +344,57 @@ def test_candidate_lineage_summary_stays_reviewed_only_and_no_score() -> None:
     }
 
 
+def test_codex_plane_generated_from_uses_canonical_repo_labels(
+    tmp_path: Path, monkeypatch: pytest.MonkeyPatch
+) -> None:
+    module = load_build_views_module()
+    public_profile_root = tmp_path / ".deps" / "8Dionysus"
+    sdk_root = tmp_path / ".deps" / "aoa-sdk"
+    (public_profile_root / "examples").mkdir(parents=True)
+    (sdk_root / "examples").mkdir(parents=True)
+    (public_profile_root / "examples" / "codex_plane_trust_state.example.json").write_text(
+        json.dumps(
+            {
+                "trust_state_id": "trust-1",
+                "trust_posture": "trusted_ready",
+                "captured_at": "2026-04-11T21:04:00Z",
+            }
+        ),
+        encoding="utf-8",
+    )
+    (sdk_root / "examples" / "codex_plane_deploy_status_snapshot.example.json").write_text(
+        json.dumps(
+            {
+                "latest_trust_state_ref": "trust-1",
+                "latest_rollout_receipt_ref": "receipt-1",
+                "rollout_state": "verified",
+                "observed_at": "2026-04-11T21:06:00Z",
+            }
+        ),
+        encoding="utf-8",
+    )
+    (public_profile_root / "examples" / "codex_plane_rollout_receipt.example.json").write_text(
+        json.dumps(
+            {
+                "rollout_receipt_id": "receipt-1",
+                "verified_at": "2026-04-11T21:07:00Z",
+            }
+        ),
+        encoding="utf-8",
+    )
+
+    monkeypatch.setenv("AOA_8DIONYSUS_ROOT", str(public_profile_root))
+    monkeypatch.setenv("AOA_SDK_ROOT", str(sdk_root))
+
+    source, _, _, _ = module.codex_plane_generated_from()
+
+    assert source["receipt_input_paths"] == [
+        "8Dionysus/examples/codex_plane_trust_state.example.json",
+        "aoa-sdk/examples/codex_plane_deploy_status_snapshot.example.json",
+        "8Dionysus/examples/codex_plane_rollout_receipt.example.json",
+    ]
+
+
 def test_owner_landing_summary_reads_reviewed_owner_landings_and_seed_traces() -> None:
     module = load_build_views_module()
     receipts = [

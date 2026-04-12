@@ -441,6 +441,16 @@ def display_input_path(path: Path) -> str:
     return str(path)
 
 
+def display_repo_input_path(path: Path, *, repo_roots: tuple[tuple[str, Path], ...]) -> str:
+    for repo_name, repo_root in repo_roots:
+        try:
+            relative_path = path.relative_to(repo_root)
+        except ValueError:
+            continue
+        return f"{repo_name}/{relative_path.as_posix()}"
+    return display_input_path(path)
+
+
 def load_json_object(path: Path, *, label: str) -> dict[str, Any]:
     try:
         payload = json.loads(path.read_text(encoding="utf-8"))
@@ -465,6 +475,8 @@ def codex_plane_example_paths() -> tuple[Path, Path, Path]:
 
 def codex_plane_generated_from() -> tuple[dict[str, Any], dict[str, Any], dict[str, Any], dict[str, Any]]:
     trust_path, status_path, receipt_path = codex_plane_example_paths()
+    public_profile_root = repo_root_from_env("AOA_8DIONYSUS_ROOT", DEFAULT_PUBLIC_PROFILE_ROOT)
+    sdk_root = repo_root_from_env("AOA_SDK_ROOT", DEFAULT_AOA_SDK_ROOT)
     trust = load_json_object(trust_path, label="codex plane trust-state example")
     status = load_json_object(status_path, label="codex plane deploy-status example")
     receipt = load_json_object(receipt_path, label="codex plane rollout receipt example")
@@ -475,9 +487,18 @@ def codex_plane_generated_from() -> tuple[dict[str, Any], dict[str, Any], dict[s
     ).isoformat().replace("+00:00", "Z")
     source = {
         "receipt_input_paths": [
-            display_input_path(trust_path),
-            display_input_path(status_path),
-            display_input_path(receipt_path),
+            display_repo_input_path(
+                trust_path,
+                repo_roots=(("8Dionysus", public_profile_root), ("aoa-sdk", sdk_root)),
+            ),
+            display_repo_input_path(
+                status_path,
+                repo_roots=(("8Dionysus", public_profile_root), ("aoa-sdk", sdk_root)),
+            ),
+            display_repo_input_path(
+                receipt_path,
+                repo_roots=(("8Dionysus", public_profile_root), ("aoa-sdk", sdk_root)),
+            ),
         ],
         "total_receipts": 1,
         "latest_observed_at": latest_observed_at,
