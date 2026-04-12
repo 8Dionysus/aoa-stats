@@ -445,6 +445,226 @@ def test_codex_plane_generated_from_uses_canonical_repo_labels(
     ]
 
 
+def test_codex_trusted_rollout_generated_from_uses_any_parseable_timestamp(
+    tmp_path: Path, monkeypatch: pytest.MonkeyPatch
+) -> None:
+    module = load_build_views_module()
+    public_profile_root = tmp_path / ".deps" / "8Dionysus"
+    rollout_root = public_profile_root / "generated" / "codex" / "rollout"
+    rollout_root.mkdir(parents=True)
+    (rollout_root / "deploy_history.jsonl").write_text(
+        json.dumps(
+            {
+                "rollout_campaign_ref": "ROLL-20260412-codex-plane-regen-03",
+                "state": "prepared",
+                "activated_at": "",
+                "summary": "prepared rollout without activation timestamp yet",
+            }
+        )
+        + "\n",
+        encoding="utf-8",
+    )
+    (rollout_root / "regeneration_campaigns.min.json").write_text(
+        json.dumps(
+            {
+                "campaigns": [
+                    {
+                        "rollout_campaign_ref": "ROLL-20260412-codex-plane-regen-03",
+                        "state": "prepared",
+                    }
+                ]
+            }
+        ),
+        encoding="utf-8",
+    )
+    (rollout_root / "rollback_windows.min.json").write_text(
+        json.dumps(
+            {
+                "rollback_windows": [
+                    {
+                        "rollback_window_ref": "RBK-20260412-codex-plane-regen-03",
+                        "opened_at": "2026-04-12T20:30:00Z",
+                    }
+                ]
+            }
+        ),
+        encoding="utf-8",
+    )
+    (rollout_root / "rollout_latest.min.json").write_text(
+        json.dumps(
+            {
+                "latest_rollout_campaign_ref": "ROLL-20260412-codex-plane-regen-03",
+                "latest_state": "prepared",
+                "latest_stable_rollout_campaign_ref": "ROLL-20260411-codex-plane-regen-01",
+                "source_refs": [
+                    "generated/codex/rollout/deploy_history.jsonl",
+                    "generated/codex/rollout/regeneration_campaigns.min.json",
+                    "generated/codex/rollout/rollback_windows.min.json",
+                ],
+            }
+        ),
+        encoding="utf-8",
+    )
+
+    monkeypatch.setenv("AOA_8DIONYSUS_ROOT", str(public_profile_root))
+
+    source, _, _, _, _ = module.codex_trusted_rollout_generated_from()
+
+    assert source["latest_observed_at"] == "2026-04-12T20:30:00Z"
+
+
+def test_codex_rollout_drift_summary_uses_history_row_matching_latest_campaign_ref(
+    tmp_path: Path, monkeypatch: pytest.MonkeyPatch
+) -> None:
+    module = load_build_views_module()
+    public_profile_root = tmp_path / ".deps" / "8Dionysus"
+    rollout_root = public_profile_root / "generated" / "codex" / "rollout"
+    rollout_root.mkdir(parents=True)
+    (rollout_root / "deploy_history.jsonl").write_text(
+        "\n".join(
+            [
+                json.dumps(
+                    {
+                        "rollout_campaign_ref": "ROLL-20260412-codex-hooks-tighten-02",
+                        "state": "rolled_back",
+                        "activated_at": "2026-04-12T21:00:00Z",
+                        "drift_window_refs": ["DRIFT-20260412-codex-hooks-tighten-02"],
+                        "rollback_window_refs": ["RBK-20260412-codex-hooks-tighten-02"],
+                        "drift_state": "rolled_back",
+                        "repair_attempted": True,
+                    }
+                ),
+                json.dumps(
+                    {
+                        "rollout_campaign_ref": "ROLL-20260411-codex-plane-regen-01",
+                        "state": "stabilized",
+                        "activated_at": "2026-04-11T21:00:00Z",
+                        "drift_window_refs": ["DRIFT-20260411-codex-plane-regen-01"],
+                        "rollback_window_refs": [],
+                        "drift_state": "quiet",
+                        "repair_attempted": False,
+                    }
+                ),
+            ]
+        )
+        + "\n",
+        encoding="utf-8",
+    )
+    (rollout_root / "regeneration_campaigns.min.json").write_text(
+        json.dumps({"campaigns": [{"rollout_campaign_ref": "ROLL-20260412-codex-hooks-tighten-02"}]}),
+        encoding="utf-8",
+    )
+    (rollout_root / "rollback_windows.min.json").write_text(
+        json.dumps(
+            {
+                "rollback_windows": [
+                    {
+                        "rollback_window_ref": "RBK-20260412-codex-hooks-tighten-02",
+                        "closed_at": "2026-04-12T21:30:00Z",
+                    }
+                ]
+            }
+        ),
+        encoding="utf-8",
+    )
+    (rollout_root / "rollout_latest.min.json").write_text(
+        json.dumps(
+            {
+                "latest_rollout_campaign_ref": "ROLL-20260412-codex-hooks-tighten-02",
+                "latest_state": "rolled_back",
+                "latest_stable_rollout_campaign_ref": "ROLL-20260411-codex-plane-regen-01",
+                "source_refs": [
+                    "generated/codex/rollout/deploy_history.jsonl",
+                    "generated/codex/rollout/regeneration_campaigns.min.json",
+                    "generated/codex/rollout/rollback_windows.min.json",
+                ],
+            }
+        ),
+        encoding="utf-8",
+    )
+
+    monkeypatch.setenv("AOA_8DIONYSUS_ROOT", str(public_profile_root))
+
+    summary = module.build_codex_rollout_drift_summary()
+
+    assert summary["latest_rollout_campaign_ref"] == "ROLL-20260412-codex-hooks-tighten-02"
+    assert summary["drift_window_ref"] == "DRIFT-20260412-codex-hooks-tighten-02"
+    assert summary["drift_state"] == "rolled_back"
+    assert summary["rollback_required"] is True
+
+
+def test_drift_review_summary_keeps_decision_counts_empty_when_decision_is_missing(
+    tmp_path: Path, monkeypatch: pytest.MonkeyPatch
+) -> None:
+    module = load_build_views_module()
+    public_profile_root = tmp_path / ".deps" / "8Dionysus"
+    examples_root = public_profile_root / "examples"
+    examples_root.mkdir(parents=True)
+    campaign = {
+        "campaign_ref": "ROLL-20260412-codex-hooks-tighten-02",
+        "state": "review_required",
+        "window_opened_at": "2026-04-12T20:00:00Z",
+        "lineage_refs": {"candidate_refs": ["candidate:rollout:hooks-tighten-02"]},
+    }
+    review = {
+        "review_ref": "DRIFT-20260412-codex-hooks-tighten-02",
+        "status": "review_required",
+        "reviewed_at": "2026-04-12T20:15:00Z",
+        "signals": {"doctor_clean": True, "hooks_active": False},
+    }
+    rollback = {
+        "rollback_ref": "RBK-20260412-codex-hooks-tighten-02",
+        "status": "ready_if_needed",
+        "prepared_at": "2026-04-12T20:30:00Z",
+    }
+    (examples_root / "rollout_campaign_window.example.json").write_text(
+        json.dumps(campaign), encoding="utf-8"
+    )
+    (examples_root / "drift_review_window.example.json").write_text(
+        json.dumps(review), encoding="utf-8"
+    )
+    (examples_root / "rollback_followthrough_window.example.json").write_text(
+        json.dumps(rollback), encoding="utf-8"
+    )
+
+    monkeypatch.setenv("AOA_8DIONYSUS_ROOT", str(public_profile_root))
+
+    summary = module.build_drift_review_summary()
+
+    assert summary["decision_counts"] == {}
+
+
+def test_build_all_views_skips_missing_optional_sibling_surfaces(
+    tmp_path: Path, monkeypatch: pytest.MonkeyPatch
+) -> None:
+    module = load_build_views_module()
+    receipts = module.load_receipts(
+        [REPO_ROOT / "examples" / "session_harvest_family.receipts.example.json"]
+    )
+    for env_name in (
+        "AOA_8DIONYSUS_ROOT",
+        "AOA_SDK_ROOT",
+        "AOA_AGENTS_ROOT",
+        "AOA_PLAYBOOKS_ROOT",
+        "AOA_MEMO_ROOT",
+    ):
+        monkeypatch.setenv(env_name, str(tmp_path / env_name.lower()))
+
+    outputs = module.build_all_views(receipts, ["session_harvest_family.receipts.example.json"])
+
+    assert "codex_plane_deployment_summary.min.json" not in outputs
+    assert "codex_rollout_operations_summary.min.json" not in outputs
+    assert "codex_rollout_drift_summary.min.json" not in outputs
+    assert "rollout_campaign_summary.min.json" not in outputs
+    assert "drift_review_summary.min.json" not in outputs
+    assert "continuity_window_summary.min.json" not in outputs
+    catalog_surface_refs = [
+        entry["surface_ref"] for entry in outputs["summary_surface_catalog.min.json"]["surfaces"]
+    ]
+    assert "generated/codex_plane_deployment_summary.min.json" not in catalog_surface_refs
+    assert "generated/continuity_window_summary.min.json" not in catalog_surface_refs
+
+
 def test_owner_landing_summary_reads_reviewed_owner_landings_and_seed_traces() -> None:
     module = load_build_views_module()
     receipts = [

@@ -183,6 +183,10 @@ def test_refresh_live_state_clears_previous_outputs_when_sources_are_empty(tmp_p
     (summary_output_dir / "summary_surface_catalog.min.json").write_text(
         '{"schema_version":"aoa_stats_summary_surface_catalog_v1"}\n', encoding="utf-8"
     )
+    (summary_output_dir / "codex_plane_deployment_summary.min.json").write_text(
+        '{"schema_version":"aoa_stats_codex_plane_deployment_summary_v1"}\n',
+        encoding="utf-8",
+    )
 
     source_labels, receipt_count = module.refresh_live_state(
         registry_path=registry_path,
@@ -198,7 +202,91 @@ def test_refresh_live_state_clears_previous_outputs_when_sources_are_empty(tmp_p
     assert receipt_count == 0
     assert feed_output.exists() is False
     assert (summary_output_dir / "summary_surface_catalog.min.json").exists() is False
+    assert (summary_output_dir / "codex_plane_deployment_summary.min.json").exists() is False
     assert (summary_output_dir / "stress_recovery_window_summary.min.json").exists() is False
+
+
+def test_refresh_live_state_removes_stale_optional_outputs_when_builder_omits_them(tmp_path: Path) -> None:
+    module = load_refresh_module()
+    federation_root = tmp_path / "srv"
+    skills_dir = federation_root / "aoa-skills" / ".aoa" / "live_receipts"
+    evals_dir = federation_root / "aoa-evals" / ".aoa" / "live_receipts"
+    skills_dir.mkdir(parents=True)
+    evals_dir.mkdir(parents=True)
+
+    (skills_dir / "session-harvest-family.jsonl").write_text(
+        json.dumps(
+            {
+                "event_kind": "automation_candidate_receipt",
+                "event_id": "evt-auto-test-0001",
+                "observed_at": "2026-04-05T10:20:00Z",
+                "run_ref": "run-test-001",
+                "session_ref": "session:test-001",
+                "actor_ref": "aoa-skills:automation-opportunity-scan",
+                "object_ref": {
+                    "repo": "aoa-skills",
+                    "kind": "skill",
+                    "id": "aoa-automation-opportunity-scan",
+                    "version": "main",
+                },
+                "evidence_refs": [{"kind": "skill", "ref": "repo:aoa-skills/skills/aoa-automation-opportunity-scan/SKILL.md"}],
+                "payload": {
+                    "pipeline_ref": "pipeline:test",
+                    "repeat_signal": "present",
+                    "deterministic_ready": True,
+                    "reversible_ready": True,
+                    "checkpoint_required": False,
+                    "seed_ready": True,
+                    "next_artifact_hint": "seed-pack",
+                },
+            }
+        )
+        + "\n",
+        encoding="utf-8",
+    )
+    (evals_dir / "eval-result-receipts.jsonl").write_text("", encoding="utf-8")
+
+    registry_path = tmp_path / "live_receipt_sources.json"
+    registry_path.write_text(
+        json.dumps(
+            {
+                "schema_version": 1,
+                "sources": [
+                    {
+                        "name": "skills",
+                        "repo": "aoa-skills",
+                        "relative_path": ".aoa/live_receipts/session-harvest-family.jsonl",
+                    }
+                ],
+            },
+            indent=2,
+        )
+        + "\n",
+        encoding="utf-8",
+    )
+    feed_output = tmp_path / "state" / "live_receipts.min.json"
+    summary_output_dir = tmp_path / "state" / "generated"
+    summary_output_dir.mkdir(parents=True)
+    stale_path = summary_output_dir / "codex_plane_deployment_summary.min.json"
+    stale_path.write_text("stale\n", encoding="utf-8")
+
+    with patch.object(
+        module,
+        "build_all_views",
+        return_value={
+            "automation_pipeline_summary.min.json": {"schema_version": "test"},
+            "summary_surface_catalog.min.json": {"schema_version": "test"},
+        },
+    ), patch.object(module, "stable_json", side_effect=lambda payload: json.dumps(payload) + "\n"):
+        _, receipt_count = module.refresh_live_state(
+            registry_path=registry_path,
+            federation_root=federation_root,
+            feed_output=feed_output,
+            summary_output_dir=summary_output_dir,
+        )
+
+    assert receipt_count == 1
+    assert stale_path.exists() is False
 
 
 def test_refresh_live_state_resolves_stress_report_from_federation_root(tmp_path: Path) -> None:

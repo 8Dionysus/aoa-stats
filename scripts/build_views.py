@@ -446,6 +446,23 @@ def parse_iso_datetime_or_min(value: Any) -> datetime:
     return parsed
 
 
+def collect_datetime_candidates(value: Any) -> list[datetime]:
+    parsed = parse_iso_datetime(value)
+    if parsed is not None:
+        return [parsed]
+    if isinstance(value, dict):
+        candidates: list[datetime] = []
+        for item in value.values():
+            candidates.extend(collect_datetime_candidates(item))
+        return candidates
+    if isinstance(value, list):
+        candidates = []
+        for item in value:
+            candidates.extend(collect_datetime_candidates(item))
+        return candidates
+    return []
+
+
 def summary_window_ref(receipts: list[dict[str, Any]]) -> str:
     months = sorted(
         {
@@ -613,16 +630,12 @@ def codex_trusted_rollout_generated_from() -> tuple[
         latest_path,
         label="codex trusted rollout latest summary",
     )
-    observed_candidates = [
-        parse_iso_datetime_or_min(row.get("activated_at"))
-        for row in deploy_history
-    ]
-    rollback_windows = rollback.get("rollback_windows")
-    if isinstance(rollback_windows, list):
-        observed_candidates.extend(
-            parse_iso_datetime_or_min(item.get("closed_at"))
-            for item in rollback_windows
-            if isinstance(item, dict)
+    observed_candidates: list[datetime] = []
+    for payload in (deploy_history, regeneration, rollback, latest):
+        observed_candidates.extend(collect_datetime_candidates(payload))
+    if not observed_candidates:
+        raise ReceiptValidationError(
+            "codex trusted rollout sources must expose at least one parseable timestamp"
         )
     latest_observed_at = max(observed_candidates).isoformat().replace("+00:00", "Z")
     source = {
@@ -680,6 +693,20 @@ def codex_rollout_campaign_generated_from() -> tuple[dict[str, Any], dict[str, A
         "latest_observed_at": latest_observed_at,
     }
     return source, campaign, review, rollback
+
+
+def latest_rollout_history_row(
+    deploy_history: list[dict[str, Any]], latest: dict[str, Any]
+) -> dict[str, Any]:
+    latest_rollout_campaign_ref = latest.get("latest_rollout_campaign_ref")
+    if is_nonempty_string(latest_rollout_campaign_ref):
+        for row in reversed(deploy_history):
+            if row.get("rollout_campaign_ref") == latest_rollout_campaign_ref:
+                return row
+        raise ReceiptValidationError(
+            "latest rollout campaign ref does not resolve inside deploy history"
+        )
+    return deploy_history[-1]
 
 
 def continuity_window_source_paths() -> tuple[Path, Path, Path, Path]:
@@ -2137,7 +2164,7 @@ def build_codex_rollout_operations_summary() -> dict[str, Any]:
 
 def build_codex_rollout_drift_summary() -> dict[str, Any]:
     source, deploy_history, _, _, latest = codex_trusted_rollout_generated_from()
-    latest_history = deploy_history[-1]
+    latest_history = latest_rollout_history_row(deploy_history, latest)
     drift_refs = normalize_string_list(latest_history.get("drift_window_refs"))
     rollback_refs = normalize_string_list(latest_history.get("rollback_window_refs"))
     latest_state = str(latest.get("latest_state") or latest_history.get("state") or "unknown")
@@ -2187,7 +2214,10 @@ def build_drift_review_summary() -> dict[str, Any]:
     if isinstance(signals, dict):
         for name in sorted(signals):
             signal_counts[name] = 1 if signals.get(name) is True else 0
-    decision = str(review.get("decision") or "safe_stop")
+    decision_counts: dict[str, int] = {}
+    decision = review.get("decision")
+    if is_nonempty_string(decision):
+        decision_counts[str(decision)] = 1
     rollback_status = str(rollback.get("status") or "retired")
     return {
         "schema_version": "aoa_stats_drift_review_summary_v1",
@@ -2197,7 +2227,7 @@ def build_drift_review_summary() -> dict[str, Any]:
         "review_status": str(review.get("status") or "closed"),
         "review_windows_total": 1,
         "signals_seen": dict(sorted(signal_counts.items())),
-        "decision_counts": {decision: 1},
+        "decision_counts": decision_counts,
         "rollback_ref": str(rollback.get("rollback_ref") or ""),
         "rollback_ready": rollback_status in {"ready_if_needed", "armed"},
         "source_refs": list(source["receipt_input_paths"]),
@@ -2383,7 +2413,157 @@ def build_surface_detection_summary(
     }
 
 
-def build_summary_surface_catalog(source: dict[str, Any]) -> dict[str, Any]:
+def build_summary_surface_catalog(
+    source: dict[str, Any], *, available_output_names: set[str] | None = None
+) -> dict[str, Any]:
+    surfaces = [
+        {
+            "name": "core_skill_application_summary",
+            "surface_ref": "generated/core_skill_application_summary.min.json",
+            "schema_ref": "schemas/core-skill-application-summary.schema.json",
+            "primary_question": "Which project-core kernel skills are actually finishing and how often, without inferring usage from general receipt volume?",
+            "derivation_rule": "aggregate core_skill_application_receipt payloads by kernel_id and skill_name",
+        },
+        {
+            "name": "object_summary",
+            "surface_ref": "generated/object_summary.min.json",
+            "schema_ref": "schemas/object-summary.schema.json",
+            "primary_question": "How often and how broadly is each source object showing up in the current receipt feed?",
+            "derivation_rule": "group receipts by object_ref and keep counts, latest timestamps, and bounded posture flags",
+        },
+        {
+            "name": "candidate_lineage_summary",
+            "surface_ref": "generated/candidate_lineage_summary.min.json",
+            "schema_ref": "schemas/candidate_lineage_summary.schema.json",
+            "primary_question": "How far are reviewed growth-refinery candidates actually moving without turning stats into routing or proof authority?",
+            "derivation_rule": "aggregate reviewed-only candidate_lineage_entries carried on harvest_packet_receipt payloads into stage, owner-target, posture, misroute, supersession, and time-to-stage summaries",
+        },
+        {
+            "name": "owner_landing_summary",
+            "surface_ref": "generated/owner_landing_summary.min.json",
+            "schema_ref": "schemas/owner-landing-summary.schema.json",
+            "primary_question": "Which reviewed candidates have landed in owner-local status surfaces and how far has that landing stabilized without turning stats into owner truth?",
+            "derivation_rule": "aggregate reviewed_owner_landing_receipt payloads together with seed_owner_landing_trace_receipt payloads into owner-repo, posture, outcome, and time-to-outcome summaries",
+        },
+        {
+            "name": "supersession_drop_summary",
+            "surface_ref": "generated/supersession_drop_summary.min.json",
+            "schema_ref": "schemas/supersession-drop-summary.schema.json",
+            "primary_question": "What pruning, replacement, merge, and reanchor signals are explicit across reviewed growth-refinery receipts without inventing reasons or ranking authority?",
+            "derivation_rule": "aggregate reviewed candidate-lineage entries, reviewed_owner_landing_receipt payloads, and seed_owner_landing_trace_receipt payloads into explicit turnover summaries",
+        },
+        {
+            "name": "repeated_window_summary",
+            "surface_ref": "generated/repeated_window_summary.min.json",
+            "schema_ref": "schemas/repeated-window-summary.schema.json",
+            "primary_question": "What changed across bounded date windows without turning the result into one global score?",
+            "derivation_rule": "group receipts by observed_at date and keep counts plus bounded window signals",
+        },
+        {
+            "name": "route_progression_summary",
+            "surface_ref": "generated/route_progression_summary.min.json",
+            "schema_ref": "schemas/route-progression-summary.schema.json",
+            "primary_question": "What bounded multi-axis movement is visible on each named route?",
+            "derivation_rule": "aggregate progression_delta_receipt payloads by route_ref and sum axis deltas",
+        },
+        {
+            "name": "fork_calibration_summary",
+            "surface_ref": "generated/fork_calibration_summary.min.json",
+            "schema_ref": "schemas/fork-calibration-summary.schema.json",
+            "primary_question": "How are route forks actually being chosen and how often do they carry realized outcome refs?",
+            "derivation_rule": "aggregate decision_fork_receipt payloads by route_ref and chosen_branch",
+        },
+        {
+            "name": "session_growth_branch_summary",
+            "surface_ref": "generated/session_growth_branch_summary.min.json",
+            "schema_ref": "schemas/session-growth-branch-summary.schema.json",
+            "primary_question": "What reviewed next-kernel branches are being recommended after closeout without turning stats into route authority?",
+            "derivation_rule": "aggregate reviewed followthrough hints carried on decision_fork_receipt payloads into next-skill, owner-target, posture, defer, and reason-code counts",
+        },
+        {
+            "name": "automation_pipeline_summary",
+            "surface_ref": "generated/automation_pipeline_summary.min.json",
+            "schema_ref": "schemas/automation-pipeline-summary.schema.json",
+            "primary_question": "How close is a named automation pipeline to seed-ready bounded use?",
+            "derivation_rule": "aggregate automation_candidate_receipt payloads by pipeline_ref and readiness flags",
+        },
+        {
+            "name": "automation_followthrough_summary",
+            "surface_ref": "generated/automation_followthrough_summary.min.json",
+            "schema_ref": "schemas/automation-followthrough-summary.schema.json",
+            "primary_question": "How far are reviewed automation candidates moving through bounded follow-through without implying scheduler authority?",
+            "derivation_rule": "aggregate automation_candidate_receipt payloads into seed-ready, defer, checkpoint, playbook-seed, real-run-review, and blocker counts",
+        },
+        {
+            "name": "codex_plane_deployment_summary",
+            "surface_ref": "generated/codex_plane_deployment_summary.min.json",
+            "schema_ref": "schemas/codex-plane-deployment-summary.schema.json",
+            "primary_question": "What is the current derived deployment continuity posture for the shared-root Codex plane without letting stats overrule live trust evidence?",
+            "derivation_rule": "derive one bounded deployment summary from the 8Dionysus trust-state and rollout receipt examples plus the aoa-sdk deploy-status example",
+        },
+        {
+            "name": "codex_rollout_operations_summary",
+            "surface_ref": "generated/codex_rollout_operations_summary.min.json",
+            "schema_ref": "schemas/codex-rollout-operations-summary.schema.json",
+            "primary_question": "What checked-in trusted rollout campaign posture is currently visible for the shared-root Codex plane without turning stats into rollout authority?",
+            "derivation_rule": "derive bounded rollout state counts and latest campaign posture from 8Dionysus checked-in generated/codex/rollout source surfaces",
+        },
+        {
+            "name": "codex_rollout_drift_summary",
+            "surface_ref": "generated/codex_rollout_drift_summary.min.json",
+            "schema_ref": "schemas/codex-rollout-drift-summary.schema.json",
+            "primary_question": "What is the current bounded drift and rollback posture of the latest trusted Codex rollout campaign without replacing source-owned campaign history?",
+            "derivation_rule": "derive the latest drift window, drift state, repair attempt posture, and rollback requirement from 8Dionysus checked-in rollout history and rollback windows",
+        },
+        {
+            "name": "rollout_campaign_summary",
+            "surface_ref": "generated/rollout_campaign_summary.min.json",
+            "schema_ref": "schemas/rollout-campaign-summary.schema.json",
+            "primary_question": "What is the current bounded campaign cadence posture for the shared-root Codex plane without turning stats into cadence authority?",
+            "derivation_rule": "derive one current campaign-cadence summary from 8Dionysus source-owned rollout campaign, drift-review, and rollback-followthrough window examples",
+        },
+        {
+            "name": "drift_review_summary",
+            "surface_ref": "generated/drift_review_summary.min.json",
+            "schema_ref": "schemas/drift-review-summary.schema.json",
+            "primary_question": "What named drift signals and explicit review decisions are currently visible in the source-owned cadence windows without replacing rollout or campaign truth?",
+            "derivation_rule": "derive one bounded drift-review summary from the current 8Dionysus cadence windows and keep rollback readiness descriptive only",
+        },
+        {
+            "name": "continuity_window_summary",
+            "surface_ref": "generated/continuity_window_summary.min.json",
+            "schema_ref": "schemas/continuity-window-summary.schema.json",
+            "primary_question": "What is the current bounded self-agency continuity posture without turning stats into continuity truth or self-agency proof?",
+            "derivation_rule": "derive one bounded continuity snapshot from the aoa-agents continuity window example, the sovereign continuity playbook, the memo-side provenance thread example, and the landed continuity eval anchors",
+        },
+        {
+            "name": "runtime_closeout_summary",
+            "surface_ref": "generated/runtime_closeout_summary.min.json",
+            "schema_ref": "schemas/runtime-closeout-summary.schema.json",
+            "primary_question": "What is the current bounded runtime closeout posture across program waves and how did reviewed handoff land?",
+            "derivation_rule": "aggregate runtime_wave_closeout_receipt payloads by program_id and wave_id and keep the latest gate plus handoff posture",
+        },
+        {
+            "name": "stress_recovery_window_summary",
+            "surface_ref": "generated/stress_recovery_window_summary.min.json",
+            "schema_ref": "schemas/stress-recovery-window-summary.schema.json",
+            "primary_question": "What does the current repeated-window stress recovery proof family say without inventing a new canonical event kind or outranking owner evidence?",
+            "derivation_rule": "resolve aoa-stress-recovery-window eval_result_receipt report_ref paths through aoa-evals and derive one bounded summary plus suppression posture",
+        },
+        {
+            "name": "surface_detection_summary",
+            "surface_ref": "generated/surface_detection_summary.min.json",
+            "schema_ref": "schemas/surface-detection-summary.schema.json",
+            "primary_question": "What second-wave surface-detection signals are accumulating without turning stats into routing authority?",
+            "derivation_rule": "aggregate advisory surface_detection_context payloads on finish-stage core_skill_application_receipt envelopes by observed date",
+        },
+    ]
+    if available_output_names is not None:
+        surfaces = [
+            surface
+            for surface in surfaces
+            if Path(surface["surface_ref"]).name in available_output_names
+        ]
     return {
         "schema_version": "aoa_stats_summary_surface_catalog_v2",
         "schema_ref": "schemas/summary-surface-catalog.schema.json",
@@ -2396,148 +2576,7 @@ def build_summary_surface_catalog(source: dict[str, Any]) -> dict[str, Any]:
             "scripts/validate_repo.py",
             "tests/test_summary_surface_catalog.py",
         ],
-        "surfaces": [
-            {
-                "name": "core_skill_application_summary",
-                "surface_ref": "generated/core_skill_application_summary.min.json",
-                "schema_ref": "schemas/core-skill-application-summary.schema.json",
-                "primary_question": "Which project-core kernel skills are actually finishing and how often, without inferring usage from general receipt volume?",
-                "derivation_rule": "aggregate core_skill_application_receipt payloads by kernel_id and skill_name",
-            },
-            {
-                "name": "object_summary",
-                "surface_ref": "generated/object_summary.min.json",
-                "schema_ref": "schemas/object-summary.schema.json",
-                "primary_question": "How often and how broadly is each source object showing up in the current receipt feed?",
-                "derivation_rule": "group receipts by object_ref and keep counts, latest timestamps, and bounded posture flags",
-            },
-            {
-                "name": "candidate_lineage_summary",
-                "surface_ref": "generated/candidate_lineage_summary.min.json",
-                "schema_ref": "schemas/candidate_lineage_summary.schema.json",
-                "primary_question": "How far are reviewed growth-refinery candidates actually moving without turning stats into routing or proof authority?",
-                "derivation_rule": "aggregate reviewed-only candidate_lineage_entries carried on harvest_packet_receipt payloads into stage, owner-target, posture, misroute, supersession, and time-to-stage summaries",
-            },
-            {
-                "name": "owner_landing_summary",
-                "surface_ref": "generated/owner_landing_summary.min.json",
-                "schema_ref": "schemas/owner-landing-summary.schema.json",
-                "primary_question": "Which reviewed candidates have landed in owner-local status surfaces and how far has that landing stabilized without turning stats into owner truth?",
-                "derivation_rule": "aggregate reviewed_owner_landing_receipt payloads together with seed_owner_landing_trace_receipt payloads into owner-repo, posture, outcome, and time-to-outcome summaries",
-            },
-            {
-                "name": "supersession_drop_summary",
-                "surface_ref": "generated/supersession_drop_summary.min.json",
-                "schema_ref": "schemas/supersession-drop-summary.schema.json",
-                "primary_question": "What pruning, replacement, merge, and reanchor signals are explicit across reviewed growth-refinery receipts without inventing reasons or ranking authority?",
-                "derivation_rule": "aggregate reviewed candidate-lineage entries, reviewed_owner_landing_receipt payloads, and seed_owner_landing_trace_receipt payloads into explicit turnover summaries",
-            },
-            {
-                "name": "repeated_window_summary",
-                "surface_ref": "generated/repeated_window_summary.min.json",
-                "schema_ref": "schemas/repeated-window-summary.schema.json",
-                "primary_question": "What changed across bounded date windows without turning the result into one global score?",
-                "derivation_rule": "group receipts by observed_at date and keep counts plus bounded window signals",
-            },
-            {
-                "name": "route_progression_summary",
-                "surface_ref": "generated/route_progression_summary.min.json",
-                "schema_ref": "schemas/route-progression-summary.schema.json",
-                "primary_question": "What bounded multi-axis movement is visible on each named route?",
-                "derivation_rule": "aggregate progression_delta_receipt payloads by route_ref and sum axis deltas",
-            },
-            {
-                "name": "fork_calibration_summary",
-                "surface_ref": "generated/fork_calibration_summary.min.json",
-                "schema_ref": "schemas/fork-calibration-summary.schema.json",
-                "primary_question": "How are route forks actually being chosen and how often do they carry realized outcome refs?",
-                "derivation_rule": "aggregate decision_fork_receipt payloads by route_ref and chosen_branch",
-            },
-            {
-                "name": "session_growth_branch_summary",
-                "surface_ref": "generated/session_growth_branch_summary.min.json",
-                "schema_ref": "schemas/session-growth-branch-summary.schema.json",
-                "primary_question": "What reviewed next-kernel branches are being recommended after closeout without turning stats into route authority?",
-                "derivation_rule": "aggregate reviewed followthrough hints carried on decision_fork_receipt payloads into next-skill, owner-target, posture, defer, and reason-code counts",
-            },
-            {
-                "name": "automation_pipeline_summary",
-                "surface_ref": "generated/automation_pipeline_summary.min.json",
-                "schema_ref": "schemas/automation-pipeline-summary.schema.json",
-                "primary_question": "How close is a named automation pipeline to seed-ready bounded use?",
-                "derivation_rule": "aggregate automation_candidate_receipt payloads by pipeline_ref and readiness flags",
-            },
-            {
-                "name": "automation_followthrough_summary",
-                "surface_ref": "generated/automation_followthrough_summary.min.json",
-                "schema_ref": "schemas/automation-followthrough-summary.schema.json",
-                "primary_question": "How far are reviewed automation candidates moving through bounded follow-through without implying scheduler authority?",
-                "derivation_rule": "aggregate automation_candidate_receipt payloads into seed-ready, defer, checkpoint, playbook-seed, real-run-review, and blocker counts",
-            },
-            {
-                "name": "codex_plane_deployment_summary",
-                "surface_ref": "generated/codex_plane_deployment_summary.min.json",
-                "schema_ref": "schemas/codex-plane-deployment-summary.schema.json",
-                "primary_question": "What is the current derived deployment continuity posture for the shared-root Codex plane without letting stats overrule live trust evidence?",
-                "derivation_rule": "derive one bounded deployment summary from the 8Dionysus trust-state and rollout receipt examples plus the aoa-sdk deploy-status example",
-            },
-            {
-                "name": "codex_rollout_operations_summary",
-                "surface_ref": "generated/codex_rollout_operations_summary.min.json",
-                "schema_ref": "schemas/codex-rollout-operations-summary.schema.json",
-                "primary_question": "What checked-in trusted rollout campaign posture is currently visible for the shared-root Codex plane without turning stats into rollout authority?",
-                "derivation_rule": "derive bounded rollout state counts and latest campaign posture from 8Dionysus checked-in generated/codex/rollout source surfaces",
-            },
-            {
-                "name": "codex_rollout_drift_summary",
-                "surface_ref": "generated/codex_rollout_drift_summary.min.json",
-                "schema_ref": "schemas/codex-rollout-drift-summary.schema.json",
-                "primary_question": "What is the current bounded drift and rollback posture of the latest trusted Codex rollout campaign without replacing source-owned campaign history?",
-                "derivation_rule": "derive the latest drift window, drift state, repair attempt posture, and rollback requirement from 8Dionysus checked-in rollout history and rollback windows",
-            },
-            {
-                "name": "rollout_campaign_summary",
-                "surface_ref": "generated/rollout_campaign_summary.min.json",
-                "schema_ref": "schemas/rollout-campaign-summary.schema.json",
-                "primary_question": "What is the current bounded campaign cadence posture for the shared-root Codex plane without turning stats into cadence authority?",
-                "derivation_rule": "derive one current campaign-cadence summary from 8Dionysus source-owned rollout campaign, drift-review, and rollback-followthrough window examples",
-            },
-            {
-                "name": "drift_review_summary",
-                "surface_ref": "generated/drift_review_summary.min.json",
-                "schema_ref": "schemas/drift-review-summary.schema.json",
-                "primary_question": "What named drift signals and explicit review decisions are currently visible in the source-owned cadence windows without replacing rollout or campaign truth?",
-                "derivation_rule": "derive one bounded drift-review summary from the current 8Dionysus cadence windows and keep rollback readiness descriptive only",
-            },
-            {
-                "name": "continuity_window_summary",
-                "surface_ref": "generated/continuity_window_summary.min.json",
-                "schema_ref": "schemas/continuity-window-summary.schema.json",
-                "primary_question": "What is the current bounded self-agency continuity posture without turning stats into continuity truth or self-agency proof?",
-                "derivation_rule": "derive one bounded continuity snapshot from the aoa-agents continuity window example, the sovereign continuity playbook, the memo-side provenance thread example, and the landed continuity eval anchors",
-            },
-            {
-                "name": "runtime_closeout_summary",
-                "surface_ref": "generated/runtime_closeout_summary.min.json",
-                "schema_ref": "schemas/runtime-closeout-summary.schema.json",
-                "primary_question": "What is the current bounded runtime closeout posture across program waves and how did reviewed handoff land?",
-                "derivation_rule": "aggregate runtime_wave_closeout_receipt payloads by program_id and wave_id and keep the latest gate plus handoff posture",
-            },
-            {
-                "name": "stress_recovery_window_summary",
-                "surface_ref": "generated/stress_recovery_window_summary.min.json",
-                "schema_ref": "schemas/stress-recovery-window-summary.schema.json",
-                "primary_question": "What does the current repeated-window stress recovery proof family say without inventing a new canonical event kind or outranking owner evidence?",
-                "derivation_rule": "resolve aoa-stress-recovery-window eval_result_receipt report_ref paths through aoa-evals and derive one bounded summary plus suppression posture",
-            },
-            {
-                "name": "surface_detection_summary",
-                "surface_ref": "generated/surface_detection_summary.min.json",
-                "schema_ref": "schemas/surface-detection-summary.schema.json",
-                "primary_question": "What second-wave surface-detection signals are accumulating without turning stats into routing authority?",
-                "derivation_rule": "aggregate advisory surface_detection_context payloads on finish-stage core_skill_application_receipt envelopes by observed date",
-            },
-        ],
+        "surfaces": surfaces,
     }
 
 
@@ -2549,7 +2588,7 @@ def build_all_views(
     resolved_evals_root = (
         evals_root.expanduser().resolve() if evals_root is not None else DEFAULT_EVALS_ROOT.resolve()
     )
-    return {
+    outputs = {
         "object_summary.min.json": build_object_summary(active_receipts, source),
         "candidate_lineage_summary.min.json": build_candidate_lineage_summary(
             active_receipts, source
@@ -2573,19 +2612,30 @@ def build_all_views(
         "automation_followthrough_summary.min.json": build_automation_followthrough_summary(
             active_receipts, source
         ),
-        "codex_plane_deployment_summary.min.json": build_codex_plane_deployment_summary(),
-        "codex_rollout_operations_summary.min.json": build_codex_rollout_operations_summary(),
-        "codex_rollout_drift_summary.min.json": build_codex_rollout_drift_summary(),
-        "rollout_campaign_summary.min.json": build_rollout_campaign_summary(),
-        "drift_review_summary.min.json": build_drift_review_summary(),
-        "continuity_window_summary.min.json": build_continuity_window_summary(),
         "runtime_closeout_summary.min.json": build_runtime_closeout_summary(active_receipts, source),
         "stress_recovery_window_summary.min.json": build_stress_recovery_window_summary(
             active_receipts, source, evals_root=resolved_evals_root
         ),
         "surface_detection_summary.min.json": build_surface_detection_summary(active_receipts, source),
-        "summary_surface_catalog.min.json": build_summary_surface_catalog(source),
     }
+    for name, builder in (
+        ("codex_plane_deployment_summary.min.json", build_codex_plane_deployment_summary),
+        ("codex_rollout_operations_summary.min.json", build_codex_rollout_operations_summary),
+        ("codex_rollout_drift_summary.min.json", build_codex_rollout_drift_summary),
+        ("rollout_campaign_summary.min.json", build_rollout_campaign_summary),
+        ("drift_review_summary.min.json", build_drift_review_summary),
+        ("continuity_window_summary.min.json", build_continuity_window_summary),
+    ):
+        try:
+            outputs[name] = builder()
+        except ReceiptValidationError as exc:
+            if not str(exc).startswith("missing "):
+                raise
+    outputs["summary_surface_catalog.min.json"] = build_summary_surface_catalog(
+        source,
+        available_output_names=set(outputs),
+    )
+    return outputs
 
 
 def stable_json(payload: dict[str, Any]) -> str:

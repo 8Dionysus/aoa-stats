@@ -31,6 +31,12 @@ SUMMARY_OUTPUT_NAMES = (
     "session_growth_branch_summary.min.json",
     "automation_pipeline_summary.min.json",
     "automation_followthrough_summary.min.json",
+    "codex_plane_deployment_summary.min.json",
+    "codex_rollout_operations_summary.min.json",
+    "codex_rollout_drift_summary.min.json",
+    "rollout_campaign_summary.min.json",
+    "drift_review_summary.min.json",
+    "continuity_window_summary.min.json",
     "runtime_closeout_summary.min.json",
     "stress_recovery_window_summary.min.json",
     "surface_detection_summary.min.json",
@@ -115,6 +121,16 @@ def clear_live_state(*, feed_output: Path, summary_output_dir: Path) -> None:
             target.unlink()
 
 
+def sync_summary_outputs(*, summary_output_dir: Path, outputs: dict[str, dict]) -> None:
+    summary_output_dir.mkdir(parents=True, exist_ok=True)
+    for name in SUMMARY_OUTPUT_NAMES:
+        target = summary_output_dir / name
+        if name not in outputs and target.exists():
+            target.unlink()
+    for name, payload in outputs.items():
+        (summary_output_dir / name).write_text(stable_json(payload), encoding="utf-8")
+
+
 def resolve_live_evals_root(*, federation_root: Path) -> Path:
     vendored_evals_root = REPO_ROOT / "aoa-evals"
     if vendored_evals_root.exists():
@@ -164,9 +180,7 @@ def refresh_live_state(
         source_labels,
         evals_root=resolve_live_evals_root(federation_root=federation_root),
     )
-    summary_output_dir.mkdir(parents=True, exist_ok=True)
-    for name, payload in outputs.items():
-        (summary_output_dir / name).write_text(stable_json(payload), encoding="utf-8")
+    sync_summary_outputs(summary_output_dir=summary_output_dir, outputs=outputs)
     return source_labels, len(active_receipts)
 
 
