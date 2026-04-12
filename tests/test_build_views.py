@@ -217,6 +217,8 @@ def test_build_views_produces_expected_surface_counts() -> None:
         "automation_pipeline_summary.min.json",
         "automation_followthrough_summary.min.json",
         "codex_plane_deployment_summary.min.json",
+        "codex_rollout_operations_summary.min.json",
+        "codex_rollout_drift_summary.min.json",
         "runtime_closeout_summary.min.json",
         "stress_recovery_window_summary.min.json",
         "surface_detection_summary.min.json",
@@ -265,6 +267,15 @@ def test_build_views_produces_expected_surface_counts() -> None:
     assert outputs["automation_followthrough_summary.min.json"]["playbook_seed_candidate_count"] == 1
     assert outputs["automation_followthrough_summary.min.json"]["real_run_reviewed_count"] == 1
     assert outputs["codex_plane_deployment_summary.min.json"]["latest_rollout_state"] == "verified"
+    assert outputs["codex_rollout_operations_summary.min.json"]["latest_state"] == "rolled_back"
+    assert outputs["codex_rollout_operations_summary.min.json"]["counts_by_state"] == {
+        "rolled_back": 1,
+        "stabilized": 1,
+    }
+    assert outputs["codex_rollout_drift_summary.min.json"]["drift_window_ref"] == (
+        "DRIFT-20260411-codex-hooks-tighten-02"
+    )
+    assert outputs["codex_rollout_drift_summary.min.json"]["rollback_required"] is True
     assert outputs["codex_plane_deployment_summary.min.json"]["trust_posture_counts"] == {
         "unknown": 0,
         "root_mismatch": 0,
@@ -304,6 +315,8 @@ def test_build_views_produces_expected_surface_counts() -> None:
         "generated/automation_pipeline_summary.min.json",
         "generated/automation_followthrough_summary.min.json",
         "generated/codex_plane_deployment_summary.min.json",
+        "generated/codex_rollout_operations_summary.min.json",
+        "generated/codex_rollout_drift_summary.min.json",
         "generated/runtime_closeout_summary.min.json",
         "generated/stress_recovery_window_summary.min.json",
         "generated/surface_detection_summary.min.json",

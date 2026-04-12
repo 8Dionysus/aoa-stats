@@ -1,0 +1,22 @@
+{
+  "schema_version": "aoa_stats_codex_rollout_drift_summary_v1",
+  "generated_from": {
+    "receipt_input_paths": [
+      "8Dionysus/generated/codex/rollout/deploy_history.jsonl",
+      "8Dionysus/generated/codex/rollout/regeneration_campaigns.min.json",
+      "8Dionysus/generated/codex/rollout/rollback_windows.min.json",
+      "8Dionysus/generated/codex/rollout/rollout_latest.min.json"
+    ],
+    "total_receipts": 2,
+    "latest_observed_at": "2026-04-11T21:36:00Z"
+  },
+  "latest_rollout_campaign_ref": "ROLL-20260411-codex-hooks-tighten-02",
+  "drift_window_ref": "DRIFT-20260411-codex-hooks-tighten-02",
+  "drift_state": "rolled_back",
+  "repair_attempted": true,
+  "rollback_required": true,
+  "source_refs": [
+    "8Dionysus/generated/codex/rollout/deploy_history.jsonl",
+    "8Dionysus/generated/codex/rollout/rollback_windows.min.json"
+  ]
+}

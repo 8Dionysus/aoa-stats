@@ -55,6 +55,14 @@ Use the shortest route by need:
   `schemas/codex-plane-deployment-summary.schema.json`,
   `examples/codex_plane_deployment_summary.example.json`, and
   `generated/codex_plane_deployment_summary.min.json`
+- trusted Codex rollout operations and drift summaries:
+  `docs/CODEX_PLANE_DEPLOYMENT_SUMMARIES.md`,
+  `schemas/codex-rollout-operations-summary.schema.json`,
+  `schemas/codex-rollout-drift-summary.schema.json`,
+  `examples/codex_rollout_operations_summary.example.json`,
+  `examples/codex_rollout_drift_summary.example.json`,
+  `generated/codex_rollout_operations_summary.min.json`, and
+  `generated/codex_rollout_drift_summary.min.json`
 - growth-refinery funnel doctrine and contracts:
   `docs/GROWTH_FUNNEL_SUMMARY.md`,
   `schemas/candidate_lineage_summary.schema.json`,
@@ -140,6 +148,8 @@ The first usable derived summaries are:
 - `generated/automation_pipeline_summary.min.json`
 - `generated/automation_followthrough_summary.min.json`
 - `generated/codex_plane_deployment_summary.min.json`
+- `generated/codex_rollout_operations_summary.min.json`
+- `generated/codex_rollout_drift_summary.min.json`
 - `generated/runtime_closeout_summary.min.json`
 - `generated/stress_recovery_window_summary.min.json`
 - `generated/surface_detection_summary.min.json`
@@ -171,6 +181,12 @@ continuity companion. It stays downstream of `8Dionysus` trust-state and
 rollout receipts plus the `aoa-sdk` typed deploy-status snapshot, so
 `aoa-stats` can expose trust counts and drift posture without becoming rollout
 authority.
+
+`generated/codex_rollout_operations_summary.min.json` and
+`generated/codex_rollout_drift_summary.min.json` are the wave-seven companions
+for checked-in trusted rollout campaign history in `8Dionysus/generated/codex/rollout/`.
+They stay descriptive, current-campaign bounded, and weaker than source-owned
+rollout history.
 
 `generated/summary_surface_catalog.min.json` is also the compact runtime-entry
 capsule that federation routing should inspect first for `aoa-stats`. It now
