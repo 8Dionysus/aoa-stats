@@ -12,11 +12,14 @@ already-landed summary families.
 `aoa-stats` has a real v0 derived surface.
 The first usable summary families are already landed:
 
-- object, core-skill, lineage, owner-landing, supersession-drop, repeated-
-  window, route-progression, and fork-calibration summaries
-- session-growth, automation-followthrough, and runtime-closeout summaries
-- Codex-plane deployment, rollout-drift, rollout-campaign, continuity-window,
-  component-refresh, stress-recovery, and surface-detection summaries
+- object, core-skill application, candidate-lineage, owner-landing,
+  supersession-drop, repeated-window, route-progression, and fork-calibration
+  summaries
+- session-growth branch, automation-pipeline, automation-followthrough, and
+  runtime-closeout summaries
+- Codex-plane deployment, rollout-operations, rollout-drift, rollout-campaign,
+  drift-review, continuity-window, component-refresh, stress-recovery, and
+  surface-detection summaries
 - the summary-surface catalog plus the repo-local `aoa_stats` MCP read model
 
 The next honest move is not to widen into a dashboard empire.
