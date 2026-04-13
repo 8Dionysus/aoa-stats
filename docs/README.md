@@ -8,6 +8,7 @@ Use this map when you want to know which stats-layer document to open next.
 - architecture and layer model: `ARCHITECTURE.md`
 - repo-local Codex MCP usage and launch: `CODEX_MCP.md`
 - live intake and update loop: `LIVE_SESSION_USE.md`
+- current direction and live summary contour: `../README.md#current-v0-surface`
 - release flow and public release narrative: `RELEASING.md` and `../CHANGELOG.md`
 - growth-refinery funnel summary: `GROWTH_FUNNEL_SUMMARY.md`
 - fourth-wave next-kernel branch and automation follow-through:
