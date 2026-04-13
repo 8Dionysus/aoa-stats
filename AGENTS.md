@@ -50,10 +50,11 @@ It does not by itself prove mastery, intent, or self-agency.
 Before making changes, read in this order:
 
 1. `README.md`
-2. `docs/BOUNDARIES.md`
-3. `docs/ARCHITECTURE.md`
-4. `docs/LIVE_SESSION_USE.md`
-5. the schema, builder, or generated surface you plan to touch
+2. `ROADMAP.md`
+3. `docs/BOUNDARIES.md`
+4. `docs/ARCHITECTURE.md`
+5. `docs/LIVE_SESSION_USE.md`
+6. the schema, builder, or generated surface you plan to touch
 
 Then branch by task:
 
@@ -111,6 +112,7 @@ If a deeper directory defines its own `AGENTS.md`, follow the nearest one.
 The most important objects in this repository are:
 
 - `docs/CODEX_MCP.md`
+- `ROADMAP.md`
 - `schemas/*.json`
 - `schemas/stats-event-envelope.schema.json`
 - `generated/session_growth_branch_summary.min.json`

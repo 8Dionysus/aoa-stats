@@ -26,7 +26,7 @@ Use the shortest route by need:
 - five-layer architecture and derived posture: `docs/ARCHITECTURE.md`
 - repo-local Codex MCP surface: `docs/CODEX_MCP.md`
 - live receipt intake and generation loop: `docs/LIVE_SESSION_USE.md`
-- current direction and live summary contour: `README.md#current-v0-surface` and `docs/README.md`
+- current direction and live summary contour: `ROADMAP.md`, `README.md#current-v0-surface`, and `docs/README.md`
 - release and publication posture: `docs/RELEASING.md` and `CHANGELOG.md`
 - local agent instructions: `AGENTS.md`
 
