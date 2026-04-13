@@ -57,6 +57,29 @@ def make_fake_repo(tmp_path: Path) -> Path:
     return repo
 
 
+def add_live_state(repo: Path, *, live_ids: list[int]) -> None:
+    _write(
+        repo / "state/generated/object_summary.min.json",
+        json.dumps({"objects": [{"id": value} for value in live_ids]}, indent=2),
+    )
+    _write(
+        repo / "state/generated/summary_surface_catalog.min.json",
+        json.dumps(
+            {
+                "schema_version": "aoa_stats_summary_surface_catalog_v2",
+                "surfaces": [
+                    {
+                        "name": "object_summary",
+                        "surface_ref": "generated/object_summary.min.json",
+                        "schema_ref": "schemas/object-summary.schema.json",
+                    }
+                ],
+            },
+            indent=2,
+        ),
+    )
+
+
 def test_find_repo_root_from_nested_path(tmp_path: Path) -> None:
     repo = make_fake_repo(tmp_path)
     nested = repo / "src" / "aoa_stats_mcp"
@@ -85,6 +108,36 @@ def test_build_surface_payload_full(tmp_path: Path) -> None:
     state = RepoState(repo)
     payload = build_surface_payload(state, surface_name="object_summary", mode="full")
     assert payload["payload"]["objects"][2]["id"] == 3
+
+
+def test_load_catalog_prefers_live_state_and_rewrites_surface_refs(tmp_path: Path) -> None:
+    repo = make_fake_repo(tmp_path)
+    add_live_state(repo, live_ids=[7, 8])
+    state = RepoState(repo)
+
+    catalog = state.load_catalog()
+    assert catalog["surfaces"][0]["surface_ref"] == "state/generated/object_summary.min.json"
+
+    payload = build_surface_payload(state, surface_name="object_summary", mode="preview", limit=5)
+    assert payload["surface_ref"] == "state/generated/object_summary.min.json"
+    assert payload["payload"]["objects_total_items"] == 2
+    assert payload["payload"]["objects"][0]["id"] == 7
+
+
+def test_explicit_surface_ref_can_still_read_committed_generated_surface(tmp_path: Path) -> None:
+    repo = make_fake_repo(tmp_path)
+    add_live_state(repo, live_ids=[7, 8])
+    state = RepoState(repo)
+
+    payload = build_surface_payload(
+        state,
+        surface_ref="generated/object_summary.min.json",
+        mode="preview",
+        limit=5,
+    )
+    assert payload["surface_ref"] == "generated/object_summary.min.json"
+    assert payload["payload"]["objects_total_items"] == 3
+    assert payload["payload"]["objects"][0]["id"] == 1
 
 
 def test_preview_json_requires_positive_limit() -> None:

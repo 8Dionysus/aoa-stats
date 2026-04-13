@@ -9,7 +9,7 @@ authority, or quest-state authority.
 This surface is intentionally:
 
 - read-only
-- generated-surface-first
+- active-summary-surface-first
 - boundary-aware
 - repo-local
 - non-sovereign
@@ -27,8 +27,8 @@ If semantics matter, go back to the owner repo. `aoa-stats` stays derived.
 
 ## Tools
 
-- `stats_catalog`: read the compact runtime-entry catalog from `generated/summary_surface_catalog.min.json`
-- `stats_surface_read`: read one generated surface by `surface_name` or `surface_ref`
+- `stats_catalog`: read the active summary catalog, preferring `state/generated/summary_surface_catalog.min.json` when a refreshed live state is present and otherwise falling back to `generated/summary_surface_catalog.min.json`
+- `stats_surface_read`: read one active summary surface by `surface_name`, or one exact surface by `surface_ref`
 - `stats_source_registry`: inspect `config/live_receipt_sources.json`
 - `stats_boundary_rules`: reground on `docs/BOUNDARIES.md` and `docs/ARCHITECTURE.md`
 
