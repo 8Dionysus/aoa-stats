@@ -7,6 +7,7 @@ from pathlib import Path
 from typing import Any
 
 CATALOG_RELATIVE = Path("generated/summary_surface_catalog.min.json")
+LIVE_CATALOG_RELATIVE = Path("state/generated/summary_surface_catalog.min.json")
 BOUNDARIES_RELATIVE = Path("docs/BOUNDARIES.md")
 ARCHITECTURE_RELATIVE = Path("docs/ARCHITECTURE.md")
 SOURCE_REGISTRY_RELATIVE = Path("config/live_receipt_sources.json")
@@ -24,7 +25,7 @@ class RepoStateError(RuntimeError):
 
 @dataclass(frozen=True)
 class RepoState:
-    """Thin read-only view over aoa-stats generated surfaces and guidance files."""
+    """Thin read-only view over aoa-stats active summary surfaces and guidance files."""
 
     repo_root: Path
 
@@ -32,8 +33,14 @@ class RepoState:
     def discover(cls, start: Path | None = None) -> "RepoState":
         return cls(find_repo_root(start=start))
 
+    def active_catalog_relative(self) -> Path:
+        live_catalog = self.repo_root / LIVE_CATALOG_RELATIVE
+        return LIVE_CATALOG_RELATIVE if live_catalog.is_file() else CATALOG_RELATIVE
+
     def load_catalog(self) -> dict[str, Any]:
-        return load_json_file(self.repo_root / CATALOG_RELATIVE)
+        catalog_relative = self.active_catalog_relative()
+        catalog = load_json_file(self.repo_root / catalog_relative)
+        return normalize_catalog_surface_refs(catalog, catalog_relative=catalog_relative)
 
     def load_source_registry(self) -> dict[str, Any]:
         return load_json_file(self.repo_root / SOURCE_REGISTRY_RELATIVE)
@@ -146,6 +153,34 @@ def load_json_file(path: Path) -> Any:
 
 def load_text_file(path: Path) -> str:
     return path.read_text(encoding="utf-8")
+
+
+def normalize_catalog_surface_refs(
+    catalog: dict[str, Any], *, catalog_relative: Path
+) -> dict[str, Any]:
+    if catalog_relative != LIVE_CATALOG_RELATIVE:
+        return catalog
+
+    surfaces = catalog.get("surfaces")
+    if not isinstance(surfaces, list):
+        return catalog
+
+    normalized: dict[str, Any] = dict(catalog)
+    normalized["surfaces"] = [
+        normalize_surface_entry(surface) if isinstance(surface, dict) else surface
+        for surface in surfaces
+    ]
+    return normalized
+
+
+def normalize_surface_entry(surface: dict[str, Any]) -> dict[str, Any]:
+    surface_ref = surface.get("surface_ref")
+    if not isinstance(surface_ref, str) or not surface_ref.startswith("generated/"):
+        return surface
+
+    normalized = dict(surface)
+    normalized["surface_ref"] = str(Path("state") / surface_ref)
+    return normalized
 
 
 def safe_repo_path(repo_root: Path, relative_path: str | Path) -> Path:
