@@ -26,6 +26,40 @@ The next honest move is not to widen into a dashboard empire.
 It is to keep derived summaries source-linked, hygienic, and explicit about
 what they do not prove.
 
+### Current release contour
+
+The live `v0.1.1` contour is derived-observability hardening, not a new
+workflow or proof layer. Its current checked surface is:
+
+- boundary and architecture posture:
+  `docs/BOUNDARIES.md`, `docs/ARCHITECTURE.md`,
+  `docs/LIVE_SESSION_USE.md`, `docs/README.md`, and
+  `schemas/stats-event-envelope.schema.json`
+- compact runtime entry and catalog v2:
+  `generated/summary_surface_catalog.min.json`,
+  `schemas/summary-surface-catalog.schema.json`, and
+  `tests/test_summary_surface_catalog.py`
+- repo-local read-only Codex MCP:
+  `docs/CODEX_MCP.md`, `scripts/aoa_stats_mcp_server.py`,
+  `src/aoa_stats_mcp/server.py`, `src/aoa_stats_mcp/repo_state.py`,
+  `tests/test_aoa_stats_mcp_state.py`, and `requirements-mcp.txt`
+- rollout, cadence, drift, and continuity summary families:
+  `docs/CODEX_PLANE_DEPLOYMENT_SUMMARIES.md`,
+  `docs/ROLLOUT_CAMPAIGN_SUMMARY.md`, `docs/DRIFT_REVIEW_SUMMARY.md`,
+  `docs/CONTINUITY_WINDOW_SUMMARY.md`,
+  `generated/codex_rollout_operations_summary.min.json`,
+  `generated/codex_rollout_drift_summary.min.json`,
+  `generated/rollout_campaign_summary.min.json`,
+  `generated/drift_review_summary.min.json`, and
+  `generated/continuity_window_summary.min.json`
+- deterministic builder and release validation:
+  `scripts/build_views.py`, `scripts/validate_repo.py`, and
+  `scripts/release_check.py`
+
+This contour keeps Codex and rollout visibility derived, previewable, and
+weaker than source-owned rollout history, continuity anchors, owner receipts,
+and bounded eval verdicts.
+
 ## Current cycle
 
 ### Wave 1: root direction consolidation
