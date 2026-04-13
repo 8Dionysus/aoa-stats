@@ -24,16 +24,25 @@ sources under the current federation root, writes one combined local feed to
 `state/live_receipts.min.json`, and rebuilds:
 
 - `state/generated/object_summary.min.json`
-- `state/generated/core_skill_application_summary.min.json`
 - `state/generated/candidate_lineage_summary.min.json`
 - `state/generated/owner_landing_summary.min.json`
 - `state/generated/supersession_drop_summary.min.json`
+- `state/generated/core_skill_application_summary.min.json`
 - `state/generated/repeated_window_summary.min.json`
 - `state/generated/route_progression_summary.min.json`
 - `state/generated/fork_calibration_summary.min.json`
+- `state/generated/session_growth_branch_summary.min.json`
 - `state/generated/automation_pipeline_summary.min.json`
+- `state/generated/automation_followthrough_summary.min.json`
+- `state/generated/codex_plane_deployment_summary.min.json`
+- `state/generated/codex_rollout_operations_summary.min.json`
+- `state/generated/codex_rollout_drift_summary.min.json`
+- `state/generated/rollout_campaign_summary.min.json`
+- `state/generated/drift_review_summary.min.json`
+- `state/generated/continuity_window_summary.min.json`
 - `state/generated/component_refresh_summary.min.json`
 - `state/generated/runtime_closeout_summary.min.json`
+- `state/generated/stress_recovery_window_summary.min.json`
 - `state/generated/surface_detection_summary.min.json`
 - `state/generated/summary_surface_catalog.min.json`
 
@@ -70,16 +79,25 @@ Unknown or misspelled kinds fail validation before any summary is built.
 The committed builder refreshes:
 
 - `generated/object_summary.min.json`
-- `generated/core_skill_application_summary.min.json`
 - `generated/candidate_lineage_summary.min.json`
 - `generated/owner_landing_summary.min.json`
 - `generated/supersession_drop_summary.min.json`
+- `generated/core_skill_application_summary.min.json`
 - `generated/repeated_window_summary.min.json`
 - `generated/route_progression_summary.min.json`
 - `generated/fork_calibration_summary.min.json`
+- `generated/session_growth_branch_summary.min.json`
 - `generated/automation_pipeline_summary.min.json`
+- `generated/automation_followthrough_summary.min.json`
+- `generated/codex_plane_deployment_summary.min.json`
+- `generated/codex_rollout_operations_summary.min.json`
+- `generated/codex_rollout_drift_summary.min.json`
+- `generated/rollout_campaign_summary.min.json`
+- `generated/drift_review_summary.min.json`
+- `generated/continuity_window_summary.min.json`
 - `generated/component_refresh_summary.min.json`
 - `generated/runtime_closeout_summary.min.json`
+- `generated/stress_recovery_window_summary.min.json`
 - `generated/surface_detection_summary.min.json`
 - `generated/summary_surface_catalog.min.json`
 
