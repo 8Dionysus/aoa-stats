@@ -669,22 +669,40 @@ def test_refresh_live_state_combines_playbook_technique_memo_and_runtime_sources
             "evidence_refs": [{"kind": "technique_bundle", "ref": "repo:aoa-techniques/TECHNIQUE_INDEX.md#AOA-T-0089"}],
             "payload": {"promotion_state": "promoted"},
         },
-        memo_dir / "memo-writeback-receipts.jsonl": {
-            "event_kind": "memo_writeback_receipt",
-            "event_id": "evt-memo-test-0001",
-            "observed_at": "2026-04-06T20:04:00Z",
-            "run_ref": "run-memo-001",
-            "session_ref": "session:test-002",
-            "actor_ref": "aoa-memo:writeback",
-            "object_ref": {
-                "repo": "aoa-memo",
-                "kind": "memory_object",
-                "id": "memo.decision.2026-04-06.session-closeout",
-                "version": "main",
+        memo_dir / "memo-writeback-receipts.jsonl": [
+            {
+                "event_kind": "memo_writeback_receipt",
+                "event_id": "evt-memo-test-0001",
+                "observed_at": "2026-04-06T20:04:00Z",
+                "run_ref": "run-memo-001",
+                "session_ref": "session:test-002",
+                "actor_ref": "aoa-memo:writeback",
+                "object_ref": {
+                    "repo": "aoa-memo",
+                    "kind": "memory_object",
+                    "id": "memo.decision.2026-04-06.session-closeout",
+                    "version": "main",
+                },
+                "evidence_refs": [{"kind": "memory_object", "ref": "repo:aoa-memo/generated/memory_object_catalog.min.json"}],
+                "payload": {"target_kind": "decision"},
             },
-            "evidence_refs": [{"kind": "memory_object", "ref": "repo:aoa-memo/generated/memory_object_catalog.min.json"}],
-            "payload": {"target_kind": "decision"},
-        },
+            {
+                "event_kind": "memo_growth_writeback_receipt",
+                "event_id": "evt-memo-growth-test-0001",
+                "observed_at": "2026-04-06T20:04:30Z",
+                "run_ref": "run-memo-growth-001",
+                "session_ref": "session:test-002",
+                "actor_ref": "aoa-memo:growth-refinery-writeback",
+                "object_ref": {
+                    "repo": "aoa-memo",
+                    "kind": "support_memory",
+                    "id": "memo:session-growth-cycle-owner-reanchor-first",
+                    "version": "main",
+                },
+                "evidence_refs": [{"kind": "support_memory", "ref": "repo:aoa-memo/generated/growth_refinery_writeback_lanes.min.json#growth_refinery_failure_lesson"}],
+                "payload": {"target_kind": "failure_lesson"},
+            },
+        ],
         runtime_dir / "runtime-wave-closeouts.jsonl": {
             "event_kind": "runtime_wave_closeout_receipt",
             "event_id": "evt-runtime-closeout-test-0001",
@@ -718,7 +736,11 @@ def test_refresh_live_state_combines_playbook_technique_memo_and_runtime_sources
         },
     }
     for path, receipt in receipts_by_path.items():
-        path.write_text(json.dumps(receipt) + "\n", encoding="utf-8")
+        if isinstance(receipt, list):
+            payload = "\n".join(json.dumps(item) for item in receipt) + "\n"
+        else:
+            payload = json.dumps(receipt) + "\n"
+        path.write_text(payload, encoding="utf-8")
 
     registry_path = tmp_path / "live_receipt_sources.json"
     registry_path.write_text(
@@ -751,10 +773,10 @@ def test_refresh_live_state_combines_playbook_technique_memo_and_runtime_sources
     )
 
     assert len(source_labels) == 7
-    assert receipt_count == 7
+    assert receipt_count == 8
 
     feed = json.loads(feed_output.read_text(encoding="utf-8"))
-    assert len(feed) == 7
+    assert len(feed) == 8
 
     repeated = json.loads(
         (summary_output_dir / "repeated_window_summary.min.json").read_text(encoding="utf-8")
@@ -763,16 +785,28 @@ def test_refresh_live_state_combines_playbook_technique_memo_and_runtime_sources
     assert counts["core_skill_application_receipt"] == 1
     assert counts["playbook_review_harvest_receipt"] == 1
     assert counts["technique_promotion_receipt"] == 1
+    assert counts["memo_growth_writeback_receipt"] == 1
     assert counts["memo_writeback_receipt"] == 1
 
     objects = json.loads(
         (summary_output_dir / "object_summary.min.json").read_text(encoding="utf-8")
     )["objects"]
-    by_repo = {entry["object_ref"]["repo"]: entry for entry in objects}
+    by_repo = {entry["object_ref"]["repo"]: entry for entry in objects if entry["object_ref"]["repo"] != "aoa-memo"}
+    memo_writeback_total = sum(
+        entry["receipt_counts_by_event_kind"].get("memo_writeback_receipt", 0)
+        for entry in objects
+        if entry["object_ref"]["repo"] == "aoa-memo"
+    )
+    memo_growth_total = sum(
+        entry["receipt_counts_by_event_kind"].get("memo_growth_writeback_receipt", 0)
+        for entry in objects
+        if entry["object_ref"]["repo"] == "aoa-memo"
+    )
     assert by_repo["aoa-playbooks"]["receipt_counts_by_event_kind"]["playbook_review_harvest_receipt"] == 1
     assert by_repo["aoa-techniques"]["receipt_counts_by_event_kind"]["technique_promotion_receipt"] == 1
-    assert by_repo["aoa-memo"]["receipt_counts_by_event_kind"]["memo_writeback_receipt"] == 1
     assert by_repo["abyss-stack"]["receipt_counts_by_event_kind"]["runtime_wave_closeout_receipt"] == 1
+    assert memo_writeback_total == 1
+    assert memo_growth_total == 1
 
     core_summary = json.loads(
         (summary_output_dir / "core_skill_application_summary.min.json").read_text(encoding="utf-8")
