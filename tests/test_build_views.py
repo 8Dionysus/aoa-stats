@@ -1724,24 +1724,38 @@ def test_automation_followthrough_summary_tracks_blockers_and_real_run_review() 
 
 def test_validate_receipt_accepts_known_unsummarized_event_kind() -> None:
     module = load_build_views_module()
-    receipt = {
-        "event_kind": "memo_writeback_receipt",
-        "event_id": "evt-memo-known-0001",
-        "observed_at": "2026-04-06T09:00:00Z",
-        "run_ref": "run-memo-001",
-        "session_ref": "session:test-known-kind",
-        "actor_ref": "aoa-memo:writeback",
-        "object_ref": {
-            "repo": "aoa-memo",
-            "kind": "memory_object",
-            "id": "memo.test.known-kind",
-            "version": "main",
-        },
-        "evidence_refs": [{"kind": "memory_object", "ref": "repo:aoa-memo/generated/memory_object_catalog.min.json"}],
-        "payload": {"target_kind": "decision"},
-    }
+    for event_kind, actor_ref, object_kind, object_id in (
+        (
+            "memo_writeback_receipt",
+            "aoa-memo:writeback",
+            "memory_object",
+            "memo.test.known-kind",
+        ),
+        (
+            "memo_growth_writeback_receipt",
+            "aoa-memo:growth-refinery-writeback",
+            "support_memory",
+            "memo:test-growth-known-kind",
+        ),
+    ):
+        receipt = {
+            "event_kind": event_kind,
+            "event_id": f"evt-{event_kind}-0001",
+            "observed_at": "2026-04-06T09:00:00Z",
+            "run_ref": "run-memo-001",
+            "session_ref": "session:test-known-kind",
+            "actor_ref": actor_ref,
+            "object_ref": {
+                "repo": "aoa-memo",
+                "kind": object_kind,
+                "id": object_id,
+                "version": "main",
+            },
+            "evidence_refs": [{"kind": "memory_object", "ref": "repo:aoa-memo/generated/memory_object_catalog.min.json"}],
+            "payload": {"target_kind": "decision"},
+        }
 
-    module.validate_receipt(receipt, location="memory")
+        module.validate_receipt(receipt, location="memory")
 
 
 def test_validate_receipt_rejects_unknown_event_kind_with_canonical_ref() -> None:
