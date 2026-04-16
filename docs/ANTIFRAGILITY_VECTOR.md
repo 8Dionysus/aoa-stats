@@ -66,4 +66,9 @@ A weak but honest vector is healthier than a confident fiction.
 
 ## Wave 1 note
 
-Wave 1 is intentionally small. It is enough to define one schema, one example, and the doctrine that keeps the layer out of score-empire drift.
+Wave 1 is intentionally small. It is enough to define one schema, one example,
+and the doctrine that keeps the layer out of score-empire drift.
+
+For now this family stays contract-only in the summary catalog.
+It does not become a generated live summary until one owner-linked repeated
+stress family and one bounded eval chain exist for the same stressor family.

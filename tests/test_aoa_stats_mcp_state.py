@@ -48,6 +48,13 @@ def make_fake_repo(tmp_path: Path) -> Path:
                         "name": "object_summary",
                         "surface_ref": "generated/object_summary.min.json",
                         "schema_ref": "schemas/object-summary.schema.json",
+                        "primary_question": "Which objects are visible in the active feed?",
+                        "derivation_rule": "group receipts by object_ref",
+                        "input_posture": "receipt_backed_live",
+                        "owner_truth_inputs": ["owner-local receipts"],
+                        "authority_ceiling": "Weaker than the owner-local receipt log.",
+                        "consumer_risk": "low",
+                        "live_state_capable": True,
                     }
                 ],
             },
@@ -72,6 +79,13 @@ def add_live_state(repo: Path, *, live_ids: list[int]) -> None:
                         "name": "object_summary",
                         "surface_ref": "generated/object_summary.min.json",
                         "schema_ref": "schemas/object-summary.schema.json",
+                        "primary_question": "Which objects are visible in the active feed?",
+                        "derivation_rule": "group receipts by object_ref",
+                        "input_posture": "receipt_backed_live",
+                        "owner_truth_inputs": ["owner-local receipts"],
+                        "authority_ceiling": "Weaker than the owner-local receipt log.",
+                        "consumer_risk": "low",
+                        "live_state_capable": True,
                     }
                 ],
             },
@@ -98,6 +112,8 @@ def test_build_surface_payload_preview(tmp_path: Path) -> None:
     state = RepoState(repo)
     payload = build_surface_payload(state, surface_name="object_summary", mode="preview", limit=2)
     assert payload["surface_ref"] == "generated/object_summary.min.json"
+    assert payload["surface_profile"]["name"] == "object_summary"
+    assert payload["surface_profile"]["consumer_risk"] == "low"
     assert payload["mode"] == "preview"
     assert payload["payload"]["objects_total_items"] == 3
     assert len(payload["payload"]["objects"]) == 2
@@ -120,6 +136,7 @@ def test_load_catalog_prefers_live_state_and_rewrites_surface_refs(tmp_path: Pat
 
     payload = build_surface_payload(state, surface_name="object_summary", mode="preview", limit=5)
     assert payload["surface_ref"] == "state/generated/object_summary.min.json"
+    assert payload["surface_profile"]["surface_ref"] == "state/generated/object_summary.min.json"
     assert payload["payload"]["objects_total_items"] == 2
     assert payload["payload"]["objects"][0]["id"] == 7
 
@@ -136,6 +153,7 @@ def test_explicit_surface_ref_can_still_read_committed_generated_surface(tmp_pat
         limit=5,
     )
     assert payload["surface_ref"] == "generated/object_summary.min.json"
+    assert payload["surface_profile"]["name"] == "object_summary"
     assert payload["payload"]["objects_total_items"] == 3
     assert payload["payload"]["objects"][0]["id"] == 1
 

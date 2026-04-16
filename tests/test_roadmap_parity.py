@@ -27,6 +27,7 @@ ROADMAP_PHRASES = {
     "component_refresh_summary": "component-refresh",
     "runtime_closeout_summary": "runtime-closeout",
     "stress_recovery_window_summary": "stress-recovery",
+    "source_coverage_summary": "source-coverage",
     "surface_detection_summary": "surface-detection",
 }
 
@@ -70,6 +71,14 @@ def test_roadmap_names_current_catalog_summary_families() -> None:
         "generated/summary_surface_catalog.min.json",
         "schemas/summary-surface-catalog.schema.json",
         "tests/test_summary_surface_catalog.py",
+        "docs/RECEIPT_ABI_GOVERNANCE.md",
+        "config/stats_event_kind_registry.json",
+        "docs/SURFACE_STRENGTH_MODEL.md",
+        "docs/SOURCE_COVERAGE_SUMMARY.md",
+        "schemas/source-coverage-summary.schema.json",
+        "generated/source_coverage_summary.min.json",
+        "scripts/validate_receipt_abi.py",
+        "scripts/validate_downstream_canaries.py",
         "docs/CODEX_MCP.md",
         "scripts/aoa_stats_mcp_server.py",
         "src/aoa_stats_mcp/server.py",

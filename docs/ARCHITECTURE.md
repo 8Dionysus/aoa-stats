@@ -3,7 +3,8 @@
 ## One sentence
 
 `aoa-stats` is an evidence-linked observability layer built from owner-local
-receipts, bounded eval verdicts, and small progression deltas.
+receipts, bounded eval verdicts, small progression deltas, and explicit intake
+governance.
 
 ## Five layers
 
@@ -63,6 +64,7 @@ Current v0 derived views:
 - fork-calibration summary
 - automation-pipeline summary
 - runtime-closeout summary
+- source-coverage summary
 - surface-detection summary
 - summary-surface catalog
 
@@ -93,8 +95,10 @@ The published runtime-entry capsule is the schema-backed v2 contract:
 - `owner_repo`
 - `surface_kind`
 - `authority_ref`
+- `surface_strength_model_ref`
 - `generated_from`
 - `validation_refs`
+- `deferred_contract_surfaces`
 - `surfaces`
 
 Each entry in `surfaces` stays compact and low-context:
@@ -104,6 +108,11 @@ Each entry in `surfaces` stays compact and low-context:
 - `schema_ref`
 - `primary_question`
 - `derivation_rule`
+- `input_posture`
+- `owner_truth_inputs`
+- `authority_ceiling`
+- `consumer_risk`
+- `live_state_capable`
 
 ## Canonical split
 
@@ -116,3 +125,8 @@ Each entry in `surfaces` stays compact and low-context:
 `object_summary`, `repeated_window_summary`, and
 `surface_detection_summary` are inclusive of active receipts only, not of
 superseded raw history.
+
+`source_coverage_summary` is the self-audit that says which owner repos are
+actually represented in the active feed and where the stats layer is still
+thin. It stays weaker than both the live source registry and the owner-local
+receipt logs it counts.

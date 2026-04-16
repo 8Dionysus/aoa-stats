@@ -7,14 +7,29 @@ import os
 import sys
 from collections import Counter, defaultdict
 from datetime import UTC, datetime
-from functools import lru_cache
 from pathlib import Path
 from statistics import median
 from typing import Any
 
 REPO_ROOT = Path(__file__).resolve().parents[1]
+SRC_ROOT = REPO_ROOT / "src"
+if str(SRC_ROOT) not in sys.path:
+    sys.path.insert(0, str(SRC_ROOT))
+
+from aoa_stats_builder.receipt_abi import (  # noqa: E402
+    ReceiptValidationError,
+    generated_from,
+    load_receipts,
+    resolve_active_receipts,
+    validate_receipt,
+)
+from aoa_stats_builder.receipt_abi import receipt_sort_key  # noqa: E402
+from aoa_stats_builder.source_coverage import build_source_coverage_summary  # noqa: E402
+from aoa_stats_builder.surface_catalog import build_summary_surface_catalog  # noqa: E402
+
 DEFAULT_INPUT = REPO_ROOT / "examples" / "session_harvest_family.receipts.example.json"
 DEFAULT_OUTPUT_DIR = REPO_ROOT / "generated"
+DEFAULT_SOURCE_REGISTRY = REPO_ROOT / "config" / "live_receipt_sources.json"
 DEFAULT_EVALS_ROOT = (
     REPO_ROOT / "aoa-evals"
     if (REPO_ROOT / "aoa-evals").exists()
@@ -45,8 +60,6 @@ DEFAULT_AOA_SDK_ROOT = (
     if (REPO_ROOT / ".deps" / "aoa-sdk").exists()
     else REPO_ROOT.parent / "aoa-sdk"
 )
-CANONICAL_ENVELOPE_SCHEMA_PATH = REPO_ROOT / "schemas" / "stats-event-envelope.schema.json"
-CANONICAL_ENVELOPE_SCHEMA_REF = "schemas/stats-event-envelope.schema.json"
 
 AXES = (
     "boundary_integrity",
@@ -149,40 +162,6 @@ def repo_root_from_env(env_name: str, default: Path) -> Path:
     return Path(override).expanduser().resolve()
 
 
-class ReceiptValidationError(ValueError):
-    pass
-
-
-@lru_cache(maxsize=1)
-def supported_event_kinds() -> frozenset[str]:
-    payload = json.loads(CANONICAL_ENVELOPE_SCHEMA_PATH.read_text(encoding="utf-8"))
-    if not isinstance(payload, dict):
-        raise ReceiptValidationError(
-            f"{CANONICAL_ENVELOPE_SCHEMA_REF}: canonical envelope schema must be a JSON object"
-        )
-    properties = payload.get("properties")
-    if not isinstance(properties, dict):
-        raise ReceiptValidationError(
-            f"{CANONICAL_ENVELOPE_SCHEMA_REF}: missing properties object"
-        )
-    event_kind = properties.get("event_kind")
-    if not isinstance(event_kind, dict):
-        raise ReceiptValidationError(
-            f"{CANONICAL_ENVELOPE_SCHEMA_REF}: missing properties.event_kind object"
-        )
-    enum = event_kind.get("enum")
-    if not isinstance(enum, list) or not enum:
-        raise ReceiptValidationError(
-            f"{CANONICAL_ENVELOPE_SCHEMA_REF}: properties.event_kind.enum must be a non-empty list"
-        )
-    supported = {item for item in enum if isinstance(item, str) and item}
-    if len(supported) != len(enum):
-        raise ReceiptValidationError(
-            f"{CANONICAL_ENVELOPE_SCHEMA_REF}: properties.event_kind.enum must contain only non-empty strings"
-        )
-    return frozenset(supported)
-
-
 def automation_pipeline_ref(receipt: dict[str, Any]) -> str:
     payload = receipt["payload"]
     for key in ("pipeline_ref", "manual_route_ref"):
@@ -235,10 +214,6 @@ def surface_detection_context(receipt: dict[str, Any]) -> dict[str, Any]:
     return context
 
 
-def receipt_sort_key(receipt: dict[str, Any]) -> tuple[str, str]:
-    return receipt["observed_at"], receipt["event_id"]
-
-
 def parse_args(argv: list[str] | None = None) -> argparse.Namespace:
     parser = argparse.ArgumentParser(description="Build aoa-stats derived views.")
     parser.add_argument(
@@ -266,181 +241,6 @@ def parse_args(argv: list[str] | None = None) -> argparse.Namespace:
         help="Validate that generated outputs are current instead of rewriting them.",
     )
     return parser.parse_args(argv)
-
-
-def load_receipts(paths: list[Path]) -> list[dict[str, Any]]:
-    receipts: list[dict[str, Any]] = []
-    for path in paths:
-        if path.suffix == ".jsonl":
-            receipts.extend(load_receipts_from_jsonl(path))
-            continue
-        payload = json.loads(path.read_text(encoding="utf-8"))
-        if isinstance(payload, dict):
-            validate_receipt(payload, location=str(path))
-            receipts.append(payload)
-            continue
-        if not isinstance(payload, list):
-            raise ReceiptValidationError(f"{path}: receipt feed must be a JSON object or array")
-        for index, item in enumerate(payload):
-            if not isinstance(item, dict):
-                raise ReceiptValidationError(f"{path}[{index}]: receipt must be an object")
-            validate_receipt(item, location=f"{path}[{index}]")
-            receipts.append(item)
-    deduped: dict[str, dict[str, Any]] = {}
-    for receipt in receipts:
-        deduped[receipt["event_id"]] = receipt
-    return sorted(deduped.values(), key=receipt_sort_key)
-
-
-def load_receipts_from_jsonl(path: Path) -> list[dict[str, Any]]:
-    receipts: list[dict[str, Any]] = []
-    for line_number, raw_line in enumerate(path.read_text(encoding="utf-8").splitlines(), start=1):
-        line = raw_line.strip()
-        if not line:
-            continue
-        try:
-            item = json.loads(line)
-        except json.JSONDecodeError as exc:
-            raise ReceiptValidationError(
-                f"{path}:{line_number}: invalid JSONL receipt line"
-            ) from exc
-        if not isinstance(item, dict):
-            raise ReceiptValidationError(f"{path}:{line_number}: receipt must be an object")
-        validate_receipt(item, location=f"{path}:{line_number}")
-        receipts.append(item)
-    return receipts
-
-
-def validate_receipt(receipt: dict[str, Any], *, location: str) -> None:
-    required_fields = (
-        "event_kind",
-        "event_id",
-        "observed_at",
-        "run_ref",
-        "session_ref",
-        "actor_ref",
-        "object_ref",
-        "evidence_refs",
-        "payload",
-    )
-    for field in required_fields:
-        if field not in receipt:
-            raise ReceiptValidationError(f"{location}: missing field '{field}'")
-
-    for field in ("event_kind", "event_id", "run_ref", "session_ref", "actor_ref"):
-        if not isinstance(receipt[field], str) or not receipt[field]:
-            raise ReceiptValidationError(f"{location}.{field}: must be a non-empty string")
-    if receipt["event_kind"] not in supported_event_kinds():
-        raise ReceiptValidationError(
-            f"{location}.event_kind: unsupported event kind {receipt['event_kind']!r}; "
-            f"see {CANONICAL_ENVELOPE_SCHEMA_REF}"
-        )
-
-    try:
-        datetime.fromisoformat(receipt["observed_at"].replace("Z", "+00:00"))
-    except (TypeError, ValueError) as exc:
-        raise ReceiptValidationError(
-            f"{location}.observed_at: must be an ISO datetime"
-        ) from exc
-
-    object_ref = receipt["object_ref"]
-    if not isinstance(object_ref, dict):
-        raise ReceiptValidationError(f"{location}.object_ref: must be an object")
-    for field in ("repo", "kind", "id"):
-        if not isinstance(object_ref.get(field), str) or not object_ref[field]:
-            raise ReceiptValidationError(
-                f"{location}.object_ref.{field}: must be a non-empty string"
-            )
-
-    evidence_refs = receipt["evidence_refs"]
-    if not isinstance(evidence_refs, list):
-        raise ReceiptValidationError(f"{location}.evidence_refs: must be a list")
-    for index, item in enumerate(evidence_refs):
-        if not isinstance(item, dict):
-            raise ReceiptValidationError(
-                f"{location}.evidence_refs[{index}]: must be an object"
-            )
-        for field in ("kind", "ref"):
-            if not isinstance(item.get(field), str) or not item[field]:
-                raise ReceiptValidationError(
-                    f"{location}.evidence_refs[{index}].{field}: must be a non-empty string"
-                )
-
-    if not isinstance(receipt["payload"], dict):
-        raise ReceiptValidationError(f"{location}.payload: must be an object")
-    supersedes = receipt.get("supersedes")
-    if supersedes is not None and (not isinstance(supersedes, str) or not supersedes):
-        raise ReceiptValidationError(f"{location}.supersedes: must be omitted or a non-empty string")
-
-
-def resolve_active_receipts(receipts: list[dict[str, Any]]) -> list[dict[str, Any]]:
-    receipt_by_id = {receipt["event_id"]: receipt for receipt in receipts}
-    supersedes_by_id = {
-        receipt["event_id"]: receipt["supersedes"]
-        for receipt in receipts
-        if isinstance(receipt.get("supersedes"), str)
-        and receipt["supersedes"] in receipt_by_id
-        and receipt["supersedes"] != receipt["event_id"]
-    }
-    cycle_nodes = find_supersedes_cycle_nodes(supersedes_by_id)
-    effective_supersedes = {
-        event_id: target_id
-        for event_id, target_id in supersedes_by_id.items()
-        if event_id not in cycle_nodes and target_id not in cycle_nodes
-    }
-
-    grouped: dict[str, list[dict[str, Any]]] = defaultdict(list)
-    for receipt in receipts:
-        family_root = resolve_receipt_family_root(
-            receipt["event_id"], effective_supersedes
-        )
-        grouped[family_root].append(receipt)
-
-    active = [
-        max(group, key=receipt_sort_key)
-        for group in grouped.values()
-    ]
-    return sorted(active, key=receipt_sort_key)
-
-
-def find_supersedes_cycle_nodes(supersedes_by_id: dict[str, str]) -> set[str]:
-    cycle_nodes: set[str] = set()
-    seen_done: set[str] = set()
-
-    for start in supersedes_by_id:
-        if start in seen_done:
-            continue
-        order: list[str] = []
-        positions: dict[str, int] = {}
-        current = start
-        while current in supersedes_by_id:
-            if current in seen_done:
-                break
-            if current in positions:
-                cycle_nodes.update(order[positions[current] :])
-                break
-            positions[current] = len(order)
-            order.append(current)
-            current = supersedes_by_id[current]
-        seen_done.update(order)
-
-    return cycle_nodes
-
-
-def resolve_receipt_family_root(event_id: str, supersedes_by_id: dict[str, str]) -> str:
-    current = event_id
-    while current in supersedes_by_id:
-        current = supersedes_by_id[current]
-    return current
-
-
-def generated_from(receipts: list[dict[str, Any]], input_paths: list[str]) -> dict[str, Any]:
-    latest_observed_at = max(receipt["observed_at"] for receipt in receipts)
-    return {
-        "receipt_input_paths": input_paths,
-        "total_receipts": len(receipts),
-        "latest_observed_at": latest_observed_at,
-    }
 
 
 def is_nonempty_string(value: Any) -> bool:
@@ -2705,188 +2505,27 @@ def build_surface_detection_summary(
     }
 
 
-def build_summary_surface_catalog(
-    source: dict[str, Any], *, available_output_names: set[str] | None = None
-) -> dict[str, Any]:
-    surfaces = [
-        {
-            "name": "core_skill_application_summary",
-            "surface_ref": "generated/core_skill_application_summary.min.json",
-            "schema_ref": "schemas/core-skill-application-summary.schema.json",
-            "primary_question": "Which project-core kernel skills are actually finishing and how often, without inferring usage from general receipt volume?",
-            "derivation_rule": "aggregate core_skill_application_receipt payloads by kernel_id and skill_name",
-        },
-        {
-            "name": "object_summary",
-            "surface_ref": "generated/object_summary.min.json",
-            "schema_ref": "schemas/object-summary.schema.json",
-            "primary_question": "How often and how broadly is each source object showing up in the current receipt feed?",
-            "derivation_rule": "group receipts by object_ref and keep counts, latest timestamps, and bounded posture flags",
-        },
-        {
-            "name": "candidate_lineage_summary",
-            "surface_ref": "generated/candidate_lineage_summary.min.json",
-            "schema_ref": "schemas/candidate_lineage_summary.schema.json",
-            "primary_question": "How far are reviewed growth-refinery candidates actually moving without turning stats into routing or proof authority?",
-            "derivation_rule": "aggregate reviewed-only candidate_lineage_entries carried on harvest_packet_receipt payloads into stage, owner-target, posture, misroute, supersession, and time-to-stage summaries",
-        },
-        {
-            "name": "owner_landing_summary",
-            "surface_ref": "generated/owner_landing_summary.min.json",
-            "schema_ref": "schemas/owner-landing-summary.schema.json",
-            "primary_question": "Which reviewed candidates have landed in owner-local status surfaces and how far has that landing stabilized without turning stats into owner truth?",
-            "derivation_rule": "aggregate reviewed_owner_landing_receipt payloads together with seed_owner_landing_trace_receipt payloads into owner-repo, posture, outcome, and time-to-outcome summaries",
-        },
-        {
-            "name": "supersession_drop_summary",
-            "surface_ref": "generated/supersession_drop_summary.min.json",
-            "schema_ref": "schemas/supersession-drop-summary.schema.json",
-            "primary_question": "What pruning, replacement, merge, and reanchor signals are explicit across reviewed growth-refinery receipts without inventing reasons or ranking authority?",
-            "derivation_rule": "aggregate reviewed candidate-lineage entries, reviewed_owner_landing_receipt payloads, and seed_owner_landing_trace_receipt payloads into explicit turnover summaries",
-        },
-        {
-            "name": "repeated_window_summary",
-            "surface_ref": "generated/repeated_window_summary.min.json",
-            "schema_ref": "schemas/repeated-window-summary.schema.json",
-            "primary_question": "What changed across bounded date windows without turning the result into one global score?",
-            "derivation_rule": "group receipts by observed_at date and keep counts plus bounded window signals",
-        },
-        {
-            "name": "route_progression_summary",
-            "surface_ref": "generated/route_progression_summary.min.json",
-            "schema_ref": "schemas/route-progression-summary.schema.json",
-            "primary_question": "What bounded multi-axis movement is visible on each named route?",
-            "derivation_rule": "aggregate progression_delta_receipt payloads by route_ref and sum axis deltas",
-        },
-        {
-            "name": "fork_calibration_summary",
-            "surface_ref": "generated/fork_calibration_summary.min.json",
-            "schema_ref": "schemas/fork-calibration-summary.schema.json",
-            "primary_question": "How are route forks actually being chosen and how often do they carry realized outcome refs?",
-            "derivation_rule": "aggregate decision_fork_receipt payloads by route_ref and chosen_branch",
-        },
-        {
-            "name": "session_growth_branch_summary",
-            "surface_ref": "generated/session_growth_branch_summary.min.json",
-            "schema_ref": "schemas/session-growth-branch-summary.schema.json",
-            "primary_question": "What reviewed next-kernel branches are being recommended after closeout without turning stats into route authority?",
-            "derivation_rule": "aggregate reviewed followthrough hints carried on decision_fork_receipt payloads into next-skill, owner-target, posture, defer, and reason-code counts",
-        },
-        {
-            "name": "automation_pipeline_summary",
-            "surface_ref": "generated/automation_pipeline_summary.min.json",
-            "schema_ref": "schemas/automation-pipeline-summary.schema.json",
-            "primary_question": "How close is a named automation pipeline to seed-ready bounded use?",
-            "derivation_rule": "aggregate automation_candidate_receipt payloads by pipeline_ref and readiness flags",
-        },
-        {
-            "name": "automation_followthrough_summary",
-            "surface_ref": "generated/automation_followthrough_summary.min.json",
-            "schema_ref": "schemas/automation-followthrough-summary.schema.json",
-            "primary_question": "How far are reviewed automation candidates moving through bounded follow-through without implying scheduler authority?",
-            "derivation_rule": "aggregate automation_candidate_receipt payloads into seed-ready, defer, checkpoint, playbook-seed, real-run-review, and blocker counts",
-        },
-        {
-            "name": "codex_plane_deployment_summary",
-            "surface_ref": "generated/codex_plane_deployment_summary.min.json",
-            "schema_ref": "schemas/codex-plane-deployment-summary.schema.json",
-            "primary_question": "What is the current derived deployment continuity posture for the shared-root Codex plane without letting stats overrule live trust evidence?",
-            "derivation_rule": "derive one bounded deployment summary from the 8Dionysus trust-state and rollout receipt examples plus the aoa-sdk deploy-status example",
-        },
-        {
-            "name": "codex_rollout_operations_summary",
-            "surface_ref": "generated/codex_rollout_operations_summary.min.json",
-            "schema_ref": "schemas/codex-rollout-operations-summary.schema.json",
-            "primary_question": "What checked-in trusted rollout campaign posture is currently visible for the shared-root Codex plane without turning stats into rollout authority?",
-            "derivation_rule": "derive bounded rollout state counts and latest campaign posture from 8Dionysus checked-in generated/codex/rollout source surfaces",
-        },
-        {
-            "name": "codex_rollout_drift_summary",
-            "surface_ref": "generated/codex_rollout_drift_summary.min.json",
-            "schema_ref": "schemas/codex-rollout-drift-summary.schema.json",
-            "primary_question": "What is the current bounded drift and rollback posture of the latest trusted Codex rollout campaign without replacing source-owned campaign history?",
-            "derivation_rule": "derive the latest drift window, drift state, repair attempt posture, and rollback requirement from 8Dionysus checked-in rollout history and rollback windows",
-        },
-        {
-            "name": "rollout_campaign_summary",
-            "surface_ref": "generated/rollout_campaign_summary.min.json",
-            "schema_ref": "schemas/rollout-campaign-summary.schema.json",
-            "primary_question": "What is the current bounded campaign cadence posture for the shared-root Codex plane without turning stats into cadence authority?",
-            "derivation_rule": "derive one current campaign-cadence summary from 8Dionysus source-owned rollout campaign, drift-review, and rollback-followthrough window examples",
-        },
-        {
-            "name": "drift_review_summary",
-            "surface_ref": "generated/drift_review_summary.min.json",
-            "schema_ref": "schemas/drift-review-summary.schema.json",
-            "primary_question": "What named drift signals and explicit review decisions are currently visible in the source-owned cadence windows without replacing rollout or campaign truth?",
-            "derivation_rule": "derive one bounded drift-review summary from the current 8Dionysus cadence windows and keep rollback readiness descriptive only",
-        },
-        {
-            "name": "continuity_window_summary",
-            "surface_ref": "generated/continuity_window_summary.min.json",
-            "schema_ref": "schemas/continuity-window-summary.schema.json",
-            "primary_question": "What is the current bounded self-agency continuity posture without turning stats into continuity truth or self-agency proof?",
-            "derivation_rule": "derive one bounded continuity snapshot from the aoa-agents continuity window example, the sovereign continuity playbook, the memo-side provenance thread example, and the landed continuity eval anchors",
-        },
-        {
-            "name": "component_refresh_summary",
-            "surface_ref": "generated/component_refresh_summary.min.json",
-            "schema_ref": "schemas/component-refresh-summary.schema.json",
-            "primary_question": "What is the current bounded component refresh posture across named owner repos without letting stats become refresh truth or maintenance authority?",
-            "derivation_rule": "derive one bounded component refresh snapshot from reviewed aoa-sdk drift hints and reviewed followthrough decisions while keeping owner validation stronger",
-        },
-        {
-            "name": "runtime_closeout_summary",
-            "surface_ref": "generated/runtime_closeout_summary.min.json",
-            "schema_ref": "schemas/runtime-closeout-summary.schema.json",
-            "primary_question": "What is the current bounded runtime closeout posture across program waves and how did reviewed handoff land?",
-            "derivation_rule": "aggregate runtime_wave_closeout_receipt payloads by program_id and wave_id and keep the latest gate plus handoff posture",
-        },
-        {
-            "name": "stress_recovery_window_summary",
-            "surface_ref": "generated/stress_recovery_window_summary.min.json",
-            "schema_ref": "schemas/stress-recovery-window-summary.schema.json",
-            "primary_question": "What does the current repeated-window stress recovery proof family say without inventing a new canonical event kind or outranking owner evidence?",
-            "derivation_rule": "resolve aoa-stress-recovery-window eval_result_receipt report_ref paths through aoa-evals and derive one bounded summary plus suppression posture",
-        },
-        {
-            "name": "surface_detection_summary",
-            "surface_ref": "generated/surface_detection_summary.min.json",
-            "schema_ref": "schemas/surface-detection-summary.schema.json",
-            "primary_question": "What second-wave surface-detection signals are accumulating without turning stats into routing authority?",
-            "derivation_rule": "aggregate advisory surface_detection_context payloads on finish-stage core_skill_application_receipt envelopes by observed date",
-        },
-    ]
-    if available_output_names is not None:
-        surfaces = [
-            surface
-            for surface in surfaces
-            if Path(surface["surface_ref"]).name in available_output_names
-        ]
-    return {
-        "schema_version": "aoa_stats_summary_surface_catalog_v2",
-        "schema_ref": "schemas/summary-surface-catalog.schema.json",
-        "owner_repo": "aoa-stats",
-        "surface_kind": "runtime_surface",
-        "authority_ref": "docs/ARCHITECTURE.md",
-        "generated_from": source,
-        "validation_refs": [
-            "scripts/build_views.py",
-            "scripts/validate_repo.py",
-            "tests/test_summary_surface_catalog.py",
-        ],
-        "surfaces": surfaces,
-    }
-
-
 def build_all_views(
-    receipts: list[dict[str, Any]], input_paths: list[str], *, evals_root: Path | None = None
+    receipts: list[dict[str, Any]],
+    input_paths: list[str],
+    *,
+    evals_root: Path | None = None,
+    source_registry: dict[str, Any] | None = None,
+    source_registry_ref: str | None = None,
 ) -> dict[str, dict[str, Any]]:
     active_receipts = resolve_active_receipts(receipts)
     source = generated_from(active_receipts, input_paths)
     resolved_evals_root = (
         evals_root.expanduser().resolve() if evals_root is not None else DEFAULT_EVALS_ROOT.resolve()
     )
+    resolved_source_registry = source_registry
+    resolved_source_registry_ref = source_registry_ref
+    if resolved_source_registry is None and DEFAULT_SOURCE_REGISTRY.exists():
+        resolved_source_registry = load_json_object(
+            DEFAULT_SOURCE_REGISTRY,
+            label="config/live_receipt_sources.json",
+        )
+        resolved_source_registry_ref = "config/live_receipt_sources.json"
     outputs = {
         "object_summary.min.json": build_object_summary(active_receipts, source),
         "candidate_lineage_summary.min.json": build_candidate_lineage_summary(
@@ -2914,6 +2553,12 @@ def build_all_views(
         "runtime_closeout_summary.min.json": build_runtime_closeout_summary(active_receipts, source),
         "stress_recovery_window_summary.min.json": build_stress_recovery_window_summary(
             active_receipts, source, evals_root=resolved_evals_root
+        ),
+        "source_coverage_summary.min.json": build_source_coverage_summary(
+            active_receipts,
+            source,
+            source_registry=resolved_source_registry,
+            source_registry_ref=resolved_source_registry_ref,
         ),
         "surface_detection_summary.min.json": build_surface_detection_summary(active_receipts, source),
     }

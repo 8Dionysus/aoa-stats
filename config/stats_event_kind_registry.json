@@ -1,0 +1,241 @@
+{
+  "schema_version": 1,
+  "event_kinds": [
+    {
+      "event_kind": "automation_candidate_receipt",
+      "status": "active",
+      "payload_owner_repo": "aoa-skills",
+      "summary_surface_names": [
+        "object_summary",
+        "repeated_window_summary",
+        "automation_pipeline_summary",
+        "automation_followthrough_summary",
+        "source_coverage_summary"
+      ],
+      "notes": "Bounded automation readiness and followthrough candidate facts."
+    },
+    {
+      "event_kind": "core_skill_application_receipt",
+      "status": "active",
+      "payload_owner_repo": "aoa-skills",
+      "summary_surface_names": [
+        "object_summary",
+        "repeated_window_summary",
+        "core_skill_application_summary",
+        "surface_detection_summary",
+        "source_coverage_summary"
+      ],
+      "notes": "Finish-stage kernel skill application facts and bounded second-wave detection context."
+    },
+    {
+      "event_kind": "decision_fork_receipt",
+      "status": "active",
+      "payload_owner_repo": "aoa-skills",
+      "summary_surface_names": [
+        "object_summary",
+        "repeated_window_summary",
+        "fork_calibration_summary",
+        "session_growth_branch_summary",
+        "source_coverage_summary"
+      ],
+      "notes": "Reviewed route fork choice and followthrough hint facts."
+    },
+    {
+      "event_kind": "diagnosis_packet_receipt",
+      "status": "active",
+      "payload_owner_repo": "aoa-skills",
+      "summary_surface_names": [
+        "object_summary",
+        "repeated_window_summary",
+        "core_skill_application_summary",
+        "source_coverage_summary"
+      ],
+      "notes": "Bounded diagnosis outputs linked to kernel or repair execution."
+    },
+    {
+      "event_kind": "eval_result_receipt",
+      "status": "active",
+      "payload_owner_repo": "aoa-evals",
+      "summary_surface_names": [
+        "object_summary",
+        "repeated_window_summary",
+        "stress_recovery_window_summary",
+        "source_coverage_summary"
+      ],
+      "notes": "Publication sidecar for bounded eval bundle results."
+    },
+    {
+      "event_kind": "harvest_packet_receipt",
+      "status": "active",
+      "payload_owner_repo": "aoa-skills",
+      "summary_surface_names": [
+        "object_summary",
+        "repeated_window_summary",
+        "candidate_lineage_summary",
+        "supersession_drop_summary",
+        "source_coverage_summary"
+      ],
+      "notes": "Reviewed growth-refinery harvest packet carrying lineage entries."
+    },
+    {
+      "event_kind": "memo_growth_writeback_receipt",
+      "status": "active",
+      "payload_owner_repo": "aoa-memo",
+      "summary_surface_names": [
+        "object_summary",
+        "repeated_window_summary",
+        "source_coverage_summary"
+      ],
+      "notes": "Growth-specific memo writeback facts."
+    },
+    {
+      "event_kind": "memo_writeback_receipt",
+      "status": "active",
+      "payload_owner_repo": "aoa-memo",
+      "summary_surface_names": [
+        "object_summary",
+        "repeated_window_summary",
+        "source_coverage_summary"
+      ],
+      "notes": "Owner-local memo writeback publication facts."
+    },
+    {
+      "event_kind": "playbook_publication_receipt",
+      "status": "active",
+      "payload_owner_repo": "aoa-playbooks",
+      "summary_surface_names": [
+        "object_summary",
+        "repeated_window_summary",
+        "source_coverage_summary"
+      ],
+      "notes": "Playbook publication facts."
+    },
+    {
+      "event_kind": "playbook_review_harvest_receipt",
+      "status": "active",
+      "payload_owner_repo": "aoa-playbooks",
+      "summary_surface_names": [
+        "object_summary",
+        "repeated_window_summary",
+        "source_coverage_summary"
+      ],
+      "notes": "Reviewed playbook harvest facts."
+    },
+    {
+      "event_kind": "progression_delta_receipt",
+      "status": "active",
+      "payload_owner_repo": "aoa-skills",
+      "summary_surface_names": [
+        "object_summary",
+        "repeated_window_summary",
+        "route_progression_summary",
+        "source_coverage_summary"
+      ],
+      "notes": "Route-scoped multi-axis progression delta facts."
+    },
+    {
+      "event_kind": "quest_promotion_receipt",
+      "status": "active",
+      "payload_owner_repo": "aoa-playbooks",
+      "summary_surface_names": [
+        "object_summary",
+        "repeated_window_summary",
+        "source_coverage_summary"
+      ],
+      "notes": "Quest or campaign promotion publication facts."
+    },
+    {
+      "event_kind": "repair_cycle_receipt",
+      "status": "active",
+      "payload_owner_repo": "aoa-skills",
+      "summary_surface_names": [
+        "object_summary",
+        "repeated_window_summary",
+        "source_coverage_summary"
+      ],
+      "notes": "Repair cycle closeout facts."
+    },
+    {
+      "event_kind": "reviewed_owner_landing_receipt",
+      "status": "active",
+      "payload_owner_repo": "aoa-skills",
+      "summary_surface_names": [
+        "object_summary",
+        "repeated_window_summary",
+        "owner_landing_summary",
+        "supersession_drop_summary",
+        "source_coverage_summary"
+      ],
+      "notes": "Reviewed owner landing bundles and landing posture facts."
+    },
+    {
+      "event_kind": "runtime_wave_closeout_receipt",
+      "status": "active",
+      "payload_owner_repo": "abyss-stack",
+      "summary_surface_names": [
+        "object_summary",
+        "repeated_window_summary",
+        "runtime_closeout_summary",
+        "source_coverage_summary"
+      ],
+      "notes": "Program or wave closeout gate facts from the runtime layer."
+    },
+    {
+      "event_kind": "seed_owner_landing_trace_receipt",
+      "status": "active",
+      "payload_owner_repo": "Dionysus",
+      "summary_surface_names": [
+        "object_summary",
+        "repeated_window_summary",
+        "owner_landing_summary",
+        "supersession_drop_summary",
+        "source_coverage_summary"
+      ],
+      "notes": "Seed-garden owner landing trace facts that remain weaker than owner-local status."
+    },
+    {
+      "event_kind": "skill_run_receipt",
+      "status": "active",
+      "payload_owner_repo": "aoa-skills",
+      "summary_surface_names": [
+        "object_summary",
+        "repeated_window_summary",
+        "source_coverage_summary"
+      ],
+      "notes": "Generic skill execution facts that remain weaker than owner-local artifacts."
+    },
+    {
+      "event_kind": "technique_publication_receipt",
+      "status": "active",
+      "payload_owner_repo": "aoa-techniques",
+      "summary_surface_names": [
+        "object_summary",
+        "repeated_window_summary",
+        "source_coverage_summary"
+      ],
+      "notes": "Technique publication facts."
+    },
+    {
+      "event_kind": "technique_promotion_receipt",
+      "status": "active",
+      "payload_owner_repo": "aoa-techniques",
+      "summary_surface_names": [
+        "object_summary",
+        "repeated_window_summary",
+        "source_coverage_summary"
+      ],
+      "notes": "Technique promotion facts."
+    },
+    {
+      "event_kind": "technique_trace_receipt",
+      "status": "active",
+      "payload_owner_repo": "aoa-techniques",
+      "summary_surface_names": [
+        "object_summary",
+        "repeated_window_summary",
+        "source_coverage_summary"
+      ],
+      "notes": "Technique trace facts and supporting derivation evidence."
+    }
+  ]
+}

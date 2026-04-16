@@ -31,6 +31,7 @@ SCHEMAS = {
     "drift_review_summary.min.json": "drift-review-summary.schema.json",
     "runtime_closeout_summary.min.json": "runtime-closeout-summary.schema.json",
     "stress_recovery_window_summary.min.json": "stress-recovery-window-summary.schema.json",
+    "source_coverage_summary.min.json": "source-coverage-summary.schema.json",
     "component_refresh_summary.min.json": "component-refresh-summary.schema.json",
     "surface_detection_summary.min.json": "surface-detection-summary.schema.json",
     "summary_surface_catalog.min.json": "summary-surface-catalog.schema.json",
@@ -57,6 +58,9 @@ REQUIRED_TEXT_FILES = (
     "docs/SUPERSESSION_DROP_SUMMARY.md",
     "docs/CODEX_MCP.md",
     "docs/LIVE_SESSION_USE.md",
+    "docs/RECEIPT_ABI_GOVERNANCE.md",
+    "docs/SURFACE_STRENGTH_MODEL.md",
+    "docs/SOURCE_COVERAGE_SUMMARY.md",
 )
 
 
@@ -108,6 +112,25 @@ def main() -> int:
         if result.returncode != 0:
             message = result.stderr.strip() or result.stdout.strip() or "unknown error"
             errors.append(f"build_views --check failed: {message}")
+
+    for label, command in (
+        ("validate_receipt_abi", [sys.executable, "scripts/validate_receipt_abi.py"]),
+        ("validate_downstream_canaries", [sys.executable, "scripts/validate_downstream_canaries.py"]),
+    ):
+        try:
+            result = subprocess.run(
+                command,
+                cwd=REPO_ROOT,
+                check=False,
+                capture_output=True,
+                text=True,
+            )
+        except OSError as exc:
+            errors.append(f"could not run {label}: {exc}")
+            continue
+        if result.returncode != 0:
+            message = result.stderr.strip() or result.stdout.strip() or "unknown error"
+            errors.append(f"{label} failed: {message}")
 
     for generated_name, schema_name in SCHEMAS.items():
         schema_path = REPO_ROOT / "schemas" / schema_name

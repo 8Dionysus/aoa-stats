@@ -236,11 +236,42 @@ def build_surface_payload(
     if normalized_mode not in {"preview", "full"}:
         raise RepoStateError("mode must be 'preview' or 'full'")
 
+    resolved_ref = str(path.relative_to(state.repo_root))
+    surface_profile = _find_surface_profile(
+        state,
+        surface_name=surface_name,
+        resolved_surface_ref=resolved_ref,
+    )
     payload = preview_json(data, limit=limit) if normalized_mode == "preview" else data
     return {
         "owner_repo": "aoa-stats",
         "surface_kind": "derived_summary_surface",
-        "surface_ref": str(path.relative_to(state.repo_root)),
+        "surface_ref": resolved_ref,
+        "surface_profile": surface_profile,
         "mode": normalized_mode,
         "payload": payload,
     }
+
+
+def _find_surface_profile(
+    state: RepoState,
+    *,
+    surface_name: str | None,
+    resolved_surface_ref: str,
+) -> dict[str, Any] | None:
+    surfaces = state.list_surfaces()
+    if surface_name is not None:
+        for surface in surfaces:
+            if isinstance(surface, dict) and surface.get("name") == surface_name:
+                return surface
+
+    resolved_name = Path(resolved_surface_ref).name
+    for surface in surfaces:
+        if not isinstance(surface, dict):
+            continue
+        surface_ref = surface.get("surface_ref")
+        if not isinstance(surface_ref, str):
+            continue
+        if surface_ref == resolved_surface_ref or Path(surface_ref).name == resolved_name:
+            return surface
+    return None

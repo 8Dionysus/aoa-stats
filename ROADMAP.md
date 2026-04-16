@@ -18,8 +18,8 @@ The first usable summary families are already landed:
 - session-growth branch, automation-pipeline, automation-followthrough, and
   runtime-closeout summaries
 - Codex-plane deployment, rollout-operations, rollout-drift, rollout-campaign,
-  drift-review, continuity-window, component-refresh, stress-recovery, and
-  surface-detection summaries
+  drift-review, continuity-window, component-refresh, stress-recovery,
+  source-coverage, and surface-detection summaries
 - the summary-surface catalog plus the repo-local `aoa_stats` MCP read model
 
 The next honest move is not to widen into a dashboard empire.
@@ -28,6 +28,9 @@ what they do not prove.
 The stress-recovery family now also carries one bounded chaos-wave example so
 cross-repo observability can stay explicit without minting a new dashboard or
 synthetic health authority.
+The next hardening step is to let stats report on its own intake honestly:
+which owner repos are active, which are missing, and how strong each derived
+surface really is.
 
 ### Current release contour
 
@@ -42,6 +45,15 @@ workflow or proof layer. Its current checked surface is:
   `generated/summary_surface_catalog.min.json`,
   `schemas/summary-surface-catalog.schema.json`, and
   `tests/test_summary_surface_catalog.py`
+- receipt ABI governance and surface-strength law:
+  `docs/RECEIPT_ABI_GOVERNANCE.md`,
+  `config/stats_event_kind_registry.json`,
+  `docs/SURFACE_STRENGTH_MODEL.md`,
+  `docs/SOURCE_COVERAGE_SUMMARY.md`,
+  `schemas/source-coverage-summary.schema.json`,
+  `generated/source_coverage_summary.min.json`,
+  `scripts/validate_receipt_abi.py`, and
+  `scripts/validate_downstream_canaries.py`
 - repo-local read-only Codex MCP:
   `docs/CODEX_MCP.md`, `scripts/aoa_stats_mcp_server.py`,
   `src/aoa_stats_mcp/server.py`, `src/aoa_stats_mcp/repo_state.py`,
@@ -65,6 +77,8 @@ workflow or proof layer. Its current checked surface is:
 This contour keeps Codex and rollout visibility derived, previewable, and
 weaker than source-owned rollout history, continuity anchors, owner receipts,
 and bounded eval verdicts.
+It also makes `aoa-stats` an active participant in project growth without
+letting the stats layer absorb owner authority.
 
 ## Current cycle
 
@@ -84,11 +98,14 @@ Goals:
 - keep schemas, builders, and generated summaries deterministic
 - preserve shared receipt-envelope and live-source-registry discipline
 - tighten route docs so derived surfaces do not masquerade as owner status
+- expose surface strength and intake blind spots in machine-readable form
 
 Exit signals:
 
 - `python scripts/build_views.py --check` stays green
 - `python scripts/validate_repo.py` stays green
+- `python scripts/validate_receipt_abi.py` stays green
+- `python scripts/validate_downstream_canaries.py` stays green
 - route docs, schemas, and generated summaries stay aligned under one bounded
   current-direction surface
 
