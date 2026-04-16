@@ -1,0 +1,68 @@
+{
+  "schema_version": "stress_recovery_window_summary_v1",
+  "generated_at_utc": "2026-04-13T13:35:00Z",
+  "window": {
+    "label": "chaos-wave1-window-2026w16",
+    "start_utc": "2026-04-07T00:00:00Z",
+    "end_utc": "2026-04-13T00:00:00Z"
+  },
+  "scope": {
+    "repo_family": [
+      "abyss-stack",
+      "aoa-skills",
+      "aoa-routing",
+      "aoa-playbooks",
+      "aoa-kag",
+      "aoa-evals"
+    ],
+    "stressor_family": "wave1-chaos",
+    "owner_surface": "runtime-chaos-recovery",
+    "surface_family": "stress-recovery"
+  },
+  "inputs": {
+    "receipt_refs": [
+      "abyss-stack:service_degradation_receipt_v1#runtime:degrade:route-api:2026-04-13T12:10:00Z:timeout-chaos",
+      "abyss-stack:service_degradation_receipt_v1#runtime:degrade:route-api:2026-04-13T12:55:00Z:retrieval-outage-honesty",
+      "repo:aoa-kag/examples/projection_health_receipt.retrieval-outage-honesty.example.json"
+    ],
+    "eval_report_refs": [
+      "repo:aoa-evals/bundles/aoa-stress-recovery-window/reports/example-report.json",
+      "repo:aoa-evals/examples/runtime_evidence_selection.return-anchor-integrity.example.json"
+    ],
+    "route_hint_refs": [
+      "repo:aoa-routing/examples/stress_navigation_hint.timeout-chaos.example.json",
+      "repo:aoa-routing/examples/composite_stress_route_hint.retrieval-outage-honesty.example.json"
+    ],
+    "memo_context_refs": [
+      "repo:aoa-memo/examples/pattern.antifragility-stress-recovery-window.example.json"
+    ]
+  },
+  "counts": {
+    "receipt_count": 5,
+    "handoff_count": 2,
+    "playbook_lane_count": 2,
+    "reentry_gate_count": 2,
+    "projection_health_count": 1,
+    "regrounding_ticket_count": 1,
+    "eval_count": 2
+  },
+  "suppression": {
+    "status": "none",
+    "reason": null
+  },
+  "summary": {
+    "containment": 0.89,
+    "route_discipline": 0.91,
+    "reentry_quality": 0.58,
+    "regrounding_effectiveness": 0.43,
+    "evidence_continuity": 0.94,
+    "adaptation_followthrough": 0.61,
+    "operator_burden": 0.67,
+    "trust_calibration": 0.9
+  },
+  "trend_flags": [
+    "manual-and-no-skill-discipline-preserved",
+    "retrieval-outage-held-source-first",
+    "eval-bridge-still-candidate-only"
+  ]
+}

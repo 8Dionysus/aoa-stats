@@ -80,6 +80,8 @@ def test_roadmap_names_current_catalog_summary_families() -> None:
         "docs/ROLLOUT_CAMPAIGN_SUMMARY.md",
         "docs/DRIFT_REVIEW_SUMMARY.md",
         "docs/CONTINUITY_WINDOW_SUMMARY.md",
+        "docs/STRESS_RECOVERY_SUMMARIES_CHAOS_WAVE1.md",
+        "examples/stress_recovery_window_summary.chaos-wave1.example.json",
         "generated/codex_rollout_operations_summary.min.json",
         "generated/codex_rollout_drift_summary.min.json",
         "generated/rollout_campaign_summary.min.json",

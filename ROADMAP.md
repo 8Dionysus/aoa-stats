@@ -25,6 +25,9 @@ The first usable summary families are already landed:
 The next honest move is not to widen into a dashboard empire.
 It is to keep derived summaries source-linked, hygienic, and explicit about
 what they do not prove.
+The stress-recovery family now also carries one bounded chaos-wave example so
+cross-repo observability can stay explicit without minting a new dashboard or
+synthetic health authority.
 
 ### Current release contour
 
@@ -55,6 +58,9 @@ workflow or proof layer. Its current checked surface is:
 - deterministic builder and release validation:
   `scripts/build_views.py`, `scripts/validate_repo.py`, and
   `scripts/release_check.py`
+- bounded chaos-wave stress recovery example:
+  `docs/STRESS_RECOVERY_SUMMARIES_CHAOS_WAVE1.md` and
+  `examples/stress_recovery_window_summary.chaos-wave1.example.json`
 
 This contour keeps Codex and rollout visibility derived, previewable, and
 weaker than source-owned rollout history, continuity anchors, owner receipts,

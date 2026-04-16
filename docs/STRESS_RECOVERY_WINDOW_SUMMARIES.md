@@ -65,5 +65,8 @@ Wave 4 lands both:
 
 - one public contract at `schemas/stress_recovery_window_summary_v1.json`
 - one generated repo surface at `generated/stress_recovery_window_summary.min.json`
+- one bounded chaos-wave example at
+  `docs/STRESS_RECOVERY_SUMMARIES_CHAOS_WAVE1.md` and
+  `examples/stress_recovery_window_summary.chaos-wave1.example.json`
 
 The generated surface stays downstream from `eval_result_receipt` envelopes and their linked reports.
