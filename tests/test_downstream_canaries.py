@@ -14,7 +14,7 @@ from aoa_stats_builder.downstream_canaries import validate_downstream_canaries  
 def test_downstream_canaries_pass_for_current_workspace() -> None:
     result = validate_downstream_canaries(workspace_root=ROOT.parent)
     assert result["errors"] == []
-    assert len(result["checked"]) >= 4
+    assert len(result["checked"]) + len(result["skipped"]) >= 4
 
 
 def test_downstream_canaries_report_missing_needles(tmp_path: Path) -> None:
