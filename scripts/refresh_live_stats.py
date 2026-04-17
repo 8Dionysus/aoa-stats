@@ -40,6 +40,7 @@ SUMMARY_OUTPUT_NAMES = (
     "component_refresh_summary.min.json",
     "runtime_closeout_summary.min.json",
     "stress_recovery_window_summary.min.json",
+    "source_coverage_summary.min.json",
     "surface_detection_summary.min.json",
     "summary_surface_catalog.min.json",
 )
@@ -139,6 +140,13 @@ def resolve_live_evals_root(*, federation_root: Path) -> Path:
     return (federation_root / "aoa-evals").resolve()
 
 
+def display_registry_ref(path: Path) -> str:
+    try:
+        return str(path.relative_to(REPO_ROOT))
+    except ValueError:
+        return str(path)
+
+
 def refresh_live_state(
     *,
     registry_path: Path,
@@ -180,6 +188,8 @@ def refresh_live_state(
         receipts,
         source_labels,
         evals_root=resolve_live_evals_root(federation_root=federation_root),
+        source_registry=registry,
+        source_registry_ref=display_registry_ref(registry_path),
     )
     sync_summary_outputs(summary_output_dir=summary_output_dir, outputs=outputs)
     return source_labels, len(active_receipts)

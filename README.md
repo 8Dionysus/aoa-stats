@@ -44,6 +44,14 @@ Use the shortest route by need:
   `examples/stress_recovery_window_summary.example.json`,
   `docs/STRESS_RECOVERY_SUMMARIES_CHAOS_WAVE1.md`, and
   `examples/stress_recovery_window_summary.chaos-wave1.example.json`
+- intake governance and meta-observability:
+  `docs/RECEIPT_ABI_GOVERNANCE.md`,
+  `config/stats_event_kind_registry.json`,
+  `docs/SURFACE_STRENGTH_MODEL.md`,
+  `docs/SOURCE_COVERAGE_SUMMARY.md`,
+  `schemas/source-coverage-summary.schema.json`,
+  `examples/source_coverage_summary.example.json`, and
+  `generated/source_coverage_summary.min.json`
 - fourth-wave next-kernel branch and automation follow-through summaries:
   `docs/SESSION_GROWTH_BRANCH_SUMMARY.md`,
   `schemas/session-growth-branch-summary.schema.json`,
@@ -103,7 +111,8 @@ Use the shortest route by need:
 - via negativa pruning checklist:
   `docs/VIA_NEGATIVA_CHECKLIST.md`
 - canonical shared receipt envelope and active event family:
-  `schemas/stats-event-envelope.schema.json`
+  `schemas/stats-event-envelope.schema.json` and
+  `config/stats_event_kind_registry.json`
 - example receipt feed: `examples/session_harvest_family.receipts.example.json`
 - canonical live source registry for owner-local receipts:
   `config/live_receipt_sources.json`
@@ -117,6 +126,8 @@ Use the shortest route by need:
 - generated summary surfaces: `generated/`
 - builders and validators: `scripts/build_views.py`,
   `scripts/refresh_live_stats.py`,
+  `scripts/validate_receipt_abi.py`,
+  `scripts/validate_downstream_canaries.py`,
   `scripts/check_live_publishers.py`,
   `scripts/install_live_refresh_units.py`, and
   `scripts/validate_repo.py`
@@ -133,7 +144,11 @@ This repository is the source of truth for:
 - derived summary schemas for cross-repo stats read models
 - the canonical shared receipt envelope and cross-repo event-kind vocabulary
   consumed by stats builders
+- the active event-kind registry and receipt ABI governance for that shared
+  envelope
 - machine-first generated summary surfaces built from source-owned receipts
+- the surface-strength model that says how strong each derived summary really
+  is
 - deterministic builders and validators for derived views
 - docs that define how counts, verdicts, progression, and evidence stay
   separated at the stats layer
@@ -179,6 +194,7 @@ The first usable derived summaries are:
 - `generated/component_refresh_summary.min.json`
 - `generated/runtime_closeout_summary.min.json`
 - `generated/stress_recovery_window_summary.min.json`
+- `generated/source_coverage_summary.min.json`
 - `generated/surface_detection_summary.min.json`
 - `generated/summary_surface_catalog.min.json`
 
@@ -235,11 +251,18 @@ refresh companion. It derives one bounded refresh snapshot from the reviewed
 status windows explicit, and stays weaker than owner laws, owner receipts, and
 any real refresh validation.
 
+`generated/source_coverage_summary.min.json` is the intake self-audit
+companion. It compares active receipt coverage against the live source
+registry, publishes missing or unexpected owner repos, and makes the blind
+spots of the stats layer visible without pretending to diagnose owner health.
+
 `generated/summary_surface_catalog.min.json` is also the compact runtime-entry
 capsule that federation routing should inspect first for `aoa-stats`. It now
 ships as the schema-backed v2 runtime capsule with explicit `schema_ref`,
-`owner_repo`, `surface_kind`, `authority_ref`, top-level `validation_refs`,
-and route-level `surface_ref` fields for low-context readers.
+`owner_repo`, `surface_kind`, `authority_ref`,
+`surface_strength_model_ref`, top-level `validation_refs`,
+`deferred_contract_surfaces`, and route-level `surface_ref` fields for
+low-context readers.
 
 `surface_detection_summary.min.json` is second-wave descriptive only. It may
 count shortlist ambiguity, candidate posture, and closeout-handoff volume when

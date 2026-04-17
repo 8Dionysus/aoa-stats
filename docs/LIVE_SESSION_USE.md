@@ -43,6 +43,7 @@ sources under the current federation root, writes one combined local feed to
 - `state/generated/component_refresh_summary.min.json`
 - `state/generated/runtime_closeout_summary.min.json`
 - `state/generated/stress_recovery_window_summary.min.json`
+- `state/generated/source_coverage_summary.min.json`
 - `state/generated/surface_detection_summary.min.json`
 - `state/generated/summary_surface_catalog.min.json`
 
@@ -73,6 +74,8 @@ Optional correction field:
 `event_kind` must belong to the canonical shared event family in
 `schemas/stats-event-envelope.schema.json`.
 Unknown or misspelled kinds fail validation before any summary is built.
+The active registry at `config/stats_event_kind_registry.json` must stay in
+lockstep with that schema enum.
 
 ## Canonical repo surfaces
 
@@ -98,6 +101,7 @@ The committed builder refreshes:
 - `generated/component_refresh_summary.min.json`
 - `generated/runtime_closeout_summary.min.json`
 - `generated/stress_recovery_window_summary.min.json`
+- `generated/source_coverage_summary.min.json`
 - `generated/surface_detection_summary.min.json`
 - `generated/summary_surface_catalog.min.json`
 
@@ -110,6 +114,10 @@ current working read.
 The live feed and committed builders keep raw logs append-only, but the
 generated summaries read from the active receipt view after local
 `supersedes` resolution.
+
+`source_coverage_summary` is the intake self-audit inside that loop. It keeps
+missing owner repos, unexpected repos, and dominant intake skew visible so the
+stats layer cannot quietly overstate its own reach.
 
 Second-wave surface detection stays descriptive here as well. If owner-local
 core-skill receipts preserve `surface_detection_context`, the builder may

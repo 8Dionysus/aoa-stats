@@ -20,15 +20,16 @@ When using this MCP:
 
 1. call `stats_boundary_rules` first when there is any risk of overclaiming
 2. call `stats_catalog` before reading a specific surface
-3. prefer `stats_surface_read(..., mode="preview")`
-4. expand to `mode="full"` only when the task truly needs the whole payload
+3. read the catalog entry's strength metadata before trusting a summary
+4. prefer `stats_surface_read(..., mode="preview")`
+5. expand to `mode="full"` only when the task truly needs the whole payload
 
 If semantics matter, go back to the owner repo. `aoa-stats` stays derived.
 
 ## Tools
 
 - `stats_catalog`: read the active summary catalog, preferring `state/generated/summary_surface_catalog.min.json` when a refreshed live state is present and otherwise falling back to `generated/summary_surface_catalog.min.json`
-- `stats_surface_read`: read one active summary surface by `surface_name`, or one exact surface by `surface_ref`
+- `stats_surface_read`: read one active summary surface by `surface_name`, or one exact surface by `surface_ref`; the payload wrapper includes the matched `surface_profile` when the catalog can resolve it
 - `stats_source_registry`: inspect `config/live_receipt_sources.json`
 - `stats_boundary_rules`: reground on `docs/BOUNDARIES.md` and `docs/ARCHITECTURE.md`
 

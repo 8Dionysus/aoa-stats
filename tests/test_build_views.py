@@ -225,6 +225,7 @@ def test_build_views_produces_expected_surface_counts() -> None:
         "component_refresh_summary.min.json",
         "runtime_closeout_summary.min.json",
         "stress_recovery_window_summary.min.json",
+        "source_coverage_summary.min.json",
         "surface_detection_summary.min.json",
         "summary_surface_catalog.min.json",
     }
@@ -313,6 +314,14 @@ def test_build_views_produces_expected_surface_counts() -> None:
     }
     assert len(outputs["runtime_closeout_summary.min.json"]["closeouts"]) == 1
     assert outputs["stress_recovery_window_summary.min.json"]["suppression"]["status"] == "low_sample"
+    assert outputs["source_coverage_summary.min.json"]["source_mode"] == "registry_backed_receipt_feed"
+    assert outputs["source_coverage_summary.min.json"]["missing_owner_repos"] == [
+        "aoa-memo",
+        "aoa-playbooks",
+        "aoa-techniques",
+    ]
+    assert outputs["source_coverage_summary.min.json"]["unexpected_owner_repos"] == ["Dionysus"]
+    assert outputs["source_coverage_summary.min.json"]["owner_repo_counts"]["aoa-skills"] == 12
     assert len(outputs["surface_detection_summary.min.json"]["windows"]) == 1
     assert outputs["core_skill_application_summary.min.json"]["skills"][0]["detail_event_kind_counts"] == {
         "diagnosis_packet_receipt": 1
@@ -324,11 +333,13 @@ def test_build_views_produces_expected_surface_counts() -> None:
     assert catalog["owner_repo"] == "aoa-stats"
     assert catalog["surface_kind"] == "runtime_surface"
     assert catalog["authority_ref"] == "docs/ARCHITECTURE.md"
+    assert catalog["surface_strength_model_ref"] == "docs/SURFACE_STRENGTH_MODEL.md"
     assert catalog["validation_refs"] == [
         "scripts/build_views.py",
         "scripts/validate_repo.py",
         "tests/test_summary_surface_catalog.py",
     ]
+    assert catalog["deferred_contract_surfaces"][0]["name"] == "antifragility_vector"
     assert [entry["surface_ref"] for entry in catalog["surfaces"]] == [
         "generated/core_skill_application_summary.min.json",
         "generated/object_summary.min.json",
@@ -350,8 +361,11 @@ def test_build_views_produces_expected_surface_counts() -> None:
         "generated/component_refresh_summary.min.json",
         "generated/runtime_closeout_summary.min.json",
         "generated/stress_recovery_window_summary.min.json",
+        "generated/source_coverage_summary.min.json",
         "generated/surface_detection_summary.min.json",
     ]
+    assert catalog["surfaces"][-2]["name"] == "source_coverage_summary"
+    assert catalog["surfaces"][-2]["input_posture"] == "registry_backed_coverage_audit"
 
 
 def test_continuity_window_summary_stays_derived_and_non_sovereign() -> None:

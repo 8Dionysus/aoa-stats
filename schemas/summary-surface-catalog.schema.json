@@ -10,8 +10,10 @@
     "owner_repo",
     "surface_kind",
     "authority_ref",
+    "surface_strength_model_ref",
     "generated_from",
     "validation_refs",
+    "deferred_contract_surfaces",
     "surfaces"
   ],
   "properties": {
@@ -29,6 +31,9 @@
     },
     "authority_ref": {
       "const": "docs/ARCHITECTURE.md"
+    },
+    "surface_strength_model_ref": {
+      "const": "docs/SURFACE_STRENGTH_MODEL.md"
     },
     "generated_from": {
       "type": "object",
@@ -71,6 +76,46 @@
         ]
       }
     },
+    "deferred_contract_surfaces": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "name",
+          "status",
+          "contract_ref",
+          "schema_ref",
+          "activation_condition",
+          "authority_ceiling"
+        ],
+        "properties": {
+          "name": {
+            "type": "string",
+            "minLength": 1
+          },
+          "status": {
+            "const": "contract_only"
+          },
+          "contract_ref": {
+            "type": "string",
+            "minLength": 1
+          },
+          "schema_ref": {
+            "type": "string",
+            "minLength": 1
+          },
+          "activation_condition": {
+            "type": "string",
+            "minLength": 1
+          },
+          "authority_ceiling": {
+            "type": "string",
+            "minLength": 1
+          }
+        }
+      }
+    },
     "surfaces": {
       "type": "array",
       "minItems": 1,
@@ -82,7 +127,12 @@
           "surface_ref",
           "schema_ref",
           "primary_question",
-          "derivation_rule"
+          "derivation_rule",
+          "input_posture",
+          "owner_truth_inputs",
+          "authority_ceiling",
+          "consumer_risk",
+          "live_state_capable"
         ],
         "properties": {
           "name": {
@@ -104,6 +154,33 @@
           "derivation_rule": {
             "type": "string",
             "minLength": 1
+          },
+          "input_posture": {
+            "type": "string",
+            "minLength": 1
+          },
+          "owner_truth_inputs": {
+            "type": "array",
+            "minItems": 1,
+            "items": {
+              "type": "string",
+              "minLength": 1
+            }
+          },
+          "authority_ceiling": {
+            "type": "string",
+            "minLength": 1
+          },
+          "consumer_risk": {
+            "type": "string",
+            "enum": [
+              "low",
+              "medium",
+              "high"
+            ]
+          },
+          "live_state_capable": {
+            "type": "boolean"
           }
         }
       }
