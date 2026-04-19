@@ -41,6 +41,10 @@ The summary keeps five things explicit:
 - one per-component row with the latest reviewed decision posture
 - one bounded `generated_from` witness with source paths and freshness
 
+When a component row is driven only by a reviewed decision and has no matching
+per-component hint, `latest_observed_at` stays `null` rather than borrowing a
+different component's freshness.
+
 Current status grammar:
 
 - `current`

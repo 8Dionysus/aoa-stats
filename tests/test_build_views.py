@@ -645,6 +645,80 @@ def test_component_refresh_summary_rejects_duplicate_decisions_for_component(
         module.build_component_refresh_summary()
 
 
+def test_component_refresh_summary_uses_null_freshness_for_decision_only_component(
+    tmp_path: Path, monkeypatch: pytest.MonkeyPatch
+) -> None:
+    module = load_build_views_module()
+    sdk_root = tmp_path / ".deps" / "aoa-sdk"
+    examples_root = sdk_root / "examples"
+    examples_root.mkdir(parents=True)
+    (examples_root / "component_drift_hints.example.json").write_text(
+        json.dumps(
+            {
+                "schema_version": "aoa_component_drift_hint_set_v1",
+                "session_ref": "session:component-refresh-test",
+                "repo_root": "/srv",
+                "hints": [
+                    {
+                        "hint_ref": "hint:other",
+                        "component_ref": "component:other",
+                        "owner_repo": "repo-other",
+                        "observed_at": "2026-04-12T10:00:00Z",
+                        "observed_by": "workspace_root",
+                        "severity": "medium",
+                        "signals": ["doctor_fail_after_render"],
+                        "repeat_count": 1,
+                        "evidence_refs": ["artifact:other"],
+                        "recommended_route_class": "regenerate",
+                        "review_required": True,
+                    }
+                ],
+            }
+        ),
+        encoding="utf-8",
+    )
+    (examples_root / "component_refresh_followthrough_decision.example.json").write_text(
+        json.dumps(
+            {
+                "schema_version": "aoa_component_refresh_followthrough_decision_set_v1",
+                "decision_ref": "decision:test",
+                "reviewed": True,
+                "session_ref": "session:component-refresh-test",
+                "decisions": [
+                    {
+                        "component_ref": "component:no-hint",
+                        "owner_repo": "repo-no-hint",
+                        "route_class": "repair",
+                        "decision_status": "chosen",
+                        "selected_refresh_path": ["python repair.py"],
+                        "reason": "reviewed decision exists without a matching per-component hint",
+                        "evidence_refs": ["hint:other"],
+                        "rollback_anchor": "docs/ROLLBACK.md",
+                        "stats_should_refresh": True,
+                        "memo_writeback_candidate": False,
+                    }
+                ],
+            }
+        ),
+        encoding="utf-8",
+    )
+
+    monkeypatch.setenv("AOA_SDK_ROOT", str(sdk_root))
+
+    summary = module.build_component_refresh_summary()
+    schema = json.loads((REPO_ROOT / "schemas" / "component-refresh-summary.schema.json").read_text(encoding="utf-8"))
+    decision_only = next(
+        component for component in summary["components"] if component["component_ref"] == "component:no-hint"
+    )
+
+    Draft202012Validator(schema).validate(summary)
+    assert summary["generated_from"]["latest_observed_at"] == "2026-04-12T10:00:00Z"
+    assert decision_only["latest_decision_status"] == "chosen"
+    assert decision_only["current_status"] == "refresh_active"
+    assert decision_only["latest_route_class"] == "repair"
+    assert decision_only["latest_observed_at"] is None
+
+
 def test_candidate_lineage_summary_stays_reviewed_only_and_no_score() -> None:
     module = load_build_views_module()
     receipts = module.load_receipts(
