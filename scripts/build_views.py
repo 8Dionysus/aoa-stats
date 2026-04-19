@@ -2326,7 +2326,7 @@ def build_component_refresh_summary() -> dict[str, Any]:
         latest_observed_at = (
             str(hint.get("observed_at"))
             if isinstance(hint, dict) and is_nonempty_string(hint.get("observed_at"))
-            else str(source["latest_observed_at"])
+            else None
         )
         components.append(
             {
