@@ -7,6 +7,37 @@ Tracking starts with the first public release-prep baseline for this repository.
 
 ## [Unreleased]
 
+## [0.1.2] - 2026-04-19
+
+### Summary
+
+- this patch hardens intake governance and extends the summary catalog with
+  component-refresh and stress-recovery reporting
+- memo writeback receipts, live MCP surface preference, and freshness handling
+  are tightened across the derived observability lane
+- `aoa-stats` remains a bounded derived layer rather than workflow authority
+
+### Added
+
+- component refresh summary surfaces, chaos wave 1 stress-recovery summaries,
+  and intake-governance plus summary-catalog upgrades
+- memo growth writeback receipt acceptance and live stats surface preference
+  in the repo-local MCP lane
+
+### Changed
+
+- decision-only component-refresh freshness, roadmap/current-direction docs,
+  and CI/protection surfaces are tightened around current summary outputs
+
+### Validation
+
+- `python scripts/release_check.py`
+
+### Notes
+
+- this patch expands derived observability coverage while keeping source-owned
+  rollout, memory, and runtime history authoritative elsewhere
+
 ## [0.1.1] - 2026-04-12
 
 ### Summary
