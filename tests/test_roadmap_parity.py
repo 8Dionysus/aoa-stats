@@ -46,9 +46,9 @@ def test_roadmap_names_current_catalog_summary_families() -> None:
     changelog = read_text("CHANGELOG.md")
     payload = load_json("generated/summary_surface_catalog.min.json")
 
-    assert "> Current release: `v0.1.1`" in readme
-    assert "## [0.1.1] - 2026-04-12" in changelog
-    assert "`v0.1.1`" in roadmap
+    assert "> Current release: `v0.1.2`" in readme
+    assert "## [0.1.2] - 2026-04-19" in changelog
+    assert "`v0.1.2`" in roadmap
     assert "Current release contour" in roadmap
     assert "derived-observability hardening" in roadmap
     assert "weaker than source-owned rollout history" in roadmap
