@@ -42,6 +42,10 @@ Tracking starts with the first public release-prep baseline for this repository.
 
 - `python scripts/release_check.py`
 
+### Notes
+
+- detailed Codex MCP, rollout-summary, and continuity-summary changes for this patch remain enumerated below under `Added`, `Documentation`, and `Changed`
+
 ## [0.1.0] - 2026-04-10
 
 First public release of `aoa-stats` as the derived observability layer in the
