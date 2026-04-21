@@ -1,0 +1,14 @@
+{
+  "allowed_effect": "derived_summary_only",
+  "candidate_only": true,
+  "description": "Summarizes retention result candidate distribution without declaring learning.",
+  "forbidden_effects": [
+    "rank_mutation",
+    "winner_declaration"
+  ],
+  "id": "agon.stats.retention.passage_summary",
+  "kind": "stats_observability_candidate",
+  "live_authority": false,
+  "owner": "aoa-stats",
+  "status": "seeded_observability_candidate"
+}

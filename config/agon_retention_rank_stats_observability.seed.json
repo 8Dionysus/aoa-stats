@@ -1,0 +1,105 @@
+{
+  "entries": [
+    {
+      "allowed_effect": "derived_summary_only",
+      "candidate_only": true,
+      "description": "Summarizes retention result candidate distribution without declaring learning.",
+      "forbidden_effects": [
+        "rank_mutation",
+        "winner_declaration"
+      ],
+      "id": "agon.stats.retention.passage_summary",
+      "kind": "stats_observability_candidate",
+      "live_authority": false,
+      "owner": "aoa-stats",
+      "status": "seeded_observability_candidate"
+    },
+    {
+      "allowed_effect": "derived_summary_only",
+      "candidate_only": true,
+      "description": "Summarizes repeated failure pressure across retention checks.",
+      "forbidden_effects": [
+        "punishment",
+        "quarantine"
+      ],
+      "id": "agon.stats.retention.repeat_failure_summary",
+      "kind": "stats_observability_candidate",
+      "live_authority": false,
+      "owner": "aoa-stats",
+      "status": "seeded_observability_candidate"
+    },
+    {
+      "allowed_effect": "derived_summary_only",
+      "candidate_only": true,
+      "description": "Summarizes rank mutation candidate pressure without applying standing changes.",
+      "forbidden_effects": [
+        "rank_mutation",
+        "value_system"
+      ],
+      "id": "agon.stats.rank.pressure_summary",
+      "kind": "stats_observability_candidate",
+      "live_authority": false,
+      "owner": "aoa-stats",
+      "status": "seeded_observability_candidate"
+    },
+    {
+      "allowed_effect": "derived_summary_only",
+      "candidate_only": true,
+      "description": "Summarizes jurisdiction candidate, suspension, and restoration pressure.",
+      "forbidden_effects": [
+        "jurisdiction_grant",
+        "jurisdiction_revocation"
+      ],
+      "id": "agon.stats.jurisdiction.health_summary",
+      "kind": "stats_observability_candidate",
+      "live_authority": false,
+      "owner": "aoa-stats",
+      "status": "seeded_observability_candidate"
+    },
+    {
+      "allowed_effect": "derived_summary_only",
+      "candidate_only": true,
+      "description": "Summarizes review latency pressure for retention candidates.",
+      "forbidden_effects": [
+        "scheduler_action"
+      ],
+      "id": "agon.stats.retention.time_to_review_summary",
+      "kind": "stats_observability_candidate",
+      "live_authority": false,
+      "owner": "aoa-stats",
+      "status": "seeded_observability_candidate"
+    },
+    {
+      "allowed_effect": "derived_summary_only",
+      "candidate_only": true,
+      "description": "Summarizes how often scar requests become retention request candidates.",
+      "forbidden_effects": [
+        "memory_write"
+      ],
+      "id": "agon.stats.scar_to_retention.conversion_summary",
+      "kind": "stats_observability_candidate",
+      "live_authority": false,
+      "owner": "aoa-stats",
+      "status": "seeded_observability_candidate"
+    }
+  ],
+  "live_protocol": false,
+  "registry_id": "agon.stats.retention_rank_observability.registry.v1",
+  "runtime_effect": "candidate_only",
+  "source_config": "config/agon_retention_rank_stats_observability.seed.json",
+  "status": "seeded_wave14_stats_observability",
+  "stop_lines": [
+    "no_live_verdict_authority",
+    "no_durable_scar_write",
+    "no_retention_execution_without_owner_review",
+    "no_rank_or_trust_mutation",
+    "no_closure_grant",
+    "no_live_summon",
+    "no_tree_of_sophia_promotion",
+    "no_kag_promotion",
+    "no_hidden_scheduler_action",
+    "no_assistant_contestant_drift",
+    "no_center_takeover_of_agent_eval_memo_stats_truth"
+  ],
+  "wave": "XIV"
+}
