@@ -1,0 +1,215 @@
+{
+  "registry_id": "agon.epistemic_stats_observability.registry.v1",
+  "runtime_posture": "candidate_only",
+  "summaries": [
+    {
+      "candidate_outputs": [
+        "stats_observation_candidate",
+        "derived_summary_candidate"
+      ],
+      "forbidden_effects": [
+        "live_verdict_authority",
+        "durable_scar_write",
+        "retention_execution",
+        "rank_mutation",
+        "trust_mutation",
+        "tree_of_sophia_promotion",
+        "kag_promotion",
+        "hidden_scheduler_action",
+        "assistant_contestant_drift",
+        "auto_doctrine_rewrite"
+      ],
+      "live_protocol": false,
+      "observes": [
+        "prediction_accuracy_summary"
+      ],
+      "owner_repo": "aoa-stats",
+      "runtime_effect": "candidate_only",
+      "status": "derived_observability_candidate",
+      "summary_id": "agon.stats.epistemic.prediction_accuracy_summary"
+    },
+    {
+      "candidate_outputs": [
+        "stats_observation_candidate",
+        "derived_summary_candidate"
+      ],
+      "forbidden_effects": [
+        "live_verdict_authority",
+        "durable_scar_write",
+        "retention_execution",
+        "rank_mutation",
+        "trust_mutation",
+        "tree_of_sophia_promotion",
+        "kag_promotion",
+        "hidden_scheduler_action",
+        "assistant_contestant_drift",
+        "auto_doctrine_rewrite"
+      ],
+      "live_protocol": false,
+      "observes": [
+        "concept_delta_depth_summary"
+      ],
+      "owner_repo": "aoa-stats",
+      "runtime_effect": "candidate_only",
+      "status": "derived_observability_candidate",
+      "summary_id": "agon.stats.epistemic.concept_delta_depth_summary"
+    },
+    {
+      "candidate_outputs": [
+        "stats_observation_candidate",
+        "derived_summary_candidate"
+      ],
+      "forbidden_effects": [
+        "live_verdict_authority",
+        "durable_scar_write",
+        "retention_execution",
+        "rank_mutation",
+        "trust_mutation",
+        "tree_of_sophia_promotion",
+        "kag_promotion",
+        "hidden_scheduler_action",
+        "assistant_contestant_drift",
+        "auto_doctrine_rewrite"
+      ],
+      "live_protocol": false,
+      "observes": [
+        "model_divergence_summary"
+      ],
+      "owner_repo": "aoa-stats",
+      "runtime_effect": "candidate_only",
+      "status": "derived_observability_candidate",
+      "summary_id": "agon.stats.epistemic.model_divergence_summary"
+    },
+    {
+      "candidate_outputs": [
+        "stats_observation_candidate",
+        "derived_summary_candidate"
+      ],
+      "forbidden_effects": [
+        "live_verdict_authority",
+        "durable_scar_write",
+        "retention_execution",
+        "rank_mutation",
+        "trust_mutation",
+        "tree_of_sophia_promotion",
+        "kag_promotion",
+        "hidden_scheduler_action",
+        "assistant_contestant_drift",
+        "auto_doctrine_rewrite"
+      ],
+      "live_protocol": false,
+      "observes": [
+        "bifurcation_pressure_summary"
+      ],
+      "owner_repo": "aoa-stats",
+      "runtime_effect": "candidate_only",
+      "status": "derived_observability_candidate",
+      "summary_id": "agon.stats.epistemic.bifurcation_pressure_summary"
+    },
+    {
+      "candidate_outputs": [
+        "stats_observation_candidate",
+        "derived_summary_candidate"
+      ],
+      "forbidden_effects": [
+        "live_verdict_authority",
+        "durable_scar_write",
+        "retention_execution",
+        "rank_mutation",
+        "trust_mutation",
+        "tree_of_sophia_promotion",
+        "kag_promotion",
+        "hidden_scheduler_action",
+        "assistant_contestant_drift",
+        "auto_doctrine_rewrite"
+      ],
+      "live_protocol": false,
+      "observes": [
+        "epistemic_rupture_pressure_summary"
+      ],
+      "owner_repo": "aoa-stats",
+      "runtime_effect": "candidate_only",
+      "status": "derived_observability_candidate",
+      "summary_id": "agon.stats.epistemic.epistemic_rupture_pressure_summary"
+    },
+    {
+      "candidate_outputs": [
+        "stats_observation_candidate",
+        "derived_summary_candidate"
+      ],
+      "forbidden_effects": [
+        "live_verdict_authority",
+        "durable_scar_write",
+        "retention_execution",
+        "rank_mutation",
+        "trust_mutation",
+        "tree_of_sophia_promotion",
+        "kag_promotion",
+        "hidden_scheduler_action",
+        "assistant_contestant_drift",
+        "auto_doctrine_rewrite"
+      ],
+      "live_protocol": false,
+      "observes": [
+        "false_consensus_resistance_summary"
+      ],
+      "owner_repo": "aoa-stats",
+      "runtime_effect": "candidate_only",
+      "status": "derived_observability_candidate",
+      "summary_id": "agon.stats.epistemic.false_consensus_resistance_summary"
+    },
+    {
+      "candidate_outputs": [
+        "stats_observation_candidate",
+        "derived_summary_candidate"
+      ],
+      "forbidden_effects": [
+        "live_verdict_authority",
+        "durable_scar_write",
+        "retention_execution",
+        "rank_mutation",
+        "trust_mutation",
+        "tree_of_sophia_promotion",
+        "kag_promotion",
+        "hidden_scheduler_action",
+        "assistant_contestant_drift",
+        "auto_doctrine_rewrite"
+      ],
+      "live_protocol": false,
+      "observes": [
+        "doctrine_revision_pressure_summary"
+      ],
+      "owner_repo": "aoa-stats",
+      "runtime_effect": "candidate_only",
+      "status": "derived_observability_candidate",
+      "summary_id": "agon.stats.epistemic.doctrine_revision_pressure_summary"
+    },
+    {
+      "candidate_outputs": [
+        "stats_observation_candidate",
+        "derived_summary_candidate"
+      ],
+      "forbidden_effects": [
+        "live_verdict_authority",
+        "durable_scar_write",
+        "retention_execution",
+        "rank_mutation",
+        "trust_mutation",
+        "tree_of_sophia_promotion",
+        "kag_promotion",
+        "hidden_scheduler_action",
+        "assistant_contestant_drift",
+        "auto_doctrine_rewrite"
+      ],
+      "live_protocol": false,
+      "observes": [
+        "explanatory_competition_health_summary"
+      ],
+      "owner_repo": "aoa-stats",
+      "runtime_effect": "candidate_only",
+      "status": "derived_observability_candidate",
+      "summary_id": "agon.stats.epistemic.explanatory_competition_health_summary"
+    }
+  ],
+  "wave": "XV"
+}

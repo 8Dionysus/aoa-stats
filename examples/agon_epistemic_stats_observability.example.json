@@ -1,0 +1,26 @@
+{
+  "candidate_outputs": [
+    "stats_observation_candidate",
+    "derived_summary_candidate"
+  ],
+  "forbidden_effects": [
+    "live_verdict_authority",
+    "durable_scar_write",
+    "retention_execution",
+    "rank_mutation",
+    "trust_mutation",
+    "tree_of_sophia_promotion",
+    "kag_promotion",
+    "hidden_scheduler_action",
+    "assistant_contestant_drift",
+    "auto_doctrine_rewrite"
+  ],
+  "live_protocol": false,
+  "observes": [
+    "concept_delta_depth_summary"
+  ],
+  "owner_repo": "aoa-stats",
+  "runtime_effect": "candidate_only",
+  "status": "derived_observability_candidate",
+  "summary_id": "agon.stats.epistemic.concept_delta_depth_summary"
+}
