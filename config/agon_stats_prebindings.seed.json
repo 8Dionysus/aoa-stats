@@ -1,0 +1,228 @@
+{
+  "live_protocol": false,
+  "notes": "Stats prebindings prepare derived observability only. They do not rank, govern, or decide value.",
+  "owner_repo": "aoa-stats",
+  "prebindings": [
+    {
+      "derived_outputs": [
+        "closure_discipline_candidate_summary"
+      ],
+      "inputs": [
+        "closure_legality_review_candidate",
+        "costly_closure_trial_observation",
+        "deny_closure_move_frequency"
+      ],
+      "live_authority": false,
+      "live_protocol": false,
+      "must_not": [
+        "rank_agents",
+        "grant_closure",
+        "declare_winner"
+      ],
+      "mutates_rank": false,
+      "opens_arena_session": false,
+      "prebinding_ref": "agon.stats.closure_discipline_summary",
+      "promotes_to_tos": false,
+      "runs_hidden_scheduler": false,
+      "runtime_effect": "none",
+      "status": "seeded_pre_protocol_stats_prebinding",
+      "title": "Closure discipline summary",
+      "writes_durable_state": false
+    },
+    {
+      "derived_outputs": [
+        "contradiction_integrity_candidate_summary"
+      ],
+      "inputs": [
+        "contradiction_status_review_candidate",
+        "localize_contradiction_move_frequency",
+        "open_material_contradiction_gate_hint"
+      ],
+      "live_authority": false,
+      "live_protocol": false,
+      "must_not": [
+        "resolve_contradiction",
+        "force_consensus"
+      ],
+      "mutates_rank": false,
+      "opens_arena_session": false,
+      "prebinding_ref": "agon.stats.contradiction_integrity_summary",
+      "promotes_to_tos": false,
+      "runs_hidden_scheduler": false,
+      "runtime_effect": "none",
+      "status": "seeded_pre_protocol_stats_prebinding",
+      "title": "Contradiction integrity summary",
+      "writes_durable_state": false
+    },
+    {
+      "derived_outputs": [
+        "summon_pressure_candidate_summary"
+      ],
+      "inputs": [
+        "summon_intent_review_candidate",
+        "expensive_summon_intent_trial_observation",
+        "summon_intent_requires_review_gate_hint"
+      ],
+      "live_authority": false,
+      "live_protocol": false,
+      "must_not": [
+        "spend_summon_budget",
+        "grant_summoner_status"
+      ],
+      "mutates_rank": false,
+      "opens_arena_session": false,
+      "prebinding_ref": "agon.stats.summon_pressure_summary",
+      "promotes_to_tos": false,
+      "runs_hidden_scheduler": false,
+      "runtime_effect": "none",
+      "status": "seeded_pre_protocol_stats_prebinding",
+      "title": "Summon pressure summary",
+      "writes_durable_state": false
+    },
+    {
+      "derived_outputs": [
+        "assistant_escalation_candidate_summary"
+      ],
+      "inputs": [
+        "assistant_boundary_review_candidate",
+        "assistant_escalation_trial_observation",
+        "assistant_scope_breach_gate_hint"
+      ],
+      "live_authority": false,
+      "live_protocol": false,
+      "must_not": [
+        "make_assistant_contestant",
+        "judge_assistant"
+      ],
+      "mutates_rank": false,
+      "opens_arena_session": false,
+      "prebinding_ref": "agon.stats.assistant_escalation_summary",
+      "promotes_to_tos": false,
+      "runs_hidden_scheduler": false,
+      "runtime_effect": "none",
+      "status": "seeded_pre_protocol_stats_prebinding",
+      "title": "Assistant escalation summary",
+      "writes_durable_state": false
+    },
+    {
+      "derived_outputs": [
+        "recurrence_review_pressure_candidate_summary"
+      ],
+      "inputs": [
+        "review_queue",
+        "candidate_dossier",
+        "owner_summary",
+        "beacon_observation"
+      ],
+      "live_authority": false,
+      "live_protocol": false,
+      "must_not": [
+        "prioritize_as_authority",
+        "auto_open_quest"
+      ],
+      "mutates_rank": false,
+      "opens_arena_session": false,
+      "prebinding_ref": "agon.stats.recurrence_review_pressure_summary",
+      "promotes_to_tos": false,
+      "runs_hidden_scheduler": false,
+      "runtime_effect": "none",
+      "status": "seeded_pre_protocol_stats_prebinding",
+      "title": "Recurrence review pressure summary",
+      "writes_durable_state": false
+    },
+    {
+      "derived_outputs": [
+        "delta_candidate_summary"
+      ],
+      "inputs": [
+        "delta_legitimacy_review_candidate",
+        "delta_chronicle_candidate",
+        "prediction_trial_observation"
+      ],
+      "live_authority": false,
+      "live_protocol": false,
+      "must_not": [
+        "claim_learning",
+        "mutate_profile"
+      ],
+      "mutates_rank": false,
+      "opens_arena_session": false,
+      "prebinding_ref": "agon.stats.delta_candidate_summary",
+      "promotes_to_tos": false,
+      "runs_hidden_scheduler": false,
+      "runtime_effect": "none",
+      "status": "seeded_pre_protocol_stats_prebinding",
+      "title": "Delta candidate summary",
+      "writes_durable_state": false
+    },
+    {
+      "derived_outputs": [
+        "trial_playbook_health_candidate_summary"
+      ],
+      "inputs": [
+        "trial_playbook_registry",
+        "trial_playbook_observation",
+        "owner_summary"
+      ],
+      "live_authority": false,
+      "live_protocol": false,
+      "must_not": [
+        "declare_playbook_canon",
+        "open_arena_session"
+      ],
+      "mutates_rank": false,
+      "opens_arena_session": false,
+      "prebinding_ref": "agon.stats.trial_playbook_health_summary",
+      "promotes_to_tos": false,
+      "runs_hidden_scheduler": false,
+      "runtime_effect": "none",
+      "status": "seeded_pre_protocol_stats_prebinding",
+      "title": "Trial playbook health summary",
+      "writes_durable_state": false
+    },
+    {
+      "derived_outputs": [
+        "gate_trigger_frequency_candidate_summary"
+      ],
+      "inputs": [
+        "agon_gate_routing_registry",
+        "agon_gate_candidate",
+        "owner_review_required"
+      ],
+      "live_authority": false,
+      "live_protocol": false,
+      "must_not": [
+        "route_by_score_alone",
+        "force_gate"
+      ],
+      "mutates_rank": false,
+      "opens_arena_session": false,
+      "prebinding_ref": "agon.stats.gate_trigger_frequency_summary",
+      "promotes_to_tos": false,
+      "runs_hidden_scheduler": false,
+      "runtime_effect": "none",
+      "status": "seeded_pre_protocol_stats_prebinding",
+      "title": "Gate trigger frequency summary",
+      "writes_durable_state": false
+    }
+  ],
+  "required_stop_lines": [
+    "no_arena_session_creation",
+    "no_sealed_commit_runtime",
+    "no_live_verdict_authority",
+    "no_durable_scar_write",
+    "no_retention_schedule_execution",
+    "no_rank_mutation",
+    "no_tree_of_sophia_promotion",
+    "no_hidden_scheduler_action",
+    "no_stats_as_authority",
+    "no_eval_as_sovereign",
+    "no_memo_as_truth",
+    "stats_derive_only",
+    "stats_do_not_reign"
+  ],
+  "runtime_effect": "none",
+  "schema_version": "agon_stats_prebinding_seed_v1",
+  "status": "seeded_pre_protocol_observability_prebinding",
+  "wave": "VII"
+}

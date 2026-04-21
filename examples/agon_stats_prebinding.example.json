@@ -1,0 +1,26 @@
+{
+  "derived_outputs": [
+    "closure_discipline_candidate_summary"
+  ],
+  "inputs": [
+    "closure_legality_review_candidate",
+    "costly_closure_trial_observation",
+    "deny_closure_move_frequency"
+  ],
+  "live_authority": false,
+  "live_protocol": false,
+  "must_not": [
+    "rank_agents",
+    "grant_closure",
+    "declare_winner"
+  ],
+  "mutates_rank": false,
+  "opens_arena_session": false,
+  "prebinding_ref": "agon.stats.closure_discipline_summary",
+  "promotes_to_tos": false,
+  "runs_hidden_scheduler": false,
+  "runtime_effect": "none",
+  "status": "seeded_pre_protocol_stats_prebinding",
+  "title": "Closure discipline summary",
+  "writes_durable_state": false
+}

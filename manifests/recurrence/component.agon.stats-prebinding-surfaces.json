@@ -1,0 +1,129 @@
+{
+  "beacon_rules": [
+    {
+      "beacon_ref": "component.agon.stats-prebinding-surfaces.review_pressure",
+      "kind": "review_signal",
+      "match_categories": [
+        "change_pressure",
+        "review_signal",
+        "repeat_pattern"
+      ],
+      "match_signals": [
+        "closure_discipline_pressure",
+        "contradiction_integrity_pressure",
+        "summon_pressure",
+        "assistant_escalation_pressure",
+        "recurrence_review_pressure",
+        "delta_candidate_pressure",
+        "gate_trigger_frequency_pressure"
+      ],
+      "notes": "Wave VII recurrence pressure is review-only.",
+      "observation_inputs": [
+        "stats-prebinding-surfaces.generated",
+        "stats-prebinding-surfaces.docs"
+      ],
+      "recommended_actions": [
+        "open owner review dossier",
+        "do not execute live protocol action"
+      ],
+      "status_ladder": [
+        "hint",
+        "watch",
+        "candidate",
+        "review_ready"
+      ],
+      "suppress_when": [
+        "live_verdict_authority_claim_present",
+        "durable_scar_write_claim_present",
+        "stats_authority_claim_present"
+      ],
+      "target_repo": "aoa-stats",
+      "thresholds": {
+        "candidate_observations": 2,
+        "min_unique_evidence_refs": 2,
+        "min_unique_sources": 2,
+        "review_ready_observations": 3,
+        "watch_observations": 1
+      }
+    }
+  ],
+  "candidate_targets": [
+    "generated/agon_stats_prebinding_registry.min.json"
+  ],
+  "component_ref": "component:agon:stats-prebinding-surfaces",
+  "contract_surfaces": [
+    "docs/AGON_STATS_PREBINDING.md",
+    "docs/AGON_DERIVED_OBSERVABILITY_MODEL.md",
+    "docs/AGON_STATS_AUTHORITY_STOP_LINES.md"
+  ],
+  "decision_surfaces": [
+    "docs/AGON_STATS_PREBINDING.md"
+  ],
+  "description": "Stats prebinding surfaces for derived Agon observability.",
+  "documentation_surfaces": [
+    "docs/AGON_STATS_PREBINDING.md",
+    "docs/AGON_DERIVED_OBSERVABILITY_MODEL.md",
+    "docs/AGON_STATS_AUTHORITY_STOP_LINES.md"
+  ],
+  "freshness": {
+    "open_window_days": 7,
+    "repeat_trigger_threshold": 2,
+    "stale_after_days": 14
+  },
+  "generated_surfaces": [
+    "generated/agon_stats_prebinding_registry.min.json"
+  ],
+  "observation_inputs": [
+    {
+      "input_ref": "stats-prebinding-surfaces.generated",
+      "kind": "other",
+      "notes": "Wave VII generated prebinding surface.",
+      "path_globs": [
+        "generated/agon_stats_prebinding_registry.min.json"
+      ]
+    },
+    {
+      "input_ref": "stats-prebinding-surfaces.docs",
+      "kind": "review_note",
+      "notes": "Wave VII prebinding documentation.",
+      "path_globs": [
+        "docs/AGON_*.md"
+      ]
+    }
+  ],
+  "owner_repo": "aoa-stats",
+  "proof_surfaces": [
+    "python scripts/validate_agon_stats_prebindings.py"
+  ],
+  "refresh_routes": [
+    {
+      "action": "revalidate",
+      "commands": [
+        "python scripts/validate_agon_stats_prebindings.py"
+      ],
+      "notes": "Owner-local validation only."
+    }
+  ],
+  "rollback_anchors": [
+    "docs/AGON_STATS_PREBINDING.md"
+  ],
+  "schema_version": "aoa_recurrence_component_v2",
+  "signal_edges": [
+    {
+      "kind": "read_only_summary",
+      "notes": "Stats summaries may inform review, not governance.",
+      "target": "component:agon:court-memo-stats-center-request",
+      "target_repo": "Agents-of-Abyss"
+    }
+  ],
+  "source_inputs": [
+    "config/agon_stats_prebindings.seed.json"
+  ],
+  "tags": [
+    "agon",
+    "wave7",
+    "stats",
+    "observability",
+    "recurrence"
+  ]
+}
