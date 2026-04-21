@@ -1,0 +1,20 @@
+{
+  "component_id": "component.agon.vds-stats-observability",
+  "may_emit": [
+    "stats_review_queue_candidate",
+    "owner_summary_candidate"
+  ],
+  "must_not_emit": [
+    "live_verdict",
+    "scar_write",
+    "retention_execution",
+    "rank_mutation",
+    "tos_promotion"
+  ],
+  "observation_intent": "Detect drift in VDS Stats Observability without granting runtime authority.",
+  "observed_surfaces": [
+    "generated/agon_vds_stats_observability_registry.min.json"
+  ],
+  "owner_repo": "aoa-stats",
+  "status": "seeded_recurrence_observation_component"
+}
