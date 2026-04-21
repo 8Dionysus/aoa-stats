@@ -1,0 +1,33 @@
+{
+  "allowed_dimensions": [
+    "trial_run_count",
+    "candidate_terminal_outcome",
+    "stop_line_pressure",
+    "assistant_boundary_pressure",
+    "hash_chain_health"
+  ],
+  "durable_scar_write": false,
+  "forbidden_uses": [
+    "winner_declaration",
+    "rank_mutation",
+    "forced_routing",
+    "punishment",
+    "value_system"
+  ],
+  "id": "agon.stats.trial_observability.broken_trace.candidate",
+  "live_protocol": false,
+  "live_verdict_authority": false,
+  "rank_mutation": false,
+  "retention_execution": false,
+  "runtime_effect": "none",
+  "source_surfaces": [
+    "abyss-stack/generated/agon_mechanical_trial_run_registry.min.json",
+    "aoa-evals/generated/agon_mechanical_trial_eval_suite_registry.min.json"
+  ],
+  "summary_candidates": [
+    "agon.stats.vds.scar_request_pressure_summary",
+    "agon.stats.vds.verdict_outcome_draft_summary"
+  ],
+  "tos_promotion": false,
+  "trial_id": "agon.trial.mechanical.broken_trace.v0"
+}
