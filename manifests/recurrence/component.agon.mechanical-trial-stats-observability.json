@@ -1,0 +1,10 @@
+{
+  "authority": "observation_only",
+  "component_id": "component.agon.mechanical-trial-stats-observability",
+  "observation_intent": "Detect drift in mechanical trial stats observability.",
+  "repo": "aoa-stats",
+  "surfaces": [
+    "generated/agon_mechanical_trial_stats_observability_registry.min.json"
+  ],
+  "wave": "XIII"
+}
