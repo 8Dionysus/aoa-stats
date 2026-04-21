@@ -1,0 +1,40 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "additionalProperties": false,
+  "properties": {
+    "count": {
+      "const": 8
+    },
+    "digest": {
+      "pattern": "^[0-9a-f]{64}$",
+      "type": "string"
+    },
+    "registry_id": {
+      "const": "agon.epistemic_stats_observability.registry.v1"
+    },
+    "runtime_posture": {
+      "const": "candidate_only"
+    },
+    "summaries": {
+      "items": {
+        "$ref": "agon-epistemic-stats-observability.schema.json"
+      },
+      "maxItems": 8,
+      "minItems": 8,
+      "type": "array"
+    },
+    "wave": {
+      "const": "XV"
+    }
+  },
+  "required": [
+    "registry_id",
+    "wave",
+    "runtime_posture",
+    "count",
+    "summaries",
+    "digest"
+  ],
+  "title": "Agon Epistemic Stats Observability Registry",
+  "type": "object"
+}

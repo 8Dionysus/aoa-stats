@@ -1,0 +1,64 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "additionalProperties": false,
+  "properties": {
+    "candidate_outputs": {
+      "items": {
+        "minLength": 1,
+        "type": "string"
+      },
+      "minItems": 1,
+      "type": "array"
+    },
+    "forbidden_effects": {
+      "items": {
+        "minLength": 1,
+        "type": "string"
+      },
+      "minItems": 10,
+      "type": "array",
+      "uniqueItems": true
+    },
+    "live_protocol": {
+      "const": false
+    },
+    "observes": {
+      "items": {
+        "minLength": 1,
+        "type": "string"
+      },
+      "minItems": 1,
+      "type": "array"
+    },
+    "owner_repo": {
+      "const": "aoa-stats"
+    },
+    "runtime_effect": {
+      "enum": [
+        "none",
+        "candidate_only",
+        "local_dry_run_candidate_only",
+        "local_rehearsal_candidate_only"
+      ]
+    },
+    "status": {
+      "const": "derived_observability_candidate"
+    },
+    "summary_id": {
+      "minLength": 1,
+      "type": "string"
+    }
+  },
+  "required": [
+    "candidate_outputs",
+    "forbidden_effects",
+    "live_protocol",
+    "observes",
+    "owner_repo",
+    "runtime_effect",
+    "status",
+    "summary_id"
+  ],
+  "title": "Agon Epistemic Stats Observability",
+  "type": "object"
+}
