@@ -2,10 +2,27 @@
   "$schema": "https://json-schema.org/draft/2020-12/schema",
   "additionalProperties": true,
   "properties": {
+    "derived_outputs": {
+      "items": {
+        "type": "string"
+      },
+      "minItems": 1,
+      "type": "array"
+    },
+    "inputs": {
+      "items": {
+        "type": "string"
+      },
+      "minItems": 1,
+      "type": "array"
+    },
     "live_protocol": {
       "type": "boolean"
     },
     "owner_repo": {
+      "type": "string"
+    },
+    "prebinding_ref": {
       "type": "string"
     },
     "required_stop_lines": {

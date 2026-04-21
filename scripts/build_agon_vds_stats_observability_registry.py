@@ -1,18 +1,63 @@
 from __future__ import annotations
-import argparse,json
+
+import argparse
+import json
+import sys
 from pathlib import Path
-ROOT=Path(__file__).resolve().parents[1]
-CONFIG=ROOT/'config'/'agon_vds_stats_observability.seed.json'
-OUTPUT=ROOT/'generated'/'agon_vds_stats_observability_registry.min.json'
-def compact(o): return json.dumps(o,ensure_ascii=False,sort_keys=True,separators=(',',':'))+'\n'
-def build_registry():
-    s=json.loads(CONFIG.read_text(encoding='utf-8'))
-    return {'registry_id':s['registry_id'],'version':s['version'],'wave':s['wave'],'status':s['status'],'live_protocol':False,'runtime_effect':'none','summary_count':len(s['summaries']),'summaries':s['summaries'],'stop_lines':s['stop_lines']}
-def main():
-    ap=argparse.ArgumentParser(); ap.add_argument('--check',action='store_true'); args=ap.parse_args(); txt=compact(build_registry())
+
+ROOT = Path(__file__).resolve().parents[1]
+CONFIG = ROOT / "config" / "agon_vds_stats_observability.seed.json"
+OUTPUT = ROOT / "generated" / "agon_vds_stats_observability_registry.min.json"
+
+
+def compact(obj: dict) -> str:
+    return json.dumps(
+        obj,
+        ensure_ascii=False,
+        sort_keys=True,
+        separators=(",", ":"),
+    ) + "\n"
+
+
+def build_registry() -> dict:
+    seed = json.loads(CONFIG.read_text(encoding="utf-8"))
+    return {
+        "registry_id": seed["registry_id"],
+        "version": seed["version"],
+        "wave": seed["wave"],
+        "status": seed["status"],
+        "live_protocol": seed["live_protocol"],
+        "runtime_effect": seed["runtime_effect"],
+        "summary_count": len(seed["summaries"]),
+        "summaries": seed["summaries"],
+        "stop_lines": seed["stop_lines"],
+    }
+
+
+def main() -> int:
+    parser = argparse.ArgumentParser()
+    parser.add_argument("--check", action="store_true")
+    args = parser.parse_args()
+    rendered = compact(build_registry())
+
     if args.check:
-        assert OUTPUT.exists(), f'missing {OUTPUT}'
-        assert OUTPUT.read_text(encoding='utf-8')==txt, 'generated agon_vds_stats_observability_registry.min.json is stale'
-        print('agon_vds_stats_observability_registry.min.json is up to date'); return 0
-    OUTPUT.parent.mkdir(parents=True,exist_ok=True); OUTPUT.write_text(txt,encoding='utf-8'); print(f'wrote {OUTPUT}'); return 0
-if __name__=='__main__': raise SystemExit(main())
+        if not OUTPUT.exists():
+            print(f"missing {OUTPUT}", file=sys.stderr)
+            return 1
+        if OUTPUT.read_text(encoding="utf-8") != rendered:
+            print(
+                "generated agon_vds_stats_observability_registry.min.json is stale",
+                file=sys.stderr,
+            )
+            return 1
+        print("agon_vds_stats_observability_registry.min.json is up to date")
+        return 0
+
+    OUTPUT.parent.mkdir(parents=True, exist_ok=True)
+    OUTPUT.write_text(rendered, encoding="utf-8")
+    print(f"wrote {OUTPUT}")
+    return 0
+
+
+if __name__ == "__main__":
+    raise SystemExit(main())
