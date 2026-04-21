@@ -1,0 +1,110 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "additionalProperties": false,
+  "properties": {
+    "assistant_contestant_allowed": {
+      "const": false
+    },
+    "authority_posture": {
+      "const": "non_authority"
+    },
+    "canonical_status": {
+      "const": "not_canon"
+    },
+    "does_not_decide": {
+      "items": {
+        "minLength": 1,
+        "type": "string"
+      },
+      "minItems": 1,
+      "type": "array"
+    },
+    "forbidden_effects": {
+      "items": {
+        "minLength": 1,
+        "type": "string"
+      },
+      "minItems": 1,
+      "type": "array"
+    },
+    "kag_status": {
+      "const": "candidate_only"
+    },
+    "live_protocol": {
+      "const": false
+    },
+    "observes": {
+      "items": {
+        "minLength": 1,
+        "type": "string"
+      },
+      "minItems": 1,
+      "type": "array"
+    },
+    "promotion_requires": {
+      "items": {
+        "minLength": 1,
+        "type": "string"
+      },
+      "minItems": 1,
+      "type": "array"
+    },
+    "purpose": {
+      "minLength": 1,
+      "type": "string"
+    },
+    "review_status": {
+      "const": "candidate_only"
+    },
+    "runtime_effect": {
+      "enum": [
+        "none",
+        "candidate_only",
+        "local_dry_run_candidate_only",
+        "local_rehearsal_candidate_only"
+      ]
+    },
+    "source_truth_posture": {
+      "const": "owner_retained"
+    },
+    "stop_lines": {
+      "items": {
+        "minLength": 1,
+        "type": "string"
+      },
+      "minItems": 1,
+      "type": "array"
+    },
+    "summary_id": {
+      "minLength": 1,
+      "type": "string"
+    },
+    "summary_status": {
+      "const": "derived_candidate_only"
+    },
+    "wave": {
+      "const": "XVII"
+    }
+  },
+  "required": [
+    "assistant_contestant_allowed",
+    "authority_posture",
+    "canonical_status",
+    "does_not_decide",
+    "forbidden_effects",
+    "kag_status",
+    "live_protocol",
+    "observes",
+    "promotion_requires",
+    "purpose",
+    "review_status",
+    "runtime_effect",
+    "source_truth_posture",
+    "stop_lines",
+    "summary_id",
+    "summary_status",
+    "wave"
+  ],
+  "title": "agon-kag-stats-observability.schema.json item contract",
+  "type": "object"
+}
