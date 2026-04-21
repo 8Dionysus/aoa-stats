@@ -1,0 +1,31 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "additionalProperties": true,
+  "properties": {
+    "live_protocol": {
+      "const": false
+    },
+    "registry_id": {
+      "const": "agon.vds_stats_observability.registry.v1"
+    },
+    "runtime_effect": {
+      "const": "none"
+    },
+    "summaries": {
+      "minItems": 5,
+      "type": "array"
+    },
+    "wave": {
+      "const": "XI"
+    }
+  },
+  "required": [
+    "registry_id",
+    "wave",
+    "live_protocol",
+    "runtime_effect",
+    "summaries"
+  ],
+  "title": "Agon VDS Stats Observability Registry",
+  "type": "object"
+}

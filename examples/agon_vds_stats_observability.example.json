@@ -1,0 +1,16 @@
+{
+  "dimensions": [
+    "terminal_outcome",
+    "applied_law_count",
+    "breach_count",
+    "closure_denied"
+  ],
+  "must_not_emit": [
+    "winner_declaration",
+    "rank_mutation",
+    "routing_force"
+  ],
+  "observes": "agon.bridge.verdict_draft.v1",
+  "summary_class": "verdict_outcome_draft",
+  "summary_id": "agon.stats.vds.verdict_outcome_draft_summary"
+}

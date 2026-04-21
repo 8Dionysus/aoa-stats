@@ -1,0 +1,107 @@
+{
+  "home_repo": "aoa-stats",
+  "live_protocol": false,
+  "registry_id": "agon.vds_stats_observability.registry.v1",
+  "runtime_effect": "none",
+  "status": "seeded_derived_observability_candidates",
+  "stop_lines": [
+    "no_stats_authority",
+    "no_rank_mutation",
+    "no_winner_declaration",
+    "no_forced_routing",
+    "no_value_system"
+  ],
+  "summaries": [
+    {
+      "dimensions": [
+        "terminal_outcome",
+        "applied_law_count",
+        "breach_count",
+        "closure_denied"
+      ],
+      "may_emit": [
+        "derived_observation_candidate"
+      ],
+      "must_not_emit": [
+        "winner_declaration",
+        "rank_mutation",
+        "routing_force"
+      ],
+      "observes": "agon.bridge.verdict_draft.v1",
+      "summary_class": "verdict_outcome_draft",
+      "summary_id": "agon.stats.vds.verdict_outcome_draft_summary"
+    },
+    {
+      "dimensions": [
+        "delta_class",
+        "future_effect_count",
+        "retention_needed",
+        "before_after_completeness"
+      ],
+      "may_emit": [
+        "derived_observation_candidate"
+      ],
+      "must_not_emit": [
+        "actor_mutation",
+        "value_system"
+      ],
+      "observes": "agon.bridge.delta_receipt_candidate.v1",
+      "summary_class": "delta_depth_candidate",
+      "summary_id": "agon.stats.vds.delta_depth_candidate_summary"
+    },
+    {
+      "dimensions": [
+        "scar_class",
+        "severity",
+        "actor_id",
+        "linked_law"
+      ],
+      "may_emit": [
+        "derived_observation_candidate"
+      ],
+      "must_not_emit": [
+        "durable_scar_write",
+        "punishment"
+      ],
+      "observes": "agon.bridge.scar_request.v1",
+      "summary_class": "scar_request_pressure",
+      "summary_id": "agon.stats.vds.scar_request_pressure_summary"
+    },
+    {
+      "dimensions": [
+        "check_after_cycles",
+        "retention_question_class",
+        "linked_delta_class"
+      ],
+      "may_emit": [
+        "derived_observation_candidate"
+      ],
+      "must_not_emit": [
+        "scheduler_action",
+        "retention_execution"
+      ],
+      "observes": "agon.bridge.retention_request.v1",
+      "summary_class": "retention_pressure",
+      "summary_id": "agon.stats.vds.retention_pressure_summary"
+    },
+    {
+      "dimensions": [
+        "bundle_output_count",
+        "owner_route_count",
+        "canon_promotion_allowed"
+      ],
+      "may_emit": [
+        "derived_observation_candidate"
+      ],
+      "must_not_emit": [
+        "kag_promotion",
+        "tos_promotion"
+      ],
+      "observes": "agon.bridge.inscription_bundle_candidate.v1",
+      "summary_class": "inscription_bundle_health",
+      "summary_id": "agon.stats.vds.inscription_bundle_health_summary"
+    }
+  ],
+  "version": "0.1.0",
+  "wave": "XI"
+}

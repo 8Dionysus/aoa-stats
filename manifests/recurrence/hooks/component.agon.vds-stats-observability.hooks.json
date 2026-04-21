@@ -1,0 +1,16 @@
+{
+  "component_id": "component.agon.vds-stats-observability",
+  "hidden_scheduler_allowed": false,
+  "hook_binding_set_id": "hooks:component.agon.vds-stats-observability",
+  "hooks": [
+    {
+      "emits": "stats_review_queue_candidate",
+      "hook_id": "agon.vds.stats.drift",
+      "watches": [
+        "generated/agon_vds_stats_observability_registry.min.json"
+      ]
+    }
+  ],
+  "owner_repo": "aoa-stats",
+  "runtime_effect": "none"
+}
