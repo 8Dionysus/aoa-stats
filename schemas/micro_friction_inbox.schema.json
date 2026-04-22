@@ -1,0 +1,74 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://aoa.local/schemas/micro_friction_inbox.schema.json",
+  "title": "AoA micro friction inbox",
+  "type": "object",
+  "required": [
+    "schema_version",
+    "inbox_ref",
+    "owner_repo",
+    "intake_window",
+    "entries",
+    "source_refs"
+  ],
+  "properties": {
+    "schema_version": {
+      "const": "aoa_micro_friction_inbox_v1"
+    },
+    "inbox_ref": {
+      "type": "string",
+      "minLength": 3
+    },
+    "owner_repo": {
+      "type": "string",
+      "minLength": 3
+    },
+    "intake_window": {
+      "type": "string",
+      "minLength": 3
+    },
+    "entries": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "required": ["item_ref", "item_kind", "triage_state", "note"],
+        "properties": {
+          "item_ref": {
+            "type": "string",
+            "minLength": 3
+          },
+          "item_kind": {
+            "type": "string",
+            "enum": ["receipt", "recurrence"]
+          },
+          "triage_state": {
+            "type": "string",
+            "enum": ["open", "hold", "closed"]
+          },
+          "note": {
+            "type": "string",
+            "minLength": 3
+          }
+        },
+        "additionalProperties": false
+      }
+    },
+    "source_refs": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "string",
+        "minLength": 1
+      }
+    },
+    "boundary_notes": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "minLength": 1
+      }
+    }
+  },
+  "additionalProperties": false
+}

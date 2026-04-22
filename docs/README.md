@@ -11,6 +11,8 @@ Use this map when you want to know which stats-layer document to open next.
 - current direction and live summary contour: `../ROADMAP.md` and `../README.md#current-v0-surface`
 - release flow and public release narrative: `RELEASING.md` and `../CHANGELOG.md`
 - growth-refinery funnel summary: `GROWTH_FUNNEL_SUMMARY.md`
+- micro friction receipts, recurrence, and inbox:
+  `MICRO_FRICTION_RECEIPTS.md`
 - fourth-wave next-kernel branch and automation follow-through:
   `SESSION_GROWTH_BRANCH_SUMMARY.md` and `AUTOMATION_FOLLOWTHROUGH_SUMMARY.md`
 - wave-six deployment continuity summary:

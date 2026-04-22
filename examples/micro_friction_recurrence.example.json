@@ -1,0 +1,22 @@
+{
+  "schema_version": "aoa_micro_friction_recurrence_v1",
+  "recurrence_ref": "mfr-001",
+  "owner_repo": "aoa-stats",
+  "window_ref": "2026-04-22T15:00:00Z/2026-04-22T15:30:00Z",
+  "repeated_friction_signals": [
+    {
+      "receipt_ref": "mf-001",
+      "friction_kind": "route_discovery_gap",
+      "observed_at": "2026-04-22T15:00:00Z",
+      "recurring_reason": "The same contract surface needed more than one entry point."
+    }
+  ],
+  "recurrence_readout": "One repeated friction signal suggests the route note should stay visible in docs and examples.",
+  "source_refs": [
+    "examples/micro_friction_receipt.example.json"
+  ],
+  "boundary_notes": [
+    "Recurrence remains descriptive and downstream.",
+    "It does not become workflow authority."
+  ]
+}

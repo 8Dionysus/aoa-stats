@@ -1,0 +1,79 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://aoa.local/schemas/micro_friction_recurrence.schema.json",
+  "title": "AoA micro friction recurrence",
+  "type": "object",
+  "required": [
+    "schema_version",
+    "recurrence_ref",
+    "owner_repo",
+    "window_ref",
+    "repeated_friction_signals",
+    "recurrence_readout",
+    "source_refs"
+  ],
+  "properties": {
+    "schema_version": {
+      "const": "aoa_micro_friction_recurrence_v1"
+    },
+    "recurrence_ref": {
+      "type": "string",
+      "minLength": 3
+    },
+    "owner_repo": {
+      "type": "string",
+      "minLength": 3
+    },
+    "window_ref": {
+      "type": "string",
+      "minLength": 3
+    },
+    "repeated_friction_signals": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "required": ["receipt_ref", "friction_kind", "observed_at", "recurring_reason"],
+        "properties": {
+          "receipt_ref": {
+            "type": "string",
+            "minLength": 3
+          },
+          "friction_kind": {
+            "type": "string",
+            "minLength": 3
+          },
+          "observed_at": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "recurring_reason": {
+            "type": "string",
+            "minLength": 5
+          }
+        },
+        "additionalProperties": false
+      }
+    },
+    "recurrence_readout": {
+      "type": "string",
+      "minLength": 5
+    },
+    "source_refs": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "string",
+        "minLength": 1
+      }
+    },
+    "boundary_notes": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "minLength": 1
+      }
+    }
+  },
+  "additionalProperties": false
+}

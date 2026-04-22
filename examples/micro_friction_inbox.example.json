@@ -1,0 +1,28 @@
+{
+  "schema_version": "aoa_micro_friction_inbox_v1",
+  "inbox_ref": "mfi-001",
+  "owner_repo": "aoa-stats",
+  "intake_window": "2026-04-22T15:00:00Z/2026-04-22T16:00:00Z",
+  "entries": [
+    {
+      "item_ref": "mf-001",
+      "item_kind": "receipt",
+      "triage_state": "open",
+      "note": "Keep the friction note visible until the route link lands."
+    },
+    {
+      "item_ref": "mfr-001",
+      "item_kind": "recurrence",
+      "triage_state": "hold",
+      "note": "Treat the repeat signal as a summarization hint, not governance."
+    }
+  ],
+  "source_refs": [
+    "examples/micro_friction_receipt.example.json",
+    "examples/micro_friction_recurrence.example.json"
+  ],
+  "boundary_notes": [
+    "The inbox is a derived intake surface.",
+    "It does not replace owner-local review."
+  ]
+}

@@ -1,0 +1,17 @@
+{
+  "schema_version": "aoa_micro_friction_receipt_v1",
+  "receipt_ref": "mf-001",
+  "owner_repo": "aoa-stats",
+  "observed_at": "2026-04-22T15:00:00Z",
+  "friction_kind": "route_discovery_gap",
+  "friction_note": "The current route map did not expose the intended contract surface fast enough.",
+  "requested_next_step": "add one route link and one boundary note",
+  "source_refs": [
+    "docs/README.md",
+    "docs/BOUNDARIES.md"
+  ],
+  "boundary_notes": [
+    "This receipt records a small friction signal only.",
+    "It does not decide route ownership."
+  ]
+}
