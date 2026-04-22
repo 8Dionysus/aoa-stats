@@ -1,38 +1,129 @@
 {
-  "type": "object",
-  "properties": {
-    "id": {
-      "type": "string"
-    },
-    "kind": {
-      "type": "string"
-    },
-    "version": {
-      "type": "string"
-    },
-    "certified": {
-      "type": "boolean"
-    },
-    "rollback_ready": {
-      "type": "boolean"
-    },
-    "post_release_watch": {
-      "type": "string"
-    },
-    "new_drift_detected": {
-      "type": "boolean"
-    }
-  },
-  "required": [
-    "id",
-    "kind",
-    "version",
-    "certified",
-    "rollback_ready",
-    "post_release_watch",
-    "new_drift_detected"
-  ],
-  "additionalProperties": false,
   "$schema": "https://json-schema.org/draft/2020-12/schema",
-  "title": "Release Health Summary V1"
+  "$id": "https://aoa.local/aoa-stats/schemas/release_health_summary_v1.json",
+  "title": "Release Health Summary V1",
+  "oneOf": [
+    {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string"
+        },
+        "kind": {
+          "type": "string"
+        },
+        "version": {
+          "type": "string"
+        },
+        "certified": {
+          "type": "boolean"
+        },
+        "rollback_ready": {
+          "type": "boolean"
+        },
+        "post_release_watch": {
+          "type": "string"
+        },
+        "new_drift_detected": {
+          "type": "boolean"
+        }
+      },
+      "required": [
+        "id",
+        "kind",
+        "version",
+        "certified",
+        "rollback_ready",
+        "post_release_watch",
+        "new_drift_detected"
+      ],
+      "additionalProperties": false,
+      "$schema": "https://json-schema.org/draft/2020-12/schema",
+      "title": "Release Health Summary V1"
+    },
+    {
+      "$schema": "https://json-schema.org/draft/2020-12/schema",
+      "$id": "https://aoa.local/aoa-stats/schemas/release_health_summary_v1.json",
+      "title": "Release Health Summary V1",
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "allowed",
+        "created_at",
+        "evidence_refs",
+        "id",
+        "kind",
+        "notes",
+        "owner_repo",
+        "status",
+        "surface",
+        "version"
+      ],
+      "properties": {
+        "allowed": {
+          "type": "boolean"
+        },
+        "created_at": {
+          "type": "string",
+          "minLength": 1,
+          "format": "date-time"
+        },
+        "evidence_refs": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "minLength": 1
+          },
+          "minItems": 1
+        },
+        "id": {
+          "type": "string",
+          "minLength": 1
+        },
+        "kind": {
+          "type": "string",
+          "minLength": 1,
+          "const": "release_health_summary_v1"
+        },
+        "notes": {
+          "type": "string",
+          "minLength": 1
+        },
+        "owner_repo": {
+          "type": "string",
+          "minLength": 1,
+          "const": "aoa-stats"
+        },
+        "status": {
+          "type": "string",
+          "minLength": 1,
+          "enum": [
+            "active",
+            "allowed",
+            "applied",
+            "blocked",
+            "completed",
+            "draft",
+            "failed",
+            "held",
+            "passed",
+            "proposed",
+            "rejected",
+            "rolled_back",
+            "sealed"
+          ]
+        },
+        "surface": {
+          "type": "string",
+          "minLength": 1,
+          "const": "release_health_summary_v1"
+        },
+        "version": {
+          "type": "string",
+          "minLength": 1,
+          "const": "1.0.0"
+        }
+      }
+    }
+  ]
 }
