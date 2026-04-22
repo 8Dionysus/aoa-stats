@@ -19,6 +19,11 @@ Each catalog entry keeps:
 - `live_state_capable`: whether the surface can participate in the local live
   refresh loop
 
+Together these fields form the stats-owned surface profile that consumers may
+use as a re-grounding signal. The profile names caution and stronger owner
+inputs; it does not decide whether a route, proof, workflow, or quest state is
+true.
+
 ## Input posture classes
 
 Use these classes as the compact posture vocabulary:
@@ -60,3 +65,6 @@ Today `antifragility_vector` stays in that deferred posture.
 Surface strength metadata helps `aoa-stats` become a better participant in the
 federation.
 It does not make `aoa-stats` sovereign.
+
+For the consumer-facing re-grounding contract, read
+`CONSUMER_REGROUNDING_SIGNALS.md`.

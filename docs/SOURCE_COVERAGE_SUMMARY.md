@@ -21,6 +21,9 @@ This summary keeps that honest by publishing:
 - counts by owner repo and event kind
 - thin-signal flags when the intake posture is narrow or skewed
 
+Consumers should treat those thin-signal flags as a prompt to re-ground in
+owner-local sources before relying on derived summaries for risky work.
+
 ## What it does not do
 
 This surface does not:
@@ -31,6 +34,9 @@ This surface does not:
 - justify new summary families on its own
 
 It is a derived intake audit, not a sovereignty claim.
+
+It may trigger a consumer-side re-grounding policy. It must not become that
+policy itself.
 
 ## Input posture
 
