@@ -49,6 +49,7 @@ Use the shortest route by need:
   `config/stats_event_kind_registry.json`,
   `docs/SURFACE_STRENGTH_MODEL.md`,
   `docs/SOURCE_COVERAGE_SUMMARY.md`,
+  `docs/CONSUMER_REGROUNDING_SIGNALS.md`,
   `schemas/source-coverage-summary.schema.json`,
   `examples/source_coverage_summary.example.json`, and
   `generated/source_coverage_summary.min.json`

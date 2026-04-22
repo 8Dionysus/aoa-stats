@@ -27,7 +27,9 @@ Use this map when you want to know which stats-layer document to open next.
 - fourth-wave repeated stress recovery derivation: `STRESS_RECOVERY_WINDOW_SUMMARIES.md`
 - chaos-wave stress recovery example landing: `STRESS_RECOVERY_SUMMARIES_CHAOS_WAVE1.md`
 - receipt ABI and intake governance: `RECEIPT_ABI_GOVERNANCE.md`
-- surface strength and meta-observability: `SURFACE_STRENGTH_MODEL.md` and `SOURCE_COVERAGE_SUMMARY.md`
+- surface strength and meta-observability:
+  `SURFACE_STRENGTH_MODEL.md`, `SOURCE_COVERAGE_SUMMARY.md`, and
+  `CONSUMER_REGROUNDING_SIGNALS.md`
 - derived signal precedence and anti-loop hygiene: `DERIVED_SIGNAL_HYGIENE.md`
 
 ## Notes
