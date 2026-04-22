@@ -19,7 +19,7 @@ The first usable summary families are already landed:
   runtime-closeout summaries
 - Codex-plane deployment, rollout-operations, rollout-drift, rollout-campaign,
   drift-review, continuity-window, component-refresh, stress-recovery,
-  source-coverage, and surface-detection summaries
+  source-coverage, surface-detection, and Titan-incarnation summaries
 - the summary-surface catalog plus the repo-local `aoa_stats` MCP read model
 
 The next honest move is not to widen into a dashboard empire.
@@ -67,6 +67,9 @@ workflow or proof layer. Its current checked surface is:
   `generated/rollout_campaign_summary.min.json`,
   `generated/drift_review_summary.min.json`, and
   `generated/continuity_window_summary.min.json`
+- Titan-incarnation seed posture summary:
+  `schemas/titan_incarnation_summary.schema.json` and
+  `generated/titan_incarnation_summary.min.json`
 - deterministic builder and release validation:
   `scripts/build_views.py`, `scripts/validate_repo.py`, and
   `scripts/release_check.py`

@@ -251,6 +251,22 @@ SURFACE_SPECS = [
         live_state_capable=True,
     ),
     _surface(
+        name="titan_incarnation_summary",
+        surface_ref="generated/titan_incarnation_summary.min.json",
+        schema_ref="schemas/titan_incarnation_summary.schema.json",
+        primary_question="What bounded Titan incarnation seed posture is visible without making stats the owner of Titan identity or gates?",
+        derivation_rule="derive fixed seed counts from the landed Titan XV owner surfaces and keep source receipt refs explicit",
+        input_posture="reviewed_example_chain",
+        owner_truth_inputs=[
+            "Dionysus fifteenth wave manifest",
+            "aoa-agents Titan incarnation identity surface",
+            "aoa-sdk Titan incarnation spine defaults",
+        ],
+        authority_ceiling="Weaker than Dionysus seed lineage, aoa-agents role identity, aoa-sdk runtime helpers, and owner review evidence.",
+        consumer_risk="high",
+        live_state_capable=False,
+    ),
+    _surface(
         name="runtime_closeout_summary",
         surface_ref="generated/runtime_closeout_summary.min.json",
         schema_ref="schemas/runtime-closeout-summary.schema.json",

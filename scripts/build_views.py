@@ -2505,6 +2505,19 @@ def build_surface_detection_summary(
     }
 
 
+def build_titan_incarnation_summary() -> dict[str, Any]:
+    return {
+        "schema_version": "titan_incarnation_summary/v1",
+        "summary_ref": "generated:titan-incarnation-summary:seed",
+        "source_receipt_refs": ["seed:titan-fifteenth-wave"],
+        "counts": {
+            "seeded_titans": 5,
+            "default_active": 3,
+            "locked_by_gate": 2,
+        },
+    }
+
+
 def build_all_views(
     receipts: list[dict[str, Any]],
     input_paths: list[str],
@@ -2570,6 +2583,7 @@ def build_all_views(
         ("drift_review_summary.min.json", build_drift_review_summary),
         ("continuity_window_summary.min.json", build_continuity_window_summary),
         ("component_refresh_summary.min.json", build_component_refresh_summary),
+        ("titan_incarnation_summary.min.json", build_titan_incarnation_summary),
     ):
         try:
             outputs[name] = builder()
