@@ -1,0 +1,32 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://aoa.local/aoa-stats/schemas/runtime_queue_summary_v1.json",
+  "title": "runtime_queue_summary_v1",
+  "description": "Seed schema for runtime_queue_summary_v1 in Experience Constitution Runtime v0.9.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "active_stays",
+    "cases_open",
+    "generated_at",
+    "summary_id"
+  ],
+  "properties": {
+    "active_stays": {
+      "type": "integer",
+      "minimum": 0
+    },
+    "cases_open": {
+      "type": "integer",
+      "minimum": 0
+    },
+    "generated_at": {
+      "type": "string",
+      "minLength": 1
+    },
+    "summary_id": {
+      "type": "string",
+      "minLength": 1
+    }
+  }
+}
