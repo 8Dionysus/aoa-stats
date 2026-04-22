@@ -1,0 +1,9 @@
+{
+  "summary_id": "postrel.summary.001",
+  "release_id": "assistant.notary.1.1.0",
+  "family": "wrong_surface",
+  "before_count": 5,
+  "after_count": 1,
+  "reduced": true,
+  "authority_ceiling": "derived_summary_not_proof"
+}

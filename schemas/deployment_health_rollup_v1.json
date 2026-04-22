@@ -1,0 +1,31 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "deployment_health_rollup",
+  "type": "object",
+  "description": "deployment_health_rollup schema for AoA experience deployment watchtower v0.5.",
+  "required": [
+    "rollup_id",
+    "release_id",
+    "health",
+    "open_alarm_count",
+    "rollback_ready"
+  ],
+  "properties": {
+    "rollup_id": {
+      "type": "string"
+    },
+    "release_id": {
+      "type": "string"
+    },
+    "health": {
+      "type": "string"
+    },
+    "open_alarm_count": {
+      "type": "integer"
+    },
+    "rollback_ready": {
+      "type": "boolean"
+    }
+  },
+  "additionalProperties": true
+}

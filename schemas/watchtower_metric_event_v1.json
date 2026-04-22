@@ -1,0 +1,35 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "watchtower_metric_event",
+  "type": "object",
+  "description": "watchtower_metric_event schema for AoA experience deployment watchtower v0.5.",
+  "required": [
+    "event_id",
+    "event_kind",
+    "release_id",
+    "metric_name",
+    "metric_value",
+    "observed_at"
+  ],
+  "properties": {
+    "event_id": {
+      "type": "string"
+    },
+    "event_kind": {
+      "type": "string"
+    },
+    "release_id": {
+      "type": "string"
+    },
+    "metric_name": {
+      "type": "string"
+    },
+    "metric_value": {
+      "type": "number"
+    },
+    "observed_at": {
+      "type": "string"
+    }
+  },
+  "additionalProperties": true
+}

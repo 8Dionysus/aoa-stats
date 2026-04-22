@@ -1,0 +1,8 @@
+{
+  "summary_id": "drift.recur.001",
+  "release_id": "assistant.notary.1.1.0",
+  "family": "false_completion",
+  "count": 0,
+  "window": "ring_0",
+  "material": false
+}

@@ -1,0 +1,7 @@
+{
+  "summary_id": "rollback.metrics.001",
+  "release_id": "assistant.notary.1.1.0",
+  "rollback_count": 0,
+  "mean_decision_latency_sec": 0.0,
+  "residual_alarm_count": 0
+}

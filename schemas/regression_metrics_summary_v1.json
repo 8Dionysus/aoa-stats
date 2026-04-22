@@ -1,0 +1,62 @@
+{
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "string"
+    },
+    "kind": {
+      "type": "string"
+    },
+    "pack_id": {
+      "type": "string"
+    },
+    "cases_total": {
+      "type": "integer"
+    },
+    "coverage": {
+      "type": "object",
+      "properties": {
+        "golden": {
+          "type": "integer"
+        },
+        "boundary": {
+          "type": "integer"
+        },
+        "degradation": {
+          "type": "integer"
+        },
+        "negative": {
+          "type": "integer"
+        }
+      },
+      "required": [
+        "golden",
+        "boundary",
+        "degradation",
+        "negative"
+      ],
+      "additionalProperties": false
+    },
+    "failures_by_family": {
+      "type": "object",
+      "properties": {},
+      "required": [],
+      "additionalProperties": false
+    },
+    "pass_rate": {
+      "type": "number"
+    }
+  },
+  "required": [
+    "id",
+    "kind",
+    "pack_id",
+    "cases_total",
+    "coverage",
+    "failures_by_family",
+    "pass_rate"
+  ],
+  "additionalProperties": false,
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Regression Metrics Summary V1"
+}

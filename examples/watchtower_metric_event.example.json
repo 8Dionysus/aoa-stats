@@ -1,0 +1,8 @@
+{
+  "event_id": "metric.001",
+  "event_kind": "experience.watch.metric.observed",
+  "release_id": "assistant.notary.1.1.0",
+  "metric_name": "canary_pass_rate",
+  "metric_value": 1.0,
+  "observed_at": "2026-04-22T00:00:00Z"
+}

@@ -1,0 +1,7 @@
+{
+  "rollup_id": "health.rollup.001",
+  "release_id": "assistant.notary.1.1.0",
+  "health": "healthy",
+  "open_alarm_count": 0,
+  "rollback_ready": true
+}

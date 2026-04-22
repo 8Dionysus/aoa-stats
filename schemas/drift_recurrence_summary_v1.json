@@ -1,0 +1,35 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "drift_recurrence_summary",
+  "type": "object",
+  "description": "drift_recurrence_summary schema for AoA experience deployment watchtower v0.5.",
+  "required": [
+    "summary_id",
+    "release_id",
+    "family",
+    "count",
+    "window",
+    "material"
+  ],
+  "properties": {
+    "summary_id": {
+      "type": "string"
+    },
+    "release_id": {
+      "type": "string"
+    },
+    "family": {
+      "type": "string"
+    },
+    "count": {
+      "type": "integer"
+    },
+    "window": {
+      "type": "string"
+    },
+    "material": {
+      "type": "boolean"
+    }
+  },
+  "additionalProperties": true
+}
