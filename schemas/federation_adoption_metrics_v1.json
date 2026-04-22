@@ -68,13 +68,17 @@
       "additionalProperties": false,
       "properties": {
         "owner_adoptions": {
-          "type": "integer"
+          "type": "integer",
+          "minimum": 0
         },
         "rollback_after_adoption": {
-          "type": "integer"
+          "type": "integer",
+          "minimum": 0
         },
         "retention_pass_rate": {
-          "type": "number"
+          "type": "number",
+          "minimum": 0,
+          "maximum": 1
         }
       }
     }

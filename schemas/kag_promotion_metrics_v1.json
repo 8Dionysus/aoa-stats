@@ -68,13 +68,16 @@
       "additionalProperties": false,
       "properties": {
         "kag_candidates": {
-          "type": "integer"
+          "type": "integer",
+          "minimum": 0
         },
         "promoted": {
-          "type": "integer"
+          "type": "integer",
+          "minimum": 0
         },
         "blocked": {
-          "type": "integer"
+          "type": "integer",
+          "minimum": 0
         }
       }
     }

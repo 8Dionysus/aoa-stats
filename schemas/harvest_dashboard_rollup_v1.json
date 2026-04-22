@@ -69,16 +69,20 @@
       "additionalProperties": false,
       "properties": {
         "candidates": {
-          "type": "integer"
+          "type": "integer",
+          "minimum": 0
         },
         "approved": {
-          "type": "integer"
+          "type": "integer",
+          "minimum": 0
         },
         "blocked": {
-          "type": "integer"
+          "type": "integer",
+          "minimum": 0
         },
         "expired": {
-          "type": "integer"
+          "type": "integer",
+          "minimum": 0
         }
       }
     }

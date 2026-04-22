@@ -72,10 +72,12 @@
           "type": "string"
         },
         "repo_count": {
-          "type": "integer"
+          "type": "integer",
+          "minimum": 0
         },
         "signal_count": {
-          "type": "integer"
+          "type": "integer",
+          "minimum": 0
         },
         "threshold_met": {
           "type": "boolean"

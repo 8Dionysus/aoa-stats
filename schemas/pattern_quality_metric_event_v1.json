@@ -74,7 +74,9 @@
           "type": "string"
         },
         "value": {
-          "type": "number"
+          "type": "number",
+          "minimum": 0,
+          "maximum": 1
         }
       }
     }

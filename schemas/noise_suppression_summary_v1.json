@@ -68,13 +68,16 @@
       "additionalProperties": false,
       "properties": {
         "duplicates": {
-          "type": "integer"
+          "type": "integer",
+          "minimum": 0
         },
         "suppressed": {
-          "type": "integer"
+          "type": "integer",
+          "minimum": 0
         },
         "false_positive": {
-          "type": "integer"
+          "type": "integer",
+          "minimum": 0
         }
       }
     }
