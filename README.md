@@ -95,6 +95,10 @@ Use the shortest route by need:
   `examples/summary_refresh_law.example.json`,
   `examples/component_refresh_summary.example.json`, and
   `generated/component_refresh_summary.min.json`
+- Titan incarnation pulse metrics:
+  `docs/TITAN_INCARNATION_METRICS.md`,
+  `schemas/titan_incarnation_summary.schema.json`, and
+  `generated/titan_incarnation_summary.min.json`
 - growth-refinery funnel doctrine and contracts:
   `docs/GROWTH_FUNNEL_SUMMARY.md`,
   `schemas/candidate_lineage_summary.schema.json`,
