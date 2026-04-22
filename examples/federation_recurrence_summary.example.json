@@ -1,0 +1,18 @@
+{
+  "schema_version": "1.0",
+  "kind": "federation_recurrence_summary",
+  "id": "federation_recurrence_summary.example",
+  "status": "candidate",
+  "summary": "Example federation_recurrence_summary object for v0.6 federation harvest seed.",
+  "owner_repo": "aoa-stats",
+  "evidence_refs": [
+    "receipt://v0.6/federation_recurrence_summary/example"
+  ],
+  "payload": {
+    "top_families": [
+      "wrong_surface",
+      "verification_overclaim"
+    ],
+    "window": "14d"
+  }
+}

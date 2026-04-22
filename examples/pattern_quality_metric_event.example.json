@@ -1,0 +1,16 @@
+{
+  "schema_version": "1.0",
+  "kind": "pattern_quality_metric_event",
+  "id": "pattern_quality_metric_event.example",
+  "status": "candidate",
+  "summary": "Example pattern_quality_metric_event object for v0.6 federation harvest seed.",
+  "owner_repo": "aoa-stats",
+  "evidence_refs": [
+    "receipt://v0.6/pattern_quality_metric_event/example"
+  ],
+  "payload": {
+    "pattern_id": "pattern.wrong_surface.cross_repo.001",
+    "metric": "retention_rate",
+    "value": 0.92
+  }
+}

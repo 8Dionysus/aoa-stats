@@ -1,0 +1,17 @@
+{
+  "schema_version": "1.0",
+  "kind": "cross_repo_signal_rollup",
+  "id": "cross_repo_signal_rollup.example",
+  "status": "candidate",
+  "summary": "Example cross_repo_signal_rollup object for v0.6 federation harvest seed.",
+  "owner_repo": "aoa-stats",
+  "evidence_refs": [
+    "receipt://v0.6/cross_repo_signal_rollup/example"
+  ],
+  "payload": {
+    "family": "wrong_surface",
+    "repo_count": 4,
+    "signal_count": 9,
+    "threshold_met": true
+  }
+}
