@@ -1,0 +1,14 @@
+{
+  "by_family": {},
+  "created_at": "2026-04-22T00:00:00Z",
+  "evidence_refs": [
+    "generated/multi_office_train_clean_flow/release_train.json"
+  ],
+  "id": "office_incident_rollup_v1_example",
+  "incidents": 0,
+  "kind": "office_incident_rollup_v1",
+  "notes": "Example artifact for office_incident_rollup_v1.",
+  "owner_repo": "aoa-stats",
+  "status": "draft",
+  "version": "1.1.0"
+}
