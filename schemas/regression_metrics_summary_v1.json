@@ -11,22 +11,27 @@
       "type": "string"
     },
     "cases_total": {
-      "type": "integer"
+      "type": "integer",
+      "minimum": 0
     },
     "coverage": {
       "type": "object",
       "properties": {
         "golden": {
-          "type": "integer"
+          "type": "integer",
+          "minimum": 0
         },
         "boundary": {
-          "type": "integer"
+          "type": "integer",
+          "minimum": 0
         },
         "degradation": {
-          "type": "integer"
+          "type": "integer",
+          "minimum": 0
         },
         "negative": {
-          "type": "integer"
+          "type": "integer",
+          "minimum": 0
         }
       },
       "required": [
@@ -39,12 +44,15 @@
     },
     "failures_by_family": {
       "type": "object",
-      "properties": {},
-      "required": [],
-      "additionalProperties": false
+      "additionalProperties": {
+        "type": "integer",
+        "minimum": 0
+      }
     },
     "pass_rate": {
-      "type": "number"
+      "type": "number",
+      "minimum": 0,
+      "maximum": 1
     }
   },
   "required": [
