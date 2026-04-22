@@ -34,6 +34,7 @@ It may consume:
 It may emit:
 
 - object summaries
+- micro friction receipts, recurrence snapshots, and inbox summaries
 - candidate-lineage summaries
 - session-growth branch summaries
 - owner-landing summaries
@@ -52,6 +53,7 @@ It must not emit:
 - a replacement for bundle-local verdict meaning
 - route or quest state authority
 - workflow instructions that override owner repos
+- inboxes that pretend to be governance
 
 ## Anti-collapse rules
 

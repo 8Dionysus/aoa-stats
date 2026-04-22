@@ -100,6 +100,14 @@ Use the shortest route by need:
   `schemas/candidate_lineage_summary.schema.json`,
   `examples/candidate_lineage_summary.example.json`, and
   `generated/candidate_lineage_summary.min.json`
+- micro friction receipts, recurrence, and inbox:
+  `docs/MICRO_FRICTION_RECEIPTS.md`,
+  `schemas/micro_friction_receipt.schema.json`,
+  `schemas/micro_friction_recurrence.schema.json`,
+  `schemas/micro_friction_inbox.schema.json`, and
+  `examples/micro_friction_receipt.example.json`,
+  `examples/micro_friction_recurrence.example.json`,
+  `examples/micro_friction_inbox.example.json`
 - growth-refinery owner landing and pruning followthrough:
   `docs/OWNER_LANDING_SUMMARY.md`,
   `docs/SUPERSESSION_DROP_SUMMARY.md`,
