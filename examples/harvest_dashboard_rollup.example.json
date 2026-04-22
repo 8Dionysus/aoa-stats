@@ -1,0 +1,17 @@
+{
+  "schema_version": "1.0",
+  "kind": "harvest_dashboard_rollup",
+  "id": "harvest_dashboard_rollup.example",
+  "status": "candidate",
+  "summary": "Example harvest_dashboard_rollup object for v0.6 federation harvest seed.",
+  "owner_repo": "aoa-stats",
+  "evidence_refs": [
+    "receipt://v0.6/harvest_dashboard_rollup/example"
+  ],
+  "payload": {
+    "candidates": 7,
+    "approved": 2,
+    "blocked": 3,
+    "expired": 2
+  }
+}

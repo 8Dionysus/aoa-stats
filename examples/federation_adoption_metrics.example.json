@@ -1,0 +1,16 @@
+{
+  "schema_version": "1.0",
+  "kind": "federation_adoption_metrics",
+  "id": "federation_adoption_metrics.example",
+  "status": "candidate",
+  "summary": "Example federation_adoption_metrics object for v0.6 federation harvest seed.",
+  "owner_repo": "aoa-stats",
+  "evidence_refs": [
+    "receipt://v0.6/federation_adoption_metrics/example"
+  ],
+  "payload": {
+    "owner_adoptions": 5,
+    "rollback_after_adoption": 0,
+    "retention_pass_rate": 0.8
+  }
+}
