@@ -76,6 +76,7 @@ def test_summary_surface_catalog_contract_is_exact() -> None:
         "drift_review_summary",
         "continuity_window_summary",
         "component_refresh_summary",
+        "titan_incarnation_summary",
         "runtime_closeout_summary",
         "stress_recovery_window_summary",
         "source_coverage_summary",
