@@ -1,0 +1,14 @@
+{
+  "id": "metrics.regression.notary.001",
+  "kind": "regression_metrics_summary",
+  "pack_id": "reg.pack.notary.001",
+  "cases_total": 5,
+  "coverage": {
+    "golden": 2,
+    "boundary": 1,
+    "degradation": 1,
+    "negative": 1
+  },
+  "failures_by_family": {},
+  "pass_rate": 1.0
+}

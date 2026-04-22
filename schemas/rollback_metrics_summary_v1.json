@@ -1,0 +1,31 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "rollback_metrics_summary",
+  "type": "object",
+  "description": "rollback_metrics_summary schema for AoA experience deployment watchtower v0.5.",
+  "required": [
+    "summary_id",
+    "release_id",
+    "rollback_count",
+    "mean_decision_latency_sec",
+    "residual_alarm_count"
+  ],
+  "properties": {
+    "summary_id": {
+      "type": "string"
+    },
+    "release_id": {
+      "type": "string"
+    },
+    "rollback_count": {
+      "type": "integer"
+    },
+    "mean_decision_latency_sec": {
+      "type": "number"
+    },
+    "residual_alarm_count": {
+      "type": "integer"
+    }
+  },
+  "additionalProperties": true
+}

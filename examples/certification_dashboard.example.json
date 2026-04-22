@@ -1,0 +1,12 @@
+{
+  "id": "dash.certification.2026-04-22",
+  "kind": "certification_dashboard",
+  "candidates_total": 2,
+  "approved": 1,
+  "blocked": 1,
+  "blocked_by_gate": {
+    "authority": 1
+  },
+  "rollback_ready": 1,
+  "watch_scheduled": 1
+}

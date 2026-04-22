@@ -1,0 +1,51 @@
+{
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "string"
+    },
+    "kind": {
+      "type": "string"
+    },
+    "candidates_total": {
+      "type": "integer"
+    },
+    "approved": {
+      "type": "integer"
+    },
+    "blocked": {
+      "type": "integer"
+    },
+    "blocked_by_gate": {
+      "type": "object",
+      "properties": {
+        "authority": {
+          "type": "integer"
+        }
+      },
+      "required": [
+        "authority"
+      ],
+      "additionalProperties": false
+    },
+    "rollback_ready": {
+      "type": "integer"
+    },
+    "watch_scheduled": {
+      "type": "integer"
+    }
+  },
+  "required": [
+    "id",
+    "kind",
+    "candidates_total",
+    "approved",
+    "blocked",
+    "blocked_by_gate",
+    "rollback_ready",
+    "watch_scheduled"
+  ],
+  "additionalProperties": false,
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Certification Dashboard V1"
+}

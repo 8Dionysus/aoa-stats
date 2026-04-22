@@ -1,0 +1,35 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "canary_rollup",
+  "type": "object",
+  "description": "canary_rollup schema for AoA experience deployment watchtower v0.5.",
+  "required": [
+    "rollup_id",
+    "release_id",
+    "ring_id",
+    "probe_count",
+    "pass_count",
+    "failure_count"
+  ],
+  "properties": {
+    "rollup_id": {
+      "type": "string"
+    },
+    "release_id": {
+      "type": "string"
+    },
+    "ring_id": {
+      "type": "string"
+    },
+    "probe_count": {
+      "type": "integer"
+    },
+    "pass_count": {
+      "type": "integer"
+    },
+    "failure_count": {
+      "type": "integer"
+    }
+  },
+  "additionalProperties": true
+}

@@ -1,0 +1,40 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "post_release_recurrence_summary",
+  "type": "object",
+  "description": "Derived post-release recurrence summary for AoA experience deployment watchtower v0.5. This is observability, not proof authority.",
+  "required": [
+    "summary_id",
+    "release_id",
+    "family",
+    "before_count",
+    "after_count",
+    "reduced",
+    "authority_ceiling"
+  ],
+  "properties": {
+    "summary_id": {
+      "type": "string"
+    },
+    "release_id": {
+      "type": "string"
+    },
+    "family": {
+      "type": "string"
+    },
+    "before_count": {
+      "type": "integer"
+    },
+    "after_count": {
+      "type": "integer"
+    },
+    "reduced": {
+      "type": "boolean"
+    },
+    "authority_ceiling": {
+      "type": "string",
+      "const": "derived_summary_not_proof"
+    }
+  },
+  "additionalProperties": true
+}

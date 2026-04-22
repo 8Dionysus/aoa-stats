@@ -1,0 +1,9 @@
+{
+  "id": "health.release.notary.1.1.0",
+  "kind": "release_health_summary",
+  "version": "1.1.0",
+  "certified": true,
+  "rollback_ready": true,
+  "post_release_watch": "scheduled",
+  "new_drift_detected": false
+}

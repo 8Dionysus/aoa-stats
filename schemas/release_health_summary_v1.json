@@ -1,0 +1,38 @@
+{
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "string"
+    },
+    "kind": {
+      "type": "string"
+    },
+    "version": {
+      "type": "string"
+    },
+    "certified": {
+      "type": "boolean"
+    },
+    "rollback_ready": {
+      "type": "boolean"
+    },
+    "post_release_watch": {
+      "type": "string"
+    },
+    "new_drift_detected": {
+      "type": "boolean"
+    }
+  },
+  "required": [
+    "id",
+    "kind",
+    "version",
+    "certified",
+    "rollback_ready",
+    "post_release_watch",
+    "new_drift_detected"
+  ],
+  "additionalProperties": false,
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Release Health Summary V1"
+}
