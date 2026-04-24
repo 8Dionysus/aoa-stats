@@ -1,10 +1,5 @@
 #!/usr/bin/env python3
-"""Validate nested AGENTS.md guidance for aoa-stats.
-
-This validator-first spine protects local AGENTS.md surfaces that already exist.
-It also reports high-risk directories that are likely to need future local
-guidance, without making those future files blocking before they land.
-"""
+"""Validate nested AGENTS.md guidance for aoa-stats."""
 from __future__ import annotations
 
 import argparse
@@ -14,8 +9,17 @@ from pathlib import Path
 REPO_ROOT = Path(__file__).resolve().parents[1]
 REPOSITORY_NAME = 'aoa-stats'
 
-REQUIRED_AGENTS_DOCS: dict[str, tuple[str, ...]] = {}
-ADVISORY_AGENT_DIRS: tuple[str, ...] = ('.agents/skills', 'config', 'docs', 'examples', 'generated', 'manifests/recurrence', 'quests', 'schemas', 'scripts', 'src', 'systemd', 'tests')
+REQUIRED_AGENTS_DOCS: dict[str, tuple[str, ...]] = {
+    'config/AGENTS.md': ('stats_event_kind_registry.json', 'live_receipt_sources.json'),
+    'examples/AGENTS.md': ('Examples demonstrate derived stats contracts', 'without becoming canonical evidence'),
+    'generated/AGENTS.md': ('Source repos own meaning', 'Do not hand-edit generated outputs'),
+    'schemas/AGENTS.md': ('Schema changes are contract changes', 'shared receipt envelope'),
+    'scripts/AGENTS.md': ('build_views.py --check', 'derived-only'),
+    'src/AGENTS.md': ('aoa_stats_mcp', 'workflow, proof, route, or quest authority'),
+    'systemd/AGENTS.md': ('user-service surfaces', 'free of secrets'),
+    'tests/AGENTS.md': ('deterministic derivation', 'boundary integrity'),
+}
+ADVISORY_AGENT_DIRS: tuple[str, ...] = ('.agents/skills', 'docs', 'manifests/recurrence', 'quests')
 HEADING_PREFIXES = ("# AGENTS.md", "# AGENTS")
 IGNORED_DIRS = {".git", ".venv", "__pycache__", ".pytest_cache", ".mypy_cache"}
 
