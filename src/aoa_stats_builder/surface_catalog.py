@@ -267,6 +267,22 @@ SURFACE_SPECS = [
         live_state_capable=False,
     ),
     _surface(
+        name="titan_summon_summary",
+        surface_ref="generated/titan_summon_summary.min.json",
+        schema_ref="schemas/titan_summon_summary.schema.json",
+        primary_question="What seed-level Titan summon/report/finding/memory-candidate pressure is visible without making stats the owner of swarm ledger truth?",
+        derivation_rule="publish the Sixteenth Wave seed summary until owner-local Titan swarm ledgers and closeout receipts provide a live feed",
+        input_posture="seed_static_summary",
+        owner_truth_inputs=[
+            "Dionysus sixteenth wave manifest",
+            "aoa-sdk Titan swarm ledger helper",
+            "Titan closeout audit receipts",
+        ],
+        authority_ceiling="Weaker than Titan swarm ledgers, closeout audits, owner-local reports, and bounded eval verdicts.",
+        consumer_risk="high",
+        live_state_capable=False,
+    ),
+    _surface(
         name="runtime_closeout_summary",
         surface_ref="generated/runtime_closeout_summary.min.json",
         schema_ref="schemas/runtime-closeout-summary.schema.json",
