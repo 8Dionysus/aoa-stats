@@ -34,7 +34,7 @@ surface really is.
 
 ### Current release contour
 
-The live `v0.1.2` contour is derived-observability hardening, not a new
+The live `v0.1.3` contour is derived-observability hardening, not a new
 workflow or proof layer. Its current checked surface is:
 
 - boundary and architecture posture:
