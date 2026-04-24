@@ -7,6 +7,45 @@ Tracking starts with the first public release-prep baseline for this repository.
 
 ## [Unreleased]
 
+## [0.1.3] - 2026-04-23
+
+### Summary
+
+- this patch expands derived observability across Agon prebindings,
+  verdict-delta scars, mechanical trials, retention rank, schools/lineages,
+  KAG/Sophian signals, and Wave XV epistemic stats
+- recurrence derived summaries, consumer re-grounding signals, Titan metrics,
+  Experience micro-friction, release summaries, adoption metrics, governance
+  stats, regression summaries, and Titan incarnation summaries are added or
+  tightened
+- `aoa-stats` remains a downstream derived layer that summarizes owner-owned
+  evidence without becoming workflow, proof, memory, routing, or runtime truth
+
+### Added
+
+- Agon observability surfaces for court/memo/stats prebindings, scar deltas,
+  mechanical trials, retention rank, schools/lineages, KAG/Sophian, and
+  epistemic waves
+- recurrence derived summary contracts, consumer re-grounding signals,
+  live-surface registration, Titan metrics, Titan incarnation summaries,
+  Experience micro-friction, release, adoption, governance, and regression
+  summary surfaces
+
+### Changed
+
+- stats review follow-ups, contract drift, recurrence projection schemas,
+  regression summary metric schemas, consumer re-grounding freshness, and live
+  derived-surface registration were tightened
+
+### Validation
+
+- `python scripts/release_check.py`
+
+### Notes
+
+- this patch keeps observability derived and evidence-bound; owner repos still
+  decide what events, verdicts, memories, and runtime records mean
+
 ## [0.1.2] - 2026-04-19
 
 ### Summary
