@@ -68,7 +68,7 @@ The AoA workspace-level Codex config can wire this repo-local server with:
 [mcp_servers.aoa_stats]
 command = "python3"
 args = ["scripts/aoa_stats_mcp_server.py"]
-cwd = "/srv/aoa-stats"
+cwd = "/srv/AbyssOS/aoa-stats"
 ```
 
 Keep the wiring project-scoped. Do not mirror personal sandbox or model

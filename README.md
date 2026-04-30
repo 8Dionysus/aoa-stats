@@ -314,7 +314,7 @@ python scripts/build_views.py \
   --output-dir generated
 ```
 
-Refresh the local live state from owner-local source feeds under `/srv`:
+Refresh the local live state from owner-local source feeds under `/srv/AbyssOS`:
 
 ```bash
 python scripts/refresh_live_stats.py
@@ -335,13 +335,13 @@ python scripts/install_live_refresh_units.py --enable
 
 The canonical watcher currently listens to these owner-local logs:
 
-- `/srv/aoa-skills/.aoa/live_receipts/session-harvest-family.jsonl`
-- `/srv/aoa-skills/.aoa/live_receipts/core-skill-applications.jsonl`
-- `/srv/aoa-evals/.aoa/live_receipts/eval-result-receipts.jsonl`
-- `/srv/aoa-playbooks/.aoa/live_receipts/playbook-receipts.jsonl`
-- `/srv/aoa-techniques/.aoa/live_receipts/technique-receipts.jsonl`
-- `/srv/aoa-memo/.aoa/live_receipts/memo-writeback-receipts.jsonl`
-- `/srv/abyss-stack/.aoa/live_receipts/runtime-wave-closeouts.jsonl`
+- `/srv/AbyssOS/aoa-skills/.aoa/live_receipts/session-harvest-family.jsonl`
+- `/srv/AbyssOS/aoa-skills/.aoa/live_receipts/core-skill-applications.jsonl`
+- `/srv/AbyssOS/aoa-evals/.aoa/live_receipts/eval-result-receipts.jsonl`
+- `/srv/AbyssOS/aoa-playbooks/.aoa/live_receipts/playbook-receipts.jsonl`
+- `/srv/AbyssOS/aoa-techniques/.aoa/live_receipts/technique-receipts.jsonl`
+- `/srv/AbyssOS/aoa-memo/.aoa/live_receipts/memo-writeback-receipts.jsonl`
+- `/srv/AbyssOS/abyss-stack/.aoa/live_receipts/runtime-wave-closeouts.jsonl`
 
 ## Go elsewhere when...
 

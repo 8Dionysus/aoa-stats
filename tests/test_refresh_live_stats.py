@@ -716,7 +716,7 @@ def test_refresh_live_state_combines_playbook_technique_memo_and_runtime_sources
                 "id": "pilot-v1:W4",
                 "version": "runtime",
             },
-            "evidence_refs": [{"kind": "wave_closeout_json", "ref": "/srv/abyss-stack/Logs/local-ai-trials/pilot-v1/W4-closeout.json"}],
+            "evidence_refs": [{"kind": "wave_closeout_json", "ref": "/srv/AbyssOS/abyss-stack/Logs/local-ai-trials/pilot-v1/W4-closeout.json"}],
             "payload": {
                 "program_id": "pilot-v1",
                 "wave_id": "W4",

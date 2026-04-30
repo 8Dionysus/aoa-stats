@@ -137,13 +137,13 @@ This installs `aoa-stats-live-refresh.path` and
 canonical owner-local live receipt logs exist, and refreshes `aoa-stats` every
 time any watched JSONL file changes:
 
-- `/srv/aoa-skills/.aoa/live_receipts/session-harvest-family.jsonl`
-- `/srv/aoa-skills/.aoa/live_receipts/core-skill-applications.jsonl`
-- `/srv/aoa-evals/.aoa/live_receipts/eval-result-receipts.jsonl`
-- `/srv/aoa-playbooks/.aoa/live_receipts/playbook-receipts.jsonl`
-- `/srv/aoa-techniques/.aoa/live_receipts/technique-receipts.jsonl`
-- `/srv/aoa-memo/.aoa/live_receipts/memo-writeback-receipts.jsonl`
-- `/srv/abyss-stack/.aoa/live_receipts/runtime-wave-closeouts.jsonl`
+- `/srv/AbyssOS/aoa-skills/.aoa/live_receipts/session-harvest-family.jsonl`
+- `/srv/AbyssOS/aoa-skills/.aoa/live_receipts/core-skill-applications.jsonl`
+- `/srv/AbyssOS/aoa-evals/.aoa/live_receipts/eval-result-receipts.jsonl`
+- `/srv/AbyssOS/aoa-playbooks/.aoa/live_receipts/playbook-receipts.jsonl`
+- `/srv/AbyssOS/aoa-techniques/.aoa/live_receipts/technique-receipts.jsonl`
+- `/srv/AbyssOS/aoa-memo/.aoa/live_receipts/memo-writeback-receipts.jsonl`
+- `/srv/AbyssOS/abyss-stack/.aoa/live_receipts/runtime-wave-closeouts.jsonl`
 
 ## Readiness audit
 

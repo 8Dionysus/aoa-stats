@@ -403,7 +403,7 @@ def test_component_refresh_summary_stays_derived_and_non_sovereign(
             {
                 "schema_version": "aoa_component_drift_hint_set_v1",
                 "session_ref": "session:component-refresh-test",
-                "repo_root": "/srv",
+                "repo_root": "/srv/AbyssOS",
                 "hints": [
                     {
                         "hint_ref": "hint:root",
@@ -519,7 +519,7 @@ def test_component_refresh_summary_rejects_empty_hint_evidence_refs(
             {
                 "schema_version": "aoa_component_drift_hint_set_v1",
                 "session_ref": "session:component-refresh-test",
-                "repo_root": "/srv",
+                "repo_root": "/srv/AbyssOS",
                 "hints": [
                     {
                         "hint_ref": "hint:root",
@@ -583,7 +583,7 @@ def test_component_refresh_summary_rejects_duplicate_decisions_for_component(
             {
                 "schema_version": "aoa_component_drift_hint_set_v1",
                 "session_ref": "session:component-refresh-test",
-                "repo_root": "/srv",
+                "repo_root": "/srv/AbyssOS",
                 "hints": [
                     {
                         "hint_ref": "hint:root",
@@ -659,7 +659,7 @@ def test_component_refresh_summary_uses_null_freshness_for_decision_only_compone
             {
                 "schema_version": "aoa_component_drift_hint_set_v1",
                 "session_ref": "session:component-refresh-test",
-                "repo_root": "/srv",
+                "repo_root": "/srv/AbyssOS",
                 "hints": [
                     {
                         "hint_ref": "hint:other",
@@ -1970,7 +1970,7 @@ def test_runtime_closeout_summary_tracks_latest_handoff_posture() -> None:
             "evidence_refs": [
                 {
                     "kind": "wave_closeout_json",
-                    "ref": "/srv/abyss-stack/Logs/local-ai-trials/pilot-v1/W4-closeout.json",
+                    "ref": "/srv/AbyssOS/abyss-stack/Logs/local-ai-trials/pilot-v1/W4-closeout.json",
                 }
             ],
             "payload": {
@@ -2006,7 +2006,7 @@ def test_runtime_closeout_summary_tracks_latest_handoff_posture() -> None:
             "evidence_refs": [
                 {
                     "kind": "closeout_submit_status",
-                    "ref": "/srv/abyss-stack/Logs/local-ai-trials/pilot-v1/W4-closeout.submit.json",
+                    "ref": "/srv/AbyssOS/abyss-stack/Logs/local-ai-trials/pilot-v1/W4-closeout.submit.json",
                 }
             ],
             "payload": {
