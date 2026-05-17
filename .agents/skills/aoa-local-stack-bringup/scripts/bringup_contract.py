@@ -33,7 +33,8 @@ def _load_payload(path: str | None) -> dict[str, Any]:
 
 
 def build_report(payload: dict[str, Any]) -> dict[str, Any]:
-    services = [str(x) for x in payload.get("rendered_services") or []]
+    raw_services = payload.get("rendered_services")
+    services = [str(x) for x in raw_services] if isinstance(raw_services, list) else []
     readiness_items = payload.get("readiness_items") or []
     warnings: list[str] = []
     errors: list[str] = []
@@ -42,6 +43,8 @@ def build_report(payload: dict[str, Any]) -> dict[str, Any]:
         errors.append("runtime_name is missing.")
     if not payload.get("selector"):
         warnings.append("selector is missing; selected runtime truth may be ambiguous.")
+    if raw_services is not None and not isinstance(raw_services, list):
+        errors.append("rendered_services must be an array.")
     if not services:
         errors.append("rendered_services is empty.")
     if not payload.get("launch_command"):

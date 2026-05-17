@@ -354,8 +354,14 @@ def validate_receipt_abi_governance(
                 f"{CANONICAL_ENVELOPE_SCHEMA_REF}: properties.event_kind.enum must be a non-empty list"
             )
         else:
-            schema_active = [item for item in schema_enum if isinstance(item, str) and item]
-            if schema_active != active_order:
+            invalid_enum_items = [
+                index for index, item in enumerate(schema_enum) if not isinstance(item, str) or not item
+            ]
+            if invalid_enum_items:
+                errors.append(
+                    f"{CANONICAL_ENVELOPE_SCHEMA_REF}: properties.event_kind.enum must contain only non-empty strings"
+                )
+            elif schema_enum != active_order:
                 errors.append(
                     "active registry event kinds must match the canonical schema enum order exactly"
                 )

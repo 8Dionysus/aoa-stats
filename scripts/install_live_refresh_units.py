@@ -2,7 +2,6 @@
 from __future__ import annotations
 
 import argparse
-import shutil
 import subprocess
 import sys
 from pathlib import Path
@@ -26,6 +25,7 @@ from refresh_live_stats import (  # noqa: E402
 
 UNIT_NAMES = ("aoa-stats-live-refresh.service", "aoa-stats-live-refresh.path")
 DEFAULT_USER_UNIT_DIR = Path.home() / ".config" / "systemd" / "user"
+TEMPLATE_DIR = REPO_ROOT / "systemd"
 
 
 def parse_args(argv: list[str] | None = None) -> argparse.Namespace:
@@ -46,6 +46,16 @@ def parse_args(argv: list[str] | None = None) -> argparse.Namespace:
         "--user-unit-dir",
         default=str(DEFAULT_USER_UNIT_DIR),
         help="Target directory for user-level systemd units.",
+    )
+    parser.add_argument(
+        "--feed-output",
+        default=str(DEFAULT_FEED_OUTPUT),
+        help="Live receipt feed output path passed to refresh_live_stats.py.",
+    )
+    parser.add_argument(
+        "--summary-output-dir",
+        default=str(DEFAULT_SUMMARY_OUTPUT_DIR),
+        help="Live summary output directory passed to refresh_live_stats.py.",
     )
     parser.add_argument(
         "--overwrite",
@@ -70,14 +80,103 @@ def parse_args(argv: list[str] | None = None) -> argparse.Namespace:
     return parser.parse_args(argv)
 
 
-def install_units(*, user_unit_dir: Path, overwrite: bool) -> list[Path]:
+def systemd_arg(value: Path) -> str:
+    return str(value)
+
+
+def render_template(unit_name: str, replacements: dict[str, str]) -> str:
+    text = (TEMPLATE_DIR / unit_name).read_text(encoding="utf-8")
+    for key, value in replacements.items():
+        text = text.replace(key, value)
+    return text
+
+
+def build_service_unit(
+    *,
+    registry_path: Path,
+    federation_root: Path,
+    feed_output: Path,
+    summary_output_dir: Path,
+) -> str:
+    return render_template(
+        "aoa-stats-live-refresh.service",
+        {
+            "@AOA_STATS_REPO_ROOT@": systemd_arg(REPO_ROOT),
+            "@AOA_STATS_REGISTRY@": systemd_arg(registry_path),
+            "@AOA_FEDERATION_ROOT@": systemd_arg(federation_root),
+            "@AOA_STATS_FEED_OUTPUT@": systemd_arg(feed_output),
+            "@AOA_STATS_SUMMARY_OUTPUT_DIR@": systemd_arg(summary_output_dir),
+        },
+    )
+
+
+def watched_source_paths(*, registry_path: Path, federation_root: Path) -> list[Path]:
+    registry = load_registry(registry_path)
+    paths: list[Path] = []
+    for source in registry["sources"]:
+        if not isinstance(source, dict):
+            raise ValueError(f"{registry_path}: each source must be an object")
+        _, path = resolve_source_path(
+            source, registry_path=registry_path, federation_root=federation_root
+        )
+        paths.append(path)
+    return paths
+
+
+def build_path_unit(*, watched_paths: list[Path]) -> str:
+    return render_template(
+        "aoa-stats-live-refresh.path",
+        {
+            "@AOA_STATS_PATH_MODIFIED@": "\n".join(
+                f"PathModified={path}" for path in watched_paths
+            ),
+        },
+    )
+
+
+def render_units(
+    *,
+    registry_path: Path,
+    federation_root: Path,
+    feed_output: Path,
+    summary_output_dir: Path,
+) -> dict[str, str]:
+    return {
+        "aoa-stats-live-refresh.service": build_service_unit(
+            registry_path=registry_path,
+            federation_root=federation_root,
+            feed_output=feed_output,
+            summary_output_dir=summary_output_dir,
+        ),
+        "aoa-stats-live-refresh.path": build_path_unit(
+            watched_paths=watched_source_paths(
+                registry_path=registry_path,
+                federation_root=federation_root,
+            )
+        ),
+    }
+
+
+def install_units(
+    *,
+    user_unit_dir: Path,
+    overwrite: bool,
+    registry_path: Path,
+    federation_root: Path,
+    feed_output: Path,
+    summary_output_dir: Path,
+) -> list[Path]:
     installed_paths: list[Path] = []
-    source_dir = REPO_ROOT / "systemd"
     user_unit_dir.mkdir(parents=True, exist_ok=True)
+    rendered_units = render_units(
+        registry_path=registry_path,
+        federation_root=federation_root,
+        feed_output=feed_output,
+        summary_output_dir=summary_output_dir,
+    )
     for unit_name in UNIT_NAMES:
-        source_path = source_dir / unit_name
         target_path = user_unit_dir / unit_name
-        source_text = source_path.read_text(encoding="utf-8")
+        source_text = rendered_units[unit_name]
         if target_path.exists():
             target_text = target_path.read_text(encoding="utf-8")
             if target_text == source_text:
@@ -87,7 +186,7 @@ def install_units(*, user_unit_dir: Path, overwrite: bool) -> list[Path]:
                 raise FileExistsError(
                     f"{target_path} already exists with different contents; rerun with --overwrite"
                 )
-        shutil.copyfile(source_path, target_path)
+        target_path.write_text(source_text, encoding="utf-8")
         installed_paths.append(target_path)
     return installed_paths
 
@@ -116,8 +215,17 @@ def main(argv: list[str] | None = None) -> int:
     registry_path = Path(args.registry).expanduser().resolve()
     federation_root = Path(args.federation_root).expanduser().resolve()
     user_unit_dir = Path(args.user_unit_dir).expanduser().resolve()
+    feed_output = Path(args.feed_output).expanduser().resolve()
+    summary_output_dir = Path(args.summary_output_dir).expanduser().resolve()
 
-    installed_paths = install_units(user_unit_dir=user_unit_dir, overwrite=args.overwrite)
+    installed_paths = install_units(
+        user_unit_dir=user_unit_dir,
+        overwrite=args.overwrite,
+        registry_path=registry_path,
+        federation_root=federation_root,
+        feed_output=feed_output,
+        summary_output_dir=summary_output_dir,
+    )
     touched_paths: list[Path] = []
     if not args.skip_touch_sources:
         touched_paths = ensure_live_sources(
@@ -126,8 +234,8 @@ def main(argv: list[str] | None = None) -> int:
     _, receipt_count = refresh_live_state(
         registry_path=registry_path,
         federation_root=federation_root,
-        feed_output=DEFAULT_FEED_OUTPUT,
-        summary_output_dir=DEFAULT_SUMMARY_OUTPUT_DIR,
+        feed_output=feed_output,
+        summary_output_dir=summary_output_dir,
     )
 
     run_systemctl("daemon-reload")

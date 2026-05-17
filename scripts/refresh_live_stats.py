@@ -38,6 +38,7 @@ SUMMARY_OUTPUT_NAMES = (
     "drift_review_summary.min.json",
     "continuity_window_summary.min.json",
     "component_refresh_summary.min.json",
+    "titan_summon_summary.min.json",
     "runtime_closeout_summary.min.json",
     "stress_recovery_window_summary.min.json",
     "source_coverage_summary.min.json",
@@ -133,6 +134,45 @@ def sync_summary_outputs(*, summary_output_dir: Path, outputs: dict[str, dict]) 
         (summary_output_dir / name).write_text(stable_json(payload), encoding="utf-8")
 
 
+def live_surface_ref(*, summary_output_dir: Path, output_name: str) -> str:
+    output_path = summary_output_dir / output_name
+    try:
+        return output_path.relative_to(REPO_ROOT).as_posix()
+    except ValueError:
+        return output_path.as_posix()
+
+
+def rewrite_catalog_surface_refs(
+    outputs: dict[str, dict], *, summary_output_dir: Path
+) -> dict[str, dict]:
+    catalog = outputs.get("summary_surface_catalog.min.json")
+    surfaces = catalog.get("surfaces") if isinstance(catalog, dict) else None
+    if not isinstance(surfaces, list):
+        return outputs
+
+    rewritten_outputs = dict(outputs)
+    rewritten_catalog = dict(catalog)
+    rewritten_surfaces: list[object] = []
+    for surface in surfaces:
+        if not isinstance(surface, dict):
+            rewritten_surfaces.append(surface)
+            continue
+        surface_ref = surface.get("surface_ref")
+        output_name = Path(surface_ref).name if isinstance(surface_ref, str) else ""
+        if output_name not in outputs:
+            rewritten_surfaces.append(surface)
+            continue
+        rewritten_surface = dict(surface)
+        rewritten_surface["surface_ref"] = live_surface_ref(
+            summary_output_dir=summary_output_dir,
+            output_name=output_name,
+        )
+        rewritten_surfaces.append(rewritten_surface)
+    rewritten_catalog["surfaces"] = rewritten_surfaces
+    rewritten_outputs["summary_surface_catalog.min.json"] = rewritten_catalog
+    return rewritten_outputs
+
+
 def resolve_live_evals_root(*, federation_root: Path) -> Path:
     vendored_evals_root = REPO_ROOT / "aoa-evals"
     if vendored_evals_root.exists():
@@ -191,6 +231,7 @@ def refresh_live_state(
         source_registry=registry,
         source_registry_ref=display_registry_ref(registry_path),
     )
+    outputs = rewrite_catalog_surface_refs(outputs, summary_output_dir=summary_output_dir)
     sync_summary_outputs(summary_output_dir=summary_output_dir, outputs=outputs)
     return source_labels, len(active_receipts)
 

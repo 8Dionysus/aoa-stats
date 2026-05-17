@@ -41,6 +41,7 @@ sources under the current federation root, writes one combined local feed to
 - `state/generated/drift_review_summary.min.json`
 - `state/generated/continuity_window_summary.min.json`
 - `state/generated/component_refresh_summary.min.json`
+- `state/generated/titan_summon_summary.min.json`
 - `state/generated/runtime_closeout_summary.min.json`
 - `state/generated/stress_recovery_window_summary.min.json`
 - `state/generated/source_coverage_summary.min.json`
@@ -99,6 +100,7 @@ The committed builder refreshes:
 - `generated/drift_review_summary.min.json`
 - `generated/continuity_window_summary.min.json`
 - `generated/component_refresh_summary.min.json`
+- `generated/titan_summon_summary.min.json`
 - `generated/runtime_closeout_summary.min.json`
 - `generated/stress_recovery_window_summary.min.json`
 - `generated/source_coverage_summary.min.json`
@@ -136,6 +138,10 @@ This installs `aoa-stats-live-refresh.path` and
 `aoa-stats-live-refresh.service` into `~/.config/systemd/user/`, ensures the
 canonical owner-local live receipt logs exist, and refreshes `aoa-stats` every
 time any watched JSONL file changes:
+
+The checked-in `systemd/` files are templates. The installer renders concrete
+repo, registry, feed, summary, federation-root, and watch paths from its
+arguments before writing user units.
 
 - `/srv/AbyssOS/aoa-skills/.aoa/live_receipts/session-harvest-family.jsonl`
 - `/srv/AbyssOS/aoa-skills/.aoa/live_receipts/core-skill-applications.jsonl`

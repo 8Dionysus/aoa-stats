@@ -35,3 +35,24 @@ def test_receipt_abi_governance_detects_registry_drift(tmp_path: Path) -> None:
     errors = validate_receipt_abi_governance(repo_root=repo, workspace_root=tmp_path)
 
     assert any("active registry event kinds must match" in error for error in errors)
+
+
+def test_receipt_abi_governance_rejects_non_string_schema_enum_members(tmp_path: Path) -> None:
+    repo = tmp_path / "aoa-stats"
+    (repo / "schemas").mkdir(parents=True)
+    (repo / "config").mkdir(parents=True)
+    schema = json.loads((ROOT / "schemas" / "stats-event-envelope.schema.json").read_text(encoding="utf-8"))
+    registry = json.loads((ROOT / "config" / "stats_event_kind_registry.json").read_text(encoding="utf-8"))
+    schema["properties"]["event_kind"]["enum"].append(123)
+    (repo / "schemas" / "stats-event-envelope.schema.json").write_text(
+        json.dumps(schema, indent=2) + "\n",
+        encoding="utf-8",
+    )
+    (repo / "config" / "stats_event_kind_registry.json").write_text(
+        json.dumps(registry, indent=2) + "\n",
+        encoding="utf-8",
+    )
+
+    errors = validate_receipt_abi_governance(repo_root=repo, workspace_root=tmp_path)
+
+    assert any("event_kind.enum must contain only non-empty strings" in error for error in errors)

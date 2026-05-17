@@ -32,6 +32,10 @@ def _expected_owner_repos(source_registry: dict[str, Any] | None) -> list[str]:
     return sorted(repos)
 
 
+def _has_source_registry_baseline(source_registry: dict[str, Any] | None) -> bool:
+    return isinstance(source_registry, dict) and isinstance(source_registry.get("sources"), list)
+
+
 def build_source_coverage_summary(
     receipts: list[dict[str, Any]],
     source: dict[str, Any],
@@ -64,10 +68,15 @@ def build_source_coverage_summary(
             owner_last_seen[owner_repo] = observed_at
 
     total_receipts = len(receipts)
-    expected_owner_repos = _expected_owner_repos(source_registry)
+    has_registry_baseline = _has_source_registry_baseline(source_registry)
+    expected_owner_repos = _expected_owner_repos(source_registry) if has_registry_baseline else []
     observed_owner_repos = sorted(owner_repo_counts)
-    missing_owner_repos = sorted(set(expected_owner_repos) - set(observed_owner_repos))
-    unexpected_owner_repos = sorted(set(observed_owner_repos) - set(expected_owner_repos))
+    missing_owner_repos = (
+        sorted(set(expected_owner_repos) - set(observed_owner_repos)) if has_registry_baseline else []
+    )
+    unexpected_owner_repos = (
+        sorted(set(observed_owner_repos) - set(expected_owner_repos)) if has_registry_baseline else []
+    )
 
     owners = [
         {
@@ -83,7 +92,7 @@ def build_source_coverage_summary(
     ]
 
     thin_signal_flags: list[str] = []
-    if source_registry is None:
+    if not has_registry_baseline:
         thin_signal_flags.append("registry_not_provided")
     if missing_owner_repos:
         thin_signal_flags.append("missing_owner_repos")
@@ -98,7 +107,7 @@ def build_source_coverage_summary(
 
     source_mode = (
         "registry_backed_receipt_feed"
-        if isinstance(source_registry, dict) and isinstance(source_registry.get("sources"), list)
+        if has_registry_baseline
         else "receipt_feed_only"
     )
 

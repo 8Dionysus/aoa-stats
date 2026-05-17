@@ -29,3 +29,13 @@ def test_validator_rejects_stale_generated_registry(tmp_path):
     out.write_text(json.dumps(stale), encoding='utf-8')
     validator.OUT = out
     assert validator.main() == 1
+
+
+def test_registry_schema_requires_at_least_one_surface():
+    schema = json.loads(
+        (ROOT / 'schemas/agon_mechanical_trial_stats_observability-registry.schema.json').read_text(
+            encoding='utf-8'
+        )
+    )
+    assert schema['properties']['count']['minimum'] == 1
+    assert schema['properties']['stats_surfaces']['minItems'] == 1
