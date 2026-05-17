@@ -28,7 +28,7 @@ def build(config: dict) -> dict:
         'record_key': RECORD_KEY,
         'record_count': len(records),
         'record_refs': sorted(ref(r) for r in records),
-        'records': sorted(records, key=ref),
+        RECORD_KEY: sorted(records, key=ref),
         'required_stop_lines': config.get('required_stop_lines', []),
         'notes': config.get('notes', ''),
     }

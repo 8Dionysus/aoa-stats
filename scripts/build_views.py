@@ -232,7 +232,7 @@ def parse_args(argv: list[str] | None = None) -> argparse.Namespace:
     )
     parser.add_argument(
         "--evals-root",
-        default=str(DEFAULT_EVALS_ROOT),
+        default=str(repo_root_from_env("AOA_EVALS_ROOT", DEFAULT_EVALS_ROOT)),
         help="Path to the aoa-evals repository root used to resolve linked report_ref payloads.",
     )
     parser.add_argument(
@@ -1482,7 +1482,9 @@ def normalize_owner_landing_bundle(payload: Any) -> dict[str, Any] | None:
 
 
 def collect_owner_landing_bundles(receipts: list[dict[str, Any]]) -> list[dict[str, Any]]:
-    latest_by_candidate: dict[str, dict[str, Any]] = {}
+    merged_by_candidate: dict[str, dict[str, Any]] = {}
+    earliest_reviewed_by_candidate: dict[str, str] = {}
+    latest_reviewed_by_candidate: dict[str, datetime] = {}
     for receipt in receipts:
         if receipt["event_kind"] != "reviewed_owner_landing_receipt":
             continue
@@ -1490,13 +1492,28 @@ def collect_owner_landing_bundles(receipts: list[dict[str, Any]]) -> list[dict[s
         if normalized is None:
             continue
         candidate_ref = normalized["candidate_ref"]
-        previous = latest_by_candidate.get(candidate_ref)
-        if previous is None or parse_iso_datetime_or_min(normalized["reviewed_at"]) >= parse_iso_datetime_or_min(
-            previous["reviewed_at"]
-        ):
-            latest_by_candidate[candidate_ref] = normalized
+        previous = merged_by_candidate.get(candidate_ref)
+        current_reviewed_at = parse_iso_datetime_or_min(normalized["reviewed_at"])
+        if previous is None:
+            merged_by_candidate[candidate_ref] = normalized
+            earliest_reviewed_by_candidate[candidate_ref] = normalized["reviewed_at"]
+            latest_reviewed_by_candidate[candidate_ref] = current_reviewed_at
+            continue
+
+        earliest_reviewed_at = earliest_reviewed_by_candidate[candidate_ref]
+        if current_reviewed_at < parse_iso_datetime_or_min(earliest_reviewed_at):
+            earliest_reviewed_at = normalized["reviewed_at"]
+            earliest_reviewed_by_candidate[candidate_ref] = earliest_reviewed_at
+
+        if current_reviewed_at >= latest_reviewed_by_candidate[candidate_ref]:
+            merged = dict(normalized)
+            merged["reviewed_at"] = earliest_reviewed_at
+            merged_by_candidate[candidate_ref] = merged
+            latest_reviewed_by_candidate[candidate_ref] = current_reviewed_at
+        else:
+            previous["reviewed_at"] = earliest_reviewed_at
     return sorted(
-        latest_by_candidate.values(),
+        merged_by_candidate.values(),
         key=lambda item: (parse_iso_datetime_or_min(item["reviewed_at"]), item["candidate_ref"]),
     )
 
@@ -1651,7 +1668,7 @@ def build_owner_landing_summary(
         if is_nonempty_string(landing_outcome):
             landing_outcome_counts[landing_outcome] += 1
             duration = duration_days_between(state["first_reviewed_at"], state["landing_observed_at"])
-            if duration is not None:
+            if duration is not None and landing_outcome in time_to_outcome_values:
                 time_to_outcome_values[landing_outcome].append(duration)
 
     return {
@@ -2269,11 +2286,25 @@ def build_continuity_window_summary() -> dict[str, Any]:
     }
 
 
+def latest_component_hints_by_component(hints: list[dict[str, Any]]) -> dict[str, dict[str, Any]]:
+    latest_by_component: dict[str, dict[str, Any]] = {}
+    for hint in hints:
+        if not isinstance(hint, dict):
+            continue
+        component_ref = hint.get("component_ref")
+        if not is_nonempty_string(component_ref):
+            continue
+        previous = latest_by_component.get(str(component_ref))
+        if previous is None or parse_iso_datetime_or_min(hint.get("observed_at")) >= parse_iso_datetime_or_min(
+            previous.get("observed_at")
+        ):
+            latest_by_component[str(component_ref)] = hint
+    return latest_by_component
+
+
 def build_component_refresh_summary() -> dict[str, Any]:
     source, hints, decisions = component_refresh_generated_from()
-    hints_by_component = {
-        str(hint["component_ref"]): hint for hint in hints if isinstance(hint, dict)
-    }
+    hints_by_component = latest_component_hints_by_component(hints)
     decisions_by_component = {
         str(decision["component_ref"]): decision
         for decision in decisions
@@ -2518,6 +2549,20 @@ def build_titan_incarnation_summary() -> dict[str, Any]:
     }
 
 
+def build_titan_summon_summary() -> dict[str, Any]:
+    return {
+        "schema_version": "titan_summon_summary/v1",
+        "summary_ref": "generated:titan-summon-summary:seed",
+        "source_ledger_refs": ["seed:titan-sixteenth-wave"],
+        "counts": {
+            "agents_invoked": 0,
+            "reports_received": 0,
+            "findings_reported": 0,
+            "memory_candidates_created": 0,
+        },
+    }
+
+
 def build_all_views(
     receipts: list[dict[str, Any]],
     input_paths: list[str],
@@ -2529,7 +2574,9 @@ def build_all_views(
     active_receipts = resolve_active_receipts(receipts)
     source = generated_from(active_receipts, input_paths)
     resolved_evals_root = (
-        evals_root.expanduser().resolve() if evals_root is not None else DEFAULT_EVALS_ROOT.resolve()
+        evals_root.expanduser().resolve()
+        if evals_root is not None
+        else repo_root_from_env("AOA_EVALS_ROOT", DEFAULT_EVALS_ROOT).resolve()
     )
     resolved_source_registry = source_registry
     resolved_source_registry_ref = source_registry_ref
@@ -2584,6 +2631,7 @@ def build_all_views(
         ("continuity_window_summary.min.json", build_continuity_window_summary),
         ("component_refresh_summary.min.json", build_component_refresh_summary),
         ("titan_incarnation_summary.min.json", build_titan_incarnation_summary),
+        ("titan_summon_summary.min.json", build_titan_summon_summary),
     ):
         try:
             outputs[name] = builder()

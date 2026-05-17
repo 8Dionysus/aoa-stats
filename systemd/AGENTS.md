@@ -7,6 +7,8 @@ for live refresh loops.
 ## Local role
 Systemd units are operator installation aids. They do not prove freshness,
 authority, or successful owner-repo publication by themselves.
+The checked-in unit files are templates; `scripts/install_live_refresh_units.py`
+renders concrete user units from explicit operator paths.
 
 ## Editing posture
 Keep units user-scoped, explicit about repo paths, and free of secrets. Prefer

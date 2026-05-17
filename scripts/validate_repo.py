@@ -35,6 +35,7 @@ SCHEMAS = {
     "component_refresh_summary.min.json": "component-refresh-summary.schema.json",
     "surface_detection_summary.min.json": "surface-detection-summary.schema.json",
     "titan_incarnation_summary.min.json": "titan_incarnation_summary.schema.json",
+    "titan_summon_summary.min.json": "titan_summon_summary.schema.json",
     "summary_surface_catalog.min.json": "summary-surface-catalog.schema.json",
 }
 EXTRA_SCHEMA_FILES = (

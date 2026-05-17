@@ -224,6 +224,7 @@ def test_build_views_produces_expected_surface_counts() -> None:
         "continuity_window_summary.min.json",
         "component_refresh_summary.min.json",
         "titan_incarnation_summary.min.json",
+        "titan_summon_summary.min.json",
         "runtime_closeout_summary.min.json",
         "stress_recovery_window_summary.min.json",
         "source_coverage_summary.min.json",
@@ -361,6 +362,7 @@ def test_build_views_produces_expected_surface_counts() -> None:
         "generated/continuity_window_summary.min.json",
         "generated/component_refresh_summary.min.json",
         "generated/titan_incarnation_summary.min.json",
+        "generated/titan_summon_summary.min.json",
         "generated/runtime_closeout_summary.min.json",
         "generated/stress_recovery_window_summary.min.json",
         "generated/source_coverage_summary.min.json",
@@ -1063,6 +1065,124 @@ def test_owner_landing_summary_reads_reviewed_owner_landings_and_seed_traces() -
     assert summary["landing_outcome_counts"] == {"landed_owner_status": 1}
     assert summary["time_to_outcome_median_days"]["landed_owner_status"] == 0.01
     assert summary["time_to_outcome_median_days"]["merged"] is None
+
+
+def test_owner_landing_summary_keeps_earliest_review_for_outcome_duration() -> None:
+    module = load_build_views_module()
+    receipts = [
+        make_reviewed_owner_landing_receipt(
+            event_id="evt-owner-landing-test-early",
+            observed_at="2026-04-11T12:00:00Z",
+            candidate_ref="candidate:session-growth:reviewed-donor-harvest",
+            status_posture="thin-evidence",
+        ),
+        make_reviewed_owner_landing_receipt(
+            event_id="evt-owner-landing-test-late",
+            observed_at="2026-04-12T12:00:00Z",
+            candidate_ref="candidate:session-growth:reviewed-donor-harvest",
+            status_posture="reviewed",
+        ),
+        make_reviewed_owner_landing_receipt(
+            event_id="evt-owner-landing-test-middle-arrives-late",
+            observed_at="2026-04-11T18:00:00Z",
+            candidate_ref="candidate:session-growth:reviewed-donor-harvest",
+            status_posture="middle",
+        ),
+        make_seed_owner_landing_trace_receipt(
+            event_id="evt-seed-owner-trace-test-late",
+            observed_at="2026-04-13T12:00:00Z",
+            candidate_ref="candidate:session-growth:reviewed-donor-harvest",
+            seed_ref="seed:aoa:session-growth:reviewed-donor-harvest:v1",
+            outcome="landed_owner_status",
+        ),
+    ]
+
+    summary = module.build_owner_landing_summary(
+        receipts,
+        {
+            "receipt_input_paths": ["owner-landing"],
+            "total_receipts": len(receipts),
+            "latest_observed_at": "2026-04-13T12:00:00Z",
+        },
+    )
+
+    assert summary["status_posture_counts"] == {"reviewed": 1}
+    assert summary["time_to_outcome_median_days"]["landed_owner_status"] == 2.0
+
+
+def test_owner_landing_summary_counts_unknown_outcome_without_duration_bucket() -> None:
+    module = load_build_views_module()
+    receipts = [
+        make_reviewed_owner_landing_receipt(
+            event_id="evt-owner-landing-test-unknown",
+            observed_at="2026-04-11T12:00:00Z",
+            candidate_ref="candidate:session-growth:experimental",
+        ),
+        make_seed_owner_landing_trace_receipt(
+            event_id="evt-seed-owner-trace-test-unknown",
+            observed_at="2026-04-12T12:00:00Z",
+            candidate_ref="candidate:session-growth:experimental",
+            seed_ref="seed:aoa:session-growth:experimental:v1",
+            outcome="experimental_outcome",
+        ),
+    ]
+
+    summary = module.build_owner_landing_summary(
+        receipts,
+        {
+            "receipt_input_paths": ["owner-landing"],
+            "total_receipts": len(receipts),
+            "latest_observed_at": "2026-04-12T12:00:00Z",
+        },
+    )
+
+    assert summary["landing_outcome_counts"] == {"experimental_outcome": 1}
+    assert "experimental_outcome" not in summary["time_to_outcome_median_days"]
+
+
+def test_component_refresh_summary_selects_latest_hint_per_component(monkeypatch: pytest.MonkeyPatch) -> None:
+    module = load_build_views_module()
+
+    def fake_generated_from():
+        source = {
+            "receipt_input_paths": ["hints", "decisions"],
+            "total_receipts": 2,
+            "latest_observed_at": "2026-04-12T16:20:00Z",
+        }
+        hints = [
+            {
+                "hint_ref": "hint:old",
+                "component_ref": "component:test",
+                "owner_repo": "aoa-stats",
+                "observed_at": "2026-04-12T16:00:00Z",
+                "recommended_route_class": "observe",
+                "signals": ["missing_projection"],
+            },
+            {
+                "hint_ref": "hint:new",
+                "component_ref": "component:test",
+                "owner_repo": "aoa-stats",
+                "observed_at": "2026-04-12T16:20:00Z",
+                "recommended_route_class": "repair",
+                "signals": ["missing_projection"],
+            },
+        ]
+        return source, hints, []
+
+    monkeypatch.setattr(module, "component_refresh_generated_from", fake_generated_from)
+
+    summary = module.build_component_refresh_summary()
+
+    assert summary["components"] == [
+        {
+            "component_ref": "component:test",
+            "owner_repo": "aoa-stats",
+            "latest_decision_status": "unreviewed",
+            "current_status": "refresh_recommended",
+            "latest_route_class": "repair",
+            "latest_observed_at": "2026-04-12T16:20:00Z",
+        }
+    ]
 
 
 def test_supersession_drop_summary_uses_explicit_turnover_only() -> None:

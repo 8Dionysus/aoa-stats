@@ -12,9 +12,12 @@
       "type": "integer"
     },
     "metrics": {
-      "type": "array",
-      "items": {
-        "type": "string"
+      "type": "object",
+      "propertyNames": {
+        "minLength": 1
+      },
+      "additionalProperties": {
+        "type": "number"
       }
     },
     "authority": {

@@ -136,6 +136,15 @@ def test_refresh_live_state_combines_repo_relative_sources(tmp_path: Path) -> No
     assert pipeline_summary["generated_from"]["receipt_input_paths"] == source_labels
     assert pipeline_summary["generated_from"]["total_receipts"] == 2
     assert pipeline_summary["pipelines"][0]["pipeline_ref"] == "pipeline:test"
+    catalog = json.loads(
+        (summary_output_dir / "summary_surface_catalog.min.json").read_text(encoding="utf-8")
+    )
+    pipeline_profile = next(
+        profile for profile in catalog["surfaces"] if profile["name"] == "automation_pipeline_summary"
+    )
+    assert pipeline_profile["surface_ref"] == (
+        summary_output_dir / "automation_pipeline_summary.min.json"
+    ).as_posix()
     stress_summary = json.loads(
         (summary_output_dir / "stress_recovery_window_summary.min.json").read_text(encoding="utf-8")
     )

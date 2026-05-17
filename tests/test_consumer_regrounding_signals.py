@@ -77,3 +77,21 @@ def test_source_coverage_thin_flags_prompt_regrounding_without_verdict_authority
         "workflow_activation",
     }
     assert prohibited_authority_fields.isdisjoint(coverage)
+
+
+def test_source_coverage_without_registry_does_not_invent_unexpected_owners() -> None:
+    module = load_build_views_module()
+    receipts = module.load_receipts(
+        [REPO_ROOT / "examples" / "session_harvest_family.receipts.example.json"]
+    )
+    active = module.resolve_active_receipts(receipts)
+    source = module.generated_from(active, ["session_harvest_family.receipts.example.json"])
+
+    coverage = module.build_source_coverage_summary(active, source, source_registry=None)
+
+    assert coverage["source_mode"] == "receipt_feed_only"
+    assert coverage["expected_owner_repos"] == []
+    assert coverage["missing_owner_repos"] == []
+    assert coverage["unexpected_owner_repos"] == []
+    assert "registry_not_provided" in coverage["thin_signal_flags"]
+    assert "unexpected_owner_repos" not in coverage["thin_signal_flags"]

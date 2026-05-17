@@ -99,6 +99,9 @@ Use the shortest route by need:
   `docs/TITAN_INCARNATION_METRICS.md`,
   `schemas/titan_incarnation_summary.schema.json`, and
   `generated/titan_incarnation_summary.min.json`
+- Titan summon seed metrics:
+  `docs/TITAN_SUMMON_METRICS.md`, `schemas/titan_summon_summary.schema.json`,
+  and `generated/titan_summon_summary.min.json`
 - growth-refinery funnel doctrine and contracts:
   `docs/GROWTH_FUNNEL_SUMMARY.md`,
   `schemas/candidate_lineage_summary.schema.json`,

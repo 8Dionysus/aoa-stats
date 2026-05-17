@@ -3,7 +3,7 @@
   "additionalProperties": false,
   "properties": {
     "count": {
-      "minimum": 0,
+      "minimum": 1,
       "type": "integer"
     },
     "digest": {
@@ -20,6 +20,7 @@
       "items": {
         "$ref": "./agon_mechanical_trial_stats_observability.schema.json"
       },
+      "minItems": 1,
       "type": "array"
     },
     "wave": {

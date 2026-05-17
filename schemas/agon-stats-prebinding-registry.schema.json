@@ -23,7 +23,7 @@
       },
       "type": "array"
     },
-    "records": {
+    "prebindings": {
       "items": {
         "$ref": "./agon-stats-prebinding.schema.json"
       },
@@ -61,7 +61,7 @@
     "record_key",
     "record_count",
     "record_refs",
-    "records",
+    "prebindings",
     "required_stop_lines"
   ],
   "title": "Agon Stats Prebinding Registry",
