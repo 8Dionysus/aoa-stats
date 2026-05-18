@@ -81,7 +81,14 @@ def parse_args(argv: list[str] | None = None) -> argparse.Namespace:
 
 
 def systemd_arg(value: Path) -> str:
-    return str(value)
+    text = str(value)
+    escaped = (
+        text.replace("\\", "\\\\")
+        .replace('"', '\\"')
+        .replace("%", "%%")
+        .replace("$", "$$")
+    )
+    return f'"{escaped}"'
 
 
 def render_template(unit_name: str, replacements: dict[str, str]) -> str:
@@ -102,6 +109,9 @@ def build_service_unit(
         "aoa-stats-live-refresh.service",
         {
             "@AOA_STATS_REPO_ROOT@": systemd_arg(REPO_ROOT),
+            "@AOA_STATS_REFRESH_SCRIPT@": systemd_arg(
+                REPO_ROOT / "scripts" / "refresh_live_stats.py"
+            ),
             "@AOA_STATS_REGISTRY@": systemd_arg(registry_path),
             "@AOA_FEDERATION_ROOT@": systemd_arg(federation_root),
             "@AOA_STATS_FEED_OUTPUT@": systemd_arg(feed_output),
@@ -128,7 +138,7 @@ def build_path_unit(*, watched_paths: list[Path]) -> str:
         "aoa-stats-live-refresh.path",
         {
             "@AOA_STATS_PATH_MODIFIED@": "\n".join(
-                f"PathModified={path}" for path in watched_paths
+                f"PathModified={systemd_arg(path)}" for path in watched_paths
             ),
         },
     )

@@ -4,4 +4,4 @@ Description=Refresh aoa-stats live summaries from owner-local receipts
 [Service]
 Type=oneshot
 WorkingDirectory=@AOA_STATS_REPO_ROOT@
-ExecStart=/usr/bin/env python3 @AOA_STATS_REPO_ROOT@/scripts/refresh_live_stats.py --registry @AOA_STATS_REGISTRY@ --federation-root @AOA_FEDERATION_ROOT@ --feed-output @AOA_STATS_FEED_OUTPUT@ --summary-output-dir @AOA_STATS_SUMMARY_OUTPUT_DIR@
+ExecStart=/usr/bin/env python3 @AOA_STATS_REFRESH_SCRIPT@ --registry @AOA_STATS_REGISTRY@ --federation-root @AOA_FEDERATION_ROOT@ --feed-output @AOA_STATS_FEED_OUTPUT@ --summary-output-dir @AOA_STATS_SUMMARY_OUTPUT_DIR@
