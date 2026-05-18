@@ -39,12 +39,13 @@ def write_registry(path: Path) -> None:
 
 def test_rendered_units_use_installer_paths(tmp_path: Path) -> None:
     module = load_install_module()
-    registry_path = tmp_path / "config" / "live_receipt_sources.json"
+    root_with_spaces = tmp_path / "aoa stats"
+    registry_path = root_with_spaces / "config" / "live_receipt_sources.json"
     registry_path.parent.mkdir(parents=True)
     write_registry(registry_path)
-    federation_root = tmp_path / "federation"
-    feed_output = tmp_path / "state" / "live_receipts.min.json"
-    summary_output_dir = tmp_path / "state" / "generated"
+    federation_root = root_with_spaces / "federation"
+    feed_output = root_with_spaces / "state" / "live_receipts.min.json"
+    summary_output_dir = root_with_spaces / "state" / "generated"
 
     units = module.render_units(
         registry_path=registry_path,
@@ -54,16 +55,29 @@ def test_rendered_units_use_installer_paths(tmp_path: Path) -> None:
     )
 
     service = units["aoa-stats-live-refresh.service"]
-    assert f"--registry {registry_path}" in service
-    assert f"--federation-root {federation_root}" in service
-    assert f"--feed-output {feed_output}" in service
-    assert f"--summary-output-dir {summary_output_dir}" in service
+    assert f'WorkingDirectory="{module.REPO_ROOT}"' in service
+    assert (
+        f'ExecStart=/usr/bin/env python3 "{module.REPO_ROOT}/scripts/refresh_live_stats.py"'
+        in service
+    )
+    assert f'--registry "{registry_path}"' in service
+    assert f'--federation-root "{federation_root}"' in service
+    assert f'--feed-output "{feed_output}"' in service
+    assert f'--summary-output-dir "{summary_output_dir}"' in service
 
     path_unit = units["aoa-stats-live-refresh.path"]
     assert (
-        f"PathModified={federation_root}/aoa-skills/.aoa/live_receipts/session-harvest-family.jsonl"
+        f'PathModified="{federation_root}/aoa-skills/.aoa/live_receipts/session-harvest-family.jsonl"'
         in path_unit
     )
+
+
+def test_systemd_arg_quotes_and_escapes_special_path_characters() -> None:
+    module = load_install_module()
+
+    rendered = module.systemd_arg(Path('/tmp/aoa stats/%root/$feed/"quoted"'))
+
+    assert rendered == '"/tmp/aoa stats/%%root/$$feed/\\"quoted\\""'
 
 
 def test_install_units_refuses_drift_without_overwrite(tmp_path: Path) -> None:
