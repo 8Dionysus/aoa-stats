@@ -80,15 +80,20 @@ def parse_args(argv: list[str] | None = None) -> argparse.Namespace:
     return parser.parse_args(argv)
 
 
-def systemd_arg(value: Path) -> str:
+def systemd_arg(value: Path, *, escape_dollar: bool = False) -> str:
     text = str(value)
     escaped = (
         text.replace("\\", "\\\\")
         .replace('"', '\\"')
         .replace("%", "%%")
-        .replace("$", "$$")
     )
+    if escape_dollar:
+        escaped = escaped.replace("$", "$$")
     return f'"{escaped}"'
+
+
+def systemd_exec_arg(value: Path) -> str:
+    return systemd_arg(value, escape_dollar=True)
 
 
 def render_template(unit_name: str, replacements: dict[str, str]) -> str:
@@ -109,13 +114,13 @@ def build_service_unit(
         "aoa-stats-live-refresh.service",
         {
             "@AOA_STATS_REPO_ROOT@": systemd_arg(REPO_ROOT),
-            "@AOA_STATS_REFRESH_SCRIPT@": systemd_arg(
+            "@AOA_STATS_REFRESH_SCRIPT@": systemd_exec_arg(
                 REPO_ROOT / "scripts" / "refresh_live_stats.py"
             ),
-            "@AOA_STATS_REGISTRY@": systemd_arg(registry_path),
-            "@AOA_FEDERATION_ROOT@": systemd_arg(federation_root),
-            "@AOA_STATS_FEED_OUTPUT@": systemd_arg(feed_output),
-            "@AOA_STATS_SUMMARY_OUTPUT_DIR@": systemd_arg(summary_output_dir),
+            "@AOA_STATS_REGISTRY@": systemd_exec_arg(registry_path),
+            "@AOA_FEDERATION_ROOT@": systemd_exec_arg(federation_root),
+            "@AOA_STATS_FEED_OUTPUT@": systemd_exec_arg(feed_output),
+            "@AOA_STATS_SUMMARY_OUTPUT_DIR@": systemd_exec_arg(summary_output_dir),
         },
     )
 
