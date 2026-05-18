@@ -723,6 +723,71 @@ def test_component_refresh_summary_uses_null_freshness_for_decision_only_compone
     assert decision_only["latest_observed_at"] is None
 
 
+def test_component_refresh_summary_accepts_decision_evidence_without_hint_ref(
+    tmp_path: Path, monkeypatch: pytest.MonkeyPatch
+) -> None:
+    module = load_build_views_module()
+    sdk_root = tmp_path / ".deps" / "aoa-sdk"
+    examples_root = sdk_root / "examples"
+    examples_root.mkdir(parents=True)
+    (examples_root / "component_drift_hints.example.json").write_text(
+        json.dumps(
+            {
+                "schema_version": "aoa_component_drift_hint_set_v1",
+                "session_ref": "session:component-refresh-test",
+                "repo_root": "/srv/AbyssOS",
+                "hints": [
+                    {
+                        "hint_ref": "hint:root",
+                        "component_ref": "component:codex-plane:shared-root",
+                        "owner_repo": "8Dionysus",
+                        "observed_at": "2026-04-12T16:20:00Z",
+                        "observed_by": "workspace_root",
+                        "severity": "medium",
+                        "signals": ["doctor_fail_after_render"],
+                        "repeat_count": 1,
+                        "evidence_refs": ["artifact:root"],
+                        "recommended_route_class": "regenerate",
+                        "review_required": True,
+                    }
+                ],
+            }
+        ),
+        encoding="utf-8",
+    )
+    (examples_root / "component_refresh_followthrough_decision.example.json").write_text(
+        json.dumps(
+            {
+                "schema_version": "aoa_component_refresh_followthrough_decision_set_v1",
+                "decision_ref": "decision:test",
+                "reviewed": True,
+                "session_ref": "session:component-refresh-test",
+                "decisions": [
+                    {
+                        "component_ref": "component:codex-plane:shared-root",
+                        "owner_repo": "8Dionysus",
+                        "route_class": "regenerate",
+                        "decision_status": "chosen",
+                        "selected_refresh_path": ["python root.py"],
+                        "reason": "decision cites review evidence, not a route hint id",
+                        "evidence_refs": ["repo:8Dionysus/docs/review.md"],
+                        "rollback_anchor": "docs/CODEX_PLANE_ROLLOUT.md",
+                        "stats_should_refresh": True,
+                        "memo_writeback_candidate": False,
+                    }
+                ],
+            }
+        ),
+        encoding="utf-8",
+    )
+
+    monkeypatch.setenv("AOA_SDK_ROOT", str(sdk_root))
+
+    summary = module.build_component_refresh_summary()
+
+    assert summary["components"][0]["latest_decision_status"] == "chosen"
+
+
 def test_candidate_lineage_summary_stays_reviewed_only_and_no_score() -> None:
     module = load_build_views_module()
     receipts = module.load_receipts(
@@ -2337,7 +2402,69 @@ def test_load_receipts_accepts_jsonl_and_deduplicates_event_ids(tmp_path: Path) 
                     {
                         "event_kind": "automation_candidate_receipt",
                         "event_id": "evt-auto-test-0001",
+                        "observed_at": "2026-04-05T10:19:00Z",
+                        "run_ref": "run-test-001",
+                        "session_ref": "session:test-001",
+                        "actor_ref": "aoa-skills:automation-opportunity-scan",
+                        "object_ref": {
+                            "repo": "aoa-skills",
+                            "kind": "skill",
+                            "id": "aoa-automation-opportunity-scan",
+                            "version": "main",
+                        },
+                        "evidence_refs": [
+                            {
+                                "kind": "skill",
+                                "ref": "repo:aoa-skills/skills/aoa-automation-opportunity-scan/SKILL.md",
+                            }
+                        ],
+                        "payload": {
+                            "pipeline_ref": "pipeline:test",
+                            "repeat_signal": "present",
+                            "deterministic_ready": True,
+                            "reversible_ready": True,
+                            "checkpoint_required": False,
+                            "seed_ready": True,
+                            "next_artifact_hint": "seed-pack",
+                        },
+                    }
+                ),
+                json.dumps(
+                    {
+                        "event_kind": "automation_candidate_receipt",
+                        "event_id": "evt-auto-test-0001",
                         "observed_at": "2026-04-05T10:21:00Z",
+                        "run_ref": "run-test-001",
+                        "session_ref": "session:test-001",
+                        "actor_ref": "aoa-skills:automation-opportunity-scan",
+                        "object_ref": {
+                            "repo": "aoa-skills",
+                            "kind": "skill",
+                            "id": "aoa-automation-opportunity-scan",
+                            "version": "main",
+                        },
+                        "evidence_refs": [
+                            {
+                                "kind": "skill",
+                                "ref": "repo:aoa-skills/skills/aoa-automation-opportunity-scan/SKILL.md",
+                            }
+                        ],
+                        "payload": {
+                            "pipeline_ref": "pipeline:test",
+                            "repeat_signal": "present",
+                            "deterministic_ready": True,
+                            "reversible_ready": True,
+                            "checkpoint_required": False,
+                            "seed_ready": True,
+                            "next_artifact_hint": "seed-pack",
+                        },
+                    }
+                ),
+                json.dumps(
+                    {
+                        "event_kind": "automation_candidate_receipt",
+                        "event_id": "evt-auto-test-0001",
+                        "observed_at": "2026-04-05T10:18:00Z",
                         "run_ref": "run-test-001",
                         "session_ref": "session:test-001",
                         "actor_ref": "aoa-skills:automation-opportunity-scan",

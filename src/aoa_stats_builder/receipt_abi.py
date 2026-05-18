@@ -63,7 +63,10 @@ def load_receipts(paths: list[Path]) -> list[dict[str, Any]]:
 
     deduped: dict[str, dict[str, Any]] = {}
     for receipt in receipts:
-        deduped[receipt["event_id"]] = receipt
+        event_id = receipt["event_id"]
+        previous = deduped.get(event_id)
+        if previous is None or receipt_sort_key(receipt) >= receipt_sort_key(previous):
+            deduped[event_id] = receipt
     return sorted(deduped.values(), key=receipt_sort_key)
 
 

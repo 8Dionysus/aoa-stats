@@ -77,6 +77,14 @@ def test_systemd_arg_quotes_and_escapes_special_path_characters() -> None:
 
     rendered = module.systemd_arg(Path('/tmp/aoa stats/%root/$feed/"quoted"'))
 
+    assert rendered == '"/tmp/aoa stats/%%root/$feed/\\"quoted\\""'
+
+
+def test_systemd_exec_arg_escapes_dollars_for_exec_arguments() -> None:
+    module = load_install_module()
+
+    rendered = module.systemd_exec_arg(Path('/tmp/aoa stats/%root/$feed/"quoted"'))
+
     assert rendered == '"/tmp/aoa stats/%%root/$$feed/\\"quoted\\""'
 
 

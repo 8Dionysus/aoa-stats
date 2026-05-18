@@ -32,7 +32,21 @@ def assert_repo_ref_matches_neighbor(repo_ref: str, env_name: str, repo_name: st
     repo_root = neighbor_root(env_name, repo_name)
     if repo_root is None:
         return
-    assert (repo_root / repo_ref.removeprefix(prefix)).is_file(), repo_ref
+    relative_path = repo_ref.removeprefix(prefix)
+    if (repo_root / relative_path).is_file():
+        return
+    topology_fallbacks = {
+        (
+            "aoa-memo",
+            "examples/pattern.antifragility-stress-recovery-window.example.json",
+        ): [
+            "mechanics/antifragility/examples/pattern.antifragility-stress-recovery-window.example.json"
+        ],
+    }
+    for fallback in topology_fallbacks.get((repo_name, relative_path), []):
+        if (repo_root / fallback).is_file():
+            return
+    raise AssertionError(repo_ref)
 
 
 def test_stress_recovery_chaos_wave1_docs_are_discoverable_and_bounded() -> None:

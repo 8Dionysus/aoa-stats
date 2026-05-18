@@ -331,6 +331,13 @@ def display_repo_input_path(path: Path, *, repo_roots: tuple[tuple[str, Path], .
     return display_input_path(path)
 
 
+def readable_source_path(path: Path, *, fallbacks: tuple[Path, ...] = ()) -> Path:
+    for candidate in (path, *fallbacks):
+        if candidate.exists():
+            return candidate
+    return path
+
+
 def load_json_object(path: Path, *, label: str) -> dict[str, Any]:
     try:
         payload = json.loads(path.read_text(encoding="utf-8"))
@@ -571,7 +578,16 @@ def continuity_window_generated_from() -> tuple[dict[str, Any], dict[str, Any], 
         label="self-agency continuity playbook",
     )
     memo_thread = load_json_object(
-        memo_path,
+        readable_source_path(
+            memo_path,
+            fallbacks=(
+                memo_root
+                / "mechanics"
+                / "writeback"
+                / "examples"
+                / "provenance_thread.self-agency-continuity.example.json",
+            ),
+        ),
         label="self-agency continuity provenance thread example",
     )
     eval_catalog = load_json_object(
@@ -793,10 +809,6 @@ def component_refresh_generated_from() -> tuple[dict[str, Any], list[dict[str, A
         if not evidence_refs:
             raise ReceiptValidationError(
                 f"component refresh followthrough decision example decisions[{index}] must expose at least one evidence_ref"
-            )
-        if not any(ref in hint_refs for ref in evidence_refs):
-            raise ReceiptValidationError(
-                f"component refresh followthrough decision example decisions[{index}] must reference at least one known hint_ref"
             )
         decision_components.add(str(component_ref))
 
