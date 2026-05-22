@@ -1,0 +1,232 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://aoa-stats/schemas/memory-movement-summary.schema.json",
+  "title": "aoa-stats memory movement summary",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema_version",
+    "generated_from",
+    "authority",
+    "source_kind_counts",
+    "reviewed_corpus",
+    "reviewed_intake",
+    "consumer_handoff"
+  ],
+  "properties": {
+    "schema_version": {
+      "const": "aoa_stats_memory_movement_summary_v1"
+    },
+    "generated_from": {
+      "$ref": "#/$defs/generated_from"
+    },
+    "authority": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "summary_owner",
+        "memory_owner",
+        "authority_ceiling"
+      ],
+      "properties": {
+        "summary_owner": {
+          "const": "aoa-stats"
+        },
+        "memory_owner": {
+          "const": "aoa-memo"
+        },
+        "authority_ceiling": {
+          "type": "string",
+          "minLength": 1
+        }
+      }
+    },
+    "source_kind_counts": {
+      "$ref": "#/$defs/string_count_map"
+    },
+    "reviewed_corpus": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "object_count",
+        "by_kind",
+        "by_review_state",
+        "by_recall_status",
+        "by_temperature",
+        "by_kag_lift_status",
+        "objects"
+      ],
+      "properties": {
+        "object_count": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "by_kind": {
+          "$ref": "#/$defs/string_count_map"
+        },
+        "by_review_state": {
+          "$ref": "#/$defs/string_count_map"
+        },
+        "by_recall_status": {
+          "$ref": "#/$defs/string_count_map"
+        },
+        "by_temperature": {
+          "$ref": "#/$defs/string_count_map"
+        },
+        "by_kag_lift_status": {
+          "$ref": "#/$defs/string_count_map"
+        },
+        "objects": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+              "id",
+              "kind",
+              "review_state",
+              "current_recall_status",
+              "temperature",
+              "kag_lift_status",
+              "object_ref"
+            ],
+            "properties": {
+              "id": {
+                "type": "string",
+                "minLength": 1
+              },
+              "kind": {
+                "type": "string",
+                "minLength": 1
+              },
+              "review_state": {
+                "type": "string",
+                "minLength": 1
+              },
+              "current_recall_status": {
+                "type": "string",
+                "minLength": 1
+              },
+              "temperature": {
+                "type": "string",
+                "minLength": 1
+              },
+              "kag_lift_status": {
+                "type": "string",
+                "minLength": 1
+              },
+              "object_ref": {
+                "type": "string",
+                "pattern": "^aoa-memo/memo/objects/.+/object[.]json$"
+              }
+            }
+          }
+        }
+      }
+    },
+    "reviewed_intake": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "packet_count",
+        "landing_receipt_count",
+        "landing_result_counts",
+        "landed_object_refs"
+      ],
+      "properties": {
+        "packet_count": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "landing_receipt_count": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "landing_result_counts": {
+          "$ref": "#/$defs/string_count_map"
+        },
+        "landed_object_refs": {
+          "type": "array",
+          "uniqueItems": true,
+          "items": {
+            "type": "string",
+            "minLength": 1
+          }
+        }
+      }
+    },
+    "consumer_handoff": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "consumer_refs",
+        "handoff_memory_ref",
+        "posture"
+      ],
+      "properties": {
+        "consumer_refs": {
+          "type": "array",
+          "minItems": 5,
+          "uniqueItems": true,
+          "items": {
+            "enum": [
+              "repo:aoa-evals",
+              "repo:aoa-kag",
+              "repo:aoa-stats",
+              "repo:aoa-playbooks",
+              "repo:aoa-agents"
+            ]
+          }
+        },
+        "handoff_memory_ref": {
+          "type": "string",
+          "minLength": 1
+        },
+        "posture": {
+          "const": "derived_consumer_summary"
+        }
+      }
+    }
+  },
+  "$defs": {
+    "generated_from": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "receipt_input_paths",
+        "total_receipts",
+        "latest_observed_at"
+      ],
+      "properties": {
+        "receipt_input_paths": {
+          "type": "array",
+          "minItems": 4,
+          "items": {
+            "type": "string",
+            "minLength": 1
+          }
+        },
+        "total_receipts": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "latest_observed_at": {
+          "type": "string",
+          "format": "date-time"
+        }
+      }
+    },
+    "string_count_map": {
+      "type": "object",
+      "propertyNames": {
+        "type": "string",
+        "minLength": 1
+      },
+      "additionalProperties": {
+        "type": "integer",
+        "minimum": 0
+      }
+    }
+  }
+}

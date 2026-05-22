@@ -251,6 +251,23 @@ SURFACE_SPECS = [
         live_state_capable=True,
     ),
     _surface(
+        name="memory_movement_summary",
+        surface_ref="generated/memory_movement_summary.min.json",
+        schema_ref="schemas/memory-movement-summary.schema.json",
+        primary_question="What reviewed aoa-memo corpus and landing movement is visible without making stats the owner of memory truth?",
+        derivation_rule="derive corpus, recall, KAG-lift, intake, and landing counts from aoa-memo reviewed objects, min catalog, reviewed intake packets, and landing receipts",
+        input_posture="reviewed_memory_read_model",
+        owner_truth_inputs=[
+            "aoa-memo reviewed memory objects",
+            "aoa-memo memory object catalog",
+            "aoa-memo reviewed intake packets",
+            "aoa-memo landing receipts",
+        ],
+        authority_ceiling="Weaker than aoa-memo reviewed memory objects, landing receipts, and source refs.",
+        consumer_risk="high",
+        live_state_capable=True,
+    ),
+    _surface(
         name="titan_incarnation_summary",
         surface_ref="generated/titan_incarnation_summary.min.json",
         schema_ref="schemas/titan_incarnation_summary.schema.json",

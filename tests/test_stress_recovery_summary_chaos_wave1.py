@@ -40,7 +40,20 @@ def assert_repo_ref_matches_neighbor(repo_ref: str, env_name: str, repo_name: st
             "aoa-memo",
             "examples/pattern.antifragility-stress-recovery-window.example.json",
         ): [
-            "mechanics/antifragility/examples/pattern.antifragility-stress-recovery-window.example.json"
+            "mechanics/antifragility/examples/pattern.antifragility-stress-recovery-window.example.json",
+            "mechanics/antifragility/parts/recovery-pattern-memory/examples/pattern.antifragility-stress-recovery-window.example.json",
+        ],
+        (
+            "aoa-evals",
+            "bundles/aoa-stress-recovery-window/reports/example-report.json",
+        ): [
+            "evals/comparison/longitudinal-window/aoa-stress-recovery-window/reports/example-report.json"
+        ],
+        (
+            "aoa-evals",
+            "examples/runtime_evidence_selection.return-anchor-integrity.example.json",
+        ): [
+            "mechanics/audit/parts/selected-evidence-packets/examples/runtime_evidence_selection.return-anchor-integrity.example.json"
         ],
     }
     for fallback in topology_fallbacks.get((repo_name, relative_path), []):

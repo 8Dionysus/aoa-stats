@@ -19,8 +19,8 @@ The first usable summary families are already landed:
   runtime-closeout summaries
 - Codex-plane deployment, rollout-operations, rollout-drift, rollout-campaign,
   drift-review, continuity-window, component-refresh, stress-recovery,
-  source-coverage, surface-detection, Titan-incarnation, and Titan-summon
-  summaries
+  memory-movement, source-coverage, surface-detection, Titan-incarnation, and
+  Titan-summon summaries
 - the summary-surface catalog plus the repo-local `aoa_stats` MCP read model
 
 The next honest move is not to widen into a dashboard empire.
@@ -79,10 +79,15 @@ workflow or proof layer. Its current checked surface is:
 - bounded chaos-wave stress recovery example:
   `docs/STRESS_RECOVERY_SUMMARIES_CHAOS_WAVE1.md` and
   `examples/stress_recovery_window_summary.chaos-wave1.example.json`
+- reviewed memory movement summary:
+  `docs/MEMORY_MOVEMENT_SUMMARY.md`,
+  `schemas/memory-movement-summary.schema.json`,
+  `generated/memory_movement_summary.min.json`, and
+  `tests/test_memory_movement_summary.py`
 
 This contour keeps Codex and rollout visibility derived, previewable, and
 weaker than source-owned rollout history, continuity anchors, owner receipts,
-and bounded eval verdicts.
+reviewed memory objects, and bounded eval verdicts.
 It also makes `aoa-stats` an active participant in project growth without
 letting the stats layer absorb owner authority.
 

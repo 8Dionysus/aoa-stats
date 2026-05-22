@@ -153,6 +153,13 @@ COMPONENT_REFRESH_SIGNAL_DRIFT_CLASSES = {
 COMPONENT_REFRESH_COMPONENT_DRIFT_CLASSES = {
     "component:codex-plane:shared-root": ("root_drift",),
 }
+MEMORY_CONSUMER_REFS = (
+    "repo:aoa-evals",
+    "repo:aoa-kag",
+    "repo:aoa-stats",
+    "repo:aoa-playbooks",
+    "repo:aoa-agents",
+)
 
 
 def repo_root_from_env(env_name: str, default: Path) -> Path:
@@ -584,6 +591,13 @@ def continuity_window_generated_from() -> tuple[dict[str, Any], dict[str, Any], 
                 memo_root
                 / "mechanics"
                 / "writeback"
+                / "examples"
+                / "provenance_thread.self-agency-continuity.example.json",
+                memo_root
+                / "mechanics"
+                / "writeback"
+                / "parts"
+                / "growth-and-continuity"
                 / "examples"
                 / "provenance_thread.self-agency-continuity.example.json",
             ),
@@ -1103,6 +1117,17 @@ def build_stress_recovery_window_summary(
     report_ref = payload.get("report_ref")
     report_path = resolve_repo_ref_path(report_ref, {"aoa-evals": evals_root})
     report = load_optional_json_object(report_path)
+    if report is None and report_ref == "repo:aoa-evals/bundles/aoa-stress-recovery-window/reports/example-report.json":
+        report_path = (
+            evals_root
+            / "evals"
+            / "comparison"
+            / "longitudinal-window"
+            / "aoa-stress-recovery-window"
+            / "reports"
+            / "example-report.json"
+        )
+        report = load_optional_json_object(report_path)
     if report is None:
         return build_suppressed_stress_recovery_window_summary(
             relevant_receipts,
@@ -2298,6 +2323,229 @@ def build_continuity_window_summary() -> dict[str, Any]:
     }
 
 
+def memory_movement_source_paths() -> tuple[Path, Path, Path, Path]:
+    memo_root = repo_root_from_env("AOA_MEMO_ROOT", DEFAULT_AOA_MEMO_ROOT)
+    return (
+        memo_root / "generated" / "memory-objects" / "memory_object_catalog.min.json",
+        memo_root / "memo" / "objects",
+        memo_root / "memo" / "intake" / "reviewed",
+        memo_root / "memo" / "intake" / "receipts",
+    )
+
+
+def load_json_file_set(path: Path, *, label: str) -> list[tuple[Path, dict[str, Any]]]:
+    if not path.exists():
+        raise ReceiptValidationError(f"missing {label}: {path}")
+    return [
+        (item_path, load_json_object(item_path, label=f"{label} JSON"))
+        for item_path in sorted(path.glob("*.json"))
+    ]
+
+
+def load_memory_object_set(path: Path) -> list[tuple[Path, dict[str, Any]]]:
+    if not path.exists():
+        raise ReceiptValidationError(f"missing reviewed memory object corpus: {path}")
+    return [
+        (object_path, load_json_object(object_path, label="reviewed memory object"))
+        for object_path in sorted(path.rglob("object.json"))
+    ]
+
+
+def memory_object_recall_status(memory_object: dict[str, Any]) -> str:
+    lifecycle = memory_object.get("lifecycle")
+    if not isinstance(lifecycle, dict):
+        return "unknown"
+    current_recall = lifecycle.get("current_recall")
+    if not isinstance(current_recall, dict):
+        return "unknown"
+    status = current_recall.get("status")
+    return str(status) if is_nonempty_string(status) else "unknown"
+
+
+def memory_object_bridge_status(memory_object: dict[str, Any]) -> str:
+    bridges = memory_object.get("bridges")
+    if not isinstance(bridges, dict):
+        return "absent"
+    status = bridges.get("kag_lift_status")
+    return str(status) if is_nonempty_string(status) else "unknown"
+
+
+def memory_object_datetime(memory_object: dict[str, Any], key: str) -> datetime:
+    time_payload = memory_object.get("time")
+    if not isinstance(time_payload, dict):
+        return datetime.min.replace(tzinfo=UTC)
+    return parse_iso_datetime_or_min(time_payload.get(key))
+
+
+def memory_movement_generated_from() -> tuple[
+    dict[str, Any],
+    list[dict[str, Any]],
+    list[tuple[Path, dict[str, Any]]],
+    list[tuple[Path, dict[str, Any]]],
+    list[tuple[Path, dict[str, Any]]],
+]:
+    catalog_path, objects_path, reviewed_path, receipts_path = memory_movement_source_paths()
+    memo_root = repo_root_from_env("AOA_MEMO_ROOT", DEFAULT_AOA_MEMO_ROOT)
+    catalog = load_json_object(catalog_path, label="aoa-memo memory object min catalog")
+    catalog_objects = catalog.get("memory_objects")
+    if not isinstance(catalog_objects, list):
+        raise ReceiptValidationError("aoa-memo memory object min catalog must expose memory_objects")
+    if catalog.get("source_of_truth") != "aoa-memo-object-read-models-v2":
+        raise ReceiptValidationError(
+            "aoa-memo memory object catalog must keep source_of_truth "
+            "aoa-memo-object-read-models-v2"
+        )
+
+    memory_objects = load_memory_object_set(objects_path)
+    reviewed_intakes = load_json_file_set(reviewed_path, label="aoa-memo reviewed intake packets")
+    landing_receipts = load_json_file_set(receipts_path, label="aoa-memo landing receipts")
+
+    object_ids = {
+        item.get("id")
+        for _, item in memory_objects
+        if isinstance(item.get("id"), str) and item.get("id")
+    }
+    catalog_reviewed_ids = {
+        item.get("id")
+        for item in catalog_objects
+        if isinstance(item, dict) and item.get("source_kind") == "reviewed_corpus"
+    }
+    if object_ids != catalog_reviewed_ids:
+        missing_in_catalog = sorted(object_ids - catalog_reviewed_ids)
+        missing_in_objects = sorted(catalog_reviewed_ids - object_ids)
+        raise ReceiptValidationError(
+            "aoa-memo reviewed corpus object/catalog mismatch: "
+            f"missing_in_catalog={missing_in_catalog}; missing_in_objects={missing_in_objects}"
+        )
+
+    latest_candidates = [
+        memory_object_datetime(item, "observed_at")
+        for _, item in memory_objects
+    ]
+    latest_candidates.extend(
+        parse_iso_datetime_or_min(receipt.get("landed_at"))
+        for _, receipt in landing_receipts
+    )
+    latest_candidates.extend(
+        parse_iso_datetime_or_min(packet.get("created_at"))
+        for _, packet in reviewed_intakes
+    )
+    latest_observed_at = max(latest_candidates or [datetime.min.replace(tzinfo=UTC)])
+    if latest_observed_at == datetime.min.replace(tzinfo=UTC):
+        raise ReceiptValidationError("aoa-memo memory movement inputs have no observable timestamp")
+
+    source = {
+        "receipt_input_paths": [
+            display_repo_input_path(catalog_path, repo_roots=(("aoa-memo", memo_root),)),
+            display_repo_input_path(objects_path, repo_roots=(("aoa-memo", memo_root),)),
+            display_repo_input_path(reviewed_path, repo_roots=(("aoa-memo", memo_root),)),
+            display_repo_input_path(receipts_path, repo_roots=(("aoa-memo", memo_root),)),
+        ],
+        "total_receipts": len(memory_objects) + len(reviewed_intakes) + len(landing_receipts),
+        "latest_observed_at": latest_observed_at.isoformat().replace("+00:00", "Z"),
+    }
+    return source, catalog_objects, memory_objects, reviewed_intakes, landing_receipts
+
+
+def build_memory_movement_summary() -> dict[str, Any]:
+    source, catalog_objects, memory_objects, reviewed_intakes, landing_receipts = (
+        memory_movement_generated_from()
+    )
+    memo_root = repo_root_from_env("AOA_MEMO_ROOT", DEFAULT_AOA_MEMO_ROOT)
+
+    source_kind_counts: Counter[str] = Counter()
+    for item in catalog_objects:
+        if isinstance(item, dict):
+            source_kind_counts[str(item.get("source_kind") or "unknown")] += 1
+
+    kind_counts: Counter[str] = Counter()
+    review_state_counts: Counter[str] = Counter()
+    recall_status_counts: Counter[str] = Counter()
+    temperature_counts: Counter[str] = Counter()
+    kag_lift_status_counts: Counter[str] = Counter()
+    reviewed_object_rows: list[dict[str, Any]] = []
+
+    for object_path, memory_object in memory_objects:
+        object_id = str(memory_object.get("id") or "")
+        if not object_id:
+            raise ReceiptValidationError(f"reviewed memory object is missing id: {object_path}")
+        kind = str(memory_object.get("kind") or "unknown")
+        lifecycle = memory_object.get("lifecycle")
+        trust = memory_object.get("trust")
+        if not isinstance(lifecycle, dict):
+            lifecycle = {}
+        if not isinstance(trust, dict):
+            trust = {}
+        review_state = str(lifecycle.get("review_state") or "unknown")
+        temperature = str(trust.get("temperature") or "unknown")
+        recall_status = memory_object_recall_status(memory_object)
+        kag_lift_status = memory_object_bridge_status(memory_object)
+
+        kind_counts[kind] += 1
+        review_state_counts[review_state] += 1
+        recall_status_counts[recall_status] += 1
+        temperature_counts[temperature] += 1
+        kag_lift_status_counts[kag_lift_status] += 1
+        reviewed_object_rows.append(
+            {
+                "id": object_id,
+                "kind": kind,
+                "review_state": review_state,
+                "current_recall_status": recall_status,
+                "temperature": temperature,
+                "kag_lift_status": kag_lift_status,
+                "object_ref": display_repo_input_path(
+                    object_path,
+                    repo_roots=(("aoa-memo", memo_root),),
+                ),
+            }
+        )
+
+    landing_result_counts = Counter(
+        str(receipt.get("result") or "unknown")
+        for _, receipt in landing_receipts
+    )
+    landed_object_refs = sorted({
+        str(receipt.get("object_ref"))
+        for _, receipt in landing_receipts
+        if is_nonempty_string(receipt.get("object_ref"))
+    })
+
+    return {
+        "schema_version": "aoa_stats_memory_movement_summary_v1",
+        "generated_from": source,
+        "authority": {
+            "summary_owner": "aoa-stats",
+            "memory_owner": "aoa-memo",
+            "authority_ceiling": (
+                "Derived movement summary only; weaker than aoa-memo reviewed "
+                "memory objects, landing receipts, and source refs."
+            ),
+        },
+        "source_kind_counts": string_count_map(source_kind_counts),
+        "reviewed_corpus": {
+            "object_count": len(memory_objects),
+            "by_kind": string_count_map(kind_counts),
+            "by_review_state": string_count_map(review_state_counts),
+            "by_recall_status": string_count_map(recall_status_counts),
+            "by_temperature": string_count_map(temperature_counts),
+            "by_kag_lift_status": string_count_map(kag_lift_status_counts),
+            "objects": reviewed_object_rows,
+        },
+        "reviewed_intake": {
+            "packet_count": len(reviewed_intakes),
+            "landing_receipt_count": len(landing_receipts),
+            "landing_result_counts": string_count_map(landing_result_counts),
+            "landed_object_refs": landed_object_refs,
+        },
+        "consumer_handoff": {
+            "consumer_refs": list(MEMORY_CONSUMER_REFS),
+            "handoff_memory_ref": "memo.decision.2026-05-22.reviewed-memory-consumer-handoff-spine",
+            "posture": "derived_consumer_summary",
+        },
+    }
+
+
 def latest_component_hints_by_component(hints: list[dict[str, Any]]) -> dict[str, dict[str, Any]]:
     latest_by_component: dict[str, dict[str, Any]] = {}
     for hint in hints:
@@ -2642,6 +2890,7 @@ def build_all_views(
         ("drift_review_summary.min.json", build_drift_review_summary),
         ("continuity_window_summary.min.json", build_continuity_window_summary),
         ("component_refresh_summary.min.json", build_component_refresh_summary),
+        ("memory_movement_summary.min.json", build_memory_movement_summary),
         ("titan_incarnation_summary.min.json", build_titan_incarnation_summary),
         ("titan_summon_summary.min.json", build_titan_summon_summary),
     ):

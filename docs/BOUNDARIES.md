@@ -46,6 +46,7 @@ It may emit:
 - automation-followthrough summaries
 - codex-plane deployment summaries
 - runtime-closeout summaries
+- reviewed memory movement summaries
 
 It must not emit:
 
@@ -53,6 +54,7 @@ It must not emit:
 - a replacement for bundle-local verdict meaning
 - route or quest state authority
 - workflow instructions that override owner repos
+- durable memory truth or memory promotion decisions
 - inboxes that pretend to be governance
 
 ## Anti-collapse rules

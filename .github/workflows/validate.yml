@@ -39,7 +39,7 @@ jobs:
         uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd
         with:
           repository: 8Dionysus/aoa-memo
-          ref: 06eb973bd5ee5d5bac1c3613d932d1e8940d8b0a
+          ref: d3883e42cedb0156baf71178ac9b9c67b4007815
           path: .deps/aoa-memo
 
       - name: Checkout aoa-sdk
