@@ -30,8 +30,9 @@ It does not own:
 4. `docs/ARCHITECTURE.md`
 5. `docs/LIVE_SESSION_USE.md`
 6. `docs/COMPONENT_REFRESH_SUMMARIES.md` for derived-only component refresh summary posture
-7. the schema, builder, receipt source, generated surface, or MCP surface you plan to touch
-8. `docs/AGENTS_ROOT_REFERENCE.md` for preserved full root branches
+7. `docs/MEMORY_MOVEMENT_SUMMARY.md` for derived-only `aoa-memo` reviewed corpus movement posture
+8. the schema, builder, receipt source, generated surface, or MCP surface you plan to touch
+9. `docs/AGENTS_ROOT_REFERENCE.md` for preserved full root branches
 
 
 ## AGENTS stack law

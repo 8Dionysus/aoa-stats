@@ -76,6 +76,7 @@ def test_summary_surface_catalog_contract_is_exact() -> None:
         "drift_review_summary",
         "continuity_window_summary",
         "component_refresh_summary",
+        "memory_movement_summary",
         "titan_incarnation_summary",
         "titan_summon_summary",
         "runtime_closeout_summary",

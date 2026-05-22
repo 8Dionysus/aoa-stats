@@ -208,6 +208,7 @@ The first usable derived summaries are:
 - `generated/drift_review_summary.min.json`
 - `generated/continuity_window_summary.min.json`
 - `generated/component_refresh_summary.min.json`
+- `generated/memory_movement_summary.min.json`
 - `generated/runtime_closeout_summary.min.json`
 - `generated/stress_recovery_window_summary.min.json`
 - `generated/source_coverage_summary.min.json`
@@ -266,6 +267,12 @@ refresh companion. It derives one bounded refresh snapshot from the reviewed
 `aoa-sdk` drift-hint and followthrough-decision examples, keeps owner repo and
 status windows explicit, and stays weaker than owner laws, owner receipts, and
 any real refresh validation.
+
+`generated/memory_movement_summary.min.json` is the reviewed memory movement
+companion. It derives one bounded snapshot from `aoa-memo` reviewed corpus
+objects, memory-object read models, reviewed intake packets, and landing
+receipts, so consumer layers can see corpus growth without making stats the
+owner of memory truth.
 
 `generated/source_coverage_summary.min.json` is the intake self-audit
 companion. It compares active receipt coverage against the live source

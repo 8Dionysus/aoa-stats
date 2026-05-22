@@ -66,6 +66,7 @@ Current v0 derived views:
 - runtime-closeout summary
 - source-coverage summary
 - surface-detection summary
+- memory-movement summary
 - summary-surface catalog
 
 `generated/summary_surface_catalog.min.json` is the compact owner-owned
@@ -87,6 +88,12 @@ refresh slice. It reads reviewed `aoa-sdk` drift hints and reviewed
 followthrough decisions only, keeps owner counts and refresh-status posture
 descriptive, and does not outrank owner laws, owner receipts, or refresh
 validation.
+
+`generated/memory_movement_summary.min.json` is the reviewed memory movement
+slice. It reads `aoa-memo` reviewed corpus objects, the memory-object min
+catalog, reviewed intake packets, and landing receipts. It keeps object counts,
+recall posture, KAG-lift posture, and landing movement descriptive; `aoa-memo`
+remains the memory authority.
 
 The published runtime-entry capsule is the schema-backed v2 contract:
 
