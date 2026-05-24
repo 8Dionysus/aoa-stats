@@ -162,7 +162,8 @@
       "required": [
         "consumer_refs",
         "handoff_memory_ref",
-        "posture"
+        "posture",
+        "memory_route_boundary"
       ],
       "properties": {
         "consumer_refs": {
@@ -185,6 +186,34 @@
         },
         "posture": {
           "const": "derived_consumer_summary"
+        },
+        "memory_route_boundary": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "operation_mode",
+            "local_candidate_route",
+            "session_evidence_route",
+            "durable_landing_route",
+            "mcp_boundary"
+          ],
+          "properties": {
+            "operation_mode": {
+              "const": "read_only"
+            },
+            "local_candidate_route": {
+              "const": "none_without_repo_memo_port"
+            },
+            "session_evidence_route": {
+              "const": ".aoa_session_evidence_until_reviewed_intake"
+            },
+            "durable_landing_route": {
+              "const": "aoa-memo_reviewed_source_patch"
+            },
+            "mcp_boundary": {
+              "const": "aoa_memo_brief_search_status_validate_and_landing_plan_dry_run_only"
+            }
+          }
         }
       }
     }

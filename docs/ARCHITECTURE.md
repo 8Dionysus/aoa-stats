@@ -93,7 +93,10 @@ validation.
 slice. It reads `aoa-memo` reviewed corpus objects, the memory-object min
 catalog, reviewed intake packets, and landing receipts. It keeps object counts,
 recall posture, KAG-lift posture, and landing movement descriptive; `aoa-memo`
-remains the memory authority.
+remains the memory authority. Its route boundary is read-only: `.aoa` session
+evidence stays evidence until reviewed intake, local memo candidates require a
+repo-local memo port, and durable memory still lands through reviewed source
+patches in `aoa-memo`.
 
 The published runtime-entry capsule is the schema-backed v2 contract:
 

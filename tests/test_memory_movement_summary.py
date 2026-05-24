@@ -24,6 +24,10 @@ def load_json(relative_path: str) -> object:
     return json.loads((REPO_ROOT / relative_path).read_text(encoding="utf-8"))
 
 
+def read_text(relative_path: str) -> str:
+    return (REPO_ROOT / relative_path).read_text(encoding="utf-8")
+
+
 def test_memory_movement_summary_schema_and_authority_boundary() -> None:
     schema = load_json("schemas/memory-movement-summary.schema.json")
     payload = load_json("generated/memory_movement_summary.min.json")
@@ -37,13 +41,45 @@ def test_memory_movement_summary_schema_and_authority_boundary() -> None:
     assert payload["authority"]["memory_owner"] == "aoa-memo"
     assert "Derived movement summary only" in payload["authority"]["authority_ceiling"]
     assert payload["reviewed_corpus"]["object_count"] == payload["source_kind_counts"]["reviewed_corpus"]
-    assert payload["reviewed_corpus"]["object_count"] >= 7
+    assert payload["reviewed_corpus"]["object_count"] >= 8
+    bridge_row = next(
+        item
+        for item in payload["reviewed_corpus"]["objects"]
+        if item["id"] == "memo.bridge.2026-03-23.tos-lineage-kag-candidate"
+    )
+    assert bridge_row == {
+        "id": "memo.bridge.2026-03-23.tos-lineage-kag-candidate",
+        "kind": "bridge",
+        "review_state": "confirmed",
+        "current_recall_status": "allowed",
+        "temperature": "cool",
+        "kag_lift_status": "candidate",
+        "object_ref": "aoa-memo/memo/objects/bridges/2026/tos-lineage-kag-candidate/object.json",
+    }
     assert payload["reviewed_intake"]["landing_result_counts"].get("landed", 0) >= 1
     assert "repo:aoa-stats" in payload["consumer_handoff"]["consumer_refs"]
     assert (
         payload["consumer_handoff"]["handoff_memory_ref"]
         == "memo.decision.2026-05-22.reviewed-memory-consumer-handoff-spine"
     )
+    assert payload["consumer_handoff"]["memory_route_boundary"] == {
+        "operation_mode": "read_only",
+        "local_candidate_route": "none_without_repo_memo_port",
+        "session_evidence_route": ".aoa_session_evidence_until_reviewed_intake",
+        "durable_landing_route": "aoa-memo_reviewed_source_patch",
+        "mcp_boundary": "aoa_memo_brief_search_status_validate_and_landing_plan_dry_run_only",
+    }
+
+
+def test_memory_movement_summary_docs_name_consumer_route_boundary() -> None:
+    doc = read_text("docs/MEMORY_MOVEMENT_SUMMARY.md")
+    compact_doc = " ".join(doc.split())
+
+    assert "route-only/read-only memory consumer" in compact_doc
+    assert "does not create local memo candidates" in compact_doc
+    assert "Session evidence remains `.aoa` evidence" in compact_doc
+    assert "`aoa_memo` MCP brief/search/status/validation/landing-plan dry-runs" in compact_doc
+    assert "reviewed source patch in `aoa-memo`" in compact_doc
 
 
 def test_memory_movement_builder_rejects_catalog_object_mismatch(
