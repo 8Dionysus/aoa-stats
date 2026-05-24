@@ -272,7 +272,9 @@ any real refresh validation.
 companion. It derives one bounded snapshot from `aoa-memo` reviewed corpus
 objects, memory-object read models, reviewed intake packets, and landing
 receipts, so consumer layers can see corpus growth without making stats the
-owner of memory truth.
+owner of memory truth. It also names the read-only memory route boundary:
+session evidence stays in `.aoa` until reviewed intake, local candidates require
+a repo-local memo port, and durable memory lands through `aoa-memo`.
 
 `generated/source_coverage_summary.min.json` is the intake self-audit
 companion. It compares active receipt coverage against the live source

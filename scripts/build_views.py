@@ -160,6 +160,13 @@ MEMORY_CONSUMER_REFS = (
     "repo:aoa-playbooks",
     "repo:aoa-agents",
 )
+MEMORY_ROUTE_BOUNDARY = {
+    "operation_mode": "read_only",
+    "local_candidate_route": "none_without_repo_memo_port",
+    "session_evidence_route": ".aoa_session_evidence_until_reviewed_intake",
+    "durable_landing_route": "aoa-memo_reviewed_source_patch",
+    "mcp_boundary": "aoa_memo_brief_search_status_validate_and_landing_plan_dry_run_only",
+}
 
 
 def repo_root_from_env(env_name: str, default: Path) -> Path:
@@ -2542,6 +2549,7 @@ def build_memory_movement_summary() -> dict[str, Any]:
             "consumer_refs": list(MEMORY_CONSUMER_REFS),
             "handoff_memory_ref": "memo.decision.2026-05-22.reviewed-memory-consumer-handoff-spine",
             "posture": "derived_consumer_summary",
+            "memory_route_boundary": dict(MEMORY_ROUTE_BOUNDARY),
         },
     }
 

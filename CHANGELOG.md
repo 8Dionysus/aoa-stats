@@ -7,6 +7,15 @@ Tracking starts with the first public release-prep baseline for this repository.
 
 ## [Unreleased]
 
+### Changed
+
+- Refreshed the derived memory movement summary so the reviewed KAG/ToS bridge
+  object from `aoa-memo` is visible as a `reviewed_corpus` bridge consumer ref.
+- Added a read-only memory route boundary to the memory movement summary so
+  `aoa-stats` names `.aoa` evidence, local memo-port candidates, MCP dry-run
+  access, and `aoa-memo` durable landing limits without becoming memory
+  authority.
+
 ## [0.1.3] - 2026-04-23
 
 ### Summary
