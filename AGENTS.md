@@ -28,11 +28,12 @@ It does not own:
 2. `ROADMAP.md`
 3. `docs/BOUNDARIES.md`
 4. `docs/ARCHITECTURE.md`
-5. `docs/LIVE_SESSION_USE.md`
-6. `docs/COMPONENT_REFRESH_SUMMARIES.md` for derived-only component refresh summary posture
-7. `docs/MEMORY_MOVEMENT_SUMMARY.md` for derived-only `aoa-memo` reviewed corpus movement posture
-8. the schema, builder, receipt source, generated surface, or MCP surface you plan to touch
-9. `docs/AGENTS_ROOT_REFERENCE.md` for preserved full root branches
+5. `docs/decisions/README.md` for durable rationale and lookup indexes
+6. `docs/LIVE_SESSION_USE.md`
+7. `docs/COMPONENT_REFRESH_SUMMARIES.md` for derived-only component refresh summary posture
+8. `docs/MEMORY_MOVEMENT_SUMMARY.md` for derived-only `aoa-memo` reviewed corpus movement posture
+9. the schema, builder, receipt source, generated surface, or MCP surface you plan to touch
+10. `docs/AGENTS_ROOT_REFERENCE.md` for preserved full root branches
 
 
 ## AGENTS stack law
@@ -51,6 +52,16 @@ preserved lessons, start with `aoa-memo` and the workspace memory map. Session
 grounding routes through `.aoa`; local candidate writing routes through this
 repository's `memo/` port when that port exists; durable reviewed memory lands
 through `aoa-memo`.
+
+## Decision memory
+
+After a meaningful structural, ownership, workflow, route-law,
+validator-authority, derived-surface, public-contract, or topology change,
+perform a decision review in this repository.
+
+If future agents will need to know why this stats route was chosen, add or
+update the repo-local decision record surface at `docs/decisions/`. If no
+record is needed, say so in closeout.
 
 ## Derived-only rules
 
@@ -79,6 +90,8 @@ If GitHub status or merge permissions cannot be observed, stop the landing route
 Minimum validation:
 
 ```bash
+python scripts/generate_decision_indexes.py --check
+python scripts/validate_decision_records.py
 python scripts/build_views.py --check
 python scripts/validate_repo.py
 python -m pytest -q tests

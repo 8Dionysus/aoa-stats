@@ -1,4 +1,14 @@
-# 2026-04-16: Stats Strength And Intake Governance
+# AOST-D-0001 Stats Strength And Intake Governance
+
+## Index Metadata
+
+- Decision ID: AOST-D-0001
+- Original date: 2026-04-16
+- Surface classes: docs/boundary, schemas/receipt-abi, config/registry, generated/catalog, scripts/validators
+- Stats surfaces: receipt ABI, event-kind registry, surface strength, source coverage, downstream canaries
+- Source lanes: aoa-stats, aoa-evals
+- Guard families: derived-only authority, intake governance, downstream canaries
+- Posture: accepted
 
 ## Status
 

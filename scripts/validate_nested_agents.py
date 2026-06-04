@@ -11,6 +11,7 @@ REPOSITORY_NAME = 'aoa-stats'
 
 REQUIRED_AGENTS_DOCS: dict[str, tuple[str, ...]] = {
     'config/AGENTS.md': ('stats_event_kind_registry.json', 'live_receipt_sources.json'),
+    'docs/decisions/AGENTS.md': ('AOST-D-####-short-slug.md', 'Stats surfaces'),
     'examples/AGENTS.md': ('Examples demonstrate derived stats contracts', 'without becoming canonical evidence'),
     'generated/AGENTS.md': ('Source repos own meaning', 'Do not hand-edit generated outputs'),
     'schemas/AGENTS.md': ('Schema changes are contract changes', 'shared receipt envelope'),

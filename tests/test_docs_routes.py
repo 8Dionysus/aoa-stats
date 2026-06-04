@@ -34,6 +34,18 @@ def test_readme_and_docs_map_route_current_direction_through_roadmap() -> None:
     assert "not to widen into a dashboard empire" in roadmap
 
 
+def test_decision_lane_is_visible_without_becoming_status_roster() -> None:
+    readme = read_text("README.md")
+    docs_readme = read_text("docs/README.md")
+    decisions_readme = read_text("docs/decisions/README.md")
+    agents = read_text("AGENTS.md")
+
+    assert "docs/decisions/" in readme
+    assert "decisions/README.md" in docs_readme
+    assert "docs/decisions/README.md" in agents
+    assert "Do not hand-maintain a \"latest decision\" roster" in decisions_readme
+
+
 def test_agents_reads_roadmap_before_boundaries() -> None:
     agents = read_text("AGENTS.md")
 
