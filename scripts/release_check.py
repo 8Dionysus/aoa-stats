@@ -53,6 +53,8 @@ def _env() -> dict[str, str]:
 
 
 COMMANDS = [
+    ("check decision indexes", [sys.executable, "scripts/generate_decision_indexes.py", "--check"]),
+    ("validate decision records", [sys.executable, "scripts/validate_decision_records.py"]),
     ("check generated views", [sys.executable, "scripts/build_views.py", "--check"]),
     ("validate repo", [sys.executable, "scripts/validate_repo.py"]),
     ("run tests", [sys.executable, "-m", "pytest", "-q", "tests"]),

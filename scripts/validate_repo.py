@@ -49,6 +49,9 @@ REQUIRED_TEXT_FILES = (
     "docs/README.md",
     "docs/BOUNDARIES.md",
     "docs/ARCHITECTURE.md",
+    "docs/decisions/README.md",
+    "docs/decisions/AGENTS.md",
+    "docs/decisions/TEMPLATE.md",
     "docs/GROWTH_FUNNEL_SUMMARY.md",
     "docs/SESSION_GROWTH_BRANCH_SUMMARY.md",
     "docs/AUTOMATION_FOLLOWTHROUGH_SUMMARY.md",
@@ -119,6 +122,8 @@ def main() -> int:
             errors.append(f"build_views --check failed: {message}")
 
     for label, command in (
+        ("generate_decision_indexes", [sys.executable, "scripts/generate_decision_indexes.py", "--check"]),
+        ("validate_decision_records", [sys.executable, "scripts/validate_decision_records.py"]),
         ("validate_receipt_abi", [sys.executable, "scripts/validate_receipt_abi.py"]),
         ("validate_downstream_canaries", [sys.executable, "scripts/validate_downstream_canaries.py"]),
     ):

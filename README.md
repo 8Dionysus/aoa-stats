@@ -140,8 +140,12 @@ Use the shortest route by need:
   `tests/test_aoa_stats_mcp_state.py`, and
   `requirements-mcp.txt`
 - generated summary surfaces: `generated/`
+- durable decision rationale and generated lookup indexes:
+  `docs/decisions/`
 - builders and validators: `scripts/build_views.py`,
   `scripts/refresh_live_stats.py`,
+  `scripts/generate_decision_indexes.py`,
+  `scripts/validate_decision_records.py`,
   `scripts/validate_receipt_abi.py`,
   `scripts/validate_downstream_canaries.py`,
   `scripts/check_live_publishers.py`,
@@ -150,8 +154,10 @@ Use the shortest route by need:
 - release and contribution guidance: `docs/RELEASING.md`,
   `CHANGELOG.md`, `CONTRIBUTING.md`, `SECURITY.md`, and
   `CODE_OF_CONDUCT.md`
-- local verification path: `python scripts/build_views.py --check`,
-  `python scripts/validate_repo.py`, and `python -m pytest -q tests`
+- local verification path: `python scripts/generate_decision_indexes.py --check`,
+  `python scripts/validate_decision_records.py`,
+  `python scripts/build_views.py --check`, `python scripts/validate_repo.py`,
+  and `python -m pytest -q tests`
 
 ## What `aoa-stats` owns
 
@@ -305,6 +311,8 @@ and refresh ephemeral live state under `state/`.
 
 ```bash
 python scripts/build_views.py --check
+python scripts/generate_decision_indexes.py --check
+python scripts/validate_decision_records.py
 python scripts/validate_repo.py
 python -m pytest -q tests
 ```

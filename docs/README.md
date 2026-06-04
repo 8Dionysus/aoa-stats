@@ -6,6 +6,8 @@ Use this map when you want to know which stats-layer document to open next.
 
 - boundary and ownership split: `BOUNDARIES.md`
 - architecture and layer model: `ARCHITECTURE.md`
+- durable decision rationale and generated lookup indexes:
+  `decisions/README.md`
 - repo-local Codex MCP usage and launch: `CODEX_MCP.md`
 - live intake and update loop: `LIVE_SESSION_USE.md`
 - current direction and live summary contour: `../ROADMAP.md` and `../README.md#current-v0-surface`
@@ -41,6 +43,8 @@ Use this map when you want to know which stats-layer document to open next.
 - Open `BOUNDARIES.md` first if the question is "should this live here at all?"
 - Open `ARCHITECTURE.md` first if the question is "how do facts, proof,
   progression, and summaries stay separate?"
+- Open `decisions/README.md` first if the question is "why did stats choose
+  this durable derived-observability route?"
 - Open `CODEX_MCP.md` first if the question is "how should Codex inspect
   aoa-stats without treating it like authority?"
 - Open `LIVE_SESSION_USE.md` first if the question is "how do I refresh the
