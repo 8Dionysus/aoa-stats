@@ -183,14 +183,18 @@ def validate_index_contract(repo_root: Path = REPO_ROOT) -> list[tuple[str, str]
     return issues
 
 
-def _contract_list_values(repo_root: Path, key: str) -> set[str]:
+def _contract_list_values(repo_root: Path, key: str, issues: list[tuple[str, str]]) -> set[str]:
     path = repo_root / INDEX_DIR / "index_contract.yaml"
     if not path.is_file():
         return set()
     values: set[str] = set()
     in_list = False
+    key_seen = False
     for line in path.read_text(encoding="utf-8").splitlines():
+        if line == f"{key}: []":
+            return values
         if line == f"{key}:":
+            key_seen = True
             in_list = True
             continue
         if in_list and line.startswith("  - "):
@@ -198,15 +202,23 @@ def _contract_list_values(repo_root: Path, key: str) -> set[str]:
             continue
         if in_list and line and not line.startswith(" "):
             break
+    if not key_seen:
+        issues.append(((INDEX_DIR / "index_contract.yaml").as_posix(), f"{key} must be a top-level list; use [] when empty"))
+    elif not values:
+        issues.append(((INDEX_DIR / "index_contract.yaml").as_posix(), f"{key} must be a list, not null; use [] when empty"))
     return values
 
 
 def _modeled_contract_surfaces(repo_root: Path, issues: list[tuple[str, str]]) -> set[str]:
     allowed: set[str] = set()
-    prefix = f"{DECISIONS_DIR.as_posix()}/"
-    for item in _contract_list_values(repo_root, "modeled_surfaces"):
+    for item in _contract_list_values(repo_root, "modeled_surfaces", issues):
         relative = Path(item)
-        if not item.startswith(prefix):
+        if relative.is_absolute() or ".." in relative.parts:
+            issues.append(((INDEX_DIR / "index_contract.yaml").as_posix(), f"modeled_surfaces entry must be a normalized repo-relative path under {DECISIONS_DIR.as_posix()}: {item}"))
+            continue
+        try:
+            relative.relative_to(DECISIONS_DIR)
+        except ValueError:
             issues.append(((INDEX_DIR / "index_contract.yaml").as_posix(), f"modeled_surfaces entry must live under {DECISIONS_DIR.as_posix()}: {item}"))
             continue
         if relative.parent == DECISIONS_DIR and relative.suffix == ".md" and relative.name not in STATIC_MARKDOWN and not DECISION_RE.match(relative.name):
