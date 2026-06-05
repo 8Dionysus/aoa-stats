@@ -12,6 +12,7 @@ generated_indexes:
   - docs/decisions/indexes/by-stats-surface.md
   - docs/decisions/indexes/by-source-lane.md
   - docs/decisions/indexes/by-guard.md
+modeled_surfaces:
 required_metadata:
   - Decision ID
   - Original date
