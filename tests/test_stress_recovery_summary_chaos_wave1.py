@@ -116,12 +116,12 @@ def test_stress_recovery_chaos_wave1_example_refs_existing_neighbor_surfaces() -
         "aoa-evals",
     )
     assert_repo_ref_matches_neighbor(
-        "repo:aoa-routing/examples/stress_navigation_hint.timeout-chaos.example.json",
+        "repo:aoa-routing/mechanics/antifragility/parts/degraded-route-hints/examples/stress_navigation_hint.timeout-chaos.example.json",
         "AOA_ROUTING_ROOT",
         "aoa-routing",
     )
     assert_repo_ref_matches_neighbor(
-        "repo:aoa-routing/examples/composite_stress_route_hint.retrieval-outage-honesty.example.json",
+        "repo:aoa-routing/mechanics/antifragility/parts/composite-stress-routing/examples/composite_stress_route_hint.retrieval-outage-honesty.example.json",
         "AOA_ROUTING_ROOT",
         "aoa-routing",
     )
@@ -136,8 +136,14 @@ def test_stress_recovery_chaos_wave1_example_refs_existing_neighbor_surfaces() -
     assert "repo:aoa-kag/examples/projection_health_receipt.retrieval-outage-honesty.example.json" in inputs["receipt_refs"]
     assert "repo:aoa-evals/bundles/aoa-stress-recovery-window/reports/example-report.json" in inputs["eval_report_refs"]
     assert "repo:aoa-evals/examples/runtime_evidence_selection.return-anchor-integrity.example.json" in inputs["eval_report_refs"]
-    assert "repo:aoa-routing/examples/stress_navigation_hint.timeout-chaos.example.json" in inputs["route_hint_refs"]
-    assert "repo:aoa-routing/examples/composite_stress_route_hint.retrieval-outage-honesty.example.json" in inputs["route_hint_refs"]
+    assert (
+        "repo:aoa-routing/mechanics/antifragility/parts/degraded-route-hints/"
+        "examples/stress_navigation_hint.timeout-chaos.example.json"
+    ) in inputs["route_hint_refs"]
+    assert (
+        "repo:aoa-routing/mechanics/antifragility/parts/composite-stress-routing/"
+        "examples/composite_stress_route_hint.retrieval-outage-honesty.example.json"
+    ) in inputs["route_hint_refs"]
     assert "repo:aoa-memo/examples/pattern.antifragility-stress-recovery-window.example.json" in inputs["memo_context_refs"]
 
     assert payload["scope"]["owner_surface"] == "runtime-chaos-recovery"

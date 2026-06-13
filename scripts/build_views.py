@@ -406,7 +406,13 @@ def codex_plane_example_paths() -> tuple[Path, Path, Path]:
     sdk_root = repo_root_from_env("AOA_SDK_ROOT", DEFAULT_AOA_SDK_ROOT)
     return (
         public_profile_root / "examples" / "codex_plane_trust_state.example.json",
-        sdk_root / "examples" / "codex_plane_deploy_status_snapshot.example.json",
+        sdk_root
+        / "mechanics"
+        / "codex-projection"
+        / "parts"
+        / "live-rollout-status-readout"
+        / "examples"
+        / "live-rollout-status-snapshot.example.json",
         public_profile_root / "examples" / "codex_plane_rollout_receipt.example.json",
     )
 
@@ -567,11 +573,25 @@ def continuity_window_source_paths() -> tuple[Path, Path, Path, Path]:
     evals_root = repo_root_from_env("AOA_EVALS_ROOT", DEFAULT_EVALS_ROOT)
     return (
         agents_root
+        / "mechanics"
+        / "checkpoint"
+        / "parts"
+        / "continuity-lane"
         / "examples"
-        / "self_agent_checkpoint"
-        / "self_agency_continuity_window.example.json",
-        playbooks_root / "playbooks" / "self-agency-continuity-cycle" / "PLAYBOOK.md",
-        memo_root / "examples" / "provenance_thread.self-agency-continuity.example.json",
+        / "self-agency-continuity-window.example.json",
+        playbooks_root
+        / "playbooks"
+        / "continuity"
+        / "session-growth"
+        / "self-agency-continuity-cycle"
+        / "PLAYBOOK.md",
+        memo_root
+        / "mechanics"
+        / "writeback"
+        / "parts"
+        / "growth-and-continuity"
+        / "examples"
+        / "provenance_thread.self-agency-continuity.example.json",
         evals_root / "generated" / "eval_catalog.min.json",
     )
 
@@ -709,9 +729,17 @@ def continuity_window_generated_from() -> tuple[dict[str, Any], dict[str, Any], 
 
 def component_refresh_source_paths() -> tuple[Path, Path]:
     sdk_root = repo_root_from_env("AOA_SDK_ROOT", DEFAULT_AOA_SDK_ROOT)
+    examples_root = (
+        sdk_root
+        / "mechanics"
+        / "checkpoint"
+        / "parts"
+        / "reviewed-closeout-context-carry"
+        / "examples"
+    )
     return (
-        sdk_root / "examples" / "component_drift_hints.example.json",
-        sdk_root / "examples" / "component_refresh_followthrough_decision.example.json",
+        examples_root / "component_drift_hints.example.json",
+        examples_root / "component_refresh_followthrough_decision.example.json",
     )
 
 
