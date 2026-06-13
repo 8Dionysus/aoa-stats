@@ -3,7 +3,7 @@
   "generated_from": {
     "receipt_input_paths": [
       "8Dionysus/examples/codex_plane_trust_state.example.json",
-      "aoa-sdk/examples/codex_plane_deploy_status_snapshot.example.json",
+      "aoa-sdk/mechanics/codex-projection/parts/live-rollout-status-readout/examples/live-rollout-status-snapshot.example.json",
       "8Dionysus/examples/codex_plane_rollout_receipt.example.json"
     ],
     "total_receipts": 1,

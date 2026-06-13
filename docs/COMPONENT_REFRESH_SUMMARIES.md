@@ -25,8 +25,8 @@ The summary may describe refresh posture. It does not become refresh truth.
 The committed summary currently derives from reviewed `aoa-sdk` example
 surfaces:
 
-- `aoa-sdk/examples/component_drift_hints.example.json`
-- `aoa-sdk/examples/component_refresh_followthrough_decision.example.json`
+- `aoa-sdk/mechanics/checkpoint/parts/reviewed-closeout-context-carry/examples/component_drift_hints.example.json`
+- `aoa-sdk/mechanics/checkpoint/parts/reviewed-closeout-context-carry/examples/component_refresh_followthrough_decision.example.json`
 
 That keeps the v1 surface bounded and reviewable while the owner-law family is
 still being planted upstream.

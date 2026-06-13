@@ -2,9 +2,9 @@
   "schema_version": "aoa_stats_continuity_window_summary_v1",
   "generated_from": {
     "receipt_input_paths": [
-      "aoa-agents/examples/self_agent_checkpoint/self_agency_continuity_window.example.json",
-      "aoa-playbooks/playbooks/self-agency-continuity-cycle/PLAYBOOK.md",
-      "aoa-memo/examples/provenance_thread.self-agency-continuity.example.json",
+      "aoa-agents/mechanics/checkpoint/parts/continuity-lane/examples/self-agency-continuity-window.example.json",
+      "aoa-playbooks/playbooks/continuity/session-growth/self-agency-continuity-cycle/PLAYBOOK.md",
+      "aoa-memo/mechanics/writeback/parts/growth-and-continuity/examples/provenance_thread.self-agency-continuity.example.json",
       "aoa-evals/generated/eval_catalog.min.json"
     ],
     "total_receipts": 1,

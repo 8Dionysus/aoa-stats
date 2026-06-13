@@ -381,9 +381,9 @@ def test_continuity_window_summary_stays_derived_and_non_sovereign() -> None:
 
     assert summary["schema_version"] == "aoa_stats_continuity_window_summary_v1"
     assert summary["generated_from"]["receipt_input_paths"] == [
-        "aoa-agents/examples/self_agent_checkpoint/self_agency_continuity_window.example.json",
-        "aoa-playbooks/playbooks/self-agency-continuity-cycle/PLAYBOOK.md",
-        "aoa-memo/examples/provenance_thread.self-agency-continuity.example.json",
+        "aoa-agents/mechanics/checkpoint/parts/continuity-lane/examples/self-agency-continuity-window.example.json",
+        "aoa-playbooks/playbooks/continuity/session-growth/self-agency-continuity-cycle/PLAYBOOK.md",
+        "aoa-memo/mechanics/writeback/parts/growth-and-continuity/examples/provenance_thread.self-agency-continuity.example.json",
         "aoa-evals/generated/eval_catalog.min.json",
     ]
     assert summary["current_status"] == "active"
@@ -400,7 +400,14 @@ def test_component_refresh_summary_stays_derived_and_non_sovereign(
 ) -> None:
     module = load_build_views_module()
     sdk_root = tmp_path / ".deps" / "aoa-sdk"
-    examples_root = sdk_root / "examples"
+    examples_root = (
+        sdk_root
+        / "mechanics"
+        / "checkpoint"
+        / "parts"
+        / "reviewed-closeout-context-carry"
+        / "examples"
+    )
     examples_root.mkdir(parents=True)
     (examples_root / "component_drift_hints.example.json").write_text(
         json.dumps(
@@ -490,8 +497,8 @@ def test_component_refresh_summary_stays_derived_and_non_sovereign(
 
     assert summary["schema_version"] == "aoa_stats_component_refresh_summary_v1"
     assert summary["generated_from"]["receipt_input_paths"] == [
-        "aoa-sdk/examples/component_drift_hints.example.json",
-        "aoa-sdk/examples/component_refresh_followthrough_decision.example.json",
+        "aoa-sdk/mechanics/checkpoint/parts/reviewed-closeout-context-carry/examples/component_drift_hints.example.json",
+        "aoa-sdk/mechanics/checkpoint/parts/reviewed-closeout-context-carry/examples/component_refresh_followthrough_decision.example.json",
     ]
     assert summary["generated_from"]["total_receipts"] == 2
     assert summary["owner_repo_counts"] == {"8Dionysus": 1, "aoa-stats": 1}
@@ -516,7 +523,14 @@ def test_component_refresh_summary_rejects_empty_hint_evidence_refs(
 ) -> None:
     module = load_build_views_module()
     sdk_root = tmp_path / ".deps" / "aoa-sdk"
-    examples_root = sdk_root / "examples"
+    examples_root = (
+        sdk_root
+        / "mechanics"
+        / "checkpoint"
+        / "parts"
+        / "reviewed-closeout-context-carry"
+        / "examples"
+    )
     examples_root.mkdir(parents=True)
     (examples_root / "component_drift_hints.example.json").write_text(
         json.dumps(
@@ -580,7 +594,14 @@ def test_component_refresh_summary_rejects_duplicate_decisions_for_component(
 ) -> None:
     module = load_build_views_module()
     sdk_root = tmp_path / ".deps" / "aoa-sdk"
-    examples_root = sdk_root / "examples"
+    examples_root = (
+        sdk_root
+        / "mechanics"
+        / "checkpoint"
+        / "parts"
+        / "reviewed-closeout-context-carry"
+        / "examples"
+    )
     examples_root.mkdir(parents=True)
     (examples_root / "component_drift_hints.example.json").write_text(
         json.dumps(
@@ -656,7 +677,14 @@ def test_component_refresh_summary_uses_null_freshness_for_decision_only_compone
 ) -> None:
     module = load_build_views_module()
     sdk_root = tmp_path / ".deps" / "aoa-sdk"
-    examples_root = sdk_root / "examples"
+    examples_root = (
+        sdk_root
+        / "mechanics"
+        / "checkpoint"
+        / "parts"
+        / "reviewed-closeout-context-carry"
+        / "examples"
+    )
     examples_root.mkdir(parents=True)
     (examples_root / "component_drift_hints.example.json").write_text(
         json.dumps(
@@ -730,7 +758,14 @@ def test_component_refresh_summary_accepts_decision_evidence_without_hint_ref(
 ) -> None:
     module = load_build_views_module()
     sdk_root = tmp_path / ".deps" / "aoa-sdk"
-    examples_root = sdk_root / "examples"
+    examples_root = (
+        sdk_root
+        / "mechanics"
+        / "checkpoint"
+        / "parts"
+        / "reviewed-closeout-context-carry"
+        / "examples"
+    )
     examples_root.mkdir(parents=True)
     (examples_root / "component_drift_hints.example.json").write_text(
         json.dumps(
@@ -831,7 +866,15 @@ def test_codex_plane_generated_from_uses_canonical_repo_labels(
     public_profile_root = tmp_path / ".deps" / "8Dionysus"
     sdk_root = tmp_path / ".deps" / "aoa-sdk"
     (public_profile_root / "examples").mkdir(parents=True)
-    (sdk_root / "examples").mkdir(parents=True)
+    deploy_status_root = (
+        sdk_root
+        / "mechanics"
+        / "codex-projection"
+        / "parts"
+        / "live-rollout-status-readout"
+        / "examples"
+    )
+    deploy_status_root.mkdir(parents=True)
     (public_profile_root / "examples" / "codex_plane_trust_state.example.json").write_text(
         json.dumps(
             {
@@ -842,7 +885,7 @@ def test_codex_plane_generated_from_uses_canonical_repo_labels(
         ),
         encoding="utf-8",
     )
-    (sdk_root / "examples" / "codex_plane_deploy_status_snapshot.example.json").write_text(
+    (deploy_status_root / "live-rollout-status-snapshot.example.json").write_text(
         json.dumps(
             {
                 "latest_trust_state_ref": "trust-1",
@@ -870,7 +913,7 @@ def test_codex_plane_generated_from_uses_canonical_repo_labels(
 
     assert source["receipt_input_paths"] == [
         "8Dionysus/examples/codex_plane_trust_state.example.json",
-        "aoa-sdk/examples/codex_plane_deploy_status_snapshot.example.json",
+        "aoa-sdk/mechanics/codex-projection/parts/live-rollout-status-readout/examples/live-rollout-status-snapshot.example.json",
         "8Dionysus/examples/codex_plane_rollout_receipt.example.json",
     ]
 
