@@ -336,6 +336,15 @@ def test_build_views_produces_expected_surface_counts() -> None:
     assert catalog["owner_repo"] == "aoa-stats"
     assert catalog["surface_kind"] == "runtime_surface"
     assert catalog["authority_ref"] == "docs/ARCHITECTURE.md"
+    assert catalog["artifact_identity"]["artifact_class"] == "derived_observability_readmodel_catalog"
+    assert catalog["artifact_identity"]["abi_epoch"] == "aoa_stats_summary_surface_catalog_v2"
+    assert catalog["artifact_identity"]["contract_version"] == (
+        "summary-surface-catalog.schema.json@aoa_stats_summary_surface_catalog_v2#artifact_identity"
+    )
+    assert catalog["artifact_identity"]["trust_layer"] == [
+        "abi_contract_signature",
+        "w3c_prov_lineage",
+    ]
     assert catalog["surface_strength_model_ref"] == "docs/SURFACE_STRENGTH_MODEL.md"
     assert catalog["validation_refs"] == [
         "scripts/build_views.py",

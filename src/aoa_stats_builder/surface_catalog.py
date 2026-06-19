@@ -4,6 +4,35 @@ from pathlib import Path
 from typing import Any
 
 SURFACE_STRENGTH_MODEL_REF = "docs/SURFACE_STRENGTH_MODEL.md"
+SUMMARY_SURFACE_CATALOG_ARTIFACT_IDENTITY = {
+    "artifact_class": "derived_observability_readmodel_catalog",
+    "surface_state": "public_generated_summary_surface_catalog",
+    "owner_repo": "aoa-stats",
+    "authority_ref": "docs/ARCHITECTURE.md",
+    "producer": "scripts/build_views.py via aoa_stats_builder.surface_catalog from source-owned receipts and bounded examples",
+    "consumer_expectation": (
+        "consumers verify schema_version, generated_from, validation_refs, "
+        "surface strength refs, owner truth inputs, and build_views --check "
+        "before using catalog entries as observability hints"
+    ),
+    "privacy_boundary": (
+        "public derived summary refs only; no raw private receipts, session "
+        "captures, owner payload bodies, or runtime-local evidence"
+    ),
+    "content_identity": (
+        "generated/summary_surface_catalog.min.json rebuilt from the active "
+        "receipt feed and compared by build_views --check"
+    ),
+    "abi_epoch": "aoa_stats_summary_surface_catalog_v2",
+    "contract_version": "summary-surface-catalog.schema.json@aoa_stats_summary_surface_catalog_v2#artifact_identity",
+    "trust_layer": ["abi_contract_signature", "w3c_prov_lineage"],
+    "verification": [
+        "python scripts/build_views.py --check",
+        "python scripts/validate_repo.py",
+        "python -m pytest -q tests/test_summary_surface_catalog.py",
+    ],
+    "action": "ADD_CONSUMER_EXPECTATION",
+}
 
 
 def _surface(
@@ -377,6 +406,7 @@ def build_summary_surface_catalog(
         "owner_repo": "aoa-stats",
         "surface_kind": "runtime_surface",
         "authority_ref": "docs/ARCHITECTURE.md",
+        "artifact_identity": SUMMARY_SURFACE_CATALOG_ARTIFACT_IDENTITY,
         "surface_strength_model_ref": SURFACE_STRENGTH_MODEL_REF,
         "generated_from": source,
         "validation_refs": [
