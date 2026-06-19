@@ -105,6 +105,7 @@ The published runtime-entry capsule is the schema-backed v2 contract:
 - `owner_repo`
 - `surface_kind`
 - `authority_ref`
+- `artifact_identity`
 - `surface_strength_model_ref`
 - `generated_from`
 - `validation_refs`
@@ -123,6 +124,12 @@ Each entry in `surfaces` stays compact and low-context:
 - `authority_ceiling`
 - `consumer_risk`
 - `live_state_capable`
+
+`artifact_identity` describes the catalog as a public generated observability
+read-model with an ABI epoch, contract version, consumer checks, privacy
+boundary, and provenance lineage posture. It is not a release signature and it
+does not make stats stronger than the owner-local receipts, verdicts, or source
+surfaces it summarizes.
 
 ## Canonical split
 

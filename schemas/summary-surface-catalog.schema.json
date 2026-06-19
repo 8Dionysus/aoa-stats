@@ -10,6 +10,7 @@
     "owner_repo",
     "surface_kind",
     "authority_ref",
+    "artifact_identity",
     "surface_strength_model_ref",
     "generated_from",
     "validation_refs",
@@ -31,6 +32,9 @@
     },
     "authority_ref": {
       "const": "docs/ARCHITECTURE.md"
+    },
+    "artifact_identity": {
+      "$ref": "#/$defs/artifactIdentity"
     },
     "surface_strength_model_ref": {
       "const": "docs/SURFACE_STRENGTH_MODEL.md"
@@ -182,6 +186,88 @@
           "live_state_capable": {
             "type": "boolean"
           }
+        }
+      }
+    }
+  },
+  "$defs": {
+    "nonEmptyString": {
+      "type": "string",
+      "minLength": 1
+    },
+    "artifactIdentity": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "artifact_class",
+        "surface_state",
+        "owner_repo",
+        "authority_ref",
+        "producer",
+        "consumer_expectation",
+        "privacy_boundary",
+        "content_identity",
+        "abi_epoch",
+        "contract_version",
+        "trust_layer",
+        "verification",
+        "action"
+      ],
+      "properties": {
+        "artifact_class": {
+          "const": "derived_observability_readmodel_catalog"
+        },
+        "surface_state": {
+          "const": "public_generated_summary_surface_catalog"
+        },
+        "owner_repo": {
+          "const": "aoa-stats"
+        },
+        "authority_ref": {
+          "const": "docs/ARCHITECTURE.md"
+        },
+        "producer": {
+          "$ref": "#/$defs/nonEmptyString"
+        },
+        "consumer_expectation": {
+          "$ref": "#/$defs/nonEmptyString"
+        },
+        "privacy_boundary": {
+          "$ref": "#/$defs/nonEmptyString"
+        },
+        "content_identity": {
+          "$ref": "#/$defs/nonEmptyString"
+        },
+        "abi_epoch": {
+          "const": "aoa_stats_summary_surface_catalog_v2"
+        },
+        "contract_version": {
+          "const": "summary-surface-catalog.schema.json@aoa_stats_summary_surface_catalog_v2#artifact_identity"
+        },
+        "trust_layer": {
+          "type": "array",
+          "minItems": 2,
+          "maxItems": 2,
+          "uniqueItems": true,
+          "prefixItems": [
+            {
+              "const": "abi_contract_signature"
+            },
+            {
+              "const": "w3c_prov_lineage"
+            }
+          ]
+        },
+        "verification": {
+          "type": "array",
+          "minItems": 1,
+          "uniqueItems": true,
+          "items": {
+            "$ref": "#/$defs/nonEmptyString"
+          }
+        },
+        "action": {
+          "const": "ADD_CONSUMER_EXPECTATION"
         }
       }
     }

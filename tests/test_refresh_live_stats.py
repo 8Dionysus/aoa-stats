@@ -145,6 +145,12 @@ def test_refresh_live_state_combines_repo_relative_sources(tmp_path: Path) -> No
     assert pipeline_profile["surface_ref"] == (
         summary_output_dir / "automation_pipeline_summary.min.json"
     ).as_posix()
+    assert catalog["artifact_identity"]["content_identity"] == (
+        f"{summary_output_dir / 'summary_surface_catalog.min.json'} rebuilt from the active live "
+        "receipt feed and written by refresh_live_stats"
+    )
+    assert catalog["artifact_identity"]["verification"][0] == "python scripts/refresh_live_stats.py"
+    assert "live surface refs" in catalog["artifact_identity"]["consumer_expectation"]
     stress_summary = json.loads(
         (summary_output_dir / "stress_recovery_window_summary.min.json").read_text(encoding="utf-8")
     )
