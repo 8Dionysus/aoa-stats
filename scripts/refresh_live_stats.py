@@ -169,6 +169,29 @@ def rewrite_catalog_surface_refs(
         )
         rewritten_surfaces.append(rewritten_surface)
     rewritten_catalog["surfaces"] = rewritten_surfaces
+    identity = rewritten_catalog.get("artifact_identity")
+    if isinstance(identity, dict):
+        catalog_ref = live_surface_ref(
+            summary_output_dir=summary_output_dir,
+            output_name="summary_surface_catalog.min.json",
+        )
+        rewritten_identity = dict(identity)
+        rewritten_identity["consumer_expectation"] = (
+            "consumers verify schema_version, generated_from, validation_refs, "
+            "surface strength refs, owner truth inputs, live surface refs, and "
+            "the refresh_live_stats source registry before using live catalog "
+            "entries as observability hints"
+        )
+        rewritten_identity["content_identity"] = (
+            f"{catalog_ref} rebuilt from the active live receipt feed and "
+            "written by refresh_live_stats"
+        )
+        rewritten_identity["verification"] = [
+            "python scripts/refresh_live_stats.py",
+            "python scripts/validate_repo.py",
+            "python -m pytest -q tests/test_refresh_live_stats.py tests/test_summary_surface_catalog.py",
+        ]
+        rewritten_catalog["artifact_identity"] = rewritten_identity
     rewritten_outputs["summary_surface_catalog.min.json"] = rewritten_catalog
     return rewritten_outputs
 
