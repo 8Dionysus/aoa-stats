@@ -55,6 +55,12 @@ def assert_repo_ref_matches_neighbor(repo_ref: str, env_name: str, repo_name: st
         ): [
             "mechanics/audit/parts/selected-evidence-packets/examples/runtime_evidence_selection.return-anchor-integrity.example.json"
         ],
+        (
+            "aoa-kag",
+            "examples/projection_health_receipt.retrieval-outage-honesty.example.json",
+        ): [
+            "mechanics/antifragility/parts/projection-health/examples/projection_health_receipt.retrieval-outage-honesty.example.json"
+        ],
     }
     for fallback in topology_fallbacks.get((repo_name, relative_path), []):
         if (repo_root / fallback).is_file():

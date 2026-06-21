@@ -131,6 +131,13 @@ boundary, and provenance lineage posture. It is not a release signature and it
 does not make stats stronger than the owner-local receipts, verdicts, or source
 surfaces it summarizes.
 
+The OS Abyss artifact-bundle validator wraps this catalog with ABI verification,
+SBOM-lite subject inventory, lifecycle registration, and a registry latest
+read-model. It also rehearses trust-gate admission and isolated subject-store
+materialization without making stats stronger than owner-local evidence. It does
+not claim SLSA, Sigstore/Cosign, or C2PA until the catalog becomes an external
+release/export bundle or public media export.
+
 ## Canonical split
 
 - counts answer: how often and how widely

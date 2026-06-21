@@ -24,5 +24,6 @@ Run:
 ```bash
 python scripts/build_views.py --check
 python scripts/validate_repo.py
+python scripts/validate_abyss_machine_summary_catalog_bundle.py
 python -m pytest -q tests
 ```

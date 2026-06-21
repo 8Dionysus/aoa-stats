@@ -31,7 +31,10 @@ A release should make it easy to answer:
    - `python -m pip install -r requirements-dev.txt`
    - `python scripts/build_views.py --check`
    - `python scripts/validate_repo.py`
+   - `python scripts/validate_abyss_machine_summary_catalog_bundle.py`
    - `python -m pytest -q tests`
+   - CI runs the artifact-bundle validator with `ABYSS_MACHINE_REPO_ROOT`
+     pointing at the pinned `abyss-machine` verifier checkout.
 4. If the release touches live intake, watcher behavior, or owner-local source registration, also run:
    - `python scripts/check_live_publishers.py`
    - `python scripts/refresh_live_stats.py`
