@@ -1,0 +1,79 @@
+{
+  "schema": "abyss_machine_artifact_bundle_manifest_v1",
+  "id": "aoa-stats-summary-surface-catalog",
+  "artifact_class": "derived_observability_readmodel_catalog",
+  "owner_repo": "aoa-stats",
+  "policy_ref": "repo:abyss-machine/manifests/artifact_signature_policy.manifest.json",
+  "mode": "os_abyss_local",
+  "public_safe": true,
+  "purpose": "Repo-local OS Abyss artifact bundle input for generated/summary_surface_catalog.min.json.",
+  "subject_repo_root": "../..",
+  "artifact_source": {
+    "kind": "generated_observability_readmodel_catalog",
+    "content_identity_ref": "generated/summary_surface_catalog.min.json",
+    "artifact_identity_ref": "generated/summary_surface_catalog.min.json#/artifact_identity"
+  },
+  "artifact_identity": {
+    "artifact_class": "derived_observability_readmodel_catalog",
+    "abi_epoch": "aoa_stats_summary_surface_catalog_v2"
+  },
+  "abi_subject": {
+    "path": "generated/summary_surface_catalog.min.json",
+    "artifact_identity_pointer": "/artifact_identity"
+  },
+  "artifact_subjects": [
+    {
+      "path": "generated/summary_surface_catalog.min.json",
+      "role": "summary_surface_catalog"
+    },
+    {
+      "path": "schemas/summary-surface-catalog.schema.json",
+      "role": "schema"
+    },
+    {
+      "path": "docs/ARCHITECTURE.md",
+      "role": "authority_doc"
+    },
+    {
+      "path": "docs/SURFACE_STRENGTH_MODEL.md",
+      "role": "authority_doc"
+    }
+  ],
+  "package": {
+    "ecosystem": "observability-readmodel",
+    "name": "aoa-stats-summary-surface-catalog",
+    "purl": "pkg:generic/aoa-stats-summary-surface-catalog@0"
+  },
+  "lifecycle": {
+    "initial_state": "candidate",
+    "promotion_path": [
+      "candidate",
+      "built-local",
+      "manually-verified",
+      "release-ready",
+      "published",
+      "superseded",
+      "revoked"
+    ],
+    "latest_eligible_states": [
+      "manually-verified",
+      "release-ready",
+      "published"
+    ]
+  },
+  "consumer_contract": {
+    "stable_interface": "python scripts/validate_abyss_machine_summary_catalog_bundle.py",
+    "consumer_expectation": "Stats consumers select a derived_observability_readmodel_catalog bundle from the registry latest read-model only after ABI verification, SBOM-lite subject inventory, build_views --check, validate_repo, and surface-strength boundary checks pass.",
+    "registry_required": true
+  },
+  "consumer_command": [
+    "abyss-machine artifacts build-sidecars --manifest manifests/artifact_bundles/summary_surface_catalog.bundle.json --bundle-dir BUNDLE_DIR",
+    "abyss-machine artifacts sign BUNDLE_DIR",
+    "abyss-machine artifacts verify BUNDLE_DIR",
+    "abyss-machine artifacts release-check BUNDLE_DIR",
+    "abyss-machine artifacts bundle-register BUNDLE_DIR --registry-dir REGISTRY_DIR --lifecycle-state release-ready --json",
+    "abyss-machine artifacts materialize-subjects BUNDLE_DIR --registry-dir REGISTRY_DIR --manifest manifests/artifact_bundles/summary_surface_catalog.bundle.json --json",
+    "abyss-machine artifacts trust-gate --registry-dir REGISTRY_DIR --artifact-class derived_observability_readmodel_catalog --consumer-intent agent --source-repo aoa-stats --json",
+    "abyss-machine artifacts registry-latest --registry-dir REGISTRY_DIR --artifact-class derived_observability_readmodel_catalog --consumer-intent agent --source-repo aoa-stats --json"
+  ]
+}

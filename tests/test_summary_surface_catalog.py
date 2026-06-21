@@ -1,6 +1,7 @@
 from __future__ import annotations
 
 import importlib.util
+import json
 from pathlib import Path
 
 
@@ -111,3 +112,31 @@ def test_summary_surface_catalog_contract_is_exact() -> None:
     assert all("consumer_risk" in entry for entry in payload["surfaces"])
     assert all("live_state_capable" in entry for entry in payload["surfaces"])
     assert all("path" not in entry for entry in payload["surfaces"])
+
+
+def test_artifact_bundle_manifest_requires_registry_lifecycle_and_sbom_lite() -> None:
+    manifest = json.loads(
+        (
+            REPO_ROOT
+            / "manifests"
+            / "artifact_bundles"
+            / "summary_surface_catalog.bundle.json"
+        ).read_text(encoding="utf-8")
+    )
+
+    assert manifest["artifact_class"] == "derived_observability_readmodel_catalog"
+    assert manifest["public_safe"] is True
+    assert manifest["artifact_source"]["kind"] == "generated_observability_readmodel_catalog"
+    assert manifest["lifecycle"]["initial_state"] == "candidate"
+    assert "release-ready" in manifest["lifecycle"]["promotion_path"]
+    assert manifest["consumer_contract"]["registry_required"] is True
+    command_text = "\n".join(manifest["consumer_command"])
+    assert "bundle-register" in command_text
+    assert "materialize-subjects" in command_text
+    assert "trust-gate" in command_text
+    assert "registry-latest" in command_text
+    assert {item["role"] for item in manifest["artifact_subjects"]} == {
+        "authority_doc",
+        "schema",
+        "summary_surface_catalog",
+    }

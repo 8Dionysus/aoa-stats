@@ -57,6 +57,10 @@ COMMANDS = [
     ("validate decision records", [sys.executable, "scripts/validate_decision_records.py"]),
     ("check generated views", [sys.executable, "scripts/build_views.py", "--check"]),
     ("validate repo", [sys.executable, "scripts/validate_repo.py"]),
+    (
+        "validate OS Abyss summary catalog artifact bundle",
+        [sys.executable, "scripts/validate_abyss_machine_summary_catalog_bundle.py"],
+    ),
     ("run tests", [sys.executable, "-m", "pytest", "-q", "tests"]),
 ]
 

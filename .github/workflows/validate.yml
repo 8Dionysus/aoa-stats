@@ -56,6 +56,13 @@ jobs:
           ref: 0bed981d9fc2974d6ba2af235d33836322d3c98e
           path: .deps/aoa-evals
 
+      - name: Checkout abyss-machine
+        uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd
+        with:
+          repository: 8Dionysus/abyss-machine
+          ref: ca92c113594fcd22acc436be249e96ea629a282a
+          path: .deps/abyss-machine
+
       - name: Set up Python
         uses: actions/setup-python@a309ff8b426b58ec0e2a45f0f869d46889d02405
         with:
@@ -74,4 +81,5 @@ jobs:
           AOA_MEMO_ROOT: ./.deps/aoa-memo
           AOA_SDK_ROOT: ./.deps/aoa-sdk
           AOA_EVALS_ROOT: ./.deps/aoa-evals
+          ABYSS_MACHINE_REPO_ROOT: ./.deps/abyss-machine
         run: python scripts/release_check.py
