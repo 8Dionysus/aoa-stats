@@ -63,7 +63,17 @@ def _import_artifact_bundles() -> tuple[Any, Path | None, str | None]:
     installed = _import_from_package_root(Path("/usr/local/libexec"))
     if installed is not None:
         return installed
-    artifact_bundles = importlib.import_module("abyss_machine.artifact_bundles")
+    try:
+        artifact_bundles = importlib.import_module("abyss_machine.artifact_bundles")
+    except ModuleNotFoundError as exc:
+        if exc.name != "abyss_machine":
+            raise
+        checked = ", ".join(str(path.expanduser()) for path in _candidate_abyss_machine_roots())
+        raise RuntimeError(
+            "could not import abyss_machine.artifact_bundles; set ABYSS_MACHINE_REPO_ROOT to an "
+            "abyss-machine checkout or ABYSS_MACHINE_PACKAGE_ROOT to an installed package root "
+            f"(checked: {checked})"
+        ) from exc
     return artifact_bundles, getattr(artifact_bundles, "REPO_ROOT", None), None
 
 
