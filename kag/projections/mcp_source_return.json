@@ -1,0 +1,73 @@
+{
+  "schema_version": "aoa-local-kag-record-v1",
+  "repo": "aoa-stats",
+  "local_id": "projection:mcp:stats-source-return",
+  "record_class": "projection",
+  "source_refs": [
+    {
+      "repo": "aoa-stats",
+      "path": "generated/agon_kag_stats_observability_registry.min.json",
+      "source_class": "stats_source",
+      "role": "primary",
+      "authority": "derived_readmodel"
+    },
+    {
+      "repo": "aoa-stats",
+      "path": "generated/summary_surface_catalog.min.json",
+      "source_class": "stats_source",
+      "role": "supporting",
+      "authority": "derived_readmodel"
+    },
+    {
+      "repo": "aoa-stats",
+      "path": "README.md",
+      "source_class": "stats_source",
+      "role": "owner_route",
+      "authority": "authored_source"
+    },
+    {
+      "repo": "aoa-stats",
+      "path": "docs/BOUNDARIES.md",
+      "source_class": "stats_source",
+      "role": "supporting",
+      "authority": "authored_source"
+    }
+  ],
+  "source_owner": "aoa-stats",
+  "provenance_mode": "strict_source_linked",
+  "derived_method": "source-linked local KAG projection over stats provider records",
+  "generated_or_authored": "generated_from_source",
+  "status": "active",
+  "owner_return_route": {
+    "repo": "aoa-stats",
+    "surface": "README.md",
+    "route_kind": "authored_meaning"
+  },
+  "freshness": {
+    "mode": "source_snapshot",
+    "state": "current",
+    "checked_ref": "generated/agon_kag_stats_observability_registry.min.json"
+  },
+  "builder": {
+    "route": "python scripts/build_agon_kag_stats_observability_registry.py --check",
+    "surface": "scripts/build_agon_kag_stats_observability_registry.py"
+  },
+  "validator": {
+    "route": "python scripts/validate_agon_kag_stats_observability_registry.py",
+    "lane": "owner-local"
+  },
+  "storage_posture": {
+    "git_surface": "compact_readmodel",
+    "payload_class": "projection",
+    "runtime_route": "source-repo"
+  },
+  "consumer_route": "aoa-kag-mcp resource",
+  "projection_kind": "source_return_view",
+  "source_record_ids": [
+    "node:stats:kag-observability",
+    "node:stats:source-route",
+    "edge:stats:source-returns-to-owner",
+    "index:stats:source-surfaces"
+  ],
+  "consumer_shape": "resources expose KAG stats observability handles, summary catalog handles, and source-return route to README.md"
+}

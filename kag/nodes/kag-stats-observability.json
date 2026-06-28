@@ -1,0 +1,53 @@
+{
+  "schema_version": "aoa-local-kag-record-v1",
+  "repo": "aoa-stats",
+  "local_id": "node:stats:kag-observability",
+  "record_class": "node",
+  "source_refs": [
+    {
+      "repo": "aoa-stats",
+      "path": "generated/agon_kag_stats_observability_registry.min.json",
+      "source_class": "stats_source",
+      "role": "primary",
+      "authority": "derived_readmodel"
+    },
+    {
+      "repo": "aoa-stats",
+      "path": "generated/summary_surface_catalog.min.json",
+      "source_class": "stats_source",
+      "role": "supporting",
+      "authority": "derived_readmodel"
+    }
+  ],
+  "source_owner": "aoa-stats",
+  "provenance_mode": "strict_source_linked",
+  "derived_method": "source-linked local KAG node over derived stats observability registries",
+  "generated_or_authored": "generated_from_source",
+  "status": "active",
+  "owner_return_route": {
+    "repo": "aoa-stats",
+    "surface": "README.md",
+    "route_kind": "authored_meaning"
+  },
+  "freshness": {
+    "mode": "source_snapshot",
+    "state": "current",
+    "checked_ref": "generated/agon_kag_stats_observability_registry.min.json"
+  },
+  "builder": {
+    "route": "python scripts/build_agon_kag_stats_observability_registry.py --check",
+    "surface": "scripts/build_agon_kag_stats_observability_registry.py"
+  },
+  "validator": {
+    "route": "python scripts/validate_agon_kag_stats_observability_registry.py",
+    "lane": "owner-local"
+  },
+  "storage_posture": {
+    "git_surface": "portable_records",
+    "payload_class": "node",
+    "runtime_route": "source-repo"
+  },
+  "consumer_route": "aoa-kag registry",
+  "node_kind": "source_surface",
+  "label": "KAG stats observability registry"
+}
