@@ -35,11 +35,11 @@
     "checked_ref": "generated/agon_kag_stats_observability_registry.min.json"
   },
   "builder": {
-    "route": "stats view builders",
-    "surface": "scripts/build_views.py"
+    "route": "python scripts/build_agon_kag_stats_observability_registry.py --check",
+    "surface": "scripts/build_agon_kag_stats_observability_registry.py"
   },
   "validator": {
-    "route": "python scripts/validate_repo.py",
+    "route": "python scripts/validate_agon_kag_stats_observability_registry.py",
     "lane": "owner-local"
   },
   "storage_posture": {

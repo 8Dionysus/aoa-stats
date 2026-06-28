@@ -53,6 +53,14 @@
   },
   "validation_routes": [
     {
+      "route": "python scripts/build_agon_kag_stats_observability_registry.py --check",
+      "lane": "owner-local"
+    },
+    {
+      "route": "python scripts/validate_agon_kag_stats_observability_registry.py",
+      "lane": "owner-local"
+    },
+    {
       "route": "python scripts/build_views.py --check",
       "lane": "owner-local"
     },

@@ -122,6 +122,14 @@ def main() -> int:
             errors.append(f"build_views --check failed: {message}")
 
     for label, command in (
+        (
+            "check_agon_kag_stats_observability_registry",
+            [sys.executable, "scripts/build_agon_kag_stats_observability_registry.py", "--check"],
+        ),
+        (
+            "validate_agon_kag_stats_observability_registry",
+            [sys.executable, "scripts/validate_agon_kag_stats_observability_registry.py"],
+        ),
         ("generate_decision_indexes", [sys.executable, "scripts/generate_decision_indexes.py", "--check"]),
         ("validate_decision_records", [sys.executable, "scripts/validate_decision_records.py"]),
         ("validate_receipt_abi", [sys.executable, "scripts/validate_receipt_abi.py"]),
