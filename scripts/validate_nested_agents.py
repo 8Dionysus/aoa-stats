@@ -14,6 +14,12 @@ REQUIRED_AGENTS_DOCS: dict[str, tuple[str, ...]] = {
     'docs/decisions/AGENTS.md': ('AOST-D-####-short-slug.md', 'Stats surfaces'),
     'examples/AGENTS.md': ('Examples demonstrate derived stats contracts', 'without becoming canonical evidence'),
     'generated/AGENTS.md': ('Source repos own meaning', 'Do not hand-edit generated outputs'),
+    'kag/AGENTS.md': (
+        'local KAG provider home',
+        'source-linked records',
+        'derived observability registries',
+        'source-return route',
+    ),
     'schemas/AGENTS.md': ('Schema changes are contract changes', 'shared receipt envelope'),
     'scripts/AGENTS.md': ('build_views.py --check', 'derived-only'),
     'src/AGENTS.md': ('aoa_stats_mcp', 'workflow, proof, route, or quest authority'),

@@ -1,0 +1,54 @@
+{
+  "schema_version": "aoa-local-kag-record-v1",
+  "repo": "aoa-stats",
+  "local_id": "receipt:validation:stats-provider",
+  "record_class": "receipt",
+  "source_refs": [
+    {
+      "repo": "aoa-stats",
+      "path": "generated/agon_kag_stats_observability_registry.min.json",
+      "source_class": "stats_source",
+      "role": "primary",
+      "authority": "derived_readmodel"
+    },
+    {
+      "repo": "aoa-stats",
+      "path": "README.md",
+      "source_class": "stats_source",
+      "role": "owner_route",
+      "authority": "authored_source"
+    }
+  ],
+  "source_owner": "aoa-stats",
+  "provenance_mode": "strict_source_linked",
+  "derived_method": "source-linked local KAG receipt over stats provider records",
+  "generated_or_authored": "generated_from_source",
+  "status": "active",
+  "owner_return_route": {
+    "repo": "aoa-stats",
+    "surface": "README.md",
+    "route_kind": "authored_meaning"
+  },
+  "freshness": {
+    "mode": "validator_receipt",
+    "state": "current",
+    "checked_ref": "generated/agon_kag_stats_observability_registry.min.json"
+  },
+  "builder": {
+    "route": "python scripts/build_views.py --check",
+    "surface": "scripts/build_views.py"
+  },
+  "validator": {
+    "route": "python scripts/validate_repo.py",
+    "lane": "owner-local"
+  },
+  "storage_posture": {
+    "git_surface": "receipt",
+    "payload_class": "receipt",
+    "runtime_route": "source-repo"
+  },
+  "consumer_route": "aoa-kag registry",
+  "receipt_kind": "validation",
+  "result": "current",
+  "fallback_route": "python scripts/validate_repo.py"
+}
