@@ -1,0 +1,46 @@
+{
+  "schema_version": "aoa_stats_operation_contract_source_v1",
+  "lifecycle": "active",
+  "operation_id": "agon.sophian-observability",
+  "publication_posture": "non_catalog",
+  "mechanic_route": "mechanics/agon/parts/sophian-observability",
+  "payload_class": "sophian-observability-stats-operation",
+  "primary_question": "Which Sophian threshold, canon-restraint, KAG-to-ToS flow, decision-return, branch, and noise pressures are declared for review-only observation?",
+  "input_posture": "seed_registry_compiler",
+  "observation_rule": "Compile candidate declarations and their required-evidence vocabulary only; candidate counts, notices, packets, survival records, recurrence, and review latency remain symbolic and unbound.",
+  "owner_truth_inputs": [
+    {
+      "owner_repo": "Agents-of-Abyss",
+      "truth_scope": "Agon Sophian candidate flow and review-boundary meaning",
+      "binding": "symbolic_unbound"
+    },
+    {
+      "owner_repo": "Tree-of-Sophia",
+      "truth_scope": "Canon, authorial review, and Tree of Sophia source meaning",
+      "binding": "symbolic_unbound"
+    }
+  ],
+  "result_posture": "retained_compatibility_registry",
+  "authority_ceiling": "The operation may publish candidate pressure declarations but cannot write canon, promote KAG material, value a threshold decision, rewrite doctrine, issue a verdict, or act for an authorial owner.",
+  "consumer_risk": "high",
+  "non_catalog_reason": "The result declares Sophian observation candidates and is not a public read model computed from bound KAG or Tree of Sophia evidence.",
+  "owner_return_routes": [
+    {
+      "repo": "Agents-of-Abyss",
+      "surface": "mechanics/agon/parts/sophian-threshold/CONTRACT.md",
+      "route_kind": "authored_meaning"
+    },
+    {
+      "repo": "Tree-of-Sophia",
+      "surface": "ToS/source_home.manifest.json",
+      "route_kind": "authored_meaning"
+    }
+  ],
+  "prohibited_inferences": [
+    "Threshold pressure establishes readiness for canon or authorial review.",
+    "KAG-to-ToS flow declarations prove that a packet moved or was accepted.",
+    "Stats, eval, or memory surfaces possess canon authority."
+  ],
+  "mechanic_contract_ref": "mechanics/agon/parts/sophian-observability/CONTRACT.md",
+  "validation_ref": "mechanics/agon/parts/sophian-observability/VALIDATION.md"
+}

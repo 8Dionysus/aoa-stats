@@ -12154,6 +12154,230 @@
     },
     {
       "coordinates": {
+        "artifact_kind": "config",
+        "code_role": "none",
+        "command_role": "none",
+        "document_role": "none",
+        "mechanics_role": "none",
+        "surface_state": "authored_source"
+      },
+      "entity_kind": "artifact",
+      "id": "entity:file:stats/operation-contracts/active/agon.epistemic-observability.operation.json:fe07f0b22d",
+      "label": "stats/operation-contracts/active/agon.epistemic-observability.operation.json",
+      "source_record_id": "file:stats/operation-contracts/active/agon.epistemic-observability.operation.json:fe07f0b22d"
+    },
+    {
+      "coordinates": {
+        "artifact_kind": "config",
+        "code_role": "none",
+        "command_role": "none",
+        "document_role": "none",
+        "mechanics_role": "none",
+        "surface_state": "authored_source"
+      },
+      "entity_kind": "artifact",
+      "id": "entity:file:stats/operation-contracts/active/agon.kag-observability.operation.json:2511c0ea86",
+      "label": "stats/operation-contracts/active/agon.kag-observability.operation.json",
+      "source_record_id": "file:stats/operation-contracts/active/agon.kag-observability.operation.json:2511c0ea86"
+    },
+    {
+      "coordinates": {
+        "artifact_kind": "config",
+        "code_role": "none",
+        "command_role": "none",
+        "document_role": "none",
+        "mechanics_role": "none",
+        "surface_state": "authored_source"
+      },
+      "entity_kind": "artifact",
+      "id": "entity:file:stats/operation-contracts/active/agon.mechanical-trial-observability.operation.json:8c9b092f2f",
+      "label": "stats/operation-contracts/active/agon.mechanical-trial-observability.operation.json",
+      "source_record_id": "file:stats/operation-contracts/active/agon.mechanical-trial-observability.operation.json:8c9b092f2f"
+    },
+    {
+      "coordinates": {
+        "artifact_kind": "config",
+        "code_role": "none",
+        "command_role": "none",
+        "document_role": "none",
+        "mechanics_role": "none",
+        "surface_state": "authored_source"
+      },
+      "entity_kind": "artifact",
+      "id": "entity:file:stats/operation-contracts/active/agon.retention-rank-observability.operation.json:fdae638589",
+      "label": "stats/operation-contracts/active/agon.retention-rank-observability.operation.json",
+      "source_record_id": "file:stats/operation-contracts/active/agon.retention-rank-observability.operation.json:fdae638589"
+    },
+    {
+      "coordinates": {
+        "artifact_kind": "config",
+        "code_role": "none",
+        "command_role": "none",
+        "document_role": "none",
+        "mechanics_role": "none",
+        "surface_state": "authored_source"
+      },
+      "entity_kind": "artifact",
+      "id": "entity:file:stats/operation-contracts/active/agon.schools-lineages-campaigns-observability.operation.json:7655a1ea0f",
+      "label": "stats/operation-contracts/active/agon.schools-lineages-campaigns-observability.operation.json",
+      "source_record_id": "file:stats/operation-contracts/active/agon.schools-lineages-campaigns-observability.operation.json:7655a1ea0f"
+    },
+    {
+      "coordinates": {
+        "artifact_kind": "config",
+        "code_role": "none",
+        "command_role": "none",
+        "document_role": "none",
+        "mechanics_role": "none",
+        "surface_state": "authored_source"
+      },
+      "entity_kind": "artifact",
+      "id": "entity:file:stats/operation-contracts/active/agon.sophian-observability.operation.json:fc9683e980",
+      "label": "stats/operation-contracts/active/agon.sophian-observability.operation.json",
+      "source_record_id": "file:stats/operation-contracts/active/agon.sophian-observability.operation.json:fc9683e980"
+    },
+    {
+      "coordinates": {
+        "artifact_kind": "config",
+        "code_role": "none",
+        "command_role": "none",
+        "document_role": "none",
+        "mechanics_role": "none",
+        "surface_state": "authored_source"
+      },
+      "entity_kind": "artifact",
+      "id": "entity:file:stats/operation-contracts/active/agon.stats-prebinding.operation.json:e5df95bc79",
+      "label": "stats/operation-contracts/active/agon.stats-prebinding.operation.json",
+      "source_record_id": "file:stats/operation-contracts/active/agon.stats-prebinding.operation.json:e5df95bc79"
+    },
+    {
+      "coordinates": {
+        "artifact_kind": "config",
+        "code_role": "none",
+        "command_role": "none",
+        "document_role": "none",
+        "mechanics_role": "none",
+        "surface_state": "authored_source"
+      },
+      "entity_kind": "artifact",
+      "id": "entity:file:stats/operation-contracts/active/agon.verdict-delta-scar-observability.operation.json:55ffd6d572",
+      "label": "stats/operation-contracts/active/agon.verdict-delta-scar-observability.operation.json",
+      "source_record_id": "file:stats/operation-contracts/active/agon.verdict-delta-scar-observability.operation.json:55ffd6d572"
+    },
+    {
+      "coordinates": {
+        "artifact_kind": "config",
+        "code_role": "none",
+        "command_role": "none",
+        "document_role": "none",
+        "mechanics_role": "none",
+        "surface_state": "authored_source"
+      },
+      "entity_kind": "artifact",
+      "id": "entity:file:stats/operation-contracts/active/antifragility.via-negativa.operation.json:2d49a676a4",
+      "label": "stats/operation-contracts/active/antifragility.via-negativa.operation.json",
+      "source_record_id": "file:stats/operation-contracts/active/antifragility.via-negativa.operation.json:2d49a676a4"
+    },
+    {
+      "coordinates": {
+        "artifact_kind": "config",
+        "code_role": "none",
+        "command_role": "none",
+        "document_role": "none",
+        "mechanics_role": "none",
+        "surface_state": "authored_source"
+      },
+      "entity_kind": "artifact",
+      "id": "entity:file:stats/operation-contracts/active/experience.adoption-federation-harvest.operation.json:0eb7530984",
+      "label": "stats/operation-contracts/active/experience.adoption-federation-harvest.operation.json",
+      "source_record_id": "file:stats/operation-contracts/active/experience.adoption-federation-harvest.operation.json:0eb7530984"
+    },
+    {
+      "coordinates": {
+        "artifact_kind": "config",
+        "code_role": "none",
+        "command_role": "none",
+        "document_role": "none",
+        "mechanics_role": "none",
+        "surface_state": "authored_source"
+      },
+      "entity_kind": "artifact",
+      "id": "entity:file:stats/operation-contracts/active/experience.governance-runtime-signals.operation.json:094800cc80",
+      "label": "stats/operation-contracts/active/experience.governance-runtime-signals.operation.json",
+      "source_record_id": "file:stats/operation-contracts/active/experience.governance-runtime-signals.operation.json:094800cc80"
+    },
+    {
+      "coordinates": {
+        "artifact_kind": "config",
+        "code_role": "none",
+        "command_role": "none",
+        "document_role": "none",
+        "mechanics_role": "none",
+        "surface_state": "authored_source"
+      },
+      "entity_kind": "artifact",
+      "id": "entity:file:stats/operation-contracts/active/experience.micro-friction-receipts.operation.json:e84a0412e2",
+      "label": "stats/operation-contracts/active/experience.micro-friction-receipts.operation.json",
+      "source_record_id": "file:stats/operation-contracts/active/experience.micro-friction-receipts.operation.json:e84a0412e2"
+    },
+    {
+      "coordinates": {
+        "artifact_kind": "config",
+        "code_role": "none",
+        "command_role": "none",
+        "document_role": "none",
+        "mechanics_role": "none",
+        "surface_state": "authored_source"
+      },
+      "entity_kind": "artifact",
+      "id": "entity:file:stats/operation-contracts/active/experience.release-watch-office-health.operation.json:c101608c7d",
+      "label": "stats/operation-contracts/active/experience.release-watch-office-health.operation.json",
+      "source_record_id": "file:stats/operation-contracts/active/experience.release-watch-office-health.operation.json:c101608c7d"
+    },
+    {
+      "coordinates": {
+        "artifact_kind": "config",
+        "code_role": "none",
+        "command_role": "none",
+        "document_role": "none",
+        "mechanics_role": "none",
+        "surface_state": "authored_source"
+      },
+      "entity_kind": "artifact",
+      "id": "entity:file:stats/operation-contracts/active/titan.memory-owner-bridge.operation.json:4859a20fad",
+      "label": "stats/operation-contracts/active/titan.memory-owner-bridge.operation.json",
+      "source_record_id": "file:stats/operation-contracts/active/titan.memory-owner-bridge.operation.json:4859a20fad"
+    },
+    {
+      "coordinates": {
+        "artifact_kind": "config",
+        "code_role": "none",
+        "command_role": "none",
+        "document_role": "none",
+        "mechanics_role": "none",
+        "surface_state": "authored_source"
+      },
+      "entity_kind": "artifact",
+      "id": "entity:file:stats/operation-contracts/active/titan.runtime-console.operation.json:f7a9e59338",
+      "label": "stats/operation-contracts/active/titan.runtime-console.operation.json",
+      "source_record_id": "file:stats/operation-contracts/active/titan.runtime-console.operation.json:f7a9e59338"
+    },
+    {
+      "coordinates": {
+        "artifact_kind": "schema",
+        "code_role": "none",
+        "command_role": "none",
+        "document_role": "none",
+        "mechanics_role": "none",
+        "surface_state": "authored_source"
+      },
+      "entity_kind": "contract",
+      "id": "entity:file:stats/operation-contracts/operation-contract.schema.json:38163d7d64",
+      "label": "stats/operation-contracts/operation-contract.schema.json",
+      "source_record_id": "file:stats/operation-contracts/operation-contract.schema.json:38163d7d64"
+    },
+    {
+      "coordinates": {
         "artifact_kind": "document",
         "code_role": "none",
         "command_role": "none",
@@ -12799,7 +13023,7 @@
   ],
   "index_identity": {
     "artifact_kind": "repository_entity_index",
-    "content_digest": "1d20d0a2816385a4e38d130b4194e62853e46d01316b339327911e0980188dda",
+    "content_digest": "2f43a673469aa0145595db4eda3275db3dedb89686309be6f7f8dc67a3842366",
     "index_kind": "entity",
     "local_id": "index:repo-local:entities",
     "schema_ref": "aoa-kag:schemas/repo-local-kag-repository-index.schema.json"
@@ -12822,18 +13046,18 @@
   },
   "schema_version": "aoa-repo-local-kag-repository-index-v1",
   "source_index": {
-    "content_digest": "60a087e17f1ec241608e850614bd25e3e8c6d66663b96736549a07fe67e6293d",
+    "content_digest": "c2000b740d1d63dbd50501bbc2f08b527d13621d813d576a3c20cbfcc1c2bae3",
     "local_id": "index:repo-local:source-surfaces",
     "path": "kag/indexes/source_surface_index.json"
   },
   "summary": {
-    "entry_count": 914,
+    "entry_count": 930,
     "kind_counts": {
       "agent_route": 16,
-      "artifact": 133,
+      "artifact": 148,
       "code": 12,
       "command": 31,
-      "contract": 33,
+      "contract": 34,
       "decision": 9,
       "document": 137,
       "manifest": 1,

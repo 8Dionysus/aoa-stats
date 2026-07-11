@@ -1,0 +1,58 @@
+{
+  "schema_version": "aoa_stats_operation_contract_source_v1",
+  "lifecycle": "active",
+  "operation_id": "agon.mechanical-trial-observability",
+  "publication_posture": "non_catalog",
+  "mechanic_route": "mechanics/agon/parts/mechanical-trial-observability",
+  "payload_class": "mechanical-trial-observability-stats-operation",
+  "primary_question": "Which bounded dimensions may be declared for mechanical-trial observation without judging an outcome or mutating owner state?",
+  "input_posture": "seed_registry_compiler",
+  "observation_rule": "Compile the part-local candidate definitions while preserving the external run and evaluation registries as declared references only; the current operation does not ingest or verify their records.",
+  "owner_truth_inputs": [
+    {
+      "owner_repo": "Agents-of-Abyss",
+      "truth_scope": "Mechanical-trial definitions, judgment boundaries, and Agon meaning",
+      "binding": "symbolic_unbound"
+    },
+    {
+      "owner_repo": "abyss-stack",
+      "truth_scope": "Mechanical-trial runtime run registry",
+      "binding": "declared_reference_only",
+      "source_ref": "abyss-stack/mechanics/agon-runtime/parts/runtime-kernels/generated/mechanical-trial-run-registry.min.json"
+    },
+    {
+      "owner_repo": "aoa-evals",
+      "truth_scope": "Mechanical-trial evaluation-suite registry",
+      "binding": "declared_reference_only",
+      "source_ref": "aoa-evals/mechanics/agon/parts/mechanical-trial-suites/generated/agon_mechanical_trial_eval_suite_registry.min.json"
+    }
+  ],
+  "result_posture": "retained_compatibility_registry",
+  "authority_ceiling": "The operation may publish candidate observation dimensions but cannot declare a winner, issue a verdict, mutate rank or retention, force routing, punish an actor, or establish a value system.",
+  "consumer_risk": "high",
+  "non_catalog_reason": "The result is a compatibility registry of permitted candidate dimensions, not a computed trial-health read model.",
+  "owner_return_routes": [
+    {
+      "repo": "Agents-of-Abyss",
+      "surface": "mechanics/agon/parts/duel-kernel/CONTRACT.md",
+      "route_kind": "authored_meaning"
+    },
+    {
+      "repo": "abyss-stack",
+      "surface": "mechanics/agon-runtime/parts/runtime-kernels/generated/mechanical-trial-run-registry.min.json",
+      "route_kind": "runtime"
+    },
+    {
+      "repo": "aoa-evals",
+      "surface": "mechanics/agon/parts/mechanical-trial-suites/generated/agon_mechanical_trial_eval_suite_registry.min.json",
+      "route_kind": "proof"
+    }
+  ],
+  "prohibited_inferences": [
+    "A declared external reference proves that the referenced registry was read or is fresh.",
+    "Candidate dimensions determine a trial verdict, winner, rank, routing, or punishment.",
+    "Registry completeness proves runtime or evaluation completeness."
+  ],
+  "mechanic_contract_ref": "mechanics/agon/parts/mechanical-trial-observability/CONTRACT.md",
+  "validation_ref": "mechanics/agon/parts/mechanical-trial-observability/VALIDATION.md"
+}

@@ -1730,7 +1730,7 @@
     },
     {
       "artifact_kind": "document",
-      "content_hash": "ec4ff35d0578b1c6981550156258007d8cb5181e0295bf848c6b175724b1fcc1",
+      "content_hash": "016e6f0f088d035756cfc7c79f98cb8f2561e97e0bb0d616d5b9d21fe101183c",
       "id": "artifact:file:agents.md:a54ff182c7",
       "path": "AGENTS.md",
       "source_record_id": "file:agents.md:a54ff182c7",
@@ -1738,7 +1738,7 @@
     },
     {
       "artifact_kind": "document",
-      "content_hash": "5bf1cef98d28d7cda7550f914f7d0d510bc8c23a0da87a8f8d9d933f2d976268",
+      "content_hash": "f6a3579725cc7d5d709142a9c427334ffcf5298ce0db3a51158d8eb9fa3375c7",
       "id": "artifact:file:changelog.md:06572a96a5",
       "path": "CHANGELOG.md",
       "source_record_id": "file:changelog.md:06572a96a5",
@@ -1762,7 +1762,7 @@
     },
     {
       "artifact_kind": "document",
-      "content_hash": "ed0ef45b600b3ae2a6a994ae973a91be878e5e8e899a14a2170995fbe7bd55f7",
+      "content_hash": "8c3fe48377154e1fc812da60765d6481254a8d70f975e9b252449874919ac44f",
       "id": "artifact:file:design.md:3dc5dd454e",
       "path": "DESIGN.md",
       "source_record_id": "file:design.md:3dc5dd454e",
@@ -1778,7 +1778,7 @@
     },
     {
       "artifact_kind": "document",
-      "content_hash": "8883bc47f57757d4c151626917f0ecbb39043ca58711682e8d341d908839a39b",
+      "content_hash": "7a2205279ab9daa67cc184ba33525a746504d5893f09c22868f652af4d5d6afc",
       "id": "artifact:file:readme.md:b335630551",
       "path": "README.md",
       "source_record_id": "file:readme.md:b335630551",
@@ -1786,7 +1786,7 @@
     },
     {
       "artifact_kind": "document",
-      "content_hash": "302424798a92d818af755c13b462474551c0352bca1281c5dd46165a92262338",
+      "content_hash": "9ab6f0f501fa45c131df31decdf7ff3519818f0ea7b30436eaa95bd8715883ca",
       "id": "artifact:file:roadmap.md:683343bdf9",
       "path": "ROADMAP.md",
       "source_record_id": "file:roadmap.md:683343bdf9",
@@ -2682,7 +2682,7 @@
     },
     {
       "artifact_kind": "document",
-      "content_hash": "3cc6769ad93dabd261a2fb5905e8f11c8af0995a45bd88e644e30c26abe6f4a2",
+      "content_hash": "0a497cf7de6b5c4420c8daadead8584bcad1717f7c585f0f86bccfd1f9388824",
       "id": "artifact:file:mechanics/agon/parts/epistemic-observability/contract.md:f08c90f0fe",
       "path": "mechanics/agon/parts/epistemic-observability/CONTRACT.md",
       "source_record_id": "file:mechanics/agon/parts/epistemic-observability/contract.md:f08c90f0fe",
@@ -2778,7 +2778,7 @@
     },
     {
       "artifact_kind": "document",
-      "content_hash": "990ea18b798cd59f03b68df0d85d3ce94ea131897f2e713e9b7165926915ae90",
+      "content_hash": "82b71d4bb92db42f175ebd72cc846213f4ce8f189d106281f964747ca50d1814",
       "id": "artifact:file:mechanics/agon/parts/kag-observability/contract.md:ddf786f6b5",
       "path": "mechanics/agon/parts/kag-observability/CONTRACT.md",
       "source_record_id": "file:mechanics/agon/parts/kag-observability/contract.md:ddf786f6b5",
@@ -2874,7 +2874,7 @@
     },
     {
       "artifact_kind": "document",
-      "content_hash": "2400ae18f45d6574eeba18d4f42c76dfac4470e7fe5cef6f7fb2742742e31b5a",
+      "content_hash": "943c21b61bc30aafacd6a2e59bc5c02553cbdde01ff13da821e725165437f573",
       "id": "artifact:file:mechanics/agon/parts/mechanical-trial-observability/contract.md:9835746195",
       "path": "mechanics/agon/parts/mechanical-trial-observability/CONTRACT.md",
       "source_record_id": "file:mechanics/agon/parts/mechanical-trial-observability/contract.md:9835746195",
@@ -2962,7 +2962,7 @@
     },
     {
       "artifact_kind": "document",
-      "content_hash": "3debad63ba3577802012336d52a5670a691834d0469952908f64f0274c064571",
+      "content_hash": "5f7c4e8a0f554a6b9dca91b8a33569ade8bcdb4d070971a118ebde583521be26",
       "id": "artifact:file:mechanics/agon/parts/retention-rank-observability/contract.md:67d58a0605",
       "path": "mechanics/agon/parts/retention-rank-observability/CONTRACT.md",
       "source_record_id": "file:mechanics/agon/parts/retention-rank-observability/contract.md:67d58a0605",
@@ -3050,7 +3050,7 @@
     },
     {
       "artifact_kind": "document",
-      "content_hash": "396b364278501fade3927029bed8c5659cdea2c2b867ec56ddc7d1fa31160161",
+      "content_hash": "40b6e56649a4f04e55039481f6fc0e6210757800d7a58843d4ad5d7814c24f3d",
       "id": "artifact:file:mechanics/agon/parts/schools-lineages-campaigns-observability/contract.md:a5deb1f5f9",
       "path": "mechanics/agon/parts/schools-lineages-campaigns-observability/CONTRACT.md",
       "source_record_id": "file:mechanics/agon/parts/schools-lineages-campaigns-observability/contract.md:a5deb1f5f9",
@@ -3146,7 +3146,7 @@
     },
     {
       "artifact_kind": "document",
-      "content_hash": "cb86a0a7878a776594bb86d524fb38500004052fd47a5c12d64f8858df0a2eda",
+      "content_hash": "5b0237ce6bf9aed31063ee8ef6710bb88575fce1b673b55bba2c60c53b3eddfa",
       "id": "artifact:file:mechanics/agon/parts/sophian-observability/contract.md:6f05d1d9dc",
       "path": "mechanics/agon/parts/sophian-observability/CONTRACT.md",
       "source_record_id": "file:mechanics/agon/parts/sophian-observability/contract.md:6f05d1d9dc",
@@ -3234,7 +3234,7 @@
     },
     {
       "artifact_kind": "document",
-      "content_hash": "fec203a24108df6813bc74da645f2accaa1eb5b40cd6f5a925a7bb6659574bfb",
+      "content_hash": "ea9657f202aa52feae0c9ee69198b55f912f4aec84718cdc8974cf40e28c4987",
       "id": "artifact:file:mechanics/agon/parts/stats-prebinding/contract.md:5c331fc92a",
       "path": "mechanics/agon/parts/stats-prebinding/CONTRACT.md",
       "source_record_id": "file:mechanics/agon/parts/stats-prebinding/contract.md:5c331fc92a",
@@ -3322,7 +3322,7 @@
     },
     {
       "artifact_kind": "document",
-      "content_hash": "c0b1811358d8fb22860831540cb72089cf73c2c58427800394c0ce0b3a2a63c6",
+      "content_hash": "5e2517080cbb8a5d7c3bbb4daca2e462f384b1d56369443efa8887f5590ef482",
       "id": "artifact:file:mechanics/agon/parts/verdict-delta-scar-observability/contract.md:67594ade7c",
       "path": "mechanics/agon/parts/verdict-delta-scar-observability/CONTRACT.md",
       "source_record_id": "file:mechanics/agon/parts/verdict-delta-scar-observability/contract.md:67594ade7c",
@@ -3586,7 +3586,7 @@
     },
     {
       "artifact_kind": "document",
-      "content_hash": "9913b6bb589c67c529b9d4b72b5778740eac5c4f9db3a3e59c53c4f85c5a46e2",
+      "content_hash": "9fc3d0c66eaaadfa8ec646ae4ce8f6939f9b513018df6b340e194011e7c214d1",
       "id": "artifact:file:mechanics/antifragility/parts/via-negativa/contract.md:6ad8f31370",
       "path": "mechanics/antifragility/parts/via-negativa/CONTRACT.md",
       "source_record_id": "file:mechanics/antifragility/parts/via-negativa/contract.md:6ad8f31370",
@@ -3594,7 +3594,7 @@
     },
     {
       "artifact_kind": "document",
-      "content_hash": "ed911f5cb4aa38735671f9b15e5a39d644c86f6f727cde219c3d9fbf37016c42",
+      "content_hash": "2124867636f0d60371f3a1f63021e14e5d2d31c5fabb08d937e1f00d9dea1875",
       "id": "artifact:file:mechanics/antifragility/parts/via-negativa/readme.md:343c5e3981",
       "path": "mechanics/antifragility/parts/via-negativa/README.md",
       "source_record_id": "file:mechanics/antifragility/parts/via-negativa/readme.md:343c5e3981",
@@ -3602,7 +3602,7 @@
     },
     {
       "artifact_kind": "document",
-      "content_hash": "045aee7c7d783b6b29b902a7401549c850d272410838cace27b3a25efb441ff3",
+      "content_hash": "8d47c921683f3b648a495cf915d642d3b81ce8c25314d4b8460525de7fe88fd3",
       "id": "artifact:file:mechanics/antifragility/parts/via-negativa/validation.md:04beafabc7",
       "path": "mechanics/antifragility/parts/via-negativa/VALIDATION.md",
       "source_record_id": "file:mechanics/antifragility/parts/via-negativa/validation.md:04beafabc7",
@@ -4098,7 +4098,7 @@
     },
     {
       "artifact_kind": "document",
-      "content_hash": "b977969b3437e9fb96b7acb4c75095b874eafc0a5a5768d5f5e6777e03b88d76",
+      "content_hash": "b1b245802ff74d07e197bac3dee93fffa6e27fe6fc91abe4fb29302d75a9c3e7",
       "id": "artifact:file:mechanics/experience/parts/adoption-federation-harvest/contract.md:8a16c205e0",
       "path": "mechanics/experience/parts/adoption-federation-harvest/CONTRACT.md",
       "source_record_id": "file:mechanics/experience/parts/adoption-federation-harvest/contract.md:8a16c205e0",
@@ -4442,7 +4442,7 @@
     },
     {
       "artifact_kind": "document",
-      "content_hash": "4a80053dd8713e558b9d09ac7e9780782f6063367bb0d55ccec329610b3391c7",
+      "content_hash": "4145b6aa0b1484d9094a82a95a974475fedae1569c21794abfd996c780904743",
       "id": "artifact:file:mechanics/experience/parts/governance-runtime-signals/contract.md:7497d8d2ca",
       "path": "mechanics/experience/parts/governance-runtime-signals/CONTRACT.md",
       "source_record_id": "file:mechanics/experience/parts/governance-runtime-signals/contract.md:7497d8d2ca",
@@ -4626,7 +4626,7 @@
     },
     {
       "artifact_kind": "document",
-      "content_hash": "c67e3a69ea7a468d3b694c99b0e41fda66c953ad1e46561cce34c5967b994ce5",
+      "content_hash": "57bf20589b661955f985fca6bffcec3cb16fa66f6ab701292ee8c6d63e856386",
       "id": "artifact:file:mechanics/experience/parts/micro-friction-receipts/contract.md:42a646372f",
       "path": "mechanics/experience/parts/micro-friction-receipts/CONTRACT.md",
       "source_record_id": "file:mechanics/experience/parts/micro-friction-receipts/contract.md:42a646372f",
@@ -4714,7 +4714,7 @@
     },
     {
       "artifact_kind": "document",
-      "content_hash": "0c13a607acf66c556acbfec564166134faf7525c32565a71f766b82109e288e5",
+      "content_hash": "efb9985f74bf57513570f86d8905a0a548a1fb2f4dd061b4b081ab49d3194ec9",
       "id": "artifact:file:mechanics/experience/parts/release-watch-office-health/contract.md:ba17ed8d10",
       "path": "mechanics/experience/parts/release-watch-office-health/CONTRACT.md",
       "source_record_id": "file:mechanics/experience/parts/release-watch-office-health/contract.md:ba17ed8d10",
@@ -6306,7 +6306,7 @@
     },
     {
       "artifact_kind": "document",
-      "content_hash": "9913b6bb589c67c529b9d4b72b5778740eac5c4f9db3a3e59c53c4f85c5a46e2",
+      "content_hash": "06b92f81108ff0f124e4b3994e83d73a64bee0dddb4aa073a05de5838ede58de",
       "id": "artifact:file:mechanics/titan/parts/memory-owner-bridge/contract.md:7b6ac4e0eb",
       "path": "mechanics/titan/parts/memory-owner-bridge/CONTRACT.md",
       "source_record_id": "file:mechanics/titan/parts/memory-owner-bridge/contract.md:7b6ac4e0eb",
@@ -6314,7 +6314,7 @@
     },
     {
       "artifact_kind": "document",
-      "content_hash": "b6cf76454ea7c01e15639b8228810c69a18d37aa7b1e6071d21e298a78a068a0",
+      "content_hash": "6f72a9d58cfa6ccee5a0c67c2b5308d69ac1c1ae5c6c282069a5eab7c49612d1",
       "id": "artifact:file:mechanics/titan/parts/memory-owner-bridge/readme.md:b2d6a37953",
       "path": "mechanics/titan/parts/memory-owner-bridge/README.md",
       "source_record_id": "file:mechanics/titan/parts/memory-owner-bridge/readme.md:b2d6a37953",
@@ -6322,7 +6322,7 @@
     },
     {
       "artifact_kind": "document",
-      "content_hash": "045aee7c7d783b6b29b902a7401549c850d272410838cace27b3a25efb441ff3",
+      "content_hash": "ac529d21fc658179e7dd539662834856035fc620a339d8bb52563ba5e83d8c04",
       "id": "artifact:file:mechanics/titan/parts/memory-owner-bridge/validation.md:630dca6676",
       "path": "mechanics/titan/parts/memory-owner-bridge/VALIDATION.md",
       "source_record_id": "file:mechanics/titan/parts/memory-owner-bridge/validation.md:630dca6676",
@@ -6362,7 +6362,7 @@
     },
     {
       "artifact_kind": "document",
-      "content_hash": "9913b6bb589c67c529b9d4b72b5778740eac5c4f9db3a3e59c53c4f85c5a46e2",
+      "content_hash": "f546cc38a6e6ad9ebf5a976f1fc3dd7a740e46e691fabeb03c95b9f1fb6d4ff4",
       "id": "artifact:file:mechanics/titan/parts/runtime-console/contract.md:558f2a6b96",
       "path": "mechanics/titan/parts/runtime-console/CONTRACT.md",
       "source_record_id": "file:mechanics/titan/parts/runtime-console/contract.md:558f2a6b96",
@@ -6370,7 +6370,7 @@
     },
     {
       "artifact_kind": "document",
-      "content_hash": "bd46259ca568d31835c0fb12f4296e810df4bf431c8ef0f0f2775e5ac9a1c31e",
+      "content_hash": "f6dc6d11d7d5314b952d5e7f4e501e817a9f6b6011e7b37af9bbb6a275aa20ba",
       "id": "artifact:file:mechanics/titan/parts/runtime-console/readme.md:c0e8de2f73",
       "path": "mechanics/titan/parts/runtime-console/README.md",
       "source_record_id": "file:mechanics/titan/parts/runtime-console/readme.md:c0e8de2f73",
@@ -6378,7 +6378,7 @@
     },
     {
       "artifact_kind": "document",
-      "content_hash": "045aee7c7d783b6b29b902a7401549c850d272410838cace27b3a25efb441ff3",
+      "content_hash": "7c8d97d8004cd9fb8572fd4788e54dfbc594fa850bb9376cdff6ce59eb71029a",
       "id": "artifact:file:mechanics/titan/parts/runtime-console/validation.md:23dad7832e",
       "path": "mechanics/titan/parts/runtime-console/VALIDATION.md",
       "source_record_id": "file:mechanics/titan/parts/runtime-console/validation.md:23dad7832e",
@@ -6402,7 +6402,7 @@
     },
     {
       "artifact_kind": "config",
-      "content_hash": "6b33fb16194f08318e76bd713e73a54c6e941b3a10c0855fad026d8040f24722",
+      "content_hash": "af3ec5168c830c66fdfa274a88100cee6abe2e4582c45ecb64f23711d0da5eb0",
       "id": "artifact:file:mechanics/topology.json:c2f84a03b1",
       "path": "mechanics/topology.json",
       "source_record_id": "file:mechanics/topology.json:c2f84a03b1",
@@ -6738,7 +6738,7 @@
     },
     {
       "artifact_kind": "validator",
-      "content_hash": "69d99ab27b3dc4f7623cd2bb154988bb7a1a1d10b54e92cc0840da9df60a584a",
+      "content_hash": "14fdf95c14c87a88a5f02ff76d4875397758b00d901c1812f9158fa65d8a3250",
       "id": "artifact:file:scripts/validate_mechanics_topology.py:2914a033b8",
       "path": "scripts/validate_mechanics_topology.py",
       "source_record_id": "file:scripts/validate_mechanics_topology.py:2914a033b8",
@@ -6770,7 +6770,7 @@
     },
     {
       "artifact_kind": "validator",
-      "content_hash": "d7ff5b4c4b7ba4ac90f75fa7b25fe691d27a0f5d03e5f50950f271f4cf0d3520",
+      "content_hash": "3295680b18bc2365ff5c016dea7b2464cf2f412c377e957c2fb265ca6956e781",
       "id": "artifact:file:scripts/validate_stats_source_home.py:6be6e8ef8c",
       "path": "scripts/validate_stats_source_home.py",
       "source_record_id": "file:scripts/validate_stats_source_home.py:6be6e8ef8c",
@@ -6874,7 +6874,7 @@
     },
     {
       "artifact_kind": "document",
-      "content_hash": "99ba01c41c36023a4a45ba786c3c50e9d1b4083a618f0436b5be08eb0517b2b6",
+      "content_hash": "a83e6b2dc7db6c4935d4b8d3e10533150e2bae36bfea3c9c997e6ddda56bfbca",
       "id": "artifact:file:stats/agents.md:3f9a778b41",
       "path": "stats/AGENTS.md",
       "source_record_id": "file:stats/agents.md:3f9a778b41",
@@ -6882,7 +6882,7 @@
     },
     {
       "artifact_kind": "document",
-      "content_hash": "7bca157fd59dceb9a3e01ed937e87a65064679936029e74769f18c6ce440a45a",
+      "content_hash": "068523558a9b3c89b543df02f7257f24444e1c86dc8cb8efe3ad1dff8dd322c8",
       "id": "artifact:file:stats/readme.md:6bac6d2ff5",
       "path": "stats/README.md",
       "source_record_id": "file:stats/readme.md:6bac6d2ff5",
@@ -6930,7 +6930,7 @@
     },
     {
       "artifact_kind": "document",
-      "content_hash": "f0fde4c26a706cf2e1a32aa63802cfdbbdeb93cd900fc470424bbe494a279277",
+      "content_hash": "5c44312065363d4d3eef6cc1d43bd6e3406102a76a88012d279f10b851001252",
       "id": "artifact:file:stats/operation-contracts/agents.md:59daffdcbc",
       "path": "stats/operation-contracts/AGENTS.md",
       "source_record_id": "file:stats/operation-contracts/agents.md:59daffdcbc",
@@ -6938,10 +6938,138 @@
     },
     {
       "artifact_kind": "document",
-      "content_hash": "608850ec6cb430cb5940e6bd771fc3a580569d8f4036fd0df83a1f441924f5df",
+      "content_hash": "acd18c219862dabda7a9a029843170d5f1300a49e3ed089a7be4098b6c3c67b4",
       "id": "artifact:file:stats/operation-contracts/readme.md:a87ef0f29a",
       "path": "stats/operation-contracts/README.md",
       "source_record_id": "file:stats/operation-contracts/readme.md:a87ef0f29a",
+      "surface_state": "authored_source"
+    },
+    {
+      "artifact_kind": "config",
+      "content_hash": "11578df2fa055316c556dfbc99443b3d7a59830df60d90cec2f714ff71b78dc5",
+      "id": "artifact:file:stats/operation-contracts/active/agon.epistemic-observability.operation.json:fe07f0b22d",
+      "path": "stats/operation-contracts/active/agon.epistemic-observability.operation.json",
+      "source_record_id": "file:stats/operation-contracts/active/agon.epistemic-observability.operation.json:fe07f0b22d",
+      "surface_state": "authored_source"
+    },
+    {
+      "artifact_kind": "config",
+      "content_hash": "5890eef93f3b7f6effcd77c9048cc8b27811c6fb87769a3d42750a7542541c9d",
+      "id": "artifact:file:stats/operation-contracts/active/agon.kag-observability.operation.json:2511c0ea86",
+      "path": "stats/operation-contracts/active/agon.kag-observability.operation.json",
+      "source_record_id": "file:stats/operation-contracts/active/agon.kag-observability.operation.json:2511c0ea86",
+      "surface_state": "authored_source"
+    },
+    {
+      "artifact_kind": "config",
+      "content_hash": "b5d1aefc2529f6ebde423740659b329704acaa1b38c017ec540794a96bc82782",
+      "id": "artifact:file:stats/operation-contracts/active/agon.mechanical-trial-observability.operation.json:8c9b092f2f",
+      "path": "stats/operation-contracts/active/agon.mechanical-trial-observability.operation.json",
+      "source_record_id": "file:stats/operation-contracts/active/agon.mechanical-trial-observability.operation.json:8c9b092f2f",
+      "surface_state": "authored_source"
+    },
+    {
+      "artifact_kind": "config",
+      "content_hash": "125dc07c434494967e77b9b4763f6e64c9798f30f4918c3fd9874686f3af17d0",
+      "id": "artifact:file:stats/operation-contracts/active/agon.retention-rank-observability.operation.json:fdae638589",
+      "path": "stats/operation-contracts/active/agon.retention-rank-observability.operation.json",
+      "source_record_id": "file:stats/operation-contracts/active/agon.retention-rank-observability.operation.json:fdae638589",
+      "surface_state": "authored_source"
+    },
+    {
+      "artifact_kind": "config",
+      "content_hash": "b3fdef981a0e31d926669f3de7f14a530aa79e2aeff01234ef49c8f14d68d4f9",
+      "id": "artifact:file:stats/operation-contracts/active/agon.schools-lineages-campaigns-observability.operation.json:7655a1ea0f",
+      "path": "stats/operation-contracts/active/agon.schools-lineages-campaigns-observability.operation.json",
+      "source_record_id": "file:stats/operation-contracts/active/agon.schools-lineages-campaigns-observability.operation.json:7655a1ea0f",
+      "surface_state": "authored_source"
+    },
+    {
+      "artifact_kind": "config",
+      "content_hash": "a387f584ab3f31ca389f70fb137487f2f25f2357a2a0013e2383093eaf19592c",
+      "id": "artifact:file:stats/operation-contracts/active/agon.sophian-observability.operation.json:fc9683e980",
+      "path": "stats/operation-contracts/active/agon.sophian-observability.operation.json",
+      "source_record_id": "file:stats/operation-contracts/active/agon.sophian-observability.operation.json:fc9683e980",
+      "surface_state": "authored_source"
+    },
+    {
+      "artifact_kind": "config",
+      "content_hash": "e32c81978566d70f627cc75bfa55ef9c1142353bc2339e2779aa09def8fd09dd",
+      "id": "artifact:file:stats/operation-contracts/active/agon.stats-prebinding.operation.json:e5df95bc79",
+      "path": "stats/operation-contracts/active/agon.stats-prebinding.operation.json",
+      "source_record_id": "file:stats/operation-contracts/active/agon.stats-prebinding.operation.json:e5df95bc79",
+      "surface_state": "authored_source"
+    },
+    {
+      "artifact_kind": "config",
+      "content_hash": "c84af55caf035118223c6cfcb4b736ff5a6bb7c372073f5313dfb7c2fb6f5afd",
+      "id": "artifact:file:stats/operation-contracts/active/agon.verdict-delta-scar-observability.operation.json:55ffd6d572",
+      "path": "stats/operation-contracts/active/agon.verdict-delta-scar-observability.operation.json",
+      "source_record_id": "file:stats/operation-contracts/active/agon.verdict-delta-scar-observability.operation.json:55ffd6d572",
+      "surface_state": "authored_source"
+    },
+    {
+      "artifact_kind": "config",
+      "content_hash": "55a50740ce842250454be24f964d5dd775151cf5f56dac203acf1df96b1cb6b7",
+      "id": "artifact:file:stats/operation-contracts/active/antifragility.via-negativa.operation.json:2d49a676a4",
+      "path": "stats/operation-contracts/active/antifragility.via-negativa.operation.json",
+      "source_record_id": "file:stats/operation-contracts/active/antifragility.via-negativa.operation.json:2d49a676a4",
+      "surface_state": "authored_source"
+    },
+    {
+      "artifact_kind": "config",
+      "content_hash": "dde03b789c368f3c9afb0c59e2b20362d5600686ea76c6b62a6be009522cdb8a",
+      "id": "artifact:file:stats/operation-contracts/active/experience.adoption-federation-harvest.operation.json:0eb7530984",
+      "path": "stats/operation-contracts/active/experience.adoption-federation-harvest.operation.json",
+      "source_record_id": "file:stats/operation-contracts/active/experience.adoption-federation-harvest.operation.json:0eb7530984",
+      "surface_state": "authored_source"
+    },
+    {
+      "artifact_kind": "config",
+      "content_hash": "58e954cfe655aca4bdebd7dfaf4c12cb6f27196e3b8b90e4706c7ffb70f2fbcf",
+      "id": "artifact:file:stats/operation-contracts/active/experience.governance-runtime-signals.operation.json:094800cc80",
+      "path": "stats/operation-contracts/active/experience.governance-runtime-signals.operation.json",
+      "source_record_id": "file:stats/operation-contracts/active/experience.governance-runtime-signals.operation.json:094800cc80",
+      "surface_state": "authored_source"
+    },
+    {
+      "artifact_kind": "config",
+      "content_hash": "1c011db31838f683fd1d1e54c7bb064307545928c1bc4a6fef95ab72bc5826a6",
+      "id": "artifact:file:stats/operation-contracts/active/experience.micro-friction-receipts.operation.json:e84a0412e2",
+      "path": "stats/operation-contracts/active/experience.micro-friction-receipts.operation.json",
+      "source_record_id": "file:stats/operation-contracts/active/experience.micro-friction-receipts.operation.json:e84a0412e2",
+      "surface_state": "authored_source"
+    },
+    {
+      "artifact_kind": "config",
+      "content_hash": "30182c40da7c4b7a065a9c73d9f70e64985273ed54d073981379fee377af1d04",
+      "id": "artifact:file:stats/operation-contracts/active/experience.release-watch-office-health.operation.json:c101608c7d",
+      "path": "stats/operation-contracts/active/experience.release-watch-office-health.operation.json",
+      "source_record_id": "file:stats/operation-contracts/active/experience.release-watch-office-health.operation.json:c101608c7d",
+      "surface_state": "authored_source"
+    },
+    {
+      "artifact_kind": "config",
+      "content_hash": "61355b1b7d44f20f7dd8043259f5c53e07767bd3134b8acb13f2a8a00dfbdf1f",
+      "id": "artifact:file:stats/operation-contracts/active/titan.memory-owner-bridge.operation.json:4859a20fad",
+      "path": "stats/operation-contracts/active/titan.memory-owner-bridge.operation.json",
+      "source_record_id": "file:stats/operation-contracts/active/titan.memory-owner-bridge.operation.json:4859a20fad",
+      "surface_state": "authored_source"
+    },
+    {
+      "artifact_kind": "config",
+      "content_hash": "0716cac3b3e2cbfea6a7ac7b3f0f2973c25c04413a440fe5f1758fbdd7300fc1",
+      "id": "artifact:file:stats/operation-contracts/active/titan.runtime-console.operation.json:f7a9e59338",
+      "path": "stats/operation-contracts/active/titan.runtime-console.operation.json",
+      "source_record_id": "file:stats/operation-contracts/active/titan.runtime-console.operation.json:f7a9e59338",
+      "surface_state": "authored_source"
+    },
+    {
+      "artifact_kind": "schema",
+      "content_hash": "38a5a0e3b398b3027184d66b502bad1cc0368135678840b04d5b267b26ea4810",
+      "id": "artifact:file:stats/operation-contracts/operation-contract.schema.json:38163d7d64",
+      "path": "stats/operation-contracts/operation-contract.schema.json",
+      "source_record_id": "file:stats/operation-contracts/operation-contract.schema.json:38163d7d64",
       "surface_state": "authored_source"
     },
     {
@@ -7178,7 +7306,7 @@
     },
     {
       "artifact_kind": "config",
-      "content_hash": "ed76826e596ba07df968490635b6fface6644da2434f53155b7af0d9d3f4083e",
+      "content_hash": "1a3aa2dd7bef5a7949cef7b44557f9a5e7916e574b84c7a53971bfa9965db319",
       "id": "artifact:file:stats/source_home.manifest.json:41b237ff45",
       "path": "stats/source_home.manifest.json",
       "source_record_id": "file:stats/source_home.manifest.json:41b237ff45",
@@ -7266,7 +7394,7 @@
     },
     {
       "artifact_kind": "test",
-      "content_hash": "a362c4142b5ffc819b8a8118714adfbd698bb4713ba469495399a0e472efbda4",
+      "content_hash": "832b178cb70334f3f452f6341fb014e1ba745c89fd90d00cdb129948a124f520",
       "id": "artifact:file:tests/test_mechanics_topology.py:915b0d0cb3",
       "path": "tests/test_mechanics_topology.py",
       "source_record_id": "file:tests/test_mechanics_topology.py:915b0d0cb3",
@@ -7290,7 +7418,7 @@
     },
     {
       "artifact_kind": "test",
-      "content_hash": "69bb17a54f9f1bf8aa31c3f59de8b2f8725a8af781666036625fa42440140a77",
+      "content_hash": "bbc47142522c6b5d8fba813c7ba3c39b58910f29fa077896e485e5a356290f9e",
       "id": "artifact:file:tests/test_stats_source_home.py:a642c9216e",
       "path": "tests/test_stats_source_home.py",
       "source_record_id": "file:tests/test_stats_source_home.py:a642c9216e",
@@ -7315,7 +7443,7 @@
   ],
   "index_identity": {
     "artifact_kind": "repository_artifact_index",
-    "content_digest": "6b9ed6e2098f5cf7b831d7c2bd2fdfd101e8020045c27668f3a7ce0a10832788",
+    "content_digest": "b926bd24d1a6795184ce0d0d75bddb6d8d937325204a0bef3e62afa55547eea5",
     "index_kind": "artifact",
     "local_id": "index:repo-local:artifacts",
     "schema_ref": "aoa-kag:schemas/repo-local-kag-repository-index.schema.json"
@@ -7339,15 +7467,15 @@
   },
   "schema_version": "aoa-repo-local-kag-repository-index-v1",
   "source_index": {
-    "content_digest": "60a087e17f1ec241608e850614bd25e3e8c6d66663b96736549a07fe67e6293d",
+    "content_digest": "c2000b740d1d63dbd50501bbc2f08b527d13621d813d576a3c20cbfcc1c2bae3",
     "local_id": "index:repo-local:source-surfaces",
     "path": "kag/indexes/source_surface_index.json"
   },
   "summary": {
-    "entry_count": 914,
+    "entry_count": 930,
     "kind_counts": {
       "asset": 50,
-      "config": 159,
+      "config": 174,
       "dependency_manifest": 2,
       "document": 455,
       "generated_readmodel": 42,
@@ -7357,7 +7485,7 @@
       "owner_metadata": 2,
       "projection": 1,
       "receipt": 1,
-      "schema": 91,
+      "schema": 92,
       "script": 23,
       "security": 1,
       "service_unit": 2,

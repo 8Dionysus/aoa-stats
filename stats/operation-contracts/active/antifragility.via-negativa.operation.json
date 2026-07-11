@@ -1,0 +1,36 @@
+{
+  "schema_version": "aoa_stats_operation_contract_source_v1",
+  "lifecycle": "active",
+  "operation_id": "antifragility.via-negativa",
+  "publication_posture": "non_catalog",
+  "mechanic_route": "mechanics/antifragility/parts/via-negativa",
+  "payload_class": "via-negativa-stats-operation",
+  "primary_question": "Should a proposed or existing stats surface remain visible, be merged, moved, suppressed, quarantined, deprecated, or removed to avoid weak signals becoming authority?",
+  "input_posture": "documentation_checklist",
+  "observation_rule": "Apply the part-local checklist to consumer value, evidence strength, suppression behavior, and vector-versus-scalar distortion; checklist presence does not prove that a review occurred.",
+  "owner_truth_inputs": [
+    {
+      "owner_repo": "Agents-of-Abyss",
+      "truth_scope": "Common antifragility exclusion, removal, and weak-signal restraint meaning",
+      "binding": "symbolic_unbound"
+    }
+  ],
+  "result_posture": "part_local_review_guidance",
+  "authority_ceiling": "The operation may guide a bounded stats-surface review but cannot establish proof, change routing, open a gate, assign identity, mutate workflow state, or override the owner of an observed fact.",
+  "consumer_risk": "medium",
+  "non_catalog_reason": "The part is review guidance for observability hygiene, not a derived data surface.",
+  "owner_return_routes": [
+    {
+      "repo": "Agents-of-Abyss",
+      "surface": "mechanics/antifragility",
+      "route_kind": "authored_meaning"
+    }
+  ],
+  "prohibited_inferences": [
+    "Checklist presence proves that a surface was reviewed or removed.",
+    "A scalar or vector observation is proof of owner truth.",
+    "Stats may suppress evidence required by a stronger owner."
+  ],
+  "mechanic_contract_ref": "mechanics/antifragility/parts/via-negativa/CONTRACT.md",
+  "validation_ref": "mechanics/antifragility/parts/via-negativa/VALIDATION.md"
+}

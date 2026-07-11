@@ -1,0 +1,56 @@
+{
+  "schema_version": "aoa_stats_operation_contract_source_v1",
+  "lifecycle": "active",
+  "operation_id": "agon.verdict-delta-scar-observability",
+  "publication_posture": "non_catalog",
+  "mechanic_route": "mechanics/agon/parts/verdict-delta-scar-observability",
+  "payload_class": "verdict-delta-scar-observability-stats-operation",
+  "primary_question": "Which bounded verdict-draft, delta-candidate, scar-request, retention-request, and inscription-bundle dimensions are declared for candidate observation?",
+  "input_posture": "seed_registry_compiler",
+  "observation_rule": "Compile mappings from symbolic Agon bridge event-kind names to permitted candidate dimensions; no event stream or owner record is bound or consumed.",
+  "owner_truth_inputs": [
+    {
+      "owner_repo": "Agents-of-Abyss",
+      "truth_scope": "Agon verdict, delta, scar, retention, and inscription event meaning",
+      "binding": "symbolic_unbound"
+    },
+    {
+      "owner_repo": "aoa-evals",
+      "truth_scope": "Verdict-draft, delta, scar-request, retention-request, and inscription-bundle legitimacy alignment",
+      "binding": "symbolic_unbound"
+    },
+    {
+      "owner_repo": "aoa-memo",
+      "truth_scope": "Delta, scar, retention, and inscription candidate-intake memory posture",
+      "binding": "symbolic_unbound"
+    }
+  ],
+  "result_posture": "retained_compatibility_registry",
+  "authority_ceiling": "The operation may publish candidate mappings but cannot issue a verdict, define a value system, write a scar, execute retention, canonize an inscription, or strengthen an owner result.",
+  "consumer_risk": "high",
+  "non_catalog_reason": "The result is an event-kind candidate registry rather than a computed catalog summary over admitted owner events.",
+  "owner_return_routes": [
+    {
+      "repo": "Agents-of-Abyss",
+      "surface": "mechanics/agon/parts/verdict-retention-rank/CONTRACT.md",
+      "route_kind": "authored_meaning"
+    },
+    {
+      "repo": "aoa-evals",
+      "surface": "mechanics/agon/parts/vds-alignment/docs/AGON_VDS_EVAL_ALIGNMENT.md",
+      "route_kind": "proof"
+    },
+    {
+      "repo": "aoa-memo",
+      "surface": "mechanics/agon/parts/bridge-and-evidence-seams/config/agon_vds_memo_bridge.source.json",
+      "route_kind": "memory"
+    }
+  ],
+  "prohibited_inferences": [
+    "A known event-kind name proves that an event was emitted or admitted.",
+    "Verdict, delta, scar, retention, or inscription pressure changes owner state.",
+    "Candidate dimensions establish value, guilt, learning, or canon."
+  ],
+  "mechanic_contract_ref": "mechanics/agon/parts/verdict-delta-scar-observability/CONTRACT.md",
+  "validation_ref": "mechanics/agon/parts/verdict-delta-scar-observability/VALIDATION.md"
+}

@@ -25,6 +25,10 @@ from aoa_stats_builder.surface_catalog import (  # noqa: E402
 STATS_ROOT = Path("stats")
 MANIFEST_PATH = STATS_ROOT / "source_home.manifest.json"
 PROFILE_SCHEMA_PATH = STATS_ROOT / "read-models" / "surface-profile.schema.json"
+OPERATION_CONTRACT_ROOT = STATS_ROOT / "operation-contracts" / "active"
+OPERATION_CONTRACT_SCHEMA_PATH = (
+    STATS_ROOT / "operation-contracts" / "operation-contract.schema.json"
+)
 TOPOLOGY_PATH = Path("mechanics/topology.json")
 
 EXPECTED_FAMILIES = {
@@ -51,6 +55,8 @@ EXPECTED_BRANCH_ENTRIES = {
     "stats/operation-contracts": {
         "AGENTS.md",
         "README.md",
+        "active",
+        "operation-contract.schema.json",
     },
     "stats/surface-catalog": {
         "AGENTS.md",
@@ -72,6 +78,21 @@ EXPECTED_DEFERRED_PROFILE_COUNT = 1
 INTAKE_FIXTURE = Path(
     "stats/intake-contract/examples/session_harvest_family.receipts.example.json"
 )
+OPERATION_POSTURES_BY_PACKAGE = {
+    "agon": ("seed_registry_compiler", "retained_compatibility_registry"),
+    "experience": ("schema_example_contracts", "part_local_schema_contracts"),
+    "titan": ("documentation_projection_spec", "part_local_projection_spec"),
+}
+OPERATION_POSTURES_BY_ROUTE = {
+    "mechanics/antifragility/parts/via-negativa": (
+        "documentation_checklist",
+        "part_local_review_guidance",
+    ),
+}
+# A bound source must be admitted deliberately as
+# (mechanic_route, owner_repo) -> (source_ref, mechanic_local_evidence_ref).
+# No current operation consumes an owner source directly.
+BOUND_CURRENT_SOURCE_PROOFS: dict[tuple[str, str], tuple[str, str]] = {}
 
 
 def _load_object(path: Path) -> tuple[dict[str, Any] | None, str | None]:
@@ -202,19 +223,75 @@ def _validate_profile_schema(
             issues.append(f"{rel}{suffix}: {failure.message}")
 
 
+def _operation_contract_paths(repo_root: Path) -> list[Path]:
+    root = repo_root / OPERATION_CONTRACT_ROOT
+    if not root.is_dir():
+        return []
+    return sorted(root.glob("*.operation.json"))
+
+
+def _expected_operation_postures(mechanic_route: str) -> tuple[str, str] | None:
+    exact = OPERATION_POSTURES_BY_ROUTE.get(mechanic_route)
+    if exact is not None:
+        return exact
+    route_parts = mechanic_route.split("/")
+    if (
+        len(route_parts) != 4
+        or route_parts[0] != "mechanics"
+        or route_parts[2] != "parts"
+    ):
+        return None
+    return OPERATION_POSTURES_BY_PACKAGE.get(route_parts[1])
+
+
+def _validate_operation_contract_schema(
+    repo_root: Path,
+    operation_paths: list[Path],
+    issues: list[str],
+) -> None:
+    schema, error = _load_object(repo_root / OPERATION_CONTRACT_SCHEMA_PATH)
+    if error:
+        issues.append(error)
+        return
+    assert schema is not None
+    try:
+        Draft202012Validator.check_schema(schema)
+    except SchemaError as exc:
+        issues.append(
+            f"{OPERATION_CONTRACT_SCHEMA_PATH.as_posix()}: invalid JSON schema: "
+            f"{exc.message}"
+        )
+        return
+    validator = Draft202012Validator(schema)
+    for path in operation_paths:
+        record, record_error = _load_object(path)
+        if record_error:
+            issues.append(record_error)
+            continue
+        assert record is not None
+        for failure in validator.iter_errors(record):
+            location = ".".join(str(part) for part in failure.absolute_path)
+            suffix = f":{location}" if location else ""
+            rel = path.relative_to(repo_root).as_posix()
+            issues.append(f"{rel}{suffix}: {failure.message}")
+
+
 def _validate_stats_json_allowlist(
     repo_root: Path,
     active_paths: list[Path],
     deferred_paths: list[Path],
+    operation_paths: list[Path],
     issues: list[str],
 ) -> None:
     expected = {
         MANIFEST_PATH.as_posix(),
         PROFILE_SCHEMA_PATH.as_posix(),
+        OPERATION_CONTRACT_SCHEMA_PATH.as_posix(),
         "stats/intake-contract/event-kind-registry.json",
         INTAKE_FIXTURE.as_posix(),
         *[path.relative_to(repo_root).as_posix() for path in active_paths],
         *[path.relative_to(repo_root).as_posix() for path in deferred_paths],
+        *[path.relative_to(repo_root).as_posix() for path in operation_paths],
     }
     actual = {
         path.relative_to(repo_root).as_posix()
@@ -249,6 +326,7 @@ def _validate_profiles(
     repo_root: Path,
     manifest_family: dict[str, Any] | None,
     *,
+    operation_paths: list[Path],
     require_mechanics: bool,
     issues: list[str],
 ) -> set[str]:
@@ -259,7 +337,13 @@ def _validate_profiles(
         (repo_root / "stats/read-models/deferred").glob("*.profile.json")
     )
     _validate_profile_schema(repo_root, active_paths, deferred_paths, issues)
-    _validate_stats_json_allowlist(repo_root, active_paths, deferred_paths, issues)
+    _validate_stats_json_allowlist(
+        repo_root,
+        active_paths,
+        deferred_paths,
+        operation_paths,
+        issues,
+    )
 
     if len(active_paths) != EXPECTED_ACTIVE_PROFILE_COUNT:
         issues.append(
@@ -364,6 +448,276 @@ def _validate_profiles(
             "stats/read-models: manifest mechanic_routes must match profile mechanic_routes"
         )
     return set(mechanic_routes)
+
+
+def _validate_operation_contracts(
+    repo_root: Path,
+    manifest_family: dict[str, Any] | None,
+    operation_paths: list[Path],
+    *,
+    require_mechanics: bool,
+    issues: list[str],
+) -> tuple[set[str], dict[str, dict[str, Any]]]:
+    if not operation_paths:
+        issues.append("stats/operation-contracts/active: no authored operation records")
+    operation_root = repo_root / OPERATION_CONTRACT_ROOT
+    if operation_root.is_dir():
+        expected_entries = {path.name for path in operation_paths}
+        actual_entries = _entries(operation_root)
+        if actual_entries != expected_entries:
+            issues.append(
+                "stats/operation-contracts/active: entries must be only authored "
+                f"operation records; expected={sorted(expected_entries)!r}, "
+                f"found={sorted(actual_entries)!r}"
+            )
+    _validate_operation_contract_schema(repo_root, operation_paths, issues)
+
+    seen_ids: set[str] = set()
+    records_by_route: dict[str, dict[str, Any]] = {}
+    record_refs_by_route: dict[str, str] = {}
+    for path in operation_paths:
+        record_ref = path.relative_to(repo_root).as_posix()
+        record, error = _load_object(path)
+        if error:
+            issues.append(error)
+            continue
+        assert record is not None
+        operation_id = record.get("operation_id")
+        expected_id = path.name.removesuffix(".operation.json")
+        if operation_id != expected_id:
+            issues.append(
+                f"{record_ref}: operation_id must match filename stem {expected_id!r}"
+            )
+        if isinstance(operation_id, str):
+            if operation_id in seen_ids:
+                issues.append(f"{record_ref}: duplicate operation_id {operation_id!r}")
+            seen_ids.add(operation_id)
+
+        mechanic_route = record.get("mechanic_route")
+        if not isinstance(mechanic_route, str) or not mechanic_route:
+            issues.append(f"{record_ref}: mechanic_route must be non-empty")
+            continue
+        route_parts = mechanic_route.split("/")
+        if (
+            len(route_parts) == 4
+            and route_parts[0] == "mechanics"
+            and route_parts[2] == "parts"
+        ):
+            route_operation_id = f"{route_parts[1]}.{route_parts[3]}"
+            if operation_id != route_operation_id:
+                issues.append(
+                    f"{record_ref}: operation_id must match mechanic route as "
+                    f"{route_operation_id!r}"
+                )
+        expected_postures = _expected_operation_postures(mechanic_route)
+        if expected_postures is None:
+            issues.append(
+                f"{record_ref}: mechanic_route has no authorized operation posture"
+            )
+        else:
+            expected_input_posture, expected_result_posture = expected_postures
+            if record.get("input_posture") != expected_input_posture:
+                issues.append(
+                    f"{record_ref}: input_posture must be "
+                    f"{expected_input_posture!r} for {mechanic_route}"
+                )
+            if record.get("result_posture") != expected_result_posture:
+                issues.append(
+                    f"{record_ref}: result_posture must be "
+                    f"{expected_result_posture!r} for {mechanic_route}"
+                )
+        if mechanic_route in records_by_route:
+            issues.append(
+                f"{record_ref}: duplicate mechanic_route {mechanic_route!r}"
+            )
+            continue
+        expected_contract_ref = f"{mechanic_route}/CONTRACT.md"
+        expected_validation_ref = f"{mechanic_route}/VALIDATION.md"
+        if record.get("mechanic_contract_ref") != expected_contract_ref:
+            issues.append(
+                f"{record_ref}: mechanic_contract_ref must be "
+                f"{expected_contract_ref!r}"
+            )
+        if record.get("validation_ref") != expected_validation_ref:
+            issues.append(
+                f"{record_ref}: validation_ref must be {expected_validation_ref!r}"
+            )
+        records_by_route[mechanic_route] = record
+        record_refs_by_route[mechanic_route] = record_ref
+
+        truth_inputs = record.get("owner_truth_inputs")
+        owner_returns = record.get("owner_return_routes")
+        if isinstance(truth_inputs, list):
+            for truth_input in truth_inputs:
+                if not isinstance(truth_input, dict) or truth_input.get(
+                    "binding"
+                ) != "bound_current_source":
+                    continue
+                owner_repo = truth_input.get("owner_repo")
+                binding_key = (mechanic_route, owner_repo)
+                registered_proof = BOUND_CURRENT_SOURCE_PROOFS.get(binding_key)
+                if registered_proof is None:
+                    issues.append(
+                        f"{record_ref}: bound_current_source has no registered "
+                        f"mechanic binding proof for owner {owner_repo!r}"
+                    )
+                    continue
+                expected_source_ref, expected_evidence_ref = registered_proof
+                if truth_input.get("source_ref") != expected_source_ref:
+                    issues.append(
+                        f"{record_ref}: bound_current_source source_ref must be "
+                        f"{expected_source_ref!r}"
+                    )
+                if truth_input.get("binding_evidence_ref") != expected_evidence_ref:
+                    issues.append(
+                        f"{record_ref}: bound_current_source binding_evidence_ref "
+                        f"must be {expected_evidence_ref!r}"
+                    )
+                evidence_path = repo_root / expected_evidence_ref
+                if not expected_evidence_ref.startswith(f"{mechanic_route}/"):
+                    issues.append(
+                        f"{record_ref}: bound_current_source proof must stay under "
+                        "the mechanic part"
+                    )
+                elif not evidence_path.is_file():
+                    issues.append(
+                        f"{record_ref}: bound_current_source proof is missing: "
+                        f"{expected_evidence_ref}"
+                    )
+                elif expected_source_ref not in evidence_path.read_text(
+                    encoding="utf-8"
+                ):
+                    issues.append(
+                        f"{record_ref}: bound_current_source proof must cite "
+                        f"{expected_source_ref}"
+                    )
+        truth_owner_repos = (
+            {
+                item.get("owner_repo")
+                for item in truth_inputs
+                if isinstance(item, dict)
+                and isinstance(item.get("owner_repo"), str)
+            }
+            if isinstance(truth_inputs, list)
+            else set()
+        )
+        return_owner_repos = (
+            {
+                item.get("repo")
+                for item in owner_returns
+                if isinstance(item, dict) and isinstance(item.get("repo"), str)
+            }
+            if isinstance(owner_returns, list)
+            else set()
+        )
+        missing_owner_returns = truth_owner_repos - return_owner_repos
+        if missing_owner_returns:
+            issues.append(
+                f"{record_ref}: owner_return_routes must cover every "
+                "owner_truth_inputs repo; missing="
+                f"{sorted(missing_owner_returns)!r}"
+            )
+
+        if require_mechanics:
+            for handoff_ref in (expected_contract_ref, expected_validation_ref):
+                if not (repo_root / handoff_ref).is_file():
+                    issues.append(f"{record_ref}: handoff route is missing: {handoff_ref}")
+            contract_path = repo_root / expected_contract_ref
+            if contract_path.is_file() and record_ref not in contract_path.read_text(
+                encoding="utf-8"
+            ):
+                issues.append(
+                    f"{expected_contract_ref}: must link authored operation record "
+                    f"{record_ref}"
+                )
+
+    if manifest_family is not None:
+        if manifest_family.get("object_pattern") != "active/*.operation.json":
+            issues.append(
+                "stats/operation-contracts: object_pattern must be "
+                "'active/*.operation.json'"
+            )
+        if manifest_family.get("schema_refs") != [
+            OPERATION_CONTRACT_SCHEMA_PATH.as_posix()
+        ]:
+            issues.append(
+                "stats/operation-contracts: schema_refs must name the authored "
+                "operation schema"
+            )
+        manifest_mechanics = _mechanic_path_objects(
+            manifest_family.get("mechanic_routes"),
+            context="stats/operation-contracts",
+            issues=issues,
+        )
+        if set(manifest_mechanics) != set(records_by_route):
+            issues.append(
+                "stats/operation-contracts: authored records must match manifest "
+                "mechanic_routes"
+            )
+        source_routes = manifest_family.get("source_routes")
+        if _string_list(source_routes):
+            for required in (
+                OPERATION_CONTRACT_SCHEMA_PATH.as_posix(),
+                OPERATION_CONTRACT_ROOT.as_posix(),
+            ):
+                if required not in source_routes:
+                    issues.append(
+                        "stats/operation-contracts: source_routes must include "
+                        f"{required}"
+                    )
+        public_contract_routes = manifest_family.get("public_contract_routes")
+        if _string_list(public_contract_routes) and (
+            OPERATION_CONTRACT_SCHEMA_PATH.as_posix() not in public_contract_routes
+        ):
+            issues.append(
+                "stats/operation-contracts: public_contract_routes must include "
+                f"{OPERATION_CONTRACT_SCHEMA_PATH.as_posix()}"
+            )
+
+    for mechanic_route, record in records_by_route.items():
+        record["_record_ref"] = record_refs_by_route[mechanic_route]
+    return set(records_by_route), records_by_route
+
+
+def _topology_operation_contract_bindings(
+    topology: dict[str, Any],
+) -> dict[str, dict[str, Any]]:
+    bindings: dict[str, dict[str, Any]] = {}
+    packages = topology.get("active_packages")
+    if not isinstance(packages, list):
+        return bindings
+    for package in packages:
+        if not isinstance(package, dict) or not isinstance(package.get("path"), str):
+            continue
+        owner_ref = package.get("center_mechanic_ref") or package.get(
+            "owner_mechanic_ref"
+        )
+        if not isinstance(owner_ref, str) or "/" not in owner_ref:
+            continue
+        owner_repo, owner_surface = owner_ref.split("/", 1)
+        parts = package.get("active_part_routes")
+        if not isinstance(parts, list):
+            continue
+        for part in parts:
+            if not isinstance(part, dict) or not isinstance(part.get("path"), str):
+                continue
+            family_refs = part.get("stats_source_family_refs")
+            if not _string_list(family_refs) or "operation_contracts" not in family_refs:
+                continue
+            mechanic_route = (
+                f"mechanics/{package['path']}/parts/{part['path']}"
+            )
+            bindings[mechanic_route] = {
+                "record_ref": part.get("stats_operation_contract_ref"),
+                "payload_class": part.get("payload_class"),
+                "owner_surface": part.get("owner_surface"),
+                "validation_surface": part.get("validation_surface"),
+                "canonical_owner_return": {
+                    "repo": owner_repo,
+                    "surface": owner_surface,
+                },
+            }
+    return bindings
 
 
 def validate(
@@ -556,9 +910,20 @@ def validate(
             f"{sorted(EXPECTED_FAMILIES)!r}; found {sorted(family_by_id)!r}"
         )
 
+    operation_paths = _operation_contract_paths(repo_root)
+    operation_routes, operation_records = _validate_operation_contracts(
+        repo_root,
+        family_by_id.get("operation_contracts"),
+        operation_paths,
+        require_mechanics=require_mechanics,
+        issues=issues,
+    )
+    source_crosswalks["operation_contracts"] = operation_routes
+
     source_crosswalks["read_models"] = _validate_profiles(
         repo_root,
         family_by_id.get("read_models"),
+        operation_paths=operation_paths,
         require_mechanics=require_mechanics,
         issues=issues,
     )
@@ -613,6 +978,13 @@ def validate(
             issues.append(topology_error)
         else:
             assert topology is not None
+            if topology.get("stats_operation_contract_root") != (
+                OPERATION_CONTRACT_ROOT.as_posix()
+            ):
+                issues.append(
+                    "mechanics/topology.json: stats_operation_contract_root "
+                    "does not match stats source home"
+                )
             expected_crosswalks = {
                 family: set(routes) for family, routes in source_crosswalks.items()
             }
@@ -624,6 +996,60 @@ def validate(
                 issues.append(
                     "mechanics/topology.json: active part back-references do not match stats source home"
                 )
+            topology_bindings = _topology_operation_contract_bindings(topology)
+            if set(topology_bindings) != set(operation_records):
+                issues.append(
+                    "mechanics/topology.json: operation-contract parts do not match "
+                    "authored records"
+                )
+            for mechanic_route, record in operation_records.items():
+                binding = topology_bindings.get(mechanic_route)
+                if binding is None:
+                    continue
+                record_ref = record.get("_record_ref")
+                if binding.get("record_ref") != record_ref:
+                    issues.append(
+                        f"{mechanic_route}: stats_operation_contract_ref must be "
+                        f"{record_ref!r}"
+                    )
+                if binding.get("payload_class") != record.get("payload_class"):
+                    issues.append(
+                        f"{record_ref}: payload_class does not match mechanics topology"
+                    )
+                if binding.get("owner_surface") != record.get(
+                    "mechanic_contract_ref"
+                ):
+                    issues.append(
+                        f"{record_ref}: mechanic_contract_ref does not match topology"
+                    )
+                if binding.get("validation_surface") != record.get("validation_ref"):
+                    issues.append(
+                        f"{record_ref}: validation_ref does not match topology"
+                    )
+                owner_returns = record.get("owner_return_routes")
+                canonical_owner = binding.get("canonical_owner_return")
+                has_canonical_owner = (
+                    isinstance(owner_returns, list)
+                    and isinstance(canonical_owner, dict)
+                    and any(
+                        isinstance(owner_return, dict)
+                        and owner_return.get("repo") == canonical_owner.get("repo")
+                        and owner_return.get("route_kind") == "authored_meaning"
+                        and isinstance(owner_return.get("surface"), str)
+                        and (
+                            owner_return["surface"] == canonical_owner.get("surface")
+                            or owner_return["surface"].startswith(
+                                f"{canonical_owner.get('surface')}/"
+                            )
+                        )
+                        for owner_return in owner_returns
+                    )
+                )
+                if not has_canonical_owner:
+                    issues.append(
+                        f"{record_ref}: owner_return_routes must include canonical "
+                        "mechanic owner"
+                    )
 
     return issues
 

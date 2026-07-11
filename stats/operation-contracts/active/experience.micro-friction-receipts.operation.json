@@ -1,0 +1,36 @@
+{
+  "schema_version": "aoa_stats_operation_contract_source_v1",
+  "lifecycle": "active",
+  "operation_id": "experience.micro-friction-receipts",
+  "publication_posture": "non_catalog",
+  "mechanic_route": "mechanics/experience/parts/micro-friction-receipts",
+  "payload_class": "micro-friction-receipts-stats-operation",
+  "primary_question": "How may owner-linked micro-friction facts, recurrence, and inbox posture be represented without converting observation into remediation or priority authority?",
+  "input_posture": "schema_example_contracts",
+  "observation_rule": "Constrain illustrative friction receipts, recurrence summaries, and inbox summaries; examples remain non-live and do not bind owner meaning, workflow state, remediation, or priority.",
+  "owner_truth_inputs": [
+    {
+      "owner_repo": "Agents-of-Abyss",
+      "truth_scope": "Experience micro-friction intake, recurrence, and owner-return meaning",
+      "binding": "symbolic_unbound"
+    }
+  ],
+  "result_posture": "part_local_schema_contracts",
+  "authority_ceiling": "The operation may define bounded receipt and summary shapes but cannot own the underlying friction meaning, prioritize work, mutate a governance queue, remediate a source, prove recurrence, or instruct an owner to act.",
+  "consumer_risk": "medium",
+  "non_catalog_reason": "The part defines three local contract shapes without publishing a computed catalog surface.",
+  "owner_return_routes": [
+    {
+      "repo": "Agents-of-Abyss",
+      "surface": "mechanics/experience",
+      "route_kind": "authored_meaning"
+    }
+  ],
+  "prohibited_inferences": [
+    "An inbox entry is an instruction or priority decision.",
+    "A recurrence example proves repeated owner-local friction.",
+    "Stats may remediate or reinterpret the source owner's friction."
+  ],
+  "mechanic_contract_ref": "mechanics/experience/parts/micro-friction-receipts/CONTRACT.md",
+  "validation_ref": "mechanics/experience/parts/micro-friction-receipts/VALIDATION.md"
+}

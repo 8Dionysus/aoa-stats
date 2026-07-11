@@ -14,6 +14,7 @@ REPO_ROOT = Path(__file__).resolve().parents[1]
 TOPOLOGY_PATH = Path("mechanics/topology.json")
 SOURCE_MANIFEST_PATH = Path("stats/source_home.manifest.json")
 PROFILE_ROOT = Path("stats/read-models")
+OPERATION_CONTRACT_ROOT = Path("stats/operation-contracts/active")
 REQUIRED_MECHANICS_ROOT_FILES = {"AGENTS.md", "README.md", "topology.json"}
 REQUIRED_PACKAGE_FILES = {"AGENTS.md", "README.md", "PARTS.md", "PROVENANCE.md"}
 REQUIRED_PARTS_ROOT_FILES = {"AGENTS.md", "README.md"}
@@ -101,6 +102,37 @@ def _profile_routes(repo_root: Path) -> tuple[set[str], set[str], set[str], list
         if isinstance(surface_ref, str):
             generated_routes.add(surface_ref)
     return mechanic_routes, schema_routes, generated_routes, issues
+
+
+def _operation_contract_bindings(
+    repo_root: Path,
+) -> tuple[dict[str, str], list[str]]:
+    bindings: dict[str, str] = {}
+    issues: list[str] = []
+    root = repo_root / OPERATION_CONTRACT_ROOT
+    paths = sorted(root.glob("*.operation.json")) if root.is_dir() else []
+    if not paths:
+        return {}, ["stats/operation-contracts/active: no authored operation records"]
+    for path in paths:
+        record_ref = path.relative_to(repo_root).as_posix()
+        record, error = _load_object(path)
+        if error:
+            issues.append(error)
+            continue
+        assert record is not None
+        mechanic_route = record.get("mechanic_route")
+        if not isinstance(mechanic_route, str) or not mechanic_route:
+            issues.append(f"{record_ref}: mechanic_route must be non-empty")
+            continue
+        if record_ref in bindings:
+            issues.append(f"{record_ref}: duplicate operation record ref")
+            continue
+        bindings[record_ref] = mechanic_route
+    if len(bindings.values()) != len(set(bindings.values())):
+        issues.append(
+            "stats/operation-contracts/active: mechanic_route bindings must be unique"
+        )
+    return bindings, issues
 
 
 def _manifest_crosswalks(manifest: dict[str, Any]) -> dict[str, set[str]]:
@@ -273,6 +305,10 @@ def validate(repo_root: Path = REPO_ROOT) -> list[str]:
         issues.append("mechanics/topology.json: stats_source_manifest is not canonical")
     if topology.get("stats_profile_root") != PROFILE_ROOT.as_posix():
         issues.append("mechanics/topology.json: stats_profile_root is not canonical")
+    if topology.get("stats_operation_contract_root") != OPERATION_CONTRACT_ROOT.as_posix():
+        issues.append(
+            "mechanics/topology.json: stats_operation_contract_root is not canonical"
+        )
 
     mechanics_root = repo_root / "mechanics"
     root_contract = topology.get("root_contract")
@@ -315,8 +351,11 @@ def validate(repo_root: Path = REPO_ROOT) -> list[str]:
 
     profile_mechanics, profile_schemas, profile_outputs, profile_issues = _profile_routes(repo_root)
     issues.extend(profile_issues)
+    operation_bindings, operation_binding_issues = _operation_contract_bindings(repo_root)
+    issues.extend(operation_binding_issues)
     part_crosswalks: dict[str, set[str]] = {}
     seen_parts: set[str] = set()
+    seen_operation_contract_refs: set[str] = set()
 
     for package in packages:
         if not isinstance(package, dict) or not isinstance(package.get("path"), str):
@@ -402,6 +441,33 @@ def validate(repo_root: Path = REPO_ROOT) -> list[str]:
             if not _string_list(family_refs):
                 issues.append(f"{route}: stats_source_family_refs must be a non-empty string list")
                 family_refs = []
+            operation_contract_ref = part.get("stats_operation_contract_ref")
+            if "operation_contracts" in family_refs:
+                if not isinstance(operation_contract_ref, str) or not operation_contract_ref:
+                    issues.append(f"{route}: stats_operation_contract_ref is required")
+                else:
+                    if operation_contract_ref in seen_operation_contract_refs:
+                        issues.append(
+                            f"{route}: duplicate stats_operation_contract_ref "
+                            f"{operation_contract_ref}"
+                        )
+                    seen_operation_contract_refs.add(operation_contract_ref)
+                    bound_route = operation_bindings.get(operation_contract_ref)
+                    if bound_route is None:
+                        issues.append(
+                            f"{route}: stats operation contract is missing: "
+                            f"{operation_contract_ref}"
+                        )
+                    elif bound_route != route:
+                        issues.append(
+                            f"{route}: stats operation contract binds {bound_route!r}, "
+                            f"not this part"
+                        )
+            elif operation_contract_ref is not None:
+                issues.append(
+                    f"{route}: stats_operation_contract_ref is forbidden outside "
+                    "operation_contracts"
+                )
             expected_part_entries = REQUIRED_PART_FILES | set(localized)
             if part_root.is_dir() and _entries(part_root) != expected_part_entries:
                 issues.append(
@@ -445,6 +511,11 @@ def validate(repo_root: Path = REPO_ROOT) -> list[str]:
         issues.append("mechanics/topology.json: crosswalks do not match stats source home")
     if topology_crosswalks.get("read_models", set()) != profile_mechanics:
         issues.append("mechanics/topology.json: read_models crosswalk does not match profiles")
+    if seen_operation_contract_refs != set(operation_bindings):
+        issues.append(
+            "mechanics/topology.json: operation contract backlinks do not match "
+            "authored records"
+        )
     for route in profile_mechanics:
         if route not in seen_parts:
             issues.append(f"stats/read-models: profile points outside active mechanics: {route}")

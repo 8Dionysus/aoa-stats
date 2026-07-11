@@ -1,0 +1,56 @@
+{
+  "schema_version": "aoa_stats_operation_contract_source_v1",
+  "lifecycle": "active",
+  "operation_id": "experience.release-watch-office-health",
+  "publication_posture": "non_catalog",
+  "mechanic_route": "mechanics/experience/parts/release-watch-office-health",
+  "payload_class": "release-watch-office-health-stats-operation",
+  "primary_question": "Which release, certification, watch, incident, installation, handoff, office, console, smoke, rollback, and train observations may be represented as bounded candidate contracts?",
+  "input_posture": "schema_example_contracts",
+  "observation_rule": "Constrain illustrative release and office-health summaries; no release candidate, certification, deployment, incident, installation, rollback, service state, handoff, or office event is bound as live input.",
+  "owner_truth_inputs": [
+    {
+      "owner_repo": "Agents-of-Abyss",
+      "truth_scope": "Experience release, sovereign-office, certification, handoff, and watch meaning",
+      "binding": "symbolic_unbound"
+    },
+    {
+      "owner_repo": "abyss-stack",
+      "truth_scope": "Live deployment, service, installation, incident, rollback, and runtime state",
+      "binding": "symbolic_unbound"
+    },
+    {
+      "owner_repo": "Tree-of-Sophia",
+      "truth_scope": "No-direct-write and no-runtime-office-write boundaries",
+      "binding": "symbolic_unbound"
+    }
+  ],
+  "result_posture": "part_local_schema_contracts",
+  "authority_ceiling": "The operation may define candidate dashboard and summary shapes but cannot approve a release, certify a candidate, execute installation or rollback, mutate a service, grant assistant authority, or write to Tree of Sophia.",
+  "consumer_risk": "high",
+  "non_catalog_reason": "The part is a multi-contract Experience portfolio rather than one computed public summary surface.",
+  "owner_return_routes": [
+    {
+      "repo": "Agents-of-Abyss",
+      "surface": "mechanics/experience",
+      "route_kind": "authored_meaning"
+    },
+    {
+      "repo": "abyss-stack",
+      "surface": "mechanics/runtime-lifecycle/parts/logs-status/README.md",
+      "route_kind": "runtime"
+    },
+    {
+      "repo": "Tree-of-Sophia",
+      "surface": "BOUNDARIES.md",
+      "route_kind": "authored_meaning"
+    }
+  ],
+  "prohibited_inferences": [
+    "A dashboard status approves, certifies, deploys, installs, or rolls back a release.",
+    "Office-health observations grant runtime or assistant self-authority.",
+    "Schema-valid examples prove current service, incident, handoff, or release state."
+  ],
+  "mechanic_contract_ref": "mechanics/experience/parts/release-watch-office-health/CONTRACT.md",
+  "validation_ref": "mechanics/experience/parts/release-watch-office-health/VALIDATION.md"
+}

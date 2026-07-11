@@ -21,5 +21,6 @@ validates both paired release-health examples.
 ## Crosswalk
 
 This non-catalog observation contract cross-routes to
-`stats/operation-contracts/`; the reciprocal route is enforced by
+`stats/operation-contracts/active/experience.release-watch-office-health.operation.json`;
+the reciprocal route is enforced by
 `mechanics/topology.json`.

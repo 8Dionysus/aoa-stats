@@ -3,6 +3,7 @@ from __future__ import annotations
 import importlib.util
 import json
 from pathlib import Path
+import shutil
 import sys
 
 
@@ -30,12 +31,48 @@ def load_json(relative_path: str) -> dict[str, object]:
     return payload
 
 
+def copy_repo(tmp_path: Path) -> Path:
+    return shutil.copytree(
+        REPO_ROOT,
+        tmp_path / "repo",
+        ignore=shutil.ignore_patterns(
+            ".git",
+            ".pytest_cache",
+            "__pycache__",
+            "dist",
+        ),
+    )
+
+
+def load_repo_json(repo_root: Path, relative_path: str) -> dict[str, object]:
+    payload = json.loads((repo_root / relative_path).read_text(encoding="utf-8"))
+    assert isinstance(payload, dict)
+    return payload
+
+
+def write_repo_json(
+    repo_root: Path,
+    relative_path: str,
+    payload: dict[str, object],
+) -> None:
+    (repo_root / relative_path).write_text(
+        json.dumps(payload, indent=2, ensure_ascii=False) + "\n",
+        encoding="utf-8",
+    )
+
+
 def test_live_stats_source_home_passes_before_mechanics_integration() -> None:
     assert validator.validate(REPO_ROOT, require_mechanics=False) == []
 
 
 def test_source_home_contains_only_declared_source_records() -> None:
     stats_root = REPO_ROOT / "stats"
+    operation_contracts = sorted(
+        path.relative_to(stats_root).as_posix()
+        for path in (stats_root / "operation-contracts" / "active").glob(
+            "*.operation.json"
+        )
+    )
     active_profiles = sorted(
         path.relative_to(stats_root).as_posix()
         for path in (stats_root / "read-models" / "active").glob("*.profile.json")
@@ -48,7 +85,9 @@ def test_source_home_contains_only_declared_source_records() -> None:
         "source_home.manifest.json",
         "intake-contract/event-kind-registry.json",
         "intake-contract/examples/session_harvest_family.receipts.example.json",
+        "operation-contracts/operation-contract.schema.json",
         "read-models/surface-profile.schema.json",
+        *operation_contracts,
         *active_profiles,
         *deferred_profiles,
     }
@@ -92,6 +131,299 @@ def test_source_families_name_meaning_ceiling_and_current_routes() -> None:
             assert family[field], (family_id, field)
             for route in family[field]:
                 assert (REPO_ROOT / route).exists(), (family_id, field, route)
+
+
+def test_operation_contract_records_are_complete_non_catalog_sources() -> None:
+    operation_root = REPO_ROOT / "stats" / "operation-contracts" / "active"
+    operation_paths = sorted(operation_root.glob("*.operation.json"))
+    manifest = load_json("stats/source_home.manifest.json")
+    operation_family = next(
+        family
+        for family in manifest["families"]
+        if family["id"] == "operation_contracts"
+    )
+    topology = load_json("mechanics/topology.json")
+    topology_refs = {
+        part["stats_operation_contract_ref"]
+        for package in topology["active_packages"]
+        for part in package["active_part_routes"]
+        if "operation_contracts" in part.get("stats_source_family_refs", [])
+    }
+
+    assert len(operation_paths) == 15
+    assert {
+        path.name.removesuffix(".operation.json") for path in operation_paths
+    } == {
+        load_repo_json(REPO_ROOT, path.relative_to(REPO_ROOT).as_posix())[
+            "operation_id"
+        ]
+        for path in operation_paths
+    }
+    assert {
+        load_repo_json(REPO_ROOT, path.relative_to(REPO_ROOT).as_posix())[
+            "mechanic_route"
+        ]
+        for path in operation_paths
+    } == {route["path"] for route in operation_family["mechanic_routes"]}
+    assert topology_refs == {
+        path.relative_to(REPO_ROOT).as_posix() for path in operation_paths
+    }
+    for path in operation_paths:
+        record = load_repo_json(REPO_ROOT, path.relative_to(REPO_ROOT).as_posix())
+        assert record["publication_posture"] == "non_catalog"
+        assert not {"catalog_order", "schema_ref", "surface_ref"} & record.keys()
+        package, part = record["mechanic_route"].removeprefix("mechanics/").split(
+            "/parts/",
+            1,
+        )
+        assert record["operation_id"] == f"{package}.{part}"
+        assert {item["owner_repo"] for item in record["owner_truth_inputs"]} <= {
+            item["repo"] for item in record["owner_return_routes"]
+        }
+
+
+def test_operation_contract_active_home_rejects_undeclared_entry(
+    tmp_path: Path,
+) -> None:
+    repo_root = copy_repo(tmp_path)
+    unexpected = repo_root / "stats/operation-contracts/active/UNDECLARED.md"
+    unexpected.write_text("not an authored operation record\n", encoding="utf-8")
+
+    issues = validator.validate(repo_root)
+
+    assert any(
+        "stats/operation-contracts/active: entries must be only authored "
+        "operation records" in issue
+        and "UNDECLARED.md" in issue
+        for issue in issues
+    )
+
+
+def test_operation_contract_schema_rejects_missing_primary_question(
+    tmp_path: Path,
+) -> None:
+    repo_root = copy_repo(tmp_path)
+    record_ref = (
+        "stats/operation-contracts/active/"
+        "agon.epistemic-observability.operation.json"
+    )
+    record = load_repo_json(repo_root, record_ref)
+    del record["primary_question"]
+    write_repo_json(repo_root, record_ref, record)
+
+    issues = validator.validate(repo_root)
+
+    assert any(
+        record_ref in issue
+        and "'primary_question' is a required property" in issue
+        for issue in issues
+    )
+
+
+def test_operation_contract_schema_rejects_profile_publication_field(
+    tmp_path: Path,
+) -> None:
+    repo_root = copy_repo(tmp_path)
+    record_ref = (
+        "stats/operation-contracts/active/"
+        "agon.epistemic-observability.operation.json"
+    )
+    record = load_repo_json(repo_root, record_ref)
+    record["surface_ref"] = "generated/not-an-operation-contract.min.json"
+    write_repo_json(repo_root, record_ref, record)
+
+    issues = validator.validate(repo_root)
+
+    assert any(
+        record_ref in issue
+        and "Additional properties are not allowed" in issue
+        and "surface_ref" in issue
+        for issue in issues
+    )
+
+
+def test_operation_contract_rejects_wrong_mechanic_route(tmp_path: Path) -> None:
+    repo_root = copy_repo(tmp_path)
+    record_ref = (
+        "stats/operation-contracts/active/"
+        "agon.epistemic-observability.operation.json"
+    )
+    record = load_repo_json(repo_root, record_ref)
+    record["mechanic_route"] = "mechanics/agon/parts/not-the-bound-part"
+    write_repo_json(repo_root, record_ref, record)
+
+    issues = validator.validate(repo_root)
+
+    assert any(
+        record_ref in issue
+        and "mechanic_contract_ref must be " in issue
+        and "mechanics/agon/parts/not-the-bound-part/CONTRACT.md" in issue
+        for issue in issues
+    )
+
+
+def test_operation_contract_id_must_derive_from_mechanic_route(
+    tmp_path: Path,
+) -> None:
+    repo_root = copy_repo(tmp_path)
+    record_ref = (
+        "stats/operation-contracts/active/"
+        "agon.epistemic-observability.operation.json"
+    )
+    record = load_repo_json(repo_root, record_ref)
+    record["operation_id"] = "epistemic-observability"
+    write_repo_json(repo_root, record_ref, record)
+
+    issues = validator.validate(repo_root)
+
+    assert any(
+        record_ref in issue
+        and "operation_id must match mechanic route as "
+        "'agon.epistemic-observability'" in issue
+        for issue in issues
+    )
+
+
+def test_operation_contract_posture_must_match_mechanic_class(
+    tmp_path: Path,
+) -> None:
+    repo_root = copy_repo(tmp_path)
+    record_ref = (
+        "stats/operation-contracts/active/"
+        "agon.epistemic-observability.operation.json"
+    )
+    record = load_repo_json(repo_root, record_ref)
+    record["input_posture"] = "documentation_checklist"
+    write_repo_json(repo_root, record_ref, record)
+
+    issues = validator.validate(repo_root)
+
+    assert any(
+        record_ref in issue
+        and "input_posture must be 'seed_registry_compiler'" in issue
+        for issue in issues
+    )
+
+
+def test_operation_contract_requires_canonical_owner_return(tmp_path: Path) -> None:
+    repo_root = copy_repo(tmp_path)
+    record_ref = (
+        "stats/operation-contracts/active/"
+        "agon.epistemic-observability.operation.json"
+    )
+    record = load_repo_json(repo_root, record_ref)
+    record["owner_return_routes"] = [
+        {
+            "repo": "aoa-stats",
+            "surface": "stats/operation-contracts",
+            "route_kind": "authored_meaning",
+        }
+    ]
+    write_repo_json(repo_root, record_ref, record)
+
+    issues = validator.validate(repo_root)
+
+    assert any(
+        record_ref in issue
+        and "owner_return_routes must include canonical mechanic owner" in issue
+        for issue in issues
+    )
+
+
+def test_operation_contract_returns_to_every_named_truth_owner(
+    tmp_path: Path,
+) -> None:
+    repo_root = copy_repo(tmp_path)
+    record_ref = (
+        "stats/operation-contracts/active/titan.memory-owner-bridge.operation.json"
+    )
+    record = load_repo_json(repo_root, record_ref)
+    record["owner_return_routes"] = [
+        route
+        for route in record["owner_return_routes"]
+        if route["repo"] != "aoa-memo"
+    ]
+    write_repo_json(repo_root, record_ref, record)
+
+    issues = validator.validate(repo_root)
+
+    assert any(
+        record_ref in issue
+        and "owner_return_routes must cover every owner_truth_inputs repo" in issue
+        and "aoa-memo" in issue
+        for issue in issues
+    )
+
+
+def test_bound_current_source_requires_an_explicit_source_ref(
+    tmp_path: Path,
+) -> None:
+    repo_root = copy_repo(tmp_path)
+    record_ref = (
+        "stats/operation-contracts/active/"
+        "agon.epistemic-observability.operation.json"
+    )
+    record = load_repo_json(repo_root, record_ref)
+    record["owner_truth_inputs"][0]["binding"] = "bound_current_source"
+    write_repo_json(repo_root, record_ref, record)
+
+    issues = validator.validate(repo_root)
+
+    assert any(
+        record_ref in issue and "'source_ref' is a required property" in issue
+        for issue in issues
+    )
+
+
+def test_declared_source_cannot_be_promoted_without_registered_binding_proof(
+    tmp_path: Path,
+) -> None:
+    repo_root = copy_repo(tmp_path)
+    record_ref = (
+        "stats/operation-contracts/active/"
+        "agon.mechanical-trial-observability.operation.json"
+    )
+    record = load_repo_json(repo_root, record_ref)
+    declared_input = next(
+        item
+        for item in record["owner_truth_inputs"]
+        if item["binding"] == "declared_reference_only"
+    )
+    declared_input["binding"] = "bound_current_source"
+    declared_input["binding_evidence_ref"] = (
+        "mechanics/agon/parts/mechanical-trial-observability/VALIDATION.md"
+    )
+    write_repo_json(repo_root, record_ref, record)
+
+    issues = validator.validate(repo_root)
+
+    assert any(
+        record_ref in issue
+        and "bound_current_source has no registered mechanic binding proof" in issue
+        for issue in issues
+    )
+
+
+def test_operation_contract_requires_mechanic_contract_backlink(
+    tmp_path: Path,
+) -> None:
+    repo_root = copy_repo(tmp_path)
+    record_ref = (
+        "stats/operation-contracts/active/"
+        "agon.epistemic-observability.operation.json"
+    )
+    contract_ref = "mechanics/agon/parts/epistemic-observability/CONTRACT.md"
+    contract_path = repo_root / contract_ref
+    contract = contract_path.read_text(encoding="utf-8")
+    assert record_ref in contract
+    contract_path.write_text(contract.replace(record_ref, ""), encoding="utf-8")
+
+    issues = validator.validate(repo_root)
+
+    assert (
+        f"{contract_ref}: must link authored operation record {record_ref}"
+        in issues
+    )
 
 
 def test_authored_profiles_are_the_public_catalog_source() -> None:

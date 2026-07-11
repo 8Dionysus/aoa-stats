@@ -18,6 +18,12 @@ Tracking starts with the first public release-prep baseline for this repository.
   Python catalog table.
 - Added `stats/operation-contracts/` so every active non-catalog mechanic part
   has a reciprocal source-family route without inventing a public profile.
+- Added one schema-backed authored operation record for each of the 15 active
+  non-catalog mechanic parts, with exact reciprocal topology links and honest
+  input-maturity, authority-ceiling, consumer-risk, and owner-return posture.
+- Replaced generic via-negativa and Titan memory/runtime cards with their
+  actual checklist-only, schema/documentation, and documentation-only maturity
+  boundaries.
 - Added active mechanic packages and focused part contracts for Agon,
   Antifragility, Audit, Boundary Bridge, Checkpoint, Experience, Growth Cycle,
   Method Growth, Recurrence, Release Support, RPG, and Titan.

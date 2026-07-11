@@ -25,7 +25,7 @@ proof, route, memory, runtime, identity, or owner truth.
 | --- | --- | --- |
 | receipt admission | `stats/intake-contract/` and `schemas/stats-event-envelope.schema.json` | examples, live registry, generated summaries |
 | read-model meaning | `stats/read-models/active/*.profile.json` | public catalog, generated output, MCP projection |
-| non-catalog stats contracts | `stats/operation-contracts/` | part-local payload and root compatibility routes |
+| non-catalog stats contracts | `stats/operation-contracts/active/*.operation.json` | part-local payload and root compatibility routes |
 | operation ownership | `mechanics/topology.json` and nearest part cards | root compatibility routes |
 | implementation | `src/aoa_stats_builder/` and `src/aoa_stats_mcp/` | command entrypoints |
 | public contracts | catalog schemas under `schemas/` | examples and docs |
@@ -41,7 +41,7 @@ The checked source home contains:
 
 - the canonical receipt intake contract and active event-kind registry
 - 25 active authored read-model profiles and one deferred contract profile
-- one explicit operation-contract family for 15 active non-catalog parts
+- 15 authored operation-contract records for active non-catalog parts
 - deterministic projection core under `src/aoa_stats_builder/`, exposed by the
   repo-wide `scripts/build_views.py` entrypoint
 - stable public schemas and committed summaries under `schemas/` and

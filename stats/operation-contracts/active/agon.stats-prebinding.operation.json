@@ -1,0 +1,56 @@
+{
+  "schema_version": "aoa_stats_operation_contract_source_v1",
+  "lifecycle": "active",
+  "operation_id": "agon.stats-prebinding",
+  "publication_posture": "non_catalog",
+  "mechanic_route": "mechanics/agon/parts/stats-prebinding",
+  "payload_class": "stats-prebinding-stats-operation",
+  "primary_question": "Which bounded Agon summary names and conceptual inputs may be prepared before any live observation protocol exists?",
+  "input_posture": "seed_registry_compiler",
+  "observation_rule": "Compile pre-protocol summary declarations only; review candidates, trial observations, queues, dossiers, beacons, playbooks, and routing hints remain symbolic inputs with no runtime binding.",
+  "owner_truth_inputs": [
+    {
+      "owner_repo": "Agents-of-Abyss",
+      "truth_scope": "Agon review, playbook, gate, closure, contradiction, summon, assistant, recurrence, and delta meaning",
+      "binding": "symbolic_unbound"
+    },
+    {
+      "owner_repo": "abyss-stack",
+      "truth_scope": "Mechanical-trial runtime observations",
+      "binding": "symbolic_unbound"
+    },
+    {
+      "owner_repo": "aoa-routing",
+      "truth_scope": "Agon gate-routing state and owner-review requirements",
+      "binding": "symbolic_unbound"
+    }
+  ],
+  "result_posture": "retained_compatibility_registry",
+  "authority_ceiling": "The operation may name derived candidate summaries but cannot open an arena, write durable state, mutate rank, promote to Tree of Sophia, schedule hidden work, judge an agent, or grant action authority.",
+  "consumer_risk": "high",
+  "non_catalog_reason": "The result is explicitly pre-protocol registry material and not an active catalog read model over observed events.",
+  "owner_return_routes": [
+    {
+      "repo": "Agents-of-Abyss",
+      "surface": "mechanics/agon",
+      "route_kind": "authored_meaning"
+    },
+    {
+      "repo": "abyss-stack",
+      "surface": "mechanics/agon-runtime/parts/runtime-kernels/generated/mechanical-trial-run-registry.min.json",
+      "route_kind": "runtime"
+    },
+    {
+      "repo": "aoa-routing",
+      "surface": "mechanics/agon/parts/gate-routing/config/agon_gate_routing.config.json",
+      "route_kind": "routing"
+    }
+  ],
+  "prohibited_inferences": [
+    "A prebinding means that a live protocol or owner input exists.",
+    "A declared score or pressure may route, judge, rank, or prioritize by itself.",
+    "Registry publication grants runtime, scheduling, or durable-write authority."
+  ],
+  "mechanic_contract_ref": "mechanics/agon/parts/stats-prebinding/CONTRACT.md",
+  "validation_ref": "mechanics/agon/parts/stats-prebinding/VALIDATION.md"
+}
