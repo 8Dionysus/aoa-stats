@@ -70,6 +70,11 @@ publication and implementation districts:
   reviewed-example adapter at
   `src/aoa_stats_builder/component_refresh_sources.py`; it is not admitted to
   local live state
+- the Continuity Window reference profile uses the filesystem-free projection
+  at `src/aoa_stats_builder/continuity_window.py` and the explicit
+  example/catalog adapter at `src/aoa_stats_builder/continuity_window_sources.py`;
+  its represented posture is committed reference state, not current runtime
+  continuity
 - the Growth Cycle profile family shares deterministic projection through
   `src/aoa_stats_builder/growth_cycle.py`, with its focused package check under
   `mechanics/growth-cycle/tests/`
@@ -85,9 +90,11 @@ publication and implementation districts:
 `live_state_capable` in each active read-model profile is the executable live
 materialization selector. The committed catalog may include reference-only
 profiles; the local live catalog contains only admitted, materialized outputs,
-while cleanup still covers every managed active output. The Component Refresh
-reference/live split is recorded in
+while cleanup still covers every managed active output. Component Refresh and
+Continuity Window are currently reference-only. The selector and stale-cleanup
+precedent is recorded for Component Refresh in
 `docs/decisions/AOST-D-0003-component-refresh-fixtures-are-not-live-state.md`;
-the selector does not independently certify other profiles' source posture.
+that record is not a Continuity Window decision, and the selector does not
+independently certify any profile's source posture.
 
 Follow the family route card before changing any of those paths.

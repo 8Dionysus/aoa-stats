@@ -819,7 +819,8 @@
           ],
           "localized_payload_roots": [
             "docs",
-            "examples"
+            "examples",
+            "tests"
           ],
           "retained_root_routes": []
         },

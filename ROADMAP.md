@@ -71,10 +71,13 @@ contract stays separate from active catalog claims.
 - continuity and component refresh:
   `mechanics/recurrence/parts/continuity-window/docs/CONTINUITY_WINDOW_SUMMARY.md`
   and `mechanics/recurrence/parts/component-refresh/docs/COMPONENT_REFRESH_SUMMARIES.md`
-- Component Refresh reference/live boundary:
-  `docs/decisions/AOST-D-0003-component-refresh-fixtures-are-not-live-state.md`,
+- committed reference projection boundaries:
+  `src/aoa_stats_builder/continuity_window.py`,
+  `src/aoa_stats_builder/continuity_window_sources.py`,
   `src/aoa_stats_builder/component_refresh.py`, and
-  `src/aoa_stats_builder/component_refresh_sources.py`
+  `src/aoa_stats_builder/component_refresh_sources.py`; the selector and
+  stale-cleanup precedent comes from the Component Refresh-only decision
+  `docs/decisions/AOST-D-0003-component-refresh-fixtures-are-not-live-state.md`
 - live output lifecycle debt: add an explicit retired/renamed-output cleanup
   record before an active read-model profile leaves the managed inventory
 - stress-recovery chaos fixture:
@@ -98,9 +101,10 @@ Changes on this line should:
 5. update topology, source-home validation, focused tests, and generated
    outputs together
 6. keep `README.md` and `docs/README.md` short and link-driven
-7. keep Component Refresh reference fixtures out of local live output until a
-   real owner-runtime source and activation contract exist; audit the remaining
-   non-receipt or example-backed `live_state_capable: true` profiles separately
+7. keep Component Refresh and Continuity Window reference fixtures out of local
+   live output until their real owner-runtime sources and activation contracts
+   exist; audit the remaining non-receipt or example-backed
+   `live_state_capable: true` profiles separately
 
 ## Non-goals
 

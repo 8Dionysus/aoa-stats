@@ -69,7 +69,7 @@
       "heading_ref": {
         "anchor": "013-2026-04-23",
         "level": 2,
-        "line": 66,
+        "line": 70,
         "ref": "CHANGELOG.md#013-2026-04-23",
         "title": "[0.1.3] - 2026-04-23"
       },
@@ -84,7 +84,7 @@
       "heading_ref": {
         "anchor": "012-2026-04-19",
         "level": 2,
-        "line": 105,
+        "line": 109,
         "ref": "CHANGELOG.md#012-2026-04-19",
         "title": "[0.1.2] - 2026-04-19"
       },
@@ -99,7 +99,7 @@
       "heading_ref": {
         "anchor": "011-2026-04-12",
         "level": 2,
-        "line": 136,
+        "line": 140,
         "ref": "CHANGELOG.md#011-2026-04-12",
         "title": "[0.1.1] - 2026-04-12"
       },
@@ -114,7 +114,7 @@
       "heading_ref": {
         "anchor": "010-2026-04-10",
         "level": 2,
-        "line": 175,
+        "line": 179,
         "ref": "CHANGELOG.md#010-2026-04-10",
         "title": "[0.1.0] - 2026-04-10"
       },
@@ -598,6 +598,15 @@
       "source_record_id": "file:mechanics/recurrence/parts/component-refresh/tests/test_component_refresh_summary.py:4bed3e4172"
     },
     {
+      "event_kind": "test_run",
+      "event_role": "producer",
+      "heading_ref": null,
+      "id": "event:repo:d7ef41957e35d68cef6d",
+      "observation_state": "declared",
+      "path": "mechanics/recurrence/parts/continuity-window/tests/test_continuity_window_projection.py",
+      "source_record_id": "file:mechanics/recurrence/parts/continuity-window/tests/test_continuity_window_projection.py:774f8daf32"
+    },
+    {
       "event_kind": "command_run",
       "event_role": "producer",
       "heading_ref": null,
@@ -897,7 +906,7 @@
   ],
   "index_identity": {
     "artifact_kind": "repository_event_index",
-    "content_digest": "6e8ef2a190aad3820dd22ec95e32cb4566e2ee115a99295d91f9b1e0952c75fb",
+    "content_digest": "25e9feaa979be205ca009b3302a239f0f33f698246a8e524ac188c94b8e46e61",
     "index_kind": "event",
     "local_id": "index:repo-local:events",
     "schema_ref": "aoa-kag:schemas/repo-local-kag-repository-index.schema.json"
@@ -922,19 +931,19 @@
   },
   "schema_version": "aoa-repo-local-kag-repository-index-v1",
   "source_index": {
-    "content_digest": "ecdb48f00cc2690ad5fc5cb6c9d5093d2e8c609b3e5702e67cb18105c8aabe37",
+    "content_digest": "7ab9aac82548067cd5655b8be6391c232a12ef15cf60ba492a312d47adca61d1",
     "local_id": "index:repo-local:source-surfaces",
     "path": "kag/indexes/source_surface_index.json"
   },
   "summary": {
-    "entry_count": 96,
+    "entry_count": 97,
     "kind_counts": {
       "command_run": 12,
       "decision_record": 10,
       "generation_run": 10,
       "release_declaration": 4,
       "release_lane": 1,
-      "test_run": 38,
+      "test_run": 39,
       "validation_lane_run": 1,
       "validation_receipt": 1,
       "validation_run": 18,

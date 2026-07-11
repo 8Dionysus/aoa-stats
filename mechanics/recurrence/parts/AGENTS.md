@@ -12,6 +12,12 @@ Before editing a part:
    `mechanics/topology.json`
 4. preserve owner-source authority and visible freshness limits
 
+When auditing live posture, classify the part's actual source chain before
+changing its stats profile. A committed example chain stays reference-only
+until a canonical owner-runtime artifact or receipt exists, and missing
+occurrence evidence must remain zero or absent rather than inferred from
+status.
+
 Do not add a part without an evidenced operation, an explicit source-family
 crosswalk, bounded inputs and outputs, and a truthful validation route.
 

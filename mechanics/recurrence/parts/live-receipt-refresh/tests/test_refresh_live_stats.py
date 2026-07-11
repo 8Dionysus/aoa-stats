@@ -40,15 +40,19 @@ def test_live_output_inventory_is_derived_from_authored_profile_posture() -> Non
         *live_profile_outputs,
         module.SUMMARY_SURFACE_CATALOG_OUTPUT_NAME,
     )
+    assert len(all_profile_outputs) == 25
+    assert len(live_profile_outputs) == 21
     assert "memory_movement_summary.min.json" in live_profile_outputs
+    assert "continuity_window_summary.min.json" not in live_profile_outputs
     assert "component_refresh_summary.min.json" not in live_profile_outputs
     assert "titan_incarnation_summary.min.json" not in live_profile_outputs
     assert "titan_summon_summary.min.json" not in live_profile_outputs
-    assert {
+    assert set(all_profile_outputs) - set(live_profile_outputs) == {
+        "continuity_window_summary.min.json",
         "component_refresh_summary.min.json",
         "titan_incarnation_summary.min.json",
         "titan_summon_summary.min.json",
-    } <= set(all_profile_outputs)
+    }
 
 
 def test_refresh_materializes_only_live_profile_outputs_and_filters_live_catalog(
@@ -109,6 +113,7 @@ def test_refresh_materializes_only_live_profile_outputs_and_filters_live_catalog
     summary_output_dir = tmp_path / "state" / "generated"
     summary_output_dir.mkdir(parents=True)
     for stale_name in (
+        "continuity_window_summary.min.json",
         "component_refresh_summary.min.json",
         "titan_incarnation_summary.min.json",
         "titan_summon_summary.min.json",
@@ -117,6 +122,7 @@ def test_refresh_materializes_only_live_profile_outputs_and_filters_live_catalog
 
     build_outputs = {
         "memory_movement_summary.min.json": {"schema_version": "memory-live"},
+        "continuity_window_summary.min.json": {"schema_version": "continuity-reference"},
         "component_refresh_summary.min.json": {"schema_version": "component-reference"},
         "titan_incarnation_summary.min.json": {"schema_version": "titan-reference"},
         "titan_summon_summary.min.json": {"schema_version": "titan-seed"},
@@ -127,6 +133,11 @@ def test_refresh_materializes_only_live_profile_outputs_and_filters_live_catalog
                     "name": "memory_movement_summary",
                     "surface_ref": "generated/memory_movement_summary.min.json",
                     "live_state_capable": True,
+                },
+                {
+                    "name": "continuity_window_summary",
+                    "surface_ref": "generated/continuity_window_summary.min.json",
+                    "live_state_capable": False,
                 },
                 {
                     "name": "component_refresh_summary",
@@ -362,6 +373,7 @@ def test_refresh_live_state_clears_previous_outputs_when_sources_are_empty(tmp_p
     )
     for stale_name in (
         "memory_movement_summary.min.json",
+        "continuity_window_summary.min.json",
         "component_refresh_summary.min.json",
         "titan_incarnation_summary.min.json",
         "titan_summon_summary.min.json",
@@ -385,6 +397,7 @@ def test_refresh_live_state_clears_previous_outputs_when_sources_are_empty(tmp_p
     assert (summary_output_dir / "codex_plane_deployment_summary.min.json").exists() is False
     assert (summary_output_dir / "stress_recovery_window_summary.min.json").exists() is False
     assert (summary_output_dir / "memory_movement_summary.min.json").exists() is False
+    assert (summary_output_dir / "continuity_window_summary.min.json").exists() is False
     assert (summary_output_dir / "component_refresh_summary.min.json").exists() is False
     assert (summary_output_dir / "titan_incarnation_summary.min.json").exists() is False
     assert (summary_output_dir / "titan_summon_summary.min.json").exists() is False

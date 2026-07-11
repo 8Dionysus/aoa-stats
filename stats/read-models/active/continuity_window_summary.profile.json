@@ -5,18 +5,18 @@
   "name": "continuity_window_summary",
   "surface_ref": "generated/continuity_window_summary.min.json",
   "schema_ref": "schemas/continuity-window-summary.schema.json",
-  "primary_question": "What is the current bounded self-agency continuity posture without turning stats into continuity truth or self-agency proof?",
-  "derivation_rule": "derive one bounded continuity snapshot from the aoa-agents continuity window example, the sovereign continuity playbook, the memo-side provenance thread example, and the landed continuity eval anchors",
-  "input_posture": "reviewed_example_chain",
+  "primary_question": "What bounded self-agency continuity posture is represented by the committed cross-owner reference chain without turning stats into continuity truth or self-agency proof?",
+  "derivation_rule": "derive one committed reference snapshot from an aoa-agents continuity-window example, the experimental aoa-playbooks continuity cycle, an aoa-memo provenance-thread example, and draft continuity anchors in the aoa-evals catalog",
+  "input_posture": "committed_reference_example_catalog_chain",
   "owner_truth_inputs": [
-    "aoa-agents continuity examples",
-    "aoa-playbooks continuity playbook",
-    "aoa-memo provenance thread example",
-    "aoa-evals eval anchors"
+    "aoa-agents/mechanics/checkpoint/parts/continuity-lane/examples/self-agency-continuity-window.example.json",
+    "aoa-playbooks/playbooks/continuity/session-growth/self-agency-continuity-cycle/PLAYBOOK.md",
+    "aoa-memo/mechanics/writeback/parts/growth-and-continuity/examples/provenance_thread.self-agency-continuity.example.json",
+    "aoa-evals/generated/eval_catalog.min.json"
   ],
-  "authority_ceiling": "Weaker than continuity anchor artifacts, memo provenance threads, and bounded eval proof.",
+  "authority_ceiling": "Weaker than an owner-runtime continuity artifact or receipt, resolvable anchor evidence, reviewed memo writeback, activated playbook verdict, and real eval reports.",
   "consumer_risk": "high",
-  "live_state_capable": true,
+  "live_state_capable": false,
   "mechanic_routes": [
     "mechanics/recurrence/parts/continuity-window"
   ]

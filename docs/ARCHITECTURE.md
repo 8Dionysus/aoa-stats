@@ -83,6 +83,14 @@ growth-refinery followthrough slices. They read reviewed owner landing bundles,
 seed-owner landing traces, and explicit reviewed turnover signals without
 claiming owner truth.
 
+`generated/continuity_window_summary.min.json` is a committed cross-owner
+reference slice. Its adapter reads the `aoa-agents` Continuity Window example,
+the experimental `aoa-playbooks` route, the `aoa-memo` provenance example, and
+the `aoa-evals` catalog definitions. A filesystem-free core validates ref,
+timeline, playbook, and eval coherence before projection. The represented
+status is not current workspace state, and reanchor counts require explicit
+timeline actions rather than status inference.
+
 `generated/component_refresh_summary.min.json` is the wave-ten component
 refresh reference slice. Its committed adapter reads reviewed `aoa-sdk`
 example drift hints and followthrough decisions, then passes an explicit bundle
@@ -130,10 +138,16 @@ The committed catalog contains every active public profile, including bounded
 reference-only surfaces. Local live refresh treats `live_state_capable` as an
 executable admission contract: it materializes only `true` profiles, writes a
 live catalog only for outputs actually present, and cleans stale files across
-the full managed active-profile set. The Component Refresh reference adapter is
-excluded from live mode; other `true` profiles retain their declared source
-posture pending separate audits. The accepted rationale is
-`docs/decisions/AOST-D-0003-component-refresh-fixtures-are-not-live-state.md`.
+the full managed active-profile set. The managed read-model inventory is 25;
+the current live-admitted inventory is 21. Component Refresh and Continuity
+Window reference adapters are excluded from live mode; other `true` profiles
+retain their declared source posture pending separate audits. The selector and
+stale-cleanup precedent is
+`docs/decisions/AOST-D-0003-component-refresh-fixtures-are-not-live-state.md`,
+which decides the Component Refresh case only. Continuity Window remains
+reference-only because its current cross-owner inputs are examples, an
+experimental playbook, and draft catalog definitions rather than a real
+owner-runtime artifact or receipt.
 
 `artifact_identity` describes the catalog as a public generated observability
 read-model with an ABI epoch, contract version, consumer checks, privacy

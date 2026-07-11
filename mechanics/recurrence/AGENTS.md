@@ -30,6 +30,10 @@ mechanic. Read `../AGENTS.md`, this package's `README.md`, `PARTS.md`, and
 
 - Keep operation-owned docs, examples, registries, templates, declarations,
   and focused tests inside their active part.
+- For a reference-backed part, separate filesystem/source adaptation from
+  filesystem-free validation and projection. Do not let an owner status field
+  stand in for occurrence evidence or let the reference adapter become a live
+  fallback.
 - Keep root `scripts/` commands when they are public compatibility entrypoints;
   they must resolve their canonical part-local payload explicitly.
 - Keep published read-model schemas and generated summaries at their root

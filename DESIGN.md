@@ -113,6 +113,14 @@ committed public snapshot but is excluded from live mode until a real
 owner-runtime source exists. The selector admits a profile; it does not by
 itself certify the provenance declared by other `true` profiles.
 
+Continuity Window is a separate audited reference boundary. Its committed
+adapter may read the committed cross-owner example chain, but a filesystem-free
+core must validate continuity, revision, reanchor, anchor, playbook, memo, and
+eval coherence before projection. A status such as `reanchored` cannot
+manufacture a successful-reanchor count; only explicit timeline evidence can.
+Until an owner-runtime continuity artifact or receipt exists, the surface stays
+absent from local live materialization.
+
 ## Operation
 
 The refactor advances in alternating cross-slices:
