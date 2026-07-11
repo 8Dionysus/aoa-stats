@@ -135,6 +135,10 @@ Tracking starts with the first public release-prep baseline for this repository.
 - Changed `catalog_order` from a dense position to a stable slot, restoring
   Titan Summon's former slot 21 and reserving Owner Landing's former slot 4 in
   retirement tombstones while leaving later active profile identities intact.
+- Returned Method Growth producer proof from the package-level test district
+  to Candidate Lineage and Supersession Pruning part-local test homes while
+  keeping their genuinely shared normalization core and all public generated
+  bytes unchanged.
 
 ## [0.1.3] - 2026-04-23
 

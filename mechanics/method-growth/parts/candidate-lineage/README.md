@@ -9,5 +9,9 @@ The authored meaning lives in
 public contract and output remain
 `schemas/candidate_lineage_summary.schema.json` and
 `generated/candidate_lineage_summary.min.json`. Deterministic projection is
-shared with the other Method Growth parts through
+shared with Supersession Pruning through
 `src/aoa_stats_builder/candidate_lifecycle.py`.
+
+Candidate-specific schema, ordering, non-mutation, reviewed-only, and
+non-inference proof lives in `tests/test_candidate_lineage.py`; shared module
+placement does not move that proof to the mechanic package root.

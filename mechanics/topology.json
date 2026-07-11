@@ -722,9 +722,7 @@
       "center_mechanic_ref": "Agents-of-Abyss/mechanics/method-growth",
       "local_status": "localized_active",
       "local_function": "Observe candidate lineage and explicit supersession without deciding promotion; landing receipts remain turnover inputs without a standalone summary.",
-      "package_payload_roots": [
-        "tests"
-      ],
+      "package_payload_roots": [],
       "active_part_routes": [
         {
           "path": "candidate-lineage",
@@ -736,7 +734,8 @@
           ],
           "localized_payload_roots": [
             "docs",
-            "examples"
+            "examples",
+            "tests"
           ],
           "retained_root_routes": [
             "docs/GROWTH_FUNNEL_SUMMARY.md"
@@ -752,7 +751,8 @@
           ],
           "localized_payload_roots": [
             "docs",
-            "examples"
+            "examples",
+            "tests"
           ],
           "retained_root_routes": []
         }

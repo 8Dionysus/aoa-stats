@@ -8,7 +8,7 @@ from pathlib import Path
 
 from jsonschema import Draft202012Validator
 
-REPO_ROOT = Path(__file__).resolve().parents[3]
+REPO_ROOT = Path(__file__).resolve().parents[5]
 SRC_ROOT = REPO_ROOT / "src"
 MODULE_PATH = REPO_ROOT / "scripts" / "build_views.py"
 if str(SRC_ROOT) not in sys.path:
@@ -33,18 +33,17 @@ def load_candidate_lifecycle_module():
     return candidate_lifecycle
 
 
-def test_build_views_reexports_candidate_lifecycle_core() -> None:
+def test_build_views_reexports_candidate_lineage_core() -> None:
     facade = load_build_views_module()
     core = load_candidate_lifecycle_module()
 
-    for name in (
-        "build_candidate_lineage_summary",
-        "build_supersession_drop_summary",
-    ):
-        assert getattr(facade, name) is getattr(core, name)
+    assert (
+        facade.build_candidate_lineage_summary
+        is core.build_candidate_lineage_summary
+    )
 
 
-def test_candidate_lifecycle_core_is_schema_valid_and_does_not_mutate_receipts() -> (
+def test_candidate_lineage_core_is_schema_valid_and_does_not_mutate_receipts() -> (
     None
 ):
     receipts = load_receipts(
@@ -64,28 +63,18 @@ def test_candidate_lifecycle_core_is_schema_valid_and_does_not_mutate_receipts()
         "total_receipts": len(receipts),
         "latest_observed_at": max(receipt["observed_at"] for receipt in receipts),
     }
-    projections = (
+    summary = candidate_lifecycle.build_candidate_lineage_summary(receipts, source)
+    schema = json.loads(
         (
-            candidate_lifecycle.build_candidate_lineage_summary,
-            "candidate_lineage_summary.schema.json",
-        ),
-        (
-            candidate_lifecycle.build_supersession_drop_summary,
-            "supersession-drop-summary.schema.json",
-        ),
+            REPO_ROOT / "schemas" / "candidate_lineage_summary.schema.json"
+        ).read_text(encoding="utf-8")
     )
-
-    for builder, schema_name in projections:
-        summary = builder(receipts, source)
-        schema = json.loads(
-            (REPO_ROOT / "schemas" / schema_name).read_text(encoding="utf-8")
-        )
-        Draft202012Validator(schema).validate(summary)
+    Draft202012Validator(schema).validate(summary)
 
     assert receipts == original_receipts
 
 
-def test_candidate_lifecycle_core_is_stable_after_active_receipt_resolution() -> None:
+def test_candidate_lineage_core_is_stable_after_active_receipt_resolution() -> None:
     receipts = load_receipts(
         [
             REPO_ROOT
@@ -105,11 +94,11 @@ def test_candidate_lifecycle_core_is_stable_after_active_receipt_resolution() ->
 
     assert active == reordered_active
 
-    for builder in (
-        candidate_lifecycle.build_candidate_lineage_summary,
-        candidate_lifecycle.build_supersession_drop_summary,
-    ):
-        assert builder(active, source) == builder(reordered_active, source)
+    assert candidate_lifecycle.build_candidate_lineage_summary(
+        active, source
+    ) == candidate_lifecycle.build_candidate_lineage_summary(
+        reordered_active, source
+    )
 
 
 def make_harvest_packet_receipt(
@@ -178,117 +167,6 @@ def make_lineage_entry(
     }
 
 
-def make_reviewed_owner_landing_receipt(
-    *,
-    event_id: str,
-    observed_at: str,
-    candidate_ref: str,
-    owner_repo: str = "aoa-skills",
-    owner_shape: str = "skill",
-    status_posture: str = "early",
-    supersedes: list[str] | None = None,
-    superseded_by: str | None = None,
-    merged_into: str | None = None,
-    drop_reason: str | None = None,
-    drop_stage: str | None = None,
-) -> dict[str, object]:
-    return {
-        "event_kind": "reviewed_owner_landing_receipt",
-        "event_id": event_id,
-        "observed_at": observed_at,
-        "run_ref": "run-test-owner-landing",
-        "session_ref": "session:test-owner-landing",
-        "actor_ref": "aoa-skills:reviewed-owner-landing",
-        "object_ref": {
-            "repo": "aoa-skills",
-            "kind": "owner_status_surface",
-            "id": "reviewed_owner_landing_bundle",
-            "version": "v1",
-        },
-        "evidence_refs": [
-            {
-                "kind": "owner_landing_bundle",
-                "ref": "repo:aoa-skills/examples/reviewed_owner_landing_bundle.example.json",
-            }
-        ],
-        "payload": {
-            "schema_version": "reviewed_owner_landing_bundle_v1",
-            "bundle_kind": "reviewed_owner_landing_bundle",
-            "cluster_ref": "cluster:growth:aoa-sdk-checkpoint-auto-capture-verify-green",
-            "candidate_ref": candidate_ref,
-            "owner_repo": owner_repo,
-            "owner_shape": owner_shape,
-            "nearest_wrong_target": "aoa-playbooks",
-            "status_posture": status_posture,
-            "reviewed_at": observed_at,
-            "evidence_refs": [
-                "repo:aoa-skills/examples/session_growth_artifacts/candidate_lineage_receipt.alpha.json"
-            ],
-            "status_note": "reviewed owner landing",
-            "supersedes": supersedes or [],
-            "superseded_by": superseded_by,
-            "merged_into": merged_into,
-            "drop_reason": drop_reason,
-            "drop_stage": drop_stage,
-            "drop_evidence_refs": [] if drop_reason is None else ["artifact:drop"],
-        },
-    }
-
-
-def make_seed_owner_landing_trace_receipt(
-    *,
-    event_id: str,
-    observed_at: str,
-    candidate_ref: str,
-    seed_ref: str,
-    owner_repo: str = "aoa-skills",
-    owner_shape: str = "skill",
-    outcome: str = "landed_owner_status",
-    merged_into: str | None = None,
-    superseded_by: str | None = None,
-    drop_reason: str | None = None,
-) -> dict[str, object]:
-    return {
-        "event_kind": "seed_owner_landing_trace_receipt",
-        "event_id": event_id,
-        "observed_at": observed_at,
-        "run_ref": "run-test-owner-landing",
-        "session_ref": "session:test-owner-landing",
-        "actor_ref": "Dionysus:seed-owner-landing-trace",
-        "object_ref": {
-            "repo": "Dionysus",
-            "kind": "seed_owner_landing_trace",
-            "id": "reviewed-donor-harvest",
-            "version": "v1",
-        },
-        "evidence_refs": [
-            {
-                "kind": "seed_owner_landing_trace",
-                "ref": "repo:Dionysus/examples/seed_owner_landing_trace.example.json",
-            }
-        ],
-        "payload": {
-            "schema_version": "dionysus_seed_owner_landing_trace_v1",
-            "cluster_ref": "cluster:growth:aoa-sdk-checkpoint-auto-capture-verify-green",
-            "candidate_ref": candidate_ref,
-            "seed_ref": seed_ref,
-            "owner_repo": owner_repo,
-            "owner_shape": owner_shape,
-            "outcome": outcome,
-            "owner_status_ref": "repo:aoa-skills/examples/reviewed_owner_landing_bundle.example.json",
-            "object_ref": None,
-            "merged_into": merged_into,
-            "superseded_by": superseded_by,
-            "drop_reason": drop_reason,
-            "observed_at": observed_at,
-            "evidence_refs": [
-                "repo:Dionysus/examples/seed_lineage_entry.example.json",
-                "repo:aoa-skills/examples/reviewed_owner_landing_bundle.example.json",
-            ],
-        },
-    }
-
-
 def test_candidate_lineage_summary_stays_reviewed_only_and_no_score() -> None:
     module = load_candidate_lifecycle_module()
     receipts = load_receipts(
@@ -328,83 +206,6 @@ def test_candidate_lineage_summary_stays_reviewed_only_and_no_score() -> None:
     assert summary["supersession_counts"] == {
         "superseded_total": 0,
         "dropped_total": 1,
-    }
-
-
-def test_supersession_drop_summary_uses_explicit_turnover_only() -> None:
-    module = load_candidate_lifecycle_module()
-    receipts = [
-        make_harvest_packet_receipt(
-            event_id="evt-harvest-test-0001",
-            observed_at="2026-04-11T12:00:00Z",
-            candidate_lineage_entries=[
-                make_lineage_entry(
-                    candidate_ref="candidate:session-growth:nearest-wrong-playbook-route",
-                    cluster_ref="cluster:growth:aoa-sdk-checkpoint-auto-capture-verify-green",
-                    owner_hypothesis="aoa-playbooks",
-                    owner_shape="recurring-playbook-route",
-                    nearest_wrong_target="aoa-playbooks",
-                    status_posture="reanchor",
-                    stages={
-                        "observed": "2026-04-11T11:40:00Z",
-                        "checkpointed": "2026-04-11T11:45:00Z",
-                        "reviewed": "2026-04-11T11:52:00Z",
-                        "harvested": None,
-                        "seeded": None,
-                        "planted": None,
-                        "proved": None,
-                        "promoted": None,
-                        "superseded_or_dropped": "2026-04-11T12:00:00Z",
-                    },
-                    drop_reason="nearest_wrong_target_rejected_during_reviewed_harvest",
-                )
-            ],
-        ),
-        make_reviewed_owner_landing_receipt(
-            event_id="evt-owner-landing-test-0002",
-            observed_at="2026-04-11T12:02:00Z",
-            candidate_ref="candidate:session-growth:replacement",
-            supersedes=["candidate:session-growth:older"],
-        ),
-        make_seed_owner_landing_trace_receipt(
-            event_id="evt-seed-owner-trace-test-0002",
-            observed_at="2026-04-11T12:08:00Z",
-            candidate_ref="candidate:session-growth:replacement",
-            seed_ref="seed:aoa:session-growth:replacement:v1",
-            merged_into="object:aoa-skills:aoa-session-donor-harvest:v1",
-        ),
-    ]
-
-    summary = module.build_supersession_drop_summary(
-        receipts,
-        {
-            "receipt_input_paths": ["turnover"],
-            "total_receipts": len(receipts),
-            "latest_observed_at": "2026-04-11T12:08:00Z",
-        },
-    )
-
-    assert summary["schema_version"] == "aoa_stats_supersession_drop_summary_v1"
-    assert summary["drop_reason_counts"] == {
-        "nearest_wrong_target_rejected_during_reviewed_harvest": 1,
-    }
-    assert summary["supersession_counts"] == {
-        "superseded_total": 0,
-        "replacing_total": 1,
-        "dropped_total": 1,
-    }
-    assert summary["merge_counts"] == {
-        "total": 1,
-        "by_owner_repo": {
-            "aoa-skills": 1,
-        },
-    }
-    assert summary["owner_repo_counts"] == {
-        "aoa-playbooks": 1,
-        "aoa-skills": 1,
-    }
-    assert summary["reanchor_after_drop_counts"] == {
-        "aoa-playbooks": 1,
     }
 
 

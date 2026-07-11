@@ -150,6 +150,6 @@ python scripts/validate_decision_records.py
 python scripts/validate_stats_source_home.py
 python scripts/validate_mechanics_topology.py
 python scripts/build_views.py --check
-python -m pytest -q tests/test_stats_source_home.py tests/test_summary_surface_catalog.py tests/test_build_views.py mechanics/method-growth/tests mechanics/recurrence/parts/live-receipt-refresh/tests
+python -m pytest -q tests/test_stats_source_home.py tests/test_summary_surface_catalog.py tests/test_build_views.py mechanics/method-growth/parts/candidate-lineage/tests mechanics/method-growth/parts/supersession-pruning/tests mechanics/recurrence/parts/live-receipt-refresh/tests
 python scripts/release_check.py
 ```

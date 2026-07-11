@@ -139,5 +139,5 @@ python scripts/validate_decision_records.py
 python scripts/validate_stats_source_home.py
 python scripts/validate_mechanics_topology.py
 python scripts/build_views.py --check
-python -m pytest -q mechanics/method-growth/tests/test_candidate_lifecycle.py mechanics/boundary-bridge/parts/memory-owner-handoff/tests mechanics/antifragility/parts/stress-recovery-windows/tests mechanics/recurrence/parts/live-receipt-refresh/tests tests/test_summary_surface_catalog.py
+python -m pytest -q mechanics/method-growth/parts/candidate-lineage/tests mechanics/method-growth/parts/supersession-pruning/tests mechanics/boundary-bridge/parts/memory-owner-handoff/tests mechanics/antifragility/parts/stress-recovery-windows/tests mechanics/recurrence/parts/live-receipt-refresh/tests tests/test_summary_surface_catalog.py
 ```

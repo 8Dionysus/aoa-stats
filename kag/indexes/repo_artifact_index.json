@@ -1730,7 +1730,7 @@
     },
     {
       "artifact_kind": "document",
-      "content_hash": "43eb1c4980a9b8ca2d4a84a4ca6030c18169ce2e149f07d34dee899d32ee0bd7",
+      "content_hash": "82675e3b86cca3028472545981db7f7c05045ed50e5d6d4538ea67df1bf6983e",
       "id": "artifact:file:agents.md:a54ff182c7",
       "path": "AGENTS.md",
       "source_record_id": "file:agents.md:a54ff182c7",
@@ -1738,7 +1738,7 @@
     },
     {
       "artifact_kind": "document",
-      "content_hash": "656e661a8c7a51728bb72f0e483aceb068276dc10001b5b692da3af86da74b90",
+      "content_hash": "2b407c1a8377bfbe957e8a13ade90f2d45cf25caf85be1b5cd0861b336043b2a",
       "id": "artifact:file:changelog.md:06572a96a5",
       "path": "CHANGELOG.md",
       "source_record_id": "file:changelog.md:06572a96a5",
@@ -1762,7 +1762,7 @@
     },
     {
       "artifact_kind": "document",
-      "content_hash": "ac48cdde8d3ca5e41cfa7d514770b527711999800159592c84bacdc1466aac66",
+      "content_hash": "4d474773fa47a5c6b7f463235ed36e169c911664a16a65bb0b648b6a7a771351",
       "id": "artifact:file:design.md:3dc5dd454e",
       "path": "DESIGN.md",
       "source_record_id": "file:design.md:3dc5dd454e",
@@ -1906,7 +1906,7 @@
     },
     {
       "artifact_kind": "document",
-      "content_hash": "4c00ec960cae8aa44120f119129f9a8975058f15828d9af055904c23caea3a53",
+      "content_hash": "dced8f3b7289228b94943c7409506df2a121c33647c8ca8f618ec246902d6b75",
       "id": "artifact:file:docs/decisions/aost-d-0004-live-admission-requires-refresh-observation.md:02c9d238aa",
       "path": "docs/decisions/AOST-D-0004-live-admission-requires-refresh-observation.md",
       "source_record_id": "file:docs/decisions/aost-d-0004-live-admission-requires-refresh-observation.md:02c9d238aa",
@@ -1946,7 +1946,7 @@
     },
     {
       "artifact_kind": "document",
-      "content_hash": "a3b0d24daa217e2c5397734f19b3141ba3fb5ab8c03da423a6edf6f079c931c3",
+      "content_hash": "fa8194b51a3ca68dd156b3edb223a280e46c5e162db3a31ce73cbd2da69821b4",
       "id": "artifact:file:docs/decisions/aost-d-0009-retirement-reserves-catalog-slots-without-preserving-empty-mechanics.md:e21892670c",
       "path": "docs/decisions/AOST-D-0009-retirement-reserves-catalog-slots-without-preserving-empty-mechanics.md",
       "source_record_id": "file:docs/decisions/aost-d-0009-retirement-reserves-catalog-slots-without-preserving-empty-mechanics.md:e21892670c",
@@ -5386,7 +5386,7 @@
     },
     {
       "artifact_kind": "document",
-      "content_hash": "456040fca64e864085e3c38497ccf694793207459c86484fbccac34a5ce9ccb7",
+      "content_hash": "4d90c9575997a79a77fde977e029aa7284966415d092d9b96e0d7b6e76406d33",
       "id": "artifact:file:mechanics/method-growth/agents.md:a1437a25a7",
       "path": "mechanics/method-growth/AGENTS.md",
       "source_record_id": "file:mechanics/method-growth/agents.md:a1437a25a7",
@@ -5410,7 +5410,7 @@
     },
     {
       "artifact_kind": "document",
-      "content_hash": "9ee09a927693f78790eb5007cc593d504595dbda65451282fbe6626f6f61c29a",
+      "content_hash": "3b721d50fb7eb5b18a46b5195d375e915a9b51731456d325f1c4893dba31062f",
       "id": "artifact:file:mechanics/method-growth/readme.md:13625acb67",
       "path": "mechanics/method-growth/README.md",
       "source_record_id": "file:mechanics/method-growth/readme.md:13625acb67",
@@ -5442,7 +5442,7 @@
     },
     {
       "artifact_kind": "document",
-      "content_hash": "4a532eaf90d49f6eac66ae1192e12523deb9fd3c205dc4acd6f654e127a42f27",
+      "content_hash": "4445e7bd3dc9928227e9bb4ebc937ca57873c67f8fc22afb9bde87e0d2a00ade",
       "id": "artifact:file:mechanics/method-growth/parts/candidate-lineage/readme.md:8ce6fac93f",
       "path": "mechanics/method-growth/parts/candidate-lineage/README.md",
       "source_record_id": "file:mechanics/method-growth/parts/candidate-lineage/readme.md:8ce6fac93f",
@@ -5450,7 +5450,7 @@
     },
     {
       "artifact_kind": "document",
-      "content_hash": "b7d2398d05a1ce30886fea772d46d14d7457c7c15d957f4ca1afb9564af400bd",
+      "content_hash": "170e796040356519be42aeaec8cb1b77cfa76c3368f3882b3d8fb445648a819b",
       "id": "artifact:file:mechanics/method-growth/parts/candidate-lineage/validation.md:b9d1e9b02c",
       "path": "mechanics/method-growth/parts/candidate-lineage/VALIDATION.md",
       "source_record_id": "file:mechanics/method-growth/parts/candidate-lineage/validation.md:b9d1e9b02c",
@@ -5481,6 +5481,14 @@
       "surface_state": "authored_source"
     },
     {
+      "artifact_kind": "test",
+      "content_hash": "14804cb663a821c126f110800317a6bfd5cdb0e1e762fafda346e513df9bf949",
+      "id": "artifact:file:mechanics/method-growth/parts/candidate-lineage/tests/test_candidate_lineage.py:31d435e444",
+      "path": "mechanics/method-growth/parts/candidate-lineage/tests/test_candidate_lineage.py",
+      "source_record_id": "file:mechanics/method-growth/parts/candidate-lineage/tests/test_candidate_lineage.py:31d435e444",
+      "surface_state": "authored_source"
+    },
+    {
       "artifact_kind": "document",
       "content_hash": "9cfcf5cae94d15e837b5bc1303157e1fc664247339cf01b28caebfb5cf896f8f",
       "id": "artifact:file:mechanics/method-growth/parts/supersession-pruning/contract.md:6e62868e8a",
@@ -5490,7 +5498,7 @@
     },
     {
       "artifact_kind": "document",
-      "content_hash": "5867078246659bf110ff9f37eeac678f2930b5d57d62a9d5eb67cef61adc66cc",
+      "content_hash": "a9705ede589fac36717e62eee7b6ea05825f5b22b51e89c78e35aa9b427159f5",
       "id": "artifact:file:mechanics/method-growth/parts/supersession-pruning/readme.md:3b82601561",
       "path": "mechanics/method-growth/parts/supersession-pruning/README.md",
       "source_record_id": "file:mechanics/method-growth/parts/supersession-pruning/readme.md:3b82601561",
@@ -5498,7 +5506,7 @@
     },
     {
       "artifact_kind": "document",
-      "content_hash": "1a91339f5b9791f1ea0896fc5b2d6ab545eecd7203375a6ee36a0a047db8fc04",
+      "content_hash": "bb3a3140a1a236e7b3dd8c346d6f128d19d1a5eb431a6af1f570c5225dd953b5",
       "id": "artifact:file:mechanics/method-growth/parts/supersession-pruning/validation.md:4b4f59710a",
       "path": "mechanics/method-growth/parts/supersession-pruning/VALIDATION.md",
       "source_record_id": "file:mechanics/method-growth/parts/supersession-pruning/validation.md:4b4f59710a",
@@ -5522,10 +5530,10 @@
     },
     {
       "artifact_kind": "test",
-      "content_hash": "ce42eb5cc17e5f3d9f5f9b6824eaf0919ab3e93a368bb8270c47430bb50359c8",
-      "id": "artifact:file:mechanics/method-growth/tests/test_candidate_lifecycle.py:16f991fb00",
-      "path": "mechanics/method-growth/tests/test_candidate_lifecycle.py",
-      "source_record_id": "file:mechanics/method-growth/tests/test_candidate_lifecycle.py:16f991fb00",
+      "content_hash": "22803c68b1a65c83030c402ce1e14eb1abec72e0166176a7420221898c5ced4d",
+      "id": "artifact:file:mechanics/method-growth/parts/supersession-pruning/tests/test_supersession_pruning.py:b927f0e57a",
+      "path": "mechanics/method-growth/parts/supersession-pruning/tests/test_supersession_pruning.py",
+      "source_record_id": "file:mechanics/method-growth/parts/supersession-pruning/tests/test_supersession_pruning.py:b927f0e57a",
       "surface_state": "authored_source"
     },
     {
@@ -6554,7 +6562,7 @@
     },
     {
       "artifact_kind": "config",
-      "content_hash": "e2567c16f057a5738ba14f160291182874984dbb4078d1c11ae8b46de77333b9",
+      "content_hash": "2d160522fafd7c2630701d27cbc45fbb319566a6773b7838ab89a6b4cb9d088b",
       "id": "artifact:file:mechanics/topology.json:c2f84a03b1",
       "path": "mechanics/topology.json",
       "source_record_id": "file:mechanics/topology.json:c2f84a03b1",
@@ -7634,7 +7642,7 @@
     },
     {
       "artifact_kind": "config",
-      "content_hash": "73b1e5cb720aaee73f5432e5dfb9db5fa9a40a9f551acc46eedfc31ffd6b8220",
+      "content_hash": "41177bda582c0e39f2af596547312838249f76c14cb223b17d7823314b355651",
       "id": "artifact:file:stats/source_home.manifest.json:41b237ff45",
       "path": "stats/source_home.manifest.json",
       "source_record_id": "file:stats/source_home.manifest.json:41b237ff45",
@@ -7746,7 +7754,7 @@
     },
     {
       "artifact_kind": "test",
-      "content_hash": "d630afe93c12b1744d7f1e3663ffdac9b26b4bfcbdc7d82c5205b5069b3e1079",
+      "content_hash": "5cda9db44b8ede335435b2a0b821bda957756e963a998422f5cf475a1ad36a65",
       "id": "artifact:file:tests/test_stats_source_home.py:a642c9216e",
       "path": "tests/test_stats_source_home.py",
       "source_record_id": "file:tests/test_stats_source_home.py:a642c9216e",
@@ -7771,7 +7779,7 @@
   ],
   "index_identity": {
     "artifact_kind": "repository_artifact_index",
-    "content_digest": "9012471ddaee041fb012877cab6ebcc04af1f5af11c8caf8020a0b5b4775161c",
+    "content_digest": "f379af3e5472148dbfc7478f424da5f21e50f9778720c0b6cee58d12ccc6c0a3",
     "index_kind": "artifact",
     "local_id": "index:repo-local:artifacts",
     "schema_ref": "aoa-kag:schemas/repo-local-kag-repository-index.schema.json"
@@ -7795,12 +7803,12 @@
   },
   "schema_version": "aoa-repo-local-kag-repository-index-v1",
   "source_index": {
-    "content_digest": "8185cf28689da555dda2c855bb321cfd8872ff0aff5da32164a534c79f9d5c38",
+    "content_digest": "306743b30935c6808e48f02a0c04f073ad881dfbac7745b210dedae3a5ecbc28",
     "local_id": "index:repo-local:source-surfaces",
     "path": "kag/indexes/source_surface_index.json"
   },
   "summary": {
-    "entry_count": 971,
+    "entry_count": 972,
     "kind_counts": {
       "asset": 50,
       "config": 173,
@@ -7818,7 +7826,7 @@
       "security": 1,
       "service_unit": 2,
       "source_code": 34,
-      "test": 51,
+      "test": 52,
       "validator": 18
     }
   }
