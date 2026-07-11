@@ -58,6 +58,10 @@ Tracking starts with the first public release-prep baseline for this repository.
   automation-followthrough projections plus focused invariant tests out of the
   root monoliths into an importable mechanic core while preserving public
   schemas, generated routes, and the root build facade.
+- Made authored `live_state_capable` profiles drive the local live-output
+  inventory, separated the committed Component Refresh reference adapter from
+  its pure projection, and stopped fixture-only component posture from being
+  materialized or advertised as live state while retaining stale-file cleanup.
 
 ## [0.1.3] - 2026-04-23
 

@@ -70,6 +70,13 @@ rules, keep that reusable core under `src/aoa_stats_builder/`, declare its
 focused package-level tests in `mechanics/topology.json`, and leave CLI, input
 loading, output fan-out, and check/write policy in the root build facade.
 
+Treat `live_state_capable` as an executable profile contract. The live refresh
+mechanic may materialize and advertise only surfaces whose authored profile
+sets it to `true`; it must still remove stale managed runtime files for
+reference-only surfaces without silently replaying their fixtures as live
+state. Admission is not provenance certification: audit the declared source
+posture of each `true` profile separately.
+
 ## Cross-mode law
 
 Grow `stats/` and `mechanics/` together, but alternate which side leads each

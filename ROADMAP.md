@@ -22,6 +22,8 @@ The source/mechanics refactor is part of that contour:
 - `mechanics/` owns repeatable operations and their localized payload
 - `schemas/` and `generated/` remain stable public publication districts
 - `src/` remains the importable implementation and access boundary
+- authored `live_state_capable` profiles select local live materialization;
+  cleanup covers the full managed active-output set
 
 ## Active summary families
 
@@ -69,6 +71,12 @@ contract stays separate from active catalog claims.
 - continuity and component refresh:
   `mechanics/recurrence/parts/continuity-window/docs/CONTINUITY_WINDOW_SUMMARY.md`
   and `mechanics/recurrence/parts/component-refresh/docs/COMPONENT_REFRESH_SUMMARIES.md`
+- Component Refresh reference/live boundary:
+  `docs/decisions/AOST-D-0003-component-refresh-fixtures-are-not-live-state.md`,
+  `src/aoa_stats_builder/component_refresh.py`, and
+  `src/aoa_stats_builder/component_refresh_sources.py`
+- live output lifecycle debt: add an explicit retired/renamed-output cleanup
+  record before an active read-model profile leaves the managed inventory
 - stress-recovery chaos fixture:
   `mechanics/antifragility/parts/stress-recovery-windows/examples/stress_recovery_window_summary.chaos-wave1.example.json`
 - reviewed memory movement:
@@ -90,6 +98,9 @@ Changes on this line should:
 5. update topology, source-home validation, focused tests, and generated
    outputs together
 6. keep `README.md` and `docs/README.md` short and link-driven
+7. keep Component Refresh reference fixtures out of local live output until a
+   real owner-runtime source and activation contract exist; audit the remaining
+   non-receipt or example-backed `live_state_capable: true` profiles separately
 
 ## Non-goals
 

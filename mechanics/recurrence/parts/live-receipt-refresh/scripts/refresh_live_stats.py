@@ -16,38 +16,28 @@ for module_root in (ROOT_SCRIPT_DIR, SCRIPT_DIR):
         sys.path.insert(0, str(module_root))
 
 from build_views import build_all_views, load_receipts, resolve_active_receipts, stable_json  # noqa: E402
+from aoa_stats_builder.surface_catalog import (  # noqa: E402
+    all_profile_surface_output_names,
+    live_profile_surface_output_names,
+)
 
 
 DEFAULT_REGISTRY = LIVE_RECEIPT_PART / "config" / "live_receipt_sources.json"
 DEFAULT_FEDERATION_ROOT = REPO_ROOT.parent
 DEFAULT_FEED_OUTPUT = REPO_ROOT / "state" / "live_receipts.min.json"
 DEFAULT_SUMMARY_OUTPUT_DIR = REPO_ROOT / "state" / "generated"
-SUMMARY_OUTPUT_NAMES = (
-    "object_summary.min.json",
-    "candidate_lineage_summary.min.json",
-    "owner_landing_summary.min.json",
-    "supersession_drop_summary.min.json",
-    "core_skill_application_summary.min.json",
-    "repeated_window_summary.min.json",
-    "route_progression_summary.min.json",
-    "fork_calibration_summary.min.json",
-    "session_growth_branch_summary.min.json",
-    "automation_pipeline_summary.min.json",
-    "automation_followthrough_summary.min.json",
-    "codex_plane_deployment_summary.min.json",
-    "codex_rollout_operations_summary.min.json",
-    "codex_rollout_drift_summary.min.json",
-    "rollout_campaign_summary.min.json",
-    "drift_review_summary.min.json",
-    "continuity_window_summary.min.json",
-    "component_refresh_summary.min.json",
-    "titan_summon_summary.min.json",
-    "runtime_closeout_summary.min.json",
-    "stress_recovery_window_summary.min.json",
-    "source_coverage_summary.min.json",
-    "surface_detection_summary.min.json",
-    "summary_surface_catalog.min.json",
+SUMMARY_SURFACE_CATALOG_OUTPUT_NAME = "summary_surface_catalog.min.json"
+ALL_PROFILE_SURFACE_OUTPUT_NAMES = all_profile_surface_output_names()
+LIVE_PROFILE_SURFACE_OUTPUT_NAMES = live_profile_surface_output_names()
+MANAGED_SUMMARY_OUTPUT_NAMES = (
+    *ALL_PROFILE_SURFACE_OUTPUT_NAMES,
+    SUMMARY_SURFACE_CATALOG_OUTPUT_NAME,
 )
+SUMMARY_OUTPUT_NAMES = (
+    *LIVE_PROFILE_SURFACE_OUTPUT_NAMES,
+    SUMMARY_SURFACE_CATALOG_OUTPUT_NAME,
+)
+LIVE_PROFILE_SURFACE_OUTPUT_NAME_SET = frozenset(LIVE_PROFILE_SURFACE_OUTPUT_NAMES)
 
 
 def parse_args(argv: list[str] | None = None) -> argparse.Namespace:
@@ -121,7 +111,7 @@ def write_receipt_feed(path: Path, receipts: list[dict]) -> None:
 def clear_live_state(*, feed_output: Path, summary_output_dir: Path) -> None:
     if feed_output.exists():
         feed_output.unlink()
-    for name in SUMMARY_OUTPUT_NAMES:
+    for name in MANAGED_SUMMARY_OUTPUT_NAMES:
         target = summary_output_dir / name
         if target.exists():
             target.unlink()
@@ -129,12 +119,44 @@ def clear_live_state(*, feed_output: Path, summary_output_dir: Path) -> None:
 
 def sync_summary_outputs(*, summary_output_dir: Path, outputs: dict[str, dict]) -> None:
     summary_output_dir.mkdir(parents=True, exist_ok=True)
-    for name in SUMMARY_OUTPUT_NAMES:
+    for name in MANAGED_SUMMARY_OUTPUT_NAMES:
         target = summary_output_dir / name
         if name not in outputs and target.exists():
             target.unlink()
-    for name, payload in outputs.items():
-        (summary_output_dir / name).write_text(stable_json(payload), encoding="utf-8")
+    for name in SUMMARY_OUTPUT_NAMES:
+        payload = outputs.get(name)
+        if payload is not None:
+            (summary_output_dir / name).write_text(
+                stable_json(payload), encoding="utf-8"
+            )
+
+
+def select_live_outputs(outputs: dict[str, dict]) -> dict[str, dict]:
+    """Select authored live outputs and keep the live catalog in the same lane."""
+
+    selected = {
+        name: outputs[name]
+        for name in SUMMARY_OUTPUT_NAMES
+        if name in outputs
+    }
+    catalog = selected.get(SUMMARY_SURFACE_CATALOG_OUTPUT_NAME)
+    surfaces = catalog.get("surfaces") if isinstance(catalog, dict) else None
+    if not isinstance(surfaces, list):
+        return selected
+
+    selected_catalog = dict(catalog)
+    selected_catalog["surfaces"] = [
+        surface
+        for surface in surfaces
+        if isinstance(surface, dict)
+        and surface.get("live_state_capable") is True
+        and isinstance(surface.get("surface_ref"), str)
+        and Path(surface["surface_ref"]).name
+        in LIVE_PROFILE_SURFACE_OUTPUT_NAME_SET
+        and Path(surface["surface_ref"]).name in selected
+    ]
+    selected[SUMMARY_SURFACE_CATALOG_OUTPUT_NAME] = selected_catalog
+    return selected
 
 
 def live_surface_ref(*, summary_output_dir: Path, output_name: str) -> str:
@@ -256,7 +278,9 @@ def refresh_live_state(
         evals_root=resolve_live_evals_root(federation_root=federation_root),
         source_registry=registry,
         source_registry_ref=display_registry_ref(registry_path),
+        optional_output_names=frozenset(LIVE_PROFILE_SURFACE_OUTPUT_NAMES),
     )
+    outputs = select_live_outputs(outputs)
     outputs = rewrite_catalog_surface_refs(outputs, summary_output_dir=summary_output_dir)
     sync_summary_outputs(summary_output_dir=summary_output_dir, outputs=outputs)
     return source_labels, len(active_receipts)

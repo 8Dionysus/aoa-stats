@@ -104,6 +104,15 @@ facade.
 Generated artifacts never become source authority merely because they are
 committed or convenient to query.
 
+Local live state is an authored-profile projection, not a second hardcoded
+output inventory. The live refresh mechanic materializes only active profiles
+with `live_state_capable: true`, publishes a catalog for the surfaces actually
+materialized, and cleans stale files across the full managed profile set.
+For Component Refresh specifically, the reviewed-example adapter may build the
+committed public snapshot but is excluded from live mode until a real
+owner-runtime source exists. The selector admits a profile; it does not by
+itself certify the provenance declared by other `true` profiles.
+
 ## Operation
 
 The refactor advances in alternating cross-slices:

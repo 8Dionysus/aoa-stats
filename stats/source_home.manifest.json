@@ -158,9 +158,12 @@
       ],
       "implementation_routes": [
         "src/aoa_stats_builder/candidate_lifecycle.py",
+        "src/aoa_stats_builder/component_refresh.py",
+        "src/aoa_stats_builder/component_refresh_sources.py",
         "src/aoa_stats_builder/growth_cycle.py",
         "src/aoa_stats_builder/read_model_values.py",
         "src/aoa_stats_builder/surface_catalog.py",
+        "mechanics/recurrence/parts/live-receipt-refresh/scripts/refresh_live_stats.py",
         "scripts/build_views.py"
       ],
       "generated_routes": [
@@ -201,6 +204,9 @@
         "scripts/validate_repo.py",
         "mechanics/growth-cycle/tests/test_growth_cycle_projections.py",
         "mechanics/method-growth/tests/test_candidate_lifecycle.py",
+        "mechanics/recurrence/parts/component-refresh/tests/test_component_refresh_summary.py",
+        "mechanics/recurrence/parts/component-refresh/tests/test_component_refresh_projection.py",
+        "mechanics/recurrence/parts/live-receipt-refresh/tests/test_refresh_live_stats.py",
         "tests/test_stats_source_home.py",
         "tests/test_summary_surface_catalog.py"
       ],

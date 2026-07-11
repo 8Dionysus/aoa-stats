@@ -94,7 +94,8 @@
           ]
         },
         "live_state_capable": {
-          "type": "boolean"
+          "type": "boolean",
+          "description": "Whether local live refresh may materialize and advertise this surface from its current source contract."
         },
         "mechanic_routes": {
           "$ref": "#/$defs/mechanicRoutes"

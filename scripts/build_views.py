@@ -8,7 +8,7 @@ import sys
 from collections import Counter, defaultdict
 from datetime import UTC, datetime
 from pathlib import Path
-from typing import Any
+from typing import AbstractSet, Any
 
 REPO_ROOT = Path(__file__).resolve().parents[1]
 SRC_ROOT = REPO_ROOT / "src"
@@ -19,6 +19,23 @@ from aoa_stats_builder.candidate_lifecycle import (  # noqa: E402
     build_candidate_lineage_summary,
     build_owner_landing_summary,
     build_supersession_drop_summary,
+)
+from aoa_stats_builder.component_refresh import (  # noqa: E402
+    COMPONENT_REFRESH_COMPONENT_DRIFT_CLASSES as COMPONENT_REFRESH_COMPONENT_DRIFT_CLASSES,
+    COMPONENT_REFRESH_CURRENT_STATUSES as COMPONENT_REFRESH_CURRENT_STATUSES,
+    COMPONENT_REFRESH_DECISION_STATUSES as COMPONENT_REFRESH_DECISION_STATUSES,
+    COMPONENT_REFRESH_ROUTE_CLASSES as COMPONENT_REFRESH_ROUTE_CLASSES,
+    COMPONENT_REFRESH_SIGNAL_DRIFT_CLASSES as COMPONENT_REFRESH_SIGNAL_DRIFT_CLASSES,
+    build_component_refresh_summary as build_component_refresh_summary_from_inputs,
+    component_refresh_drift_classes as component_refresh_drift_classes,
+    component_refresh_route_class as component_refresh_route_class,
+    component_refresh_status as component_refresh_status,
+    latest_component_hints_by_component as latest_component_hints_by_component,
+)
+from aoa_stats_builder.component_refresh_sources import (  # noqa: E402
+    ComponentRefreshInputBundle,
+    load_reviewed_sdk_example_bundle,
+    reviewed_sdk_example_paths,
 )
 from aoa_stats_builder.growth_cycle import (  # noqa: E402
     build_automation_followthrough_summary,
@@ -39,7 +56,6 @@ from aoa_stats_builder.read_model_values import (  # noqa: E402
     is_nonempty_string,
     is_number,
     normalize_string_list,
-    parse_iso_datetime,
     parse_iso_datetime_or_min,
     string_count_map,
 )
@@ -104,36 +120,6 @@ CONTINUITY_EVAL_ANCHORS = (
     "aoa-reflective-revision-boundedness",
     "aoa-self-reanchor-correctness",
 )
-COMPONENT_REFRESH_ROUTE_CLASSES = (
-    "observe",
-    "revalidate",
-    "rebuild",
-    "reexport",
-    "regenerate",
-    "reproject",
-    "repair",
-    "defer",
-)
-COMPONENT_REFRESH_DECISION_STATUSES = ("chosen", "deferred", "safe_stop", "unreviewed")
-COMPONENT_REFRESH_CURRENT_STATUSES = (
-    "refresh_recommended",
-    "refresh_active",
-    "current",
-    "deferred",
-    "recovered",
-)
-COMPONENT_REFRESH_SIGNAL_DRIFT_CLASSES = {
-    "doctor_fail_after_render": "doctor_drift",
-    "same_hand_patch_repeated": "manual_repeat",
-    "skill_source_changed_without_export_refresh": "export_drift",
-    "skill_validation_failed": "validation_drift",
-    "profile_changed_without_projection_refresh": "projection_drift",
-    "latest_observed_at_stale": "staleness_window",
-    "summary_family_out_of_sync": "family_drift",
-}
-COMPONENT_REFRESH_COMPONENT_DRIFT_CLASSES = {
-    "component:codex-plane:shared-root": ("root_drift",),
-}
 MEMORY_CONSUMER_REFS = (
     "repo:aoa-evals",
     "repo:aoa-kag",
@@ -622,186 +608,18 @@ def continuity_window_generated_from() -> tuple[dict[str, Any], dict[str, Any], 
 
 def component_refresh_source_paths() -> tuple[Path, Path]:
     sdk_root = repo_root_from_env("AOA_SDK_ROOT", DEFAULT_AOA_SDK_ROOT)
-    examples_root = (
-        sdk_root
-        / "mechanics"
-        / "checkpoint"
-        / "parts"
-        / "reviewed-closeout-context-carry"
-        / "examples"
-    )
-    return (
-        examples_root / "component_drift_hints.example.json",
-        examples_root / "component_refresh_followthrough_decision.example.json",
-    )
+    return reviewed_sdk_example_paths(sdk_root)
+
+
+def component_refresh_input_bundle() -> ComponentRefreshInputBundle:
+    sdk_root = repo_root_from_env("AOA_SDK_ROOT", DEFAULT_AOA_SDK_ROOT)
+    return load_reviewed_sdk_example_bundle(sdk_root)
 
 
 def component_refresh_generated_from() -> tuple[dict[str, Any], list[dict[str, Any]], list[dict[str, Any]]]:
-    hint_path, decision_path = component_refresh_source_paths()
-    sdk_root = repo_root_from_env("AOA_SDK_ROOT", DEFAULT_AOA_SDK_ROOT)
-    hint_set = load_json_object(hint_path, label="component drift hint example")
-    decision_set = load_json_object(
-        decision_path,
-        label="component refresh followthrough decision example",
-    )
+    """Preserve the legacy mutable tuple facade for compatibility callers."""
 
-    if hint_set.get("schema_version") != "aoa_component_drift_hint_set_v1":
-        raise ReceiptValidationError(
-            "component drift hint example must keep schema_version aoa_component_drift_hint_set_v1"
-        )
-    if decision_set.get("schema_version") != "aoa_component_refresh_followthrough_decision_set_v1":
-        raise ReceiptValidationError(
-            "component refresh followthrough decision example must keep schema_version "
-            "aoa_component_refresh_followthrough_decision_set_v1"
-        )
-    if decision_set.get("reviewed") is not True:
-        raise ReceiptValidationError(
-            "component refresh followthrough decision example must stay reviewed before stats summarize it"
-        )
-
-    hints = hint_set.get("hints")
-    if not isinstance(hints, list) or not hints:
-        raise ReceiptValidationError("component drift hint example must expose a non-empty hints list")
-    decisions = decision_set.get("decisions")
-    if not isinstance(decisions, list) or not decisions:
-        raise ReceiptValidationError(
-            "component refresh followthrough decision example must expose a non-empty decisions list"
-        )
-
-    latest_hint_observed_at: datetime | None = None
-    hint_refs: set[str] = set()
-    hint_components: set[str] = set()
-    for index, hint in enumerate(hints):
-        if not isinstance(hint, dict):
-            raise ReceiptValidationError(f"component drift hint example hints[{index}] must be an object")
-        hint_ref = hint.get("hint_ref")
-        component_ref = hint.get("component_ref")
-        owner_repo = hint.get("owner_repo")
-        observed_at = hint.get("observed_at")
-        route_class = hint.get("recommended_route_class")
-        signals = normalize_string_list(hint.get("signals"))
-        evidence_refs = normalize_string_list(hint.get("evidence_refs"))
-        if not is_nonempty_string(hint_ref):
-            raise ReceiptValidationError(f"component drift hint example hints[{index}] must expose hint_ref")
-        if not is_nonempty_string(component_ref):
-            raise ReceiptValidationError(f"component drift hint example hints[{index}] must expose component_ref")
-        if not is_nonempty_string(owner_repo):
-            raise ReceiptValidationError(f"component drift hint example hints[{index}] must expose owner_repo")
-        if str(hint_ref) in hint_refs:
-            raise ReceiptValidationError(
-                f"component drift hint example hints[{index}] must not duplicate hint_ref {hint_ref!r}"
-            )
-        if str(component_ref) in hint_components:
-            raise ReceiptValidationError(
-                f"component drift hint example hints[{index}] must not duplicate component_ref {component_ref!r}"
-            )
-        parsed_observed_at = parse_iso_datetime(observed_at)
-        if parsed_observed_at is None:
-            raise ReceiptValidationError(
-                f"component drift hint example hints[{index}] must expose observed_at as date-time"
-            )
-        if route_class not in COMPONENT_REFRESH_ROUTE_CLASSES:
-            raise ReceiptValidationError(
-                f"component drift hint example hints[{index}] recommended_route_class is outside the published grammar"
-            )
-        if not signals:
-            raise ReceiptValidationError(
-                f"component drift hint example hints[{index}] must expose at least one signal"
-            )
-        if not evidence_refs:
-            raise ReceiptValidationError(
-                f"component drift hint example hints[{index}] must expose at least one evidence_ref"
-            )
-        hint_refs.add(str(hint_ref))
-        hint_components.add(str(component_ref))
-        if latest_hint_observed_at is None or parsed_observed_at > latest_hint_observed_at:
-            latest_hint_observed_at = parsed_observed_at
-
-    decision_components: set[str] = set()
-    for index, decision in enumerate(decisions):
-        if not isinstance(decision, dict):
-            raise ReceiptValidationError(
-                f"component refresh followthrough decision example decisions[{index}] must be an object"
-            )
-        component_ref = decision.get("component_ref")
-        owner_repo = decision.get("owner_repo")
-        route_class = decision.get("route_class")
-        decision_status = decision.get("decision_status")
-        evidence_refs = normalize_string_list(decision.get("evidence_refs"))
-        if not is_nonempty_string(component_ref):
-            raise ReceiptValidationError(
-                f"component refresh followthrough decision example decisions[{index}] must expose component_ref"
-            )
-        if not is_nonempty_string(owner_repo):
-            raise ReceiptValidationError(
-                f"component refresh followthrough decision example decisions[{index}] must expose owner_repo"
-            )
-        if route_class not in COMPONENT_REFRESH_ROUTE_CLASSES:
-            raise ReceiptValidationError(
-                f"component refresh followthrough decision example decisions[{index}] route_class is outside the published grammar"
-            )
-        if decision_status not in COMPONENT_REFRESH_DECISION_STATUSES[:-1]:
-            raise ReceiptValidationError(
-                f"component refresh followthrough decision example decisions[{index}] decision_status is outside the published grammar"
-            )
-        if str(component_ref) in decision_components:
-            raise ReceiptValidationError(
-                f"component refresh followthrough decision example decisions[{index}] must not duplicate component_ref {component_ref!r}"
-            )
-        if not evidence_refs:
-            raise ReceiptValidationError(
-                f"component refresh followthrough decision example decisions[{index}] must expose at least one evidence_ref"
-            )
-        decision_components.add(str(component_ref))
-
-    assert latest_hint_observed_at is not None
-    source = {
-        "receipt_input_paths": [
-            display_repo_input_path(hint_path, repo_roots=(("aoa-sdk", sdk_root),)),
-            display_repo_input_path(decision_path, repo_roots=(("aoa-sdk", sdk_root),)),
-        ],
-        "total_receipts": 2,
-        "latest_observed_at": latest_hint_observed_at.isoformat().replace("+00:00", "Z"),
-    }
-    return source, hints, decisions
-
-
-def component_refresh_status(decision: dict[str, Any] | None, *, owner_repo: str) -> str:
-    if not isinstance(decision, dict):
-        return "refresh_recommended"
-    decision_status = str(decision.get("decision_status") or "unreviewed")
-    if decision_status == "deferred":
-        return "deferred"
-    if decision_status == "safe_stop":
-        return "current"
-    if decision_status != "chosen":
-        return "refresh_recommended"
-    if owner_repo == "aoa-stats":
-        return "refresh_recommended"
-    return "refresh_active"
-
-
-def component_refresh_route_class(
-    hint: dict[str, Any] | None, decision: dict[str, Any] | None
-) -> str:
-    if isinstance(decision, dict):
-        route_class = decision.get("route_class")
-        if route_class in COMPONENT_REFRESH_ROUTE_CLASSES:
-            return str(route_class)
-    if isinstance(hint, dict):
-        route_class = hint.get("recommended_route_class")
-        if route_class in COMPONENT_REFRESH_ROUTE_CLASSES:
-            return str(route_class)
-    return "observe"
-
-
-def component_refresh_drift_classes(component_ref: str, signals: list[str]) -> list[str]:
-    classes = list(COMPONENT_REFRESH_COMPONENT_DRIFT_CLASSES.get(component_ref, ()))
-    for signal in signals:
-        drift_class = COMPONENT_REFRESH_SIGNAL_DRIFT_CLASSES.get(signal)
-        if drift_class is not None:
-            classes.append(drift_class)
-    return classes
+    return component_refresh_input_bundle().mutable_parts()
 
 
 def continuity_reanchor_counts(
@@ -1708,100 +1526,13 @@ def build_memory_movement_summary() -> dict[str, Any]:
     }
 
 
-def latest_component_hints_by_component(hints: list[dict[str, Any]]) -> dict[str, dict[str, Any]]:
-    latest_by_component: dict[str, dict[str, Any]] = {}
-    for hint in hints:
-        if not isinstance(hint, dict):
-            continue
-        component_ref = hint.get("component_ref")
-        if not is_nonempty_string(component_ref):
-            continue
-        previous = latest_by_component.get(str(component_ref))
-        if previous is None or parse_iso_datetime_or_min(hint.get("observed_at")) >= parse_iso_datetime_or_min(
-            previous.get("observed_at")
-        ):
-            latest_by_component[str(component_ref)] = hint
-    return latest_by_component
-
-
 def build_component_refresh_summary() -> dict[str, Any]:
-    source, hints, decisions = component_refresh_generated_from()
-    hints_by_component = latest_component_hints_by_component(hints)
-    decisions_by_component = {
-        str(decision["component_ref"]): decision
-        for decision in decisions
-        if isinstance(decision, dict)
-    }
-
-    component_order: list[str] = []
-    seen: set[str] = set()
-    for payload in (*hints, *decisions):
-        if not isinstance(payload, dict):
-            continue
-        component_ref = payload.get("component_ref")
-        if not is_nonempty_string(component_ref) or component_ref in seen:
-            continue
-        seen.add(str(component_ref))
-        component_order.append(str(component_ref))
-
-    owner_repo_counts: Counter[str] = Counter()
-    status_counts: Counter[str] = Counter(
-        {status: 0 for status in COMPONENT_REFRESH_CURRENT_STATUSES}
+    bundle = component_refresh_input_bundle()
+    return build_component_refresh_summary_from_inputs(
+        bundle.source,
+        bundle.hints,
+        bundle.decisions,
     )
-    drift_class_counts: Counter[str] = Counter()
-    components: list[dict[str, Any]] = []
-
-    for component_ref in component_order:
-        hint = hints_by_component.get(component_ref)
-        decision = decisions_by_component.get(component_ref)
-        owner_repo = ""
-        if isinstance(decision, dict) and is_nonempty_string(decision.get("owner_repo")):
-            owner_repo = str(decision.get("owner_repo"))
-        elif isinstance(hint, dict) and is_nonempty_string(hint.get("owner_repo")):
-            owner_repo = str(hint.get("owner_repo"))
-        if not owner_repo:
-            raise ReceiptValidationError(
-                f"component refresh summary could not resolve owner_repo for {component_ref}"
-            )
-
-        owner_repo_counts[owner_repo] += 1
-        signals = normalize_string_list(hint.get("signals")) if isinstance(hint, dict) else []
-        for drift_class in component_refresh_drift_classes(component_ref, signals):
-            drift_class_counts[drift_class] += 1
-
-        current_status = component_refresh_status(decision, owner_repo=owner_repo)
-        status_counts[current_status] += 1
-        latest_decision_status = (
-            str(decision.get("decision_status") or "unreviewed")
-            if isinstance(decision, dict)
-            else "unreviewed"
-        )
-        latest_observed_at = (
-            str(hint.get("observed_at"))
-            if isinstance(hint, dict) and is_nonempty_string(hint.get("observed_at"))
-            else None
-        )
-        components.append(
-            {
-                "component_ref": component_ref,
-                "owner_repo": owner_repo,
-                "latest_decision_status": latest_decision_status,
-                "current_status": current_status,
-                "latest_route_class": component_refresh_route_class(hint, decision),
-                "latest_observed_at": latest_observed_at,
-            }
-        )
-
-    return {
-        "schema_version": "aoa_stats_component_refresh_summary_v1",
-        "generated_from": source,
-        "owner_repo_counts": string_count_map(owner_repo_counts),
-        "status_counts": {
-            status: status_counts.get(status, 0) for status in COMPONENT_REFRESH_CURRENT_STATUSES
-        },
-        "drift_class_counts": string_count_map(drift_class_counts),
-        "components": components,
-    }
 
 
 def build_runtime_closeout_summary(
@@ -1992,6 +1723,7 @@ def build_all_views(
     evals_root: Path | None = None,
     source_registry: dict[str, Any] | None = None,
     source_registry_ref: str | None = None,
+    optional_output_names: AbstractSet[str] | None = None,
 ) -> dict[str, dict[str, Any]]:
     active_receipts = resolve_active_receipts(receipts)
     source = generated_from(active_receipts, input_paths)
@@ -2044,6 +1776,9 @@ def build_all_views(
         ),
         "surface_detection_summary.min.json": build_surface_detection_summary(active_receipts, source),
     }
+    allowed_optional_outputs = (
+        None if optional_output_names is None else frozenset(optional_output_names)
+    )
     for name, builder in (
         ("codex_plane_deployment_summary.min.json", build_codex_plane_deployment_summary),
         ("codex_rollout_operations_summary.min.json", build_codex_rollout_operations_summary),
@@ -2056,6 +1791,8 @@ def build_all_views(
         ("titan_incarnation_summary.min.json", build_titan_incarnation_summary),
         ("titan_summon_summary.min.json", build_titan_summon_summary),
     ):
+        if allowed_optional_outputs is not None and name not in allowed_optional_outputs:
+            continue
         try:
             outputs[name] = builder()
         except ReceiptValidationError as exc:

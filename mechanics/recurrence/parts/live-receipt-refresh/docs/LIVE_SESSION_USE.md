@@ -9,7 +9,7 @@ stats current while real sessions are happening.
 
 1. keep source-owned receipts near their owner surfaces
 2. refresh one bounded local feed into `state/live_receipts.min.json`
-3. rebuild local derived views under `state/generated/`
+3. materialize profile-admitted local views under `state/generated/`
 4. inspect the machine-first summaries without treating them as proof authority
 
 ## Default live command
@@ -20,15 +20,17 @@ python scripts/refresh_live_stats.py
 
 By default this reads the registry at
 `mechanics/recurrence/parts/live-receipt-refresh/config/live_receipt_sources.json`,
-resolves sibling owner-local
-sources under the current federation root, writes one combined local feed to
-`state/live_receipts.min.json`, and rebuilds:
+resolves sibling owner-local sources under the current federation root, writes
+one combined local feed to `state/live_receipts.min.json`, derives its
+allowlist from active profiles with `live_state_capable: true`, and
+admits the following read-model output names. Each is materialized only when its
+declared source contract resolves:
 
+- `state/generated/core_skill_application_summary.min.json`
 - `state/generated/object_summary.min.json`
 - `state/generated/candidate_lineage_summary.min.json`
 - `state/generated/owner_landing_summary.min.json`
 - `state/generated/supersession_drop_summary.min.json`
-- `state/generated/core_skill_application_summary.min.json`
 - `state/generated/repeated_window_summary.min.json`
 - `state/generated/route_progression_summary.min.json`
 - `state/generated/fork_calibration_summary.min.json`
@@ -41,13 +43,18 @@ sources under the current federation root, writes one combined local feed to
 - `state/generated/rollout_campaign_summary.min.json`
 - `state/generated/drift_review_summary.min.json`
 - `state/generated/continuity_window_summary.min.json`
-- `state/generated/component_refresh_summary.min.json`
-- `state/generated/titan_summon_summary.min.json`
+- `state/generated/memory_movement_summary.min.json`
 - `state/generated/runtime_closeout_summary.min.json`
 - `state/generated/stress_recovery_window_summary.min.json`
 - `state/generated/source_coverage_summary.min.json`
 - `state/generated/surface_detection_summary.min.json`
+
+It also writes the live-only catalog:
+
 - `state/generated/summary_surface_catalog.min.json`
+
+That catalog contains only outputs admitted and materialized by the current
+live run. It does not copy the full committed catalog.
 
 ## What the builder accepts
 
@@ -81,13 +88,14 @@ lockstep with that schema enum.
 
 ## Canonical repo surfaces
 
-The committed builder refreshes:
+The committed builder publishes all 25 active reference and live-capable
+profiles plus the public catalog:
 
+- `generated/core_skill_application_summary.min.json`
 - `generated/object_summary.min.json`
 - `generated/candidate_lineage_summary.min.json`
 - `generated/owner_landing_summary.min.json`
 - `generated/supersession_drop_summary.min.json`
-- `generated/core_skill_application_summary.min.json`
 - `generated/repeated_window_summary.min.json`
 - `generated/route_progression_summary.min.json`
 - `generated/fork_calibration_summary.min.json`
@@ -101,6 +109,8 @@ The committed builder refreshes:
 - `generated/drift_review_summary.min.json`
 - `generated/continuity_window_summary.min.json`
 - `generated/component_refresh_summary.min.json`
+- `generated/memory_movement_summary.min.json`
+- `generated/titan_incarnation_summary.min.json`
 - `generated/titan_summon_summary.min.json`
 - `generated/runtime_closeout_summary.min.json`
 - `generated/stress_recovery_window_summary.min.json`
@@ -110,13 +120,35 @@ The committed builder refreshes:
 
 ## Live local surfaces
 
-The live refresh path writes the same shape under `state/generated/` so the
-repo can keep deterministic committed outputs while the local operator keeps a
-current working read.
+The live refresh path does not mirror the committed output set. The active
+profiles are the single inventory source:
+
+- `live_state_capable: true` selects the materialization allowlist
+- all active profile output names form the stale-file cleanup universe
+- the live catalog lists only outputs actually materialized
+
+The current false-live profiles are:
+
+- `component_refresh_summary`
+- `titan_incarnation_summary`
+- `titan_summon_summary`
+
+They remain valid committed public reference surfaces, but the live run does
+not recreate them. If an older copy exists under `state/generated/`, cleanup
+removes it. In particular, the Component Refresh adapter may load reviewed
+`aoa-sdk` examples for the committed build only; it is never a live fallback.
+
+Future Component Refresh live activation requires a canonical owner-runtime
+artifact whose reviewed chain reaches an owner-local
+`component_refresh_receipt`. Owner laws or example packets cannot fill that
+absence. See
+`docs/decisions/AOST-D-0003-component-refresh-fixtures-are-not-live-state.md`.
 
 The live feed and committed builders keep raw logs append-only, but the
-generated summaries read from the active receipt view after local
-`supersedes` resolution.
+receipt-backed live summaries read from the active receipt view after local
+`supersedes` resolution. Other true-live profiles may read their explicitly
+declared current source contract; profile admission does not strengthen those
+sources.
 
 `source_coverage_summary` is the intake self-audit inside that loop. It keeps
 missing owner repos, unexpected repos, and dominant intake skew visible so the

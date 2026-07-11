@@ -11,6 +11,12 @@ posture, deterministic catalog order, and mechanics handoffs. The generated
 catalog projects the public fields from these records. It is not an editable
 copy of them.
 
+`live_state_capable` is an executable selector, not a statement that every
+committed surface is current. A `true` profile may be materialized and listed
+by the local live refresh loop when its inputs resolve. A `false` profile stays
+on its committed/reference route and is omitted from live output and the live
+catalog, although refresh cleanup still removes any stale runtime copy.
+
 `surface-profile.schema.json` constrains both active and deferred source
 records. Importable implementation stays under `src/aoa_stats_builder/`,
 public schemas stay under `schemas/`, and public derived outputs stay under

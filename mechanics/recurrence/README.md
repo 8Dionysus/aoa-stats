@@ -16,9 +16,10 @@ recurring read-model window needs an explicit derived-only operation boundary.
 
 ### Local owns
 
-`aoa-stats` owns deterministic refresh behavior, stats-side source registry
-use, component recurrence declarations, and bounded derivation posture for
-component refresh, continuity, and repeated-window summaries.
+`aoa-stats` owns deterministic refresh behavior, profile-driven live
+materialization, stats-side source registry use, component recurrence
+declarations, and bounded derivation posture for Component Refresh,
+continuity, and repeated-window summaries.
 
 ### Stronger owner split
 
@@ -29,20 +30,26 @@ and runtime owners retain their own truth and action authority.
 ### Inputs
 
 Registered owner-local receipts, stats source-family contracts, component and
-hook declarations, and owner-authored evidence referenced by read-model
-profiles.
+hook declarations, live-capability profiles, and owner-authored evidence or
+explicit reference fixtures named by read-model profiles.
 
 ### Outputs
 
-A bounded local receipt feed, deterministically rebuilt public stats views,
-publisher audit findings, recurrence declarations, and derived-only window
-summaries.
+A bounded local receipt feed, committed public reference views,
+profile-admitted local live views, a live-only catalog of materialized
+surfaces, publisher audit findings, recurrence declarations, and derived-only
+window summaries.
 
 ### Must not claim
 
 Proof success, owner health, route approval, workflow activation, continuity
 legitimacy, source mutation, or stronger freshness than source evidence
 supports.
+
+The Component Refresh reference fixtures do not become live state merely
+because a live refresh command can call the same projection core. This rule
+does not certify the source posture of other live-capable profiles. See
+`docs/decisions/AOST-D-0003-component-refresh-fixtures-are-not-live-state.md`.
 
 ### Next route
 

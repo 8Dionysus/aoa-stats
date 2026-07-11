@@ -1,6 +1,7 @@
 from __future__ import annotations
 
 import importlib.util
+import re
 from pathlib import Path
 
 
@@ -76,12 +77,22 @@ def test_root_routes_expose_design_source_home_and_mechanics() -> None:
     assert "alternating cross-slices" in design
 
 
-def test_live_session_docs_list_every_refresh_live_summary_output() -> None:
+def test_live_session_docs_match_profile_derived_refresh_inventories() -> None:
     refresh_live_stats = load_refresh_live_stats_module()
     docs = read_text(
         "mechanics/recurrence/parts/live-receipt-refresh/docs/LIVE_SESSION_USE.md"
     )
 
-    for output_name in refresh_live_stats.SUMMARY_OUTPUT_NAMES:
-        assert f"`state/generated/{output_name}`" in docs
-        assert f"`generated/{output_name}`" in docs
+    live_section = docs.split("## Default live command", 1)[1].split("## What the builder accepts", 1)[0]
+    committed_section = docs.split("## Canonical repo surfaces", 1)[1].split(
+        "## Live local surfaces", 1
+    )[0]
+    documented_live = tuple(
+        re.findall(r"^- `state/generated/([^`]+\.min\.json)`$", live_section, re.MULTILINE)
+    )
+    documented_committed = tuple(
+        re.findall(r"^- `generated/([^`]+\.min\.json)`$", committed_section, re.MULTILINE)
+    )
+
+    assert documented_live == refresh_live_stats.SUMMARY_OUTPUT_NAMES
+    assert documented_committed == refresh_live_stats.MANAGED_SUMMARY_OUTPUT_NAMES

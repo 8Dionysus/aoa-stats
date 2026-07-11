@@ -194,6 +194,28 @@ def public_surface_profiles(
     return public_active, public_deferred
 
 
+def all_profile_surface_output_names(
+    profile_root: Path = PROFILE_ROOT,
+) -> tuple[str, ...]:
+    """Return every active profile output basename in catalog order."""
+
+    active, _ = load_surface_profiles(profile_root)
+    return tuple(Path(profile["surface_ref"]).name for profile in active)
+
+
+def live_profile_surface_output_names(
+    profile_root: Path = PROFILE_ROOT,
+) -> tuple[str, ...]:
+    """Return live-materializable active profile outputs in catalog order."""
+
+    active, _ = load_surface_profiles(profile_root)
+    return tuple(
+        Path(profile["surface_ref"]).name
+        for profile in active
+        if profile["live_state_capable"] is True
+    )
+
+
 def build_summary_surface_catalog(
     source: dict[str, Any], *, available_output_names: set[str] | None = None
 ) -> dict[str, Any]:
