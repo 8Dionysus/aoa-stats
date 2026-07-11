@@ -21,6 +21,7 @@ FALSE_LIVE_OUTPUT_NAMES = frozenset(
         "component_refresh_summary.min.json",
         "memory_movement_summary.min.json",
         "route_progression_summary.min.json",
+        "runtime_closeout_summary.min.json",
         "titan_incarnation_summary.min.json",
         "titan_summon_summary.min.json",
         "stress_recovery_window_summary.min.json",
@@ -58,10 +59,11 @@ def test_live_output_inventory_is_derived_from_authored_profile_posture() -> Non
         module.SUMMARY_SURFACE_CATALOG_OUTPUT_NAME,
     )
     assert len(all_profile_outputs) == 25
-    assert len(live_profile_outputs) == 12
+    assert len(live_profile_outputs) == 11
     assert "owner_landing_summary.min.json" not in live_profile_outputs
     assert "memory_movement_summary.min.json" not in live_profile_outputs
     assert "route_progression_summary.min.json" not in live_profile_outputs
+    assert "runtime_closeout_summary.min.json" not in live_profile_outputs
     assert "stress_recovery_window_summary.min.json" not in live_profile_outputs
     assert set(all_profile_outputs) - set(live_profile_outputs) == FALSE_LIVE_OUTPUT_NAMES
 
@@ -88,6 +90,9 @@ def test_live_allowlist_never_invokes_reference_only_builders() -> None:
     route_progression_builder = Mock(
         side_effect=AssertionError("route progression builder ran live")
     )
+    runtime_closeout_builder = Mock(
+        side_effect=AssertionError("runtime closeout builder ran live")
+    )
     history_adapter = Mock(side_effect=AssertionError("history adapter ran live"))
     cadence_adapter = Mock(side_effect=AssertionError("cadence adapter ran live"))
 
@@ -98,6 +103,7 @@ def test_live_allowlist_never_invokes_reference_only_builders() -> None:
             "build_memory_movement_summary": memory_movement_builder,
             "build_stress_recovery_window_summary": stress_recovery_builder,
             "build_route_progression_summary": route_progression_builder,
+            "build_runtime_closeout_summary": runtime_closeout_builder,
             "codex_trusted_rollout_input_bundle": history_adapter,
             "rollout_cadence_input_bundle": cadence_adapter,
         },
@@ -114,12 +120,14 @@ def test_live_allowlist_never_invokes_reference_only_builders() -> None:
     memory_movement_builder.assert_not_called()
     stress_recovery_builder.assert_not_called()
     route_progression_builder.assert_not_called()
+    runtime_closeout_builder.assert_not_called()
     history_adapter.assert_not_called()
     cadence_adapter.assert_not_called()
     assert "owner_landing_summary.min.json" not in outputs
     assert "memory_movement_summary.min.json" not in outputs
     assert "stress_recovery_window_summary.min.json" not in outputs
     assert "route_progression_summary.min.json" not in outputs
+    assert "runtime_closeout_summary.min.json" not in outputs
     assert "codex_rollout_operations_summary.min.json" not in outputs
     assert "codex_rollout_drift_summary.min.json" not in outputs
     assert "rollout_campaign_summary.min.json" not in outputs
@@ -819,7 +827,7 @@ def test_refresh_live_state_does_not_admit_vendored_stress_report_without_live_p
     )
 
 
-def test_refresh_live_state_combines_playbook_technique_memo_and_runtime_sources(
+def test_refresh_live_state_combines_current_sources_and_ignores_old_runtime_wave(
     tmp_path: Path,
 ) -> None:
     module = load_refresh_module()
@@ -1015,7 +1023,6 @@ def test_refresh_live_state_combines_playbook_technique_memo_and_runtime_sources
                     {"name": "playbooks", "repo": "aoa-playbooks", "relative_path": ".aoa/live_receipts/playbook-receipts.jsonl"},
                     {"name": "techniques", "repo": "aoa-techniques", "relative_path": ".aoa/live_receipts/technique-receipts.jsonl"},
                     {"name": "memo", "repo": "aoa-memo", "relative_path": ".aoa/live_receipts/memo-writeback-receipts.jsonl"},
-                    {"name": "runtime", "repo": "abyss-stack", "relative_path": ".aoa/live_receipts/runtime-wave-closeouts.jsonl"},
                 ],
             },
             indent=2,
@@ -1033,11 +1040,12 @@ def test_refresh_live_state_combines_playbook_technique_memo_and_runtime_sources
         summary_output_dir=summary_output_dir,
     )
 
-    assert len(source_labels) == 7
-    assert receipt_count == 8
+    assert len(source_labels) == 6
+    assert receipt_count == 7
 
     feed = json.loads(feed_output.read_text(encoding="utf-8"))
-    assert len(feed) == 8
+    assert len(feed) == 7
+    assert all(receipt["object_ref"]["repo"] != "abyss-stack" for receipt in feed)
 
     repeated = json.loads(
         (summary_output_dir / "repeated_window_summary.min.json").read_text(encoding="utf-8")
@@ -1065,7 +1073,7 @@ def test_refresh_live_state_combines_playbook_technique_memo_and_runtime_sources
     )
     assert by_repo["aoa-playbooks"]["receipt_counts_by_event_kind"]["playbook_review_harvest_receipt"] == 1
     assert by_repo["aoa-techniques"]["receipt_counts_by_event_kind"]["technique_promotion_receipt"] == 1
-    assert by_repo["abyss-stack"]["receipt_counts_by_event_kind"]["runtime_wave_closeout_receipt"] == 1
+    assert "abyss-stack" not in by_repo
     assert memo_writeback_total == 1
     assert memo_growth_total == 1
 
@@ -1076,12 +1084,7 @@ def test_refresh_live_state_combines_playbook_technique_memo_and_runtime_sources
     assert core_summary["skills"][0]["skill_name"] == "aoa-session-donor-harvest"
     assert core_summary["skills"][0]["application_count"] == 1
 
-    runtime_summary = json.loads(
-        (summary_output_dir / "runtime_closeout_summary.min.json").read_text(encoding="utf-8")
-    )
-    assert runtime_summary["closeouts"][0]["program_id"] == "pilot-v1"
-    assert runtime_summary["closeouts"][0]["wave_id"] == "W4"
-    assert runtime_summary["closeouts"][0]["latest_gate_result"] == "pass"
+    assert not (summary_output_dir / "runtime_closeout_summary.min.json").exists()
 
 
 def test_refresh_live_state_applies_supersedes_before_summary_counts(tmp_path: Path) -> None:

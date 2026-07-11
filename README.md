@@ -149,10 +149,11 @@ materialization includes only active profiles with `live_state_capable: true`,
 and its catalog lists only outputs actually materialized. Reference-only
 profiles remain in the committed catalog and stale runtime copies are removed.
 The managed inventory remains 25 read models; the authored live-admitted
-allowlist contains 13. Checked-in trusted rollout history, the two committed
-cadence-example projections, Owner Landing, Memory Movement, and Stress
-Recovery now join Codex Plane Deployment, Continuity Window, Component Refresh,
-and the two Titan surfaces on the reference-only route.
+allowlist contains 11. Checked-in trusted rollout history, the two committed
+cadence-example projections, Owner Landing, Route Progression, Runtime
+Closeout, Memory Movement, and Stress Recovery join Codex Plane Deployment,
+Continuity Window, Component Refresh, and the two Titan surfaces on the
+reference-only route.
 [`AOST-D-0003`](docs/decisions/AOST-D-0003-component-refresh-fixtures-are-not-live-state.md)
 is the selector and stale-cleanup precedent established for Component Refresh,
 while
@@ -168,7 +169,10 @@ runtime state; the Campaign/Drift pair is excluded because its source is a
 three-example cadence chain rather than an active producer.
 Owner Landing and Stress Recovery lack real publishers; Memory Movement reads
 real reviewed owner corpus truth, but that corpus has no refresh observation
-route yet.
+route yet. Runtime Closeout remains bounded to the historical wave-receipt
+fixture because the current `abyss-stack` trial receipt and the separate SDK
+return receipt do not share its ABI; AOST-D-0006 forbids treating them as
+implicit aliases.
 
 For read-only MCP use, follow
 [`stats/surface-catalog/CODEX_MCP.md`](stats/surface-catalog/CODEX_MCP.md).

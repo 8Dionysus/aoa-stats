@@ -96,6 +96,13 @@ Tracking starts with the first public release-prep baseline for this repository.
   `aoa-skills` semantic progression schema and example, and replaced an active
   owner-landing bootstrap label with source-route compatibility wording. The
   historical receipt ABI and committed summary payloads remain unchanged.
+- Localized Runtime Closeout aggregation and focused invariants under the
+  Checkpoint mechanic while retaining root compatibility aliases. Reclassified
+  the surface as reference-only because the admitted wave-closeout receipt and
+  former live feed no longer match the current `abyss-stack` trial-closeout
+  producer, removed that stale feed from active admission, and preserved it as
+  committed compatibility only. No implicit event-kind alias was introduced
+  and committed Runtime Closeout bytes remain stable.
 
 ## [0.1.3] - 2026-04-23
 

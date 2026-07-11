@@ -41,6 +41,9 @@ Use these classes as the compact posture vocabulary:
   inspectable without claiming runtime occurrence
 - `committed_receipt_example_chain`: committed receipt examples whose event
   family is inspectable but has no active owner publisher
+- `committed_historical_wave_receipt_snapshot`: a stable historical wave-receipt
+  projection retained for compatibility when current owner trial or return
+  receipt contracts differ and are not authorized aliases
 - `reviewed_owner_corpus_snapshot`: a committed projection of authentic
   reviewed owner corpus truth that is not continuously live without an
   observable refresh route

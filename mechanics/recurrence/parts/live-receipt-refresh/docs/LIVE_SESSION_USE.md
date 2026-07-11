@@ -35,7 +35,6 @@ declared source contract resolves:
 - `state/generated/session_growth_branch_summary.min.json`
 - `state/generated/automation_pipeline_summary.min.json`
 - `state/generated/automation_followthrough_summary.min.json`
-- `state/generated/runtime_closeout_summary.min.json`
 - `state/generated/source_coverage_summary.min.json`
 - `state/generated/surface_detection_summary.min.json`
 
@@ -118,7 +117,7 @@ profiles are the single inventory source:
 - the live catalog lists only outputs actually materialized
 
 The managed inventory contains 25 active read-model outputs. The authored
-live-admitted allowlist contains exactly 12. The 13 false-live profiles are:
+live-admitted allowlist contains exactly 11. The 14 false-live profiles are:
 
 - `owner_landing_summary`
 - `route_progression_summary`
@@ -130,6 +129,7 @@ live-admitted allowlist contains exactly 12. The 13 false-live profiles are:
 - `continuity_window_summary`
 - `component_refresh_summary`
 - `memory_movement_summary`
+- `runtime_closeout_summary`
 - `titan_incarnation_summary`
 - `titan_summon_summary`
 - `stress_recovery_window_summary`
@@ -194,9 +194,19 @@ publisher, real stress-recovery receipts and reports, and a registry/watch
 route that observes them. A draft eval definition and example report remain a
 committed contract chain rather than current repeated-window evidence.
 
+Future Runtime Closeout live activation requires an explicit cross-owner
+agreement on one canonical receipt ABI, a real current owner-local receipt log,
+and registry plus watcher parity proven end to end. The committed builder accepts
+only historical `runtime_wave_closeout_receipt`; current `abyss-stack`
+`runtime_trial_closeout_receipt` and SDK `runtime_return_closeout_receipt` are
+distinct contracts and are not implicit aliases. The active registry therefore
+does not read the historical wave log.
+
 The current-source plus refresh-observation law and these three audit outcomes
 are recorded in
 `docs/decisions/AOST-D-0004-live-admission-requires-refresh-observation.md`.
+The Runtime Closeout owner-contract boundary is recorded separately in
+`docs/decisions/AOST-D-0006-runtime-closeout-wave-receipts-are-not-current-trial-live-state.md`.
 
 The live feed and committed builders keep raw logs append-only, but the
 receipt-backed live summaries read from the active receipt view after local
@@ -237,12 +247,20 @@ watch paths before it writes user units.
 - `/srv/AbyssOS/aoa-playbooks/.aoa/live_receipts/playbook-receipts.jsonl`
 - `/srv/AbyssOS/aoa-techniques/.aoa/live_receipts/technique-receipts.jsonl`
 - `/srv/AbyssOS/aoa-memo/.aoa/live_receipts/memo-writeback-receipts.jsonl`
-- `/srv/AbyssOS/abyss-stack/.aoa/live_receipts/runtime-wave-closeouts.jsonl`
 
 The watched memo writeback log participates in the shared receipt feed, but it
 does not observe every change to the reviewed corpus roots consumed by the
 committed Memory Movement snapshot. It therefore does not admit that profile
 to continuously refreshed local state.
+
+At the 2026-07-11 audit, the installed units were symlinks into an
+abyss-stack-owned deploy snapshot and launched an older
+`/srv/AbyssOS/aoa-stats` projection whose registry still admitted the wave
+feed. Do not run this repo's installer with overwrite from an ephemeral
+checkout: it would follow and mutate the owner-owned symlink target while
+embedding the wrong checkout path. Until a later audit proves migration, the
+deployed plane needs an explicit symlink-safe abyss-stack/deploy handoff and
+separate live proof.
 
 ## Readiness audit
 

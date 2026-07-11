@@ -1,7 +1,7 @@
 {
   "schema_version": 1,
   "profile": "session-growth-live",
-  "description": "Owner-local live receipt sources for the current detail session-harvest, project-core kernel, eval, and runtime telemetry wave. Growth-refinery candidate lineage summary stays reviewed-owner-local only and excludes raw checkpoint-note intake.",
+  "description": "Owner-local live receipt sources for the current detail session-harvest, project-core kernel, and eval telemetry. Historical runtime-wave closeouts are intentionally absent until the current owner receipt ABI is integrated. Growth-refinery candidate lineage summary stays reviewed-owner-local only and excludes raw checkpoint-note intake.",
   "sources": [
     {
       "name": "session_harvest_family",
@@ -21,13 +21,6 @@
       "repo": "aoa-evals",
       "relative_path": "examples/eval_result_receipt.example.json",
       "payload_shape": "object"
-    },
-    {
-      "name": "runtime_closeout_live_log_optional",
-      "repo": "abyss-stack",
-      "relative_path": ".aoa/live_receipts/runtime-wave-closeouts.jsonl",
-      "payload_shape": "jsonl",
-      "required": false
     }
   ]
 }

@@ -74,7 +74,7 @@ def test_source_coverage_thin_flags_prompt_regrounding_without_verdict_authority
         "aoa-playbooks",
         "aoa-techniques",
     ]
-    assert coverage["unexpected_owner_repos"] == ["Dionysus"]
+    assert coverage["unexpected_owner_repos"] == ["Dionysus", "abyss-stack"]
 
     prohibited_authority_fields = {
         "canonical_truth",

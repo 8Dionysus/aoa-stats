@@ -10,7 +10,6 @@
   "source_mode": "registry_backed_receipt_feed",
   "input_registry_ref": "mechanics/recurrence/parts/live-receipt-refresh/config/live_receipt_sources.json",
   "expected_owner_repos": [
-    "abyss-stack",
     "aoa-evals",
     "aoa-memo",
     "aoa-playbooks",
@@ -23,11 +22,12 @@
     "aoa-techniques"
   ],
   "unexpected_owner_repos": [
-    "Dionysus"
+    "Dionysus",
+    "abyss-stack"
   ],
   "active_receipt_total": 16,
   "observed_owner_repo_count": 4,
-  "expected_owner_repo_count": 6,
+  "expected_owner_repo_count": 5,
   "owner_repo_counts": {
     "Dionysus": 1,
     "abyss-stack": 1,

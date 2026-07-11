@@ -3365,6 +3365,20 @@
         "artifact_kind": "document",
         "code_role": "none",
         "command_role": "none",
+        "document_role": "decision",
+        "mechanics_role": "none",
+        "surface_state": "authored_source"
+      },
+      "entity_kind": "decision",
+      "id": "entity:file:docs/decisions/aost-d-0006-runtime-closeout-wave-receipts-are-not-current-trial-live-state.md:6b404d83d8",
+      "label": "docs/decisions/AOST-D-0006-runtime-closeout-wave-receipts-are-not-current-trial-live-state.md",
+      "source_record_id": "file:docs/decisions/aost-d-0006-runtime-closeout-wave-receipts-are-not-current-trial-live-state.md:6b404d83d8"
+    },
+    {
+      "coordinates": {
+        "artifact_kind": "document",
+        "code_role": "none",
+        "command_role": "none",
         "document_role": "readme",
         "mechanics_role": "none",
         "surface_state": "authored_source"
@@ -7181,6 +7195,20 @@
       "id": "entity:file:mechanics/checkpoint/parts/runtime-closeout/validation.md:43a771a8b9",
       "label": "mechanics/checkpoint/parts/runtime-closeout/VALIDATION.md",
       "source_record_id": "file:mechanics/checkpoint/parts/runtime-closeout/validation.md:43a771a8b9"
+    },
+    {
+      "coordinates": {
+        "artifact_kind": "test",
+        "code_role": "test",
+        "command_role": "test",
+        "document_role": "none",
+        "mechanics_role": "part_test",
+        "surface_state": "authored_source"
+      },
+      "entity_kind": "mechanic_part",
+      "id": "entity:file:mechanics/checkpoint/parts/runtime-closeout/tests/test_runtime_closeout.py:3a40888b63",
+      "label": "mechanics/checkpoint/parts/runtime-closeout/tests/test_runtime_closeout.py",
+      "source_record_id": "file:mechanics/checkpoint/parts/runtime-closeout/tests/test_runtime_closeout.py:3a40888b63"
     },
     {
       "coordinates": {
@@ -12428,6 +12456,20 @@
         "surface_state": "authored_source"
       },
       "entity_kind": "code",
+      "id": "entity:file:src/aoa_stats_builder/runtime_closeout.py:efc18343fe",
+      "label": "src/aoa_stats_builder/runtime_closeout.py",
+      "source_record_id": "file:src/aoa_stats_builder/runtime_closeout.py:efc18343fe"
+    },
+    {
+      "coordinates": {
+        "artifact_kind": "source_code",
+        "code_role": "source_module",
+        "command_role": "none",
+        "document_role": "none",
+        "mechanics_role": "none",
+        "surface_state": "authored_source"
+      },
+      "entity_kind": "code",
       "id": "entity:file:src/aoa_stats_builder/source_coverage.py:5ef0c3ffb9",
       "label": "src/aoa_stats_builder/source_coverage.py",
       "source_record_id": "file:src/aoa_stats_builder/source_coverage.py:5ef0c3ffb9"
@@ -13527,7 +13569,7 @@
   ],
   "index_identity": {
     "artifact_kind": "repository_entity_index",
-    "content_digest": "53e66e58d22cb5b1f83f5a2d6f9a529579fe6d88664ad03db0d4a067a2e2dbc9",
+    "content_digest": "0984f06b8c6e8c7fa5c080842590cd108d83180f88c9e3d6dba9f78f40768663",
     "index_kind": "entity",
     "local_id": "index:repo-local:entities",
     "schema_ref": "aoa-kag:schemas/repo-local-kag-repository-index.schema.json"
@@ -13550,23 +13592,23 @@
   },
   "schema_version": "aoa-repo-local-kag-repository-index-v1",
   "source_index": {
-    "content_digest": "9212df5a9c41bcb41eed77ecba6e635a53b59d49ff7d4b4d042dc03c3a0b0f1f",
+    "content_digest": "d2b0d46f004da4793fa992ca931d5773f020c335f984e2763dd49e79b8d1d46a",
     "local_id": "index:repo-local:source-surfaces",
     "path": "kag/indexes/source_surface_index.json"
   },
   "summary": {
-    "entry_count": 966,
+    "entry_count": 969,
     "kind_counts": {
       "agent_route": 16,
       "artifact": 148,
-      "code": 30,
+      "code": 31,
       "command": 31,
       "contract": 34,
-      "decision": 12,
+      "decision": 13,
       "document": 137,
       "manifest": 1,
       "mechanic_package": 56,
-      "mechanic_part": 458,
+      "mechanic_part": 459,
       "owner_surface": 2,
       "readmodel": 41
     }

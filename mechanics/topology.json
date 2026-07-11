@@ -580,7 +580,9 @@
           "stats_source_family_refs": [
             "read_models"
           ],
-          "localized_payload_roots": [],
+          "localized_payload_roots": [
+            "tests"
+          ],
           "retained_root_routes": []
         }
       ]

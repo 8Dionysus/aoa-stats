@@ -23,9 +23,10 @@ The source/mechanics refactor is part of that contour:
 - `schemas/` and `generated/` remain stable public publication districts
 - `src/` remains the importable implementation and access boundary
 - authored `live_state_capable` profiles select local live materialization;
-  the current split is 12 live-admitted read models across 25 managed active
+  the current split is 11 live-admitted read models across 25 managed active
   outputs, and cleanup covers the full managed set; Route Progression remains
-  a committed legacy-numeric reference surface under AOST-D-0005
+  a committed legacy-numeric reference surface under AOST-D-0005 while Runtime
+  Closeout remains a historical wave-receipt reference under AOST-D-0006
 
 ## Active summary families
 
@@ -92,7 +93,9 @@ contract stays separate from active catalog claims.
   `src/aoa_stats_builder/component_refresh_sources.py`; Memory Movement and
   Stress Recovery use the same explicit core/source split through
   `src/aoa_stats_builder/memory_movement*.py` and
-  `src/aoa_stats_builder/stress_recovery*.py`. The selector and stale-cleanup
+  `src/aoa_stats_builder/stress_recovery*.py`, while the historical Runtime
+  Closeout compatibility core is `src/aoa_stats_builder/runtime_closeout.py`.
+  The selector and stale-cleanup
   precedent comes from the Component Refresh-only decision
   `docs/decisions/AOST-D-0003-component-refresh-fixtures-are-not-live-state.md`;
   the current-source plus refresh-observation admission rule is recorded in
@@ -120,7 +123,7 @@ Changes on this line should:
 5. update topology, source-home validation, focused tests, and generated
    outputs together
 6. keep `README.md` and `docs/README.md` short and link-driven
-7. keep all 12 committed/reference profiles out of local live output until
+7. keep all 14 committed/reference profiles out of local live output until
    their real owner-runtime, deploy-local, active-cadence, publisher, and
    refresh-observation contracts exist; audit every remaining
    `live_state_capable: true` profile against both its source and trigger

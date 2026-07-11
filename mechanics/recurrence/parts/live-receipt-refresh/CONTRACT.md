@@ -33,17 +33,17 @@ admitted by the `intake_contract` family.
 - unknown event kinds fail before a summary is built
 - missing or invalid required publishers remain visible as errors
 - a surface with `live_state_capable: false` is not materialized or cataloged
-- the current 25-profile managed universe yields exactly 12 admitted live
-  outputs and 13 false-live cleanup targets
+- the current 25-profile managed universe yields exactly 11 admitted live
+  outputs and 14 false-live cleanup targets
 - resolving a current owner path on demand does not replace a refresh
   observation route
 - cleanup covers the full managed active-profile output set, including
   reference-only outputs, so stale runtime copies do not survive
 - live materialization does not invoke the Component Refresh, Continuity
   Window, Codex Plane Deployment, Route Progression, Memory Movement, Stress
-  Recovery, trusted rollout-history, or cadence-example reference adapters or
-  infer their missing owner-runtime, observation, deploy-local, semantic
-  projection, or active-cadence state
+  Recovery, Runtime Closeout, trusted rollout-history, or cadence-example
+  reference adapters or infer their missing owner-runtime, observation,
+  deploy-local, semantic projection, receipt-ABI, or active-cadence state
 - derived views cannot strengthen owner evidence or become owner truth
 
 Component Refresh remains a committed reference surface. Live activation
@@ -79,6 +79,14 @@ compatibility builder or invent a score mapping; semantic-only direct
 projection fails clearly. A future live surface requires an explicit
 cross-owner semantic projection and public schema contract.
 
+Runtime Closeout remains a committed historical wave-receipt compatibility
+surface. The active source registry no longer admits the stale
+`runtime-wave-closeouts.jsonl` feed. Current `abyss-stack`
+`runtime_trial_closeout_receipt` and SDK `runtime_return_closeout_receipt`
+contracts are distinct and are not coerced into the wave ABI. Future live
+activation requires an owner-approved canonical receipt, a real observed log,
+registry and watcher parity, and end-to-end refresh proof.
+
 Memory Movement remains a committed snapshot of real reviewed `aoa-memo`
 corpus truth. Its catalog, object corpus, reviewed intake, and landing receipts
 are authentic owner sources, but none of those four roots currently causes the
@@ -110,6 +118,9 @@ Movement, and Stress Recovery audit are recorded in
 `docs/decisions/AOST-D-0004-live-admission-requires-refresh-observation.md`.
 The Route Progression semantic-versus-numeric boundary is recorded in
 `docs/decisions/AOST-D-0005-route-progression-semantic-receipts-are-not-numeric-live-state.md`.
+The Runtime Closeout historical-wave versus current-owner receipt boundary is
+recorded in
+`docs/decisions/AOST-D-0006-runtime-closeout-wave-receipts-are-not-current-trial-live-state.md`.
 
 ## Compatibility route
 
