@@ -1730,7 +1730,7 @@
     },
     {
       "artifact_kind": "document",
-      "content_hash": "16b81e65292e58d68f94ff057c3640c779fd6870b00b946f633419cc65e08383",
+      "content_hash": "b25f7856a6b9593324598b9a55a376a061dc522ce6c1a9b40e01cc0bb1b85b30",
       "id": "artifact:file:agents.md:a54ff182c7",
       "path": "AGENTS.md",
       "source_record_id": "file:agents.md:a54ff182c7",
@@ -1738,7 +1738,7 @@
     },
     {
       "artifact_kind": "document",
-      "content_hash": "dcec2b9bbca394c9fda7a0a7175b4a51aa06e6770dc9ceedbbe423b6c0a1d812",
+      "content_hash": "092c8eb17fa41574e325dee8bee7b5da4526a28d810307f375d99ddb645b42b5",
       "id": "artifact:file:changelog.md:06572a96a5",
       "path": "CHANGELOG.md",
       "source_record_id": "file:changelog.md:06572a96a5",
@@ -1762,7 +1762,7 @@
     },
     {
       "artifact_kind": "document",
-      "content_hash": "3cf74d38cbaee246692ed8db24c9a51b5f02c25d2a26e9ab219d09cd4ece386c",
+      "content_hash": "b16d147c8089ab1f2e57f6573ed07df57e0b1785049ad46654589ad1a3e4437a",
       "id": "artifact:file:design.md:3dc5dd454e",
       "path": "DESIGN.md",
       "source_record_id": "file:design.md:3dc5dd454e",
@@ -2314,7 +2314,7 @@
     },
     {
       "artifact_kind": "generated_readmodel",
-      "content_hash": "34e3c05eedd14738a494caef6d22a6ab6277dc84ff03c3dcddde30eb806bb446",
+      "content_hash": "d9e0f34e62bf1e97cead255db9cc246c7bb4250b2ddea1086844f4b1c2e6bbee",
       "id": "artifact:file:generated/summary_surface_catalog.min.json:5c31a5556b",
       "path": "generated/summary_surface_catalog.min.json",
       "source_record_id": "file:generated/summary_surface_catalog.min.json:5c31a5556b",
@@ -6330,7 +6330,7 @@
     },
     {
       "artifact_kind": "document",
-      "content_hash": "ee69c665bd14c4e94d05703d65c7b86378e1ec0bfb913738ee566cf9930e1af7",
+      "content_hash": "1b6e6b6f75b8311bf99ed09570780c71ed3606162657faca2412f44ff760d017",
       "id": "artifact:file:mechanics/rpg/parts/route-progression/contract.md:817b4e0ff0",
       "path": "mechanics/rpg/parts/route-progression/CONTRACT.md",
       "source_record_id": "file:mechanics/rpg/parts/route-progression/contract.md:817b4e0ff0",
@@ -6346,7 +6346,7 @@
     },
     {
       "artifact_kind": "document",
-      "content_hash": "b845d99c3d9ed9262278cfed4063dc176b7adf16f10af14df1a78c5d8bc87664",
+      "content_hash": "3fb9b79924ff6b4f776ce0bb476f5610cb9091609620c5d8361a1352c9bdee70",
       "id": "artifact:file:mechanics/rpg/parts/route-progression/validation.md:7e284b4abd",
       "path": "mechanics/rpg/parts/route-progression/VALIDATION.md",
       "source_record_id": "file:mechanics/rpg/parts/route-progression/validation.md:7e284b4abd",
@@ -7482,7 +7482,7 @@
     },
     {
       "artifact_kind": "config",
-      "content_hash": "410c5d6e9dab4ab2234c1796cc6d070154ffb5dc02afe6bd9c64287082e4b5c7",
+      "content_hash": "d263b51a64fb018a8c064f9318e88ce7a9d2197beff3c78f03611a5647bf4fef",
       "id": "artifact:file:stats/read-models/active/owner_landing_summary.profile.json:c1821a1f8b",
       "path": "stats/read-models/active/owner_landing_summary.profile.json",
       "source_record_id": "file:stats/read-models/active/owner_landing_summary.profile.json:c1821a1f8b",
@@ -7506,7 +7506,7 @@
     },
     {
       "artifact_kind": "config",
-      "content_hash": "9e8cd4227e230cd0841b74db4873a70737f2d0df85ddf9dc49f340a9972df59b",
+      "content_hash": "3dd1a9275ddbc5efb1dbc7e7866cf04cfa8277af9fd52f42c2f6ea69a9f9aca5",
       "id": "artifact:file:stats/read-models/active/route_progression_summary.profile.json:11573cb98a",
       "path": "stats/read-models/active/route_progression_summary.profile.json",
       "source_record_id": "file:stats/read-models/active/route_progression_summary.profile.json:11573cb98a",
@@ -7538,7 +7538,7 @@
     },
     {
       "artifact_kind": "config",
-      "content_hash": "171241b4d090837967ff61acdea7ab47d0f2dc112c64ded3d58eeaa345750047",
+      "content_hash": "49cf3af89266b3f65d35fa11a4b2dbea27f52e4bc1f70f4621e425ae2c12bcba",
       "id": "artifact:file:stats/read-models/active/stress_recovery_window_summary.profile.json:bb4a003393",
       "path": "stats/read-models/active/stress_recovery_window_summary.profile.json",
       "source_record_id": "file:stats/read-models/active/stress_recovery_window_summary.profile.json:bb4a003393",
@@ -7546,7 +7546,7 @@
     },
     {
       "artifact_kind": "config",
-      "content_hash": "fcc521a8e3de585859369508660a12550c0a422968be3de9c5c1a8bf35ffb6f3",
+      "content_hash": "8cf415bf4b65b6a6a37955312786213ac946548bd554aaf8fb393140114e2852",
       "id": "artifact:file:stats/read-models/active/supersession_drop_summary.profile.json:8cd7f19bfd",
       "path": "stats/read-models/active/supersession_drop_summary.profile.json",
       "source_record_id": "file:stats/read-models/active/supersession_drop_summary.profile.json:8cd7f19bfd",
@@ -7618,7 +7618,7 @@
     },
     {
       "artifact_kind": "document",
-      "content_hash": "08fd49cf5613d54119113b1502f8c02ee9915739d63b2464c91288b9251ae0d5",
+      "content_hash": "5dcd0a5e962c9e1a4975bf575251d20d4da09a11b11706a5e351b7c58df49b17",
       "id": "artifact:file:stats/surface-catalog/consumer_regrounding.md:1a188b1dab",
       "path": "stats/surface-catalog/CONSUMER_REGROUNDING.md",
       "source_record_id": "file:stats/surface-catalog/consumer_regrounding.md:1a188b1dab",
@@ -7714,7 +7714,7 @@
     },
     {
       "artifact_kind": "test",
-      "content_hash": "d440ea0bf2965cf58a64535d62216a8c7ec26dd549c27631ae0338474d313c19",
+      "content_hash": "c3609aa53aa08b190190a9452a388418017178dde08c490b99aa8f16372b9c9a",
       "id": "artifact:file:tests/test_summary_surface_catalog.py:ebdd6f47a0",
       "path": "tests/test_summary_surface_catalog.py",
       "source_record_id": "file:tests/test_summary_surface_catalog.py:ebdd6f47a0",
@@ -7731,7 +7731,7 @@
   ],
   "index_identity": {
     "artifact_kind": "repository_artifact_index",
-    "content_digest": "4db6bbbb7a4c8ce02c276f0612a6cbe20d460e4008c21bbbf20d77f1ec73bdd3",
+    "content_digest": "b3820a0154ce3f0a643230a12fdc51b9bc5ede19c5c04a8e6e13190eb1c5465d",
     "index_kind": "artifact",
     "local_id": "index:repo-local:artifacts",
     "schema_ref": "aoa-kag:schemas/repo-local-kag-repository-index.schema.json"
@@ -7755,7 +7755,7 @@
   },
   "schema_version": "aoa-repo-local-kag-repository-index-v1",
   "source_index": {
-    "content_digest": "2ed2a8e76e09333e584f1a33ffd9cfc49374143814c0f71d2621271ff83ce8ff",
+    "content_digest": "9212df5a9c41bcb41eed77ecba6e635a53b59d49ff7d4b4d042dc03c3a0b0f1f",
     "local_id": "index:repo-local:source-surfaces",
     "path": "kag/indexes/source_surface_index.json"
   },

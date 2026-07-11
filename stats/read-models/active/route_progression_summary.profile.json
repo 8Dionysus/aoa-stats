@@ -9,7 +9,8 @@
   "derivation_rule": "project the committed legacy numeric progression receipt fixture by route_ref, reject semantic-only axis_delta_summary payloads instead of inventing scores, sum the fixed seven-axis numeric values, and normalize the latest verdict to a non-empty string",
   "input_posture": "committed_legacy_numeric_receipt_snapshot",
   "owner_truth_inputs": [
-    "aoa-skills legacy numeric progression_delta_receipt compatibility examples",
+    "aoa-skills/skills/core/session-growth/aoa-session-progression-lift/references/progression-delta-receipt-schema.yaml",
+    "aoa-skills/mechanics/growth-cycle/examples/session-growth-artifacts/progression_delta_receipt.kernel-maturity.json",
     "Agents-of-Abyss RPG center progression vocabulary and stop-lines",
     "aoa-agents agent-layer seven-axis progression-model contract",
     "aoa-sdk typed progression and checkpoint-carry contracts"

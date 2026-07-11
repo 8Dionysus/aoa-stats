@@ -5,6 +5,8 @@
 - `Agents-of-Abyss/mechanics/rpg` owns progression-reading vocabulary and
   authority stop-lines.
 - `aoa-skills` owns admitted `progression_delta_receipt` payload facts.
+  Consumer re-grounding starts at its tracked current semantic schema and
+  semantic example, not at the legacy numeric compatibility fixture.
 - `aoa-agents/mechanics/rpg/parts/progression-model/` owns the agent-layer
   seven-axis progression overlay.
 - `aoa-sdk` RPG models and checkpoint-carry contracts own typed consumer and
@@ -36,6 +38,13 @@ owner contract uses semantic `scope_ref`, `axis_delta_summary`, and
 `caution_refs` fields and explicitly avoids a score-shaped model. When a
 receipt supplies semantic `axis_delta_summary` without numeric `axis_deltas`,
 the core fails explicitly. It must never translate posture labels into numbers.
+
+The exact first owner-return refs are
+`aoa-skills/skills/core/session-growth/aoa-session-progression-lift/references/progression-delta-receipt-schema.yaml`
+and
+`aoa-skills/mechanics/growth-cycle/examples/session-growth-artifacts/progression_delta_receipt.kernel-maturity.json`.
+They describe current semantic truth; they do not change the committed numeric
+projection ABI.
 
 Route Progression is therefore `live_state_capable: false`. Live refresh omits
 the builder, removes a stale managed output, and does not advertise the surface

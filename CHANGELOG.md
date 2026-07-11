@@ -92,6 +92,10 @@ Tracking starts with the first public release-prep baseline for this repository.
   aliases. Reclassified the surface as reference-only because the current
   owner receipt is semantic rather than numeric, rejected score invention, and
   made live refresh omit and clean the legacy snapshot.
+- Corrected consumer re-grounding inputs to lead with the exact current
+  `aoa-skills` semantic progression schema and example, and replaced an active
+  owner-landing bootstrap label with source-route compatibility wording. The
+  historical receipt ABI and committed summary payloads remain unchanged.
 
 ## [0.1.3] - 2026-04-23
 
