@@ -139,10 +139,11 @@ reference-only surfaces. Local live refresh treats `live_state_capable` as an
 executable admission contract: it materializes only `true` profiles, writes a
 live catalog only for outputs actually present, and cleans stale files across
 the full managed active-profile set. The managed read-model inventory is 25;
-the authored live-admitted inventory is 12. Component Refresh, Continuity
+the authored live-admitted inventory is 11. Component Refresh, Continuity
 Window, Codex Plane Deployment, trusted rollout-history, cadence examples,
 Owner Landing, Route Progression, Memory Movement, Stress Recovery, and Titan
-reference surfaces are excluded from live mode. The selector and stale-cleanup
+reference surfaces, plus Runtime Closeout, are excluded from live mode. The
+selector and stale-cleanup
 precedent is
 `docs/decisions/AOST-D-0003-component-refresh-fixtures-are-not-live-state.md`,
 which decides the Component Refresh case only. The cross-profile requirement
@@ -154,6 +155,12 @@ legacy numeric compatibility projection while the current `aoa-skills` owner
 receipt is semantic and deliberately not score-shaped. AOST-D-0005 forbids an
 invented semantic-to-numeric mapping and requires semantic-only receipts to be
 rejected rather than flattened into zero deltas.
+Runtime Closeout remains reference-only because its stable public output
+projects the historical `runtime_wave_closeout_receipt`, whereas current
+`abyss-stack` produces `runtime_trial_closeout_receipt` and `aoa-sdk` owns a
+separate `runtime_return_closeout_receipt` transport. AOST-D-0006 forbids
+implicit aliasing and requires owner-contract plus watcher parity before live
+reactivation.
 Continuity Window remains
 reference-only because its current cross-owner inputs are examples, an
 experimental playbook, and draft catalog definitions rather than a real

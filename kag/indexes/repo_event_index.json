@@ -69,7 +69,7 @@
       "heading_ref": {
         "anchor": "013-2026-04-23",
         "level": 2,
-        "line": 100,
+        "line": 107,
         "ref": "CHANGELOG.md#013-2026-04-23",
         "title": "[0.1.3] - 2026-04-23"
       },
@@ -84,7 +84,7 @@
       "heading_ref": {
         "anchor": "012-2026-04-19",
         "level": 2,
-        "line": 139,
+        "line": 146,
         "ref": "CHANGELOG.md#012-2026-04-19",
         "title": "[0.1.2] - 2026-04-19"
       },
@@ -99,7 +99,7 @@
       "heading_ref": {
         "anchor": "011-2026-04-12",
         "level": 2,
-        "line": 170,
+        "line": 177,
         "ref": "CHANGELOG.md#011-2026-04-12",
         "title": "[0.1.1] - 2026-04-12"
       },
@@ -114,7 +114,7 @@
       "heading_ref": {
         "anchor": "010-2026-04-10",
         "level": 2,
-        "line": 209,
+        "line": 216,
         "ref": "CHANGELOG.md#010-2026-04-10",
         "title": "[0.1.0] - 2026-04-10"
       },
@@ -182,6 +182,15 @@
       "observation_state": "declared",
       "path": "docs/decisions/AOST-D-0005-route-progression-semantic-receipts-are-not-numeric-live-state.md",
       "source_record_id": "file:docs/decisions/aost-d-0005-route-progression-semantic-receipts-are-not-numeric-live-state.md:2c87e51553"
+    },
+    {
+      "event_kind": "decision_record",
+      "event_role": "declaration",
+      "heading_ref": null,
+      "id": "event:repo:198d2a5337ddce64b872",
+      "observation_state": "declared",
+      "path": "docs/decisions/AOST-D-0006-runtime-closeout-wave-receipts-are-not-current-trial-live-state.md",
+      "source_record_id": "file:docs/decisions/aost-d-0006-runtime-closeout-wave-receipts-are-not-current-trial-live-state.md:6b404d83d8"
     },
     {
       "event_kind": "decision_record",
@@ -551,6 +560,15 @@
       "observation_state": "declared",
       "path": "mechanics/boundary-bridge/parts/receipt-abi-crossing/tests/test_receipt_abi_governance.py",
       "source_record_id": "file:mechanics/boundary-bridge/parts/receipt-abi-crossing/tests/test_receipt_abi_governance.py:68b3a3493b"
+    },
+    {
+      "event_kind": "test_run",
+      "event_role": "producer",
+      "heading_ref": null,
+      "id": "event:repo:ea835c11933ba9a72c55",
+      "observation_state": "declared",
+      "path": "mechanics/checkpoint/parts/runtime-closeout/tests/test_runtime_closeout.py",
+      "source_record_id": "file:mechanics/checkpoint/parts/runtime-closeout/tests/test_runtime_closeout.py:3a40888b63"
     },
     {
       "event_kind": "test_run",
@@ -996,7 +1014,7 @@
   ],
   "index_identity": {
     "artifact_kind": "repository_event_index",
-    "content_digest": "77a9160f22971353dc05b4144f711216fd9214ffd2eb9f60592ca9f4e62579c2",
+    "content_digest": "5d28f7c2f94a5d63df17ed5f869ef6598d9f771fad3cb6e33344a86a3be8f2b8",
     "index_kind": "event",
     "local_id": "index:repo-local:events",
     "schema_ref": "aoa-kag:schemas/repo-local-kag-repository-index.schema.json"
@@ -1021,19 +1039,19 @@
   },
   "schema_version": "aoa-repo-local-kag-repository-index-v1",
   "source_index": {
-    "content_digest": "9212df5a9c41bcb41eed77ecba6e635a53b59d49ff7d4b4d042dc03c3a0b0f1f",
+    "content_digest": "d2b0d46f004da4793fa992ca931d5773f020c335f984e2763dd49e79b8d1d46a",
     "local_id": "index:repo-local:source-surfaces",
     "path": "kag/indexes/source_surface_index.json"
   },
   "summary": {
-    "entry_count": 107,
+    "entry_count": 109,
     "kind_counts": {
       "command_run": 12,
-      "decision_record": 12,
+      "decision_record": 13,
       "generation_run": 10,
       "release_declaration": 4,
       "release_lane": 1,
-      "test_run": 47,
+      "test_run": 48,
       "validation_lane_run": 1,
       "validation_receipt": 1,
       "validation_run": 18,

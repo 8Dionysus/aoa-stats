@@ -40,7 +40,13 @@ The active entries must match the enum order in
 `schemas/stats-event-envelope.schema.json` exactly.
 
 That keeps the shared envelope machine-friendly while still letting the stats
-layer explain which families are actually alive.
+layer explain which compatibility families remain admissible.
+
+Registry `status=active` means the compatibility envelope may admit the event
+kind. It does not prove that a current owner publishes it or that the live
+source registry observes it. Runtime-wave closeout is intentionally
+envelope-admissible for the committed historical fixture while absent from the
+current live-source registry.
 
 ## Mirror law
 

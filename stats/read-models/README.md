@@ -17,11 +17,12 @@ by the local live refresh loop when its inputs resolve. A `false` profile stays
 on its committed/reference route and is omitted from live output and the live
 catalog, although refresh cleanup still removes any stale runtime copy.
 
-The current managed inventory contains 25 active profiles; 12 are admitted to
-live materialization. The 13 reference-only profiles are Owner Landing,
+The current managed inventory contains 25 active profiles; 11 are admitted to
+live materialization. The 14 reference-only profiles are Owner Landing,
 Codex Plane Deployment, Codex Rollout Operations, Codex Rollout Drift, Rollout
 Campaign, Drift Review, Continuity Window, Component Refresh, Memory Movement,
-Route Progression, Titan Incarnation, Titan Summon, and Stress Recovery Window.
+Route Progression, Runtime Closeout, Titan Incarnation, Titan Summon, and Stress
+Recovery Window.
 Continuity Window describes the posture represented by its committed
 cross-owner example/catalog chain. Codex Plane Deployment describes the posture
 represented by the committed 8Dionysus trust-state, regeneration-report, and
@@ -56,6 +57,13 @@ contract intentionally uses descriptive `axis_delta_summary` values rather
 than a numeric score, aoa-stats rejects that shape instead of assigning
 numbers. Future live activation needs an explicit cross-owner semantic
 projection contract.
+
+Runtime Closeout retains the committed historical `runtime_wave_closeout_receipt`
+snapshot, but not live admission. The current `abyss-stack` producer emits
+`runtime_trial_closeout_receipt` to a different owner-local log, while
+`aoa-sdk` exposes a separate `runtime_return_closeout_receipt` contract. None
+is an implicit alias. Future live activation needs one owner-approved receipt
+ABI, an observed source, registry and watcher parity, and end-to-end proof.
 
 Use `committed_owner_example_chain` only when one owner repository publishes a
 coherent set of checked-in examples that can drive a deterministic committed

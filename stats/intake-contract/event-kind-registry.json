@@ -178,7 +178,7 @@
         "runtime_closeout_summary",
         "source_coverage_summary"
       ],
-      "notes": "Program or wave closeout gate facts from the runtime layer."
+      "notes": "Historical program-wave closeout compatibility facts. This kind remains envelope-admissible for committed fixtures but is not a current live source; runtime_trial_closeout_receipt and runtime_return_closeout_receipt are distinct owner contracts."
     },
     {
       "event_kind": "seed_owner_landing_trace_receipt",

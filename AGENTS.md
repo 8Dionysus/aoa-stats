@@ -103,6 +103,16 @@ Route Progression consumer re-grounding must lead with the exact current
 numeric fixture belongs to the reference input posture; it is not the first
 stronger-owner return target.
 
+Runtime Closeout is a Checkpoint-owned projection boundary. The Checkpoint
+center owns closeout vocabulary and authority stop-lines; `abyss-stack` owns
+runtime trial execution, gate results, and closeout publication; `aoa-sdk`
+owns reviewed-closeout packet and handoff transport. The compatibility summary
+accepts only the historical `runtime_wave_closeout_receipt` shape. The current
+owner producer emits `runtime_trial_closeout_receipt` to a differently named
+feed, so these kinds must not be silently aliased and the profile must remain
+outside live state until the owner ABI, registry, and observation route agree.
+Root builder names remain compatibility aliases and fan-out only.
+
 Treat `live_state_capable` as an executable profile contract. The live refresh
 mechanic may materialize and advertise only surfaces whose authored profile
 sets it to `true`; it must still remove stale managed runtime files for

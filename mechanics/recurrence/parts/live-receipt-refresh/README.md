@@ -22,22 +22,27 @@ the canonical assets from this part.
 - active profiles under `stats/read-models/active/` define the managed output
   universe: currently 25 read models
 - only profiles with `live_state_capable: true` enter the live build allowlist
-  (currently 13 authored profiles)
+  (currently 11 authored profiles)
 - `state/generated/summary_surface_catalog.min.json` lists only outputs
   actually admitted and materialized by that live run
 - cleanup still covers every managed active output, so an older runtime copy
   of a reference-only surface is removed
 - the Component Refresh, Continuity Window, Codex Plane Deployment, Memory
-  Movement, Stress Recovery, trusted rollout-history, and cadence-example
-  adapters are never implicit live fallbacks
+  Movement, Route Progression, Runtime Closeout, Stress Recovery, trusted
+  rollout-history, and cadence-example adapters are never implicit live
+  fallbacks
 
-All 12 committed/reference profiles are therefore absent from live output
+All 14 committed/reference profiles are therefore absent from live output
 until both their current owner source and the observation route that can cause
 refresh are real. Owner Landing and Stress Recovery still lack their named
 owner publishers. Memory Movement reads a real reviewed `aoa-memo` corpus,
 but the watcher does not observe changes to its catalog, object, reviewed
 intake, or landing-receipt roots; the memo writeback receipt log is not a
 substitute for that missing corpus trigger.
+
+The active registry excludes the historical runtime-wave log. Current
+`abyss-stack` trial receipts and SDK return receipts have distinct contracts;
+neither is admitted as a wave alias. AOST-D-0006 records the reactivation gate.
 
 Codex Plane refresh passes an explicit `live` source mode and workspace root
 so future activation cannot silently reuse committed 8Dionysus inputs. The

@@ -122,6 +122,19 @@ example in `aoa-skills`. Compatibility-fixture wording remains in the
 reference derivation posture only; it must not masquerade as stronger current
 owner truth or make a router prefer the legacy numeric shape.
 
+Runtime Closeout follows the mechanics-led Checkpoint variant. A pure
+Checkpoint core owns only the historical receipt-to-summary transformation;
+the profile owns the reference/live posture and stronger-owner route; the root
+builder keeps compatibility aliases and repo-wide fan-out. `abyss-stack`
+currently writes `runtime_trial_closeout_receipt` to
+`runtime-trial-closeouts.jsonl`, while the admitted stats ABI and installed
+observation route still name the older wave receipt and feed. The active stats
+source registry excludes that historical feed, while the compatibility ABI
+continues to support the committed fixture. The projection therefore stays
+committed/reference-only until a cross-owner change chooses a canonical
+receipt kind, registers it, observes its real feed, and proves a current
+producer. Extraction does not authorize an implicit kind conversion.
+
 Generated artifacts never become source authority merely because they are
 committed or convenient to query.
 
