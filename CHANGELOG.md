@@ -103,6 +103,11 @@ Tracking starts with the first public release-prep baseline for this repository.
   producer, removed that stale feed from active admission, and preserved it as
   committed compatibility only. No implicit event-kind alias was introduced
   and committed Runtime Closeout bytes remain stable.
+- Corrected the Repeated Window source question from inferred change to
+  observed calendar-date activity, then localized its filesystem-free
+  aggregation core and focused permutation, conservation, identity,
+  non-mutation, schema, compatibility-hook, and public-byte invariants under
+  Recurrence.
 
 ## [0.1.3] - 2026-04-23
 

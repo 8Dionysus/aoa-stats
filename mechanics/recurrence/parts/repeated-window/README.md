@@ -1,15 +1,19 @@
 # Repeated window
 
-This part routes the deterministic repeated-window summary without moving its
-stable public contract merely for directory symmetry.
+This part owns the focused operation boundary for the deterministic
+repeated-window summary without moving its stable public contract merely for
+directory symmetry.
 
-- status: `public_contract_routed`
+- status: `localized_active`
 - stats source family: `read_models`
 - source profile: `stats/read-models/active/repeated_window_summary.profile.json`
 - public schema: `schemas/repeated-window-summary.schema.json`
 - public output: `generated/repeated_window_summary.min.json`
-- shared builder: `scripts/build_views.py`
+- pure core: `src/aoa_stats_builder/repeated_window.py`
+- root compatibility and fan-out: `scripts/build_views.py`
+- focused tests: `tests/test_repeated_window.py`
 - checks: `VALIDATION.md`
 
-There is no private payload copy in this part. The route card and contract are
-the mechanic boundary; the schema and output intentionally remain public.
+The part-local test suite is the operation payload. The schema and output
+intentionally remain public, and the importable core remains in `src/` so the
+root facade can reuse it without duplicating the projection.

@@ -56,6 +56,11 @@ cross-owner examples, experimental playbook, and eval catalog are not current
 runtime evidence. Reanchor counts remain evidence-backed, and its adapter stays
 outside live refresh until a canonical owner-runtime continuity source exists.
 
+Repeated Window remains live-capable because it consumes the active admitted
+receipt feed. Its date buckets report observed receipt activity only; neither
+the part name nor a non-zero count proves that change, recurrence, cadence, or
+causality occurred.
+
 Codex Plane Deployment is also excluded by its authored profile. Live refresh
 passes an explicit workspace root and `live` mode for that operation, so the
 committed 8Dionysus example chain cannot become an implicit runtime fallback.

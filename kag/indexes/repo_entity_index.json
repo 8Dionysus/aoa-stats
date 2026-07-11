@@ -10614,6 +10614,20 @@
     },
     {
       "coordinates": {
+        "artifact_kind": "test",
+        "code_role": "test",
+        "command_role": "test",
+        "document_role": "none",
+        "mechanics_role": "part_test",
+        "surface_state": "authored_source"
+      },
+      "entity_kind": "mechanic_part",
+      "id": "entity:file:mechanics/recurrence/parts/repeated-window/tests/test_repeated_window.py:1154a9e3a0",
+      "label": "mechanics/recurrence/parts/repeated-window/tests/test_repeated_window.py",
+      "source_record_id": "file:mechanics/recurrence/parts/repeated-window/tests/test_repeated_window.py:1154a9e3a0"
+    },
+    {
+      "coordinates": {
         "artifact_kind": "document",
         "code_role": "none",
         "command_role": "none",
@@ -12414,6 +12428,20 @@
         "surface_state": "authored_source"
       },
       "entity_kind": "code",
+      "id": "entity:file:src/aoa_stats_builder/repeated_window.py:a7273b48de",
+      "label": "src/aoa_stats_builder/repeated_window.py",
+      "source_record_id": "file:src/aoa_stats_builder/repeated_window.py:a7273b48de"
+    },
+    {
+      "coordinates": {
+        "artifact_kind": "source_code",
+        "code_role": "source_module",
+        "command_role": "none",
+        "document_role": "none",
+        "mechanics_role": "none",
+        "surface_state": "authored_source"
+      },
+      "entity_kind": "code",
       "id": "entity:file:src/aoa_stats_builder/rollout_cadence.py:d79f092a68",
       "label": "src/aoa_stats_builder/rollout_cadence.py",
       "source_record_id": "file:src/aoa_stats_builder/rollout_cadence.py:d79f092a68"
@@ -13569,7 +13597,7 @@
   ],
   "index_identity": {
     "artifact_kind": "repository_entity_index",
-    "content_digest": "0984f06b8c6e8c7fa5c080842590cd108d83180f88c9e3d6dba9f78f40768663",
+    "content_digest": "b8f6762d65add9243bd37102067468b3f971b6f6c2ce6047e882c9fcb6df66b4",
     "index_kind": "entity",
     "local_id": "index:repo-local:entities",
     "schema_ref": "aoa-kag:schemas/repo-local-kag-repository-index.schema.json"
@@ -13592,23 +13620,23 @@
   },
   "schema_version": "aoa-repo-local-kag-repository-index-v1",
   "source_index": {
-    "content_digest": "d2b0d46f004da4793fa992ca931d5773f020c335f984e2763dd49e79b8d1d46a",
+    "content_digest": "05992253d5946e42e428d8799fb5a43e6436fb2e04ceab3f887e99880121035d",
     "local_id": "index:repo-local:source-surfaces",
     "path": "kag/indexes/source_surface_index.json"
   },
   "summary": {
-    "entry_count": 969,
+    "entry_count": 971,
     "kind_counts": {
       "agent_route": 16,
       "artifact": 148,
-      "code": 31,
+      "code": 32,
       "command": 31,
       "contract": 34,
       "decision": 13,
       "document": 137,
       "manifest": 1,
       "mechanic_package": 56,
-      "mechanic_part": 459,
+      "mechanic_part": 460,
       "owner_surface": 2,
       "readmodel": 41
     }

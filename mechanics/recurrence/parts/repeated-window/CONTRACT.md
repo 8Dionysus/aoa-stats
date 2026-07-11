@@ -9,7 +9,10 @@ visible without treating repetition as proof, promotion, or action authority.
 
 - the authored `repeated_window_summary` profile under `stats/read-models/`
 - active receipt envelopes admitted by the stats intake contract
-- deterministic window rules in the shared builder
+- deterministic filesystem-free window rules in
+  `src/aoa_stats_builder/repeated_window.py`
+- the shared receipt object-identity helper from
+  `src/aoa_stats_builder/object_observation.py`
 
 ## Output
 
@@ -19,9 +22,13 @@ visible without treating repetition as proof, promotion, or action authority.
 ## Invariants
 
 - repeated observations remain derived evidence, not owner truth
+- a calendar-date bucket reports observed activity; it does not prove that
+  change, repetition, cadence, or causality occurred
 - a count or threshold does not authorize promotion or workflow activation
 - superseded receipts do not silently re-enter the active window
 - deterministic ordering is preserved across equivalent input orderings
+- receipt, event-kind, object-identity, and evidence-ref counts are conserved
+  within each window
 
 ## Crosswalk
 

@@ -65,6 +65,12 @@ snapshot, but not live admission. The current `abyss-stack` producer emits
 is an implicit alias. Future live activation needs one owner-approved receipt
 ABI, an observed source, registry and watcher parity, and end-to-end proof.
 
+Repeated Window remains receipt-backed and live-capable, but its claim is
+deliberately narrower than its historical name. It groups admitted receipts by
+the calendar-date prefix already present in `observed_at` and reports conserved
+counts. It does not compare states or infer that change, recurrence, cadence, or
+causality occurred.
+
 Use `committed_owner_example_chain` only when one owner repository publishes a
 coherent set of checked-in examples that can drive a deterministic committed
 reference snapshot. The token does not admit the surface to live

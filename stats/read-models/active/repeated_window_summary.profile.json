@@ -5,8 +5,8 @@
   "name": "repeated_window_summary",
   "surface_ref": "generated/repeated_window_summary.min.json",
   "schema_ref": "schemas/repeated-window-summary.schema.json",
-  "primary_question": "What changed across bounded date windows without turning the result into one global score?",
-  "derivation_rule": "group receipts by observed_at date and keep counts plus bounded window signals",
+  "primary_question": "What admitted receipt activity was observed in each bounded date window without inferring change, recurrence, or one global score?",
+  "derivation_rule": "group admitted receipts by the calendar-date prefix of observed_at and conserve per-window receipt, object, event-kind, selected-event, and evidence-ref counts",
   "input_posture": "receipt_backed_live",
   "owner_truth_inputs": [
     "owner-local receipts across the active registry"

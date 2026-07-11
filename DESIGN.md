@@ -135,6 +135,16 @@ committed/reference-only until a cross-owner change chooses a canonical
 receipt kind, registers it, observes its real feed, and proves a current
 producer. Extraction does not authorize an implicit kind conversion.
 
+Repeated Window follows a stats-led Recurrence boundary. The profile owns the
+bounded question: which admitted receipt activity was observed in each
+`observed_at` calendar-date bucket. A filesystem-free core may conserve and
+count those receipts, event kinds, object identities, and evidence refs, but a
+date bucket does not by itself establish change, repetition, cadence, or
+causality. Focused invariant proof belongs with the Repeated Window part while
+the root builder remains the repo-wide fan-out facade. The core reuses the
+receipt object-identity tuple already used by Object Observation; sharing that
+stable value rule does not merge the Recurrence and Audit questions.
+
 Generated artifacts never become source authority merely because they are
 committed or convenient to query.
 

@@ -23,9 +23,12 @@ repository.
   projection in `src/aoa_stats_builder/continuity_window.py` and the committed
   cross-owner reference adapter in
   `src/aoa_stats_builder/continuity_window_sources.py`.
-- `repeated-window` has no private payload to localize in this slice: its
-  schema and generated summary are intentional root public contracts, and the
-  deterministic builder is shared by the read-model family.
+- `repeated-window` owns focused invariant tests for its live projection. Its
+  filesystem-free implementation lives at
+  `src/aoa_stats_builder/repeated_window.py`; the root builder keeps a thin
+  compatibility wrapper for its historical object-identity hook and repo-wide
+  fan-out, while schema and generated summary remain intentional root public
+  contracts.
 
 Git rename history is the content ledger for former root routes. No legacy
 copy is active.
