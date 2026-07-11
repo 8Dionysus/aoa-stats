@@ -151,7 +151,6 @@
         "mechanics/growth-cycle/parts/route-fork-calibration",
         "mechanics/growth-cycle/parts/session-growth-branch",
         "mechanics/method-growth/parts/candidate-lineage",
-        "mechanics/method-growth/parts/owner-landing",
         "mechanics/method-growth/parts/supersession-pruning",
         "mechanics/recurrence/parts/component-refresh",
         "mechanics/recurrence/parts/continuity-window",
@@ -722,7 +721,7 @@
       "mechanic_class": "common-center",
       "center_mechanic_ref": "Agents-of-Abyss/mechanics/method-growth",
       "local_status": "localized_active",
-      "local_function": "Observe candidate lineage, owner landing, and explicit supersession without deciding promotion.",
+      "local_function": "Observe candidate lineage and explicit supersession without deciding promotion; landing receipts remain turnover inputs without a standalone summary.",
       "package_payload_roots": [
         "tests"
       ],
@@ -742,20 +741,6 @@
           "retained_root_routes": [
             "docs/GROWTH_FUNNEL_SUMMARY.md"
           ]
-        },
-        {
-          "path": "owner-landing",
-          "owner_surface": "mechanics/method-growth/parts/owner-landing/CONTRACT.md",
-          "validation_surface": "mechanics/method-growth/parts/owner-landing/VALIDATION.md",
-          "payload_class": "owner-landing-stats-operation",
-          "stats_source_family_refs": [
-            "read_models"
-          ],
-          "localized_payload_roots": [
-            "docs",
-            "examples"
-          ],
-          "retained_root_routes": []
         },
         {
           "path": "supersession-pruning",

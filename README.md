@@ -41,8 +41,8 @@ their authored source and named owner inputs.
 The checked source home contains:
 
 - the canonical receipt intake contract and active event-kind registry
-- 24 active authored read-model profiles, one deferred contract profile, and
-  one retired-output cleanup tombstone
+- 23 active authored read-model profiles, one deferred contract profile, and
+  two retired-output cleanup tombstones with reserved former catalog slots
 - 15 authored operation-contract records for active non-catalog parts
 - deterministic projection core under `src/aoa_stats_builder/`, exposed by the
   repo-wide `scripts/build_views.py` entrypoint
@@ -149,12 +149,13 @@ ignored `state/`; committed public output stays under `generated/`. Local live
 materialization includes only active profiles with `live_state_capable: true`,
 and its catalog lists only outputs actually materialized. Reference-only
 profiles remain in the committed catalog and stale runtime copies are removed.
-The managed inventory remains 25 read models; the authored live-admitted
-allowlist contains 11. Checked-in trusted rollout history, the two committed
-cadence-example projections, Owner Landing, Route Progression, Runtime
-Closeout, Memory Movement, and Stress Recovery join Codex Plane Deployment,
-Continuity Window, Component Refresh, and the two Titan surfaces on the
-reference-only route.
+The managed inventory remains 25 read models: 23 active outputs plus two
+retired cleanup tombstones. The authored live-admitted allowlist contains 11.
+Checked-in trusted rollout history, the two committed cadence-example
+projections, Route Progression, Runtime Closeout, Memory Movement, Stress
+Recovery, Codex Plane Deployment, Continuity Window, Component Refresh, and
+Titan Incarnation make up the 12 active reference-only surfaces. Owner Landing
+and Titan Summon are retired rather than reference-only.
 [`AOST-D-0003`](docs/decisions/AOST-D-0003-component-refresh-fixtures-are-not-live-state.md)
 is the selector and stale-cleanup precedent established for Component Refresh,
 while
@@ -168,9 +169,11 @@ committed 8Dionysus examples, not the deploy-local rollout artifact trio.
 The rollout-history pair is excluded because checked-in review history is not
 runtime state; the Campaign/Drift pair is excluded because its source is a
 three-example cadence chain rather than an active producer.
-Owner Landing and Stress Recovery lack real publishers; Memory Movement reads
-real reviewed owner corpus truth, but that corpus has no refresh observation
-route yet. Runtime Closeout remains bounded to the historical wave-receipt
+Stress Recovery lacks a real publisher; Memory Movement reads real reviewed
+owner corpus truth, but that corpus has no refresh observation route yet.
+Owner Landing's standalone example aggregate is retired under AOST-D-0009,
+while its receipt kinds remain Supersession Drop inputs. Runtime Closeout
+remains bounded to the historical wave-receipt
 fixture because the current `abyss-stack` trial receipt and the separate SDK
 return receipt do not share its ABI; AOST-D-0006 forbids treating them as
 implicit aliases.

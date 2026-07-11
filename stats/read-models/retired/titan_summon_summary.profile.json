@@ -2,6 +2,7 @@
   "schema_version": "aoa_stats_surface_profile_source_v1",
   "lifecycle": "retired",
   "name": "titan_summon_summary",
+  "former_catalog_order": 21,
   "retired_surface_ref": "generated/titan_summon_summary.min.json",
   "schema_ref": "schemas/titan_summon_summary.schema.json",
   "retired_on": "2026-07-11",

@@ -170,6 +170,14 @@ output name in managed stale cleanup. No builder, committed payload, catalog
 entry, or root fan-out remains. A future observed projection must start from an
 owner-local ledger instance and a new reviewed active profile.
 
+The same lifecycle test applies to Owner Landing without discarding its useful
+receipt vocabulary. The two landing event kinds remain admitted inputs to the
+active Supersession Drop projection, but their standalone aggregate has no
+current owner publisher or direct consumer beyond generated routing hints. The
+example-only builder, payload, and dedicated mechanic part are therefore
+retired; Method Growth retains only the shared normalization that an active
+turnover read model actually consumes.
+
 Read-model lifecycle is source-owned and asymmetric by design:
 
 - `active/` records author public catalog surfaces and deterministic build
@@ -177,13 +185,21 @@ Read-model lifecycle is source-owned and asymmetric by design:
 - `deferred/` records author contract-only candidates and activation
   conditions;
 - `retired/` records are minimal tombstones that preserve cleanup and decision
-  provenance but authorize no publication.
+  provenance but authorize no publication. Each one also reserves its former
+  catalog slot.
 
 Generated outputs and catalogs are weaker projections of that lifecycle. Live
 refresh derives its materialization allowlist from active profiles and its
 stale-file cleanup universe from active plus retired records. This lets an
 output leave the active repository without becoming an undeletable deployed
 ghost or forcing historical payload back into source authority.
+
+Catalog order is stable identity rather than dense ordinal position. Retiring
+a surface leaves a reserved gap and does not renumber later profiles. Active
+and retired profiles must not share a slot; a newly introduced surface uses a
+new reviewed slot unless a separate migration explicitly changes public
+identity. A retired former mechanic route records provenance in Git and does
+not force an empty operation package to survive.
 
 Generated artifacts never become source authority merely because they are
 committed or convenient to query.
@@ -238,10 +254,11 @@ local state when no refresh trigger observes it. Memory Movement therefore
 keeps its reviewed `aoa-memo` corpus adapter and committed snapshot, while its
 live selector stays closed until catalog, object, reviewed-intake, and landing
 movement can trigger refresh through an explicit contract. Owner Landing stays
-reference-only while its event kinds have no real publisher, and Stress
-Recovery stays reference-only while its eval is draft and its only resolvable
-report is an example. Their committed summaries remain useful bounded contract
-snapshots; absence from `state/generated/` is the honest runtime posture.
+outside active publication because its event kinds have no real publisher or
+direct consumer, while Stress Recovery stays reference-only while its eval is
+draft and its only resolvable report is an example. The Owner Landing schema
+and receipt ABI remain contract history and shared turnover input; Stress
+Recovery's committed summary remains a bounded reference snapshot.
 
 ## Operation
 

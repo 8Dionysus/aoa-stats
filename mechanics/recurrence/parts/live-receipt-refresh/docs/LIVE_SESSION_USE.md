@@ -77,13 +77,12 @@ lockstep with that schema enum.
 
 ## Canonical repo surfaces
 
-The committed builder publishes all 24 active reference and live-capable
+The committed builder publishes all 23 active reference and live-capable
 profiles plus the public catalog:
 
 - `generated/core_skill_application_summary.min.json`
 - `generated/object_summary.min.json`
 - `generated/candidate_lineage_summary.min.json`
-- `generated/owner_landing_summary.min.json`
 - `generated/supersession_drop_summary.min.json`
 - `generated/repeated_window_summary.min.json`
 - `generated/route_progression_summary.min.json`
@@ -116,11 +115,10 @@ profiles are the single inventory source:
   cleanup universe
 - the live catalog lists only outputs actually materialized
 
-The managed cleanup inventory contains 25 names: 24 active read-model outputs
-plus one retired-output tombstone. The authored live-admitted allowlist contains
-exactly 11. The 13 reference-only active profiles are:
+The managed cleanup inventory contains 25 names: 23 active read-model outputs
+plus two retired-output tombstones. The authored live-admitted allowlist
+contains exactly 11. The 12 reference-only active profiles are:
 
-- `owner_landing_summary`
 - `route_progression_summary`
 - `codex_plane_deployment_summary`
 - `codex_rollout_operations_summary`
@@ -147,10 +145,11 @@ legacy numeric receipt snapshot; it rejects the current semantic-only
 `aoa-skills` receipt shape instead of inventing scores. None is a live
 fallback.
 
-`titan_summon_summary.min.json` is different: it is retired, not a false-live
-active surface. The builder and catalogs do not publish it. Its retired profile
-keeps the name in the managed cleanup universe so any older copy under
-`state/generated/` is removed deterministically.
+`owner_landing_summary.min.json` and `titan_summon_summary.min.json` are
+different: they are retired, not false-live active surfaces. The builder and
+catalogs do not publish them. Their retired profiles keep both names in the
+managed cleanup universe so older copies under `state/generated/` are removed
+deterministically.
 
 The history and cadence contexts remain distinct. “Latest” inside checked-in
 history is not deploy-local current state, and the cadence examples do not
@@ -182,10 +181,10 @@ no-drift, and anchor references, plus applicable real eval reports. The current
 aoa-agents example, experimental playbook, aoa-memo example, and aoa-evals
 catalog definitions cannot fill that absence.
 
-Future Owner Landing live activation requires real owner-local publishers for
-the accepted landing event kinds plus a registry/watch route that observes
-their receipt logs. Committed intake examples demonstrate the projection
-contract but do not prove that any owner currently publishes landing state.
+Future standalone Owner Landing reintroduction requires real owner-local
+publishers for the accepted landing event kinds, a new reviewed active profile
+and catalog slot, and a registry/watch route if live admission is claimed.
+Committed intake examples and the retirement tombstone do not activate it.
 
 Future Memory Movement live activation requires an explicit observation route
 for changes to the reviewed `aoa-memo` catalog, object corpus, reviewed intake,

@@ -6,7 +6,6 @@ from statistics import median
 from typing import Any
 
 from .read_model_values import (
-    duration_days_between,
     is_nonempty_string,
     normalize_string_list,
     parse_iso_datetime,
@@ -34,14 +33,6 @@ TIME_TO_STAGE_KEYS = (
     "promoted",
 )
 AMBIGUOUS_OWNER_TARGETS = {"hold", "unknown", "unresolved"}
-OWNER_LANDING_OUTCOMES = (
-    "landed_owner_status",
-    "landed_owner_object",
-    "reanchored",
-    "merged",
-    "deferred",
-    "dropped",
-)
 
 
 def empty_stage_counts() -> dict[str, int]:
@@ -423,96 +414,6 @@ def collect_seed_owner_landing_traces(
             item["candidate_ref"],
         ),
     )
-
-
-def empty_owner_landing_time_to_outcome() -> dict[str, float | None]:
-    return {outcome: None for outcome in OWNER_LANDING_OUTCOMES}
-
-
-def build_owner_landing_summary(
-    receipts: list[dict[str, Any]], source: dict[str, Any]
-) -> dict[str, Any]:
-    bundle_states = collect_owner_landing_bundles(receipts)
-    trace_states = collect_seed_owner_landing_traces(receipts)
-    states: dict[str, dict[str, Any]] = {}
-
-    for bundle in bundle_states:
-        state = states.setdefault(
-            bundle["candidate_ref"],
-            {
-                "owner_repo": None,
-                "owner_shape": None,
-                "status_posture": None,
-                "first_reviewed_at": None,
-                "landing_outcome": None,
-                "landing_observed_at": None,
-            },
-        )
-        state["owner_repo"] = bundle["owner_repo"]
-        state["owner_shape"] = bundle["owner_shape"]
-        state["status_posture"] = bundle["status_posture"]
-        first_reviewed_at = state["first_reviewed_at"]
-        if first_reviewed_at is None or parse_iso_datetime_or_min(
-            bundle["reviewed_at"]
-        ) < parse_iso_datetime_or_min(first_reviewed_at):
-            state["first_reviewed_at"] = bundle["reviewed_at"]
-
-    for trace in trace_states:
-        state = states.setdefault(
-            trace["candidate_ref"],
-            {
-                "owner_repo": None,
-                "owner_shape": None,
-                "status_posture": None,
-                "first_reviewed_at": None,
-                "landing_outcome": None,
-                "landing_observed_at": None,
-            },
-        )
-        state["owner_repo"] = trace["owner_repo"]
-        state["owner_shape"] = trace["owner_shape"]
-        state["landing_outcome"] = trace["outcome"]
-        state["landing_observed_at"] = trace["observed_at"]
-
-    owner_repo_counts: Counter[str] = Counter()
-    owner_shape_counts: Counter[str] = Counter()
-    status_posture_counts: Counter[str] = Counter()
-    landing_outcome_counts: Counter[str] = Counter()
-    time_to_outcome_values: dict[str, list[float]] = {
-        outcome: [] for outcome in OWNER_LANDING_OUTCOMES
-    }
-
-    for state in states.values():
-        owner_repo = state["owner_repo"]
-        owner_shape = state["owner_shape"]
-        status_posture = state["status_posture"]
-        landing_outcome = state["landing_outcome"]
-        if is_nonempty_string(owner_repo):
-            owner_repo_counts[owner_repo] += 1
-        if is_nonempty_string(owner_shape):
-            owner_shape_counts[owner_shape] += 1
-        if is_nonempty_string(status_posture):
-            status_posture_counts[status_posture] += 1
-        if is_nonempty_string(landing_outcome):
-            landing_outcome_counts[landing_outcome] += 1
-            duration = duration_days_between(
-                state["first_reviewed_at"], state["landing_observed_at"]
-            )
-            if duration is not None and landing_outcome in time_to_outcome_values:
-                time_to_outcome_values[landing_outcome].append(duration)
-
-    return {
-        "schema_version": "aoa_stats_owner_landing_summary_v1",
-        "generated_from": source,
-        "owner_repo_counts": dict(sorted(owner_repo_counts.items())),
-        "owner_shape_counts": dict(sorted(owner_shape_counts.items())),
-        "status_posture_counts": dict(sorted(status_posture_counts.items())),
-        "landing_outcome_counts": dict(sorted(landing_outcome_counts.items())),
-        "time_to_outcome_median_days": {
-            outcome: median_days(values)
-            for outcome, values in time_to_outcome_values.items()
-        },
-    }
 
 
 def collect_turnover_records(receipts: list[dict[str, Any]]) -> list[dict[str, Any]]:

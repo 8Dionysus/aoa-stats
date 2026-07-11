@@ -39,7 +39,6 @@ def test_build_views_reexports_candidate_lifecycle_core() -> None:
 
     for name in (
         "build_candidate_lineage_summary",
-        "build_owner_landing_summary",
         "build_supersession_drop_summary",
     ):
         assert getattr(facade, name) is getattr(core, name)
@@ -69,10 +68,6 @@ def test_candidate_lifecycle_core_is_schema_valid_and_does_not_mutate_receipts()
         (
             candidate_lifecycle.build_candidate_lineage_summary,
             "candidate_lineage_summary.schema.json",
-        ),
-        (
-            candidate_lifecycle.build_owner_landing_summary,
-            "owner-landing-summary.schema.json",
         ),
         (
             candidate_lifecycle.build_supersession_drop_summary,
@@ -112,7 +107,6 @@ def test_candidate_lifecycle_core_is_stable_after_active_receipt_resolution() ->
 
     for builder in (
         candidate_lifecycle.build_candidate_lineage_summary,
-        candidate_lifecycle.build_owner_landing_summary,
         candidate_lifecycle.build_supersession_drop_summary,
     ):
         assert builder(active, source) == builder(reordered_active, source)
@@ -335,116 +329,6 @@ def test_candidate_lineage_summary_stays_reviewed_only_and_no_score() -> None:
         "superseded_total": 0,
         "dropped_total": 1,
     }
-
-
-def test_owner_landing_summary_reads_reviewed_owner_landings_and_seed_traces() -> None:
-    module = load_candidate_lifecycle_module()
-    receipts = [
-        make_reviewed_owner_landing_receipt(
-            event_id="evt-owner-landing-test-0001",
-            observed_at="2026-04-11T12:00:00Z",
-            candidate_ref="candidate:session-growth:reviewed-donor-harvest",
-            status_posture="thin-evidence",
-        ),
-        make_seed_owner_landing_trace_receipt(
-            event_id="evt-seed-owner-trace-test-0001",
-            observed_at="2026-04-11T12:10:00Z",
-            candidate_ref="candidate:session-growth:reviewed-donor-harvest",
-            seed_ref="seed:aoa:session-growth:reviewed-donor-harvest:v1",
-            outcome="landed_owner_status",
-        ),
-    ]
-
-    summary = module.build_owner_landing_summary(
-        receipts,
-        {
-            "receipt_input_paths": ["owner-landing"],
-            "total_receipts": len(receipts),
-            "latest_observed_at": "2026-04-11T12:10:00Z",
-        },
-    )
-
-    assert summary["schema_version"] == "aoa_stats_owner_landing_summary_v1"
-    assert "total_score" not in summary
-    assert summary["owner_repo_counts"] == {"aoa-skills": 1}
-    assert summary["owner_shape_counts"] == {"skill": 1}
-    assert summary["status_posture_counts"] == {"thin-evidence": 1}
-    assert summary["landing_outcome_counts"] == {"landed_owner_status": 1}
-    assert summary["time_to_outcome_median_days"]["landed_owner_status"] == 0.01
-    assert summary["time_to_outcome_median_days"]["merged"] is None
-
-
-def test_owner_landing_summary_keeps_earliest_review_for_outcome_duration() -> None:
-    module = load_candidate_lifecycle_module()
-    receipts = [
-        make_reviewed_owner_landing_receipt(
-            event_id="evt-owner-landing-test-early",
-            observed_at="2026-04-11T12:00:00Z",
-            candidate_ref="candidate:session-growth:reviewed-donor-harvest",
-            status_posture="thin-evidence",
-        ),
-        make_reviewed_owner_landing_receipt(
-            event_id="evt-owner-landing-test-late",
-            observed_at="2026-04-12T12:00:00Z",
-            candidate_ref="candidate:session-growth:reviewed-donor-harvest",
-            status_posture="reviewed",
-        ),
-        make_reviewed_owner_landing_receipt(
-            event_id="evt-owner-landing-test-middle-arrives-late",
-            observed_at="2026-04-11T18:00:00Z",
-            candidate_ref="candidate:session-growth:reviewed-donor-harvest",
-            status_posture="middle",
-        ),
-        make_seed_owner_landing_trace_receipt(
-            event_id="evt-seed-owner-trace-test-late",
-            observed_at="2026-04-13T12:00:00Z",
-            candidate_ref="candidate:session-growth:reviewed-donor-harvest",
-            seed_ref="seed:aoa:session-growth:reviewed-donor-harvest:v1",
-            outcome="landed_owner_status",
-        ),
-    ]
-
-    summary = module.build_owner_landing_summary(
-        receipts,
-        {
-            "receipt_input_paths": ["owner-landing"],
-            "total_receipts": len(receipts),
-            "latest_observed_at": "2026-04-13T12:00:00Z",
-        },
-    )
-
-    assert summary["status_posture_counts"] == {"reviewed": 1}
-    assert summary["time_to_outcome_median_days"]["landed_owner_status"] == 2.0
-
-
-def test_owner_landing_summary_counts_unknown_outcome_without_duration_bucket() -> None:
-    module = load_candidate_lifecycle_module()
-    receipts = [
-        make_reviewed_owner_landing_receipt(
-            event_id="evt-owner-landing-test-unknown",
-            observed_at="2026-04-11T12:00:00Z",
-            candidate_ref="candidate:session-growth:experimental",
-        ),
-        make_seed_owner_landing_trace_receipt(
-            event_id="evt-seed-owner-trace-test-unknown",
-            observed_at="2026-04-12T12:00:00Z",
-            candidate_ref="candidate:session-growth:experimental",
-            seed_ref="seed:aoa:session-growth:experimental:v1",
-            outcome="experimental_outcome",
-        ),
-    ]
-
-    summary = module.build_owner_landing_summary(
-        receipts,
-        {
-            "receipt_input_paths": ["owner-landing"],
-            "total_receipts": len(receipts),
-            "latest_observed_at": "2026-04-12T12:00:00Z",
-        },
-    )
-
-    assert summary["landing_outcome_counts"] == {"experimental_outcome": 1}
-    assert "experimental_outcome" not in summary["time_to_outcome_median_days"]
 
 
 def test_supersession_drop_summary_uses_explicit_turnover_only() -> None:

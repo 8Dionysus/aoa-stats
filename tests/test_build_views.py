@@ -40,7 +40,6 @@ def test_build_views_produces_expected_surface_counts() -> None:
     assert set(outputs) == {
         "object_summary.min.json",
         "candidate_lineage_summary.min.json",
-        "owner_landing_summary.min.json",
         "supersession_drop_summary.min.json",
         "core_skill_application_summary.min.json",
         "repeated_window_summary.min.json",
@@ -79,15 +78,6 @@ def test_build_views_produces_expected_surface_counts() -> None:
     assert outputs["candidate_lineage_summary.min.json"]["owner_target_counts"] == {
         "aoa-playbooks": 1,
         "aoa-skills": 1,
-    }
-    assert outputs["owner_landing_summary.min.json"]["owner_repo_counts"] == {
-        "aoa-skills": 1,
-    }
-    assert outputs["owner_landing_summary.min.json"]["status_posture_counts"] == {
-        "early": 1,
-    }
-    assert outputs["owner_landing_summary.min.json"]["landing_outcome_counts"] == {
-        "landed_owner_status": 1,
     }
     assert outputs["supersession_drop_summary.min.json"]["drop_reason_counts"] == {
         "nearest_wrong_target_rejected_during_reviewed_harvest": 1,
@@ -174,7 +164,6 @@ def test_build_views_produces_expected_surface_counts() -> None:
         "generated/core_skill_application_summary.min.json",
         "generated/object_summary.min.json",
         "generated/candidate_lineage_summary.min.json",
-        "generated/owner_landing_summary.min.json",
         "generated/supersession_drop_summary.min.json",
         "generated/repeated_window_summary.min.json",
         "generated/route_progression_summary.min.json",
@@ -196,9 +185,9 @@ def test_build_views_produces_expected_surface_counts() -> None:
         "generated/source_coverage_summary.min.json",
         "generated/surface_detection_summary.min.json",
     ]
-    assert "titan_summon_summary" not in {
+    assert {"owner_landing_summary", "titan_summon_summary"}.isdisjoint({
         entry["name"] for entry in catalog["surfaces"]
-    }
+    })
     assert catalog["surfaces"][-2]["name"] == "source_coverage_summary"
     assert catalog["surfaces"][-2]["input_posture"] == "registry_backed_coverage_audit"
 

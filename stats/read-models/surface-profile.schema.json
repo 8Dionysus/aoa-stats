@@ -161,6 +161,7 @@
         "schema_version",
         "lifecycle",
         "name",
+        "former_catalog_order",
         "retired_surface_ref",
         "schema_ref",
         "retired_on",
@@ -181,6 +182,11 @@
         "name": {
           "type": "string",
           "pattern": "^[a-z][a-z0-9_]*$"
+        },
+        "former_catalog_order": {
+          "type": "integer",
+          "minimum": 1,
+          "description": "Stable catalog slot formerly held by this retired surface; active profiles may not reuse it."
         },
         "retired_surface_ref": {
           "type": "string",

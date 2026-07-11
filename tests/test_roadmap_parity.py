@@ -10,7 +10,6 @@ ROADMAP_PHRASES = {
     "core_skill_application_summary": "core-skill application",
     "object_summary": "object",
     "candidate_lineage_summary": "candidate-lineage",
-    "owner_landing_summary": "owner-landing",
     "supersession_drop_summary": "supersession-drop",
     "repeated_window_summary": "repeated-window",
     "route_progression_summary": "route-progression",

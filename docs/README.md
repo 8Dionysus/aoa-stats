@@ -29,7 +29,6 @@ documentation lives with its mechanic part.
 | component refresh | `../mechanics/recurrence/parts/component-refresh/docs/COMPONENT_REFRESH_SUMMARIES.md` |
 | continuity window | `../mechanics/recurrence/parts/continuity-window/docs/CONTINUITY_WINDOW_SUMMARY.md` |
 | growth funnel and candidate lineage | `../mechanics/method-growth/parts/candidate-lineage/docs/GROWTH_FUNNEL_SUMMARY.md` |
-| owner landing | `../mechanics/method-growth/parts/owner-landing/docs/OWNER_LANDING_SUMMARY.md` |
 | supersession and pruning | `../mechanics/method-growth/parts/supersession-pruning/docs/SUPERSESSION_DROP_SUMMARY.md` |
 | session-growth branch | `../mechanics/growth-cycle/parts/session-growth-branch/docs/SESSION_GROWTH_BRANCH_SUMMARY.md` |
 | automation follow-through | `../mechanics/growth-cycle/parts/automation-followthrough/docs/AUTOMATION_FOLLOWTHROUGH_SUMMARY.md` |

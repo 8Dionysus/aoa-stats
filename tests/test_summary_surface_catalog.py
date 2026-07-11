@@ -121,10 +121,7 @@ def test_consumer_regrounding_inputs_prefer_real_owner_surfaces() -> None:
     ]
     assert "legacy numeric" not in route_inputs[0]
 
-    owner_landing_input = profiles["owner_landing_summary"]["owner_truth_inputs"][0]
-    assert owner_landing_input.startswith("aoa-stats/stats/intake-contract/")
-    assert "no current stronger publisher" in owner_landing_input
-    assert "seed_owner_landing_trace_receipt" not in owner_landing_input
+    assert "owner_landing_summary" not in profiles
 
     stress_input = profiles["stress_recovery_window_summary"]["owner_truth_inputs"][0]
     assert stress_input.startswith("aoa-evals/")

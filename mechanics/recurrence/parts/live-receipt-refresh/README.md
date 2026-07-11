@@ -19,8 +19,8 @@ the canonical assets from this part.
 
 ## Live inventory contract
 
-- active profiles under `stats/read-models/active/` define the managed output
-  universe: currently 25 read models
+- active profiles plus retired tombstones under `stats/read-models/` define the
+  managed output universe: currently 23 active and two retired names
 - only profiles with `live_state_capable: true` enter the live build allowlist
   (currently 11 authored profiles)
 - `state/generated/summary_surface_catalog.min.json` lists only outputs
@@ -32,10 +32,12 @@ the canonical assets from this part.
   rollout-history, and cadence-example adapters are never implicit live
   fallbacks
 
-All 14 committed/reference profiles are therefore absent from live output
-until both their current owner source and the observation route that can cause
-refresh are real. Owner Landing and Stress Recovery still lack their named
-owner publishers. Memory Movement reads a real reviewed `aoa-memo` corpus,
+All 14 non-live managed names are therefore absent from live output: 12 active
+committed/reference profiles require both a current owner source and an
+observation route, while two retired names exist only for cleanup. Stress
+Recovery still lacks its named owner publisher. Owner Landing is one of the
+retired names; its receipt kinds remain turnover inputs without a standalone
+builder. Memory Movement reads a real reviewed `aoa-memo` corpus,
 but the watcher does not observe changes to its catalog, object, reviewed
 intake, or landing-receipt roots; the memo writeback receipt log is not a
 substitute for that missing corpus trigger.
@@ -51,6 +53,7 @@ selector and stale-cleanup precedent is recorded for Component Refresh in
 The current-source plus observation law, including the three newly closed
 selectors, is recorded in
 `docs/decisions/AOST-D-0004-live-admission-requires-refresh-observation.md`.
+Owner Landing's subsequent retirement is recorded in AOST-D-0009.
 
 ## Payload
 

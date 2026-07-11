@@ -37,7 +37,6 @@ It may emit:
 - micro friction receipts, recurrence snapshots, and inbox summaries
 - candidate-lineage summaries
 - session-growth branch summaries
-- owner-landing summaries
 - supersession-drop summaries
 - repeated-window summaries
 - route-progression summaries

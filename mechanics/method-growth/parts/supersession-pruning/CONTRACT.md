@@ -2,6 +2,10 @@
 
 - Derive turnover only from explicit `drop_reason`, `merged_into`,
   `superseded_by`, `supersedes`, or reanchor signals in admitted receipts.
+- Keep structural normalization for `reviewed_owner_landing_receipt` and
+  `seed_owner_landing_trace_receipt` only because their explicit turnover
+  fields are active inputs here. Do not rebuild the retired standalone Owner
+  Landing aggregate from those examples.
 - Do not infer rejection, replacement, merge, or causal rationale from owner
   changes, missing stages, time order, or receipt absence.
 - Keep owner-repo counts descriptive and preserve the distinction between a

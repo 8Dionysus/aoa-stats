@@ -134,11 +134,24 @@ keeping a builder, catalog entry, committed payload, or active mechanic claim.
 A future observed Summon surface must enter through a new reviewed profile and
 real owner-runtime plus refresh evidence rather than reviving zero defaults.
 
+Owner Landing receipts remain admitted compatibility inputs for explicit
+supersession and merge observations, but the standalone Owner Landing summary
+is retired. No current owner publishes either accepted landing receipt kind,
+and no current consumer requires the example-only aggregate. Keep the event
+ABI and turnover normalization under Method Growth; do not keep a public
+builder, generated payload, catalog entry, or empty owner-landing mechanic part
+merely to replay the committed examples.
+
 Read-model lifecycle has three source-owned states. `active/` authors public
 catalog entries, `deferred/` authors contract-only candidates, and `retired/`
 authors minimal cleanup/provenance tombstones. Retired records never enter the
 public catalog or build fan-out. Their former output names remain in the live
 cleanup universe until stale deployed copies are no longer a supported risk.
+`catalog_order` is a stable slot identity, not a dense list position. Every
+retired record reserves its `former_catalog_order`; active profiles may leave
+gaps but must never reuse a retired slot or renumber simply because another
+surface leaves publication. Former mechanic routes are provenance identifiers
+and do not require an otherwise empty part to remain active.
 
 Treat `live_state_capable` as an executable active-profile contract. The live refresh
 mechanic may materialize and advertise only surfaces whose authored profile
@@ -153,9 +166,11 @@ that can cause refresh when that source changes. A builder that can resolve an
 owner path on demand is not enough to keep continuously advertised local state
 current. Memory Movement reads real reviewed `aoa-memo` corpus truth, but it
 remains on the committed snapshot route until that corpus has an explicit
-refresh trigger. Owner Landing and Stress Recovery likewise remain out of live
-state until their named owners publish real receipts and reports rather than
-only examples or draft contracts.
+refresh trigger. Stress Recovery likewise remains out of live state until its
+named owners publish real receipts and reports rather than only examples or
+draft contracts. Owner Landing is retired rather than treated as a dormant
+live candidate; any future standalone surface must enter through a newly
+reviewed profile and real owner publisher.
 Route Progression remains out of live state while its committed numeric
 projection and the current owner-authored semantic receipt contract do not
 share a non-invented projection ABI.

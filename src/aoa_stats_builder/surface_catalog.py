@@ -77,6 +77,7 @@ RETIRED_SOURCE_FIELDS = frozenset(
         "schema_version",
         "lifecycle",
         "name",
+        "former_catalog_order",
         "retired_surface_ref",
         "schema_ref",
         "retired_on",
@@ -162,6 +163,15 @@ def _validate_profile(profile: dict[str, Any], *, path: Path, lifecycle: str) ->
                 f"{path}: catalog_order must be a positive integer"
             )
     if lifecycle == "retired":
+        former_order = profile.get("former_catalog_order")
+        if (
+            not isinstance(former_order, int)
+            or isinstance(former_order, bool)
+            or former_order < 1
+        ):
+            raise SurfaceProfileError(
+                f"{path}: former_catalog_order must be a positive integer"
+            )
         retired_surface_ref = profile.get("retired_surface_ref")
         if not isinstance(retired_surface_ref, str) or not retired_surface_ref:
             raise SurfaceProfileError(
@@ -237,7 +247,7 @@ def load_surface_profiles(
         if name in seen_names:
             raise SurfaceProfileError(f"duplicate surface profile name: {name}")
         if order in seen_orders:
-            raise SurfaceProfileError(f"duplicate surface catalog order: {order}")
+            raise SurfaceProfileError(f"duplicate surface catalog slot: {order}")
         seen_names.add(name)
         seen_orders.add(order)
         active.append(profile)
@@ -257,7 +267,13 @@ def load_surface_profiles(
         name = profile["name"]
         if name in seen_names:
             raise SurfaceProfileError(f"duplicate surface profile name: {name}")
+        former_order = profile["former_catalog_order"]
+        if former_order in seen_orders:
+            raise SurfaceProfileError(
+                f"duplicate surface catalog slot: {former_order}"
+            )
         seen_names.add(name)
+        seen_orders.add(former_order)
         retired.append(profile)
 
     managed_profiles = [

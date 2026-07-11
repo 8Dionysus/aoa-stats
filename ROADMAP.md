@@ -23,13 +23,14 @@ The source/mechanics refactor is part of that contour:
 - `schemas/` and `generated/` remain stable public publication districts
 - `src/` remains the importable implementation and access boundary
 - authored `live_state_capable` profiles select local live materialization;
-  the current split is 11 live-admitted read models across 24 active outputs,
-  while one retired-output tombstone extends cleanup to 25 managed names;
+  the current split is 11 live-admitted read models across 23 active outputs,
+  while two retired-output tombstones keep cleanup at 25 managed names;
   Route Progression remains
   a committed legacy-numeric reference surface under AOST-D-0005 while Runtime
   Closeout remains a historical wave-receipt reference under AOST-D-0006 and
   Titan Incarnation's committed-roster boundary is fixed by AOST-D-0007 and
-  Titan Summon's cleanup-only retirement by AOST-D-0008
+  Titan Summon's cleanup-only retirement by AOST-D-0008; AOST-D-0009 retires
+  the example-only Owner Landing aggregate and reserves former catalog slots
 
 ## Active summary families
 
@@ -38,7 +39,7 @@ The public v2 catalog currently exposes:
 | Mechanic contour | Catalog families |
 | --- | --- |
 | Audit | core-skill application, object, source-coverage, surface-detection, drift-review |
-| Method Growth | candidate-lineage, owner-landing, supersession-drop |
+| Method Growth | candidate-lineage, supersession-drop |
 | Recurrence | repeated-window, continuity-window, component-refresh |
 | RPG | route-progression |
 | Growth Cycle | fork-calibration, session-growth branch, automation-pipeline, automation-followthrough |
@@ -104,7 +105,8 @@ contract stays separate from active catalog claims.
   the current-source plus refresh-observation admission rule is recorded in
   `docs/decisions/AOST-D-0004-live-admission-requires-refresh-observation.md`
 - live output lifecycle: `stats/read-models/retired/` now keeps explicit
-  cleanup/provenance tombstones without retaining payloads or catalog entries
+  cleanup/provenance tombstones without retaining payloads or catalog entries;
+  each tombstone reserves its former stable catalog slot
 - stress-recovery chaos fixture:
   `mechanics/antifragility/parts/stress-recovery-windows/examples/stress_recovery_window_summary.chaos-wave1.example.json`
 - reviewed memory movement:
@@ -121,6 +123,10 @@ contract stays separate from active catalog claims.
   `src/aoa_stats_builder/titan_observation.py`,
   `src/aoa_stats_builder/titan_observation_sources.py`, and
   `mechanics/titan/parts/incarnation-summon/`
+- Owner Landing retirement and retained turnover-input boundary:
+  `stats/read-models/retired/owner_landing_summary.profile.json`,
+  `mechanics/method-growth/parts/supersession-pruning/`, and
+  `docs/decisions/AOST-D-0009-retirement-reserves-catalog-slots-without-preserving-empty-mechanics.md`
 - public catalog access: `stats/surface-catalog/CODEX_MCP.md`
 
 ## Direction
@@ -136,7 +142,7 @@ Changes on this line should:
 5. update topology, source-home validation, focused tests, and generated
    outputs together
 6. keep `README.md` and `docs/README.md` short and link-driven
-7. keep all 13 active committed/reference profiles out of local live output until
+7. keep all 12 active committed/reference profiles out of local live output until
    their real owner-runtime, deploy-local, active-cadence, publisher, and
    refresh-observation contracts exist; audit every remaining
    `live_state_capable: true` profile against both its source and trigger

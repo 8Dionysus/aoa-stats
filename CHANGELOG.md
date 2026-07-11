@@ -30,6 +30,9 @@ Tracking starts with the first public release-prep baseline for this repository.
 - Added source-authored retired read-model tombstones so an output can leave
   active publication while its former name remains in deterministic stale-file
   cleanup and its rationale remains discoverable.
+- Added stable catalog-slot reservation to retired profiles so lifecycle
+  removal cannot silently renumber later authored surfaces or reuse a former
+  identity.
 
 ### Changed
 
@@ -124,6 +127,14 @@ Tracking starts with the first public release-prep baseline for this repository.
   catalog, committed output, and root facade surfaces. Kept a minimal
   source-home tombstone and the former schema so stale live copies are removed
   without preserving a content-free read model as active observability.
+- Retired the example-only Owner Landing aggregate after verifying that no
+  current owner publishes its receipt kinds and no direct consumer requires
+  the standalone payload. Kept those event kinds and their normalization as
+  active Supersession Drop inputs, removed the now-empty dedicated mechanic
+  part, and preserved the public schema as contract history.
+- Changed `catalog_order` from a dense position to a stable slot, restoring
+  Titan Summon's former slot 21 and reserving Owner Landing's former slot 4 in
+  retirement tombstones while leaving later active profile identities intact.
 
 ## [0.1.3] - 2026-04-23
 

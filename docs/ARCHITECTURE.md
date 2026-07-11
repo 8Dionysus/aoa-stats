@@ -57,7 +57,6 @@ Current v0 derived views:
 - core-skill-application summary
 - object summary
 - candidate-lineage summary
-- owner-landing summary
 - supersession-drop summary
 - repeated-window summary
 - route-progression summary
@@ -77,11 +76,12 @@ without replacing the underlying receipts or owner-local authority.
 funnel slice. It reads reviewed owner-local lineage entries only and does not
 pull raw checkpoint carry into stats.
 
-`generated/owner_landing_summary.min.json` and
-`generated/supersession_drop_summary.min.json` are the next bounded
-growth-refinery followthrough slices. They read reviewed owner landing bundles,
-seed-owner landing traces, and explicit reviewed turnover signals without
-claiming owner truth.
+`generated/supersession_drop_summary.min.json` is the bounded
+growth-refinery followthrough slice. It reads explicit reviewed turnover
+signals, including those carried by reviewed owner landing bundles and
+seed-owner landing traces, without claiming owner truth. The standalone Owner
+Landing aggregate is retired; its receipt vocabulary remains only because this
+active turnover projection consumes it.
 
 `generated/continuity_window_summary.min.json` is a committed cross-owner
 reference slice. Its adapter reads the `aoa-agents` Continuity Window example,
@@ -139,11 +139,12 @@ reference-only surfaces. Local live refresh treats `live_state_capable` as an
 executable admission contract: it materializes only `true` profiles, writes a
 live catalog only for outputs actually present, and cleans stale files across
 the active outputs plus retired-output tombstones. The active read-model
-inventory is 24, the retired cleanup inventory is one, and the authored
+inventory is 23, the retired cleanup inventory is two, and the authored
 live-admitted inventory is 11. Component Refresh, Continuity
 Window, Codex Plane Deployment, trusted rollout-history, cadence examples,
-Owner Landing, Route Progression, Memory Movement, Stress Recovery, Titan
-Incarnation, and Runtime Closeout are excluded from live mode. The
+Route Progression, Memory Movement, Stress Recovery, Titan Incarnation, and
+Runtime Closeout are active but excluded from live mode. Owner Landing and
+Titan Summon are retired and remain cleanup targets only. The
 selector and stale-cleanup
 precedent is
 `docs/decisions/AOST-D-0003-component-refresh-fixtures-are-not-live-state.md`,
@@ -151,6 +152,12 @@ which decides the Component Refresh case only. The cross-profile requirement
 that live state have both a current owner source and an observable refresh
 route is
 `docs/decisions/AOST-D-0004-live-admission-requires-refresh-observation.md`.
+
+Profile `catalog_order` values are stable slots rather than a dense ordinal.
+Retired profiles reserve their former slots, active profiles may leave gaps,
+and lifecycle removal does not renumber unrelated surfaces. Former mechanic
+routes on a tombstone preserve provenance without forcing an empty operation
+part to remain active. AOST-D-0009 records this source-home law.
 Route Progression remains reference-only because its stable public bytes are a
 legacy numeric compatibility projection while the current `aoa-skills` owner
 receipt is semantic and deliberately not score-shaped. AOST-D-0005 forbids an
@@ -181,9 +188,13 @@ Trusted rollout-history is reference-only because its four inputs are
 checked-in owner history, not deploy-local state. Rollout Campaign and Drift
 Review are reference-only because they project a separate three-example chain,
 not an active cadence producer.
-Owner Landing remains reference-only because its event kinds have no real
-publisher. Stress Recovery remains reference-only because its eval/report
-chain is draft and example-backed. Memory Movement reads authentic reviewed
+Owner Landing is retired because its event kinds have no real publisher and no
+direct consumer requires the standalone example aggregate. Its stable schema
+and event ABI remain, while explicit landing turnover continues to feed
+Supersession Drop. AOST-D-0009 also reserves its former catalog slot and
+forbids preserving an empty mechanic part. Stress Recovery remains
+reference-only because its eval/report chain is draft and example-backed.
+Memory Movement reads authentic reviewed
 `aoa-memo` corpus truth, but no automatic refresh trigger observes that corpus;
 the committed snapshot is retained without advertising stale local live state.
 

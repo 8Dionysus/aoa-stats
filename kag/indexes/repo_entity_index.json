@@ -3407,6 +3407,20 @@
         "artifact_kind": "document",
         "code_role": "none",
         "command_role": "none",
+        "document_role": "decision",
+        "mechanics_role": "none",
+        "surface_state": "authored_source"
+      },
+      "entity_kind": "decision",
+      "id": "entity:file:docs/decisions/aost-d-0009-retirement-reserves-catalog-slots-without-preserving-empty-mechanics.md:e21892670c",
+      "label": "docs/decisions/AOST-D-0009-retirement-reserves-catalog-slots-without-preserving-empty-mechanics.md",
+      "source_record_id": "file:docs/decisions/aost-d-0009-retirement-reserves-catalog-slots-without-preserving-empty-mechanics.md:e21892670c"
+    },
+    {
+      "coordinates": {
+        "artifact_kind": "document",
+        "code_role": "none",
+        "command_role": "none",
         "document_role": "readme",
         "mechanics_role": "none",
         "surface_state": "authored_source"
@@ -3975,20 +3989,6 @@
       "id": "entity:file:generated/object_summary.min.json:c0e649eb7f",
       "label": "generated/object_summary.min.json",
       "source_record_id": "file:generated/object_summary.min.json:c0e649eb7f"
-    },
-    {
-      "coordinates": {
-        "artifact_kind": "generated_readmodel",
-        "code_role": "none",
-        "command_role": "none",
-        "document_role": "none",
-        "mechanics_role": "none",
-        "surface_state": "generated_readmodel"
-      },
-      "entity_kind": "readmodel",
-      "id": "entity:file:generated/owner_landing_summary.min.json:b244264edd",
-      "label": "generated/owner_landing_summary.min.json",
-      "source_record_id": "file:generated/owner_landing_summary.min.json:b244264edd"
     },
     {
       "coordinates": {
@@ -9600,76 +9600,6 @@
         "surface_state": "authored_source"
       },
       "entity_kind": "mechanic_part",
-      "id": "entity:file:mechanics/method-growth/parts/owner-landing/contract.md:04a52211dc",
-      "label": "mechanics/method-growth/parts/owner-landing/CONTRACT.md",
-      "source_record_id": "file:mechanics/method-growth/parts/owner-landing/contract.md:04a52211dc"
-    },
-    {
-      "coordinates": {
-        "artifact_kind": "document",
-        "code_role": "none",
-        "command_role": "none",
-        "document_role": "readme",
-        "mechanics_role": "part_doc",
-        "surface_state": "authored_source"
-      },
-      "entity_kind": "mechanic_part",
-      "id": "entity:file:mechanics/method-growth/parts/owner-landing/readme.md:88277d6436",
-      "label": "mechanics/method-growth/parts/owner-landing/README.md",
-      "source_record_id": "file:mechanics/method-growth/parts/owner-landing/readme.md:88277d6436"
-    },
-    {
-      "coordinates": {
-        "artifact_kind": "document",
-        "code_role": "none",
-        "command_role": "none",
-        "document_role": "mechanics_doc",
-        "mechanics_role": "part_doc",
-        "surface_state": "authored_source"
-      },
-      "entity_kind": "mechanic_part",
-      "id": "entity:file:mechanics/method-growth/parts/owner-landing/validation.md:4a5089f9a7",
-      "label": "mechanics/method-growth/parts/owner-landing/VALIDATION.md",
-      "source_record_id": "file:mechanics/method-growth/parts/owner-landing/validation.md:4a5089f9a7"
-    },
-    {
-      "coordinates": {
-        "artifact_kind": "document",
-        "code_role": "none",
-        "command_role": "none",
-        "document_role": "mechanics_doc",
-        "mechanics_role": "part_doc",
-        "surface_state": "authored_source"
-      },
-      "entity_kind": "mechanic_part",
-      "id": "entity:file:mechanics/method-growth/parts/owner-landing/docs/owner_landing_summary.md:81ada1be1c",
-      "label": "mechanics/method-growth/parts/owner-landing/docs/OWNER_LANDING_SUMMARY.md",
-      "source_record_id": "file:mechanics/method-growth/parts/owner-landing/docs/owner_landing_summary.md:81ada1be1c"
-    },
-    {
-      "coordinates": {
-        "artifact_kind": "config",
-        "code_role": "none",
-        "command_role": "none",
-        "document_role": "none",
-        "mechanics_role": "mechanic_part",
-        "surface_state": "authored_source"
-      },
-      "entity_kind": "mechanic_part",
-      "id": "entity:file:mechanics/method-growth/parts/owner-landing/examples/owner_landing_summary.example.json:1b03b050ae",
-      "label": "mechanics/method-growth/parts/owner-landing/examples/owner_landing_summary.example.json",
-      "source_record_id": "file:mechanics/method-growth/parts/owner-landing/examples/owner_landing_summary.example.json:1b03b050ae"
-    },
-    {
-      "coordinates": {
-        "artifact_kind": "document",
-        "code_role": "none",
-        "command_role": "none",
-        "document_role": "mechanics_doc",
-        "mechanics_role": "part_contract",
-        "surface_state": "authored_source"
-      },
-      "entity_kind": "mechanic_part",
       "id": "entity:file:mechanics/method-growth/parts/supersession-pruning/contract.md:6e62868e8a",
       "label": "mechanics/method-growth/parts/supersession-pruning/CONTRACT.md",
       "source_record_id": "file:mechanics/method-growth/parts/supersession-pruning/contract.md:6e62868e8a"
@@ -13240,20 +13170,6 @@
         "surface_state": "authored_source"
       },
       "entity_kind": "artifact",
-      "id": "entity:file:stats/read-models/active/owner_landing_summary.profile.json:c1821a1f8b",
-      "label": "stats/read-models/active/owner_landing_summary.profile.json",
-      "source_record_id": "file:stats/read-models/active/owner_landing_summary.profile.json:c1821a1f8b"
-    },
-    {
-      "coordinates": {
-        "artifact_kind": "config",
-        "code_role": "none",
-        "command_role": "none",
-        "document_role": "none",
-        "mechanics_role": "none",
-        "surface_state": "authored_source"
-      },
-      "entity_kind": "artifact",
       "id": "entity:file:stats/read-models/active/repeated_window_summary.profile.json:a083b31419",
       "label": "stats/read-models/active/repeated_window_summary.profile.json",
       "source_record_id": "file:stats/read-models/active/repeated_window_summary.profile.json:a083b31419"
@@ -13397,6 +13313,20 @@
       "id": "entity:file:stats/read-models/deferred/antifragility_vector.profile.json:b675b4b101",
       "label": "stats/read-models/deferred/antifragility_vector.profile.json",
       "source_record_id": "file:stats/read-models/deferred/antifragility_vector.profile.json:b675b4b101"
+    },
+    {
+      "coordinates": {
+        "artifact_kind": "config",
+        "code_role": "none",
+        "command_role": "none",
+        "document_role": "none",
+        "mechanics_role": "none",
+        "surface_state": "authored_source"
+      },
+      "entity_kind": "artifact",
+      "id": "entity:file:stats/read-models/retired/owner_landing_summary.profile.json:036a67e0d3",
+      "label": "stats/read-models/retired/owner_landing_summary.profile.json",
+      "source_record_id": "file:stats/read-models/retired/owner_landing_summary.profile.json:036a67e0d3"
     },
     {
       "coordinates": {
@@ -13667,7 +13597,7 @@
   ],
   "index_identity": {
     "artifact_kind": "repository_entity_index",
-    "content_digest": "10e2c46931759d2a71cf8233b691757492b00cd04ed3c55010d40138300c12c6",
+    "content_digest": "e29736f84a7ec7bbbd74184f9b7bb85a606704286704bf5c043c80af92c05070",
     "index_kind": "entity",
     "local_id": "index:repo-local:entities",
     "schema_ref": "aoa-kag:schemas/repo-local-kag-repository-index.schema.json"
@@ -13690,25 +13620,25 @@
   },
   "schema_version": "aoa-repo-local-kag-repository-index-v1",
   "source_index": {
-    "content_digest": "9bbe2f423787c4a67fc861748ca7aa7b2d0e1c7d97bd390fd7168f82fc9d3ccc",
+    "content_digest": "8185cf28689da555dda2c855bb321cfd8872ff0aff5da32164a534c79f9d5c38",
     "local_id": "index:repo-local:source-surfaces",
     "path": "kag/indexes/source_surface_index.json"
   },
   "summary": {
-    "entry_count": 976,
+    "entry_count": 971,
     "kind_counts": {
       "agent_route": 16,
       "artifact": 148,
       "code": 34,
       "command": 31,
       "contract": 34,
-      "decision": 15,
+      "decision": 16,
       "document": 137,
       "manifest": 1,
       "mechanic_package": 56,
-      "mechanic_part": 462,
+      "mechanic_part": 457,
       "owner_surface": 2,
-      "readmodel": 40
+      "readmodel": 39
     }
   }
 }
