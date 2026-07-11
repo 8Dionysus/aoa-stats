@@ -1,3 +1,8 @@
+from .candidate_lifecycle import (
+    build_candidate_lineage_summary,
+    build_owner_landing_summary,
+    build_supersession_drop_summary,
+)
 from .downstream_canaries import validate_downstream_canaries
 from .receipt_abi import (
     CANONICAL_ENVELOPE_SCHEMA_REF,
@@ -21,8 +26,11 @@ __all__ = [
     "EVENT_KIND_REGISTRY_REF",
     "ReceiptValidationError",
     "active_registry_event_kinds",
+    "build_candidate_lineage_summary",
+    "build_owner_landing_summary",
     "build_source_coverage_summary",
     "build_summary_surface_catalog",
+    "build_supersession_drop_summary",
     "generated_from",
     "load_event_kind_registry",
     "load_receipts",

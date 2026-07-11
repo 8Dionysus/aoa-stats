@@ -64,7 +64,10 @@ publication and implementation districts:
 - committed derived surfaces remain under `generated/`
 - builders and readers remain under `src/`
 - public and compatibility commands remain under `scripts/`
-- focused validation remains under `scripts/` and `tests/`
+- repo-wide and compatibility validation remains under root `scripts/` and
+  `tests/`; operation-focused validation follows `mechanics/topology.json`,
+  normally at the nearest part and at package level only for declared shared
+  core
 - the current MCP remains a read-only derived access route to the root
   boundaries, part-local live-source registry, catalog, and catalog-listed
   surfaces

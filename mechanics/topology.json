@@ -698,7 +698,9 @@
       "center_mechanic_ref": "Agents-of-Abyss/mechanics/method-growth",
       "local_status": "localized_active",
       "local_function": "Observe candidate lineage, owner landing, and explicit supersession without deciding promotion.",
-      "package_payload_roots": [],
+      "package_payload_roots": [
+        "tests"
+      ],
       "active_part_routes": [
         {
           "path": "candidate-lineage",
