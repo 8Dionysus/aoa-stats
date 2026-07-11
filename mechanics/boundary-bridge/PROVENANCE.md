@@ -16,9 +16,18 @@ and focused governance tests listed in `mechanics/topology.json`.
 schema, and compatibility validator plus the focused tests localized in its
 part.
 
-`memory-owner-handoff` owns its focused doc and tests locally while the
-authored profile retains the public schema/output routes. All three parts now
-use mixed localized/public placement declared exactly by the topology.
+`memory-owner-handoff` owns its focused contract, guide, and tests locally.
+Its filesystem-free projection core lives at
+`src/aoa_stats_builder/memory_movement.py`; its deterministic exact four-root
+adapter and frozen bundle live at
+`src/aoa_stats_builder/memory_movement_sources.py`. The root build script is a
+compatibility and publication facade, while the authored profile retains the
+public schema/output route and reference-only admission truth. The Cycle 9
+false-live correction is about the missing refresh observation contract, not
+about the authority of the reviewed `aoa-memo` corpus; rationale stays in
+`docs/decisions/AOST-D-0004-live-admission-requires-refresh-observation.md`.
+All three parts use mixed localized/public placement declared exactly by the
+topology.
 
 ## Source-family crosswalk
 

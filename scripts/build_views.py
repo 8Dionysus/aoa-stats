@@ -6,7 +6,6 @@ import json
 import os
 import sys
 from collections import Counter, defaultdict
-from datetime import UTC, datetime
 from pathlib import Path
 from typing import AbstractSet, Any
 
@@ -76,6 +75,14 @@ from aoa_stats_builder.growth_cycle import (  # noqa: E402
     build_fork_calibration_summary,
     build_session_growth_branch_summary,
 )
+from aoa_stats_builder.memory_movement import (  # noqa: E402
+    build_memory_movement_summary as build_memory_movement_summary_from_inputs,
+)
+from aoa_stats_builder.memory_movement_sources import (  # noqa: E402
+    MemoryMovementInputBundle,
+    load_memory_movement_bundle,
+    memory_movement_source_paths as memory_movement_source_paths_from_root,
+)
 from aoa_stats_builder.receipt_abi import (  # noqa: E402
     ReceiptValidationError,
     generated_from,
@@ -83,13 +90,7 @@ from aoa_stats_builder.receipt_abi import (  # noqa: E402
     resolve_active_receipts,
     validate_receipt as validate_receipt,
 )
-from aoa_stats_builder.receipt_abi import receipt_sort_key  # noqa: E402
-from aoa_stats_builder.read_model_values import (  # noqa: E402
-    is_nonempty_string,
-    is_number,
-    parse_iso_datetime_or_min,
-    string_count_map,
-)
+from aoa_stats_builder.read_model_values import is_nonempty_string  # noqa: E402
 from aoa_stats_builder.rollout_cadence import (  # noqa: E402
     build_drift_review_summary as build_drift_review_summary_from_inputs,
     build_rollout_campaign_summary as build_rollout_campaign_summary_from_inputs,
@@ -100,6 +101,13 @@ from aoa_stats_builder.rollout_cadence_sources import (  # noqa: E402
     rollout_cadence_reference_paths,
 )
 from aoa_stats_builder.source_coverage import build_source_coverage_summary  # noqa: E402
+from aoa_stats_builder.stress_recovery import (  # noqa: E402
+    build_stress_recovery_window_summary as build_stress_recovery_window_summary_from_inputs,
+    latest_stress_recovery_report_ref,
+)
+from aoa_stats_builder.stress_recovery_sources import (  # noqa: E402
+    load_stress_recovery_committed_reference_report,
+)
 from aoa_stats_builder.surface_catalog import build_summary_surface_catalog  # noqa: E402
 
 DEFAULT_INPUT = (
@@ -146,20 +154,6 @@ AXES = (
     "provenance_hygiene",
     "deep_readiness",
 )
-MEMORY_CONSUMER_REFS = (
-    "repo:aoa-evals",
-    "repo:aoa-kag",
-    "repo:aoa-stats",
-    "repo:aoa-playbooks",
-    "repo:aoa-agents",
-)
-MEMORY_ROUTE_BOUNDARY = {
-    "operation_mode": "read_only",
-    "local_candidate_route": "none_without_repo_memo_port",
-    "session_evidence_route": ".aoa_session_evidence_until_reviewed_intake",
-    "durable_landing_route": "aoa-memo_reviewed_source_patch",
-    "mcp_boundary": "aoa_memo_brief_search_status_validate_and_landing_plan_dry_run_only",
-}
 
 
 def repo_root_from_env(env_name: str, default: Path) -> Path:
@@ -398,307 +392,24 @@ def component_refresh_generated_from() -> tuple[dict[str, Any], list[dict[str, A
     return component_refresh_input_bundle().mutable_parts()
 
 
-def ensure_repo_relative_ref_path(raw_path: str) -> str | None:
-    if not is_nonempty_string(raw_path):
-        return None
-    normalized = raw_path.strip().replace("\\", "/")
-    if normalized.startswith("/") or normalized.startswith("./"):
-        return None
-    parts = normalized.split("/")
-    if any(part in {"", ".", ".."} for part in parts):
-        return None
-    return normalized
-
-
-def resolve_repo_ref_path(raw_ref: Any, repo_roots: dict[str, Path]) -> Path | None:
-    if not is_nonempty_string(raw_ref):
-        return None
-    ref = raw_ref.strip()
-    if not ref.startswith("repo:"):
-        return None
-    repo_and_path = ref[len("repo:") :]
-    repo_name, separator, relative_path = repo_and_path.partition("/")
-    if not separator or repo_name not in repo_roots:
-        return None
-    normalized = ensure_repo_relative_ref_path(relative_path)
-    if normalized is None:
-        return None
-    return repo_roots[repo_name] / Path(normalized)
-
-
-def load_optional_json_object(path: Path | None) -> dict[str, Any] | None:
-    if path is None or not path.is_file():
-        return None
-    try:
-        payload = json.loads(path.read_text(encoding="utf-8"))
-    except (OSError, UnicodeDecodeError, json.JSONDecodeError):
-        return None
-    if not isinstance(payload, dict):
-        return None
-    return payload
-
-
-def stress_summary_template() -> dict[str, Any]:
-    return {
-        "containment": None,
-        "route_discipline": None,
-        "reentry_quality": None,
-        "regrounding_effectiveness": None,
-        "evidence_continuity": None,
-        "adaptation_followthrough": None,
-        "operator_burden": None,
-        "trust_calibration": None,
-    }
-
-
-def empty_stress_counts() -> dict[str, int]:
-    return {
-        "receipt_count": 0,
-        "handoff_count": 0,
-        "playbook_lane_count": 0,
-        "reentry_gate_count": 0,
-        "projection_health_count": 0,
-        "regrounding_ticket_count": 0,
-        "eval_count": 0,
-    }
-
-
-def report_axis_score(report: dict[str, Any], axis_name: str) -> float | None:
-    axes = report.get("axes")
-    if not isinstance(axes, dict):
-        return None
-    axis = axes.get(axis_name)
-    if not isinstance(axis, dict):
-        return None
-    score = axis.get("score")
-    if not is_number(score):
-        return None
-    return round(float(score), 2)
-
-
-def average_scores(values: list[float | None]) -> float | None:
-    present = [value for value in values if value is not None]
-    if not present:
-        return None
-    return round(sum(present) / len(present), 2)
-
-
-def latest_or_source_time(receipts: list[dict[str, Any]], source: dict[str, Any]) -> str:
-    if receipts:
-        return max(receipt["observed_at"] for receipt in receipts)
-    return str(source.get("latest_observed_at") or "1970-01-01T00:00:00Z")
-
-
-def build_suppressed_stress_recovery_window_summary(
-    receipts: list[dict[str, Any]],
-    source: dict[str, Any],
-    *,
-    status: str,
-    reason: str,
-) -> dict[str, Any]:
-    observed_at = latest_or_source_time(receipts, source)
-    trend_flags = ["stress-recovery-window-unavailable"]
-    if status == "low_sample":
-        trend_flags = ["low-sample-window"]
-    return {
-        "schema_version": "aoa_stats_stress_recovery_window_summary_v1",
-        "generated_from": source,
-        "window": {
-            "label": "stress-recovery-window-unavailable",
-            "start_utc": observed_at,
-            "end_utc": observed_at,
-        },
-        "scope": {
-            "repo_family": ["aoa-evals"],
-            "stressor_family": "unresolved",
-            "owner_surface": None,
-            "surface_family": None,
-        },
-        "inputs": {
-            "receipt_refs": [],
-            "eval_report_refs": [],
-            "route_hint_refs": [],
-            "memo_context_refs": [],
-        },
-        "counts": empty_stress_counts(),
-        "suppression": {
-            "status": status,
-            "reason": reason,
-        },
-        "summary": stress_summary_template(),
-        "trend_flags": trend_flags,
-    }
-
-
-def build_stress_recovery_window_metrics(
-    report: dict[str, Any],
-    *,
-    suppression_status: str,
-) -> dict[str, Any]:
-    if suppression_status != "none":
-        return stress_summary_template()
-
-    reentry_quality = report_axis_score(report, "reentry_quality")
-    regrounding_effectiveness = report_axis_score(report, "regrounding_effectiveness")
-    operator_burden = report_axis_score(report, "operator_burden")
-    return {
-        "containment": report_axis_score(report, "handoff_fidelity"),
-        "route_discipline": report_axis_score(report, "route_discipline"),
-        "reentry_quality": reentry_quality,
-        "regrounding_effectiveness": regrounding_effectiveness,
-        "evidence_continuity": report_axis_score(report, "evidence_continuity"),
-        "adaptation_followthrough": average_scores(
-            [reentry_quality, regrounding_effectiveness, operator_burden]
-        ),
-        "operator_burden": operator_burden,
-        "trust_calibration": report_axis_score(report, "trust_calibration"),
-    }
-
-
 def build_stress_recovery_window_summary(
     receipts: list[dict[str, Any]],
     source: dict[str, Any],
     *,
     evals_root: Path,
 ) -> dict[str, Any]:
-    relevant_receipts = [
-        receipt
-        for receipt in receipts
-        if receipt["event_kind"] == "eval_result_receipt"
-        and isinstance(receipt.get("payload"), dict)
-        and receipt["payload"].get("eval_name") == "aoa-stress-recovery-window"
-    ]
-    if not relevant_receipts:
-        return build_suppressed_stress_recovery_window_summary(
-            receipts,
-            source,
-            status="insufficient_evidence",
-            reason="no aoa-stress-recovery-window eval_result_receipt was found in the active receipt feed",
-        )
+    """Preserve the committed-reference root facade for compatibility callers."""
 
-    latest_receipt = max(relevant_receipts, key=receipt_sort_key)
-    payload = latest_receipt["payload"]
-    report_ref = payload.get("report_ref")
-    report_path = resolve_repo_ref_path(report_ref, {"aoa-evals": evals_root})
-    report = load_optional_json_object(report_path)
-    if report is None and report_ref == "repo:aoa-evals/bundles/aoa-stress-recovery-window/reports/example-report.json":
-        report_path = (
-            evals_root
-            / "evals"
-            / "comparison"
-            / "longitudinal-window"
-            / "aoa-stress-recovery-window"
-            / "reports"
-            / "example-report.json"
-        )
-        report = load_optional_json_object(report_path)
-    if report is None:
-        return build_suppressed_stress_recovery_window_summary(
-            relevant_receipts,
-            source,
-            status="insufficient_evidence",
-            reason="report_ref for aoa-stress-recovery-window could not be resolved into a readable aoa-evals JSON report",
-        )
-
-    window = report.get("window")
-    scope = report.get("scope")
-    inputs = report.get("inputs")
-    if not isinstance(window, dict) or not isinstance(scope, dict) or not isinstance(inputs, dict):
-        return build_suppressed_stress_recovery_window_summary(
-            relevant_receipts,
-            source,
-            status="insufficient_evidence",
-            reason="resolved aoa-stress-recovery-window report is missing required window, scope, or inputs objects",
-        )
-
-    counts = {
-        "receipt_count": len([item for item in inputs.get("source_receipt_refs", []) if is_nonempty_string(item)]),
-        "handoff_count": len([item for item in inputs.get("handoff_refs", []) if is_nonempty_string(item)]),
-        "playbook_lane_count": len([item for item in inputs.get("playbook_lane_refs", []) if is_nonempty_string(item)]),
-        "reentry_gate_count": len([item for item in inputs.get("reentry_gate_refs", []) if is_nonempty_string(item)]),
-        "projection_health_count": len([item for item in inputs.get("projection_health_refs", []) if is_nonempty_string(item)]),
-        "regrounding_ticket_count": len([item for item in inputs.get("regrounding_ticket_refs", []) if is_nonempty_string(item)]),
-        "eval_count": 1,
-    }
-
-    adjacent_signal_count = (
-        counts["handoff_count"]
-        + counts["playbook_lane_count"]
-        + counts["reentry_gate_count"]
-        + counts["projection_health_count"]
-        + counts["regrounding_ticket_count"]
+    report_ref = latest_stress_recovery_report_ref(receipts)
+    report = load_stress_recovery_committed_reference_report(
+        evals_root,
+        report_ref,
     )
-    suppression_status = "none"
-    suppression_reason: str | None = None
-    if counts["receipt_count"] < 1:
-        suppression_status = "insufficient_evidence"
-        suppression_reason = "owner receipts are missing from the resolved stress recovery window report"
-    elif counts["receipt_count"] < 2 or adjacent_signal_count < 4:
-        suppression_status = "low_sample"
-        suppression_reason = (
-            "owner and adjacent stress signals stay too sparse for a confident repeated-window derived read"
-        )
-
-    report_refs = [report_ref] if is_nonempty_string(report_ref) else []
-    route_hint_refs = [
-        item for item in inputs.get("route_hint_refs", []) if is_nonempty_string(item)
-    ]
-    memo_context_refs = [
-        item for item in inputs.get("memo_context_refs", []) if is_nonempty_string(item)
-    ]
-
-    trend_flags: list[str] = []
-    overall_posture = report.get("overall_posture")
-    if isinstance(overall_posture, str) and overall_posture:
-        trend_flags.append(f"overall-posture-{overall_posture}")
-    if suppression_status == "low_sample":
-        trend_flags.append("low-sample-window")
-    elif suppression_status == "insufficient_evidence":
-        trend_flags.append("insufficient-evidence-window")
-    if report_axis_score(report, "false_promotion_prevention") is not None:
-        score = report_axis_score(report, "false_promotion_prevention")
-        if score is not None and score >= 0.8:
-            trend_flags.append("false-promotion-guard-held")
-
-    return {
-        "schema_version": "aoa_stats_stress_recovery_window_summary_v1",
-        "generated_from": source,
-        "window": {
-            "label": str(window.get("label") or "stress-recovery-window"),
-            "start_utc": str(window.get("start_utc") or source["latest_observed_at"]),
-            "end_utc": str(window.get("end_utc") or source["latest_observed_at"]),
-        },
-        "scope": {
-            "repo_family": [
-                item for item in scope.get("repo_roots", []) if is_nonempty_string(item)
-            ]
-            or ["aoa-evals"],
-            "stressor_family": str(scope.get("stressor_family") or "unresolved"),
-            "owner_surface": scope.get("owner_surface")
-            if scope.get("owner_surface") is None or is_nonempty_string(scope.get("owner_surface"))
-            else None,
-            "surface_family": scope.get("surface_family")
-            if scope.get("surface_family") is None or is_nonempty_string(scope.get("surface_family"))
-            else None,
-        },
-        "inputs": {
-            "receipt_refs": [
-                item for item in inputs.get("source_receipt_refs", []) if is_nonempty_string(item)
-            ],
-            "eval_report_refs": report_refs,
-            "route_hint_refs": route_hint_refs,
-            "memo_context_refs": memo_context_refs,
-        },
-        "counts": counts,
-        "suppression": {
-            "status": suppression_status,
-            "reason": suppression_reason,
-        },
-        "summary": build_stress_recovery_window_metrics(
-            report, suppression_status=suppression_status
-        ),
-        "trend_flags": trend_flags,
-    }
+    return build_stress_recovery_window_summary_from_inputs(
+        receipts,
+        source,
+        report=report,
+    )
 
 
 def object_key(object_ref: dict[str, Any]) -> tuple[str, str, str, str]:
@@ -964,56 +675,12 @@ def build_continuity_window_summary() -> dict[str, Any]:
 
 def memory_movement_source_paths() -> tuple[Path, Path, Path, Path]:
     memo_root = repo_root_from_env("AOA_MEMO_ROOT", DEFAULT_AOA_MEMO_ROOT)
-    return (
-        memo_root / "generated" / "memory-objects" / "memory_object_catalog.min.json",
-        memo_root / "memo" / "objects",
-        memo_root / "memo" / "intake" / "reviewed",
-        memo_root / "memo" / "intake" / "receipts",
-    )
+    return memory_movement_source_paths_from_root(memo_root)
 
 
-def load_json_file_set(path: Path, *, label: str) -> list[tuple[Path, dict[str, Any]]]:
-    if not path.exists():
-        raise ReceiptValidationError(f"missing {label}: {path}")
-    return [
-        (item_path, load_json_object(item_path, label=f"{label} JSON"))
-        for item_path in sorted(path.glob("*.json"))
-    ]
-
-
-def load_memory_object_set(path: Path) -> list[tuple[Path, dict[str, Any]]]:
-    if not path.exists():
-        raise ReceiptValidationError(f"missing reviewed memory object corpus: {path}")
-    return [
-        (object_path, load_json_object(object_path, label="reviewed memory object"))
-        for object_path in sorted(path.rglob("object.json"))
-    ]
-
-
-def memory_object_recall_status(memory_object: dict[str, Any]) -> str:
-    lifecycle = memory_object.get("lifecycle")
-    if not isinstance(lifecycle, dict):
-        return "unknown"
-    current_recall = lifecycle.get("current_recall")
-    if not isinstance(current_recall, dict):
-        return "unknown"
-    status = current_recall.get("status")
-    return str(status) if is_nonempty_string(status) else "unknown"
-
-
-def memory_object_bridge_status(memory_object: dict[str, Any]) -> str:
-    bridges = memory_object.get("bridges")
-    if not isinstance(bridges, dict):
-        return "absent"
-    status = bridges.get("kag_lift_status")
-    return str(status) if is_nonempty_string(status) else "unknown"
-
-
-def memory_object_datetime(memory_object: dict[str, Any], key: str) -> datetime:
-    time_payload = memory_object.get("time")
-    if not isinstance(time_payload, dict):
-        return datetime.min.replace(tzinfo=UTC)
-    return parse_iso_datetime_or_min(time_payload.get(key))
+def memory_movement_input_bundle() -> MemoryMovementInputBundle:
+    memo_root = repo_root_from_env("AOA_MEMO_ROOT", DEFAULT_AOA_MEMO_ROOT)
+    return load_memory_movement_bundle(memo_root)
 
 
 def memory_movement_generated_from() -> tuple[
@@ -1023,167 +690,44 @@ def memory_movement_generated_from() -> tuple[
     list[tuple[Path, dict[str, Any]]],
     list[tuple[Path, dict[str, Any]]],
 ]:
-    catalog_path, objects_path, reviewed_path, receipts_path = memory_movement_source_paths()
+    """Preserve the historical mutable tuple facade for compatibility callers."""
+
     memo_root = repo_root_from_env("AOA_MEMO_ROOT", DEFAULT_AOA_MEMO_ROOT)
-    catalog = load_json_object(catalog_path, label="aoa-memo memory object min catalog")
+    source, catalog, memory_objects, reviewed_intakes, landing_receipts = (
+        memory_movement_input_bundle().mutable_parts()
+    )
     catalog_objects = catalog.get("memory_objects")
     if not isinstance(catalog_objects, list):
-        raise ReceiptValidationError("aoa-memo memory object min catalog must expose memory_objects")
-    if catalog.get("source_of_truth") != "aoa-memo-object-read-models-v2":
         raise ReceiptValidationError(
-            "aoa-memo memory object catalog must keep source_of_truth "
-            "aoa-memo-object-read-models-v2"
+            "aoa-memo memory object min catalog must expose memory_objects"
         )
 
-    memory_objects = load_memory_object_set(objects_path)
-    reviewed_intakes = load_json_file_set(reviewed_path, label="aoa-memo reviewed intake packets")
-    landing_receipts = load_json_file_set(receipts_path, label="aoa-memo landing receipts")
+    def restore_paths(
+        values: list[tuple[str, dict[str, Any]]],
+    ) -> list[tuple[Path, dict[str, Any]]]:
+        return [
+            (memo_root / ref.removeprefix("aoa-memo/"), payload)
+            for ref, payload in values
+        ]
 
-    object_ids = {
-        item.get("id")
-        for _, item in memory_objects
-        if isinstance(item.get("id"), str) and item.get("id")
-    }
-    catalog_reviewed_ids = {
-        item.get("id")
-        for item in catalog_objects
-        if isinstance(item, dict) and item.get("source_kind") == "reviewed_corpus"
-    }
-    if object_ids != catalog_reviewed_ids:
-        missing_in_catalog = sorted(object_ids - catalog_reviewed_ids)
-        missing_in_objects = sorted(catalog_reviewed_ids - object_ids)
-        raise ReceiptValidationError(
-            "aoa-memo reviewed corpus object/catalog mismatch: "
-            f"missing_in_catalog={missing_in_catalog}; missing_in_objects={missing_in_objects}"
-        )
-
-    latest_candidates = [
-        memory_object_datetime(item, "observed_at")
-        for _, item in memory_objects
-    ]
-    latest_candidates.extend(
-        parse_iso_datetime_or_min(receipt.get("landed_at"))
-        for _, receipt in landing_receipts
+    return (
+        source,
+        catalog_objects,
+        restore_paths(memory_objects),
+        restore_paths(reviewed_intakes),
+        restore_paths(landing_receipts),
     )
-    latest_candidates.extend(
-        parse_iso_datetime_or_min(packet.get("created_at"))
-        for _, packet in reviewed_intakes
-    )
-    latest_observed_at = max(latest_candidates or [datetime.min.replace(tzinfo=UTC)])
-    if latest_observed_at == datetime.min.replace(tzinfo=UTC):
-        raise ReceiptValidationError("aoa-memo memory movement inputs have no observable timestamp")
-
-    source = {
-        "receipt_input_paths": [
-            display_repo_input_path(catalog_path, repo_roots=(("aoa-memo", memo_root),)),
-            display_repo_input_path(objects_path, repo_roots=(("aoa-memo", memo_root),)),
-            display_repo_input_path(reviewed_path, repo_roots=(("aoa-memo", memo_root),)),
-            display_repo_input_path(receipts_path, repo_roots=(("aoa-memo", memo_root),)),
-        ],
-        "total_receipts": len(memory_objects) + len(reviewed_intakes) + len(landing_receipts),
-        "latest_observed_at": latest_observed_at.isoformat().replace("+00:00", "Z"),
-    }
-    return source, catalog_objects, memory_objects, reviewed_intakes, landing_receipts
 
 
 def build_memory_movement_summary() -> dict[str, Any]:
-    source, catalog_objects, memory_objects, reviewed_intakes, landing_receipts = (
-        memory_movement_generated_from()
+    bundle = memory_movement_input_bundle()
+    return build_memory_movement_summary_from_inputs(
+        bundle.source,
+        bundle.catalog,
+        bundle.memory_objects,
+        bundle.reviewed_intakes,
+        bundle.landing_receipts,
     )
-    memo_root = repo_root_from_env("AOA_MEMO_ROOT", DEFAULT_AOA_MEMO_ROOT)
-
-    source_kind_counts: Counter[str] = Counter()
-    for item in catalog_objects:
-        if isinstance(item, dict):
-            source_kind_counts[str(item.get("source_kind") or "unknown")] += 1
-
-    kind_counts: Counter[str] = Counter()
-    review_state_counts: Counter[str] = Counter()
-    recall_status_counts: Counter[str] = Counter()
-    temperature_counts: Counter[str] = Counter()
-    kag_lift_status_counts: Counter[str] = Counter()
-    reviewed_object_rows: list[dict[str, Any]] = []
-
-    for object_path, memory_object in memory_objects:
-        object_id = str(memory_object.get("id") or "")
-        if not object_id:
-            raise ReceiptValidationError(f"reviewed memory object is missing id: {object_path}")
-        kind = str(memory_object.get("kind") or "unknown")
-        lifecycle = memory_object.get("lifecycle")
-        trust = memory_object.get("trust")
-        if not isinstance(lifecycle, dict):
-            lifecycle = {}
-        if not isinstance(trust, dict):
-            trust = {}
-        review_state = str(lifecycle.get("review_state") or "unknown")
-        temperature = str(trust.get("temperature") or "unknown")
-        recall_status = memory_object_recall_status(memory_object)
-        kag_lift_status = memory_object_bridge_status(memory_object)
-
-        kind_counts[kind] += 1
-        review_state_counts[review_state] += 1
-        recall_status_counts[recall_status] += 1
-        temperature_counts[temperature] += 1
-        kag_lift_status_counts[kag_lift_status] += 1
-        reviewed_object_rows.append(
-            {
-                "id": object_id,
-                "kind": kind,
-                "review_state": review_state,
-                "current_recall_status": recall_status,
-                "temperature": temperature,
-                "kag_lift_status": kag_lift_status,
-                "object_ref": display_repo_input_path(
-                    object_path,
-                    repo_roots=(("aoa-memo", memo_root),),
-                ),
-            }
-        )
-
-    landing_result_counts = Counter(
-        str(receipt.get("result") or "unknown")
-        for _, receipt in landing_receipts
-    )
-    landed_object_refs = sorted({
-        str(receipt.get("object_ref"))
-        for _, receipt in landing_receipts
-        if is_nonempty_string(receipt.get("object_ref"))
-    })
-
-    return {
-        "schema_version": "aoa_stats_memory_movement_summary_v1",
-        "generated_from": source,
-        "authority": {
-            "summary_owner": "aoa-stats",
-            "memory_owner": "aoa-memo",
-            "authority_ceiling": (
-                "Derived movement summary only; weaker than aoa-memo reviewed "
-                "memory objects, landing receipts, and source refs."
-            ),
-        },
-        "source_kind_counts": string_count_map(source_kind_counts),
-        "reviewed_corpus": {
-            "object_count": len(memory_objects),
-            "by_kind": string_count_map(kind_counts),
-            "by_review_state": string_count_map(review_state_counts),
-            "by_recall_status": string_count_map(recall_status_counts),
-            "by_temperature": string_count_map(temperature_counts),
-            "by_kag_lift_status": string_count_map(kag_lift_status_counts),
-            "objects": reviewed_object_rows,
-        },
-        "reviewed_intake": {
-            "packet_count": len(reviewed_intakes),
-            "landing_receipt_count": len(landing_receipts),
-            "landing_result_counts": string_count_map(landing_result_counts),
-            "landed_object_refs": landed_object_refs,
-        },
-        "consumer_handoff": {
-            "consumer_refs": list(MEMORY_CONSUMER_REFS),
-            "handoff_memory_ref": "memo.decision.2026-05-22.reviewed-memory-consumer-handoff-spine",
-            "posture": "derived_consumer_summary",
-            "memory_route_boundary": dict(MEMORY_ROUTE_BOUNDARY),
-        },
-    }
 
 
 def build_component_refresh_summary() -> dict[str, Any]:
@@ -1407,7 +951,6 @@ def build_all_views(
         "candidate_lineage_summary.min.json": build_candidate_lineage_summary(
             active_receipts, source
         ),
-        "owner_landing_summary.min.json": build_owner_landing_summary(active_receipts, source),
         "supersession_drop_summary.min.json": build_supersession_drop_summary(
             active_receipts, source
         ),
@@ -1427,9 +970,6 @@ def build_all_views(
             active_receipts, source
         ),
         "runtime_closeout_summary.min.json": build_runtime_closeout_summary(active_receipts, source),
-        "stress_recovery_window_summary.min.json": build_stress_recovery_window_summary(
-            active_receipts, source, evals_root=resolved_evals_root
-        ),
         "source_coverage_summary.min.json": build_source_coverage_summary(
             active_receipts,
             source,
@@ -1449,6 +989,10 @@ def build_all_views(
         )
 
     for name, builder in (
+        (
+            "owner_landing_summary.min.json",
+            lambda: build_owner_landing_summary(active_receipts, source),
+        ),
         ("codex_plane_deployment_summary.min.json", build_codex_plane_optional),
         ("codex_rollout_operations_summary.min.json", build_codex_rollout_operations_summary),
         ("codex_rollout_drift_summary.min.json", build_codex_rollout_drift_summary),
@@ -1457,6 +1001,14 @@ def build_all_views(
         ("continuity_window_summary.min.json", build_continuity_window_summary),
         ("component_refresh_summary.min.json", build_component_refresh_summary),
         ("memory_movement_summary.min.json", build_memory_movement_summary),
+        (
+            "stress_recovery_window_summary.min.json",
+            lambda: build_stress_recovery_window_summary(
+                active_receipts,
+                source,
+                evals_root=resolved_evals_root,
+            ),
+        ),
         ("titan_incarnation_summary.min.json", build_titan_incarnation_summary),
         ("titan_summon_summary.min.json", build_titan_summon_summary),
     ):

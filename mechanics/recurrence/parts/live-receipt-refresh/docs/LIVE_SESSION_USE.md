@@ -29,7 +29,6 @@ declared source contract resolves:
 - `state/generated/core_skill_application_summary.min.json`
 - `state/generated/object_summary.min.json`
 - `state/generated/candidate_lineage_summary.min.json`
-- `state/generated/owner_landing_summary.min.json`
 - `state/generated/supersession_drop_summary.min.json`
 - `state/generated/repeated_window_summary.min.json`
 - `state/generated/route_progression_summary.min.json`
@@ -37,9 +36,7 @@ declared source contract resolves:
 - `state/generated/session_growth_branch_summary.min.json`
 - `state/generated/automation_pipeline_summary.min.json`
 - `state/generated/automation_followthrough_summary.min.json`
-- `state/generated/memory_movement_summary.min.json`
 - `state/generated/runtime_closeout_summary.min.json`
-- `state/generated/stress_recovery_window_summary.min.json`
 - `state/generated/source_coverage_summary.min.json`
 - `state/generated/surface_detection_summary.min.json`
 
@@ -122,8 +119,9 @@ profiles are the single inventory source:
 - the live catalog lists only outputs actually materialized
 
 The managed inventory contains 25 active read-model outputs. The authored
-live-admitted allowlist contains exactly 16. The nine false-live profiles are:
+live-admitted allowlist contains exactly 13. The 12 false-live profiles are:
 
+- `owner_landing_summary`
 - `codex_plane_deployment_summary`
 - `codex_rollout_operations_summary`
 - `codex_rollout_drift_summary`
@@ -131,8 +129,10 @@ live-admitted allowlist contains exactly 16. The nine false-live profiles are:
 - `drift_review_summary`
 - `continuity_window_summary`
 - `component_refresh_summary`
+- `memory_movement_summary`
 - `titan_incarnation_summary`
 - `titan_summon_summary`
+- `stress_recovery_window_summary`
 
 They remain valid committed public reference surfaces, but the live run does
 not recreate them. If an older copy exists under `state/generated/`, cleanup
@@ -165,14 +165,35 @@ artifact whose reviewed chain reaches an owner-local
 `component_refresh_receipt`. Owner laws or example packets cannot fill that
 absence. See
 `docs/decisions/AOST-D-0003-component-refresh-fixtures-are-not-live-state.md`.
-That decision supplies the selector and stale-cleanup precedent for
-reference-only profiles; it does not decide the other eight profiles.
+That decision supplies the selector and stale-cleanup precedent, but does not
+by itself admit or certify any other profile.
 
 Future Continuity Window live activation requires a timestamped owner-runtime
 artifact or receipt with resolvable continuity, revision, reanchor or explicit
 no-drift, and anchor references, plus applicable real eval reports. The current
 aoa-agents example, experimental playbook, aoa-memo example, and aoa-evals
 catalog definitions cannot fill that absence.
+
+Future Owner Landing live activation requires real owner-local publishers for
+the accepted landing event kinds plus a registry/watch route that observes
+their receipt logs. Committed intake examples demonstrate the projection
+contract but do not prove that any owner currently publishes landing state.
+
+Future Memory Movement live activation requires an explicit observation route
+for changes to the reviewed `aoa-memo` catalog, object corpus, reviewed intake,
+and landing receipts. Those sources are real owner truth, but resolving them
+when an unrelated receipt happens to trigger refresh is not a freshness
+contract. The watched memo writeback log does not currently observe all four
+corpus roots.
+
+Future Stress Recovery live activation requires an active `aoa-evals`
+publisher, real stress-recovery receipts and reports, and a registry/watch
+route that observes them. A draft eval definition and example report remain a
+committed contract chain rather than current repeated-window evidence.
+
+The current-source plus refresh-observation law and these three audit outcomes
+are recorded in
+`docs/decisions/AOST-D-0004-live-admission-requires-refresh-observation.md`.
 
 The live feed and committed builders keep raw logs append-only, but the
 receipt-backed live summaries read from the active receipt view after local
@@ -214,6 +235,11 @@ watch paths before it writes user units.
 - `/srv/AbyssOS/aoa-techniques/.aoa/live_receipts/technique-receipts.jsonl`
 - `/srv/AbyssOS/aoa-memo/.aoa/live_receipts/memo-writeback-receipts.jsonl`
 - `/srv/AbyssOS/abyss-stack/.aoa/live_receipts/runtime-wave-closeouts.jsonl`
+
+The watched memo writeback log participates in the shared receipt feed, but it
+does not observe every change to the reviewed corpus roots consumed by the
+committed Memory Movement snapshot. It therefore does not admit that profile
+to continuously refreshed local state.
 
 ## Readiness audit
 

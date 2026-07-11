@@ -23,7 +23,7 @@ The source/mechanics refactor is part of that contour:
 - `schemas/` and `generated/` remain stable public publication districts
 - `src/` remains the importable implementation and access boundary
 - authored `live_state_capable` profiles select local live materialization;
-  the current split is 16 live-admitted read models across 25 managed active
+  the current split is 13 live-admitted read models across 25 managed active
   outputs, and cleanup covers the full managed set
 
 ## Active summary families
@@ -88,9 +88,14 @@ contract stays separate from active catalog claims.
   `src/aoa_stats_builder/continuity_window.py`,
   `src/aoa_stats_builder/continuity_window_sources.py`,
   `src/aoa_stats_builder/component_refresh.py`, and
-  `src/aoa_stats_builder/component_refresh_sources.py`; the selector and
-  stale-cleanup precedent comes from the Component Refresh-only decision
-  `docs/decisions/AOST-D-0003-component-refresh-fixtures-are-not-live-state.md`
+  `src/aoa_stats_builder/component_refresh_sources.py`; Memory Movement and
+  Stress Recovery use the same explicit core/source split through
+  `src/aoa_stats_builder/memory_movement*.py` and
+  `src/aoa_stats_builder/stress_recovery*.py`. The selector and stale-cleanup
+  precedent comes from the Component Refresh-only decision
+  `docs/decisions/AOST-D-0003-component-refresh-fixtures-are-not-live-state.md`;
+  the current-source plus refresh-observation admission rule is recorded in
+  `docs/decisions/AOST-D-0004-live-admission-requires-refresh-observation.md`
 - live output lifecycle debt: add an explicit retired/renamed-output cleanup
   record before an active read-model profile leaves the managed inventory
 - stress-recovery chaos fixture:
@@ -114,10 +119,10 @@ Changes on this line should:
 5. update topology, source-home validation, focused tests, and generated
    outputs together
 6. keep `README.md` and `docs/README.md` short and link-driven
-7. keep all nine committed/reference profiles out of local live output until
-   their real owner-runtime, deploy-local, or active-cadence sources and
-   activation contracts exist; audit the remaining non-receipt or
-   example-backed `live_state_capable: true` profiles separately
+7. keep all 12 committed/reference profiles out of local live output until
+   their real owner-runtime, deploy-local, active-cadence, publisher, and
+   refresh-observation contracts exist; audit every remaining
+   `live_state_capable: true` profile against both its source and trigger
 
 ## Non-goals
 

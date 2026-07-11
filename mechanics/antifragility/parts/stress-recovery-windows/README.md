@@ -1,8 +1,22 @@
 # stress-recovery-windows
 
-Derives bounded recovery-window observations from stronger eval and owner evidence.
+Derives a bounded Stress Recovery projection from stronger eval and owner
+evidence without becoming a proof or recovery authority.
 
-This part owns its operation route and the localized payload roots declared in
-`mechanics/topology.json`. Its stats source family owns the bounded meaning;
-public schemas and generated outputs stay at their declared publication paths
-when consumers depend on those paths.
+The implementation is split between:
+
+- the filesystem-free projection core at
+  `src/aoa_stats_builder/stress_recovery.py`
+- the exact `repo:aoa-evals/...` source adapter at
+  `src/aoa_stats_builder/stress_recovery_sources.py`
+- focused projection and adapter tests under this part's `tests/` district
+
+The current profile is an active public contract but a false-live committed
+draft/example surface. The adapter's legacy report relocation is available
+only through the explicitly named committed-reference loader; the exact live
+loader never falls back to that example.
+
+Read `CONTRACT.md` for the local stop-lines,
+`docs/STRESS_RECOVERY_WINDOW_SUMMARIES.md` for the detailed source posture, and
+`VALIDATION.md` for executable checks. Future live activation is governed by
+`docs/decisions/AOST-D-0004-live-admission-requires-refresh-observation.md`.

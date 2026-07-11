@@ -12,6 +12,8 @@ admitted by the `intake_contract` family.
 - receipts accepted by the canonical stats event envelope
 - active authored read-model profiles, whose `live_state_capable` field selects
   the live materialization allowlist
+- for every admitted profile, a current owner source and an observation route
+  capable of causing refresh when that source changes
 - explicit federation-root and output overrides when supplied by the operator
 
 ## Outputs
@@ -31,12 +33,16 @@ admitted by the `intake_contract` family.
 - unknown event kinds fail before a summary is built
 - missing or invalid required publishers remain visible as errors
 - a surface with `live_state_capable: false` is not materialized or cataloged
+- the current 25-profile managed universe yields exactly 13 admitted live
+  outputs and 12 false-live cleanup targets
+- resolving a current owner path on demand does not replace a refresh
+  observation route
 - cleanup covers the full managed active-profile output set, including
   reference-only outputs, so stale runtime copies do not survive
 - live materialization does not invoke the Component Refresh, Continuity
-  Window, Codex Plane Deployment, trusted rollout-history, or cadence-example
-  reference adapters or infer their missing owner-runtime, deploy-local, or
-  active-cadence state
+  Window, Codex Plane Deployment, Memory Movement, Stress Recovery, trusted
+  rollout-history, or cadence-example reference adapters or infer their
+  missing owner-runtime, observation, deploy-local, or active-cadence state
 - derived views cannot strengthen owner evidence or become owner truth
 
 Component Refresh remains a committed reference surface. Live activation
@@ -59,6 +65,25 @@ rollout-receipt artifacts below `.codex/generated/rollout/`. Until a real
 producer and refresh trigger are proven, the authored selector stays false and
 stale runtime copies are removed.
 
+Owner Landing remains a committed receipt-example surface. The accepted event
+kinds and deterministic builder do not prove that `aoa-skills`, Dionysus, or
+another named owner currently publishes the landing receipts. Until a real
+owner-local publisher and observation route exist, the authored selector stays
+false and stale runtime copies are removed.
+
+Memory Movement remains a committed snapshot of real reviewed `aoa-memo`
+corpus truth. Its catalog, object corpus, reviewed intake, and landing receipts
+are authentic owner sources, but none of those four roots currently causes the
+live refresh loop to run. Watching the separate memo writeback receipt log does
+not prove observation of corpus movement. Until that trigger is explicit and
+tested, the authored selector stays false and stale runtime copies are removed.
+
+Stress Recovery Window remains a committed draft-eval example surface. Its
+event envelope and example report demonstrate projection shape, not an active
+`aoa-evals` publisher or a current report family. Until real owner receipts,
+reports, and their observation route exist, the authored selector stays false
+and stale runtime copies are removed.
+
 This contract does not certify that every other `live_state_capable: true`
 profile is receipt-backed. Their declared source postures require separate,
 profile-by-profile audits.
@@ -72,7 +97,9 @@ route is recorded in `stats/source_home.manifest.json` and
 The selector/output split and stale-cleanup precedent is recorded for Component
 Refresh in
 `docs/decisions/AOST-D-0003-component-refresh-fixtures-are-not-live-state.md`.
-That record does not decide the other eight reference-only profiles.
+The source-plus-observation admission law and the Owner Landing, Memory
+Movement, and Stress Recovery audit are recorded in
+`docs/decisions/AOST-D-0004-live-admission-requires-refresh-observation.md`.
 
 ## Compatibility route
 

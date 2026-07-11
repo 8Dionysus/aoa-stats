@@ -85,6 +85,15 @@ reference-only surfaces without silently replaying their fixtures as live
 state. Admission is not provenance certification: audit the declared source
 posture of each `true` profile separately.
 
+Live admission requires both a current owner source and an observation route
+that can cause refresh when that source changes. A builder that can resolve an
+owner path on demand is not enough to keep continuously advertised local state
+current. Memory Movement reads real reviewed `aoa-memo` corpus truth, but it
+remains on the committed snapshot route until that corpus has an explicit
+refresh trigger. Owner Landing and Stress Recovery likewise remain out of live
+state until their named owners publish real receipts and reports rather than
+only examples or draft contracts.
+
 For a profile-by-profile live-source audit, start at the owning mechanic
 contract. Classify the current source chain as runtime/receipt-backed or
 committed reference, make I/O and reference adaptation explicit, and only then

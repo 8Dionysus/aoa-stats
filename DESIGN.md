@@ -148,6 +148,17 @@ merging their operation ownership or promoting examples into checked-in
 history. Both cadence profiles remain reference-only until a real cadence
 producer and refresh route exist.
 
+Live admission is an atomic source-and-observation boundary. A source may be
+authentic owner truth and still be unsuitable for continuously advertised
+local state when no refresh trigger observes it. Memory Movement therefore
+keeps its reviewed `aoa-memo` corpus adapter and committed snapshot, while its
+live selector stays closed until catalog, object, reviewed-intake, and landing
+movement can trigger refresh through an explicit contract. Owner Landing stays
+reference-only while its event kinds have no real publisher, and Stress
+Recovery stays reference-only while its eval is draft and its only resolvable
+report is an example. Their committed summaries remain useful bounded contract
+snapshots; absence from `state/generated/` is the honest runtime posture.
+
 ## Operation
 
 The refactor advances in alternating cross-slices:

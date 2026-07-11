@@ -17,11 +17,11 @@ by the local live refresh loop when its inputs resolve. A `false` profile stays
 on its committed/reference route and is omitted from live output and the live
 catalog, although refresh cleanup still removes any stale runtime copy.
 
-The current managed inventory contains 25 active profiles; 16 are admitted to
-live materialization. The nine reference-only profiles are Component Refresh,
-Continuity Window, Codex Plane Deployment, Codex Rollout Operations, Codex
-Rollout Drift, Rollout Campaign, Drift Review, Titan Incarnation, and Titan
-Summon.
+The current managed inventory contains 25 active profiles; 13 are admitted to
+live materialization. The 12 reference-only profiles are Owner Landing,
+Codex Plane Deployment, Codex Rollout Operations, Codex Rollout Drift, Rollout
+Campaign, Drift Review, Continuity Window, Component Refresh, Memory Movement,
+Titan Incarnation, Titan Summon, and Stress Recovery Window.
 Continuity Window describes the posture represented by its committed
 cross-owner example/catalog chain. Codex Plane Deployment describes the posture
 represented by the committed 8Dionysus trust-state, regeneration-report, and
@@ -32,6 +32,14 @@ Codex Rollout Operations and Codex Rollout Drift describe the exact checked-in
 trusted-history bundle; “latest” is bounded to that history. Rollout Campaign
 and Drift Review describe a separate three-example cadence chain. Checked-in
 history is not runtime state, and examples are not active cadence.
+
+Owner Landing and Stress Recovery Window currently describe only committed
+receipt/report examples: neither has a real active owner publisher. Memory
+Movement reads a real reviewed `aoa-memo` corpus, but the automatic refresh
+mechanic does not observe changes to its four source roots. A current source is
+necessary but not sufficient for continuously advertised live state; all three
+profiles stay false until their missing producer or refresh observation route
+exists and is tested.
 
 Use `committed_owner_example_chain` only when one owner repository publishes a
 coherent set of checked-in examples that can drive a deterministic committed
