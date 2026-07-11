@@ -1,0 +1,154 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://aoa-stats/stats/read-models/surface-profile.schema.json",
+  "title": "aoa-stats authored surface profile",
+  "oneOf": [
+    {
+      "$ref": "#/$defs/activeProfile"
+    },
+    {
+      "$ref": "#/$defs/deferredProfile"
+    }
+  ],
+  "$defs": {
+    "mechanicRoutes": {
+      "type": "array",
+      "minItems": 1,
+      "uniqueItems": true,
+      "items": {
+        "type": "string",
+        "pattern": "^mechanics/[a-z0-9-]+/parts/[a-z0-9-]+$"
+      }
+    },
+    "activeProfile": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "schema_version",
+        "catalog_order",
+        "lifecycle",
+        "name",
+        "surface_ref",
+        "schema_ref",
+        "primary_question",
+        "derivation_rule",
+        "input_posture",
+        "owner_truth_inputs",
+        "authority_ceiling",
+        "consumer_risk",
+        "live_state_capable",
+        "mechanic_routes"
+      ],
+      "properties": {
+        "schema_version": {
+          "const": "aoa_stats_surface_profile_source_v1"
+        },
+        "catalog_order": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "lifecycle": {
+          "const": "active"
+        },
+        "name": {
+          "type": "string",
+          "pattern": "^[a-z][a-z0-9_]*$"
+        },
+        "surface_ref": {
+          "type": "string",
+          "pattern": "^generated/[a-z0-9_]+\\.min\\.json$"
+        },
+        "schema_ref": {
+          "type": "string",
+          "pattern": "^schemas/[A-Za-z0-9_.-]+\\.json$"
+        },
+        "primary_question": {
+          "type": "string",
+          "minLength": 1
+        },
+        "derivation_rule": {
+          "type": "string",
+          "minLength": 1
+        },
+        "input_posture": {
+          "type": "string",
+          "minLength": 1
+        },
+        "owner_truth_inputs": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "type": "string",
+            "minLength": 1
+          }
+        },
+        "authority_ceiling": {
+          "type": "string",
+          "minLength": 1
+        },
+        "consumer_risk": {
+          "enum": [
+            "low",
+            "medium",
+            "high"
+          ]
+        },
+        "live_state_capable": {
+          "type": "boolean"
+        },
+        "mechanic_routes": {
+          "$ref": "#/$defs/mechanicRoutes"
+        }
+      }
+    },
+    "deferredProfile": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "schema_version",
+        "lifecycle",
+        "name",
+        "status",
+        "contract_ref",
+        "schema_ref",
+        "activation_condition",
+        "authority_ceiling",
+        "mechanic_routes"
+      ],
+      "properties": {
+        "schema_version": {
+          "const": "aoa_stats_surface_profile_source_v1"
+        },
+        "lifecycle": {
+          "const": "deferred"
+        },
+        "name": {
+          "type": "string",
+          "pattern": "^[a-z][a-z0-9_]*$"
+        },
+        "status": {
+          "const": "contract_only"
+        },
+        "contract_ref": {
+          "type": "string",
+          "minLength": 1
+        },
+        "schema_ref": {
+          "type": "string",
+          "pattern": "^(schemas|mechanics/[a-z0-9-]+/parts/[a-z0-9-]+/schemas)/[A-Za-z0-9_.-]+\\.json$"
+        },
+        "activation_condition": {
+          "type": "string",
+          "minLength": 1
+        },
+        "authority_ceiling": {
+          "type": "string",
+          "minLength": 1
+        },
+        "mechanic_routes": {
+          "$ref": "#/$defs/mechanicRoutes"
+        }
+      }
+    }
+  }
+}

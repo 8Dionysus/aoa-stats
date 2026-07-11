@@ -3,6 +3,7 @@
 from __future__ import annotations
 
 import argparse
+import json
 from dataclasses import dataclass
 from pathlib import Path
 
@@ -10,25 +11,49 @@ REPO_ROOT = Path(__file__).resolve().parents[1]
 REPOSITORY_NAME = 'aoa-stats'
 
 REQUIRED_AGENTS_DOCS: dict[str, tuple[str, ...]] = {
-    'config/AGENTS.md': ('stats_event_kind_registry.json', 'live_receipt_sources.json'),
+    '.github/AGENTS.md': ('GitHub platform surface', 'Repo Validation'),
     'docs/decisions/AGENTS.md': ('AOST-D-####-short-slug.md', 'Stats surfaces'),
+    'evals/AGENTS.md': ('stats-layer eval pressure', 'aoa-evals'),
     'examples/AGENTS.md': ('Examples demonstrate derived stats contracts', 'without becoming canonical evidence'),
     'generated/AGENTS.md': ('Source repos own meaning', 'Do not hand-edit generated outputs'),
     'kag/AGENTS.md': (
         'local KAG provider home',
         'source-linked records',
-        'derived observability registries',
-        'source-return route',
+        'stats/source_home.manifest.json',
+        'supporting projections',
+    ),
+    'mechanics/AGENTS.md': ('source meaning', 'repeatable operation payload'),
+    'mechanics/recurrence/parts/live-receipt-refresh/config/AGENTS.md': (
+        'live_receipt_sources.json',
+        'stats/intake-contract/event-kind-registry.json',
+    ),
+    'mechanics/recurrence/parts/live-receipt-refresh/systemd/AGENTS.md': (
+        'user-service templates',
+        'free of secrets',
     ),
     'schemas/AGENTS.md': ('Schema changes are contract changes', 'shared receipt envelope'),
     'scripts/AGENTS.md': ('build_views.py --check', 'derived-only'),
     'src/AGENTS.md': ('aoa_stats_mcp', 'workflow, proof, route, or quest authority'),
-    'systemd/AGENTS.md': ('user-service surfaces', 'free of secrets'),
+    'stats/AGENTS.md': ('source-authored meaning of stats families', 'source_home.manifest.json'),
+    'stats/intake-contract/AGENTS.md': ('shared stats receipt envelope', 'Mechanics crosswalk'),
+    'stats/operation-contracts/AGENTS.md': (
+        'part-local stats operations',
+        'Do not add a public surface profile',
+    ),
+    'stats/read-models/AGENTS.md': ('source-authored surface profiles', 'surface-profile.schema.json'),
+    'stats/surface-catalog/AGENTS.md': ('catalog entry shape', 'Mechanics crosswalk'),
     'tests/AGENTS.md': ('deterministic derivation', 'boundary integrity'),
 }
-ADVISORY_AGENT_DIRS: tuple[str, ...] = ('.agents/skills', 'docs', 'manifests/recurrence', 'quests')
+ADVISORY_AGENT_DIRS: tuple[str, ...] = ('.agents/skills', 'docs', 'manifests/artifact_bundles')
 HEADING_PREFIXES = ("# AGENTS.md", "# AGENTS")
-IGNORED_DIRS = {".git", ".venv", "__pycache__", ".pytest_cache", ".mypy_cache"}
+IGNORED_DIRS = {
+    ".deps",
+    ".git",
+    ".venv",
+    "__pycache__",
+    ".pytest_cache",
+    ".mypy_cache",
+}
 
 
 @dataclass(frozen=True)
@@ -72,6 +97,52 @@ def discover_nested_agents(repo_root: Path) -> set[str]:
     return found
 
 
+def discover_topology_agents(repo_root: Path) -> tuple[set[str], list[str]]:
+    """Derive package, parts-root, legacy, and part-local cards from topology."""
+
+    topology_path = repo_root / "mechanics" / "topology.json"
+    try:
+        topology = json.loads(topology_path.read_text(encoding="utf-8"))
+    except FileNotFoundError:
+        return set(), ["mechanics/topology.json: missing while deriving AGENTS routes"]
+    except json.JSONDecodeError as exc:
+        return set(), [f"mechanics/topology.json: invalid JSON: {exc}"]
+    packages = topology.get("active_packages") if isinstance(topology, dict) else None
+    if not isinstance(packages, list):
+        return set(), ["mechanics/topology.json: active_packages must be a list"]
+
+    expected: set[str] = set()
+    issues: list[str] = []
+    for package in packages:
+        if not isinstance(package, dict) or not isinstance(package.get("path"), str):
+            issues.append("mechanics/topology.json: every active package must name a path")
+            continue
+        package_name = package["path"]
+        package_root = repo_root / "mechanics" / package_name
+        expected.update(
+            {
+                f"mechanics/{package_name}/AGENTS.md",
+                f"mechanics/{package_name}/parts/AGENTS.md",
+            }
+        )
+        if (package_root / "legacy").is_dir():
+            expected.add(f"mechanics/{package_name}/legacy/AGENTS.md")
+        parts = package.get("active_part_routes")
+        if not isinstance(parts, list):
+            issues.append(f"mechanics/{package_name}: active_part_routes must be a list")
+            continue
+        for part in parts:
+            if not isinstance(part, dict) or not isinstance(part.get("path"), str):
+                issues.append(f"mechanics/{package_name}: every active part must name a path")
+                continue
+            part_root = package_root / "parts" / part["path"]
+            if not part_root.is_dir():
+                continue
+            for agents_path in part_root.rglob("AGENTS.md"):
+                expected.add(agents_path.relative_to(repo_root).as_posix())
+    return expected, issues
+
+
 def validate(
     repo_root: Path = REPO_ROOT,
     *,
@@ -103,7 +174,17 @@ def validate(
             if _normalize(snippet) not in normalized:
                 issues.append(f"{rel_path}: missing required snippet {snippet!r}")
 
-    required = set(REQUIRED_AGENTS_DOCS)
+    topology_agents, topology_issues = discover_topology_agents(repo_root)
+    issues.extend(topology_issues)
+    for rel_path in sorted(topology_agents):
+        path = repo_root / rel_path
+        if not path.is_file():
+            issues.append(f"{rel_path}: topology-owned nested AGENTS.md is missing")
+            continue
+        if not _has_agents_heading(path.read_text(encoding="utf-8")):
+            issues.append(f"{rel_path}: missing AGENTS heading")
+
+    required = set(REQUIRED_AGENTS_DOCS) | topology_agents
     actual = discover_nested_agents(repo_root)
     untracked = sorted(actual - required)
     if untracked:
@@ -146,7 +227,8 @@ def main(argv: list[str] | None = None) -> int:
         return 1
     print(
         f"Nested AGENTS validation passed for {REPOSITORY_NAME}: "
-        f"{len(REQUIRED_AGENTS_DOCS)} required nested document(s)."
+        f"{len(set(REQUIRED_AGENTS_DOCS) | discover_topology_agents(args.repo_root.resolve())[0])} "
+        "required nested document(s)."
     )
     for warning in result.warnings:
         print(f"[advisory] {warning}")

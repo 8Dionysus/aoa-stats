@@ -5,10 +5,17 @@
   "source_surfaces": [
     {
       "repo": "aoa-stats",
-      "path": "generated/agon_kag_stats_observability_registry.min.json",
+      "path": "stats/source_home.manifest.json",
       "source_class": "stats_source",
       "role": "primary",
-      "authority": "derived_readmodel"
+      "authority": "authored_source"
+    },
+    {
+      "repo": "aoa-stats",
+      "path": "stats/read-models/README.md",
+      "source_class": "stats_source",
+      "role": "supporting",
+      "authority": "authored_source"
     },
     {
       "repo": "aoa-stats",
@@ -19,23 +26,23 @@
     },
     {
       "repo": "aoa-stats",
-      "path": "README.md",
+      "path": "generated/agon_kag_stats_observability_registry.min.json",
+      "source_class": "stats_source",
+      "role": "supporting",
+      "authority": "derived_readmodel"
+    },
+    {
+      "repo": "aoa-stats",
+      "path": "stats/README.md",
       "source_class": "stats_source",
       "role": "owner_route",
       "authority": "authored_source"
     },
     {
       "repo": "aoa-stats",
-      "path": "docs/BOUNDARIES.md",
+      "path": "README.md",
       "source_class": "stats_source",
-      "role": "supporting",
-      "authority": "authored_source"
-    },
-    {
-      "repo": "aoa-stats",
-      "path": "docs/ARCHITECTURE.md",
-      "source_class": "stats_source",
-      "role": "supporting",
+      "role": "owner_route",
       "authority": "authored_source"
     }
   ],
@@ -53,11 +60,15 @@
   },
   "validation_routes": [
     {
-      "route": "python scripts/build_agon_kag_stats_observability_registry.py --check",
+      "route": "python scripts/validate_stats_source_home.py",
       "lane": "owner-local"
     },
     {
-      "route": "python scripts/validate_agon_kag_stats_observability_registry.py",
+      "route": "python mechanics/agon/parts/kag-observability/scripts/build_agon_kag_stats_observability_registry.py --check",
+      "lane": "owner-local"
+    },
+    {
+      "route": "python mechanics/agon/parts/kag-observability/scripts/validate_agon_kag_stats_observability_registry.py",
       "lane": "owner-local"
     },
     {
@@ -77,8 +88,13 @@
   "owner_return_routes": [
     {
       "repo": "aoa-stats",
-      "surface": "README.md",
+      "surface": "stats/README.md",
       "route_kind": "authored_meaning"
+    },
+    {
+      "repo": "aoa-stats",
+      "surface": "README.md",
+      "route_kind": "routing"
     }
   ]
 }

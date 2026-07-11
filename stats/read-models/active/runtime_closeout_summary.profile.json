@@ -1,0 +1,20 @@
+{
+  "schema_version": "aoa_stats_surface_profile_source_v1",
+  "catalog_order": 22,
+  "lifecycle": "active",
+  "name": "runtime_closeout_summary",
+  "surface_ref": "generated/runtime_closeout_summary.min.json",
+  "schema_ref": "schemas/runtime-closeout-summary.schema.json",
+  "primary_question": "What is the current bounded runtime closeout posture across program waves and how did reviewed handoff land?",
+  "derivation_rule": "aggregate runtime_wave_closeout_receipt payloads by program_id and wave_id and keep the latest gate plus handoff posture",
+  "input_posture": "receipt_backed_live",
+  "owner_truth_inputs": [
+    "abyss-stack runtime closeout receipts"
+  ],
+  "authority_ceiling": "Weaker than owner-local runtime closeout records, gates, and handoff evidence.",
+  "consumer_risk": "high",
+  "live_state_capable": true,
+  "mechanic_routes": [
+    "mechanics/checkpoint/parts/runtime-closeout"
+  ]
+}

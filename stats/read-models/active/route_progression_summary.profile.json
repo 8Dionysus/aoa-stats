@@ -1,0 +1,20 @@
+{
+  "schema_version": "aoa_stats_surface_profile_source_v1",
+  "catalog_order": 7,
+  "lifecycle": "active",
+  "name": "route_progression_summary",
+  "surface_ref": "generated/route_progression_summary.min.json",
+  "schema_ref": "schemas/route-progression-summary.schema.json",
+  "primary_question": "What bounded multi-axis movement is visible on each named route?",
+  "derivation_rule": "aggregate progression_delta_receipt payloads by route_ref and sum axis deltas",
+  "input_posture": "receipt_backed_live",
+  "owner_truth_inputs": [
+    "owner-local progression receipts"
+  ],
+  "authority_ceiling": "Weaker than owner-local route records, playbooks, and progression decisions.",
+  "consumer_risk": "high",
+  "live_state_capable": true,
+  "mechanic_routes": [
+    "mechanics/rpg/parts/route-progression"
+  ]
+}

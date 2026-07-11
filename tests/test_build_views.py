@@ -200,9 +200,9 @@ def make_seed_owner_landing_trace_receipt(
 def test_build_views_produces_expected_surface_counts() -> None:
     module = load_build_views_module()
     receipts = module.load_receipts(
-        [REPO_ROOT / "examples" / "session_harvest_family.receipts.example.json"]
+        [REPO_ROOT / "stats" / "intake-contract" / "examples" / "session_harvest_family.receipts.example.json"]
     )
-    outputs = module.build_all_views(receipts, ["session_harvest_family.receipts.example.json"])
+    outputs = module.build_all_views(receipts, ["stats/intake-contract/examples/session_harvest_family.receipts.example.json"])
 
     assert set(outputs) == {
         "object_summary.min.json",
@@ -837,13 +837,13 @@ def test_component_refresh_summary_accepts_decision_evidence_without_hint_ref(
 def test_candidate_lineage_summary_stays_reviewed_only_and_no_score() -> None:
     module = load_build_views_module()
     receipts = module.load_receipts(
-        [REPO_ROOT / "examples" / "session_harvest_family.receipts.example.json"]
+        [REPO_ROOT / "stats" / "intake-contract" / "examples" / "session_harvest_family.receipts.example.json"]
     )
 
     summary = module.build_candidate_lineage_summary(
         receipts,
         {
-            "receipt_input_paths": ["examples/session_harvest_family.receipts.example.json"],
+            "receipt_input_paths": ["stats/intake-contract/examples/session_harvest_family.receipts.example.json"],
             "total_receipts": len(receipts),
             "latest_observed_at": max(receipt["observed_at"] for receipt in receipts),
         },
@@ -1121,7 +1121,7 @@ def test_build_all_views_skips_missing_optional_sibling_surfaces(
 ) -> None:
     module = load_build_views_module()
     receipts = module.load_receipts(
-        [REPO_ROOT / "examples" / "session_harvest_family.receipts.example.json"]
+        [REPO_ROOT / "stats" / "intake-contract" / "examples" / "session_harvest_family.receipts.example.json"]
     )
     for env_name in (
         "AOA_8DIONYSUS_ROOT",
@@ -1132,7 +1132,7 @@ def test_build_all_views_skips_missing_optional_sibling_surfaces(
     ):
         monkeypatch.setenv(env_name, str(tmp_path / env_name.lower()))
 
-    outputs = module.build_all_views(receipts, ["session_harvest_family.receipts.example.json"])
+    outputs = module.build_all_views(receipts, ["stats/intake-contract/examples/session_harvest_family.receipts.example.json"])
 
     assert "codex_plane_deployment_summary.min.json" not in outputs
     assert "codex_rollout_operations_summary.min.json" not in outputs
@@ -1428,13 +1428,18 @@ def test_candidate_lineage_summary_orders_mixed_timezone_timestamps() -> None:
 def test_candidate_lineage_summary_richer_reviewed_fixture_keeps_stage_and_aggregate_truth() -> None:
     module = load_build_views_module()
     receipts = module.load_receipts(
-        [REPO_ROOT / "examples" / "reviewed_candidate_lineage_receipts.example.json"]
+        [
+            REPO_ROOT
+            / "mechanics/method-growth/parts/candidate-lineage/examples/reviewed_candidate_lineage_receipts.example.json"
+        ]
     )
 
     summary = module.build_candidate_lineage_summary(
         receipts,
         {
-            "receipt_input_paths": ["examples/reviewed_candidate_lineage_receipts.example.json"],
+            "receipt_input_paths": [
+                "mechanics/method-growth/parts/candidate-lineage/examples/reviewed_candidate_lineage_receipts.example.json"
+            ],
             "total_receipts": len(receipts),
             "latest_observed_at": max(receipt["observed_at"] for receipt in receipts),
         },
@@ -1886,8 +1891,28 @@ def test_stress_recovery_window_summary_suppresses_on_malformed_report_json(tmp_
 
 
 def test_antifragility_vector_schema_requires_nonempty_source_refs() -> None:
-    schema = json.loads((REPO_ROOT / "schemas" / "antifragility_vector_v1.json").read_text(encoding="utf-8"))
-    payload = json.loads((REPO_ROOT / "examples" / "antifragility_vector.example.json").read_text(encoding="utf-8"))
+    schema = json.loads(
+        (
+            REPO_ROOT
+            / "mechanics"
+            / "antifragility"
+            / "parts"
+            / "antifragility-vector"
+            / "schemas"
+            / "antifragility_vector_v1.json"
+        ).read_text(encoding="utf-8")
+    )
+    payload = json.loads(
+        (
+            REPO_ROOT
+            / "mechanics"
+            / "antifragility"
+            / "parts"
+            / "antifragility-vector"
+            / "examples"
+            / "antifragility_vector.example.json"
+        ).read_text(encoding="utf-8")
+    )
     payload["inputs"]["receipt_refs"] = []
     payload["inputs"]["eval_report_refs"] = []
 
@@ -1970,9 +1995,9 @@ def test_surface_detection_summary_tracks_second_wave_observability_signals() ->
 def test_automation_pipeline_summary_tracks_seed_readiness() -> None:
     module = load_build_views_module()
     receipts = module.load_receipts(
-        [REPO_ROOT / "examples" / "session_harvest_family.receipts.example.json"]
+        [REPO_ROOT / "stats" / "intake-contract" / "examples" / "session_harvest_family.receipts.example.json"]
     )
-    outputs = module.build_all_views(receipts, ["session_harvest_family.receipts.example.json"])
+    outputs = module.build_all_views(receipts, ["stats/intake-contract/examples/session_harvest_family.receipts.example.json"])
     pipeline = outputs["automation_pipeline_summary.min.json"]["pipelines"][0]
 
     assert pipeline["pipeline_ref"] == "pipeline:session-growth"
@@ -1985,13 +2010,13 @@ def test_automation_pipeline_summary_tracks_seed_readiness() -> None:
 def test_session_growth_branch_summary_tracks_reviewed_followthrough_hints() -> None:
     module = load_build_views_module()
     receipts = module.load_receipts(
-        [REPO_ROOT / "examples" / "session_harvest_family.receipts.example.json"]
+        [REPO_ROOT / "stats" / "intake-contract" / "examples" / "session_harvest_family.receipts.example.json"]
     )
 
     summary = module.build_session_growth_branch_summary(
         receipts,
         {
-            "receipt_input_paths": ["examples/session_harvest_family.receipts.example.json"],
+            "receipt_input_paths": ["stats/intake-contract/examples/session_harvest_family.receipts.example.json"],
             "total_receipts": len(receipts),
             "latest_observed_at": max(receipt["observed_at"] for receipt in receipts),
         },
@@ -2023,13 +2048,13 @@ def test_session_growth_branch_summary_tracks_reviewed_followthrough_hints() -> 
 def test_automation_followthrough_summary_tracks_blockers_and_real_run_review() -> None:
     module = load_build_views_module()
     receipts = module.load_receipts(
-        [REPO_ROOT / "examples" / "session_harvest_family.receipts.example.json"]
+        [REPO_ROOT / "stats" / "intake-contract" / "examples" / "session_harvest_family.receipts.example.json"]
     )
 
     summary = module.build_automation_followthrough_summary(
         receipts,
         {
-            "receipt_input_paths": ["examples/session_harvest_family.receipts.example.json"],
+            "receipt_input_paths": ["stats/intake-contract/examples/session_harvest_family.receipts.example.json"],
             "total_receipts": len(receipts),
             "latest_observed_at": max(receipt["observed_at"] for receipt in receipts),
         },

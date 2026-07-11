@@ -3,10 +3,16 @@ from __future__ import annotations
 import importlib.util
 import json
 from pathlib import Path
+import sys
 
 
 REPO_ROOT = Path(__file__).resolve().parents[1]
 MODULE_PATH = REPO_ROOT / "scripts" / "build_views.py"
+SRC_ROOT = REPO_ROOT / "src"
+if str(SRC_ROOT) not in sys.path:
+    sys.path.insert(0, str(SRC_ROOT))
+
+from aoa_stats_builder.surface_catalog import public_surface_profiles  # noqa: E402
 
 
 def load_build_views_module():
@@ -20,9 +26,18 @@ def load_build_views_module():
 def test_summary_surface_catalog_contract_is_exact() -> None:
     module = load_build_views_module()
     receipts = module.load_receipts(
-        [REPO_ROOT / "examples" / "session_harvest_family.receipts.example.json"]
+        [
+            REPO_ROOT
+            / "stats"
+            / "intake-contract"
+            / "examples"
+            / "session_harvest_family.receipts.example.json"
+        ]
     )
-    outputs = module.build_all_views(receipts, ["session_harvest_family.receipts.example.json"])
+    outputs = module.build_all_views(
+        receipts,
+        ["stats/intake-contract/examples/session_harvest_family.receipts.example.json"],
+    )
     payload = outputs["summary_surface_catalog.min.json"]
 
     assert set(payload) == {
@@ -68,43 +83,18 @@ def test_summary_surface_catalog_contract_is_exact() -> None:
         "scripts/validate_repo.py",
         "tests/test_summary_surface_catalog.py",
     ]
-    assert payload["deferred_contract_surfaces"] == [
-        {
-            "name": "antifragility_vector",
-            "status": "contract_only",
-            "contract_ref": "docs/ANTIFRAGILITY_VECTOR.md",
-            "schema_ref": "schemas/antifragility_vector_v1.json",
-            "activation_condition": "Activate only after one owner-linked repeated-window receipt family and bounded eval chain exist for the same stressor family.",
-            "authority_ceiling": "Even after activation this surface stays weaker than owner-local stressor receipts and bounded eval reports.",
-        }
+    authored_active, authored_deferred = public_surface_profiles(
+        REPO_ROOT / "stats" / "read-models"
+    )
+    available_output_names = set(outputs)
+    expected_active = [
+        profile
+        for profile in authored_active
+        if Path(profile["surface_ref"]).name in available_output_names
     ]
-    assert [entry["name"] for entry in payload["surfaces"]] == [
-        "core_skill_application_summary",
-        "object_summary",
-        "candidate_lineage_summary",
-        "owner_landing_summary",
-        "supersession_drop_summary",
-        "repeated_window_summary",
-        "route_progression_summary",
-        "fork_calibration_summary",
-        "session_growth_branch_summary",
-        "automation_pipeline_summary",
-        "automation_followthrough_summary",
-        "codex_plane_deployment_summary",
-        "codex_rollout_operations_summary",
-        "codex_rollout_drift_summary",
-        "rollout_campaign_summary",
-        "drift_review_summary",
-        "continuity_window_summary",
-        "component_refresh_summary",
-        "memory_movement_summary",
-        "titan_incarnation_summary",
-        "titan_summon_summary",
-        "runtime_closeout_summary",
-        "stress_recovery_window_summary",
-        "source_coverage_summary",
-        "surface_detection_summary",
-    ]
+    assert payload["surfaces"] == expected_active
+    assert payload["deferred_contract_surfaces"] == authored_deferred
+    assert payload["surfaces"]
     assert all("surface_ref" in entry for entry in payload["surfaces"])
     assert all("input_posture" in entry for entry in payload["surfaces"])
     assert all("owner_truth_inputs" in entry for entry in payload["surfaces"])
@@ -112,6 +102,8 @@ def test_summary_surface_catalog_contract_is_exact() -> None:
     assert all("consumer_risk" in entry for entry in payload["surfaces"])
     assert all("live_state_capable" in entry for entry in payload["surfaces"])
     assert all("path" not in entry for entry in payload["surfaces"])
+    assert all("catalog_order" not in entry for entry in payload["surfaces"])
+    assert all("mechanic_routes" not in entry for entry in payload["surfaces"])
 
 
 def test_artifact_bundle_manifest_requires_registry_lifecycle_and_sbom_lite() -> None:
@@ -126,7 +118,10 @@ def test_artifact_bundle_manifest_requires_registry_lifecycle_and_sbom_lite() ->
 
     assert manifest["artifact_class"] == "derived_observability_readmodel_catalog"
     assert manifest["public_safe"] is True
-    assert manifest["artifact_source"]["kind"] == "generated_observability_readmodel_catalog"
+    assert (
+        manifest["artifact_source"]["kind"]
+        == "generated_observability_readmodel_catalog"
+    )
     assert manifest["lifecycle"]["initial_state"] == "candidate"
     assert "release-ready" in manifest["lifecycle"]["promotion_path"]
     assert manifest["consumer_contract"]["registry_required"] is True
@@ -144,4 +139,7 @@ def test_artifact_bundle_manifest_requires_registry_lifecycle_and_sbom_lite() ->
     assert "--source-repo aoa-stats" in command_text
     assert "--trust-root-mode host_managed" in command_text
     assert manifest["consumer_contract"]["subject_store_required"] is True
-    assert manifest["consumer_contract"]["admission_gate"] == "fail_closed_consumer_admission"
+    assert (
+        manifest["consumer_contract"]["admission_gate"]
+        == "fail_closed_consumer_admission"
+    )

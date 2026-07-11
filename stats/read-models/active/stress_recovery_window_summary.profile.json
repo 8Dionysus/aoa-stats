@@ -1,0 +1,21 @@
+{
+  "schema_version": "aoa_stats_surface_profile_source_v1",
+  "catalog_order": 23,
+  "lifecycle": "active",
+  "name": "stress_recovery_window_summary",
+  "surface_ref": "generated/stress_recovery_window_summary.min.json",
+  "schema_ref": "schemas/stress-recovery-window-summary.schema.json",
+  "primary_question": "What does the current repeated-window stress recovery proof family say without inventing a new canonical event kind or outranking owner evidence?",
+  "derivation_rule": "resolve aoa-stress-recovery-window eval_result_receipt report_ref paths through aoa-evals and derive one bounded summary plus suppression posture",
+  "input_posture": "receipt_backed_with_external_reports",
+  "owner_truth_inputs": [
+    "aoa-evals eval result receipts",
+    "aoa-evals stress recovery reports"
+  ],
+  "authority_ceiling": "Weaker than owner-local stressor receipts, bounded eval reports, and route-owner recovery guidance.",
+  "consumer_risk": "high",
+  "live_state_capable": true,
+  "mechanic_routes": [
+    "mechanics/antifragility/parts/stress-recovery-windows"
+  ]
+}

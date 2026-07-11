@@ -31,7 +31,7 @@ def make_fake_repo(tmp_path: Path) -> Path:
     _write(repo / "docs/BOUNDARIES.md", "# Boundaries\nsource repos own meaning")
     _write(repo / "docs/ARCHITECTURE.md", "# Architecture\nderived views only")
     _write(
-        repo / "config/live_receipt_sources.json",
+        repo / "mechanics/recurrence/parts/live-receipt-refresh/config/live_receipt_sources.json",
         json.dumps({"schema_version": 1, "sources": [{"name": "skills"}]}, indent=2),
     )
     _write(

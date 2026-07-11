@@ -1,0 +1,20 @@
+{
+  "schema_version": "aoa_stats_surface_profile_source_v1",
+  "catalog_order": 6,
+  "lifecycle": "active",
+  "name": "repeated_window_summary",
+  "surface_ref": "generated/repeated_window_summary.min.json",
+  "schema_ref": "schemas/repeated-window-summary.schema.json",
+  "primary_question": "What changed across bounded date windows without turning the result into one global score?",
+  "derivation_rule": "group receipts by observed_at date and keep counts plus bounded window signals",
+  "input_posture": "receipt_backed_live",
+  "owner_truth_inputs": [
+    "owner-local receipts across the active registry"
+  ],
+  "authority_ceiling": "Weaker than the underlying receipt feed and any owner-local chronology or closeout record.",
+  "consumer_risk": "medium",
+  "live_state_capable": true,
+  "mechanic_routes": [
+    "mechanics/recurrence/parts/repeated-window"
+  ]
+}

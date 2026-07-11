@@ -63,7 +63,7 @@ jobs:
         uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd
         with:
           repository: 8Dionysus/abyss-machine
-          ref: ca92c113594fcd22acc436be249e96ea629a282a
+          ref: ebd72a530c0b06c67140d6b38392a49e518f84ba
           path: .deps/abyss-machine
 
       - name: Set up Python

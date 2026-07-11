@@ -6,40 +6,47 @@
   "source_refs": [
     {
       "repo": "aoa-stats",
-      "path": "README.md",
+      "path": "stats/source_home.manifest.json",
+      "source_class": "stats_source",
+      "role": "primary",
+      "authority": "authored_source"
+    },
+    {
+      "repo": "aoa-stats",
+      "path": "stats/README.md",
       "source_class": "stats_source",
       "role": "owner_route",
       "authority": "authored_source"
     },
     {
       "repo": "aoa-stats",
-      "path": "docs/BOUNDARIES.md",
+      "path": "README.md",
       "source_class": "stats_source",
-      "role": "supporting",
+      "role": "owner_route",
       "authority": "authored_source"
     }
   ],
   "source_owner": "aoa-stats",
   "provenance_mode": "strict_source_linked",
-  "derived_method": "source-linked local KAG node over stats owner route and derived-only boundary",
+  "derived_method": "source-linked local KAG route node from the authored stats source home to the stats and repository entry routes",
   "generated_or_authored": "authored_control",
   "status": "active",
   "owner_return_route": {
     "repo": "aoa-stats",
-    "surface": "README.md",
+    "surface": "stats/README.md",
     "route_kind": "authored_meaning"
   },
   "freshness": {
     "mode": "source_snapshot",
     "state": "current",
-    "checked_ref": "README.md"
+    "checked_ref": "stats/source_home.manifest.json"
   },
   "builder": {
-    "route": "stats view builders",
-    "surface": "scripts/build_views.py"
+    "route": "stats source-home authoring",
+    "surface": "stats/source_home.manifest.json"
   },
   "validator": {
-    "route": "python scripts/validate_repo.py",
+    "route": "python scripts/validate_stats_source_home.py",
     "lane": "owner-local"
   },
   "storage_posture": {
@@ -49,5 +56,5 @@
   },
   "consumer_route": "aoa-kag registry",
   "node_kind": "route_surface",
-  "label": "stats source route"
+  "label": "stats source-home return route"
 }

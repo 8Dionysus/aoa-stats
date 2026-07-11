@@ -1,0 +1,23 @@
+{
+  "schema_version": "aoa_stats_surface_profile_source_v1",
+  "catalog_order": 17,
+  "lifecycle": "active",
+  "name": "continuity_window_summary",
+  "surface_ref": "generated/continuity_window_summary.min.json",
+  "schema_ref": "schemas/continuity-window-summary.schema.json",
+  "primary_question": "What is the current bounded self-agency continuity posture without turning stats into continuity truth or self-agency proof?",
+  "derivation_rule": "derive one bounded continuity snapshot from the aoa-agents continuity window example, the sovereign continuity playbook, the memo-side provenance thread example, and the landed continuity eval anchors",
+  "input_posture": "reviewed_example_chain",
+  "owner_truth_inputs": [
+    "aoa-agents continuity examples",
+    "aoa-playbooks continuity playbook",
+    "aoa-memo provenance thread example",
+    "aoa-evals eval anchors"
+  ],
+  "authority_ceiling": "Weaker than continuity anchor artifacts, memo provenance threads, and bounded eval proof.",
+  "consumer_risk": "high",
+  "live_state_capable": true,
+  "mechanic_routes": [
+    "mechanics/recurrence/parts/continuity-window"
+  ]
+}

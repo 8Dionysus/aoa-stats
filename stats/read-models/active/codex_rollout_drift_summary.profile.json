@@ -1,0 +1,22 @@
+{
+  "schema_version": "aoa_stats_surface_profile_source_v1",
+  "catalog_order": 14,
+  "lifecycle": "active",
+  "name": "codex_rollout_drift_summary",
+  "surface_ref": "generated/codex_rollout_drift_summary.min.json",
+  "schema_ref": "schemas/codex-rollout-drift-summary.schema.json",
+  "primary_question": "What is the current bounded drift and rollback posture of the latest trusted Codex rollout campaign without replacing source-owned campaign history?",
+  "derivation_rule": "derive the latest drift window, drift state, repair attempt posture, and rollback requirement from 8Dionysus checked-in rollout history and rollback windows",
+  "input_posture": "checked_in_owner_history",
+  "owner_truth_inputs": [
+    "8Dionysus generated/codex/rollout history",
+    "8Dionysus rollback windows"
+  ],
+  "authority_ceiling": "Weaker than source-owned drift reviews, rollback windows, and campaign history.",
+  "consumer_risk": "high",
+  "live_state_capable": true,
+  "mechanic_routes": [
+    "mechanics/release-support/parts/codex-deployment-rollout",
+    "mechanics/release-support/parts/rollout-campaign"
+  ]
+}

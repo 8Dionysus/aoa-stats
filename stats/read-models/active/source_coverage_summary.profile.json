@@ -1,0 +1,21 @@
+{
+  "schema_version": "aoa_stats_surface_profile_source_v1",
+  "catalog_order": 24,
+  "lifecycle": "active",
+  "name": "source_coverage_summary",
+  "surface_ref": "generated/source_coverage_summary.min.json",
+  "schema_ref": "schemas/source-coverage-summary.schema.json",
+  "primary_question": "Which owner repos and receipt families are actually entering the active stats feed, and where is the stats layer still blind?",
+  "derivation_rule": "aggregate active receipts by object_ref.repo and event_kind, then compare observed owners against the configured live source registry when present",
+  "input_posture": "registry_backed_coverage_audit",
+  "owner_truth_inputs": [
+    "mechanics/recurrence/parts/live-receipt-refresh/config/live_receipt_sources.json",
+    "owner-local receipts across the active registry"
+  ],
+  "authority_ceiling": "Weaker than the owner-local receipt logs and weaker than the live source registry it audits.",
+  "consumer_risk": "medium",
+  "live_state_capable": true,
+  "mechanic_routes": [
+    "mechanics/audit/parts/source-coverage"
+  ]
+}

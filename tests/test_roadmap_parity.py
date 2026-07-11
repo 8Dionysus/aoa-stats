@@ -39,15 +39,17 @@ def read_text(relative_path: str) -> str:
     return (REPO_ROOT / relative_path).read_text(encoding="utf-8")
 
 
-def load_json(relative_path: str) -> object:
-    return json.loads((REPO_ROOT / relative_path).read_text(encoding="utf-8"))
+def load_json(relative_path: str) -> dict:
+    payload = json.loads((REPO_ROOT / relative_path).read_text(encoding="utf-8"))
+    assert isinstance(payload, dict)
+    return payload
 
 
 def test_roadmap_names_current_catalog_summary_families() -> None:
     roadmap = read_text("ROADMAP.md")
     readme = read_text("README.md")
     changelog = read_text("CHANGELOG.md")
-    payload = load_json("generated/summary_surface_catalog.min.json")
+    catalog = load_json("generated/summary_surface_catalog.min.json")
 
     assert "> Current release: `v0.1.3`" in readme
     assert "## [0.1.3] - 2026-04-23" in changelog
@@ -55,62 +57,47 @@ def test_roadmap_names_current_catalog_summary_families() -> None:
     assert "Current release contour" in roadmap
     assert "derived-observability hardening" in roadmap
     assert "weaker than source-owned rollout history" in roadmap
-    assert payload["schema_version"] == "aoa_stats_summary_surface_catalog_v2"
-    assert payload["authority_ref"] == "docs/ARCHITECTURE.md"
+    assert catalog["schema_version"] == "aoa_stats_summary_surface_catalog_v2"
+    assert catalog["authority_ref"] == "docs/ARCHITECTURE.md"
 
-    surface_names = {entry["name"] for entry in payload["surfaces"]}
+    surface_names = {entry["name"] for entry in catalog["surfaces"]}
     assert surface_names == set(ROADMAP_PHRASES)
-
-    for surface_name, phrase in ROADMAP_PHRASES.items():
-        assert surface_name in surface_names
+    for phrase in ROADMAP_PHRASES.values():
         assert phrase in roadmap
 
-    current_release_surfaces = [
+
+def test_roadmap_routes_to_authored_profiles_and_localized_operations() -> None:
+    roadmap = read_text("ROADMAP.md")
+    catalog = load_json("generated/summary_surface_catalog.min.json")
+    profile_names = {
+        load_json(path.relative_to(REPO_ROOT).as_posix())["name"]
+        for path in (REPO_ROOT / "stats/read-models/active").glob("*.profile.json")
+    }
+    assert profile_names == {entry["name"] for entry in catalog["surfaces"]}
+
+    current_routes = [
         "docs/BOUNDARIES.md",
         "docs/ARCHITECTURE.md",
-        "docs/LIVE_SESSION_USE.md",
-        "docs/README.md",
-        "schemas/stats-event-envelope.schema.json",
+        "stats/intake-contract/RECEIPT_ABI.md",
+        "stats/intake-contract/event-kind-registry.json",
+        "stats/read-models/README.md",
+        "stats/surface-catalog/CODEX_MCP.md",
+        "mechanics/recurrence/parts/live-receipt-refresh/config/live_receipt_sources.json",
+        "mechanics/recurrence/parts/live-receipt-refresh/docs/LIVE_SESSION_USE.md",
+        "mechanics/audit/parts/source-coverage/docs/SOURCE_COVERAGE_SUMMARY.md",
+        "mechanics/release-support/parts/codex-deployment-rollout/docs/CODEX_PLANE_DEPLOYMENT_SUMMARIES.md",
+        "mechanics/release-support/parts/rollout-campaign/docs/ROLLOUT_CAMPAIGN_SUMMARY.md",
+        "mechanics/audit/parts/drift-shadow-review/docs/DRIFT_REVIEW_SUMMARY.md",
+        "mechanics/recurrence/parts/continuity-window/docs/CONTINUITY_WINDOW_SUMMARY.md",
+        "mechanics/recurrence/parts/component-refresh/docs/COMPONENT_REFRESH_SUMMARIES.md",
+        "mechanics/antifragility/parts/stress-recovery-windows/examples/stress_recovery_window_summary.chaos-wave1.example.json",
+        "mechanics/boundary-bridge/parts/memory-owner-handoff/docs/MEMORY_MOVEMENT_SUMMARY.md",
         "generated/summary_surface_catalog.min.json",
         "schemas/summary-surface-catalog.schema.json",
-        "tests/test_summary_surface_catalog.py",
-        "docs/RECEIPT_ABI_GOVERNANCE.md",
-        "config/stats_event_kind_registry.json",
-        "docs/SURFACE_STRENGTH_MODEL.md",
-        "docs/SOURCE_COVERAGE_SUMMARY.md",
-        "schemas/source-coverage-summary.schema.json",
-        "generated/source_coverage_summary.min.json",
-        "scripts/validate_receipt_abi.py",
-        "scripts/validate_downstream_canaries.py",
-        "docs/CODEX_MCP.md",
-        "scripts/aoa_stats_mcp_server.py",
-        "src/aoa_stats_mcp/server.py",
-        "src/aoa_stats_mcp/repo_state.py",
-        "tests/test_aoa_stats_mcp_state.py",
-        "requirements-mcp.txt",
-        "docs/CODEX_PLANE_DEPLOYMENT_SUMMARIES.md",
-        "docs/ROLLOUT_CAMPAIGN_SUMMARY.md",
-        "docs/DRIFT_REVIEW_SUMMARY.md",
-        "docs/CONTINUITY_WINDOW_SUMMARY.md",
-        "docs/STRESS_RECOVERY_SUMMARIES_CHAOS_WAVE1.md",
-        "docs/MEMORY_MOVEMENT_SUMMARY.md",
-        "examples/stress_recovery_window_summary.chaos-wave1.example.json",
-        "generated/codex_rollout_operations_summary.min.json",
-        "generated/codex_rollout_drift_summary.min.json",
-        "generated/rollout_campaign_summary.min.json",
-        "generated/drift_review_summary.min.json",
-        "generated/continuity_window_summary.min.json",
-        "schemas/memory-movement-summary.schema.json",
-        "generated/memory_movement_summary.min.json",
-        "tests/test_memory_movement_summary.py",
-        "schemas/titan_incarnation_summary.schema.json",
-        "generated/titan_incarnation_summary.min.json",
-        "schemas/titan_summon_summary.schema.json",
-        "generated/titan_summon_summary.min.json",
         "scripts/build_views.py",
         "scripts/validate_repo.py",
         "scripts/release_check.py",
     ]
-    for surface in current_release_surfaces:
-        assert (REPO_ROOT / surface).exists(), surface
-        assert surface in roadmap
+    for route in current_routes:
+        assert (REPO_ROOT / route).exists(), route
+        assert route in roadmap

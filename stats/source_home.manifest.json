@@ -1,0 +1,554 @@
+{
+  "schema_version": "aoa_stats_source_home_v2",
+  "owner_repo": "aoa-stats",
+  "home": "stats/",
+  "status": "active_source_home",
+  "role": "Source-authored home for receipt admission, derived read-model profiles, part-local operation contracts, catalog posture, authority ceilings, and mechanics handoffs.",
+  "home_rules": [
+    "stats/ owns authored intake and read-model meaning, not Python implementation.",
+    "Every active public catalog surface has one authored profile under stats/read-models/active/.",
+    "Contract-only surface candidates live under stats/read-models/deferred/.",
+    "Canonical published schemas remain under schemas/.",
+    "Committed derived outputs remain under generated/.",
+    "Repeatable operation payloads and validation remain under mechanics/.",
+    "Part-local observation contracts without public catalog surfaces cross back through stats/operation-contracts/.",
+    "The repo-local MCP remains a read-only derived access route.",
+    "No generated catalog or owner payload is copied under stats/."
+  ],
+  "branches": [
+    {
+      "id": "intake_contract",
+      "path": "stats/intake-contract",
+      "role": "Shared receipt-envelope and event-family admission meaning for deterministic stats derivation.",
+      "families": [
+        "intake_contract"
+      ],
+      "owner_surface": "stats/intake-contract/AGENTS.md",
+      "authority_ceiling": "Owns the shared stats envelope and event-kind admission vocabulary only; source repositories retain payload schemas, payload meaning, verdicts, workflow state, and domain truth."
+    },
+    {
+      "id": "read_models",
+      "path": "stats/read-models",
+      "role": "Authored source profiles for active and deferred derived read models.",
+      "families": [
+        "read_models"
+      ],
+      "owner_surface": "stats/read-models/AGENTS.md",
+      "authority_ceiling": "Owns derived questions, profile vocabulary, schema/output routes, and stats authority ceilings; stronger owners retain every input fact and verdict."
+    },
+    {
+      "id": "operation_contracts",
+      "path": "stats/operation-contracts",
+      "role": "Source-family posture for active part-local observation contracts that do not publish a public catalog read model.",
+      "families": [
+        "operation_contracts"
+      ],
+      "owner_surface": "stats/operation-contracts/AGENTS.md",
+      "authority_ceiling": "Owns the stats meaning and authority ceiling of the operation family only; mechanic parts own payload and execution while stronger owners retain source truth."
+    },
+    {
+      "id": "surface_catalog",
+      "path": "stats/surface-catalog",
+      "role": "Public catalog and read-only consumer-access posture over authored read-model profiles.",
+      "families": [
+        "surface_catalog"
+      ],
+      "owner_surface": "stats/surface-catalog/AGENTS.md",
+      "authority_ceiling": "Owns the deterministic catalog contract and consumer caution posture only; generated entries remain weaker than their owner-local inputs and linked evidence."
+    }
+  ],
+  "families": [
+    {
+      "id": "intake_contract",
+      "branch": "intake_contract",
+      "path": "stats/intake-contract",
+      "source_kind": "stats_intake_contract",
+      "meaning": "The shared receipt envelope, active event-kind admission vocabulary, and provenance-preserving intake seam used by stats derivation.",
+      "owner_surface": "stats/intake-contract/AGENTS.md",
+      "authority_ceiling": "The envelope admits source-owned payloads but does not own their schemas or meaning and does not promote receipt presence into proof, workflow completion, route state, or current owner truth.",
+      "source_routes": [
+        "stats/intake-contract/AGENTS.md",
+        "stats/intake-contract/README.md",
+        "stats/intake-contract/RECEIPT_ABI.md",
+        "stats/intake-contract/event-kind-registry.json",
+        "stats/intake-contract/examples/session_harvest_family.receipts.example.json",
+        "docs/BOUNDARIES.md"
+      ],
+      "public_contract_routes": [
+        "schemas/stats-event-envelope.schema.json",
+        "stats/intake-contract/event-kind-registry.json"
+      ],
+      "implementation_routes": [
+        "src/aoa_stats_builder/receipt_abi.py",
+        "scripts/build_views.py",
+        "mechanics/recurrence/parts/live-receipt-refresh/scripts/refresh_live_stats.py",
+        "mechanics/recurrence/parts/live-receipt-refresh/scripts/check_live_publishers.py",
+        "mechanics/recurrence/parts/live-receipt-refresh/scripts/install_live_refresh_units.py"
+      ],
+      "read_only_access_routes": [
+        "src/aoa_stats_mcp/repo_state.py",
+        "src/aoa_stats_mcp/server.py"
+      ],
+      "validator_routes": [
+        "scripts/validate_receipt_abi.py",
+        "mechanics/boundary-bridge/parts/receipt-abi-crossing/tests/test_receipt_abi_governance.py",
+        "mechanics/recurrence/parts/live-receipt-refresh/tests/test_refresh_live_stats.py",
+        "mechanics/recurrence/parts/live-receipt-refresh/tests/test_check_live_publishers.py"
+      ],
+      "mechanic_routes": [
+        {
+          "package": "recurrence",
+          "part": "live-receipt-refresh",
+          "path": "mechanics/recurrence/parts/live-receipt-refresh"
+        },
+        {
+          "package": "boundary-bridge",
+          "part": "receipt-abi-crossing",
+          "path": "mechanics/boundary-bridge/parts/receipt-abi-crossing"
+        }
+      ],
+      "stop_lines": [
+        "Do not move source-owner payload contracts into aoa-stats.",
+        "Do not infer proof, workflow completion, or route state from receipt volume.",
+        "Do not hide missing, stale, rejected, or unregistered evidence."
+      ]
+    },
+    {
+      "id": "read_models",
+      "branch": "read_models",
+      "path": "stats/read-models",
+      "source_kind": "authored_stats_surface_profiles",
+      "meaning": "One source-authored profile per active or deferred derived read model, including its public contract/output routes, authority ceiling, deterministic order, lifecycle, and operation handoffs.",
+      "owner_surface": "stats/read-models/AGENTS.md",
+      "authority_ceiling": "Profiles define what aoa-stats may derive and how cautiously it may be consumed; they do not own the source facts, proof, routes, runtime state, or memory summarized by the model.",
+      "source_routes": [
+        "stats/read-models/AGENTS.md",
+        "stats/read-models/README.md",
+        "stats/read-models/surface-profile.schema.json",
+        "stats/read-models/active/",
+        "stats/read-models/deferred/"
+      ],
+      "public_contract_routes": [
+        "schemas/core-skill-application-summary.schema.json",
+        "schemas/object-summary.schema.json",
+        "schemas/candidate_lineage_summary.schema.json",
+        "schemas/owner-landing-summary.schema.json",
+        "schemas/supersession-drop-summary.schema.json",
+        "schemas/repeated-window-summary.schema.json",
+        "schemas/route-progression-summary.schema.json",
+        "schemas/fork-calibration-summary.schema.json",
+        "schemas/session-growth-branch-summary.schema.json",
+        "schemas/automation-pipeline-summary.schema.json",
+        "schemas/automation-followthrough-summary.schema.json",
+        "schemas/codex-plane-deployment-summary.schema.json",
+        "schemas/codex-rollout-operations-summary.schema.json",
+        "schemas/codex-rollout-drift-summary.schema.json",
+        "schemas/rollout-campaign-summary.schema.json",
+        "schemas/drift-review-summary.schema.json",
+        "schemas/continuity-window-summary.schema.json",
+        "schemas/component-refresh-summary.schema.json",
+        "schemas/memory-movement-summary.schema.json",
+        "schemas/titan_incarnation_summary.schema.json",
+        "schemas/titan_summon_summary.schema.json",
+        "schemas/runtime-closeout-summary.schema.json",
+        "schemas/stress-recovery-window-summary.schema.json",
+        "schemas/source-coverage-summary.schema.json",
+        "schemas/surface-detection-summary.schema.json",
+        "mechanics/antifragility/parts/antifragility-vector/schemas/antifragility_vector_v1.json"
+      ],
+      "implementation_routes": [
+        "src/aoa_stats_builder/surface_catalog.py",
+        "scripts/build_views.py"
+      ],
+      "generated_routes": [
+        "generated/core_skill_application_summary.min.json",
+        "generated/object_summary.min.json",
+        "generated/candidate_lineage_summary.min.json",
+        "generated/owner_landing_summary.min.json",
+        "generated/supersession_drop_summary.min.json",
+        "generated/repeated_window_summary.min.json",
+        "generated/route_progression_summary.min.json",
+        "generated/fork_calibration_summary.min.json",
+        "generated/session_growth_branch_summary.min.json",
+        "generated/automation_pipeline_summary.min.json",
+        "generated/automation_followthrough_summary.min.json",
+        "generated/codex_plane_deployment_summary.min.json",
+        "generated/codex_rollout_operations_summary.min.json",
+        "generated/codex_rollout_drift_summary.min.json",
+        "generated/rollout_campaign_summary.min.json",
+        "generated/drift_review_summary.min.json",
+        "generated/continuity_window_summary.min.json",
+        "generated/component_refresh_summary.min.json",
+        "generated/memory_movement_summary.min.json",
+        "generated/titan_incarnation_summary.min.json",
+        "generated/titan_summon_summary.min.json",
+        "generated/runtime_closeout_summary.min.json",
+        "generated/stress_recovery_window_summary.min.json",
+        "generated/source_coverage_summary.min.json",
+        "generated/surface_detection_summary.min.json"
+      ],
+      "read_only_access_routes": [
+        "generated/summary_surface_catalog.min.json",
+        "src/aoa_stats_mcp/repo_state.py",
+        "src/aoa_stats_mcp/server.py"
+      ],
+      "validator_routes": [
+        "scripts/validate_stats_source_home.py",
+        "scripts/build_views.py",
+        "scripts/validate_repo.py",
+        "tests/test_stats_source_home.py",
+        "tests/test_summary_surface_catalog.py"
+      ],
+      "mechanic_routes": [
+        {
+          "package": "audit",
+          "part": "core-skill-application",
+          "path": "mechanics/audit/parts/core-skill-application"
+        },
+        {
+          "package": "audit",
+          "part": "object-observation",
+          "path": "mechanics/audit/parts/object-observation"
+        },
+        {
+          "package": "method-growth",
+          "part": "candidate-lineage",
+          "path": "mechanics/method-growth/parts/candidate-lineage"
+        },
+        {
+          "package": "method-growth",
+          "part": "owner-landing",
+          "path": "mechanics/method-growth/parts/owner-landing"
+        },
+        {
+          "package": "method-growth",
+          "part": "supersession-pruning",
+          "path": "mechanics/method-growth/parts/supersession-pruning"
+        },
+        {
+          "package": "recurrence",
+          "part": "repeated-window",
+          "path": "mechanics/recurrence/parts/repeated-window"
+        },
+        {
+          "package": "rpg",
+          "part": "route-progression",
+          "path": "mechanics/rpg/parts/route-progression"
+        },
+        {
+          "package": "growth-cycle",
+          "part": "route-fork-calibration",
+          "path": "mechanics/growth-cycle/parts/route-fork-calibration"
+        },
+        {
+          "package": "growth-cycle",
+          "part": "session-growth-branch",
+          "path": "mechanics/growth-cycle/parts/session-growth-branch"
+        },
+        {
+          "package": "growth-cycle",
+          "part": "automation-followthrough",
+          "path": "mechanics/growth-cycle/parts/automation-followthrough"
+        },
+        {
+          "package": "release-support",
+          "part": "codex-deployment-rollout",
+          "path": "mechanics/release-support/parts/codex-deployment-rollout"
+        },
+        {
+          "package": "release-support",
+          "part": "rollout-campaign",
+          "path": "mechanics/release-support/parts/rollout-campaign"
+        },
+        {
+          "package": "audit",
+          "part": "drift-shadow-review",
+          "path": "mechanics/audit/parts/drift-shadow-review"
+        },
+        {
+          "package": "recurrence",
+          "part": "continuity-window",
+          "path": "mechanics/recurrence/parts/continuity-window"
+        },
+        {
+          "package": "recurrence",
+          "part": "component-refresh",
+          "path": "mechanics/recurrence/parts/component-refresh"
+        },
+        {
+          "package": "boundary-bridge",
+          "part": "memory-owner-handoff",
+          "path": "mechanics/boundary-bridge/parts/memory-owner-handoff"
+        },
+        {
+          "package": "titan",
+          "part": "incarnation-summon",
+          "path": "mechanics/titan/parts/incarnation-summon"
+        },
+        {
+          "package": "checkpoint",
+          "part": "runtime-closeout",
+          "path": "mechanics/checkpoint/parts/runtime-closeout"
+        },
+        {
+          "package": "antifragility",
+          "part": "stress-recovery-windows",
+          "path": "mechanics/antifragility/parts/stress-recovery-windows"
+        },
+        {
+          "package": "audit",
+          "part": "source-coverage",
+          "path": "mechanics/audit/parts/source-coverage"
+        },
+        {
+          "package": "audit",
+          "part": "surface-strength-detection",
+          "path": "mechanics/audit/parts/surface-strength-detection"
+        },
+        {
+          "package": "antifragility",
+          "part": "antifragility-vector",
+          "path": "mechanics/antifragility/parts/antifragility-vector"
+        }
+      ],
+      "stop_lines": [
+        "Do not hand-edit the generated summary catalog as source.",
+        "Do not put Python implementation or generated output under stats/read-models/.",
+        "Do not let a profile or count outrank its owner_truth_inputs."
+      ]
+    },
+    {
+      "id": "operation_contracts",
+      "branch": "operation_contracts",
+      "path": "stats/operation-contracts",
+      "source_kind": "part_local_stats_operation_contracts",
+      "meaning": "Active stats observation contracts whose payload is local to a mechanic part and whose result is not a public summary-surface catalog entry.",
+      "owner_surface": "stats/operation-contracts/AGENTS.md",
+      "authority_ceiling": "This family owns the bounded stats question and owner-return posture only; it does not turn part-local examples, registries, metrics, or docs into proof, workflow truth, runtime truth, identity, or canon.",
+      "source_routes": [
+        "stats/operation-contracts/AGENTS.md",
+        "stats/operation-contracts/README.md",
+        "DESIGN.md"
+      ],
+      "public_contract_routes": [
+        "mechanics/topology.json"
+      ],
+      "implementation_routes": [
+        "scripts/validate_mechanics_topology.py",
+        "scripts/validate_stats_source_home.py"
+      ],
+      "validator_routes": [
+        "scripts/validate_mechanics_topology.py",
+        "scripts/validate_stats_source_home.py",
+        "tests/test_mechanics_topology.py",
+        "tests/test_stats_source_home.py"
+      ],
+      "mechanic_routes": [
+        {
+          "package": "agon",
+          "part": "epistemic-observability",
+          "path": "mechanics/agon/parts/epistemic-observability"
+        },
+        {
+          "package": "agon",
+          "part": "kag-observability",
+          "path": "mechanics/agon/parts/kag-observability"
+        },
+        {
+          "package": "agon",
+          "part": "mechanical-trial-observability",
+          "path": "mechanics/agon/parts/mechanical-trial-observability"
+        },
+        {
+          "package": "agon",
+          "part": "retention-rank-observability",
+          "path": "mechanics/agon/parts/retention-rank-observability"
+        },
+        {
+          "package": "agon",
+          "part": "schools-lineages-campaigns-observability",
+          "path": "mechanics/agon/parts/schools-lineages-campaigns-observability"
+        },
+        {
+          "package": "agon",
+          "part": "sophian-observability",
+          "path": "mechanics/agon/parts/sophian-observability"
+        },
+        {
+          "package": "agon",
+          "part": "stats-prebinding",
+          "path": "mechanics/agon/parts/stats-prebinding"
+        },
+        {
+          "package": "agon",
+          "part": "verdict-delta-scar-observability",
+          "path": "mechanics/agon/parts/verdict-delta-scar-observability"
+        },
+        {
+          "package": "antifragility",
+          "part": "via-negativa",
+          "path": "mechanics/antifragility/parts/via-negativa"
+        },
+        {
+          "package": "experience",
+          "part": "adoption-federation-harvest",
+          "path": "mechanics/experience/parts/adoption-federation-harvest"
+        },
+        {
+          "package": "experience",
+          "part": "governance-runtime-signals",
+          "path": "mechanics/experience/parts/governance-runtime-signals"
+        },
+        {
+          "package": "experience",
+          "part": "micro-friction-receipts",
+          "path": "mechanics/experience/parts/micro-friction-receipts"
+        },
+        {
+          "package": "experience",
+          "part": "release-watch-office-health",
+          "path": "mechanics/experience/parts/release-watch-office-health"
+        },
+        {
+          "package": "titan",
+          "part": "memory-owner-bridge",
+          "path": "mechanics/titan/parts/memory-owner-bridge"
+        },
+        {
+          "package": "titan",
+          "part": "runtime-console",
+          "path": "mechanics/titan/parts/runtime-console"
+        }
+      ],
+      "stop_lines": [
+        "Do not create a public read-model profile for a part that has no public catalog surface.",
+        "Do not duplicate mechanic payload under stats/.",
+        "Do not let part-local metrics or registries outrank their stronger-owner evidence."
+      ]
+    },
+    {
+      "id": "surface_catalog",
+      "branch": "surface_catalog",
+      "path": "stats/surface-catalog",
+      "source_kind": "derived_surface_catalog_contract",
+      "meaning": "The public catalog contract, strength vocabulary, consumer re-grounding posture, and read-only access seam over authored read-model profiles.",
+      "owner_surface": "stats/surface-catalog/AGENTS.md",
+      "authority_ceiling": "The catalog describes derived read models but cannot prove source completeness, strengthen an upstream verdict, choose a route, or replace owner-local truth.",
+      "source_routes": [
+        "stats/surface-catalog/AGENTS.md",
+        "stats/surface-catalog/README.md",
+        "docs/ARCHITECTURE.md",
+        "docs/SURFACE_STRENGTH_MODEL.md",
+        "stats/surface-catalog/CONSUMER_REGROUNDING.md",
+        "stats/surface-catalog/CODEX_MCP.md"
+      ],
+      "public_contract_routes": [
+        "schemas/summary-surface-catalog.schema.json",
+        "generated/summary_surface_catalog.min.json",
+        "manifests/artifact_bundles/summary_surface_catalog.bundle.json"
+      ],
+      "implementation_routes": [
+        "src/aoa_stats_builder/surface_catalog.py",
+        "scripts/build_views.py"
+      ],
+      "generated_routes": [
+        "generated/summary_surface_catalog.min.json"
+      ],
+      "read_only_access_routes": [
+        "stats/surface-catalog/CODEX_MCP.md",
+        "scripts/aoa_stats_mcp_server.py",
+        "src/aoa_stats_mcp/repo_state.py",
+        "src/aoa_stats_mcp/server.py"
+      ],
+      "validator_routes": [
+        "scripts/build_views.py",
+        "mechanics/recurrence/parts/component-manifests/scripts/validate_component_manifests.py",
+        "mechanics/recurrence/parts/component-manifests/tests/test_component_manifests.py",
+        "mechanics/release-support/parts/summary-catalog-artifact-bundle/scripts/validate_abyss_machine_summary_catalog_bundle.py",
+        "mechanics/release-support/parts/summary-catalog-artifact-bundle/tests/test_summary_catalog_artifact_bundle.py",
+        "tests/test_summary_surface_catalog.py",
+        "tests/test_aoa_stats_mcp_state.py"
+      ],
+      "mechanic_routes": [
+        {
+          "package": "recurrence",
+          "part": "component-manifests",
+          "path": "mechanics/recurrence/parts/component-manifests"
+        },
+        {
+          "package": "boundary-bridge",
+          "part": "consumer-regrounding",
+          "path": "mechanics/boundary-bridge/parts/consumer-regrounding"
+        },
+        {
+          "package": "release-support",
+          "part": "summary-catalog-artifact-bundle",
+          "path": "mechanics/release-support/parts/summary-catalog-artifact-bundle"
+        }
+      ],
+      "stop_lines": [
+        "Do not treat the generated catalog as an authored source.",
+        "Do not let a catalog profile outrank its owner_truth_inputs.",
+        "Do not turn read-only catalog access into proof, write, refresh, workflow, or route authority."
+      ]
+    }
+  ],
+  "current_root_route_posture": [
+    {
+      "path": "schemas/",
+      "status": "active_canonical_contract_district",
+      "meaning": "Published receipt and summary schemas remain canonical root surfaces."
+    },
+    {
+      "path": "generated/",
+      "status": "active_committed_derived_output_district",
+      "meaning": "Committed machine-first summaries remain derived outputs and do not become authored source meaning."
+    },
+    {
+      "path": "src/aoa_stats_builder/",
+      "status": "active_implementation_district",
+      "meaning": "Deterministic builder and validation implementation remains importable code, not source-home prose."
+    },
+    {
+      "path": "src/aoa_stats_mcp/",
+      "status": "active_read_only_derived_access_district",
+      "meaning": "The current MCP reads the part-local live-source registry, root boundaries, generated catalog, and catalog-listed surfaces without becoming source or owner authority."
+    },
+    {
+      "path": "scripts/",
+      "status": "active_public_and_compatibility_entrypoint_district",
+      "meaning": "Repo-wide builders and validators remain active at root; mechanic-owned refresh, publisher-audit, unit-install, and artifact-bundle commands are thin compatibility entrypoints into their parts."
+    },
+    {
+      "path": "tests/",
+      "status": "active_repository_and_compatibility_validation_district",
+      "meaning": "Focused contract, generated-output, refresh, publisher, and read-only access tests remain active at root."
+    }
+  ],
+  "stronger_owner_routes": [
+    {
+      "pressure": "event payload schema or domain meaning",
+      "route": "payload_owner_repo named by stats/intake-contract/event-kind-registry.json"
+    },
+    {
+      "pressure": "bounded proof or evaluation verdict",
+      "route": "aoa-evals"
+    },
+    {
+      "pressure": "workflow or skill meaning",
+      "route": "aoa-skills"
+    },
+    {
+      "pressure": "route or quest-state authority",
+      "route": "aoa-routing or the owning quest surface"
+    },
+    {
+      "pressure": "durable memory truth",
+      "route": "aoa-memo"
+    },
+    {
+      "pressure": "runtime-local state or service truth",
+      "route": "abyss-stack"
+    }
+  ]
+}

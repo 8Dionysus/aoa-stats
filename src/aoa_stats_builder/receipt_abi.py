@@ -11,8 +11,8 @@ REPO_ROOT = Path(__file__).resolve().parents[2]
 WORKSPACE_ROOT = REPO_ROOT.parent
 CANONICAL_ENVELOPE_SCHEMA_PATH = REPO_ROOT / "schemas" / "stats-event-envelope.schema.json"
 CANONICAL_ENVELOPE_SCHEMA_REF = "schemas/stats-event-envelope.schema.json"
-EVENT_KIND_REGISTRY_PATH = REPO_ROOT / "config" / "stats_event_kind_registry.json"
-EVENT_KIND_REGISTRY_REF = "config/stats_event_kind_registry.json"
+EVENT_KIND_REGISTRY_PATH = REPO_ROOT / "stats" / "intake-contract" / "event-kind-registry.json"
+EVENT_KIND_REGISTRY_REF = "stats/intake-contract/event-kind-registry.json"
 DEFAULT_EVALS_MIRROR_PATH = WORKSPACE_ROOT / "aoa-evals" / "schemas" / "stats-event-envelope.schema.json"
 ALLOWED_MIRROR_METADATA_KEYS = frozenset(
     {"$id", "title", "description", "x-canonical_schema_ref"}

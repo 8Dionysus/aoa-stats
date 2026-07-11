@@ -1,288 +1,85 @@
 #!/usr/bin/env python3
+"""Compatibility entrypoint for the recurrence live-receipt refresh mechanic."""
+
 from __future__ import annotations
 
-import argparse
-import json
+import importlib.util
 import sys
 from pathlib import Path
-
-SCRIPT_DIR = Path(__file__).resolve().parent
-REPO_ROOT = SCRIPT_DIR.parents[0]
-
-if str(SCRIPT_DIR) not in sys.path:
-    sys.path.insert(0, str(SCRIPT_DIR))
-
-from build_views import build_all_views, load_receipts, resolve_active_receipts, stable_json  # noqa: E402
+from types import ModuleType
 
 
-DEFAULT_REGISTRY = REPO_ROOT / "config" / "live_receipt_sources.json"
-DEFAULT_FEDERATION_ROOT = REPO_ROOT.parent
-DEFAULT_FEED_OUTPUT = REPO_ROOT / "state" / "live_receipts.min.json"
-DEFAULT_SUMMARY_OUTPUT_DIR = REPO_ROOT / "state" / "generated"
-SUMMARY_OUTPUT_NAMES = (
-    "object_summary.min.json",
-    "candidate_lineage_summary.min.json",
-    "owner_landing_summary.min.json",
-    "supersession_drop_summary.min.json",
-    "core_skill_application_summary.min.json",
-    "repeated_window_summary.min.json",
-    "route_progression_summary.min.json",
-    "fork_calibration_summary.min.json",
-    "session_growth_branch_summary.min.json",
-    "automation_pipeline_summary.min.json",
-    "automation_followthrough_summary.min.json",
-    "codex_plane_deployment_summary.min.json",
-    "codex_rollout_operations_summary.min.json",
-    "codex_rollout_drift_summary.min.json",
-    "rollout_campaign_summary.min.json",
-    "drift_review_summary.min.json",
-    "continuity_window_summary.min.json",
-    "component_refresh_summary.min.json",
-    "titan_summon_summary.min.json",
-    "runtime_closeout_summary.min.json",
-    "stress_recovery_window_summary.min.json",
-    "source_coverage_summary.min.json",
-    "surface_detection_summary.min.json",
-    "summary_surface_catalog.min.json",
+REPO_ROOT = Path(__file__).resolve().parents[1]
+IMPL_PATH = (
+    REPO_ROOT
+    / "mechanics"
+    / "recurrence"
+    / "parts"
+    / "live-receipt-refresh"
+    / "scripts"
+    / "refresh_live_stats.py"
 )
 
 
-def parse_args(argv: list[str] | None = None) -> argparse.Namespace:
-    parser = argparse.ArgumentParser(
-        description="Refresh local aoa-stats state from owner-local receipt feeds."
+def _load_impl() -> ModuleType:
+    script_dir = str(IMPL_PATH.parent)
+    if script_dir not in sys.path:
+        sys.path.insert(0, script_dir)
+    spec = importlib.util.spec_from_file_location(
+        "_aoa_stats_live_receipt_refresh",
+        IMPL_PATH,
     )
-    parser.add_argument(
-        "--registry",
-        default=str(DEFAULT_REGISTRY),
-        help="Path to the JSON registry that lists owner-local receipt sources.",
-    )
-    parser.add_argument(
-        "--federation-root",
-        default=str(DEFAULT_FEDERATION_ROOT),
-        help="Federation root used to resolve repo-relative receipt source paths.",
-    )
-    parser.add_argument(
-        "--feed-output",
-        default=str(DEFAULT_FEED_OUTPUT),
-        help="Where to write the combined live receipt feed JSON array.",
-    )
-    parser.add_argument(
-        "--summary-output-dir",
-        default=str(DEFAULT_SUMMARY_OUTPUT_DIR),
-        help="Directory where live derived summaries should be written.",
-    )
-    return parser.parse_args(argv)
+    if spec is None or spec.loader is None:
+        raise RuntimeError(f"cannot load live receipt refresh implementation: {IMPL_PATH}")
+    module = importlib.util.module_from_spec(spec)
+    spec.loader.exec_module(module)
+    return module
 
 
-def load_registry(path: Path) -> dict:
-    payload = json.loads(path.read_text(encoding="utf-8"))
-    if not isinstance(payload, dict):
-        raise ValueError(f"{path}: registry must be a JSON object")
-    if payload.get("schema_version") != 1:
-        raise ValueError(f"{path}: unsupported schema_version {payload.get('schema_version')!r}")
-    sources = payload.get("sources")
-    if not isinstance(sources, list) or not sources:
-        raise ValueError(f"{path}: sources must be a non-empty list")
-    return payload
+_IMPL = _load_impl()
+_IMPL_EXPORT_BASELINES: dict[str, object] = {}
 
 
-def resolve_source_path(
-    source: dict,
-    *,
-    registry_path: Path,
-    federation_root: Path,
-) -> tuple[str, Path]:
-    name = str(source.get("name") or "unnamed-source")
-    repo = source.get("repo")
-    relative_path = source.get("relative_path")
-    direct_path = source.get("path")
-
-    if isinstance(repo, str) and isinstance(relative_path, str):
-        label = f"{repo}/{relative_path}"
-        return label, (federation_root / repo / relative_path).resolve()
-
-    if isinstance(direct_path, str):
-        resolved = (registry_path.parent / direct_path).resolve()
-        return direct_path, resolved
-
-    raise ValueError(
-        f"{registry_path}: source {name!r} must define either repo+relative_path or path"
-    )
-
-
-def write_receipt_feed(path: Path, receipts: list[dict]) -> None:
-    path.parent.mkdir(parents=True, exist_ok=True)
-    path.write_text(json.dumps(receipts, indent=2) + "\n", encoding="utf-8")
-
-
-def clear_live_state(*, feed_output: Path, summary_output_dir: Path) -> None:
-    if feed_output.exists():
-        feed_output.unlink()
-    for name in SUMMARY_OUTPUT_NAMES:
-        target = summary_output_dir / name
-        if target.exists():
-            target.unlink()
-
-
-def sync_summary_outputs(*, summary_output_dir: Path, outputs: dict[str, dict]) -> None:
-    summary_output_dir.mkdir(parents=True, exist_ok=True)
-    for name in SUMMARY_OUTPUT_NAMES:
-        target = summary_output_dir / name
-        if name not in outputs and target.exists():
-            target.unlink()
-    for name, payload in outputs.items():
-        (summary_output_dir / name).write_text(stable_json(payload), encoding="utf-8")
-
-
-def live_surface_ref(*, summary_output_dir: Path, output_name: str) -> str:
-    output_path = summary_output_dir / output_name
-    try:
-        return output_path.relative_to(REPO_ROOT).as_posix()
-    except ValueError:
-        return output_path.as_posix()
-
-
-def rewrite_catalog_surface_refs(
-    outputs: dict[str, dict], *, summary_output_dir: Path
-) -> dict[str, dict]:
-    catalog = outputs.get("summary_surface_catalog.min.json")
-    surfaces = catalog.get("surfaces") if isinstance(catalog, dict) else None
-    if not isinstance(surfaces, list):
-        return outputs
-
-    rewritten_outputs = dict(outputs)
-    rewritten_catalog = dict(catalog)
-    rewritten_surfaces: list[object] = []
-    for surface in surfaces:
-        if not isinstance(surface, dict):
-            rewritten_surfaces.append(surface)
+def _sync_impl_globals() -> None:
+    for _name, _value in list(globals().items()):
+        if _name in {
+            "_IMPL",
+            "_IMPL_EXPORT_BASELINES",
+            "_sync_impl_globals",
+            "_wrap_impl_function",
+        }:
             continue
-        surface_ref = surface.get("surface_ref")
-        output_name = Path(surface_ref).name if isinstance(surface_ref, str) else ""
-        if output_name not in outputs:
-            rewritten_surfaces.append(surface)
+        if _name.startswith("__") and _name.endswith("__"):
             continue
-        rewritten_surface = dict(surface)
-        rewritten_surface["surface_ref"] = live_surface_ref(
-            summary_output_dir=summary_output_dir,
-            output_name=output_name,
-        )
-        rewritten_surfaces.append(rewritten_surface)
-    rewritten_catalog["surfaces"] = rewritten_surfaces
-    identity = rewritten_catalog.get("artifact_identity")
-    if isinstance(identity, dict):
-        catalog_ref = live_surface_ref(
-            summary_output_dir=summary_output_dir,
-            output_name="summary_surface_catalog.min.json",
-        )
-        rewritten_identity = dict(identity)
-        rewritten_identity["consumer_expectation"] = (
-            "consumers verify schema_version, generated_from, validation_refs, "
-            "surface strength refs, owner truth inputs, live surface refs, and "
-            "the refresh_live_stats source registry before using live catalog "
-            "entries as observability hints"
-        )
-        rewritten_identity["content_identity"] = (
-            f"{catalog_ref} rebuilt from the active live receipt feed and "
-            "written by refresh_live_stats"
-        )
-        rewritten_identity["verification"] = [
-            "python scripts/refresh_live_stats.py",
-            "python scripts/validate_repo.py",
-            "python -m pytest -q tests/test_refresh_live_stats.py tests/test_summary_surface_catalog.py",
-        ]
-        rewritten_catalog["artifact_identity"] = rewritten_identity
-    rewritten_outputs["summary_surface_catalog.min.json"] = rewritten_catalog
-    return rewritten_outputs
+        if hasattr(_IMPL, _name) and (
+            not callable(_value)
+            or _value is not _IMPL_EXPORT_BASELINES.get(_name, _value)
+        ):
+            setattr(_IMPL, _name, _value)
 
 
-def resolve_live_evals_root(*, federation_root: Path) -> Path:
-    vendored_evals_root = REPO_ROOT / "aoa-evals"
-    if vendored_evals_root.exists():
-        return vendored_evals_root.resolve()
-    return (federation_root / "aoa-evals").resolve()
+def _wrap_impl_function(_function_name: str):
+    def _wrapped(*args, **kwargs):
+        _sync_impl_globals()
+        return getattr(_IMPL, _function_name)(*args, **kwargs)
+
+    _wrapped.__name__ = _function_name
+    _wrapped.__doc__ = getattr(_IMPL, _function_name).__doc__
+    return _wrapped
 
 
-def display_registry_ref(path: Path) -> str:
-    try:
-        return str(path.relative_to(REPO_ROOT))
-    except ValueError:
-        return str(path)
+for _name in dir(_IMPL):
+    if _name.startswith("__") and _name.endswith("__"):
+        continue
+    _value = getattr(_IMPL, _name)
+    if callable(_value) and getattr(_value, "__module__", None) == _IMPL.__name__:
+        _wrapped = _wrap_impl_function(_name)
+        globals()[_name] = _wrapped
+    else:
+        globals()[_name] = _value
+    _IMPL_EXPORT_BASELINES[_name] = globals()[_name]
 
-
-def refresh_live_state(
-    *,
-    registry_path: Path,
-    federation_root: Path,
-    feed_output: Path,
-    summary_output_dir: Path,
-) -> tuple[list[str], int]:
-    registry = load_registry(registry_path)
-    source_labels: list[str] = []
-    source_paths: list[Path] = []
-
-    for source in registry["sources"]:
-        if not isinstance(source, dict):
-            raise ValueError(f"{registry_path}: each source must be an object")
-        label, path = resolve_source_path(
-            source, registry_path=registry_path, federation_root=federation_root
-        )
-        required = source.get("required", True)
-        if not isinstance(required, bool):
-            raise ValueError(f"{registry_path}: source {source.get('name')!r} required must be boolean")
-        if not path.exists():
-            if required is False:
-                continue
-            raise FileNotFoundError(f"missing live receipt source: {path}")
-        source_labels.append(label)
-        source_paths.append(path)
-
-    if not source_paths:
-        raise ValueError("no live receipt sources were resolved from the configured registry")
-
-    receipts = load_receipts(source_paths)
-    active_receipts = resolve_active_receipts(receipts)
-    if not active_receipts:
-        clear_live_state(feed_output=feed_output, summary_output_dir=summary_output_dir)
-        return source_labels, 0
-
-    write_receipt_feed(feed_output, active_receipts)
-    outputs = build_all_views(
-        receipts,
-        source_labels,
-        evals_root=resolve_live_evals_root(federation_root=federation_root),
-        source_registry=registry,
-        source_registry_ref=display_registry_ref(registry_path),
-    )
-    outputs = rewrite_catalog_surface_refs(outputs, summary_output_dir=summary_output_dir)
-    sync_summary_outputs(summary_output_dir=summary_output_dir, outputs=outputs)
-    return source_labels, len(active_receipts)
-
-
-def main(argv: list[str] | None = None) -> int:
-    args = parse_args(argv)
-    registry_path = Path(args.registry).expanduser().resolve()
-    federation_root = Path(args.federation_root).expanduser().resolve()
-    feed_output = Path(args.feed_output).expanduser().resolve()
-    summary_output_dir = Path(args.summary_output_dir).expanduser().resolve()
-
-    source_labels, receipt_count = refresh_live_state(
-        registry_path=registry_path,
-        federation_root=federation_root,
-        feed_output=feed_output,
-        summary_output_dir=summary_output_dir,
-    )
-    if receipt_count == 0:
-        print(f"[ok] cleared live stats because no receipts were found across {len(source_labels)} sources")
-        print(f"[feed-cleared] {feed_output}")
-        print(f"[summaries-cleared] {summary_output_dir}")
-        return 0
-    print(
-        f"[ok] refreshed live stats from {len(source_labels)} sources and {receipt_count} receipts"
-    )
-    print(f"[feed] {feed_output}")
-    print(f"[summaries] {summary_output_dir}")
-    return 0
+CANONICAL_IMPLEMENTATION = IMPL_PATH
 
 
 if __name__ == "__main__":

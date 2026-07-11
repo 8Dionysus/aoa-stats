@@ -67,4 +67,4 @@ federation.
 It does not make `aoa-stats` sovereign.
 
 For the consumer-facing re-grounding contract, read
-`CONSUMER_REGROUNDING_SIGNALS.md`.
+`../stats/surface-catalog/CONSUMER_REGROUNDING.md`.
