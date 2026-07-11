@@ -110,6 +110,11 @@ from aoa_stats_builder.rollout_cadence_sources import (  # noqa: E402
     load_rollout_cadence_reference_bundle,
     rollout_cadence_reference_paths,
 )
+from aoa_stats_builder.route_progression import (  # noqa: E402
+    AXES as AXES,
+    axis_template as axis_template,
+    build_route_progression_summary,
+)
 from aoa_stats_builder.source_coverage import build_source_coverage_summary  # noqa: E402
 from aoa_stats_builder.stress_recovery import (  # noqa: E402
     build_stress_recovery_window_summary as build_stress_recovery_window_summary_from_inputs,
@@ -154,17 +159,6 @@ DEFAULT_AOA_AGENTS_ROOT = default_neighbor_root("aoa-agents")
 DEFAULT_AOA_PLAYBOOKS_ROOT = default_neighbor_root("aoa-playbooks")
 DEFAULT_AOA_MEMO_ROOT = default_neighbor_root("aoa-memo")
 DEFAULT_AOA_SDK_ROOT = default_neighbor_root("aoa-sdk")
-
-AXES = (
-    "boundary_integrity",
-    "execution_reliability",
-    "change_legibility",
-    "review_sharpness",
-    "proof_discipline",
-    "provenance_hygiene",
-    "deep_readiness",
-)
-
 
 def repo_root_from_env(env_name: str, default: Path) -> Path:
     override = os.environ.get(env_name)
@@ -437,56 +431,6 @@ def build_repeated_window_summary(
     }
 
 
-def axis_template() -> dict[str, int]:
-    return {axis: 0 for axis in AXES}
-
-
-def build_route_progression_summary(
-    receipts: list[dict[str, Any]], source: dict[str, Any]
-) -> dict[str, Any]:
-    grouped: dict[str, list[dict[str, Any]]] = defaultdict(list)
-    for receipt in receipts:
-        if receipt["event_kind"] != "progression_delta_receipt":
-            continue
-        route_ref = receipt["payload"].get("route_ref") or receipt["session_ref"]
-        grouped[route_ref].append(receipt)
-
-    routes: list[dict[str, Any]] = []
-    for route_ref in sorted(grouped):
-        group = grouped[route_ref]
-        latest = max(group, key=lambda receipt: (receipt["observed_at"], receipt["event_id"]))
-        cumulative = axis_template()
-        caution_count = 0
-        for receipt in group:
-            payload = receipt["payload"]
-            axis_deltas = payload.get("axis_deltas", {})
-            if isinstance(axis_deltas, dict):
-                for axis in AXES:
-                    value = axis_deltas.get(axis, 0)
-                    if isinstance(value, int):
-                        cumulative[axis] += value
-            cautions = payload.get("cautions", [])
-            if isinstance(cautions, list):
-                caution_count += len(cautions)
-        routes.append(
-            {
-                "route_ref": route_ref,
-                "total_progression_receipts": len(group),
-                "latest_verdict": latest["payload"].get("verdict", "unknown"),
-                "latest_observed_at": latest["observed_at"],
-                "cumulative_axis_deltas": cumulative,
-                "caution_count": caution_count,
-                "evidence_ref_count": sum(len(receipt["evidence_refs"]) for receipt in group),
-            }
-        )
-
-    return {
-        "schema_version": "aoa_stats_route_progression_summary_v1",
-        "generated_from": source,
-        "routes": routes,
-    }
-
-
 def build_codex_plane_deployment_summary(
     *,
     source_mode: str = "reference",
@@ -749,7 +693,6 @@ def build_all_views(
             active_receipts, source
         ),
         "repeated_window_summary.min.json": build_repeated_window_summary(active_receipts, source),
-        "route_progression_summary.min.json": build_route_progression_summary(active_receipts, source),
         "fork_calibration_summary.min.json": build_fork_calibration_summary(active_receipts, source),
         "session_growth_branch_summary.min.json": build_session_growth_branch_summary(
             active_receipts, source
@@ -780,6 +723,10 @@ def build_all_views(
         )
 
     for name, builder in (
+        (
+            "route_progression_summary.min.json",
+            lambda: build_route_progression_summary(active_receipts, source),
+        ),
         (
             "owner_landing_summary.min.json",
             lambda: build_owner_landing_summary(active_receipts, source),

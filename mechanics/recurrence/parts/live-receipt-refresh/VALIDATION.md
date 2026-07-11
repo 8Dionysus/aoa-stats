@@ -24,11 +24,11 @@ The focused refresh tests must also prove:
 
 - the live allowlist is derived from active profiles with
   `live_state_capable: true`
-- the authored live-admitted allowlist is exactly 13 while the cleanup universe
+- the authored live-admitted allowlist is exactly 12 while the cleanup universe
   still contains all 25 managed active read-model outputs
-- the 12 reference-only profiles, including Owner Landing, Memory Movement,
-  Stress Recovery, trusted rollout-history, and both cadence projections, are
-  absent from the live output and live catalog
+- the 13 reference-only profiles, including Owner Landing, Route Progression,
+  Memory Movement, Stress Recovery, trusted rollout-history, and both cadence
+  projections, are absent from the live output and live catalog
 - stale reference-only runtime files, including all three newly closed
   selectors and all four audited rollout and cadence companions, are removed
   on non-empty and empty receipt paths
@@ -36,6 +36,8 @@ The focused refresh tests must also prove:
   reviewed memory corpus, remains insufficient for live admission
 - live refresh passes an explicit Codex Plane `live` source mode and workspace
   root instead of allowing the committed example adapter to run
+- live refresh does not invoke the Route Progression compatibility builder
+  against semantic-only current owner receipts
 
 ## CLI smoke
 

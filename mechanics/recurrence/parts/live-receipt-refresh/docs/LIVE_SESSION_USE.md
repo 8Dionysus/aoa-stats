@@ -31,7 +31,6 @@ declared source contract resolves:
 - `state/generated/candidate_lineage_summary.min.json`
 - `state/generated/supersession_drop_summary.min.json`
 - `state/generated/repeated_window_summary.min.json`
-- `state/generated/route_progression_summary.min.json`
 - `state/generated/fork_calibration_summary.min.json`
 - `state/generated/session_growth_branch_summary.min.json`
 - `state/generated/automation_pipeline_summary.min.json`
@@ -119,9 +118,10 @@ profiles are the single inventory source:
 - the live catalog lists only outputs actually materialized
 
 The managed inventory contains 25 active read-model outputs. The authored
-live-admitted allowlist contains exactly 13. The 12 false-live profiles are:
+live-admitted allowlist contains exactly 12. The 13 false-live profiles are:
 
 - `owner_landing_summary`
+- `route_progression_summary`
 - `codex_plane_deployment_summary`
 - `codex_rollout_operations_summary`
 - `codex_rollout_drift_summary`
@@ -142,7 +142,10 @@ Refresh adapter may load reviewed `aoa-sdk` examples for the committed build
 only, and the Continuity Window adapter may load its explicit cross-owner
 example/catalog chain for the committed build only. Trusted rollout-history
 may load its exact four checked-in owner-history files, and cadence may load
-its three owner examples. None is a live fallback.
+its three owner examples. Route Progression may project only its committed
+legacy numeric receipt snapshot; it rejects the current semantic-only
+`aoa-skills` receipt shape instead of inventing scores. None is a live
+fallback.
 
 The history and cadence contexts remain distinct. “Latest” inside checked-in
 history is not deploy-local current state, and the cadence examples do not

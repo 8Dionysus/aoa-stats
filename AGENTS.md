@@ -90,6 +90,14 @@ compatibility buckets. Do not describe those retained mechanics as canonical
 event chronology or owner activation truth. Changing them is a separate
 behavioral cycle with public-output review, not part of a core extraction.
 
+Route Progression is an RPG-owned projection boundary. The RPG center owns
+progression-reading vocabulary and stop-lines; `aoa-skills` owns receipt
+payloads, `aoa-agents` owns the agent-layer seven-axis overlay, and `aoa-sdk`
+owns typed transport and consumer contracts. The current stats core projects
+only the committed legacy numeric receipt shape. It must reject semantic-only
+`axis_delta_summary` receipts rather than invent a score, and root builder
+names remain compatibility aliases and fan-out only.
+
 Treat `live_state_capable` as an executable profile contract. The live refresh
 mechanic may materialize and advertise only surfaces whose authored profile
 sets it to `true`; it must still remove stale managed runtime files for
@@ -105,6 +113,9 @@ remains on the committed snapshot route until that corpus has an explicit
 refresh trigger. Owner Landing and Stress Recovery likewise remain out of live
 state until their named owners publish real receipts and reports rather than
 only examples or draft contracts.
+Route Progression remains out of live state while its committed numeric
+projection and the current owner-authored semantic receipt contract do not
+share a non-invented projection ABI.
 
 For a profile-by-profile live-source audit, start at the owning mechanic
 contract. Classify the current source chain as runtime/receipt-backed or
