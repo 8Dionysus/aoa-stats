@@ -6,10 +6,18 @@
 
 - [AOST-D-0001 - Stats Strength And Intake Governance](../AOST-D-0001-stats-strength-and-intake-governance.md) (`docs/decisions/AOST-D-0001-stats-strength-and-intake-governance.md`)
 
+## aoa-sdk reviewed component refresh examples
+
+- [AOST-D-0003 - Component Refresh Fixtures Are Not Live State](../AOST-D-0003-component-refresh-fixtures-are-not-live-state.md) (`docs/decisions/AOST-D-0003-component-refresh-fixtures-are-not-live-state.md`)
+
 ## aoa-stats
 
 - [AOST-D-0001 - Stats Strength And Intake Governance](../AOST-D-0001-stats-strength-and-intake-governance.md) (`docs/decisions/AOST-D-0001-stats-strength-and-intake-governance.md`)
 - [AOST-D-0002 - Canonical Decision Lane](../AOST-D-0002-canonical-decision-lane.md) (`docs/decisions/AOST-D-0002-canonical-decision-lane.md`)
+
+## owner-local component refresh receipts
+
+- [AOST-D-0003 - Component Refresh Fixtures Are Not Live State](../AOST-D-0003-component-refresh-fixtures-are-not-live-state.md) (`docs/decisions/AOST-D-0003-component-refresh-fixtures-are-not-live-state.md`)
 
 ## sibling decision-lane pattern
 

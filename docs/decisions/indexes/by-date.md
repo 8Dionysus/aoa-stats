@@ -9,3 +9,7 @@
 ## 2026-06-04
 
 - [AOST-D-0002 - Canonical Decision Lane](../AOST-D-0002-canonical-decision-lane.md) (`docs/decisions/AOST-D-0002-canonical-decision-lane.md`)
+
+## 2026-07-11
+
+- [AOST-D-0003 - Component Refresh Fixtures Are Not Live State](../AOST-D-0003-component-refresh-fixtures-are-not-live-state.md) (`docs/decisions/AOST-D-0003-component-refresh-fixtures-are-not-live-state.md`)

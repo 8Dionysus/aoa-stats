@@ -23,7 +23,8 @@ Consumers should read:
 - `owner_truth_inputs` to find the stronger owner-local sources
 - `authority_ceiling` to know where the summary stops
 - `consumer_risk` to decide how cautious a read should be
-- `live_state_capable` to know whether a live refresh can update the surface
+- `live_state_capable` to know whether local live refresh may materialize and
+  advertise the surface from its current source contract
 
 High-risk profiles should usually send the reader back to owner truth before a
 mutation, public-share action, or route/proof claim.

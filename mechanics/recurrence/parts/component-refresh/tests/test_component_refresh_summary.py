@@ -49,7 +49,7 @@ def test_component_refresh_summary_example_and_schema_validate() -> None:
     Draft202012Validator(schema).validate(example)
 
 
-def test_summary_refresh_law_example_tracks_live_stats_surfaces() -> None:
+def test_summary_refresh_law_example_tracks_reference_source_surfaces() -> None:
     payload = load_part_json("examples/summary_refresh_law.example.json")
     assert isinstance(payload, dict)
 
@@ -58,12 +58,16 @@ def test_summary_refresh_law_example_tracks_live_stats_surfaces() -> None:
     assert payload["owner_repo"] == "aoa-stats"
     assert payload["followthrough_home"] == "aoa-playbooks:component-refresh-cycle"
 
-    for relative_path in (
-        "mechanics/recurrence/parts/live-receipt-refresh/config/live_receipt_sources.json",
+    assert payload["source_authored_inputs"] == [
+        "stats/read-models/active/component_refresh_summary.profile.json",
+        "src/aoa_stats_builder/component_refresh.py",
+        "src/aoa_stats_builder/component_refresh_sources.py",
         "scripts/build_views.py",
         "mechanics/recurrence/parts/component-refresh/docs/COMPONENT_REFRESH_SUMMARIES.md",
-        "tests/test_build_views.py",
-        "generated/candidate_lineage_summary.min.json",
-        "generated/component_refresh_summary.min.json",
+    ]
+    for relative_path in (
+        *payload["source_authored_inputs"],
+        *payload["generated_surfaces"],
+        "mechanics/recurrence/parts/component-refresh/tests/test_component_refresh_projection.py",
     ):
         assert (REPO_ROOT / relative_path).exists(), relative_path

@@ -20,13 +20,25 @@ python scripts/check_live_publishers.py
 The live audit depends on current owner-local receipt files and is not replaced
 by fixture tests.
 
+The focused refresh tests must also prove:
+
+- the live allowlist is derived from active profiles with
+  `live_state_capable: true`
+- the cleanup universe still contains every managed active output
+- reference-only Component Refresh and Titan surfaces are absent from the live
+  output and live catalog
+- stale reference-only runtime files are removed rather than ignored
+
 ## CLI smoke
 
 ```bash
 python scripts/check_live_publishers.py --help
 python scripts/refresh_live_stats.py --help
 python scripts/install_live_refresh_units.py --help
+python scripts/validate_stats_source_home.py
+python scripts/build_views.py --check
 ```
 
 The tests prove that root compatibility commands load the part-local registry
-and templates while preserving deterministic refresh behavior.
+and templates while preserving deterministic refresh behavior, authored
+profile admission, live-only catalog membership, and stale-file cleanup.

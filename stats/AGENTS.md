@@ -36,6 +36,10 @@ or source-owner facts. Those remain in the active routes named by
   it; it must not duplicate it.
 - Treat `source_home.manifest.json` as the machine-readable crosswalk. The
   branch READMEs explain it but do not override it.
+- Treat each active profile's `live_state_capable` value as the source-owned
+  live-materialization selector. Mechanics may clean stale runtime copies of a
+  non-live surface, but they must not publish that surface into live state or a
+  live catalog.
 
 ## Branch routes
 

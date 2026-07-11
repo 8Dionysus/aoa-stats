@@ -5,16 +5,16 @@
   "name": "component_refresh_summary",
   "surface_ref": "generated/component_refresh_summary.min.json",
   "schema_ref": "schemas/component-refresh-summary.schema.json",
-  "primary_question": "What is the current bounded component refresh posture across named owner repos without letting stats become refresh truth or maintenance authority?",
-  "derivation_rule": "derive one bounded component refresh snapshot from reviewed aoa-sdk drift hints and reviewed followthrough decisions while keeping owner validation stronger",
+  "primary_question": "What bounded component refresh posture is represented by the reviewed aoa-sdk reference chain without letting stats become refresh truth or maintenance authority?",
+  "derivation_rule": "derive one committed reference snapshot from reviewed aoa-sdk example drift hints and followthrough decisions while keeping owner validation and runtime receipts stronger",
   "input_posture": "reviewed_example_chain",
   "owner_truth_inputs": [
-    "aoa-sdk reviewed drift hints",
-    "reviewed followthrough decisions"
+    "aoa-sdk authored component drift hint examples",
+    "aoa-sdk authored followthrough decision examples"
   ],
   "authority_ceiling": "Weaker than owner repo refresh law, owner validation, and real regeneration evidence.",
   "consumer_risk": "high",
-  "live_state_capable": true,
+  "live_state_capable": false,
   "mechanic_routes": [
     "mechanics/recurrence/parts/component-refresh"
   ]

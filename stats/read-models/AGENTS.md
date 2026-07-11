@@ -27,6 +27,9 @@ or the upstream facts summarized by a profile.
 - Preserve `catalog_order`; it is the deterministic public catalog order.
 - `mechanic_routes` are source-to-operation handoffs. They do not move source
   meaning into mechanics.
+- `live_state_capable` is executable source meaning: `true` admits the surface
+  to local live materialization, while `false` keeps it on its committed or
+  reference route and out of the live catalog.
 - Do not add Python, generated catalogs, live receipts, or copied owner
   payloads here.
 - Change the authored profile first, then rebuild and check the generated

@@ -13,7 +13,11 @@ repository.
   compatibility entrypoints and resolve those part-local assets.
 - `component-manifests` now owns the recurrence component/hook declarations,
   projection schema and example, and recurrence boundary notes.
-- `component-refresh` now owns its operation guide, examples, and focused test.
+- `component-refresh` owns its operation guide, examples, and focused tests.
+  Its importable implementation is split between the filesystem-free
+  `src/aoa_stats_builder/component_refresh.py` projection and the committed
+  reviewed-example adapter in
+  `src/aoa_stats_builder/component_refresh_sources.py`.
 - `continuity-window` now owns its operation guide and example.
 - `repeated-window` has no private payload to localize in this slice: its
   schema and generated summary are intentional root public contracts, and the
@@ -21,6 +25,18 @@ repository.
 
 Git rename history is the content ledger for former root routes. No legacy
 copy is active.
+
+## Reference and live split
+
+The Component Refresh output remains a committed public reference snapshot,
+but its authored profile is not live-capable. The live refresh operation
+derives its materialization allowlist from active profiles, publishes a catalog
+only for outputs actually materialized, and keeps the full managed profile set
+as its stale-file cleanup universe. This prevents former fixture replays under
+`state/generated/` from surviving as apparent current state.
+
+The accepted rationale is
+`docs/decisions/AOST-D-0003-component-refresh-fixtures-are-not-live-state.md`.
 
 ## Public compatibility exceptions
 

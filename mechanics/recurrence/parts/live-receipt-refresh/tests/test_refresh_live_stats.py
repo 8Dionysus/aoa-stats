@@ -26,6 +26,156 @@ def test_public_refresh_command_uses_part_local_registry() -> None:
     assert module.DEFAULT_REGISTRY == PART_ROOT / "config" / "live_receipt_sources.json"
 
 
+def test_live_output_inventory_is_derived_from_authored_profile_posture() -> None:
+    module = load_refresh_module()
+
+    all_profile_outputs = module.all_profile_surface_output_names()
+    live_profile_outputs = module.live_profile_surface_output_names()
+
+    assert module.MANAGED_SUMMARY_OUTPUT_NAMES == (
+        *all_profile_outputs,
+        module.SUMMARY_SURFACE_CATALOG_OUTPUT_NAME,
+    )
+    assert module.SUMMARY_OUTPUT_NAMES == (
+        *live_profile_outputs,
+        module.SUMMARY_SURFACE_CATALOG_OUTPUT_NAME,
+    )
+    assert "memory_movement_summary.min.json" in live_profile_outputs
+    assert "component_refresh_summary.min.json" not in live_profile_outputs
+    assert "titan_incarnation_summary.min.json" not in live_profile_outputs
+    assert "titan_summon_summary.min.json" not in live_profile_outputs
+    assert {
+        "component_refresh_summary.min.json",
+        "titan_incarnation_summary.min.json",
+        "titan_summon_summary.min.json",
+    } <= set(all_profile_outputs)
+
+
+def test_refresh_materializes_only_live_profile_outputs_and_filters_live_catalog(
+    tmp_path: Path,
+) -> None:
+    module = load_refresh_module()
+    federation_root = tmp_path / "srv"
+    receipts_dir = federation_root / "aoa-skills" / ".aoa" / "live_receipts"
+    receipts_dir.mkdir(parents=True)
+    receipts_path = receipts_dir / "session-harvest-family.jsonl"
+    receipts_path.write_text(
+        json.dumps(
+            {
+                "event_kind": "automation_candidate_receipt",
+                "event_id": "evt-live-filter-0001",
+                "observed_at": "2026-04-05T10:20:00Z",
+                "run_ref": "run-live-filter-001",
+                "session_ref": "session:live-filter-001",
+                "actor_ref": "aoa-skills:automation-opportunity-scan",
+                "object_ref": {
+                    "repo": "aoa-skills",
+                    "kind": "skill",
+                    "id": "aoa-automation-opportunity-scan",
+                    "version": "main",
+                },
+                "evidence_refs": [
+                    {
+                        "kind": "skill",
+                        "ref": "repo:aoa-skills/skills/aoa-automation-opportunity-scan/SKILL.md",
+                    }
+                ],
+                "payload": {
+                    "pipeline_ref": "pipeline:live-filter",
+                    "seed_ready": True,
+                },
+            }
+        )
+        + "\n",
+        encoding="utf-8",
+    )
+    registry_path = tmp_path / "live_receipt_sources.json"
+    registry_path.write_text(
+        json.dumps(
+            {
+                "schema_version": 1,
+                "sources": [
+                    {
+                        "name": "skills",
+                        "repo": "aoa-skills",
+                        "relative_path": ".aoa/live_receipts/session-harvest-family.jsonl",
+                    }
+                ],
+            }
+        )
+        + "\n",
+        encoding="utf-8",
+    )
+    summary_output_dir = tmp_path / "state" / "generated"
+    summary_output_dir.mkdir(parents=True)
+    for stale_name in (
+        "component_refresh_summary.min.json",
+        "titan_incarnation_summary.min.json",
+        "titan_summon_summary.min.json",
+    ):
+        (summary_output_dir / stale_name).write_text("stale\n", encoding="utf-8")
+
+    build_outputs = {
+        "memory_movement_summary.min.json": {"schema_version": "memory-live"},
+        "component_refresh_summary.min.json": {"schema_version": "component-reference"},
+        "titan_incarnation_summary.min.json": {"schema_version": "titan-reference"},
+        "titan_summon_summary.min.json": {"schema_version": "titan-seed"},
+        "summary_surface_catalog.min.json": {
+            "schema_version": "aoa_stats_summary_surface_catalog_v2",
+            "surfaces": [
+                {
+                    "name": "memory_movement_summary",
+                    "surface_ref": "generated/memory_movement_summary.min.json",
+                    "live_state_capable": True,
+                },
+                {
+                    "name": "component_refresh_summary",
+                    "surface_ref": "generated/component_refresh_summary.min.json",
+                    "live_state_capable": False,
+                },
+                {
+                    "name": "titan_incarnation_summary",
+                    "surface_ref": "generated/titan_incarnation_summary.min.json",
+                    "live_state_capable": False,
+                },
+                {
+                    "name": "titan_summon_summary",
+                    "surface_ref": "generated/titan_summon_summary.min.json",
+                    "live_state_capable": False,
+                },
+            ],
+        },
+    }
+
+    with patch.object(module, "build_all_views", return_value=build_outputs) as build_mock:
+        _, receipt_count = module.refresh_live_state(
+            registry_path=registry_path,
+            federation_root=federation_root,
+            feed_output=tmp_path / "state" / "live_receipts.min.json",
+            summary_output_dir=summary_output_dir,
+        )
+
+    assert receipt_count == 1
+    assert build_mock.call_args.kwargs["optional_output_names"] == frozenset(
+        module.live_profile_surface_output_names()
+    )
+    assert {path.name for path in summary_output_dir.glob("*.min.json")} == {
+        "memory_movement_summary.min.json",
+        "summary_surface_catalog.min.json",
+    }
+    live_catalog = json.loads(
+        (summary_output_dir / "summary_surface_catalog.min.json").read_text(
+            encoding="utf-8"
+        )
+    )
+    assert [surface["name"] for surface in live_catalog["surfaces"]] == [
+        "memory_movement_summary"
+    ]
+    assert live_catalog["surfaces"][0]["surface_ref"] == (
+        summary_output_dir / "memory_movement_summary.min.json"
+    ).as_posix()
+
+
 def test_refresh_live_state_combines_repo_relative_sources(tmp_path: Path) -> None:
     module = load_refresh_module()
     federation_root = tmp_path / "srv"
@@ -210,6 +360,13 @@ def test_refresh_live_state_clears_previous_outputs_when_sources_are_empty(tmp_p
         '{"schema_version":"aoa_stats_codex_plane_deployment_summary_v1"}\n',
         encoding="utf-8",
     )
+    for stale_name in (
+        "memory_movement_summary.min.json",
+        "component_refresh_summary.min.json",
+        "titan_incarnation_summary.min.json",
+        "titan_summon_summary.min.json",
+    ):
+        (summary_output_dir / stale_name).write_text("stale\n", encoding="utf-8")
 
     source_labels, receipt_count = module.refresh_live_state(
         registry_path=registry_path,
@@ -227,6 +384,10 @@ def test_refresh_live_state_clears_previous_outputs_when_sources_are_empty(tmp_p
     assert (summary_output_dir / "summary_surface_catalog.min.json").exists() is False
     assert (summary_output_dir / "codex_plane_deployment_summary.min.json").exists() is False
     assert (summary_output_dir / "stress_recovery_window_summary.min.json").exists() is False
+    assert (summary_output_dir / "memory_movement_summary.min.json").exists() is False
+    assert (summary_output_dir / "component_refresh_summary.min.json").exists() is False
+    assert (summary_output_dir / "titan_incarnation_summary.min.json").exists() is False
+    assert (summary_output_dir / "titan_summon_summary.min.json").exists() is False
 
 
 def test_refresh_live_state_removes_stale_optional_outputs_when_builder_omits_them(tmp_path: Path) -> None:

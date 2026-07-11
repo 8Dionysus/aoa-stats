@@ -4,10 +4,11 @@
   "component_title": "AoA growth-refinery derived summaries",
   "owner_repo": "aoa-stats",
   "source_authored_inputs": [
-    "mechanics/recurrence/parts/live-receipt-refresh/config/live_receipt_sources.json",
+    "stats/read-models/active/component_refresh_summary.profile.json",
+    "src/aoa_stats_builder/component_refresh.py",
+    "src/aoa_stats_builder/component_refresh_sources.py",
     "scripts/build_views.py",
-    "mechanics/recurrence/parts/component-refresh/docs/COMPONENT_REFRESH_SUMMARIES.md",
-    "tests/test_build_views.py"
+    "mechanics/recurrence/parts/component-refresh/docs/COMPONENT_REFRESH_SUMMARIES.md"
   ],
   "generated_surfaces": [
     "generated/candidate_lineage_summary.min.json",
@@ -53,18 +54,18 @@
     ],
     "validate": [
       "python scripts/validate_repo.py",
-      "python -m pytest -q tests"
+      "python -m pytest -q mechanics/recurrence/parts/component-refresh/tests"
     ]
   },
   "proof_commands": [
     "python scripts/build_views.py --check",
     "python scripts/validate_repo.py",
-    "python -m pytest -q tests"
+    "python -m pytest -q mechanics/recurrence/parts/component-refresh/tests"
   ],
   "rollback_anchors": [
     "docs/ARCHITECTURE.md",
     "mechanics/recurrence/parts/component-refresh/docs/COMPONENT_REFRESH_SUMMARIES.md",
-    "mechanics/recurrence/parts/live-receipt-refresh/config/live_receipt_sources.json"
+    "docs/decisions/AOST-D-0003-component-refresh-fixtures-are-not-live-state.md"
   ],
   "refresh_window": {
     "stale_after_days": 3,

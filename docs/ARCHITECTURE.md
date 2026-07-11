@@ -84,10 +84,11 @@ seed-owner landing traces, and explicit reviewed turnover signals without
 claiming owner truth.
 
 `generated/component_refresh_summary.min.json` is the wave-ten component
-refresh slice. It reads reviewed `aoa-sdk` drift hints and reviewed
-followthrough decisions only, keeps owner counts and refresh-status posture
-descriptive, and does not outrank owner laws, owner receipts, or refresh
-validation.
+refresh reference slice. Its committed adapter reads reviewed `aoa-sdk`
+example drift hints and followthrough decisions, then passes an explicit bundle
+to a filesystem-free projection core. The output preserves the represented
+owner counts and refresh-status posture; it is not current workspace state and
+does not outrank owner laws, owner receipts, or refresh validation.
 
 `generated/memory_movement_summary.min.json` is the reviewed memory movement
 slice. It reads `aoa-memo` reviewed corpus objects, the memory-object min
@@ -124,6 +125,15 @@ Each entry in `surfaces` stays compact and low-context:
 - `authority_ceiling`
 - `consumer_risk`
 - `live_state_capable`
+
+The committed catalog contains every active public profile, including bounded
+reference-only surfaces. Local live refresh treats `live_state_capable` as an
+executable admission contract: it materializes only `true` profiles, writes a
+live catalog only for outputs actually present, and cleans stale files across
+the full managed active-profile set. The Component Refresh reference adapter is
+excluded from live mode; other `true` profiles retain their declared source
+posture pending separate audits. The accepted rationale is
+`docs/decisions/AOST-D-0003-component-refresh-fixtures-are-not-live-state.md`.
 
 `artifact_identity` describes the catalog as a public generated observability
 read-model with an ABI epoch, contract version, consumer checks, privacy

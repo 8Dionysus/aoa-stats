@@ -65,6 +65,11 @@ publication and implementation districts:
 - owner-local live-source registration belongs to the recurrence mechanic
 - committed derived surfaces remain under `generated/`
 - builders and readers remain under `src/`
+- the Component Refresh reference profile uses the filesystem-free projection
+  at `src/aoa_stats_builder/component_refresh.py` and the committed
+  reviewed-example adapter at
+  `src/aoa_stats_builder/component_refresh_sources.py`; it is not admitted to
+  local live state
 - the Growth Cycle profile family shares deterministic projection through
   `src/aoa_stats_builder/growth_cycle.py`, with its focused package check under
   `mechanics/growth-cycle/tests/`
@@ -76,5 +81,13 @@ publication and implementation districts:
 - the current MCP remains a read-only derived access route to the root
   boundaries, part-local live-source registry, catalog, and catalog-listed
   surfaces
+
+`live_state_capable` in each active read-model profile is the executable live
+materialization selector. The committed catalog may include reference-only
+profiles; the local live catalog contains only admitted, materialized outputs,
+while cleanup still covers every managed active output. The Component Refresh
+reference/live split is recorded in
+`docs/decisions/AOST-D-0003-component-refresh-fixtures-are-not-live-state.md`;
+the selector does not independently certify other profiles' source posture.
 
 Follow the family route card before changing any of those paths.

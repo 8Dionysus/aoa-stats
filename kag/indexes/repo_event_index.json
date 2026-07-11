@@ -69,7 +69,7 @@
       "heading_ref": {
         "anchor": "013-2026-04-23",
         "level": 2,
-        "line": 62,
+        "line": 66,
         "ref": "CHANGELOG.md#013-2026-04-23",
         "title": "[0.1.3] - 2026-04-23"
       },
@@ -84,7 +84,7 @@
       "heading_ref": {
         "anchor": "012-2026-04-19",
         "level": 2,
-        "line": 101,
+        "line": 105,
         "ref": "CHANGELOG.md#012-2026-04-19",
         "title": "[0.1.2] - 2026-04-19"
       },
@@ -99,7 +99,7 @@
       "heading_ref": {
         "anchor": "011-2026-04-12",
         "level": 2,
-        "line": 132,
+        "line": 136,
         "ref": "CHANGELOG.md#011-2026-04-12",
         "title": "[0.1.1] - 2026-04-12"
       },
@@ -114,7 +114,7 @@
       "heading_ref": {
         "anchor": "010-2026-04-10",
         "level": 2,
-        "line": 171,
+        "line": 175,
         "ref": "CHANGELOG.md#010-2026-04-10",
         "title": "[0.1.0] - 2026-04-10"
       },
@@ -155,6 +155,15 @@
       "observation_state": "declared",
       "path": "docs/decisions/AOST-D-0002-canonical-decision-lane.md",
       "source_record_id": "file:docs/decisions/aost-d-0002-canonical-decision-lane.md:ceebad829c"
+    },
+    {
+      "event_kind": "decision_record",
+      "event_role": "declaration",
+      "heading_ref": null,
+      "id": "event:repo:705f421ea4c1e9822c11",
+      "observation_state": "declared",
+      "path": "docs/decisions/AOST-D-0003-component-refresh-fixtures-are-not-live-state.md",
+      "source_record_id": "file:docs/decisions/aost-d-0003-component-refresh-fixtures-are-not-live-state.md:20961813b7"
     },
     {
       "event_kind": "decision_record",
@@ -574,6 +583,15 @@
       "event_kind": "test_run",
       "event_role": "producer",
       "heading_ref": null,
+      "id": "event:repo:69da88ec6532618b20ef",
+      "observation_state": "declared",
+      "path": "mechanics/recurrence/parts/component-refresh/tests/test_component_refresh_projection.py",
+      "source_record_id": "file:mechanics/recurrence/parts/component-refresh/tests/test_component_refresh_projection.py:6c18159b13"
+    },
+    {
+      "event_kind": "test_run",
+      "event_role": "producer",
+      "heading_ref": null,
       "id": "event:repo:9b54864f47bf7a9107b5",
       "observation_state": "declared",
       "path": "mechanics/recurrence/parts/component-refresh/tests/test_component_refresh_summary.py",
@@ -879,7 +897,7 @@
   ],
   "index_identity": {
     "artifact_kind": "repository_event_index",
-    "content_digest": "a6a701d62e5649962b4e9f5910a5f1e0a2753da888154579932bccb2a7423262",
+    "content_digest": "6e8ef2a190aad3820dd22ec95e32cb4566e2ee115a99295d91f9b1e0952c75fb",
     "index_kind": "event",
     "local_id": "index:repo-local:events",
     "schema_ref": "aoa-kag:schemas/repo-local-kag-repository-index.schema.json"
@@ -904,19 +922,19 @@
   },
   "schema_version": "aoa-repo-local-kag-repository-index-v1",
   "source_index": {
-    "content_digest": "c500c6243379f0a6b6cae5cb5e2fbf4584b6c095d39874af4c2fd782ce03c789",
+    "content_digest": "ecdb48f00cc2690ad5fc5cb6c9d5093d2e8c609b3e5702e67cb18105c8aabe37",
     "local_id": "index:repo-local:source-surfaces",
     "path": "kag/indexes/source_surface_index.json"
   },
   "summary": {
-    "entry_count": 94,
+    "entry_count": 96,
     "kind_counts": {
       "command_run": 12,
-      "decision_record": 9,
+      "decision_record": 10,
       "generation_run": 10,
       "release_declaration": 4,
       "release_lane": 1,
-      "test_run": 37,
+      "test_run": 38,
       "validation_lane_run": 1,
       "validation_receipt": 1,
       "validation_run": 18,

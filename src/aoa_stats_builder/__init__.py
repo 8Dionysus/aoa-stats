@@ -3,6 +3,7 @@ from .candidate_lifecycle import (
     build_owner_landing_summary,
     build_supersession_drop_summary,
 )
+from .component_refresh import build_component_refresh_summary
 from .downstream_canaries import validate_downstream_canaries
 from .growth_cycle import (
     build_automation_followthrough_summary,
@@ -35,6 +36,7 @@ __all__ = [
     "build_automation_followthrough_summary",
     "build_automation_pipeline_summary",
     "build_candidate_lineage_summary",
+    "build_component_refresh_summary",
     "build_fork_calibration_summary",
     "build_owner_landing_summary",
     "build_session_growth_branch_summary",

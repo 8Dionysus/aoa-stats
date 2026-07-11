@@ -30,6 +30,7 @@ proof, route, memory, runtime, identity, or owner truth.
 | implementation | `src/aoa_stats_builder/` and `src/aoa_stats_mcp/` | command entrypoints |
 | public contracts | catalog schemas under `schemas/` | examples and docs |
 | public derived output | `generated/*.min.json` | KAG indexes and consumer caches |
+| local live output admission | `stats/read-models/active/*.profile.json#live_state_capable` | `state/generated/`, live catalog, watcher output |
 | current operations | nearest mechanic part | compatibility docs and root launchers |
 
 Generated, compact, KAG, MCP, and installed surfaces remain subordinate to
@@ -92,6 +93,10 @@ that package payload root is declared in `mechanics/topology.json`.
 - route-fork, session-branch, and automation follow-through projections:
   `mechanics/growth-cycle/`, backed by the shared deterministic core at
   `src/aoa_stats_builder/growth_cycle.py`
+- committed Component Refresh reference projection:
+  `mechanics/recurrence/parts/component-refresh/`, backed by
+  `src/aoa_stats_builder/component_refresh.py` and the reviewed-example adapter
+  at `src/aoa_stats_builder/component_refresh_sources.py`
 - memory movement and return to owner:
   `mechanics/boundary-bridge/parts/memory-owner-handoff/`
 - micro-friction contracts:
@@ -132,7 +137,12 @@ python scripts/refresh_live_stats.py
 
 The active registry and watcher templates live in
 `mechanics/recurrence/parts/live-receipt-refresh/`. Local refresh writes under
-ignored `state/`; committed public output stays under `generated/`.
+ignored `state/`; committed public output stays under `generated/`. Local live
+materialization includes only active profiles with `live_state_capable: true`,
+and its catalog lists only outputs actually materialized. Reference-only
+profiles remain in the committed catalog and stale runtime copies are removed.
+See
+[`AOST-D-0003`](docs/decisions/AOST-D-0003-component-refresh-fixtures-are-not-live-state.md).
 
 For read-only MCP use, follow
 [`stats/surface-catalog/CODEX_MCP.md`](stats/surface-catalog/CODEX_MCP.md).

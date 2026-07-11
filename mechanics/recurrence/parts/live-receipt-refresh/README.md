@@ -1,8 +1,9 @@
 # Live receipt refresh
 
 This part routes the bounded loop that audits registered owner-local receipt
-publishers, combines valid receipts into a local feed, and rebuilds deterministic
-stats views.
+publishers, combines valid receipts into a local feed, and materializes only
+the deterministic stats views admitted for live state by their authored
+profiles.
 
 ## Status
 
@@ -15,6 +16,22 @@ stats views.
 The source registry, watcher templates, operator guide, and focused tests are
 part-local. Public compatibility commands remain at root `scripts/` and load
 the canonical assets from this part.
+
+## Live inventory contract
+
+- active profiles under `stats/read-models/active/` define the managed output
+  universe
+- only profiles with `live_state_capable: true` enter the live build allowlist
+- `state/generated/summary_surface_catalog.min.json` lists only outputs
+  actually admitted and materialized by that live run
+- cleanup still covers every managed active output, so an older runtime copy
+  of a reference-only surface is removed
+- the Component Refresh reviewed-example adapter is never an implicit live
+  fallback
+
+The Component Refresh committed reference profile is therefore absent from
+live output until an explicit owner-runtime source contract lands. See
+`docs/decisions/AOST-D-0003-component-refresh-fixtures-are-not-live-state.md`.
 
 ## Payload
 
