@@ -36,6 +36,9 @@ not active here unless the topology names a real local operation.
 
 - Operation-owned docs, fixtures, supporting schemas, manifests, scripts,
   units, and focused tests live under the nearest part.
+- A focused test shared by several parts may live at package level only for
+  one shared importable core and only through an explicit
+  `package_payload_roots` declaration in `topology.json`.
 - Stable catalog schemas and committed generated read models stay at their
   root public paths and are owned through `stats/read-models/` profiles.
 - Root commands survive only as public, compatibility, or repo-wide

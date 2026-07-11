@@ -85,6 +85,12 @@ contain only repo-wide or explicit compatibility surfaces. Operation-local
 config, docs, examples, manifests, schemas, scripts, systemd templates, and
 focused tests live with the mechanic part that owns them.
 
+When one deterministic importable core serves several parts of the same
+mechanic, its shared focused test may live at the mechanic-package level only
+through an explicit `package_payload_roots` declaration in
+`mechanics/topology.json`. Part-specific payload and validation stay with the
+nearest part.
+
 Generated artifacts never become source authority merely because they are
 committed or convenient to query.
 

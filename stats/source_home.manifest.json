@@ -157,6 +157,8 @@
         "mechanics/antifragility/parts/antifragility-vector/schemas/antifragility_vector_v1.json"
       ],
       "implementation_routes": [
+        "src/aoa_stats_builder/candidate_lifecycle.py",
+        "src/aoa_stats_builder/read_model_values.py",
         "src/aoa_stats_builder/surface_catalog.py",
         "scripts/build_views.py"
       ],
@@ -196,6 +198,7 @@
         "scripts/validate_stats_source_home.py",
         "scripts/build_views.py",
         "scripts/validate_repo.py",
+        "mechanics/method-growth/tests/test_candidate_lifecycle.py",
         "tests/test_stats_source_home.py",
         "tests/test_summary_surface_catalog.py"
       ],
@@ -522,7 +525,7 @@
     {
       "path": "tests/",
       "status": "active_repository_and_compatibility_validation_district",
-      "meaning": "Focused contract, generated-output, refresh, publisher, and read-only access tests remain active at root."
+      "meaning": "Repo-wide, public-contract, and compatibility tests remain active at root; operation-focused tests live with the nearest mechanic part or an explicitly declared shared-core package payload root."
     }
   ],
   "stronger_owner_routes": [

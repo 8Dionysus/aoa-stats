@@ -1,8 +1,12 @@
 # supersession-pruning
 
-Summarizes explicit merge, replace, prune, and reanchor signals.
+Summarizes explicit drop, replacement, merge, supersession, and reanchor
+signals across reviewed candidate lineage, reviewed owner landing, and seed
+landing trace receipts.
 
-This part owns its operation route and the localized payload roots declared in
-`mechanics/topology.json`. Its stats source family owns the bounded meaning;
-public schemas and generated outputs stay at their declared publication paths
-when consumers depend on those paths.
+The authored meaning lives in
+`stats/read-models/active/supersession_drop_summary.profile.json`; the stable
+public contract and output remain
+`schemas/supersession-drop-summary.schema.json` and
+`generated/supersession_drop_summary.min.json`. Deterministic projection is
+shared through `src/aoa_stats_builder/candidate_lifecycle.py`.

@@ -44,6 +44,10 @@ Tracking starts with the first public release-prep baseline for this repository.
 - Pinned CI to the `abyss-machine` trust-admission hardening that enforces the
   required pre-materialization subject-store deny before the verified allow
   roundtrip.
+- Moved the shared Method Growth candidate-lifecycle projection and its focused
+  tests out of the root builder/test monoliths into the importable builder core
+  and the `mechanics/method-growth/` package while preserving public outputs
+  and the root build compatibility facade.
 
 ## [0.1.3] - 2026-04-23
 

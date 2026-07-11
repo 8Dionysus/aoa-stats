@@ -1,8 +1,11 @@
 # owner-landing
 
-Summarizes reviewed landing outcomes against stronger owner status.
+Summarizes `reviewed_owner_landing_receipt` and
+`seed_owner_landing_trace_receipt` payloads into owner, posture, outcome, and
+time-to-outcome observations.
 
-This part owns its operation route and the localized payload roots declared in
-`mechanics/topology.json`. Its stats source family owns the bounded meaning;
-public schemas and generated outputs stay at their declared publication paths
-when consumers depend on those paths.
+The authored meaning lives in
+`stats/read-models/active/owner_landing_summary.profile.json`; the stable public
+contract and output remain `schemas/owner-landing-summary.schema.json` and
+`generated/owner_landing_summary.min.json`. Deterministic projection is shared
+through `src/aoa_stats_builder/candidate_lifecycle.py`.

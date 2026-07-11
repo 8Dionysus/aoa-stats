@@ -42,7 +42,8 @@ The checked source home contains:
 - the canonical receipt intake contract and active event-kind registry
 - 25 active authored read-model profiles and one deferred contract profile
 - one explicit operation-contract family for 15 active non-catalog parts
-- deterministic projection through `scripts/build_views.py`
+- deterministic projection core under `src/aoa_stats_builder/`, exposed by the
+  repo-wide `scripts/build_views.py` entrypoint
 - stable public schemas and committed summaries under `schemas/` and
   `generated/`
 - read-only catalog access through `src/aoa_stats_mcp/`
@@ -71,7 +72,9 @@ The root is intentionally narrow:
 Operation-owned config, docs, examples, supporting schemas, manifests,
 systemd templates, builders, validators, and focused tests live under their
 mechanic parts. `scripts/validate_mechanics_topology.py` enforces this
-placement contract.
+placement contract. A focused test shared by several parts may live at the
+mechanic-package level only when it constrains one shared importable core and
+that package payload root is declared in `mechanics/topology.json`.
 
 ## Important operation routes
 
