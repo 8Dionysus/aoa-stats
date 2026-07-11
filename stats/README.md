@@ -104,6 +104,12 @@ publication and implementation districts:
   focused invariant proof belongs to
   `mechanics/recurrence/parts/repeated-window/tests/`, and date buckets do not
   become claims of change or recurrence
+- the Titan profiles share one mechanic part but keep different evidence
+  postures: `src/aoa_stats_builder/titan_observation_sources.py` loads the exact
+  committed incarnation example chain for validation by
+  `src/aoa_stats_builder/titan_observation.py`, while Titan Summon exposes only
+  an explicit no-observed-ledger compatibility baseline; focused proof belongs
+  to `mechanics/titan/parts/incarnation-summon/tests/`
 - public and compatibility commands remain under `scripts/`
 - repo-wide and compatibility validation remains under root `scripts/` and
   `tests/`; operation-focused validation follows `mechanics/topology.json`,
@@ -132,6 +138,8 @@ The semantic-versus-numeric Route Progression boundary is recorded in
 The historical-wave versus current-owner Runtime Closeout boundary is recorded
 in
 `docs/decisions/AOST-D-0006-runtime-closeout-wave-receipts-are-not-current-trial-live-state.md`.
+The committed-roster versus observed-swarm Titan boundary is recorded in
+`docs/decisions/AOST-D-0007-titan-reference-rosters-are-not-observed-swarm-activity.md`.
 The selector does not independently certify any profile's source posture.
 
 Follow the family route card before changing any of those paths.
