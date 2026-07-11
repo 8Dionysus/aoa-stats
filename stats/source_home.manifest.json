@@ -118,7 +118,7 @@
       "branch": "read_models",
       "path": "stats/read-models",
       "source_kind": "authored_stats_surface_profiles",
-      "meaning": "Source-authored active and deferred read-model profiles plus minimal retired-output cleanup tombstones, including public contract/output routes, authority ceiling, deterministic order, lifecycle, and operation handoffs where applicable.",
+      "meaning": "Source-authored active and deferred read-model profiles plus minimal retired-output cleanup tombstones, including public contract/output routes, authority ceiling, stable catalog slots, lifecycle, and operation handoffs where applicable.",
       "owner_surface": "stats/read-models/AGENTS.md",
       "authority_ceiling": "Profiles define what aoa-stats may derive and how cautiously it may be consumed; they do not own the source facts, proof, routes, runtime state, or memory summarized by the model.",
       "source_routes": [
@@ -133,7 +133,6 @@
         "schemas/core-skill-application-summary.schema.json",
         "schemas/object-summary.schema.json",
         "schemas/candidate_lineage_summary.schema.json",
-        "schemas/owner-landing-summary.schema.json",
         "schemas/supersession-drop-summary.schema.json",
         "schemas/repeated-window-summary.schema.json",
         "schemas/route-progression-summary.schema.json",
@@ -155,6 +154,7 @@
         "schemas/source-coverage-summary.schema.json",
         "schemas/surface-detection-summary.schema.json",
         "mechanics/antifragility/parts/antifragility-vector/schemas/antifragility_vector_v1.json",
+        "schemas/owner-landing-summary.schema.json",
         "schemas/titan_summon_summary.schema.json"
       ],
       "implementation_routes": [
@@ -190,7 +190,6 @@
         "generated/core_skill_application_summary.min.json",
         "generated/object_summary.min.json",
         "generated/candidate_lineage_summary.min.json",
-        "generated/owner_landing_summary.min.json",
         "generated/supersession_drop_summary.min.json",
         "generated/repeated_window_summary.min.json",
         "generated/route_progression_summary.min.json",
@@ -258,11 +257,6 @@
           "package": "method-growth",
           "part": "candidate-lineage",
           "path": "mechanics/method-growth/parts/candidate-lineage"
-        },
-        {
-          "package": "method-growth",
-          "part": "owner-landing",
-          "path": "mechanics/method-growth/parts/owner-landing"
         },
         {
           "package": "method-growth",

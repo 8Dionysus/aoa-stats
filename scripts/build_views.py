@@ -15,7 +15,6 @@ if str(SRC_ROOT) not in sys.path:
 
 from aoa_stats_builder.candidate_lifecycle import (  # noqa: E402
     build_candidate_lineage_summary,
-    build_owner_landing_summary,
     build_supersession_drop_summary,
 )
 from aoa_stats_builder.component_refresh import (  # noqa: E402
@@ -639,10 +638,6 @@ def build_all_views(
         (
             "route_progression_summary.min.json",
             lambda: build_route_progression_summary(active_receipts, source),
-        ),
-        (
-            "owner_landing_summary.min.json",
-            lambda: build_owner_landing_summary(active_receipts, source),
         ),
         ("codex_plane_deployment_summary.min.json", build_codex_plane_optional),
         ("codex_rollout_operations_summary.min.json", build_codex_rollout_operations_summary),

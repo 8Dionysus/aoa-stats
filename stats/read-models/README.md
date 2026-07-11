@@ -8,7 +8,7 @@ minimal tombstone under `retired/`.
 
 Profiles carry the stable question, derivation posture, stronger-owner inputs,
 authority ceiling, public schema/output routes, consumer risk, live-state
-posture, deterministic catalog order, and mechanics handoffs. The generated
+posture, stable catalog slot, and mechanics handoffs. The generated
 catalog projects the public fields from these records. It is not an editable
 copy of them.
 
@@ -18,9 +18,9 @@ by the local live refresh loop when its inputs resolve. A `false` profile stays
 on its committed/reference route and is omitted from live output and the live
 catalog, although refresh cleanup still removes any stale runtime copy.
 
-The current inventory contains 24 active profiles and one retired-output
-tombstone. Of the active profiles, 11 are admitted to live materialization and
-13 are reference-only: Owner Landing,
+The current inventory contains 23 active profiles and two retired-output
+tombstones. Of the active profiles, 11 are admitted to live materialization and
+12 are reference-only:
 Codex Plane Deployment, Codex Rollout Operations, Codex Rollout Drift, Rollout
 Campaign, Drift Review, Continuity Window, Component Refresh, Memory Movement,
 Route Progression, Runtime Closeout, Titan Incarnation, and Stress Recovery
@@ -36,13 +36,15 @@ trusted-history bundle; “latest” is bounded to that history. Rollout Campaig
 and Drift Review describe a separate three-example cadence chain. Checked-in
 history is not runtime state, and examples are not active cadence.
 
-Owner Landing and Stress Recovery Window currently describe only committed
-receipt/report examples: neither has a real active owner publisher. Memory
-Movement reads a real reviewed `aoa-memo` corpus, but the automatic refresh
+Stress Recovery Window currently describes only committed report examples and
+has no real active owner publisher. Memory Movement reads a real reviewed
+`aoa-memo` corpus, but the automatic refresh
 mechanic does not observe changes to its four source roots. A current source is
-necessary but not sufficient for continuously advertised live state; all three
-profiles stay false until their missing producer or refresh observation route
-exists and is tested.
+necessary but not sufficient for continuously advertised live state; both
+active profiles stay false until their missing producer or refresh observation
+route exists and is tested. Owner Landing is no longer an active reference
+profile: its example-only aggregate is retired while its event kinds remain
+inputs to Supersession Drop.
 
 The receipt-backed Audit profiles retain their existing live posture but have
 three explicit implementation boundaries. Core Skill Application and Surface
@@ -85,6 +87,12 @@ and consumer cleanup deterministic. AOST-D-0007 records the evidence boundary;
 AOST-D-0008 records the retirement lifecycle. A future observed Summon surface
 needs a new active profile, real owner ledger, producer, and refresh proof.
 
+Owner Landing likewise has no current publisher or direct consumer for its
+standalone aggregate. AOST-D-0009 retires its builder, output, catalog entry,
+and dedicated mechanic part while preserving both landing event kinds and
+their normalization for the active Supersession Drop read model. Its schema
+remains contract history and its former output remains managed cleanup.
+
 Use `committed_owner_example_chain` only when one owner repository publishes a
 coherent set of checked-in examples that can drive a deterministic committed
 reference snapshot. The token does not admit the surface to live
@@ -103,11 +111,13 @@ public schemas stay under `schemas/`, and public derived outputs stay under
 - `deferred/`: bounded contract candidates that are not emitted as active
   surfaces.
 - `retired/`: cleanup/provenance tombstones for removed outputs; they carry no
-  builder, generated payload, catalog entry, or active mechanic handoff.
+  builder, generated payload, catalog entry, or active mechanic handoff. Their
+  `former_catalog_order` values reserve stable slots that active profiles may
+  not reuse.
 
 Do not activate a deferred profile by moving the file alone. Its producer,
 input chain, public schema/output, mechanic route, and validation must become
 real in the same bounded change.
 
 Do not reactivate a retired tombstone. Reintroduction is a new active-surface
-decision with current evidence and consumer review.
+decision with current evidence, a new reviewed slot, and consumer review.

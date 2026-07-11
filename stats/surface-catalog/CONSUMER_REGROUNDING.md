@@ -74,9 +74,11 @@ compatibility snapshot. The RPG center supplies the seven-axis vocabulary and
 stop-lines; the `aoa-agents` and `aoa-sdk` contracts are typed overlays, not
 receipt truth.
 
-Owner Landing currently has no stronger publisher to return to. Its first
-input therefore names the exact committed aoa-stats compatibility receipt and
-states that limitation instead of pretending an owner-local landing feed
-exists. Stress Recovery does have an owner-side reference report, so its first
-return target is the `aoa-evals` report rather than the stats-local companion
-receipt.
+Owner Landing has no current publisher or direct consumer for its standalone
+example aggregate, so that catalog surface is retired rather than supplied
+with a self-referential return hint. The two admitted landing receipt kinds
+remain inputs to Supersession Drop; consumers of explicit turnover still
+return to the `aoa-skills` reviewed bundle and Dionysus trace owners named by
+those receipts. Stress Recovery has an owner-side reference report, so its
+first return target is the `aoa-evals` report rather than the stats-local
+companion receipt.

@@ -162,7 +162,6 @@
       "summary_surface_names": [
         "object_summary",
         "repeated_window_summary",
-        "owner_landing_summary",
         "supersession_drop_summary",
         "source_coverage_summary"
       ],
@@ -187,7 +186,6 @@
       "summary_surface_names": [
         "object_summary",
         "repeated_window_summary",
-        "owner_landing_summary",
         "supersession_drop_summary",
         "source_coverage_summary"
       ],

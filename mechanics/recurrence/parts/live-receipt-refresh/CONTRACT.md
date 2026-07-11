@@ -35,9 +35,9 @@ admitted by the `intake_contract` family.
 - unknown event kinds fail before a summary is built
 - missing or invalid required publishers remain visible as errors
 - a surface with `live_state_capable: false` is not materialized or cataloged
-- the current 24-active plus one-retired managed universe yields exactly 11
-  admitted live outputs, 13 reference-only active cleanup targets, and one
-  retired cleanup target
+- the current 23-active plus two-retired managed universe yields exactly 11
+  admitted live outputs, 12 reference-only active cleanup targets, and two
+  retired cleanup targets
 - resolving a current owner path on demand does not replace a refresh
   observation route
 - cleanup covers the full active-output plus retired-tombstone set, so stale
@@ -69,11 +69,12 @@ rollout-receipt artifacts below `.codex/generated/rollout/`. Until a real
 producer and refresh trigger are proven, the authored selector stays false and
 stale runtime copies are removed.
 
-Owner Landing remains a committed receipt-example surface. The accepted event
-kinds and deterministic builder do not prove that `aoa-skills`, Dionysus, or
-another named owner currently publishes the landing receipts. Until a real
-owner-local publisher and observation route exist, the authored selector stays
-false and stale runtime copies are removed.
+Owner Landing is retired, not a reference-only live candidate. Its accepted
+event kinds remain Supersession Drop inputs, but no standalone builder or
+catalog entry exists. The retired tombstone keeps its former output in stale
+cleanup alongside Titan Summon. A future standalone projection requires a new
+reviewed active profile and slot plus real owner evidence; live refresh must
+not treat the tombstone as activation.
 
 Route Progression remains a committed legacy numeric compatibility surface.
 The current `aoa-skills` progression receipt uses semantic axis summaries and
@@ -116,9 +117,11 @@ route is recorded in `stats/source_home.manifest.json` and
 The selector/output split and stale-cleanup precedent is recorded for Component
 Refresh in
 `docs/decisions/AOST-D-0003-component-refresh-fixtures-are-not-live-state.md`.
-The source-plus-observation admission law and the Owner Landing, Memory
-Movement, and Stress Recovery audit are recorded in
+The source-plus-observation admission law and the original Owner Landing,
+Memory Movement, and Stress Recovery audit are recorded in
 `docs/decisions/AOST-D-0004-live-admission-requires-refresh-observation.md`.
+Owner Landing's later retirement and stable-slot rule are recorded in
+`docs/decisions/AOST-D-0009-retirement-reserves-catalog-slots-without-preserving-empty-mechanics.md`.
 The Route Progression semantic-versus-numeric boundary is recorded in
 `docs/decisions/AOST-D-0005-route-progression-semantic-receipts-are-not-numeric-live-state.md`.
 The Runtime Closeout historical-wave versus current-owner receipt boundary is

@@ -12,7 +12,6 @@
   ],
   "generated_surfaces": [
     "generated/candidate_lineage_summary.min.json",
-    "generated/owner_landing_summary.min.json",
     "generated/supersession_drop_summary.min.json",
     "generated/continuity_window_summary.min.json",
     "generated/component_refresh_summary.min.json",

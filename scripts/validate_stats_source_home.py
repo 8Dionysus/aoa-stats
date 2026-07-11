@@ -74,9 +74,9 @@ REQUIRED_ROUTE_FIELDS = (
     "validator_routes",
 )
 OPTIONAL_ROUTE_FIELDS = ("generated_routes", "read_only_access_routes")
-EXPECTED_ACTIVE_PROFILE_COUNT = 24
+EXPECTED_ACTIVE_PROFILE_COUNT = 23
 EXPECTED_DEFERRED_PROFILE_COUNT = 1
-EXPECTED_RETIRED_PROFILE_COUNT = 1
+EXPECTED_RETIRED_PROFILE_COUNT = 2
 INTAKE_FIXTURE = Path(
     "stats/intake-contract/examples/session_harvest_family.receipts.example.json"
 )
@@ -383,13 +383,6 @@ def _validate_profiles(
         issues.append(f"stats/read-models: {exc}")
         return set()
 
-    if [profile["catalog_order"] for profile in active] != list(
-        range(1, len(active) + 1)
-    ):
-        issues.append(
-            "stats/read-models/active: catalog_order must be contiguous from 1"
-        )
-
     catalog, catalog_error = _load_object(
         repo_root / "generated/summary_surface_catalog.min.json"
     )
@@ -440,13 +433,6 @@ def _validate_profiles(
                     "stats/read-models: retired decision route is missing: "
                     f"{decision_ref}"
                 )
-            if require_mechanics:
-                for route in profile.get("former_mechanic_routes", []):
-                    if not (repo_root / route).is_dir():
-                        issues.append(
-                            "stats/read-models: retired former mechanic route is "
-                            f"missing: {route}"
-                        )
         contract_ref = profile.get("contract_ref")
         if isinstance(contract_ref, str) and not (repo_root / contract_ref).is_file():
             issues.append(

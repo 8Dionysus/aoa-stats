@@ -46,7 +46,6 @@ REQUIRED_TEXT_FILES = (
     "mechanics/recurrence/parts/continuity-window/docs/CONTINUITY_WINDOW_SUMMARY.md",
     "mechanics/recurrence/parts/component-refresh/docs/COMPONENT_REFRESH_SUMMARIES.md",
     "mechanics/boundary-bridge/parts/memory-owner-handoff/docs/MEMORY_MOVEMENT_SUMMARY.md",
-    "mechanics/method-growth/parts/owner-landing/docs/OWNER_LANDING_SUMMARY.md",
     "mechanics/method-growth/parts/supersession-pruning/docs/SUPERSESSION_DROP_SUMMARY.md",
     "stats/surface-catalog/CODEX_MCP.md",
     "mechanics/recurrence/parts/live-receipt-refresh/docs/LIVE_SESSION_USE.md",

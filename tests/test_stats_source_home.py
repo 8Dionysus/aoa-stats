@@ -442,23 +442,38 @@ def test_authored_profiles_are_the_public_catalog_source() -> None:
     )
     catalog = load_json("generated/summary_surface_catalog.min.json")
 
-    assert len(active) == 24
+    assert len(active) == 23
     assert len(deferred) == 1
-    assert len(retired) == 1
-    assert [profile["catalog_order"] for profile in active] == list(range(1, 25))
+    assert len(retired) == 2
+    assert [profile["catalog_order"] for profile in active] == [
+        *range(1, 4),
+        *range(5, 21),
+        *range(22, 26),
+    ]
     assert catalog["surfaces"] == public_active
     assert catalog["deferred_contract_surfaces"] == public_deferred
-    assert retired[0]["name"] == "titan_summon_summary"
-    assert retired[0]["cleanup_scopes"] == [
-        "committed_output",
-        "summary_surface_catalog",
-        "managed_live_state",
-        "consumer_hints",
-    ]
-    assert not (REPO_ROOT / retired[0]["retired_surface_ref"]).exists()
-    assert retired[0]["name"] not in {
-        profile["name"] for profile in catalog["surfaces"]
+    retired_by_name = {profile["name"]: profile for profile in retired}
+    assert {
+        name: profile["former_catalog_order"]
+        for name, profile in retired_by_name.items()
+    } == {
+        "owner_landing_summary": 4,
+        "titan_summon_summary": 21,
     }
+    for profile in retired:
+        assert profile["cleanup_scopes"] == [
+            "committed_output",
+            "summary_surface_catalog",
+            "managed_live_state",
+            "consumer_hints",
+        ]
+        assert not (REPO_ROOT / profile["retired_surface_ref"]).exists()
+        assert profile["name"] not in {
+            entry["name"] for entry in catalog["surfaces"]
+        }
+    assert not (
+        REPO_ROOT / "mechanics/method-growth/parts/owner-landing"
+    ).exists()
     assert all("mechanic_routes" not in entry for entry in catalog["surfaces"])
     assert all("catalog_order" not in entry for entry in catalog["surfaces"])
 
@@ -472,7 +487,7 @@ def test_retired_profile_name_cannot_reenter_active_catalog(tmp_path: Path) -> N
     )
     active["name"] = "titan_summon_summary"
     active["surface_ref"] = "generated/titan_summon_summary.min.json"
-    active["catalog_order"] = 25
+    active["catalog_order"] = 26
     write_repo_json(repo_root, active_ref, active)
 
     with pytest.raises(ValueError, match="duplicate surface profile name"):
@@ -488,6 +503,33 @@ def test_retired_output_name_cannot_alias_an_active_output(tmp_path: Path) -> No
 
     with pytest.raises(ValueError, match="duplicate managed surface output name"):
         load_surface_profiles(repo_root / "stats/read-models")
+
+
+def test_retired_catalog_slot_cannot_be_reused_by_an_active_profile(
+    tmp_path: Path,
+) -> None:
+    repo_root = copy_repo(tmp_path)
+    active_ref = "stats/read-models/active/runtime_closeout_summary.profile.json"
+    active = load_repo_json(repo_root, active_ref)
+    active["catalog_order"] = 21
+    write_repo_json(repo_root, active_ref, active)
+
+    with pytest.raises(ValueError, match="duplicate surface catalog slot: 21"):
+        load_surface_profiles(repo_root / "stats/read-models")
+
+
+def test_retired_profile_requires_its_former_catalog_slot(tmp_path: Path) -> None:
+    repo_root = copy_repo(tmp_path)
+    retired_ref = "stats/read-models/retired/titan_summon_summary.profile.json"
+    retired = load_repo_json(repo_root, retired_ref)
+    del retired["former_catalog_order"]
+    write_repo_json(repo_root, retired_ref, retired)
+
+    issues = validator.validate(repo_root)
+
+    assert any(
+        retired_ref in issue and "former_catalog_order" in issue for issue in issues
+    )
 
 
 def test_retired_profile_requires_complete_cleanup_scope(tmp_path: Path) -> None:

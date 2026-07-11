@@ -1,6 +1,6 @@
 {
   "schema_version": "aoa_stats_surface_profile_source_v1",
-  "catalog_order": 22,
+  "catalog_order": 23,
   "lifecycle": "active",
   "name": "stress_recovery_window_summary",
   "surface_ref": "generated/stress_recovery_window_summary.min.json",

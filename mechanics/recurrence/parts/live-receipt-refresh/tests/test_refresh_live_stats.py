@@ -11,7 +11,6 @@ REPO_ROOT = Path(__file__).resolve().parents[5]
 MODULE_PATH = REPO_ROOT / "scripts" / "refresh_live_stats.py"
 REFERENCE_ONLY_ACTIVE_OUTPUT_NAMES = frozenset(
     {
-        "owner_landing_summary.min.json",
         "codex_plane_deployment_summary.min.json",
         "codex_rollout_operations_summary.min.json",
         "codex_rollout_drift_summary.min.json",
@@ -26,7 +25,12 @@ REFERENCE_ONLY_ACTIVE_OUTPUT_NAMES = frozenset(
         "stress_recovery_window_summary.min.json",
     }
 )
-RETIRED_OUTPUT_NAMES = frozenset({"titan_summon_summary.min.json"})
+RETIRED_OUTPUT_NAMES = frozenset(
+    {
+        "owner_landing_summary.min.json",
+        "titan_summon_summary.min.json",
+    }
+)
 NON_LIVE_MANAGED_OUTPUT_NAMES = (
     REFERENCE_ONLY_ACTIVE_OUTPUT_NAMES | RETIRED_OUTPUT_NAMES
 )
@@ -64,7 +68,10 @@ def test_live_output_inventory_is_derived_from_authored_profile_posture() -> Non
     )
     assert len(all_profile_outputs) == 25
     assert len(live_profile_outputs) == 11
-    assert retired_profile_outputs == ("titan_summon_summary.min.json",)
+    assert retired_profile_outputs == (
+        "owner_landing_summary.min.json",
+        "titan_summon_summary.min.json",
+    )
     assert module.RETIRED_PROFILE_SURFACE_OUTPUT_NAMES == retired_profile_outputs
     assert "owner_landing_summary.min.json" not in live_profile_outputs
     assert "memory_movement_summary.min.json" not in live_profile_outputs
@@ -93,9 +100,6 @@ def test_live_allowlist_never_invokes_reference_only_builders() -> None:
         / "session_harvest_family.receipts.example.json"
     )
     receipts = module.load_receipts([receipts_path])
-    owner_landing_builder = Mock(
-        side_effect=AssertionError("owner landing builder ran live")
-    )
     memory_movement_builder = Mock(
         side_effect=AssertionError("memory movement builder ran live")
     )
@@ -114,7 +118,6 @@ def test_live_allowlist_never_invokes_reference_only_builders() -> None:
     with patch.dict(
         module.build_all_views.__globals__,
         {
-            "build_owner_landing_summary": owner_landing_builder,
             "build_memory_movement_summary": memory_movement_builder,
             "build_stress_recovery_window_summary": stress_recovery_builder,
             "build_route_progression_summary": route_progression_builder,
@@ -131,7 +134,6 @@ def test_live_allowlist_never_invokes_reference_only_builders() -> None:
             ),
         )
 
-    owner_landing_builder.assert_not_called()
     memory_movement_builder.assert_not_called()
     stress_recovery_builder.assert_not_called()
     route_progression_builder.assert_not_called()

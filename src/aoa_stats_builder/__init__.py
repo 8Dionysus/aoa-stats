@@ -1,6 +1,5 @@
 from .candidate_lifecycle import (
     build_candidate_lineage_summary,
-    build_owner_landing_summary,
     build_supersession_drop_summary,
 )
 from .component_refresh import build_component_refresh_summary
@@ -51,7 +50,6 @@ __all__ = [
     "build_continuity_window_summary",
     "build_core_skill_application_summary",
     "build_fork_calibration_summary",
-    "build_owner_landing_summary",
     "build_object_summary",
     "build_repeated_window_summary",
     "build_route_progression_summary",

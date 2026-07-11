@@ -27,7 +27,10 @@ or the upstream facts summarized by a profile.
 - Removed public outputs leave only a minimal tombstone under `retired/` when
   stale committed, live, catalog, or consumer copies still need deterministic
   cleanup. A retired profile has no builder, catalog entry, or payload archive.
-- Preserve `catalog_order`; it is the deterministic public catalog order.
+- Preserve `catalog_order`; it is a stable catalog slot, not a dense ordinal.
+  Retired profiles reserve `former_catalog_order`, active profiles may leave
+  gaps, and no later lifecycle edit may reuse or close a retired slot merely
+  to make the sequence contiguous.
 - `mechanic_routes` are source-to-operation handoffs. They do not move source
   meaning into mechanics.
 - `live_state_capable` is executable source meaning: `true` admits the surface
@@ -38,8 +41,11 @@ or the upstream facts summarized by a profile.
 - Change the authored profile first, then rebuild and check the generated
   catalog.
 - Reintroducing a retired question requires a newly reviewed active profile,
-  real owner evidence, a producer, and validation; moving or copying the
-  tombstone is not activation.
+  a new reviewed slot, real owner evidence, a producer, and validation; moving
+  or copying the tombstone is not activation.
+- A retired `former_mechanic_routes` entry is provenance, not an active
+  topology backlink. Do not keep an empty mechanic part alive only to satisfy
+  a retired record.
 - For Repeated Window, a window is only the calendar-date prefix carried by
   admitted `observed_at` values. Counts must not be described as proof of
   change, repetition, cadence, causality, or owner chronology.

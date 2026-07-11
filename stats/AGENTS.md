@@ -43,6 +43,10 @@ or source-owner facts. Those remain in the active routes named by
   live catalog.
 - Retired profiles are cleanup and provenance records only. They must not
   re-enter the public catalog, committed build fanout, or live materialization.
+- Retired profiles reserve their former catalog slots. Active profiles may
+  leave gaps but must not reuse those slots or renumber unrelated surfaces.
+- Former mechanic routes on retired records are historical identifiers; only
+  active and deferred profile handoffs must resolve to active mechanic parts.
 
 ## Branch routes
 

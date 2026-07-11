@@ -10,4 +10,4 @@ python scripts/validate_mechanics_topology.py
 ```
 
 The package-level test is intentional: it constrains the shared lifecycle core
-and the root compatibility facade across all three Method Growth parts.
+and the root compatibility facade across both active Method Growth parts.
