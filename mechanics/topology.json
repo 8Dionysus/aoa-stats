@@ -1,0 +1,973 @@
+{
+  "schema_version": "aoa_stats_mechanics_topology_v2",
+  "layer": "aoa-stats",
+  "common_mechanic_source": "Agents-of-Abyss/mechanics",
+  "stats_source_manifest": "stats/source_home.manifest.json",
+  "stats_profile_root": "stats/read-models",
+  "root_contract": {
+    "allowed_root_files": [
+      "AGENTS.md",
+      "README.md",
+      "topology.json"
+    ],
+    "forbidden_root_entries": [
+      "_meta",
+      "backlog",
+      "legacy",
+      "notes",
+      "scratch",
+      "templates"
+    ]
+  },
+  "root_payload_contract": {
+    "placement_law": "Operation payload is part-local. Root payload requires a stable public, compatibility, repo-wide, port, or release-artifact role.",
+    "must_be_empty": [
+      "config",
+      "quests",
+      "systemd"
+    ],
+    "allowed_exact": {
+      "docs": [
+        "docs/ARCHITECTURE.md",
+        "docs/BOUNDARIES.md",
+        "docs/COMPONENT_REFRESH_SUMMARIES.md",
+        "docs/DERIVED_SIGNAL_HYGIENE.md",
+        "docs/GROWTH_FUNNEL_SUMMARY.md",
+        "docs/README.md",
+        "docs/RECURRENCE_DERIVED_SUMMARIES.md",
+        "docs/RELEASING.md",
+        "docs/SURFACE_STRENGTH_MODEL.md"
+      ],
+      "examples": [
+        "examples/AGENTS.md",
+        "examples/codex_plane_deployment_summary.example.json"
+      ],
+      "manifests": [
+        "manifests/artifact_bundles/README.md",
+        "manifests/artifact_bundles/summary_surface_catalog.bundle.json"
+      ],
+      "scripts": [
+        "scripts/AGENTS.md",
+        "scripts/aoa_stats_mcp_server.py",
+        "scripts/build_views.py",
+        "scripts/check_live_publishers.py",
+        "scripts/generate_decision_indexes.py",
+        "scripts/install_live_refresh_units.py",
+        "scripts/refresh_live_stats.py",
+        "scripts/release_check.py",
+        "scripts/validate_abyss_machine_summary_catalog_bundle.py",
+        "scripts/validate_decision_records.py",
+        "scripts/validate_downstream_canaries.py",
+        "scripts/validate_mechanics_topology.py",
+        "scripts/validate_nested_agents.py",
+        "scripts/validate_receipt_abi.py",
+        "scripts/validate_repo.py",
+        "scripts/validate_stats_source_home.py"
+      ],
+      "tests": [
+        "tests/AGENTS.md",
+        "tests/test_aoa_stats_mcp_state.py",
+        "tests/test_build_views.py",
+        "tests/test_decision_indexes.py",
+        "tests/test_docs_routes.py",
+        "tests/test_local_stack_bringup_contract.py",
+        "tests/test_mechanics_topology.py",
+        "tests/test_release_check.py",
+        "tests/test_roadmap_parity.py",
+        "tests/test_stats_source_home.py",
+        "tests/test_summary_surface_catalog.py",
+        "tests/test_validate_nested_agents.py"
+      ]
+    },
+    "allowed_prefixes": {
+      "docs": [
+        "docs/decisions/",
+        "docs/history/"
+      ],
+      "examples": [],
+      "manifests": [],
+      "scripts": [],
+      "tests": []
+    },
+    "derived_public_districts": {
+      "additional_schema_routes": [
+        "schemas/stats-event-envelope.schema.json",
+        "schemas/summary-surface-catalog.schema.json"
+      ],
+      "additional_generated_routes": [
+        "generated/summary_surface_catalog.min.json",
+        "generated/agon_epistemic_stats_observability_registry.min.json",
+        "generated/agon_kag_stats_observability_registry.min.json",
+        "generated/agon_mechanical_trial_stats_observability_registry.min.json",
+        "generated/agon_retention_rank_stats_observability_registry.min.json",
+        "generated/agon_slc_stats_observability_registry.min.json",
+        "generated/agon_sophian_stats_observability_registry.min.json",
+        "generated/agon_stats_prebinding_registry.min.json",
+        "generated/agon_vds_stats_observability_registry.min.json"
+      ]
+    }
+  },
+  "package_activation": {
+    "active_package_paths": [
+      "agon",
+      "antifragility",
+      "audit",
+      "boundary-bridge",
+      "checkpoint",
+      "experience",
+      "growth-cycle",
+      "method-growth",
+      "recurrence",
+      "release-support",
+      "rpg",
+      "titan"
+    ],
+    "unlisted_package_status": "inactive_not_mapped"
+  },
+  "source_family_crosswalks": [
+    {
+      "stats_source_family_ref": "intake_contract",
+      "stats_source_family_manifest": "stats/source_home.manifest.json",
+      "mechanic_part_refs": [
+        "mechanics/boundary-bridge/parts/receipt-abi-crossing",
+        "mechanics/recurrence/parts/live-receipt-refresh"
+      ]
+    },
+    {
+      "stats_source_family_ref": "read_models",
+      "stats_source_family_manifest": "stats/source_home.manifest.json",
+      "mechanic_part_refs": [
+        "mechanics/antifragility/parts/antifragility-vector",
+        "mechanics/antifragility/parts/stress-recovery-windows",
+        "mechanics/audit/parts/core-skill-application",
+        "mechanics/audit/parts/drift-shadow-review",
+        "mechanics/audit/parts/object-observation",
+        "mechanics/audit/parts/source-coverage",
+        "mechanics/audit/parts/surface-strength-detection",
+        "mechanics/boundary-bridge/parts/memory-owner-handoff",
+        "mechanics/checkpoint/parts/runtime-closeout",
+        "mechanics/growth-cycle/parts/automation-followthrough",
+        "mechanics/growth-cycle/parts/route-fork-calibration",
+        "mechanics/growth-cycle/parts/session-growth-branch",
+        "mechanics/method-growth/parts/candidate-lineage",
+        "mechanics/method-growth/parts/owner-landing",
+        "mechanics/method-growth/parts/supersession-pruning",
+        "mechanics/recurrence/parts/component-refresh",
+        "mechanics/recurrence/parts/continuity-window",
+        "mechanics/recurrence/parts/repeated-window",
+        "mechanics/release-support/parts/codex-deployment-rollout",
+        "mechanics/release-support/parts/rollout-campaign",
+        "mechanics/rpg/parts/route-progression",
+        "mechanics/titan/parts/incarnation-summon"
+      ]
+    },
+    {
+      "stats_source_family_ref": "surface_catalog",
+      "stats_source_family_manifest": "stats/source_home.manifest.json",
+      "mechanic_part_refs": [
+        "mechanics/boundary-bridge/parts/consumer-regrounding",
+        "mechanics/recurrence/parts/component-manifests",
+        "mechanics/release-support/parts/summary-catalog-artifact-bundle"
+      ]
+    },
+    {
+      "stats_source_family_ref": "operation_contracts",
+      "stats_source_family_manifest": "stats/source_home.manifest.json",
+      "mechanic_part_refs": [
+        "mechanics/agon/parts/epistemic-observability",
+        "mechanics/agon/parts/kag-observability",
+        "mechanics/agon/parts/mechanical-trial-observability",
+        "mechanics/agon/parts/retention-rank-observability",
+        "mechanics/agon/parts/schools-lineages-campaigns-observability",
+        "mechanics/agon/parts/sophian-observability",
+        "mechanics/agon/parts/stats-prebinding",
+        "mechanics/agon/parts/verdict-delta-scar-observability",
+        "mechanics/antifragility/parts/via-negativa",
+        "mechanics/experience/parts/adoption-federation-harvest",
+        "mechanics/experience/parts/governance-runtime-signals",
+        "mechanics/experience/parts/micro-friction-receipts",
+        "mechanics/experience/parts/release-watch-office-health",
+        "mechanics/titan/parts/memory-owner-bridge",
+        "mechanics/titan/parts/runtime-console"
+      ]
+    }
+  ],
+  "active_packages": [
+    {
+      "path": "agon",
+      "mechanic_class": "common-center",
+      "center_mechanic_ref": "Agents-of-Abyss/mechanics/agon",
+      "local_status": "localized_active",
+      "local_function": "Derive bounded Agon observability registries while Agon owners retain arena, verdict, scar, rank, promotion, and threshold truth.",
+      "package_payload_roots": [
+        "docs",
+        "legacy"
+      ],
+      "active_part_routes": [
+        {
+          "path": "epistemic-observability",
+          "owner_surface": "mechanics/agon/parts/epistemic-observability/CONTRACT.md",
+          "validation_surface": "mechanics/agon/parts/epistemic-observability/VALIDATION.md",
+          "payload_class": "epistemic-observability-stats-operation",
+          "stats_source_family_refs": [
+            "operation_contracts"
+          ],
+          "localized_payload_roots": [
+            "config",
+            "docs",
+            "examples",
+            "schemas",
+            "scripts",
+            "tests"
+          ],
+          "retained_root_routes": [
+            "generated/agon_epistemic_stats_observability_registry.min.json"
+          ]
+        },
+        {
+          "path": "kag-observability",
+          "owner_surface": "mechanics/agon/parts/kag-observability/CONTRACT.md",
+          "validation_surface": "mechanics/agon/parts/kag-observability/VALIDATION.md",
+          "payload_class": "kag-observability-stats-operation",
+          "stats_source_family_refs": [
+            "operation_contracts"
+          ],
+          "localized_payload_roots": [
+            "config",
+            "docs",
+            "examples",
+            "schemas",
+            "scripts",
+            "tests"
+          ],
+          "retained_root_routes": [
+            "generated/agon_kag_stats_observability_registry.min.json"
+          ]
+        },
+        {
+          "path": "mechanical-trial-observability",
+          "owner_surface": "mechanics/agon/parts/mechanical-trial-observability/CONTRACT.md",
+          "validation_surface": "mechanics/agon/parts/mechanical-trial-observability/VALIDATION.md",
+          "payload_class": "mechanical-trial-observability-stats-operation",
+          "stats_source_family_refs": [
+            "operation_contracts"
+          ],
+          "localized_payload_roots": [
+            "config",
+            "docs",
+            "examples",
+            "schemas",
+            "scripts",
+            "tests"
+          ],
+          "retained_root_routes": [
+            "generated/agon_mechanical_trial_stats_observability_registry.min.json"
+          ]
+        },
+        {
+          "path": "retention-rank-observability",
+          "owner_surface": "mechanics/agon/parts/retention-rank-observability/CONTRACT.md",
+          "validation_surface": "mechanics/agon/parts/retention-rank-observability/VALIDATION.md",
+          "payload_class": "retention-rank-observability-stats-operation",
+          "stats_source_family_refs": [
+            "operation_contracts"
+          ],
+          "localized_payload_roots": [
+            "config",
+            "docs",
+            "examples",
+            "schemas",
+            "scripts",
+            "tests"
+          ],
+          "retained_root_routes": [
+            "generated/agon_retention_rank_stats_observability_registry.min.json"
+          ]
+        },
+        {
+          "path": "schools-lineages-campaigns-observability",
+          "owner_surface": "mechanics/agon/parts/schools-lineages-campaigns-observability/CONTRACT.md",
+          "validation_surface": "mechanics/agon/parts/schools-lineages-campaigns-observability/VALIDATION.md",
+          "payload_class": "schools-lineages-campaigns-observability-stats-operation",
+          "stats_source_family_refs": [
+            "operation_contracts"
+          ],
+          "localized_payload_roots": [
+            "config",
+            "docs",
+            "examples",
+            "schemas",
+            "scripts",
+            "tests"
+          ],
+          "retained_root_routes": [
+            "generated/agon_slc_stats_observability_registry.min.json"
+          ]
+        },
+        {
+          "path": "sophian-observability",
+          "owner_surface": "mechanics/agon/parts/sophian-observability/CONTRACT.md",
+          "validation_surface": "mechanics/agon/parts/sophian-observability/VALIDATION.md",
+          "payload_class": "sophian-observability-stats-operation",
+          "stats_source_family_refs": [
+            "operation_contracts"
+          ],
+          "localized_payload_roots": [
+            "config",
+            "docs",
+            "examples",
+            "schemas",
+            "scripts",
+            "tests"
+          ],
+          "retained_root_routes": [
+            "generated/agon_sophian_stats_observability_registry.min.json"
+          ]
+        },
+        {
+          "path": "stats-prebinding",
+          "owner_surface": "mechanics/agon/parts/stats-prebinding/CONTRACT.md",
+          "validation_surface": "mechanics/agon/parts/stats-prebinding/VALIDATION.md",
+          "payload_class": "stats-prebinding-stats-operation",
+          "stats_source_family_refs": [
+            "operation_contracts"
+          ],
+          "localized_payload_roots": [
+            "config",
+            "docs",
+            "examples",
+            "schemas",
+            "scripts",
+            "tests"
+          ],
+          "retained_root_routes": [
+            "generated/agon_stats_prebinding_registry.min.json"
+          ]
+        },
+        {
+          "path": "verdict-delta-scar-observability",
+          "owner_surface": "mechanics/agon/parts/verdict-delta-scar-observability/CONTRACT.md",
+          "validation_surface": "mechanics/agon/parts/verdict-delta-scar-observability/VALIDATION.md",
+          "payload_class": "verdict-delta-scar-observability-stats-operation",
+          "stats_source_family_refs": [
+            "operation_contracts"
+          ],
+          "localized_payload_roots": [
+            "config",
+            "docs",
+            "examples",
+            "schemas",
+            "scripts",
+            "tests"
+          ],
+          "retained_root_routes": [
+            "generated/agon_vds_stats_observability_registry.min.json"
+          ]
+        }
+      ]
+    },
+    {
+      "path": "antifragility",
+      "mechanic_class": "common-center",
+      "center_mechanic_ref": "Agents-of-Abyss/mechanics/antifragility",
+      "local_status": "localized_active",
+      "local_function": "Observe stress, recovery, negative evidence, and activation pressure without converting stats into proof.",
+      "package_payload_roots": [],
+      "active_part_routes": [
+        {
+          "path": "antifragility-vector",
+          "owner_surface": "mechanics/antifragility/parts/antifragility-vector/CONTRACT.md",
+          "validation_surface": "mechanics/antifragility/parts/antifragility-vector/VALIDATION.md",
+          "payload_class": "antifragility-vector-stats-operation",
+          "stats_source_family_refs": [
+            "read_models"
+          ],
+          "localized_payload_roots": [
+            "docs",
+            "examples",
+            "schemas"
+          ],
+          "retained_root_routes": []
+        },
+        {
+          "path": "stress-recovery-windows",
+          "owner_surface": "mechanics/antifragility/parts/stress-recovery-windows/CONTRACT.md",
+          "validation_surface": "mechanics/antifragility/parts/stress-recovery-windows/VALIDATION.md",
+          "payload_class": "stress-recovery-windows-stats-operation",
+          "stats_source_family_refs": [
+            "read_models"
+          ],
+          "localized_payload_roots": [
+            "docs",
+            "examples",
+            "schemas",
+            "tests"
+          ],
+          "retained_root_routes": []
+        },
+        {
+          "path": "via-negativa",
+          "owner_surface": "mechanics/antifragility/parts/via-negativa/CONTRACT.md",
+          "validation_surface": "mechanics/antifragility/parts/via-negativa/VALIDATION.md",
+          "payload_class": "via-negativa-stats-operation",
+          "stats_source_family_refs": [
+            "operation_contracts"
+          ],
+          "localized_payload_roots": [
+            "docs"
+          ],
+          "retained_root_routes": []
+        }
+      ]
+    },
+    {
+      "path": "audit",
+      "mechanic_class": "common-center",
+      "center_mechanic_ref": "Agents-of-Abyss/mechanics/audit",
+      "local_status": "localized_active",
+      "local_function": "Expose coverage, object, skill-use, detection, and drift observations while returning judgment to owners.",
+      "package_payload_roots": [],
+      "active_part_routes": [
+        {
+          "path": "core-skill-application",
+          "owner_surface": "mechanics/audit/parts/core-skill-application/CONTRACT.md",
+          "validation_surface": "mechanics/audit/parts/core-skill-application/VALIDATION.md",
+          "payload_class": "core-skill-application-stats-operation",
+          "stats_source_family_refs": [
+            "read_models"
+          ],
+          "localized_payload_roots": [],
+          "retained_root_routes": []
+        },
+        {
+          "path": "drift-shadow-review",
+          "owner_surface": "mechanics/audit/parts/drift-shadow-review/CONTRACT.md",
+          "validation_surface": "mechanics/audit/parts/drift-shadow-review/VALIDATION.md",
+          "payload_class": "drift-shadow-review-stats-operation",
+          "stats_source_family_refs": [
+            "read_models"
+          ],
+          "localized_payload_roots": [
+            "docs",
+            "examples"
+          ],
+          "retained_root_routes": []
+        },
+        {
+          "path": "object-observation",
+          "owner_surface": "mechanics/audit/parts/object-observation/CONTRACT.md",
+          "validation_surface": "mechanics/audit/parts/object-observation/VALIDATION.md",
+          "payload_class": "object-observation-stats-operation",
+          "stats_source_family_refs": [
+            "read_models"
+          ],
+          "localized_payload_roots": [],
+          "retained_root_routes": []
+        },
+        {
+          "path": "source-coverage",
+          "owner_surface": "mechanics/audit/parts/source-coverage/CONTRACT.md",
+          "validation_surface": "mechanics/audit/parts/source-coverage/VALIDATION.md",
+          "payload_class": "source-coverage-stats-operation",
+          "stats_source_family_refs": [
+            "read_models"
+          ],
+          "localized_payload_roots": [
+            "docs",
+            "examples"
+          ],
+          "retained_root_routes": []
+        },
+        {
+          "path": "surface-strength-detection",
+          "owner_surface": "mechanics/audit/parts/surface-strength-detection/CONTRACT.md",
+          "validation_surface": "mechanics/audit/parts/surface-strength-detection/VALIDATION.md",
+          "payload_class": "surface-strength-detection-stats-operation",
+          "stats_source_family_refs": [
+            "read_models"
+          ],
+          "localized_payload_roots": [],
+          "retained_root_routes": []
+        }
+      ]
+    },
+    {
+      "path": "boundary-bridge",
+      "mechanic_class": "common-center",
+      "center_mechanic_ref": "Agents-of-Abyss/mechanics/boundary-bridge",
+      "local_status": "localized_active",
+      "local_function": "Admit source-owned receipts and return consumers from derived views to stronger owners.",
+      "package_payload_roots": [],
+      "active_part_routes": [
+        {
+          "path": "consumer-regrounding",
+          "owner_surface": "mechanics/boundary-bridge/parts/consumer-regrounding/CONTRACT.md",
+          "validation_surface": "mechanics/boundary-bridge/parts/consumer-regrounding/VALIDATION.md",
+          "payload_class": "consumer-regrounding-stats-operation",
+          "stats_source_family_refs": [
+            "surface_catalog"
+          ],
+          "localized_payload_roots": [
+            "tests"
+          ],
+          "retained_root_routes": [
+            "schemas/summary-surface-catalog.schema.json",
+            "generated/summary_surface_catalog.min.json",
+            "scripts/validate_downstream_canaries.py"
+          ]
+        },
+        {
+          "path": "memory-owner-handoff",
+          "owner_surface": "mechanics/boundary-bridge/parts/memory-owner-handoff/CONTRACT.md",
+          "validation_surface": "mechanics/boundary-bridge/parts/memory-owner-handoff/VALIDATION.md",
+          "payload_class": "memory-owner-handoff-stats-operation",
+          "stats_source_family_refs": [
+            "read_models"
+          ],
+          "localized_payload_roots": [
+            "docs",
+            "tests"
+          ],
+          "retained_root_routes": []
+        },
+        {
+          "path": "receipt-abi-crossing",
+          "owner_surface": "mechanics/boundary-bridge/parts/receipt-abi-crossing/CONTRACT.md",
+          "validation_surface": "mechanics/boundary-bridge/parts/receipt-abi-crossing/VALIDATION.md",
+          "payload_class": "receipt-abi-crossing-stats-operation",
+          "stats_source_family_refs": [
+            "intake_contract"
+          ],
+          "localized_payload_roots": [
+            "tests"
+          ],
+          "retained_root_routes": [
+            "schemas/stats-event-envelope.schema.json",
+            "scripts/validate_receipt_abi.py"
+          ]
+        }
+      ]
+    },
+    {
+      "path": "checkpoint",
+      "mechanic_class": "common-center",
+      "center_mechanic_ref": "Agents-of-Abyss/mechanics/checkpoint",
+      "local_status": "localized_active",
+      "local_function": "Summarize runtime closeout posture while stronger runtime owners retain gate truth.",
+      "package_payload_roots": [],
+      "active_part_routes": [
+        {
+          "path": "runtime-closeout",
+          "owner_surface": "mechanics/checkpoint/parts/runtime-closeout/CONTRACT.md",
+          "validation_surface": "mechanics/checkpoint/parts/runtime-closeout/VALIDATION.md",
+          "payload_class": "runtime-closeout-stats-operation",
+          "stats_source_family_refs": [
+            "read_models"
+          ],
+          "localized_payload_roots": [],
+          "retained_root_routes": []
+        }
+      ]
+    },
+    {
+      "path": "experience",
+      "mechanic_class": "common-center",
+      "center_mechanic_ref": "Agents-of-Abyss/mechanics/experience",
+      "local_status": "localized_active",
+      "local_function": "Keep friction, adoption, governance, office, and release-health contracts together by operation.",
+      "package_payload_roots": [],
+      "active_part_routes": [
+        {
+          "path": "adoption-federation-harvest",
+          "owner_surface": "mechanics/experience/parts/adoption-federation-harvest/CONTRACT.md",
+          "validation_surface": "mechanics/experience/parts/adoption-federation-harvest/VALIDATION.md",
+          "payload_class": "adoption-federation-harvest-stats-operation",
+          "stats_source_family_refs": [
+            "operation_contracts"
+          ],
+          "localized_payload_roots": [
+            "docs",
+            "examples",
+            "schemas",
+            "tests"
+          ],
+          "retained_root_routes": []
+        },
+        {
+          "path": "governance-runtime-signals",
+          "owner_surface": "mechanics/experience/parts/governance-runtime-signals/CONTRACT.md",
+          "validation_surface": "mechanics/experience/parts/governance-runtime-signals/VALIDATION.md",
+          "payload_class": "governance-runtime-signals-stats-operation",
+          "stats_source_family_refs": [
+            "operation_contracts"
+          ],
+          "localized_payload_roots": [
+            "docs",
+            "examples",
+            "schemas",
+            "tests"
+          ],
+          "retained_root_routes": []
+        },
+        {
+          "path": "micro-friction-receipts",
+          "owner_surface": "mechanics/experience/parts/micro-friction-receipts/CONTRACT.md",
+          "validation_surface": "mechanics/experience/parts/micro-friction-receipts/VALIDATION.md",
+          "payload_class": "micro-friction-receipts-stats-operation",
+          "stats_source_family_refs": [
+            "operation_contracts"
+          ],
+          "localized_payload_roots": [
+            "docs",
+            "examples",
+            "schemas",
+            "tests"
+          ],
+          "retained_root_routes": []
+        },
+        {
+          "path": "release-watch-office-health",
+          "owner_surface": "mechanics/experience/parts/release-watch-office-health/CONTRACT.md",
+          "validation_surface": "mechanics/experience/parts/release-watch-office-health/VALIDATION.md",
+          "payload_class": "release-watch-office-health-stats-operation",
+          "stats_source_family_refs": [
+            "operation_contracts"
+          ],
+          "localized_payload_roots": [
+            "docs",
+            "examples",
+            "schemas",
+            "tests"
+          ],
+          "retained_root_routes": []
+        }
+      ]
+    },
+    {
+      "path": "growth-cycle",
+      "mechanic_class": "common-center",
+      "center_mechanic_ref": "Agents-of-Abyss/mechanics/growth-cycle",
+      "local_status": "localized_active",
+      "local_function": "Observe route forks, session growth, and automation follow-through.",
+      "package_payload_roots": [],
+      "active_part_routes": [
+        {
+          "path": "automation-followthrough",
+          "owner_surface": "mechanics/growth-cycle/parts/automation-followthrough/CONTRACT.md",
+          "validation_surface": "mechanics/growth-cycle/parts/automation-followthrough/VALIDATION.md",
+          "payload_class": "automation-followthrough-stats-operation",
+          "stats_source_family_refs": [
+            "read_models"
+          ],
+          "localized_payload_roots": [
+            "docs",
+            "examples"
+          ],
+          "retained_root_routes": []
+        },
+        {
+          "path": "route-fork-calibration",
+          "owner_surface": "mechanics/growth-cycle/parts/route-fork-calibration/CONTRACT.md",
+          "validation_surface": "mechanics/growth-cycle/parts/route-fork-calibration/VALIDATION.md",
+          "payload_class": "route-fork-calibration-stats-operation",
+          "stats_source_family_refs": [
+            "read_models"
+          ],
+          "localized_payload_roots": [],
+          "retained_root_routes": []
+        },
+        {
+          "path": "session-growth-branch",
+          "owner_surface": "mechanics/growth-cycle/parts/session-growth-branch/CONTRACT.md",
+          "validation_surface": "mechanics/growth-cycle/parts/session-growth-branch/VALIDATION.md",
+          "payload_class": "session-growth-branch-stats-operation",
+          "stats_source_family_refs": [
+            "read_models"
+          ],
+          "localized_payload_roots": [
+            "docs",
+            "examples"
+          ],
+          "retained_root_routes": []
+        }
+      ]
+    },
+    {
+      "path": "method-growth",
+      "mechanic_class": "common-center",
+      "center_mechanic_ref": "Agents-of-Abyss/mechanics/method-growth",
+      "local_status": "localized_active",
+      "local_function": "Observe candidate lineage, owner landing, and explicit supersession without deciding promotion.",
+      "package_payload_roots": [],
+      "active_part_routes": [
+        {
+          "path": "candidate-lineage",
+          "owner_surface": "mechanics/method-growth/parts/candidate-lineage/CONTRACT.md",
+          "validation_surface": "mechanics/method-growth/parts/candidate-lineage/VALIDATION.md",
+          "payload_class": "candidate-lineage-stats-operation",
+          "stats_source_family_refs": [
+            "read_models"
+          ],
+          "localized_payload_roots": [
+            "docs",
+            "examples"
+          ],
+          "retained_root_routes": [
+            "docs/GROWTH_FUNNEL_SUMMARY.md"
+          ]
+        },
+        {
+          "path": "owner-landing",
+          "owner_surface": "mechanics/method-growth/parts/owner-landing/CONTRACT.md",
+          "validation_surface": "mechanics/method-growth/parts/owner-landing/VALIDATION.md",
+          "payload_class": "owner-landing-stats-operation",
+          "stats_source_family_refs": [
+            "read_models"
+          ],
+          "localized_payload_roots": [
+            "docs",
+            "examples"
+          ],
+          "retained_root_routes": []
+        },
+        {
+          "path": "supersession-pruning",
+          "owner_surface": "mechanics/method-growth/parts/supersession-pruning/CONTRACT.md",
+          "validation_surface": "mechanics/method-growth/parts/supersession-pruning/VALIDATION.md",
+          "payload_class": "supersession-pruning-stats-operation",
+          "stats_source_family_refs": [
+            "read_models"
+          ],
+          "localized_payload_roots": [
+            "docs",
+            "examples"
+          ],
+          "retained_root_routes": []
+        }
+      ]
+    },
+    {
+      "path": "recurrence",
+      "mechanic_class": "common-center",
+      "center_mechanic_ref": "Agents-of-Abyss/mechanics/recurrence",
+      "local_status": "localized_active",
+      "local_function": "Refresh registered feeds and maintain recurrence, continuity, component, and repeated-window projections.",
+      "package_payload_roots": [],
+      "active_part_routes": [
+        {
+          "path": "component-manifests",
+          "owner_surface": "mechanics/recurrence/parts/component-manifests/CONTRACT.md",
+          "validation_surface": "mechanics/recurrence/parts/component-manifests/VALIDATION.md",
+          "payload_class": "component-manifests-stats-operation",
+          "stats_source_family_refs": [
+            "surface_catalog"
+          ],
+          "localized_payload_roots": [
+            "docs",
+            "examples",
+            "manifests",
+            "schemas",
+            "scripts",
+            "tests"
+          ],
+          "retained_root_routes": [
+            "docs/RECURRENCE_DERIVED_SUMMARIES.md"
+          ]
+        },
+        {
+          "path": "component-refresh",
+          "owner_surface": "mechanics/recurrence/parts/component-refresh/CONTRACT.md",
+          "validation_surface": "mechanics/recurrence/parts/component-refresh/VALIDATION.md",
+          "payload_class": "component-refresh-stats-operation",
+          "stats_source_family_refs": [
+            "read_models"
+          ],
+          "localized_payload_roots": [
+            "docs",
+            "examples",
+            "tests"
+          ],
+          "retained_root_routes": [
+            "docs/COMPONENT_REFRESH_SUMMARIES.md"
+          ]
+        },
+        {
+          "path": "continuity-window",
+          "owner_surface": "mechanics/recurrence/parts/continuity-window/CONTRACT.md",
+          "validation_surface": "mechanics/recurrence/parts/continuity-window/VALIDATION.md",
+          "payload_class": "continuity-window-stats-operation",
+          "stats_source_family_refs": [
+            "read_models"
+          ],
+          "localized_payload_roots": [
+            "docs",
+            "examples"
+          ],
+          "retained_root_routes": []
+        },
+        {
+          "path": "live-receipt-refresh",
+          "owner_surface": "mechanics/recurrence/parts/live-receipt-refresh/CONTRACT.md",
+          "validation_surface": "mechanics/recurrence/parts/live-receipt-refresh/VALIDATION.md",
+          "payload_class": "live-receipt-refresh-stats-operation",
+          "stats_source_family_refs": [
+            "intake_contract"
+          ],
+          "localized_payload_roots": [
+            "config",
+            "docs",
+            "scripts",
+            "systemd",
+            "tests"
+          ],
+          "retained_root_routes": [
+            "scripts/check_live_publishers.py",
+            "scripts/refresh_live_stats.py",
+            "scripts/install_live_refresh_units.py"
+          ]
+        },
+        {
+          "path": "repeated-window",
+          "owner_surface": "mechanics/recurrence/parts/repeated-window/CONTRACT.md",
+          "validation_surface": "mechanics/recurrence/parts/repeated-window/VALIDATION.md",
+          "payload_class": "repeated-window-stats-operation",
+          "stats_source_family_refs": [
+            "read_models"
+          ],
+          "localized_payload_roots": [],
+          "retained_root_routes": []
+        }
+      ]
+    },
+    {
+      "path": "release-support",
+      "mechanic_class": "common-center",
+      "center_mechanic_ref": "Agents-of-Abyss/mechanics/release-support",
+      "local_status": "localized_active",
+      "local_function": "Publish deployment, rollout, campaign, and artifact-bundle observability without becoming release authority.",
+      "package_payload_roots": [],
+      "active_part_routes": [
+        {
+          "path": "codex-deployment-rollout",
+          "owner_surface": "mechanics/release-support/parts/codex-deployment-rollout/CONTRACT.md",
+          "validation_surface": "mechanics/release-support/parts/codex-deployment-rollout/VALIDATION.md",
+          "payload_class": "codex-deployment-rollout-stats-operation",
+          "stats_source_family_refs": [
+            "read_models"
+          ],
+          "localized_payload_roots": [
+            "docs",
+            "examples"
+          ],
+          "retained_root_routes": [
+            "examples/codex_plane_deployment_summary.example.json"
+          ]
+        },
+        {
+          "path": "rollout-campaign",
+          "owner_surface": "mechanics/release-support/parts/rollout-campaign/CONTRACT.md",
+          "validation_surface": "mechanics/release-support/parts/rollout-campaign/VALIDATION.md",
+          "payload_class": "rollout-campaign-stats-operation",
+          "stats_source_family_refs": [
+            "read_models"
+          ],
+          "localized_payload_roots": [
+            "docs",
+            "examples"
+          ],
+          "retained_root_routes": []
+        },
+        {
+          "path": "summary-catalog-artifact-bundle",
+          "owner_surface": "mechanics/release-support/parts/summary-catalog-artifact-bundle/CONTRACT.md",
+          "validation_surface": "mechanics/release-support/parts/summary-catalog-artifact-bundle/VALIDATION.md",
+          "payload_class": "summary-catalog-artifact-bundle-stats-operation",
+          "stats_source_family_refs": [
+            "surface_catalog"
+          ],
+          "localized_payload_roots": [
+            "scripts",
+            "tests"
+          ],
+          "retained_root_routes": [
+            "manifests/artifact_bundles",
+            "dist/abyss-artifact-bundle/aoa-stats-summary-surface-catalog",
+            "dist/abyss-artifact-registry/aoa-stats-summary-surface-catalog",
+            "scripts/validate_abyss_machine_summary_catalog_bundle.py"
+          ]
+        }
+      ]
+    },
+    {
+      "path": "rpg",
+      "mechanic_class": "common-center",
+      "center_mechanic_ref": "Agents-of-Abyss/mechanics/rpg",
+      "local_status": "localized_active",
+      "local_function": "Observe named route progression across bounded axes without a global score.",
+      "package_payload_roots": [],
+      "active_part_routes": [
+        {
+          "path": "route-progression",
+          "owner_surface": "mechanics/rpg/parts/route-progression/CONTRACT.md",
+          "validation_surface": "mechanics/rpg/parts/route-progression/VALIDATION.md",
+          "payload_class": "route-progression-stats-operation",
+          "stats_source_family_refs": [
+            "read_models"
+          ],
+          "localized_payload_roots": [],
+          "retained_root_routes": []
+        }
+      ]
+    },
+    {
+      "path": "titan",
+      "mechanic_class": "shared-owner",
+      "owner_mechanic_ref": "aoa-agents/mechanics/titan",
+      "local_status": "localized_active",
+      "local_function": "Publish bounded Titan incarnation, summon, runtime, and memory observations while Titan owners retain identity and gate truth.",
+      "package_payload_roots": [],
+      "active_part_routes": [
+        {
+          "path": "incarnation-summon",
+          "owner_surface": "mechanics/titan/parts/incarnation-summon/CONTRACT.md",
+          "validation_surface": "mechanics/titan/parts/incarnation-summon/VALIDATION.md",
+          "payload_class": "incarnation-summon-stats-operation",
+          "stats_source_family_refs": [
+            "read_models"
+          ],
+          "localized_payload_roots": [
+            "docs"
+          ],
+          "retained_root_routes": []
+        },
+        {
+          "path": "memory-owner-bridge",
+          "owner_surface": "mechanics/titan/parts/memory-owner-bridge/CONTRACT.md",
+          "validation_surface": "mechanics/titan/parts/memory-owner-bridge/VALIDATION.md",
+          "payload_class": "memory-owner-bridge-stats-operation",
+          "stats_source_family_refs": [
+            "operation_contracts"
+          ],
+          "localized_payload_roots": [
+            "docs",
+            "schemas"
+          ],
+          "retained_root_routes": []
+        },
+        {
+          "path": "runtime-console",
+          "owner_surface": "mechanics/titan/parts/runtime-console/CONTRACT.md",
+          "validation_surface": "mechanics/titan/parts/runtime-console/VALIDATION.md",
+          "payload_class": "runtime-console-stats-operation",
+          "stats_source_family_refs": [
+            "operation_contracts"
+          ],
+          "localized_payload_roots": [
+            "docs"
+          ],
+          "retained_root_routes": []
+        }
+      ]
+    }
+  ]
+}

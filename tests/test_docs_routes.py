@@ -46,20 +46,41 @@ def test_decision_lane_is_visible_without_becoming_status_roster() -> None:
     assert "Do not hand-maintain a \"latest decision\" roster" in decisions_readme
 
 
-def test_agents_reads_roadmap_before_boundaries() -> None:
+def test_agents_routes_design_and_cross_homes_before_roadmap() -> None:
     agents = read_text("AGENTS.md")
 
-    roadmap_step = "2. `ROADMAP.md`"
-    boundaries_step = "3. `docs/BOUNDARIES.md`"
+    design_step = "2. `DESIGN.md`"
+    stats_step = "3. `stats/README.md`"
+    mechanics_step = "4. `mechanics/README.md`"
+    roadmap_step = "5. `ROADMAP.md`"
+    boundaries_step = "6. `docs/BOUNDARIES.md`"
 
-    assert roadmap_step in agents
-    assert boundaries_step in agents
-    assert agents.index(roadmap_step) < agents.index(boundaries_step)
+    ordered_steps = [design_step, stats_step, mechanics_step, roadmap_step, boundaries_step]
+    for step in ordered_steps:
+        assert step in agents
+    assert [agents.index(step) for step in ordered_steps] == sorted(
+        agents.index(step) for step in ordered_steps
+    )
+
+
+def test_root_routes_expose_design_source_home_and_mechanics() -> None:
+    readme = read_text("README.md")
+    docs_readme = read_text("docs/README.md")
+    design = read_text("DESIGN.md")
+
+    for route in ("DESIGN.md", "stats/README.md", "mechanics/README.md"):
+        assert route in readme
+        assert f"../{route}" in docs_readme
+    assert "The `stats/` source home" in design
+    assert "The `mechanics/` operation home" in design
+    assert "alternating cross-slices" in design
 
 
 def test_live_session_docs_list_every_refresh_live_summary_output() -> None:
     refresh_live_stats = load_refresh_live_stats_module()
-    docs = read_text("docs/LIVE_SESSION_USE.md")
+    docs = read_text(
+        "mechanics/recurrence/parts/live-receipt-refresh/docs/LIVE_SESSION_USE.md"
+    )
 
     for output_name in refresh_live_stats.SUMMARY_OUTPUT_NAMES:
         assert f"`state/generated/{output_name}`" in docs

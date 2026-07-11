@@ -7,6 +7,7 @@ import tempfile
 import unittest
 
 SCRIPT_PATH = Path(__file__).resolve().parents[1] / "scripts" / "validate_nested_agents.py"
+REPO_ROOT = SCRIPT_PATH.parents[1]
 SPEC = importlib.util.spec_from_file_location("validate_nested_agents", SCRIPT_PATH)
 validator = importlib.util.module_from_spec(SPEC)
 assert SPEC.loader is not None
@@ -14,14 +15,23 @@ sys.modules[SPEC.name] = validator
 SPEC.loader.exec_module(validator)
 
 EXPECTED_PACK3_DOCS = {
-    "config/AGENTS.md",
     "examples/AGENTS.md",
     "generated/AGENTS.md",
     "schemas/AGENTS.md",
     "scripts/AGENTS.md",
     "src/AGENTS.md",
-    "systemd/AGENTS.md",
     "tests/AGENTS.md",
+}
+
+EXPECTED_CROSS_TOPOLOGY_DOCS = {
+    "mechanics/AGENTS.md",
+    "mechanics/recurrence/parts/live-receipt-refresh/config/AGENTS.md",
+    "mechanics/recurrence/parts/live-receipt-refresh/systemd/AGENTS.md",
+    "stats/AGENTS.md",
+    "stats/intake-contract/AGENTS.md",
+    "stats/operation-contracts/AGENTS.md",
+    "stats/read-models/AGENTS.md",
+    "stats/surface-catalog/AGENTS.md",
 }
 
 
@@ -32,6 +42,7 @@ def _write(path: Path, text: str) -> None:
 
 def _write_minimal_required_tree(repo_root: Path) -> None:
     _write(repo_root / "AGENTS.md", "# AGENTS.md\nRoot guidance.\n")
+    _write(repo_root / "mechanics/topology.json", '{"active_packages": []}\n')
     for rel_path, snippets in validator.REQUIRED_AGENTS_DOCS.items():
         _write(repo_root / rel_path, "# AGENTS.md\n" + "\n".join(snippets) + "\n")
 
@@ -39,6 +50,22 @@ def _write_minimal_required_tree(repo_root: Path) -> None:
 class ValidateNestedAgentsTests(unittest.TestCase):
     def test_pack3_surface_map_is_required(self) -> None:
         self.assertTrue(EXPECTED_PACK3_DOCS.issubset(set(validator.REQUIRED_AGENTS_DOCS)))
+
+    def test_cross_topology_surface_map_is_required(self) -> None:
+        self.assertTrue(
+            EXPECTED_CROSS_TOPOLOGY_DOCS.issubset(set(validator.REQUIRED_AGENTS_DOCS))
+        )
+
+    def test_live_topology_agent_map_is_derived(self) -> None:
+        expected, issues = validator.discover_topology_agents(REPO_ROOT)
+        self.assertEqual([], issues)
+        self.assertIn("mechanics/agon/AGENTS.md", expected)
+        self.assertIn("mechanics/experience/parts/AGENTS.md", expected)
+        self.assertIn("mechanics/agon/legacy/AGENTS.md", expected)
+
+    def test_live_repository_has_no_untracked_nested_agents(self) -> None:
+        result = validator.validate(REPO_ROOT, fail_on_untracked=True)
+        self.assertEqual((), result.issues)
 
     def test_minimal_required_tree_passes(self) -> None:
         with tempfile.TemporaryDirectory() as tmp:

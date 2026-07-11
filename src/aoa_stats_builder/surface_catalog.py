@@ -1,5 +1,7 @@
 from __future__ import annotations
 
+import json
+
 from pathlib import Path
 from typing import Any
 
@@ -35,369 +37,171 @@ SUMMARY_SURFACE_CATALOG_ARTIFACT_IDENTITY = {
 }
 
 
-def _surface(
-    *,
-    name: str,
-    surface_ref: str,
-    schema_ref: str,
-    primary_question: str,
-    derivation_rule: str,
-    input_posture: str,
-    owner_truth_inputs: list[str],
-    authority_ceiling: str,
-    consumer_risk: str,
-    live_state_capable: bool,
-) -> dict[str, Any]:
-    return {
-        "name": name,
-        "surface_ref": surface_ref,
-        "schema_ref": schema_ref,
-        "primary_question": primary_question,
-        "derivation_rule": derivation_rule,
-        "input_posture": input_posture,
-        "owner_truth_inputs": owner_truth_inputs,
-        "authority_ceiling": authority_ceiling,
-        "consumer_risk": consumer_risk,
-        "live_state_capable": live_state_capable,
-    }
+PROFILE_SCHEMA_VERSION = "aoa_stats_surface_profile_source_v1"
+PROFILE_ROOT = Path(__file__).resolve().parents[2] / "stats" / "read-models"
+
+PUBLIC_ACTIVE_FIELDS = (
+    "name",
+    "surface_ref",
+    "schema_ref",
+    "primary_question",
+    "derivation_rule",
+    "input_posture",
+    "owner_truth_inputs",
+    "authority_ceiling",
+    "consumer_risk",
+    "live_state_capable",
+)
+PUBLIC_DEFERRED_FIELDS = (
+    "name",
+    "status",
+    "contract_ref",
+    "schema_ref",
+    "activation_condition",
+    "authority_ceiling",
+)
+ACTIVE_SOURCE_FIELDS = frozenset(
+    (
+        "schema_version",
+        "catalog_order",
+        "lifecycle",
+        "mechanic_routes",
+        *PUBLIC_ACTIVE_FIELDS,
+    )
+)
+DEFERRED_SOURCE_FIELDS = frozenset(
+    ("schema_version", "lifecycle", "mechanic_routes", *PUBLIC_DEFERRED_FIELDS)
+)
 
 
-SURFACE_SPECS = [
-    _surface(
-        name="core_skill_application_summary",
-        surface_ref="generated/core_skill_application_summary.min.json",
-        schema_ref="schemas/core-skill-application-summary.schema.json",
-        primary_question="Which project-core kernel skills are actually finishing and how often, without inferring usage from general receipt volume?",
-        derivation_rule="aggregate core_skill_application_receipt payloads by kernel_id and skill_name",
-        input_posture="receipt_backed_live",
-        owner_truth_inputs=["aoa-skills owner-local receipts"],
-        authority_ceiling="Weaker than owner-local skill execution records and any reviewed owner closeout.",
-        consumer_risk="medium",
-        live_state_capable=True,
-    ),
-    _surface(
-        name="object_summary",
-        surface_ref="generated/object_summary.min.json",
-        schema_ref="schemas/object-summary.schema.json",
-        primary_question="How often and how broadly is each source object showing up in the current receipt feed?",
-        derivation_rule="group receipts by object_ref and keep counts, latest timestamps, and bounded posture flags",
-        input_posture="receipt_backed_live",
-        owner_truth_inputs=["owner-local receipts across the active registry"],
-        authority_ceiling="Weaker than the owner repos named in object_ref and weaker than any linked evidence surface.",
-        consumer_risk="low",
-        live_state_capable=True,
-    ),
-    _surface(
-        name="candidate_lineage_summary",
-        surface_ref="generated/candidate_lineage_summary.min.json",
-        schema_ref="schemas/candidate_lineage_summary.schema.json",
-        primary_question="How far are reviewed growth-refinery candidates actually moving without turning stats into routing or proof authority?",
-        derivation_rule="aggregate reviewed-only candidate_lineage_entries carried on harvest_packet_receipt payloads into stage, owner-target, posture, misroute, supersession, and time-to-stage summaries",
-        input_posture="receipt_backed_live",
-        owner_truth_inputs=["aoa-skills reviewed harvest receipts"],
-        authority_ceiling="Weaker than reviewed owner-local lineage records and any owner landing surface.",
-        consumer_risk="high",
-        live_state_capable=True,
-    ),
-    _surface(
-        name="owner_landing_summary",
-        surface_ref="generated/owner_landing_summary.min.json",
-        schema_ref="schemas/owner-landing-summary.schema.json",
-        primary_question="Which reviewed candidates have landed in owner-local status surfaces and how far has that landing stabilized without turning stats into owner truth?",
-        derivation_rule="aggregate reviewed_owner_landing_receipt payloads together with seed_owner_landing_trace_receipt payloads into owner-repo, posture, outcome, and time-to-outcome summaries",
-        input_posture="receipt_backed_live",
-        owner_truth_inputs=["aoa-skills reviewed owner landing receipts", "Dionysus seed owner landing traces"],
-        authority_ceiling="Weaker than owner-local status surfaces, reviewed landing bundles, and owner repository decisions.",
-        consumer_risk="high",
-        live_state_capable=True,
-    ),
-    _surface(
-        name="supersession_drop_summary",
-        surface_ref="generated/supersession_drop_summary.min.json",
-        schema_ref="schemas/supersession-drop-summary.schema.json",
-        primary_question="What pruning, replacement, merge, and reanchor signals are explicit across reviewed growth-refinery receipts without inventing reasons or ranking authority?",
-        derivation_rule="aggregate reviewed candidate-lineage entries, reviewed_owner_landing_receipt payloads, and seed_owner_landing_trace_receipt payloads into explicit turnover summaries",
-        input_posture="receipt_backed_live",
-        owner_truth_inputs=["aoa-skills reviewed harvest receipts", "aoa-skills reviewed owner landing receipts", "Dionysus seed owner landing traces"],
-        authority_ceiling="Weaker than reviewed turnover records and any owner-local acceptance or rejection rationale.",
-        consumer_risk="high",
-        live_state_capable=True,
-    ),
-    _surface(
-        name="repeated_window_summary",
-        surface_ref="generated/repeated_window_summary.min.json",
-        schema_ref="schemas/repeated-window-summary.schema.json",
-        primary_question="What changed across bounded date windows without turning the result into one global score?",
-        derivation_rule="group receipts by observed_at date and keep counts plus bounded window signals",
-        input_posture="receipt_backed_live",
-        owner_truth_inputs=["owner-local receipts across the active registry"],
-        authority_ceiling="Weaker than the underlying receipt feed and any owner-local chronology or closeout record.",
-        consumer_risk="medium",
-        live_state_capable=True,
-    ),
-    _surface(
-        name="route_progression_summary",
-        surface_ref="generated/route_progression_summary.min.json",
-        schema_ref="schemas/route-progression-summary.schema.json",
-        primary_question="What bounded multi-axis movement is visible on each named route?",
-        derivation_rule="aggregate progression_delta_receipt payloads by route_ref and sum axis deltas",
-        input_posture="receipt_backed_live",
-        owner_truth_inputs=["owner-local progression receipts"],
-        authority_ceiling="Weaker than owner-local route records, playbooks, and progression decisions.",
-        consumer_risk="high",
-        live_state_capable=True,
-    ),
-    _surface(
-        name="fork_calibration_summary",
-        surface_ref="generated/fork_calibration_summary.min.json",
-        schema_ref="schemas/fork-calibration-summary.schema.json",
-        primary_question="How are route forks actually being chosen and how often do they carry realized outcome refs?",
-        derivation_rule="aggregate decision_fork_receipt payloads by route_ref and chosen_branch",
-        input_posture="receipt_backed_live",
-        owner_truth_inputs=["aoa-skills decision fork receipts"],
-        authority_ceiling="Weaker than owner-local route selection and any reviewed followthrough outcome.",
-        consumer_risk="high",
-        live_state_capable=True,
-    ),
-    _surface(
-        name="session_growth_branch_summary",
-        surface_ref="generated/session_growth_branch_summary.min.json",
-        schema_ref="schemas/session-growth-branch-summary.schema.json",
-        primary_question="What reviewed next-kernel branches are being recommended after closeout without turning stats into route authority?",
-        derivation_rule="aggregate reviewed followthrough hints carried on decision_fork_receipt payloads into next-skill, owner-target, posture, defer, and reason-code counts",
-        input_posture="receipt_backed_live",
-        owner_truth_inputs=["aoa-skills reviewed decision fork receipts"],
-        authority_ceiling="Weaker than any owner-local route fork, playbook, or approval surface.",
-        consumer_risk="high",
-        live_state_capable=True,
-    ),
-    _surface(
-        name="automation_pipeline_summary",
-        surface_ref="generated/automation_pipeline_summary.min.json",
-        schema_ref="schemas/automation-pipeline-summary.schema.json",
-        primary_question="How close is a named automation pipeline to seed-ready bounded use?",
-        derivation_rule="aggregate automation_candidate_receipt payloads by pipeline_ref and readiness flags",
-        input_posture="receipt_backed_live",
-        owner_truth_inputs=["aoa-skills automation candidate receipts"],
-        authority_ceiling="Weaker than owner-local approval, playbook, and runtime rollout surfaces.",
-        consumer_risk="medium",
-        live_state_capable=True,
-    ),
-    _surface(
-        name="automation_followthrough_summary",
-        surface_ref="generated/automation_followthrough_summary.min.json",
-        schema_ref="schemas/automation-followthrough-summary.schema.json",
-        primary_question="How far are reviewed automation candidates moving through bounded follow-through without implying scheduler authority?",
-        derivation_rule="aggregate automation_candidate_receipt payloads into seed-ready, defer, checkpoint, playbook-seed, real-run-review, and blocker counts",
-        input_posture="receipt_backed_live",
-        owner_truth_inputs=["aoa-skills automation candidate receipts"],
-        authority_ceiling="Weaker than owner-local automation approval, runtime execution, and reviewed followthrough surfaces.",
-        consumer_risk="high",
-        live_state_capable=True,
-    ),
-    _surface(
-        name="codex_plane_deployment_summary",
-        surface_ref="generated/codex_plane_deployment_summary.min.json",
-        schema_ref="schemas/codex-plane-deployment-summary.schema.json",
-        primary_question="What is the current derived deployment continuity posture for the shared-root Codex plane without letting stats overrule live trust evidence?",
-        derivation_rule="derive one bounded deployment summary from the 8Dionysus trust-state and rollout receipt examples plus the aoa-sdk deploy-status example",
-        input_posture="checked_in_owner_history",
-        owner_truth_inputs=["8Dionysus checked-in trust-state surfaces", "aoa-sdk deploy-status example"],
-        authority_ceiling="Weaker than 8Dionysus rollout history, trust-state receipts, and aoa-sdk deployment status.",
-        consumer_risk="high",
-        live_state_capable=True,
-    ),
-    _surface(
-        name="codex_rollout_operations_summary",
-        surface_ref="generated/codex_rollout_operations_summary.min.json",
-        schema_ref="schemas/codex-rollout-operations-summary.schema.json",
-        primary_question="What checked-in trusted rollout campaign posture is currently visible for the shared-root Codex plane without turning stats into rollout authority?",
-        derivation_rule="derive bounded rollout state counts and latest campaign posture from 8Dionysus checked-in generated/codex/rollout source surfaces",
-        input_posture="checked_in_owner_history",
-        owner_truth_inputs=["8Dionysus generated/codex/rollout history"],
-        authority_ceiling="Weaker than source-owned rollout history and rollback windows.",
-        consumer_risk="high",
-        live_state_capable=True,
-    ),
-    _surface(
-        name="codex_rollout_drift_summary",
-        surface_ref="generated/codex_rollout_drift_summary.min.json",
-        schema_ref="schemas/codex-rollout-drift-summary.schema.json",
-        primary_question="What is the current bounded drift and rollback posture of the latest trusted Codex rollout campaign without replacing source-owned campaign history?",
-        derivation_rule="derive the latest drift window, drift state, repair attempt posture, and rollback requirement from 8Dionysus checked-in rollout history and rollback windows",
-        input_posture="checked_in_owner_history",
-        owner_truth_inputs=["8Dionysus generated/codex/rollout history", "8Dionysus rollback windows"],
-        authority_ceiling="Weaker than source-owned drift reviews, rollback windows, and campaign history.",
-        consumer_risk="high",
-        live_state_capable=True,
-    ),
-    _surface(
-        name="rollout_campaign_summary",
-        surface_ref="generated/rollout_campaign_summary.min.json",
-        schema_ref="schemas/rollout-campaign-summary.schema.json",
-        primary_question="What is the current bounded campaign cadence posture for the shared-root Codex plane without turning stats into cadence authority?",
-        derivation_rule="derive one current campaign-cadence summary from 8Dionysus source-owned rollout campaign, drift-review, and rollback-followthrough window examples",
-        input_posture="checked_in_owner_history",
-        owner_truth_inputs=["8Dionysus rollout campaign window examples"],
-        authority_ceiling="Weaker than source-owned campaign cadence and review decisions.",
-        consumer_risk="high",
-        live_state_capable=True,
-    ),
-    _surface(
-        name="drift_review_summary",
-        surface_ref="generated/drift_review_summary.min.json",
-        schema_ref="schemas/drift-review-summary.schema.json",
-        primary_question="What named drift signals and explicit review decisions are currently visible in the source-owned cadence windows without replacing rollout or campaign truth?",
-        derivation_rule="derive one bounded drift-review summary from the current 8Dionysus cadence windows and keep rollback readiness descriptive only",
-        input_posture="checked_in_owner_history",
-        owner_truth_inputs=["8Dionysus drift review windows"],
-        authority_ceiling="Weaker than source-owned drift reviews, campaign windows, and rollback decisions.",
-        consumer_risk="high",
-        live_state_capable=True,
-    ),
-    _surface(
-        name="continuity_window_summary",
-        surface_ref="generated/continuity_window_summary.min.json",
-        schema_ref="schemas/continuity-window-summary.schema.json",
-        primary_question="What is the current bounded self-agency continuity posture without turning stats into continuity truth or self-agency proof?",
-        derivation_rule="derive one bounded continuity snapshot from the aoa-agents continuity window example, the sovereign continuity playbook, the memo-side provenance thread example, and the landed continuity eval anchors",
-        input_posture="reviewed_example_chain",
-        owner_truth_inputs=["aoa-agents continuity examples", "aoa-playbooks continuity playbook", "aoa-memo provenance thread example", "aoa-evals eval anchors"],
-        authority_ceiling="Weaker than continuity anchor artifacts, memo provenance threads, and bounded eval proof.",
-        consumer_risk="high",
-        live_state_capable=True,
-    ),
-    _surface(
-        name="component_refresh_summary",
-        surface_ref="generated/component_refresh_summary.min.json",
-        schema_ref="schemas/component-refresh-summary.schema.json",
-        primary_question="What is the current bounded component refresh posture across named owner repos without letting stats become refresh truth or maintenance authority?",
-        derivation_rule="derive one bounded component refresh snapshot from reviewed aoa-sdk drift hints and reviewed followthrough decisions while keeping owner validation stronger",
-        input_posture="reviewed_example_chain",
-        owner_truth_inputs=["aoa-sdk reviewed drift hints", "reviewed followthrough decisions"],
-        authority_ceiling="Weaker than owner repo refresh law, owner validation, and real regeneration evidence.",
-        consumer_risk="high",
-        live_state_capable=True,
-    ),
-    _surface(
-        name="memory_movement_summary",
-        surface_ref="generated/memory_movement_summary.min.json",
-        schema_ref="schemas/memory-movement-summary.schema.json",
-        primary_question="What reviewed aoa-memo corpus and landing movement is visible without making stats the owner of memory truth?",
-        derivation_rule="derive corpus, recall, KAG-lift, intake, and landing counts from aoa-memo reviewed objects, min catalog, reviewed intake packets, and landing receipts",
-        input_posture="reviewed_memory_read_model",
-        owner_truth_inputs=[
-            "aoa-memo reviewed memory objects",
-            "aoa-memo memory object catalog",
-            "aoa-memo reviewed intake packets",
-            "aoa-memo landing receipts",
-        ],
-        authority_ceiling="Weaker than aoa-memo reviewed memory objects, landing receipts, and source refs.",
-        consumer_risk="high",
-        live_state_capable=True,
-    ),
-    _surface(
-        name="titan_incarnation_summary",
-        surface_ref="generated/titan_incarnation_summary.min.json",
-        schema_ref="schemas/titan_incarnation_summary.schema.json",
-        primary_question="What bounded Titan incarnation seed posture is visible without making stats the owner of Titan identity or gates?",
-        derivation_rule="derive fixed seed counts from the landed Titan XV owner surfaces and keep source receipt refs explicit",
-        input_posture="reviewed_example_chain",
-        owner_truth_inputs=[
-            "Dionysus fifteenth wave manifest",
-            "aoa-agents Titan incarnation identity surface",
-            "aoa-sdk Titan incarnation spine defaults",
-        ],
-        authority_ceiling="Weaker than Dionysus seed lineage, aoa-agents role identity, aoa-sdk runtime helpers, and owner review evidence.",
-        consumer_risk="high",
-        live_state_capable=False,
-    ),
-    _surface(
-        name="titan_summon_summary",
-        surface_ref="generated/titan_summon_summary.min.json",
-        schema_ref="schemas/titan_summon_summary.schema.json",
-        primary_question="What seed-level Titan summon/report/finding/memory-candidate pressure is visible without making stats the owner of swarm ledger truth?",
-        derivation_rule="publish the Sixteenth Wave seed summary until owner-local Titan swarm ledgers and closeout receipts provide a live feed",
-        input_posture="seed_static_summary",
-        owner_truth_inputs=[
-            "Dionysus sixteenth wave manifest",
-            "aoa-sdk Titan swarm ledger helper",
-            "Titan closeout audit receipts",
-        ],
-        authority_ceiling="Weaker than Titan swarm ledgers, closeout audits, owner-local reports, and bounded eval verdicts.",
-        consumer_risk="high",
-        live_state_capable=False,
-    ),
-    _surface(
-        name="runtime_closeout_summary",
-        surface_ref="generated/runtime_closeout_summary.min.json",
-        schema_ref="schemas/runtime-closeout-summary.schema.json",
-        primary_question="What is the current bounded runtime closeout posture across program waves and how did reviewed handoff land?",
-        derivation_rule="aggregate runtime_wave_closeout_receipt payloads by program_id and wave_id and keep the latest gate plus handoff posture",
-        input_posture="receipt_backed_live",
-        owner_truth_inputs=["abyss-stack runtime closeout receipts"],
-        authority_ceiling="Weaker than owner-local runtime closeout records, gates, and handoff evidence.",
-        consumer_risk="high",
-        live_state_capable=True,
-    ),
-    _surface(
-        name="stress_recovery_window_summary",
-        surface_ref="generated/stress_recovery_window_summary.min.json",
-        schema_ref="schemas/stress-recovery-window-summary.schema.json",
-        primary_question="What does the current repeated-window stress recovery proof family say without inventing a new canonical event kind or outranking owner evidence?",
-        derivation_rule="resolve aoa-stress-recovery-window eval_result_receipt report_ref paths through aoa-evals and derive one bounded summary plus suppression posture",
-        input_posture="receipt_backed_with_external_reports",
-        owner_truth_inputs=["aoa-evals eval result receipts", "aoa-evals stress recovery reports"],
-        authority_ceiling="Weaker than owner-local stressor receipts, bounded eval reports, and route-owner recovery guidance.",
-        consumer_risk="high",
-        live_state_capable=True,
-    ),
-    _surface(
-        name="source_coverage_summary",
-        surface_ref="generated/source_coverage_summary.min.json",
-        schema_ref="schemas/source-coverage-summary.schema.json",
-        primary_question="Which owner repos and receipt families are actually entering the active stats feed, and where is the stats layer still blind?",
-        derivation_rule="aggregate active receipts by object_ref.repo and event_kind, then compare observed owners against the configured live source registry when present",
-        input_posture="registry_backed_coverage_audit",
-        owner_truth_inputs=["config/live_receipt_sources.json", "owner-local receipts across the active registry"],
-        authority_ceiling="Weaker than the owner-local receipt logs and weaker than the live source registry it audits.",
-        consumer_risk="medium",
-        live_state_capable=True,
-    ),
-    _surface(
-        name="surface_detection_summary",
-        surface_ref="generated/surface_detection_summary.min.json",
-        schema_ref="schemas/surface-detection-summary.schema.json",
-        primary_question="What second-wave surface-detection signals are accumulating without turning stats into routing authority?",
-        derivation_rule="aggregate advisory surface_detection_context payloads on finish-stage core_skill_application_receipt envelopes by observed date",
-        input_posture="receipt_backed_live",
-        owner_truth_inputs=["aoa-skills core skill application receipts"],
-        authority_ceiling="Weaker than owner-local route decisions and weaker than aoa-sdk or aoa-routing dispatch surfaces.",
-        consumer_risk="high",
-        live_state_capable=True,
-    ),
-]
+class SurfaceProfileError(ValueError):
+    """Raised when an authored stats surface profile is malformed."""
 
-DEFERRED_CONTRACT_SURFACES = [
-    {
-        "name": "antifragility_vector",
-        "status": "contract_only",
-        "contract_ref": "docs/ANTIFRAGILITY_VECTOR.md",
-        "schema_ref": "schemas/antifragility_vector_v1.json",
-        "activation_condition": "Activate only after one owner-linked repeated-window receipt family and bounded eval chain exist for the same stressor family.",
-        "authority_ceiling": "Even after activation this surface stays weaker than owner-local stressor receipts and bounded eval reports.",
-    }
-]
+
+def _load_profile(path: Path) -> dict[str, Any]:
+    try:
+        payload = json.loads(path.read_text(encoding="utf-8"))
+    except FileNotFoundError as exc:
+        raise SurfaceProfileError(f"surface profile is missing: {path}") from exc
+    except json.JSONDecodeError as exc:
+        raise SurfaceProfileError(
+            f"invalid surface profile JSON: {path}: {exc}"
+        ) from exc
+    if not isinstance(payload, dict):
+        raise SurfaceProfileError(f"surface profile must be a JSON object: {path}")
+    return payload
+
+
+def _validate_profile(profile: dict[str, Any], *, path: Path, lifecycle: str) -> None:
+    expected_fields = (
+        ACTIVE_SOURCE_FIELDS if lifecycle == "active" else DEFERRED_SOURCE_FIELDS
+    )
+    if set(profile) != expected_fields:
+        missing = sorted(expected_fields - set(profile))
+        extra = sorted(set(profile) - expected_fields)
+        raise SurfaceProfileError(
+            f"{path}: profile fields do not match {lifecycle} contract; "
+            f"missing={missing!r}, extra={extra!r}"
+        )
+    if profile.get("schema_version") != PROFILE_SCHEMA_VERSION:
+        raise SurfaceProfileError(f"{path}: wrong schema_version")
+    if profile.get("lifecycle") != lifecycle:
+        raise SurfaceProfileError(f"{path}: lifecycle must be {lifecycle!r}")
+    name = profile.get("name")
+    if not isinstance(name, str) or not name:
+        raise SurfaceProfileError(f"{path}: name must be a non-empty string")
+    if path.name != f"{name}.profile.json":
+        raise SurfaceProfileError(f"{path}: filename must match profile name {name!r}")
+    routes = profile.get("mechanic_routes")
+    if (
+        not isinstance(routes, list)
+        or not routes
+        or not all(
+            isinstance(route, str) and route.startswith("mechanics/")
+            for route in routes
+        )
+    ):
+        raise SurfaceProfileError(
+            f"{path}: mechanic_routes must be a non-empty mechanics path list"
+        )
+    if len(routes) != len(set(routes)):
+        raise SurfaceProfileError(f"{path}: mechanic_routes must be unique")
+    if lifecycle == "active":
+        order = profile.get("catalog_order")
+        if not isinstance(order, int) or isinstance(order, bool) or order < 1:
+            raise SurfaceProfileError(
+                f"{path}: catalog_order must be a positive integer"
+            )
+
+
+def load_surface_profiles(
+    profile_root: Path = PROFILE_ROOT,
+) -> tuple[list[dict[str, Any]], list[dict[str, Any]]]:
+    """Load, validate, and deterministically order authored surface profiles."""
+
+    active_paths = sorted((profile_root / "active").glob("*.profile.json"))
+    deferred_paths = sorted((profile_root / "deferred").glob("*.profile.json"))
+    if not active_paths:
+        raise SurfaceProfileError(
+            f"no active surface profiles found under {profile_root / 'active'}"
+        )
+
+    active: list[dict[str, Any]] = []
+    deferred: list[dict[str, Any]] = []
+    seen_names: set[str] = set()
+    seen_orders: set[int] = set()
+
+    for profile_path in active_paths:
+        profile = _load_profile(profile_path)
+        _validate_profile(profile, path=profile_path, lifecycle="active")
+        name = profile["name"]
+        order = profile["catalog_order"]
+        if name in seen_names:
+            raise SurfaceProfileError(f"duplicate surface profile name: {name}")
+        if order in seen_orders:
+            raise SurfaceProfileError(f"duplicate surface catalog order: {order}")
+        seen_names.add(name)
+        seen_orders.add(order)
+        active.append(profile)
+
+    for profile_path in deferred_paths:
+        profile = _load_profile(profile_path)
+        _validate_profile(profile, path=profile_path, lifecycle="deferred")
+        name = profile["name"]
+        if name in seen_names:
+            raise SurfaceProfileError(f"duplicate surface profile name: {name}")
+        seen_names.add(name)
+        deferred.append(profile)
+
+    active.sort(key=lambda profile: profile["catalog_order"])
+    deferred.sort(key=lambda profile: profile["name"])
+    return active, deferred
+
+
+def public_surface_profiles(
+    profile_root: Path = PROFILE_ROOT,
+) -> tuple[list[dict[str, Any]], list[dict[str, Any]]]:
+    """Project authored profiles into the unchanged public catalog entry shapes."""
+
+    active, deferred = load_surface_profiles(profile_root)
+    public_active = [
+        {field: profile[field] for field in PUBLIC_ACTIVE_FIELDS} for profile in active
+    ]
+    public_deferred = [
+        {field: profile[field] for field in PUBLIC_DEFERRED_FIELDS}
+        for profile in deferred
+    ]
+    return public_active, public_deferred
 
 
 def build_summary_surface_catalog(
     source: dict[str, Any], *, available_output_names: set[str] | None = None
 ) -> dict[str, Any]:
-    surfaces = SURFACE_SPECS
+    surfaces, deferred_surfaces = public_surface_profiles()
     if available_output_names is not None:
         surfaces = [
             surface
-            for surface in SURFACE_SPECS
+            for surface in surfaces
             if Path(surface["surface_ref"]).name in available_output_names
         ]
     return {
@@ -414,6 +218,6 @@ def build_summary_surface_catalog(
             "scripts/validate_repo.py",
             "tests/test_summary_surface_catalog.py",
         ],
-        "deferred_contract_surfaces": DEFERRED_CONTRACT_SURFACES,
+        "deferred_contract_surfaces": deferred_surfaces,
         "surfaces": surfaces,
     }

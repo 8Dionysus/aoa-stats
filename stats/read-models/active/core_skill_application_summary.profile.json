@@ -1,0 +1,20 @@
+{
+  "schema_version": "aoa_stats_surface_profile_source_v1",
+  "catalog_order": 1,
+  "lifecycle": "active",
+  "name": "core_skill_application_summary",
+  "surface_ref": "generated/core_skill_application_summary.min.json",
+  "schema_ref": "schemas/core-skill-application-summary.schema.json",
+  "primary_question": "Which project-core kernel skills are actually finishing and how often, without inferring usage from general receipt volume?",
+  "derivation_rule": "aggregate core_skill_application_receipt payloads by kernel_id and skill_name",
+  "input_posture": "receipt_backed_live",
+  "owner_truth_inputs": [
+    "aoa-skills owner-local receipts"
+  ],
+  "authority_ceiling": "Weaker than owner-local skill execution records and any reviewed owner closeout.",
+  "consumer_risk": "medium",
+  "live_state_capable": true,
+  "mechanic_routes": [
+    "mechanics/audit/parts/core-skill-application"
+  ]
+}

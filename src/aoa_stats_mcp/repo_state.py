@@ -10,7 +10,9 @@ CATALOG_RELATIVE = Path("generated/summary_surface_catalog.min.json")
 LIVE_CATALOG_RELATIVE = Path("state/generated/summary_surface_catalog.min.json")
 BOUNDARIES_RELATIVE = Path("docs/BOUNDARIES.md")
 ARCHITECTURE_RELATIVE = Path("docs/ARCHITECTURE.md")
-SOURCE_REGISTRY_RELATIVE = Path("config/live_receipt_sources.json")
+SOURCE_REGISTRY_RELATIVE = Path(
+    "mechanics/recurrence/parts/live-receipt-refresh/config/live_receipt_sources.json"
+)
 REPO_SENTINELS = (
     CATALOG_RELATIVE,
     BOUNDARIES_RELATIVE,

@@ -20,6 +20,6 @@ owner-repo assumptions.
 Run:
 
 ```bash
-python -m pytest -q tests
+python -m pytest -q tests mechanics
 python scripts/validate_repo.py
 ```

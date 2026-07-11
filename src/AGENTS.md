@@ -1,7 +1,7 @@
 # AGENTS.md
 Local guidance for `src/` in `aoa-stats`.
 
-Read the root `AGENTS.md` and `docs/CODEX_MCP.md` before changing package code.
+Read the root `AGENTS.md` and `stats/surface-catalog/CODEX_MCP.md` before changing package code.
 
 ## Local role
 Source code may expose derived-only helpers such as `aoa_stats_mcp`. It should

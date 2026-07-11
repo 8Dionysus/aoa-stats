@@ -1,0 +1,236 @@
+{
+  "schema_version": "aoa_stats_agon_former_routes_v1",
+  "active_route_rule": "For each active route, preserve the former district and basename below current_root.",
+  "active_routes": [
+    {
+      "part": "stats-prebinding",
+      "current_root": "mechanics/agon/parts/stats-prebinding",
+      "former_paths": [
+        "config/agon_stats_prebindings.seed.json",
+        "docs/AGON_STATS_PREBINDING.md",
+        "examples/agon_stats_prebinding.example.json",
+        "schemas/agon-stats-prebinding-registry.schema.json",
+        "schemas/agon-stats-prebinding.schema.json",
+        "scripts/build_agon_stats_prebinding_registry.py",
+        "scripts/validate_agon_stats_prebindings.py",
+        "tests/test_agon_stats_prebindings.py"
+      ],
+      "root_public_output": "generated/agon_stats_prebinding_registry.min.json"
+    },
+    {
+      "part": "verdict-delta-scar-observability",
+      "current_root": "mechanics/agon/parts/verdict-delta-scar-observability",
+      "former_paths": [
+        "config/agon_vds_stats_observability.seed.json",
+        "docs/AGON_DELTA_SCAR_OBSERVABILITY_BOUNDARY.md",
+        "docs/AGON_VDS_STATS_OBSERVABILITY.md",
+        "examples/agon_vds_stats_observability.example.json",
+        "schemas/agon-vds-stats-observability-registry.schema.json",
+        "schemas/agon-vds-stats-observability.schema.json",
+        "scripts/build_agon_vds_stats_observability_registry.py",
+        "scripts/validate_agon_vds_stats_observability.py",
+        "tests/test_agon_vds_stats_observability.py"
+      ],
+      "root_public_output": "generated/agon_vds_stats_observability_registry.min.json"
+    },
+    {
+      "part": "mechanical-trial-observability",
+      "current_root": "mechanics/agon/parts/mechanical-trial-observability",
+      "former_paths": [
+        "config/agon_mechanical_trial_stats_observability.seed.json",
+        "docs/AGON_MECHANICAL_TRIAL_STATS_OBSERVABILITY.md",
+        "examples/agon_mechanical_trial_stats_observability.example.json",
+        "schemas/agon_mechanical_trial_stats_observability-registry.schema.json",
+        "schemas/agon_mechanical_trial_stats_observability.schema.json",
+        "scripts/build_agon_mechanical_trial_stats_observability.py",
+        "scripts/validate_agon_mechanical_trial_stats_observability.py",
+        "tests/test_agon_mechanical_trial_stats_observability.py"
+      ],
+      "root_public_output": "generated/agon_mechanical_trial_stats_observability_registry.min.json"
+    },
+    {
+      "part": "retention-rank-observability",
+      "current_root": "mechanics/agon/parts/retention-rank-observability",
+      "former_paths": [
+        "config/agon_retention_rank_stats_observability.seed.json",
+        "docs/AGON_RETENTION_RANK_STATS_OBSERVABILITY.md",
+        "examples/agon_retention_rank_stats.example.json",
+        "schemas/agon-retention-rank-stats-observability-registry.schema.json",
+        "schemas/agon-retention-rank-stats-observability.schema.json",
+        "scripts/build_agon_retention_rank_stats_observability_registry.py",
+        "scripts/validate_agon_retention_rank_stats_observability.py",
+        "tests/test_agon_retention_rank_stats_observability.py"
+      ],
+      "root_public_output": "generated/agon_retention_rank_stats_observability_registry.min.json"
+    },
+    {
+      "part": "epistemic-observability",
+      "current_root": "mechanics/agon/parts/epistemic-observability",
+      "former_paths": [
+        "config/agon_epistemic_stats_observability.seed.json",
+        "docs/AGON_EPISTEMIC_STATS_BOUNDARY.md",
+        "docs/AGON_EPISTEMIC_STATS_OBSERVABILITY.md",
+        "examples/agon_epistemic_stats_observability.example.json",
+        "schemas/agon-epistemic-stats-observability-registry.schema.json",
+        "schemas/agon-epistemic-stats-observability.schema.json",
+        "scripts/build_agon_epistemic_stats_observability_registry.py",
+        "scripts/validate_agon_epistemic_stats_observability.py",
+        "tests/test_agon_epistemic_stats_observability.py"
+      ],
+      "root_public_output": "generated/agon_epistemic_stats_observability_registry.min.json"
+    },
+    {
+      "part": "schools-lineages-campaigns-observability",
+      "current_root": "mechanics/agon/parts/schools-lineages-campaigns-observability",
+      "former_paths": [
+        "config/agon_slc_stats_observability.seed.json",
+        "docs/AGON_SLC_STATS_BOUNDARY.md",
+        "docs/AGON_SLC_STATS_OBSERVABILITY.md",
+        "examples/agon_slc_stats_summary.example.json",
+        "schemas/agon-slc-stats-observability-registry.schema.json",
+        "schemas/agon-slc-stats-observability.schema.json",
+        "scripts/build_agon_slc_stats_observability_registry.py",
+        "scripts/validate_agon_slc_stats_observability_registry.py",
+        "tests/test_agon_slc_stats_observability_registry.py"
+      ],
+      "root_public_output": "generated/agon_slc_stats_observability_registry.min.json"
+    },
+    {
+      "part": "kag-observability",
+      "current_root": "mechanics/agon/parts/kag-observability",
+      "former_paths": [
+        "config/agon_kag_stats_observability.seed.json",
+        "docs/AGON_KAG_STATS_BOUNDARY.md",
+        "docs/AGON_KAG_STATS_OBSERVABILITY.md",
+        "examples/agon_kag_stats_summary.example.json",
+        "schemas/agon-kag-stats-observability-registry.schema.json",
+        "schemas/agon-kag-stats-observability.schema.json",
+        "scripts/build_agon_kag_stats_observability_registry.py",
+        "scripts/validate_agon_kag_stats_observability_registry.py",
+        "tests/test_agon_kag_stats_observability_registry.py"
+      ],
+      "root_public_output": "generated/agon_kag_stats_observability_registry.min.json"
+    },
+    {
+      "part": "sophian-observability",
+      "current_root": "mechanics/agon/parts/sophian-observability",
+      "former_paths": [
+        "config/agon_sophian_stats_observability.seed.json",
+        "docs/AGON_SOPHIAN_STATS_OBSERVABILITY.md",
+        "examples/agon_sophian_stats_observability_registry.example.json",
+        "schemas/agon-sophian-stats-observability-registry.schema.json",
+        "schemas/agon-sophian-stats-observability.schema.json",
+        "scripts/build_agon_sophian_stats_observability_registry.py",
+        "scripts/validate_agon_sophian_stats_observability_registry.py",
+        "tests/test_agon_sophian_stats_observability_registry.py"
+      ],
+      "root_public_output": "generated/agon_sophian_stats_observability_registry.min.json"
+    }
+  ],
+  "package_doc_routes": [
+    {
+      "former_path": "docs/AGON_DERIVED_OBSERVABILITY_MODEL.md",
+      "current_path": "mechanics/agon/docs/AGON_DERIVED_OBSERVABILITY_MODEL.md"
+    },
+    {
+      "former_path": "docs/AGON_STATS_AUTHORITY_STOP_LINES.md",
+      "current_path": "mechanics/agon/docs/AGON_STATS_AUTHORITY_STOP_LINES.md"
+    }
+  ],
+  "historical_routes": [
+    {
+      "former_path": "docs/AGON_WAVE7_STATS_LANDING.md",
+      "current_path": "mechanics/agon/legacy/raw/docs/AGON_WAVE7_STATS_LANDING.md",
+      "active_replacement": "mechanics/agon/parts/stats-prebinding"
+    },
+    {
+      "former_path": "docs/AGON_WAVE11_STATS_LANDING.md",
+      "current_path": "mechanics/agon/legacy/raw/docs/AGON_WAVE11_STATS_LANDING.md",
+      "active_replacement": "mechanics/agon/parts/verdict-delta-scar-observability"
+    },
+    {
+      "former_path": "docs/AGON_WAVE13_STATS_LANDING.md",
+      "current_path": "mechanics/agon/legacy/raw/docs/AGON_WAVE13_STATS_LANDING.md",
+      "active_replacement": "mechanics/agon/parts/mechanical-trial-observability"
+    },
+    {
+      "former_path": "docs/AGON_WAVE13_STATS_STOP_LINES.md",
+      "current_path": "mechanics/agon/legacy/raw/docs/AGON_WAVE13_STATS_STOP_LINES.md",
+      "active_replacement": "mechanics/agon/parts/mechanical-trial-observability"
+    },
+    {
+      "former_path": "docs/AGON_WAVE14_STATS_LANDING.md",
+      "current_path": "mechanics/agon/legacy/raw/docs/AGON_WAVE14_STATS_LANDING.md",
+      "active_replacement": "mechanics/agon/parts/retention-rank-observability"
+    },
+    {
+      "former_path": "docs/AGON_WAVE15_STATS_LANDING.md",
+      "current_path": "mechanics/agon/legacy/raw/docs/AGON_WAVE15_STATS_LANDING.md",
+      "active_replacement": "mechanics/agon/parts/epistemic-observability"
+    },
+    {
+      "former_path": "docs/AGON_WAVE16_STATS_LANDING.md",
+      "current_path": "mechanics/agon/legacy/raw/docs/AGON_WAVE16_STATS_LANDING.md",
+      "active_replacement": "mechanics/agon/parts/schools-lineages-campaigns-observability"
+    },
+    {
+      "former_path": "docs/AGON_WAVE17_STATS_LANDING.md",
+      "current_path": "mechanics/agon/legacy/raw/docs/AGON_WAVE17_STATS_LANDING.md",
+      "active_replacement": "mechanics/agon/parts/kag-observability"
+    },
+    {
+      "former_path": "docs/AGON_WAVE18_STATS_LANDING.md",
+      "current_path": "mechanics/agon/legacy/raw/docs/AGON_WAVE18_STATS_LANDING.md",
+      "active_replacement": "mechanics/agon/parts/sophian-observability"
+    },
+    {
+      "former_path": "quests/AOST-Q-AGON-0001-stats-prebinding.md",
+      "current_path": "mechanics/agon/legacy/raw/quests/AOST-Q-AGON-0001-stats-prebinding.md",
+      "active_replacement": "mechanics/agon/parts/stats-prebinding"
+    },
+    {
+      "former_path": "quests/AOST-Q-AGON-0001-vds-stats-observability.md",
+      "current_path": "mechanics/agon/legacy/raw/quests/AOST-Q-AGON-0001-vds-stats-observability.md",
+      "active_replacement": "mechanics/agon/parts/verdict-delta-scar-observability"
+    },
+    {
+      "former_path": "quests/AOST-Q-AGON-0002-mechanical-trial-observability.md",
+      "current_path": "mechanics/agon/legacy/raw/quests/AOST-Q-AGON-0002-mechanical-trial-observability.md",
+      "active_replacement": "mechanics/agon/parts/mechanical-trial-observability"
+    },
+    {
+      "former_path": "quests/AOST-Q-AGON-0002-retention-rank-observability.md",
+      "current_path": "mechanics/agon/legacy/raw/quests/AOST-Q-AGON-0002-retention-rank-observability.md",
+      "active_replacement": "mechanics/agon/parts/retention-rank-observability"
+    },
+    {
+      "former_path": "quests/AOST-Q-AGON-0002-epistemic-stats-observability.md",
+      "current_path": "mechanics/agon/legacy/raw/quests/AOST-Q-AGON-0002-epistemic-stats-observability.md",
+      "active_replacement": "mechanics/agon/parts/epistemic-observability"
+    },
+    {
+      "former_path": "quests/AOST-Q-AGON-0003-slc-stats-observability.md",
+      "current_path": "mechanics/agon/legacy/raw/quests/AOST-Q-AGON-0003-slc-stats-observability.md",
+      "active_replacement": "mechanics/agon/parts/schools-lineages-campaigns-observability"
+    },
+    {
+      "former_path": "quests/AOST-Q-AGON-0004-kag-stats-observability.md",
+      "current_path": "mechanics/agon/legacy/raw/quests/AOST-Q-AGON-0004-kag-stats-observability.md",
+      "active_replacement": "mechanics/agon/parts/kag-observability"
+    },
+    {
+      "former_path": "quests/AOSTATS-Q-AGON-0003-sophian-observability.md",
+      "current_path": "mechanics/agon/legacy/raw/quests/AOSTATS-Q-AGON-0003-sophian-observability.md",
+      "active_replacement": "mechanics/agon/parts/sophian-observability"
+    },
+    {
+      "former_path": "quests/AOST-Q-AGON-0002-recurrence-stats-integration.md",
+      "current_path": "mechanics/agon/legacy/raw/quests/AOST-Q-AGON-0002-recurrence-stats-integration.md",
+      "active_replacement": "mechanics/recurrence/parts/component-manifests"
+    }
+  ],
+  "integrated_recurrence_routes": [
+    "mechanics/recurrence/parts/component-manifests/manifests/",
+    "mechanics/recurrence/parts/component-manifests/docs/AGON_STATS_RECURRENCE_REVIEW_BOUNDARY.md"
+  ]
+}

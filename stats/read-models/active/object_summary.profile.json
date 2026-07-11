@@ -1,0 +1,20 @@
+{
+  "schema_version": "aoa_stats_surface_profile_source_v1",
+  "catalog_order": 2,
+  "lifecycle": "active",
+  "name": "object_summary",
+  "surface_ref": "generated/object_summary.min.json",
+  "schema_ref": "schemas/object-summary.schema.json",
+  "primary_question": "How often and how broadly is each source object showing up in the current receipt feed?",
+  "derivation_rule": "group receipts by object_ref and keep counts, latest timestamps, and bounded posture flags",
+  "input_posture": "receipt_backed_live",
+  "owner_truth_inputs": [
+    "owner-local receipts across the active registry"
+  ],
+  "authority_ceiling": "Weaker than the owner repos named in object_ref and weaker than any linked evidence surface.",
+  "consumer_risk": "low",
+  "live_state_capable": true,
+  "mechanic_routes": [
+    "mechanics/audit/parts/object-observation"
+  ]
+}

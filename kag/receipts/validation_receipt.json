@@ -6,10 +6,38 @@
   "source_refs": [
     {
       "repo": "aoa-stats",
-      "path": "generated/agon_kag_stats_observability_registry.min.json",
+      "path": "stats/source_home.manifest.json",
       "source_class": "stats_source",
       "role": "primary",
+      "authority": "authored_source"
+    },
+    {
+      "repo": "aoa-stats",
+      "path": "stats/read-models/README.md",
+      "source_class": "stats_source",
+      "role": "supporting",
+      "authority": "authored_source"
+    },
+    {
+      "repo": "aoa-stats",
+      "path": "generated/summary_surface_catalog.min.json",
+      "source_class": "stats_source",
+      "role": "supporting",
       "authority": "derived_readmodel"
+    },
+    {
+      "repo": "aoa-stats",
+      "path": "generated/agon_kag_stats_observability_registry.min.json",
+      "source_class": "stats_source",
+      "role": "supporting",
+      "authority": "derived_readmodel"
+    },
+    {
+      "repo": "aoa-stats",
+      "path": "stats/README.md",
+      "source_class": "stats_source",
+      "role": "owner_route",
+      "authority": "authored_source"
     },
     {
       "repo": "aoa-stats",
@@ -21,25 +49,25 @@
   ],
   "source_owner": "aoa-stats",
   "provenance_mode": "strict_source_linked",
-  "derived_method": "source-linked local KAG receipt over stats provider records",
+  "derived_method": "source-linked local KAG validation receipt over the authored stats source home and its supporting derived projections",
   "generated_or_authored": "generated_from_source",
   "status": "active",
   "owner_return_route": {
     "repo": "aoa-stats",
-    "surface": "README.md",
+    "surface": "stats/README.md",
     "route_kind": "authored_meaning"
   },
   "freshness": {
     "mode": "validator_receipt",
     "state": "current",
-    "checked_ref": "generated/agon_kag_stats_observability_registry.min.json"
+    "checked_ref": "stats/source_home.manifest.json"
   },
   "builder": {
-    "route": "python scripts/build_agon_kag_stats_observability_registry.py --check",
-    "surface": "scripts/build_agon_kag_stats_observability_registry.py"
+    "route": "python mechanics/agon/parts/kag-observability/scripts/build_agon_kag_stats_observability_registry.py --check",
+    "surface": "mechanics/agon/parts/kag-observability/scripts/build_agon_kag_stats_observability_registry.py"
   },
   "validator": {
-    "route": "python scripts/validate_agon_kag_stats_observability_registry.py",
+    "route": "python mechanics/agon/parts/kag-observability/scripts/validate_agon_kag_stats_observability_registry.py",
     "lane": "owner-local"
   },
   "storage_posture": {
@@ -50,5 +78,5 @@
   "consumer_route": "aoa-kag registry",
   "receipt_kind": "validation",
   "result": "current",
-  "fallback_route": "python scripts/validate_repo.py"
+  "fallback_route": "python scripts/validate_stats_source_home.py"
 }

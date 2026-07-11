@@ -1,0 +1,22 @@
+{
+  "schema_version": "aoa_stats_surface_profile_source_v1",
+  "catalog_order": 5,
+  "lifecycle": "active",
+  "name": "supersession_drop_summary",
+  "surface_ref": "generated/supersession_drop_summary.min.json",
+  "schema_ref": "schemas/supersession-drop-summary.schema.json",
+  "primary_question": "What pruning, replacement, merge, and reanchor signals are explicit across reviewed growth-refinery receipts without inventing reasons or ranking authority?",
+  "derivation_rule": "aggregate reviewed candidate-lineage entries, reviewed_owner_landing_receipt payloads, and seed_owner_landing_trace_receipt payloads into explicit turnover summaries",
+  "input_posture": "receipt_backed_live",
+  "owner_truth_inputs": [
+    "aoa-skills reviewed harvest receipts",
+    "aoa-skills reviewed owner landing receipts",
+    "Dionysus seed owner landing traces"
+  ],
+  "authority_ceiling": "Weaker than reviewed turnover records and any owner-local acceptance or rejection rationale.",
+  "consumer_risk": "high",
+  "live_state_capable": true,
+  "mechanic_routes": [
+    "mechanics/method-growth/parts/supersession-pruning"
+  ]
+}

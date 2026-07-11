@@ -1,0 +1,20 @@
+{
+  "schema_version": "aoa_stats_surface_profile_source_v1",
+  "catalog_order": 15,
+  "lifecycle": "active",
+  "name": "rollout_campaign_summary",
+  "surface_ref": "generated/rollout_campaign_summary.min.json",
+  "schema_ref": "schemas/rollout-campaign-summary.schema.json",
+  "primary_question": "What is the current bounded campaign cadence posture for the shared-root Codex plane without turning stats into cadence authority?",
+  "derivation_rule": "derive one current campaign-cadence summary from 8Dionysus source-owned rollout campaign, drift-review, and rollback-followthrough window examples",
+  "input_posture": "checked_in_owner_history",
+  "owner_truth_inputs": [
+    "8Dionysus rollout campaign window examples"
+  ],
+  "authority_ceiling": "Weaker than source-owned campaign cadence and review decisions.",
+  "consumer_risk": "high",
+  "live_state_capable": true,
+  "mechanic_routes": [
+    "mechanics/release-support/parts/rollout-campaign"
+  ]
+}

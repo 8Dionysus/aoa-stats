@@ -1,0 +1,20 @@
+{
+  "schema_version": "aoa_stats_surface_profile_source_v1",
+  "catalog_order": 9,
+  "lifecycle": "active",
+  "name": "session_growth_branch_summary",
+  "surface_ref": "generated/session_growth_branch_summary.min.json",
+  "schema_ref": "schemas/session-growth-branch-summary.schema.json",
+  "primary_question": "What reviewed next-kernel branches are being recommended after closeout without turning stats into route authority?",
+  "derivation_rule": "aggregate reviewed followthrough hints carried on decision_fork_receipt payloads into next-skill, owner-target, posture, defer, and reason-code counts",
+  "input_posture": "receipt_backed_live",
+  "owner_truth_inputs": [
+    "aoa-skills reviewed decision fork receipts"
+  ],
+  "authority_ceiling": "Weaker than any owner-local route fork, playbook, or approval surface.",
+  "consumer_risk": "high",
+  "live_state_capable": true,
+  "mechanic_routes": [
+    "mechanics/growth-cycle/parts/session-growth-branch"
+  ]
+}

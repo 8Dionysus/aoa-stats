@@ -6,10 +6,17 @@
   "source_refs": [
     {
       "repo": "aoa-stats",
-      "path": "generated/agon_kag_stats_observability_registry.min.json",
+      "path": "stats/source_home.manifest.json",
       "source_class": "stats_source",
       "role": "primary",
-      "authority": "derived_readmodel"
+      "authority": "authored_source"
+    },
+    {
+      "repo": "aoa-stats",
+      "path": "stats/read-models/README.md",
+      "source_class": "stats_source",
+      "role": "supporting",
+      "authority": "authored_source"
     },
     {
       "repo": "aoa-stats",
@@ -20,40 +27,47 @@
     },
     {
       "repo": "aoa-stats",
-      "path": "README.md",
+      "path": "generated/agon_kag_stats_observability_registry.min.json",
+      "source_class": "stats_source",
+      "role": "supporting",
+      "authority": "derived_readmodel"
+    },
+    {
+      "repo": "aoa-stats",
+      "path": "stats/README.md",
       "source_class": "stats_source",
       "role": "owner_route",
       "authority": "authored_source"
     },
     {
       "repo": "aoa-stats",
-      "path": "docs/BOUNDARIES.md",
+      "path": "README.md",
       "source_class": "stats_source",
-      "role": "supporting",
+      "role": "owner_route",
       "authority": "authored_source"
     }
   ],
   "source_owner": "aoa-stats",
   "provenance_mode": "strict_source_linked",
-  "derived_method": "source-linked local KAG projection over stats provider records",
+  "derived_method": "source-linked local KAG projection from authored stats source-home meaning through supporting summary and Agon read models",
   "generated_or_authored": "generated_from_source",
   "status": "active",
   "owner_return_route": {
     "repo": "aoa-stats",
-    "surface": "README.md",
+    "surface": "stats/README.md",
     "route_kind": "authored_meaning"
   },
   "freshness": {
     "mode": "source_snapshot",
     "state": "current",
-    "checked_ref": "generated/agon_kag_stats_observability_registry.min.json"
+    "checked_ref": "stats/source_home.manifest.json"
   },
   "builder": {
-    "route": "python scripts/build_agon_kag_stats_observability_registry.py --check",
-    "surface": "scripts/build_agon_kag_stats_observability_registry.py"
+    "route": "python mechanics/agon/parts/kag-observability/scripts/build_agon_kag_stats_observability_registry.py --check",
+    "surface": "mechanics/agon/parts/kag-observability/scripts/build_agon_kag_stats_observability_registry.py"
   },
   "validator": {
-    "route": "python scripts/validate_agon_kag_stats_observability_registry.py",
+    "route": "python mechanics/agon/parts/kag-observability/scripts/validate_agon_kag_stats_observability_registry.py",
     "lane": "owner-local"
   },
   "storage_posture": {
@@ -69,5 +83,5 @@
     "edge:stats:source-returns-to-owner",
     "index:stats:source-surfaces"
   ],
-  "consumer_shape": "resources expose KAG stats observability handles, summary catalog handles, and source-return route to README.md"
+  "consumer_shape": "resources expose authored stats source-home handles, supporting summary-catalog and Agon-projection handles, and explicit returns to stats/README.md and README.md"
 }

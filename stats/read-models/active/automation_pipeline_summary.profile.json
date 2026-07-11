@@ -1,0 +1,20 @@
+{
+  "schema_version": "aoa_stats_surface_profile_source_v1",
+  "catalog_order": 10,
+  "lifecycle": "active",
+  "name": "automation_pipeline_summary",
+  "surface_ref": "generated/automation_pipeline_summary.min.json",
+  "schema_ref": "schemas/automation-pipeline-summary.schema.json",
+  "primary_question": "How close is a named automation pipeline to seed-ready bounded use?",
+  "derivation_rule": "aggregate automation_candidate_receipt payloads by pipeline_ref and readiness flags",
+  "input_posture": "receipt_backed_live",
+  "owner_truth_inputs": [
+    "aoa-skills automation candidate receipts"
+  ],
+  "authority_ceiling": "Weaker than owner-local approval, playbook, and runtime rollout surfaces.",
+  "consumer_risk": "medium",
+  "live_state_capable": true,
+  "mechanic_routes": [
+    "mechanics/growth-cycle/parts/automation-followthrough"
+  ]
+}

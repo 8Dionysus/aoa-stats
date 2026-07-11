@@ -1,0 +1,20 @@
+{
+  "schema_version": "aoa_stats_surface_profile_source_v1",
+  "catalog_order": 11,
+  "lifecycle": "active",
+  "name": "automation_followthrough_summary",
+  "surface_ref": "generated/automation_followthrough_summary.min.json",
+  "schema_ref": "schemas/automation-followthrough-summary.schema.json",
+  "primary_question": "How far are reviewed automation candidates moving through bounded follow-through without implying scheduler authority?",
+  "derivation_rule": "aggregate automation_candidate_receipt payloads into seed-ready, defer, checkpoint, playbook-seed, real-run-review, and blocker counts",
+  "input_posture": "receipt_backed_live",
+  "owner_truth_inputs": [
+    "aoa-skills automation candidate receipts"
+  ],
+  "authority_ceiling": "Weaker than owner-local automation approval, runtime execution, and reviewed followthrough surfaces.",
+  "consumer_risk": "high",
+  "live_state_capable": true,
+  "mechanic_routes": [
+    "mechanics/growth-cycle/parts/automation-followthrough"
+  ]
+}

@@ -9,6 +9,24 @@ from pathlib import Path
 REPO_ROOT = Path(__file__).resolve().parents[1]
 
 
+def _usable_repo_candidate(candidate: str | None) -> bool:
+    if not candidate:
+        return False
+    path = Path(candidate).expanduser()
+    if not path.is_dir():
+        return False
+    git_marker = path / ".git"
+    if not git_marker.exists():
+        return True
+    checked = subprocess.run(
+        ["git", "-C", str(path), "rev-parse", "--is-inside-work-tree"],
+        stdout=subprocess.DEVNULL,
+        stderr=subprocess.DEVNULL,
+        check=False,
+    )
+    return checked.returncode == 0
+
+
 def _env() -> dict[str, str]:
     env = os.environ.copy()
     repo_candidates = {
@@ -17,36 +35,55 @@ def _env() -> dict[str, str]:
             str((REPO_ROOT / "aoa-evals").resolve()),
             str((REPO_ROOT / ".deps" / "aoa-evals").resolve()),
             str((REPO_ROOT.parent / "aoa-evals").resolve()),
+            "/srv/AbyssOS/aoa-evals",
         ),
         "AOA_AGENTS_ROOT": (
             env.get("AOA_AGENTS_ROOT"),
             str((REPO_ROOT / ".deps" / "aoa-agents").resolve()),
             str((REPO_ROOT.parent / "aoa-agents").resolve()),
+            "/srv/AbyssOS/aoa-agents",
         ),
         "AOA_PLAYBOOKS_ROOT": (
             env.get("AOA_PLAYBOOKS_ROOT"),
             str((REPO_ROOT / ".deps" / "aoa-playbooks").resolve()),
             str((REPO_ROOT.parent / "aoa-playbooks").resolve()),
+            "/srv/AbyssOS/aoa-playbooks",
         ),
         "AOA_MEMO_ROOT": (
             env.get("AOA_MEMO_ROOT"),
             str((REPO_ROOT / ".deps" / "aoa-memo").resolve()),
             str((REPO_ROOT.parent / "aoa-memo").resolve()),
+            "/srv/AbyssOS/aoa-memo",
         ),
         "AOA_SDK_ROOT": (
             env.get("AOA_SDK_ROOT"),
             str((REPO_ROOT / ".deps" / "aoa-sdk").resolve()),
             str((REPO_ROOT.parent / "aoa-sdk").resolve()),
+            "/srv/AbyssOS/aoa-sdk",
+        ),
+        "AOA_KAG_ROOT": (
+            env.get("AOA_KAG_ROOT"),
+            str((REPO_ROOT / ".deps" / "aoa-kag").resolve()),
+            str((REPO_ROOT.parent / "aoa-kag").resolve()),
+            "/srv/AbyssOS/aoa-kag",
+        ),
+        "AOA_ROUTING_ROOT": (
+            env.get("AOA_ROUTING_ROOT"),
+            str((REPO_ROOT / ".deps" / "aoa-routing").resolve()),
+            str((REPO_ROOT.parent / "aoa-routing").resolve()),
+            "/srv/AbyssOS/aoa-routing",
         ),
         "AOA_8DIONYSUS_ROOT": (
             env.get("AOA_8DIONYSUS_ROOT"),
             str((REPO_ROOT / ".deps" / "8Dionysus").resolve()),
             str((REPO_ROOT.parent / "8Dionysus").resolve()),
+            "/srv/AbyssOS/8Dionysus",
         ),
     }
     for env_name, candidates in repo_candidates.items():
         for candidate in candidates:
-            if candidate and Path(candidate).exists():
+            if _usable_repo_candidate(candidate):
+                assert candidate is not None
                 env[env_name] = str(Path(candidate).resolve())
                 break
     return env
@@ -55,13 +92,23 @@ def _env() -> dict[str, str]:
 COMMANDS = [
     ("check decision indexes", [sys.executable, "scripts/generate_decision_indexes.py", "--check"]),
     ("validate decision records", [sys.executable, "scripts/validate_decision_records.py"]),
+    (
+        "validate nested agent routes",
+        [sys.executable, "scripts/validate_nested_agents.py", "--fail-on-untracked"],
+    ),
+    ("validate mechanics topology", [sys.executable, "scripts/validate_mechanics_topology.py"]),
+    ("validate stats source home", [sys.executable, "scripts/validate_stats_source_home.py"]),
     ("check generated views", [sys.executable, "scripts/build_views.py", "--check"]),
     ("validate repo", [sys.executable, "scripts/validate_repo.py"]),
     (
         "validate OS Abyss summary catalog artifact bundle",
-        [sys.executable, "scripts/validate_abyss_machine_summary_catalog_bundle.py"],
+        [
+            sys.executable,
+            "scripts/validate_abyss_machine_summary_catalog_bundle.py",
+            "--ephemeral",
+        ],
     ),
-    ("run tests", [sys.executable, "-m", "pytest", "-q", "tests"]),
+    ("run root and mechanic tests", [sys.executable, "-m", "pytest", "-q", "tests", "mechanics"]),
 ]
 
 

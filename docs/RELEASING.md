@@ -66,7 +66,8 @@ shape.
 
 ## Live-intake changes
 
-If the release changes `config/live_receipt_sources.json`, the shared receipt
+If the release changes
+`mechanics/recurrence/parts/live-receipt-refresh/config/live_receipt_sources.json`, the shared receipt
 envelope, or watcher installation behavior, also confirm:
 
 - required owner-local sources still resolve under the supported workspace layouts

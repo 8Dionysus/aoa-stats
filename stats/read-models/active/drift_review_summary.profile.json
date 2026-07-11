@@ -1,0 +1,21 @@
+{
+  "schema_version": "aoa_stats_surface_profile_source_v1",
+  "catalog_order": 16,
+  "lifecycle": "active",
+  "name": "drift_review_summary",
+  "surface_ref": "generated/drift_review_summary.min.json",
+  "schema_ref": "schemas/drift-review-summary.schema.json",
+  "primary_question": "What named drift signals and explicit review decisions are currently visible in the source-owned cadence windows without replacing rollout or campaign truth?",
+  "derivation_rule": "derive one bounded drift-review summary from the current 8Dionysus cadence windows and keep rollback readiness descriptive only",
+  "input_posture": "checked_in_owner_history",
+  "owner_truth_inputs": [
+    "8Dionysus drift review windows"
+  ],
+  "authority_ceiling": "Weaker than source-owned drift reviews, campaign windows, and rollback decisions.",
+  "consumer_risk": "high",
+  "live_state_capable": true,
+  "mechanic_routes": [
+    "mechanics/audit/parts/drift-shadow-review",
+    "mechanics/release-support/parts/rollout-campaign"
+  ]
+}

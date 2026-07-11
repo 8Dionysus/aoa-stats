@@ -1,0 +1,20 @@
+{
+  "schema_version": "aoa_stats_surface_profile_source_v1",
+  "catalog_order": 8,
+  "lifecycle": "active",
+  "name": "fork_calibration_summary",
+  "surface_ref": "generated/fork_calibration_summary.min.json",
+  "schema_ref": "schemas/fork-calibration-summary.schema.json",
+  "primary_question": "How are route forks actually being chosen and how often do they carry realized outcome refs?",
+  "derivation_rule": "aggregate decision_fork_receipt payloads by route_ref and chosen_branch",
+  "input_posture": "receipt_backed_live",
+  "owner_truth_inputs": [
+    "aoa-skills decision fork receipts"
+  ],
+  "authority_ceiling": "Weaker than owner-local route selection and any reviewed followthrough outcome.",
+  "consumer_risk": "high",
+  "live_state_capable": true,
+  "mechanic_routes": [
+    "mechanics/growth-cycle/parts/route-fork-calibration"
+  ]
+}

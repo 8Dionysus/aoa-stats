@@ -6,10 +6,24 @@
   "source_refs": [
     {
       "repo": "aoa-stats",
-      "path": "generated/agon_kag_stats_observability_registry.min.json",
+      "path": "stats/source_home.manifest.json",
       "source_class": "stats_source",
       "role": "primary",
+      "authority": "authored_source"
+    },
+    {
+      "repo": "aoa-stats",
+      "path": "generated/agon_kag_stats_observability_registry.min.json",
+      "source_class": "stats_source",
+      "role": "supporting",
       "authority": "derived_readmodel"
+    },
+    {
+      "repo": "aoa-stats",
+      "path": "stats/README.md",
+      "source_class": "stats_source",
+      "role": "owner_route",
+      "authority": "authored_source"
     },
     {
       "repo": "aoa-stats",
@@ -21,25 +35,25 @@
   ],
   "source_owner": "aoa-stats",
   "provenance_mode": "strict_source_linked",
-  "derived_method": "source-linked local KAG edge over stats observability registry and owner route",
+  "derived_method": "source-linked local KAG edge from the authored stats source home through the supporting Agon projection back to explicit stats and repository routes",
   "generated_or_authored": "generated_from_source",
   "status": "active",
   "owner_return_route": {
     "repo": "aoa-stats",
-    "surface": "README.md",
+    "surface": "stats/README.md",
     "route_kind": "authored_meaning"
   },
   "freshness": {
     "mode": "source_snapshot",
     "state": "current",
-    "checked_ref": "generated/agon_kag_stats_observability_registry.min.json"
+    "checked_ref": "stats/source_home.manifest.json"
   },
   "builder": {
-    "route": "python scripts/build_agon_kag_stats_observability_registry.py --check",
-    "surface": "scripts/build_agon_kag_stats_observability_registry.py"
+    "route": "python mechanics/agon/parts/kag-observability/scripts/build_agon_kag_stats_observability_registry.py --check",
+    "surface": "mechanics/agon/parts/kag-observability/scripts/build_agon_kag_stats_observability_registry.py"
   },
   "validator": {
-    "route": "python scripts/validate_agon_kag_stats_observability_registry.py",
+    "route": "python mechanics/agon/parts/kag-observability/scripts/validate_agon_kag_stats_observability_registry.py",
     "lane": "owner-local"
   },
   "storage_posture": {
@@ -51,5 +65,5 @@
   "from_id": "node:stats:kag-observability",
   "to_id": "node:stats:source-route",
   "edge_kind": "returns_to",
-  "edge_trace": "KAG stats observability registry returns to README.md and docs/BOUNDARIES.md for derived-only owner posture"
+  "edge_trace": "stats/source_home.manifest.json returns authored stats meaning to stats/README.md and wider repository context to README.md; the Agon registry remains a supporting projection"
 }

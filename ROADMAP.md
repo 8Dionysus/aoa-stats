@@ -1,149 +1,108 @@
-# AoA Stats Roadmap
+# aoa-stats roadmap
 
-This roadmap is the current repo-owned direction surface for `aoa-stats`.
+> Current release: `v0.1.3`
 
-Use it when the question is "what is the current derived-observability phase
-and what should harden next?"
-Use `README.md#current-v0-surface` and `docs/README.md` for the detailed map of
-already-landed summary families.
+This is the current repo-owned direction surface. Shipped history belongs in
+`CHANGELOG.md`; durable rationale belongs in `docs/decisions/`; the public
+snapshot lives at `README.md#current-v0-surface`.
 
-## Current phase
+## Current release contour
 
-`aoa-stats` has a real v0 derived surface.
-The first usable summary families are already landed:
+The current line is derived-observability hardening: keep read models useful,
+deterministic, and easy to consume while keeping them weaker than source-owned
+receipts, proof, rollout history, runtime state, and owner decisions.
 
-- object, core-skill application, candidate-lineage, owner-landing,
-  supersession-drop, repeated-window, route-progression, and fork-calibration
-  summaries
-- session-growth branch, automation-pipeline, automation-followthrough, and
-  runtime-closeout summaries
-- Codex-plane deployment, rollout-operations, rollout-drift, rollout-campaign,
-  drift-review, continuity-window, component-refresh, stress-recovery,
-  memory-movement, source-coverage, surface-detection, Titan-incarnation, and
-  Titan-summon summaries
-- the summary-surface catalog plus the repo-local `aoa_stats` MCP read model
+The source/mechanics refactor is part of that contour:
 
-The next honest move is not to widen into a dashboard empire.
-It is to keep derived summaries source-linked, hygienic, and explicit about
-what they do not prove.
-The stress-recovery family now also carries one bounded chaos-wave example so
-cross-repo observability can stay explicit without minting a new dashboard or
-synthetic health authority.
-The next hardening step is to let stats report on its own intake honestly:
-which owner repos are active, which are missing, and how strong each derived
-surface really is.
+- `stats/intake-contract/` authors receipt admission meaning
+- `stats/read-models/` authors each catalog profile
+- `stats/operation-contracts/` cross-routes real non-catalog part contracts
+- `stats/surface-catalog/` authors catalog and read-only access posture
+- `mechanics/` owns repeatable operations and their localized payload
+- `schemas/` and `generated/` remain stable public publication districts
+- `src/` remains the importable implementation and access boundary
 
-### Current release contour
+## Active summary families
 
-The live `v0.1.3` contour is derived-observability hardening, not a new
-workflow or proof layer. Its current checked surface is:
+The public v2 catalog currently exposes:
 
-- boundary and architecture posture:
-  `docs/BOUNDARIES.md`, `docs/ARCHITECTURE.md`,
-  `docs/LIVE_SESSION_USE.md`, `docs/README.md`, and
-  `schemas/stats-event-envelope.schema.json`
-- compact runtime entry and catalog v2:
-  `generated/summary_surface_catalog.min.json`,
-  `schemas/summary-surface-catalog.schema.json`, and
-  `tests/test_summary_surface_catalog.py`
-- receipt ABI governance and surface-strength law:
-  `docs/RECEIPT_ABI_GOVERNANCE.md`,
-  `config/stats_event_kind_registry.json`,
-  `docs/SURFACE_STRENGTH_MODEL.md`,
-  `docs/SOURCE_COVERAGE_SUMMARY.md`,
-  `schemas/source-coverage-summary.schema.json`,
-  `generated/source_coverage_summary.min.json`,
-  `scripts/validate_receipt_abi.py`, and
-  `scripts/validate_downstream_canaries.py`
-- repo-local read-only Codex MCP:
-  `docs/CODEX_MCP.md`, `scripts/aoa_stats_mcp_server.py`,
-  `src/aoa_stats_mcp/server.py`, `src/aoa_stats_mcp/repo_state.py`,
-  `tests/test_aoa_stats_mcp_state.py`, and `requirements-mcp.txt`
-- rollout, cadence, drift, and continuity summary families:
-  `docs/CODEX_PLANE_DEPLOYMENT_SUMMARIES.md`,
-  `docs/ROLLOUT_CAMPAIGN_SUMMARY.md`, `docs/DRIFT_REVIEW_SUMMARY.md`,
-  `docs/CONTINUITY_WINDOW_SUMMARY.md`,
-  `generated/codex_rollout_operations_summary.min.json`,
-  `generated/codex_rollout_drift_summary.min.json`,
-  `generated/rollout_campaign_summary.min.json`,
-  `generated/drift_review_summary.min.json`, and
-  `generated/continuity_window_summary.min.json`
-- Titan seed posture summaries:
-  `schemas/titan_incarnation_summary.schema.json`,
-  `generated/titan_incarnation_summary.min.json`,
-  `schemas/titan_summon_summary.schema.json`, and
-  `generated/titan_summon_summary.min.json`
-- deterministic builder and release validation:
-  `scripts/build_views.py`, `scripts/validate_repo.py`, and
-  `scripts/release_check.py`
-- bounded chaos-wave stress recovery example:
-  `docs/STRESS_RECOVERY_SUMMARIES_CHAOS_WAVE1.md` and
-  `examples/stress_recovery_window_summary.chaos-wave1.example.json`
-- reviewed memory movement summary:
-  `docs/MEMORY_MOVEMENT_SUMMARY.md`,
-  `schemas/memory-movement-summary.schema.json`,
-  `generated/memory_movement_summary.min.json`, and
-  `tests/test_memory_movement_summary.py`
+| Mechanic contour | Catalog families |
+| --- | --- |
+| Audit | core-skill application, object, source-coverage, surface-detection, drift-review |
+| Method Growth | candidate-lineage, owner-landing, supersession-drop |
+| Recurrence | repeated-window, continuity-window, component-refresh |
+| RPG | route-progression |
+| Growth Cycle | fork-calibration, session-growth branch, automation-pipeline, automation-followthrough |
+| Release Support | Codex-plane deployment, rollout-operations, rollout-drift, rollout-campaign |
+| Boundary Bridge | memory-movement |
+| Checkpoint | runtime-closeout |
+| Antifragility | stress-recovery |
+| Titan | Titan-incarnation, Titan-summon |
 
-This contour keeps Codex and rollout visibility derived, previewable, and
-weaker than source-owned rollout history, continuity anchors, owner receipts,
-reviewed memory objects, and bounded eval verdicts.
-It also makes `aoa-stats` an active participant in project growth without
-letting the stats layer absorb owner authority.
+The authoritative inventory is
+`generated/summary_surface_catalog.min.json`, projected from the authored
+profiles under `stats/read-models/active/`. The deferred Antifragility vector
+contract stays separate from active catalog claims.
 
-## Current cycle
+## Maintained contracts
 
-### Wave 1: root direction consolidation
+- owner boundaries: `docs/BOUNDARIES.md`
+- derived architecture: `docs/ARCHITECTURE.md`
+- authored read-model map: `stats/read-models/README.md`
+- non-catalog operation contracts: `stats/operation-contracts/README.md`
+- public catalog contract: `schemas/summary-surface-catalog.schema.json`
+- receipt ABI: `stats/intake-contract/RECEIPT_ABI.md`
+- event-kind registry: `stats/intake-contract/event-kind-registry.json`
+- live source registry:
+  `mechanics/recurrence/parts/live-receipt-refresh/config/live_receipt_sources.json`
+- live operation guide:
+  `mechanics/recurrence/parts/live-receipt-refresh/docs/LIVE_SESSION_USE.md`
+- surface strength: `docs/SURFACE_STRENGTH_MODEL.md`
+- source coverage:
+  `mechanics/audit/parts/source-coverage/docs/SOURCE_COVERAGE_SUMMARY.md`
+- rollout observations:
+  `mechanics/release-support/parts/codex-deployment-rollout/docs/CODEX_PLANE_DEPLOYMENT_SUMMARIES.md`
+- campaign and drift review:
+  `mechanics/release-support/parts/rollout-campaign/docs/ROLLOUT_CAMPAIGN_SUMMARY.md`
+  and `mechanics/audit/parts/drift-shadow-review/docs/DRIFT_REVIEW_SUMMARY.md`
+- continuity and component refresh:
+  `mechanics/recurrence/parts/continuity-window/docs/CONTINUITY_WINDOW_SUMMARY.md`
+  and `mechanics/recurrence/parts/component-refresh/docs/COMPONENT_REFRESH_SUMMARIES.md`
+- stress-recovery chaos fixture:
+  `mechanics/antifragility/parts/stress-recovery-windows/examples/stress_recovery_window_summary.chaos-wave1.example.json`
+- reviewed memory movement:
+  `mechanics/boundary-bridge/parts/memory-owner-handoff/docs/MEMORY_MOVEMENT_SUMMARY.md`
+- public catalog access: `stats/surface-catalog/CODEX_MCP.md`
 
-Goals:
+## Direction
 
-- keep `ROADMAP.md` as the root-level current-direction door
-- keep `README.md` and `docs/README.md` short and link-driven
-- route current shipped surfaces through `README.md#current-v0-surface` without
-  duplicating phase snapshots everywhere
+Changes on this line should:
 
-### Wave 2: summary contract hardening
+1. start from owner evidence and either an authored stats profile or the
+   explicit non-catalog operation-contract family
+2. keep operation payload with the nearest mechanic part
+3. preserve stable public schema and generated paths when consumers depend on
+   them
+4. expose missing or stale evidence instead of manufacturing certainty
+5. update topology, source-home validation, focused tests, and generated
+   outputs together
+6. keep `README.md` and `docs/README.md` short and link-driven
 
-Goals:
+## Non-goals
 
-- keep schemas, builders, and generated summaries deterministic
-- preserve shared receipt-envelope and live-source-registry discipline
-- tighten route docs so derived surfaces do not masquerade as owner status
-- expose surface strength and intake blind spots in machine-readable form
+The roadmap is not to widen into a dashboard empire, global score, hidden
+scheduler, proof engine, route controller, memory owner, or runtime authority.
+No summary may outrank the owner sources named by its profile. In particular,
+rollout summaries remain weaker than source-owned rollout history and rollback
+decisions.
 
-Exit signals:
+## Release gate
 
-- `python scripts/build_views.py --check` stays green
-- `python scripts/validate_repo.py` stays green
-- `python scripts/validate_receipt_abi.py` stays green
-- `python scripts/validate_downstream_canaries.py` stays green
-- route docs, schemas, and generated summaries stay aligned under one bounded
-  current-direction surface
-
-### Wave 3: signal hygiene and live-intake discipline
-
-Goals:
-
-- preserve the distinction between counts, verdicts, progression, and evidence
-  refs
-- keep refresh and watcher tooling bounded to derived observability
-- make new summary families earn their place through clear owner-linked inputs
-  and explicit non-goals
-
-### Wave 4: downstream readability without authority drift
-
-Goals:
-
-- keep the MCP and generated catalog fast for low-context inspection
-- prefer compact preview surfaces over broader narrative duplication
-- maintain the boundary against route, proof, checkpoint, or quest sovereignty
-
-## Standing discipline
-
-Across all waves:
-
-- keep stats derived
-- keep owner repos authoritative
-- keep generated summaries compact and deterministic
-- do not infer intent, mastery, or self-agency from counts alone
-- do not let observability become workflow, proof, or route authority
+```bash
+python scripts/build_views.py --check
+python scripts/validate_stats_source_home.py
+python scripts/validate_mechanics_topology.py
+python scripts/validate_repo.py
+python -m pytest -q tests mechanics
+python scripts/release_check.py
+```

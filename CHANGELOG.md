@@ -7,8 +7,34 @@ Tracking starts with the first public release-prep baseline for this repository.
 
 ## [Unreleased]
 
+### Added
+
+- Added the root design spine for the staged source-home and mechanics
+  refactor, including the authority split and alternating cross-mode.
+- Added explicit route homes for stats-authored source families and evidenced
+  repeatable mechanics, with machine-readable crosswalk validation.
+- Added authored read-model profiles under `stats/read-models/`; the public
+  summary catalog is now projected from those profiles instead of a hardcoded
+  Python catalog table.
+- Added `stats/operation-contracts/` so every active non-catalog mechanic part
+  has a reciprocal source-family route without inventing a public profile.
+- Added active mechanic packages and focused part contracts for Agon,
+  Antifragility, Audit, Boundary Bridge, Checkpoint, Experience, Growth Cycle,
+  Method Growth, Recurrence, Release Support, RPG, and Titan.
+
 ### Changed
 
+- Reworked the root agent route so structural changes start from `DESIGN.md`,
+  then cross-route `stats/` source meaning with `mechanics/` operations while
+  preserving active root compatibility surfaces.
+- Localized operation-owned config, docs, examples, manifests, supporting
+  schemas, systemd templates, scripts, and focused tests below their mechanic
+  parts. Root schemas and generated summaries remain stable public
+  publication surfaces; root commands and docs now require an explicit
+  repo-wide or compatibility role.
+- Reclassified the former flat root guidance as historical provenance and
+  made the active documentation map route directly to source and mechanic
+  owners.
 - Refreshed the derived memory movement summary so the reviewed KAG/ToS bridge
   object from `aoa-memo` is visible as a `reviewed_corpus` bridge consumer ref.
 - Added a read-only memory route boundary to the memory movement summary so
@@ -106,7 +132,7 @@ Tracking starts with the first public release-prep baseline for this repository.
 
 ### Documentation
 
-- repo-local MCP posture and launch guidance in `docs/CODEX_MCP.md`
+- repo-local MCP posture and launch guidance in `stats/surface-catalog/CODEX_MCP.md`
 - README, docs map, and AGENTS routing updates so the MCP stays bounded and
   visibly derived-only
 

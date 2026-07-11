@@ -1,0 +1,20 @@
+{
+  "schema_version": "aoa_stats_surface_profile_source_v1",
+  "catalog_order": 25,
+  "lifecycle": "active",
+  "name": "surface_detection_summary",
+  "surface_ref": "generated/surface_detection_summary.min.json",
+  "schema_ref": "schemas/surface-detection-summary.schema.json",
+  "primary_question": "What second-wave surface-detection signals are accumulating without turning stats into routing authority?",
+  "derivation_rule": "aggregate advisory surface_detection_context payloads on finish-stage core_skill_application_receipt envelopes by observed date",
+  "input_posture": "receipt_backed_live",
+  "owner_truth_inputs": [
+    "aoa-skills core skill application receipts"
+  ],
+  "authority_ceiling": "Weaker than owner-local route decisions and weaker than aoa-sdk or aoa-routing dispatch surfaces.",
+  "consumer_risk": "high",
+  "live_state_capable": true,
+  "mechanic_routes": [
+    "mechanics/audit/parts/surface-strength-detection"
+  ]
+}

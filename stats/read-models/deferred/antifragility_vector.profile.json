@@ -1,0 +1,13 @@
+{
+  "schema_version": "aoa_stats_surface_profile_source_v1",
+  "lifecycle": "deferred",
+  "name": "antifragility_vector",
+  "status": "contract_only",
+  "contract_ref": "mechanics/antifragility/parts/antifragility-vector/docs/ANTIFRAGILITY_VECTOR.md",
+  "schema_ref": "mechanics/antifragility/parts/antifragility-vector/schemas/antifragility_vector_v1.json",
+  "activation_condition": "Activate only after one owner-linked repeated-window receipt family and bounded eval chain exist for the same stressor family.",
+  "authority_ceiling": "Even after activation this surface stays weaker than owner-local stressor receipts and bounded eval reports.",
+  "mechanic_routes": [
+    "mechanics/antifragility/parts/antifragility-vector"
+  ]
+}

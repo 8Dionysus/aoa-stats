@@ -1,0 +1,21 @@
+{
+  "schema_version": "aoa_stats_surface_profile_source_v1",
+  "catalog_order": 18,
+  "lifecycle": "active",
+  "name": "component_refresh_summary",
+  "surface_ref": "generated/component_refresh_summary.min.json",
+  "schema_ref": "schemas/component-refresh-summary.schema.json",
+  "primary_question": "What is the current bounded component refresh posture across named owner repos without letting stats become refresh truth or maintenance authority?",
+  "derivation_rule": "derive one bounded component refresh snapshot from reviewed aoa-sdk drift hints and reviewed followthrough decisions while keeping owner validation stronger",
+  "input_posture": "reviewed_example_chain",
+  "owner_truth_inputs": [
+    "aoa-sdk reviewed drift hints",
+    "reviewed followthrough decisions"
+  ],
+  "authority_ceiling": "Weaker than owner repo refresh law, owner validation, and real regeneration evidence.",
+  "consumer_risk": "high",
+  "live_state_capable": true,
+  "mechanic_routes": [
+    "mechanics/recurrence/parts/component-refresh"
+  ]
+}

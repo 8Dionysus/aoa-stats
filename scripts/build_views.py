@@ -27,39 +27,40 @@ from aoa_stats_builder.receipt_abi import receipt_sort_key  # noqa: E402
 from aoa_stats_builder.source_coverage import build_source_coverage_summary  # noqa: E402
 from aoa_stats_builder.surface_catalog import build_summary_surface_catalog  # noqa: E402
 
-DEFAULT_INPUT = REPO_ROOT / "examples" / "session_harvest_family.receipts.example.json"
+DEFAULT_INPUT = (
+    REPO_ROOT
+    / "stats"
+    / "intake-contract"
+    / "examples"
+    / "session_harvest_family.receipts.example.json"
+)
 DEFAULT_OUTPUT_DIR = REPO_ROOT / "generated"
-DEFAULT_SOURCE_REGISTRY = REPO_ROOT / "config" / "live_receipt_sources.json"
-DEFAULT_EVALS_ROOT = (
-    REPO_ROOT / "aoa-evals"
-    if (REPO_ROOT / "aoa-evals").exists()
-    else (REPO_ROOT / ".deps" / "aoa-evals" if (REPO_ROOT / ".deps" / "aoa-evals").exists() else REPO_ROOT.parent / "aoa-evals")
+LIVE_SOURCE_REGISTRY_RELATIVE = Path(
+    "mechanics/recurrence/parts/live-receipt-refresh/config/live_receipt_sources.json"
 )
-DEFAULT_PUBLIC_PROFILE_ROOT = (
-    REPO_ROOT / ".deps" / "8Dionysus"
-    if (REPO_ROOT / ".deps" / "8Dionysus").exists()
-    else REPO_ROOT.parent / "8Dionysus"
-)
-DEFAULT_AOA_AGENTS_ROOT = (
-    REPO_ROOT / ".deps" / "aoa-agents"
-    if (REPO_ROOT / ".deps" / "aoa-agents").exists()
-    else REPO_ROOT.parent / "aoa-agents"
-)
-DEFAULT_AOA_PLAYBOOKS_ROOT = (
-    REPO_ROOT / ".deps" / "aoa-playbooks"
-    if (REPO_ROOT / ".deps" / "aoa-playbooks").exists()
-    else REPO_ROOT.parent / "aoa-playbooks"
-)
-DEFAULT_AOA_MEMO_ROOT = (
-    REPO_ROOT / ".deps" / "aoa-memo"
-    if (REPO_ROOT / ".deps" / "aoa-memo").exists()
-    else REPO_ROOT.parent / "aoa-memo"
-)
-DEFAULT_AOA_SDK_ROOT = (
-    REPO_ROOT / ".deps" / "aoa-sdk"
-    if (REPO_ROOT / ".deps" / "aoa-sdk").exists()
-    else REPO_ROOT.parent / "aoa-sdk"
-)
+DEFAULT_SOURCE_REGISTRY = REPO_ROOT / LIVE_SOURCE_REGISTRY_RELATIVE
+
+
+def default_neighbor_root(repo_name: str, *, allow_nested: bool = False) -> Path:
+    candidates = []
+    if allow_nested:
+        candidates.append(REPO_ROOT / repo_name)
+    candidates.extend(
+        [
+            REPO_ROOT / ".deps" / repo_name,
+            Path("/srv/AbyssOS") / repo_name,
+            REPO_ROOT.parent / repo_name,
+        ]
+    )
+    return next((candidate.resolve() for candidate in candidates if candidate.is_dir()), candidates[-1])
+
+
+DEFAULT_EVALS_ROOT = default_neighbor_root("aoa-evals", allow_nested=True)
+DEFAULT_PUBLIC_PROFILE_ROOT = default_neighbor_root("8Dionysus")
+DEFAULT_AOA_AGENTS_ROOT = default_neighbor_root("aoa-agents")
+DEFAULT_AOA_PLAYBOOKS_ROOT = default_neighbor_root("aoa-playbooks")
+DEFAULT_AOA_MEMO_ROOT = default_neighbor_root("aoa-memo")
+DEFAULT_AOA_SDK_ROOT = default_neighbor_root("aoa-sdk")
 
 AXES = (
     "boundary_integrity",
@@ -2879,9 +2880,9 @@ def build_all_views(
     if resolved_source_registry is None and DEFAULT_SOURCE_REGISTRY.exists():
         resolved_source_registry = load_json_object(
             DEFAULT_SOURCE_REGISTRY,
-            label="config/live_receipt_sources.json",
+            label=LIVE_SOURCE_REGISTRY_RELATIVE.as_posix(),
         )
-        resolved_source_registry_ref = "config/live_receipt_sources.json"
+        resolved_source_registry_ref = LIVE_SOURCE_REGISTRY_RELATIVE.as_posix()
     outputs = {
         "object_summary.min.json": build_object_summary(active_receipts, source),
         "candidate_lineage_summary.min.json": build_candidate_lineage_summary(
@@ -2954,7 +2955,7 @@ def main(argv: list[str] | None = None) -> int:
     receipts = load_receipts(input_paths)
     outputs = build_all_views(
         receipts,
-        [path.name for path in input_paths],
+        [display_input_path(path) for path in input_paths],
         evals_root=evals_root,
     )
 
