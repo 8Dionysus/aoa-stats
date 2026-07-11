@@ -105,6 +105,19 @@ class ValidateNestedAgentsTests(unittest.TestCase):
             result = validator.validate(repo_root, fail_on_untracked=True)
             self.assertTrue(any("untracked nested AGENTS.md" in issue for issue in result.issues))
 
+    def test_external_dependency_agents_are_outside_repo_guidance_scope(self) -> None:
+        with tempfile.TemporaryDirectory() as tmp:
+            repo_root = Path(tmp)
+            _write_minimal_required_tree(repo_root)
+            _write(
+                repo_root / ".deps" / "aoa-agents" / "AGENTS.md",
+                "# AGENTS.md\nExternal dependency guidance.\n",
+            )
+
+            result = validator.validate(repo_root, fail_on_untracked=True)
+
+            self.assertEqual((), result.issues)
+
     def test_advisory_can_become_strict(self) -> None:
         if not validator.ADVISORY_AGENT_DIRS:
             self.skipTest("repository has no advisory AGENTS.md candidates")

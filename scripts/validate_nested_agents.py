@@ -46,7 +46,14 @@ REQUIRED_AGENTS_DOCS: dict[str, tuple[str, ...]] = {
 }
 ADVISORY_AGENT_DIRS: tuple[str, ...] = ('.agents/skills', 'docs', 'manifests/artifact_bundles')
 HEADING_PREFIXES = ("# AGENTS.md", "# AGENTS")
-IGNORED_DIRS = {".git", ".venv", "__pycache__", ".pytest_cache", ".mypy_cache"}
+IGNORED_DIRS = {
+    ".deps",
+    ".git",
+    ".venv",
+    "__pycache__",
+    ".pytest_cache",
+    ".mypy_cache",
+}
 
 
 @dataclass(frozen=True)
