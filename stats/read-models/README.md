@@ -17,11 +17,11 @@ by the local live refresh loop when its inputs resolve. A `false` profile stays
 on its committed/reference route and is omitted from live output and the live
 catalog, although refresh cleanup still removes any stale runtime copy.
 
-The current managed inventory contains 25 active profiles; 13 are admitted to
-live materialization. The 12 reference-only profiles are Owner Landing,
+The current managed inventory contains 25 active profiles; 12 are admitted to
+live materialization. The 13 reference-only profiles are Owner Landing,
 Codex Plane Deployment, Codex Rollout Operations, Codex Rollout Drift, Rollout
 Campaign, Drift Review, Continuity Window, Component Refresh, Memory Movement,
-Titan Incarnation, Titan Summon, and Stress Recovery Window.
+Route Progression, Titan Incarnation, Titan Summon, and Stress Recovery Window.
 Continuity Window describes the posture represented by its committed
 cross-owner example/catalog chain. Codex Plane Deployment describes the posture
 represented by the committed 8Dionysus trust-state, regeneration-report, and
@@ -47,6 +47,15 @@ Detection share one finish-stage receipt selector; Object Observation reads
 the full active receipt feed through a separate core. Sharing implementation
 does not merge their authored questions, source ceilings, mechanic routes, or
 catalog identities.
+
+Route Progression retains a committed legacy numeric snapshot, but not live
+admission. The RPG center owns progression-reading vocabulary and stop-lines;
+`aoa-skills` owns the current semantic progression receipt, `aoa-agents` owns
+the agent-layer overlay, and `aoa-sdk` owns typed transport. Because the owner
+contract intentionally uses descriptive `axis_delta_summary` values rather
+than a numeric score, aoa-stats rejects that shape instead of assigning
+numbers. Future live activation needs an explicit cross-owner semantic
+projection contract.
 
 Use `committed_owner_example_chain` only when one owner repository publishes a
 coherent set of checked-in examples that can drive a deterministic committed

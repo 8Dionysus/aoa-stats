@@ -86,6 +86,12 @@ Tracking starts with the first public release-prep baseline for this repository.
   monoliths into explicit object and shared core-skill observation cores while
   preserving public outputs, live receipt posture, and root compatibility
   aliases.
+- Clarified the Route Progression owner chain and moved its seven-axis receipt
+  aggregation plus focused invariants into an RPG-owned core and part-local
+  test boundary while preserving the public output and root compatibility
+  aliases. Reclassified the surface as reference-only because the current
+  owner receipt is semantic rather than numeric, rejected score invention, and
+  made live refresh omit and clean the legacy snapshot.
 
 ## [0.1.3] - 2026-04-23
 

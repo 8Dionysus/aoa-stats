@@ -30,6 +30,7 @@
 
 - [AOST-D-0003 - Component Refresh Fixtures Are Not Live State](../AOST-D-0003-component-refresh-fixtures-are-not-live-state.md) (`docs/decisions/AOST-D-0003-component-refresh-fixtures-are-not-live-state.md`)
 - [AOST-D-0004 - Live Admission Requires Refresh Observation](../AOST-D-0004-live-admission-requires-refresh-observation.md) (`docs/decisions/AOST-D-0004-live-admission-requires-refresh-observation.md`)
+- [AOST-D-0005 - Route Progression Semantic Receipts Are Not Numeric Live State](../AOST-D-0005-route-progression-semantic-receipts-are-not-numeric-live-state.md) (`docs/decisions/AOST-D-0005-route-progression-semantic-receipts-are-not-numeric-live-state.md`)
 
 ## local live output inventory
 
@@ -46,6 +47,10 @@
 ## receipt ABI
 
 - [AOST-D-0001 - Stats Strength And Intake Governance](../AOST-D-0001-stats-strength-and-intake-governance.md) (`docs/decisions/AOST-D-0001-stats-strength-and-intake-governance.md`)
+
+## Route Progression
+
+- [AOST-D-0005 - Route Progression Semantic Receipts Are Not Numeric Live State](../AOST-D-0005-route-progression-semantic-receipts-are-not-numeric-live-state.md) (`docs/decisions/AOST-D-0005-route-progression-semantic-receipts-are-not-numeric-live-state.md`)
 
 ## source coverage
 

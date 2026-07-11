@@ -63,3 +63,10 @@ hints. `aoa-evals` owns bounded proof verdicts.
 
 If a stats signal and an owner-local source disagree, repair the derivation or
 the source registration. Do not upgrade the stats summary into authority.
+
+For Route Progression, the first stronger owner route is the `aoa-skills`
+progression receipt contract. Its current semantic axis summaries are not
+numeric deltas. Consumers must re-ground there for current progression meaning
+and must not infer scores from the committed legacy numeric compatibility
+snapshot. The RPG center supplies the seven-axis vocabulary and stop-lines;
+the `aoa-agents` and `aoa-sdk` contracts are typed overlays, not receipt truth.

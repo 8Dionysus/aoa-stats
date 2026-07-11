@@ -105,6 +105,18 @@ selector. Object observation has a separate core and part-local test boundary
 because it summarizes every admitted event kind. Neither implementation gains
 audit, routing, or proof authority.
 
+Route Progression follows the single-part variant of the same architecture.
+Its stats profile owns the bounded question, reference posture, exact
+stronger-owner chain, and authority ceiling. A filesystem-free RPG core may
+project the committed legacy numeric receipt shape, while the part-local test
+district owns behavioral proof and `scripts/build_views.py` keeps only
+compatibility aliases and repo-wide fan-out. The RPG center retains vocabulary
+and stop-lines, `aoa-agents` retains the agent-layer overlay, `aoa-sdk` retains
+typed transport, and `aoa-skills` retains receipt truth. The current semantic
+`axis_delta_summary` contract is deliberately not converted into numeric
+totals, so Route Progression stays outside live state until a non-invented
+cross-owner projection contract exists.
+
 Generated artifacts never become source authority merely because they are
 committed or convenient to query.
 

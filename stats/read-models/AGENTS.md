@@ -34,6 +34,11 @@ or the upstream facts summarized by a profile.
   payloads here.
 - Change the authored profile first, then rebuild and check the generated
   catalog.
+- For Route Progression, return progression-reading vocabulary to the RPG
+  center, receipt payloads to `aoa-skills`, the agent-layer overlay to
+  `aoa-agents`, and typed transport to `aoa-sdk`. The committed legacy numeric
+  snapshot stays non-live while the current owner receipt is semantic and
+  non-score-shaped; the profile must not manufacture a numeric mapping.
 
 ## Verification
 

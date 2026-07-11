@@ -20,6 +20,7 @@ FALSE_LIVE_OUTPUT_NAMES = frozenset(
         "continuity_window_summary.min.json",
         "component_refresh_summary.min.json",
         "memory_movement_summary.min.json",
+        "route_progression_summary.min.json",
         "titan_incarnation_summary.min.json",
         "titan_summon_summary.min.json",
         "stress_recovery_window_summary.min.json",
@@ -57,9 +58,10 @@ def test_live_output_inventory_is_derived_from_authored_profile_posture() -> Non
         module.SUMMARY_SURFACE_CATALOG_OUTPUT_NAME,
     )
     assert len(all_profile_outputs) == 25
-    assert len(live_profile_outputs) == 13
+    assert len(live_profile_outputs) == 12
     assert "owner_landing_summary.min.json" not in live_profile_outputs
     assert "memory_movement_summary.min.json" not in live_profile_outputs
+    assert "route_progression_summary.min.json" not in live_profile_outputs
     assert "stress_recovery_window_summary.min.json" not in live_profile_outputs
     assert set(all_profile_outputs) - set(live_profile_outputs) == FALSE_LIVE_OUTPUT_NAMES
 
@@ -83,6 +85,9 @@ def test_live_allowlist_never_invokes_reference_only_builders() -> None:
     stress_recovery_builder = Mock(
         side_effect=AssertionError("stress recovery builder ran live")
     )
+    route_progression_builder = Mock(
+        side_effect=AssertionError("route progression builder ran live")
+    )
     history_adapter = Mock(side_effect=AssertionError("history adapter ran live"))
     cadence_adapter = Mock(side_effect=AssertionError("cadence adapter ran live"))
 
@@ -92,6 +97,7 @@ def test_live_allowlist_never_invokes_reference_only_builders() -> None:
             "build_owner_landing_summary": owner_landing_builder,
             "build_memory_movement_summary": memory_movement_builder,
             "build_stress_recovery_window_summary": stress_recovery_builder,
+            "build_route_progression_summary": route_progression_builder,
             "codex_trusted_rollout_input_bundle": history_adapter,
             "rollout_cadence_input_bundle": cadence_adapter,
         },
@@ -107,11 +113,13 @@ def test_live_allowlist_never_invokes_reference_only_builders() -> None:
     owner_landing_builder.assert_not_called()
     memory_movement_builder.assert_not_called()
     stress_recovery_builder.assert_not_called()
+    route_progression_builder.assert_not_called()
     history_adapter.assert_not_called()
     cadence_adapter.assert_not_called()
     assert "owner_landing_summary.min.json" not in outputs
     assert "memory_movement_summary.min.json" not in outputs
     assert "stress_recovery_window_summary.min.json" not in outputs
+    assert "route_progression_summary.min.json" not in outputs
     assert "codex_rollout_operations_summary.min.json" not in outputs
     assert "codex_rollout_drift_summary.min.json" not in outputs
     assert "rollout_campaign_summary.min.json" not in outputs

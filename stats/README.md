@@ -89,6 +89,11 @@ publication and implementation districts:
   keeps its all-event projection separate at
   `src/aoa_stats_builder/object_observation.py`; focused validation follows the
   package and part owners declared in `mechanics/topology.json`
+- the Route Progression profile names the RPG center and stronger receipt,
+  agent-overlay, and SDK contract owners before handing its committed legacy
+  numeric snapshot to `src/aoa_stats_builder/route_progression.py`; current
+  semantic owner receipts are not scored, and focused proof belongs to
+  `mechanics/rpg/parts/route-progression/tests/`
 - public and compatibility commands remain under `scripts/`
 - repo-wide and compatibility validation remains under root `scripts/` and
   `tests/`; operation-focused validation follows `mechanics/topology.json`,
@@ -111,6 +116,8 @@ selector and stale-cleanup precedent is recorded for Component Refresh in
 `docs/decisions/AOST-D-0003-component-refresh-fixtures-are-not-live-state.md`;
 the current-source plus observation requirement is recorded in
 `docs/decisions/AOST-D-0004-live-admission-requires-refresh-observation.md`.
+The semantic-versus-numeric Route Progression boundary is recorded in
+`docs/decisions/AOST-D-0005-route-progression-semantic-receipts-are-not-numeric-live-state.md`.
 The selector does not independently certify any profile's source posture.
 
 Follow the family route card before changing any of those paths.

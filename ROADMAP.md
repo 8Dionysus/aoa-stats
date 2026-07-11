@@ -23,8 +23,9 @@ The source/mechanics refactor is part of that contour:
 - `schemas/` and `generated/` remain stable public publication districts
 - `src/` remains the importable implementation and access boundary
 - authored `live_state_capable` profiles select local live materialization;
-  the current split is 13 live-admitted read models across 25 managed active
-  outputs, and cleanup covers the full managed set
+  the current split is 12 live-admitted read models across 25 managed active
+  outputs, and cleanup covers the full managed set; Route Progression remains
+  a committed legacy-numeric reference surface under AOST-D-0005
 
 ## Active summary families
 

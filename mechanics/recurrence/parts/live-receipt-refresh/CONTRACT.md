@@ -33,16 +33,17 @@ admitted by the `intake_contract` family.
 - unknown event kinds fail before a summary is built
 - missing or invalid required publishers remain visible as errors
 - a surface with `live_state_capable: false` is not materialized or cataloged
-- the current 25-profile managed universe yields exactly 13 admitted live
-  outputs and 12 false-live cleanup targets
+- the current 25-profile managed universe yields exactly 12 admitted live
+  outputs and 13 false-live cleanup targets
 - resolving a current owner path on demand does not replace a refresh
   observation route
 - cleanup covers the full managed active-profile output set, including
   reference-only outputs, so stale runtime copies do not survive
 - live materialization does not invoke the Component Refresh, Continuity
-  Window, Codex Plane Deployment, Memory Movement, Stress Recovery, trusted
-  rollout-history, or cadence-example reference adapters or infer their
-  missing owner-runtime, observation, deploy-local, or active-cadence state
+  Window, Codex Plane Deployment, Route Progression, Memory Movement, Stress
+  Recovery, trusted rollout-history, or cadence-example reference adapters or
+  infer their missing owner-runtime, observation, deploy-local, semantic
+  projection, or active-cadence state
 - derived views cannot strengthen owner evidence or become owner truth
 
 Component Refresh remains a committed reference surface. Live activation
@@ -70,6 +71,13 @@ kinds and deterministic builder do not prove that `aoa-skills`, Dionysus, or
 another named owner currently publishes the landing receipts. Until a real
 owner-local publisher and observation route exist, the authored selector stays
 false and stale runtime copies are removed.
+
+Route Progression remains a committed legacy numeric compatibility surface.
+The current `aoa-skills` progression receipt uses semantic axis summaries and
+evidence posture rather than numeric deltas. Live refresh must not invoke the
+compatibility builder or invent a score mapping; semantic-only direct
+projection fails clearly. A future live surface requires an explicit
+cross-owner semantic projection and public schema contract.
 
 Memory Movement remains a committed snapshot of real reviewed `aoa-memo`
 corpus truth. Its catalog, object corpus, reviewed intake, and landing receipts
@@ -100,6 +108,8 @@ Refresh in
 The source-plus-observation admission law and the Owner Landing, Memory
 Movement, and Stress Recovery audit are recorded in
 `docs/decisions/AOST-D-0004-live-admission-requires-refresh-observation.md`.
+The Route Progression semantic-versus-numeric boundary is recorded in
+`docs/decisions/AOST-D-0005-route-progression-semantic-receipts-are-not-numeric-live-state.md`.
 
 ## Compatibility route
 
