@@ -139,6 +139,12 @@ Tracking starts with the first public release-prep baseline for this repository.
   to Candidate Lineage and Supersession Pruning part-local test homes while
   keeping their genuinely shared normalization core and all public generated
   bytes unchanged.
+- Retired the historical Runtime Closeout wave snapshot after verifying that
+  current owners publish distinct trial and return ABIs and no direct consumer
+  requires the standalone payload. Kept the wave event kind as generic Object,
+  Repeated Window, and Source Coverage evidence, reserved catalog slot 22 for
+  cleanup, preserved the public schema as contract history, and removed the
+  now-empty repo-local Checkpoint mechanic package.
 
 ## [0.1.3] - 2026-04-23
 

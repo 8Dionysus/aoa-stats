@@ -134,18 +134,17 @@ example in `aoa-skills`. Compatibility-fixture wording remains in the
 reference derivation posture only; it must not masquerade as stronger current
 owner truth or make a router prefer the legacy numeric shape.
 
-Runtime Closeout follows the mechanics-led Checkpoint variant. A pure
-Checkpoint core owns only the historical receipt-to-summary transformation;
-the profile owns the reference/live posture and stronger-owner route; the root
-builder keeps compatibility aliases and repo-wide fan-out. `abyss-stack`
-currently writes `runtime_trial_closeout_receipt` to
-`runtime-trial-closeouts.jsonl`, while the admitted stats ABI and installed
-observation route still name the older wave receipt and feed. The active stats
-source registry excludes that historical feed, while the compatibility ABI
-continues to support the committed fixture. The projection therefore stays
-committed/reference-only until a cross-owner change chooses a canonical
-receipt kind, registers it, observes its real feed, and proves a current
-producer. Extraction does not authorize an implicit kind conversion.
+Runtime Closeout demonstrates the second half of that lifecycle. The earlier
+mechanics-led slice isolated its historical wave-receipt projection and proved
+that current `abyss-stack` trial receipts and `aoa-sdk` return receipts are
+different contracts. The following stats-led necessity audit found no current
+wave publisher and no direct consumer beyond a generated routing hint. The
+standalone builder, catalog output, and last repo-local Checkpoint part are
+therefore retired. The wave event kind and fixture remain generic evidence for
+Object, Repeated Window, and Source Coverage, while slot 22 and the former
+output name remain cleanup provenance. Removing the projection does not
+authorize an implicit kind conversion; a future closeout surface starts from
+a new owner-approved ABI, reviewed profile, and catalog slot.
 
 Repeated Window follows a stats-led Recurrence boundary. The profile owns the
 bounded question: which admitted receipt activity was observed in each

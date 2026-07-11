@@ -57,7 +57,6 @@ def test_build_views_produces_expected_surface_counts() -> None:
         "component_refresh_summary.min.json",
         "memory_movement_summary.min.json",
         "titan_incarnation_summary.min.json",
-        "runtime_closeout_summary.min.json",
         "stress_recovery_window_summary.min.json",
         "source_coverage_summary.min.json",
         "surface_detection_summary.min.json",
@@ -131,13 +130,11 @@ def test_build_views_produces_expected_surface_counts() -> None:
         "rollout_active": 0,
         "rollback_recommended": 0,
     }
-    assert len(outputs["runtime_closeout_summary.min.json"]["closeouts"]) == 1
     assert outputs["stress_recovery_window_summary.min.json"]["suppression"]["status"] == "low_sample"
     assert len(outputs["surface_detection_summary.min.json"]["windows"]) == 1
     assert outputs["core_skill_application_summary.min.json"]["skills"][0]["detail_event_kind_counts"] == {
         "diagnosis_packet_receipt": 1
     }
-    assert outputs["runtime_closeout_summary.min.json"]["closeouts"][0]["wave_id"] == "W2"
     catalog = outputs["summary_surface_catalog.min.json"]
     assert catalog["schema_version"] == "aoa_stats_summary_surface_catalog_v2"
     assert catalog["schema_ref"] == "schemas/summary-surface-catalog.schema.json"
@@ -180,12 +177,15 @@ def test_build_views_produces_expected_surface_counts() -> None:
         "generated/component_refresh_summary.min.json",
         "generated/memory_movement_summary.min.json",
         "generated/titan_incarnation_summary.min.json",
-        "generated/runtime_closeout_summary.min.json",
         "generated/stress_recovery_window_summary.min.json",
         "generated/source_coverage_summary.min.json",
         "generated/surface_detection_summary.min.json",
     ]
-    assert {"owner_landing_summary", "titan_summon_summary"}.isdisjoint({
+    assert {
+        "owner_landing_summary",
+        "runtime_closeout_summary",
+        "titan_summon_summary",
+    }.isdisjoint({
         entry["name"] for entry in catalog["surfaces"]
     })
     assert catalog["surfaces"][-2]["name"] == "source_coverage_summary"

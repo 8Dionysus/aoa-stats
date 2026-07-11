@@ -114,7 +114,6 @@
       "antifragility",
       "audit",
       "boundary-bridge",
-      "checkpoint",
       "experience",
       "growth-cycle",
       "method-growth",
@@ -146,7 +145,6 @@
         "mechanics/audit/parts/source-coverage",
         "mechanics/audit/parts/surface-strength-detection",
         "mechanics/boundary-bridge/parts/memory-owner-handoff",
-        "mechanics/checkpoint/parts/runtime-closeout",
         "mechanics/growth-cycle/parts/automation-followthrough",
         "mechanics/growth-cycle/parts/route-fork-calibration",
         "mechanics/growth-cycle/parts/session-growth-branch",
@@ -561,29 +559,6 @@
             "schemas/stats-event-envelope.schema.json",
             "scripts/validate_receipt_abi.py"
           ]
-        }
-      ]
-    },
-    {
-      "path": "checkpoint",
-      "mechanic_class": "common-center",
-      "center_mechanic_ref": "Agents-of-Abyss/mechanics/checkpoint",
-      "local_status": "localized_active",
-      "local_function": "Summarize runtime closeout posture while stronger runtime owners retain gate truth.",
-      "package_payload_roots": [],
-      "active_part_routes": [
-        {
-          "path": "runtime-closeout",
-          "owner_surface": "mechanics/checkpoint/parts/runtime-closeout/CONTRACT.md",
-          "validation_surface": "mechanics/checkpoint/parts/runtime-closeout/VALIDATION.md",
-          "payload_class": "runtime-closeout-stats-operation",
-          "stats_source_family_refs": [
-            "read_models"
-          ],
-          "localized_payload_roots": [
-            "tests"
-          ],
-          "retained_root_routes": []
         }
       ]
     },

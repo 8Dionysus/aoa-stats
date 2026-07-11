@@ -20,10 +20,9 @@ find which operation owns its payload, validation, and compatibility posture.
 | `antifragility` | vector, stress-recovery, and negative-evidence contracts |
 | `audit` | coverage, object, skill-use, surface, and drift observations |
 | `boundary-bridge` | receipt admission, consumer regrounding, and memory handoff |
-| `checkpoint` | runtime closeout observation |
 | `experience` | friction, adoption, governance, office, and release health contracts |
 | `growth-cycle` | fork, session-growth, and automation follow-through summaries |
-| `method-growth` | candidate lineage, owner landing, and supersession |
+| `method-growth` | candidate lineage and supersession |
 | `recurrence` | live refresh, component manifests, continuity, and repeated windows |
 | `release-support` | deployment, rollout, campaign, and artifact-bundle support |
 | `rpg` | multi-axis route progression |

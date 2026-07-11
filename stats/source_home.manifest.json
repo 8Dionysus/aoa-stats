@@ -149,12 +149,12 @@
         "schemas/component-refresh-summary.schema.json",
         "schemas/memory-movement-summary.schema.json",
         "schemas/titan_incarnation_summary.schema.json",
-        "schemas/runtime-closeout-summary.schema.json",
         "schemas/stress-recovery-window-summary.schema.json",
         "schemas/source-coverage-summary.schema.json",
         "schemas/surface-detection-summary.schema.json",
         "mechanics/antifragility/parts/antifragility-vector/schemas/antifragility_vector_v1.json",
         "schemas/owner-landing-summary.schema.json",
+        "schemas/runtime-closeout-summary.schema.json",
         "schemas/titan_summon_summary.schema.json"
       ],
       "implementation_routes": [
@@ -177,7 +177,6 @@
         "src/aoa_stats_builder/rollout_cadence.py",
         "src/aoa_stats_builder/rollout_cadence_sources.py",
         "src/aoa_stats_builder/route_progression.py",
-        "src/aoa_stats_builder/runtime_closeout.py",
         "src/aoa_stats_builder/stress_recovery.py",
         "src/aoa_stats_builder/stress_recovery_sources.py",
         "src/aoa_stats_builder/surface_catalog.py",
@@ -206,7 +205,6 @@
         "generated/component_refresh_summary.min.json",
         "generated/memory_movement_summary.min.json",
         "generated/titan_incarnation_summary.min.json",
-        "generated/runtime_closeout_summary.min.json",
         "generated/stress_recovery_window_summary.min.json",
         "generated/source_coverage_summary.min.json",
         "generated/surface_detection_summary.min.json"
@@ -227,7 +225,6 @@
         "mechanics/method-growth/parts/candidate-lineage/tests/test_candidate_lineage.py",
         "mechanics/method-growth/parts/supersession-pruning/tests/test_supersession_pruning.py",
         "mechanics/rpg/parts/route-progression/tests/test_route_progression.py",
-        "mechanics/checkpoint/parts/runtime-closeout/tests/test_runtime_closeout.py",
         "mechanics/release-support/parts/codex-deployment-rollout/tests/test_codex_plane_deployment_projection.py",
         "mechanics/release-support/parts/trusted-rollout-history/tests/test_codex_trusted_rollout_projection.py",
         "mechanics/release-support/parts/rollout-campaign/tests/test_rollout_campaign_projection.py",
@@ -328,11 +325,6 @@
           "package": "titan",
           "part": "incarnation-summon",
           "path": "mechanics/titan/parts/incarnation-summon"
-        },
-        {
-          "package": "checkpoint",
-          "part": "runtime-closeout",
-          "path": "mechanics/checkpoint/parts/runtime-closeout"
         },
         {
           "package": "antifragility",

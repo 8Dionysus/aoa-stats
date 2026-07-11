@@ -3421,6 +3421,20 @@
         "artifact_kind": "document",
         "code_role": "none",
         "command_role": "none",
+        "document_role": "decision",
+        "mechanics_role": "none",
+        "surface_state": "authored_source"
+      },
+      "entity_kind": "decision",
+      "id": "entity:file:docs/decisions/aost-d-0010-runtime-closeout-wave-snapshot-is-contract-history-not-active-observability.md:b9e3ca3c29",
+      "label": "docs/decisions/AOST-D-0010-runtime-closeout-wave-snapshot-is-contract-history-not-active-observability.md",
+      "source_record_id": "file:docs/decisions/aost-d-0010-runtime-closeout-wave-snapshot-is-contract-history-not-active-observability.md:b9e3ca3c29"
+    },
+    {
+      "coordinates": {
+        "artifact_kind": "document",
+        "code_role": "none",
+        "command_role": "none",
         "document_role": "readme",
         "mechanics_role": "none",
         "surface_state": "authored_source"
@@ -4031,20 +4045,6 @@
       "id": "entity:file:generated/route_progression_summary.min.json:97bd59dab7",
       "label": "generated/route_progression_summary.min.json",
       "source_record_id": "file:generated/route_progression_summary.min.json:97bd59dab7"
-    },
-    {
-      "coordinates": {
-        "artifact_kind": "generated_readmodel",
-        "code_role": "none",
-        "command_role": "none",
-        "document_role": "none",
-        "mechanics_role": "none",
-        "surface_state": "generated_readmodel"
-      },
-      "entity_kind": "readmodel",
-      "id": "entity:file:generated/runtime_closeout_summary.min.json:6234108dff",
-      "label": "generated/runtime_closeout_summary.min.json",
-      "source_record_id": "file:generated/runtime_closeout_summary.min.json:6234108dff"
     },
     {
       "coordinates": {
@@ -7097,146 +7097,6 @@
       "id": "entity:file:mechanics/boundary-bridge/parts/receipt-abi-crossing/tests/test_receipt_abi_governance.py:68b3a3493b",
       "label": "mechanics/boundary-bridge/parts/receipt-abi-crossing/tests/test_receipt_abi_governance.py",
       "source_record_id": "file:mechanics/boundary-bridge/parts/receipt-abi-crossing/tests/test_receipt_abi_governance.py:68b3a3493b"
-    },
-    {
-      "coordinates": {
-        "artifact_kind": "document",
-        "code_role": "none",
-        "command_role": "none",
-        "document_role": "agents",
-        "mechanics_role": "mechanic_package",
-        "surface_state": "authored_source"
-      },
-      "entity_kind": "mechanic_package",
-      "id": "entity:file:mechanics/checkpoint/agents.md:cc4a61a4cb",
-      "label": "mechanics/checkpoint/AGENTS.md",
-      "source_record_id": "file:mechanics/checkpoint/agents.md:cc4a61a4cb"
-    },
-    {
-      "coordinates": {
-        "artifact_kind": "document",
-        "code_role": "none",
-        "command_role": "none",
-        "document_role": "parts",
-        "mechanics_role": "mechanic_package",
-        "surface_state": "authored_source"
-      },
-      "entity_kind": "mechanic_package",
-      "id": "entity:file:mechanics/checkpoint/parts.md:cdd82edf13",
-      "label": "mechanics/checkpoint/PARTS.md",
-      "source_record_id": "file:mechanics/checkpoint/parts.md:cdd82edf13"
-    },
-    {
-      "coordinates": {
-        "artifact_kind": "document",
-        "code_role": "none",
-        "command_role": "none",
-        "document_role": "provenance",
-        "mechanics_role": "mechanic_package",
-        "surface_state": "authored_source"
-      },
-      "entity_kind": "mechanic_package",
-      "id": "entity:file:mechanics/checkpoint/provenance.md:0f645191e8",
-      "label": "mechanics/checkpoint/PROVENANCE.md",
-      "source_record_id": "file:mechanics/checkpoint/provenance.md:0f645191e8"
-    },
-    {
-      "coordinates": {
-        "artifact_kind": "document",
-        "code_role": "none",
-        "command_role": "none",
-        "document_role": "readme",
-        "mechanics_role": "mechanic_package",
-        "surface_state": "authored_source"
-      },
-      "entity_kind": "mechanic_package",
-      "id": "entity:file:mechanics/checkpoint/readme.md:b0e9ecf9b0",
-      "label": "mechanics/checkpoint/README.md",
-      "source_record_id": "file:mechanics/checkpoint/readme.md:b0e9ecf9b0"
-    },
-    {
-      "coordinates": {
-        "artifact_kind": "document",
-        "code_role": "none",
-        "command_role": "none",
-        "document_role": "agents",
-        "mechanics_role": "part_doc",
-        "surface_state": "authored_source"
-      },
-      "entity_kind": "mechanic_part",
-      "id": "entity:file:mechanics/checkpoint/parts/agents.md:702481da18",
-      "label": "mechanics/checkpoint/parts/AGENTS.md",
-      "source_record_id": "file:mechanics/checkpoint/parts/agents.md:702481da18"
-    },
-    {
-      "coordinates": {
-        "artifact_kind": "document",
-        "code_role": "none",
-        "command_role": "none",
-        "document_role": "readme",
-        "mechanics_role": "part_doc",
-        "surface_state": "authored_source"
-      },
-      "entity_kind": "mechanic_part",
-      "id": "entity:file:mechanics/checkpoint/parts/readme.md:bbd408f411",
-      "label": "mechanics/checkpoint/parts/README.md",
-      "source_record_id": "file:mechanics/checkpoint/parts/readme.md:bbd408f411"
-    },
-    {
-      "coordinates": {
-        "artifact_kind": "document",
-        "code_role": "none",
-        "command_role": "none",
-        "document_role": "mechanics_doc",
-        "mechanics_role": "part_contract",
-        "surface_state": "authored_source"
-      },
-      "entity_kind": "mechanic_part",
-      "id": "entity:file:mechanics/checkpoint/parts/runtime-closeout/contract.md:2182490ddc",
-      "label": "mechanics/checkpoint/parts/runtime-closeout/CONTRACT.md",
-      "source_record_id": "file:mechanics/checkpoint/parts/runtime-closeout/contract.md:2182490ddc"
-    },
-    {
-      "coordinates": {
-        "artifact_kind": "document",
-        "code_role": "none",
-        "command_role": "none",
-        "document_role": "readme",
-        "mechanics_role": "part_doc",
-        "surface_state": "authored_source"
-      },
-      "entity_kind": "mechanic_part",
-      "id": "entity:file:mechanics/checkpoint/parts/runtime-closeout/readme.md:b93f5a470c",
-      "label": "mechanics/checkpoint/parts/runtime-closeout/README.md",
-      "source_record_id": "file:mechanics/checkpoint/parts/runtime-closeout/readme.md:b93f5a470c"
-    },
-    {
-      "coordinates": {
-        "artifact_kind": "document",
-        "code_role": "none",
-        "command_role": "none",
-        "document_role": "mechanics_doc",
-        "mechanics_role": "part_doc",
-        "surface_state": "authored_source"
-      },
-      "entity_kind": "mechanic_part",
-      "id": "entity:file:mechanics/checkpoint/parts/runtime-closeout/validation.md:43a771a8b9",
-      "label": "mechanics/checkpoint/parts/runtime-closeout/VALIDATION.md",
-      "source_record_id": "file:mechanics/checkpoint/parts/runtime-closeout/validation.md:43a771a8b9"
-    },
-    {
-      "coordinates": {
-        "artifact_kind": "test",
-        "code_role": "test",
-        "command_role": "test",
-        "document_role": "none",
-        "mechanics_role": "part_test",
-        "surface_state": "authored_source"
-      },
-      "entity_kind": "mechanic_part",
-      "id": "entity:file:mechanics/checkpoint/parts/runtime-closeout/tests/test_runtime_closeout.py:3a40888b63",
-      "label": "mechanics/checkpoint/parts/runtime-closeout/tests/test_runtime_closeout.py",
-      "source_record_id": "file:mechanics/checkpoint/parts/runtime-closeout/tests/test_runtime_closeout.py:3a40888b63"
     },
     {
       "coordinates": {
@@ -12470,20 +12330,6 @@
         "surface_state": "authored_source"
       },
       "entity_kind": "code",
-      "id": "entity:file:src/aoa_stats_builder/runtime_closeout.py:efc18343fe",
-      "label": "src/aoa_stats_builder/runtime_closeout.py",
-      "source_record_id": "file:src/aoa_stats_builder/runtime_closeout.py:efc18343fe"
-    },
-    {
-      "coordinates": {
-        "artifact_kind": "source_code",
-        "code_role": "source_module",
-        "command_role": "none",
-        "document_role": "none",
-        "mechanics_role": "none",
-        "surface_state": "authored_source"
-      },
-      "entity_kind": "code",
       "id": "entity:file:src/aoa_stats_builder/source_coverage.py:5ef0c3ffb9",
       "label": "src/aoa_stats_builder/source_coverage.py",
       "source_record_id": "file:src/aoa_stats_builder/source_coverage.py:5ef0c3ffb9"
@@ -13226,20 +13072,6 @@
         "surface_state": "authored_source"
       },
       "entity_kind": "artifact",
-      "id": "entity:file:stats/read-models/active/runtime_closeout_summary.profile.json:4dbafd5b82",
-      "label": "stats/read-models/active/runtime_closeout_summary.profile.json",
-      "source_record_id": "file:stats/read-models/active/runtime_closeout_summary.profile.json:4dbafd5b82"
-    },
-    {
-      "coordinates": {
-        "artifact_kind": "config",
-        "code_role": "none",
-        "command_role": "none",
-        "document_role": "none",
-        "mechanics_role": "none",
-        "surface_state": "authored_source"
-      },
-      "entity_kind": "artifact",
       "id": "entity:file:stats/read-models/active/session_growth_branch_summary.profile.json:4164ea6a51",
       "label": "stats/read-models/active/session_growth_branch_summary.profile.json",
       "source_record_id": "file:stats/read-models/active/session_growth_branch_summary.profile.json:4164ea6a51"
@@ -13341,6 +13173,20 @@
       "id": "entity:file:stats/read-models/retired/owner_landing_summary.profile.json:036a67e0d3",
       "label": "stats/read-models/retired/owner_landing_summary.profile.json",
       "source_record_id": "file:stats/read-models/retired/owner_landing_summary.profile.json:036a67e0d3"
+    },
+    {
+      "coordinates": {
+        "artifact_kind": "config",
+        "code_role": "none",
+        "command_role": "none",
+        "document_role": "none",
+        "mechanics_role": "none",
+        "surface_state": "authored_source"
+      },
+      "entity_kind": "artifact",
+      "id": "entity:file:stats/read-models/retired/runtime_closeout_summary.profile.json:46b07c2fae",
+      "label": "stats/read-models/retired/runtime_closeout_summary.profile.json",
+      "source_record_id": "file:stats/read-models/retired/runtime_closeout_summary.profile.json:46b07c2fae"
     },
     {
       "coordinates": {
@@ -13611,7 +13457,7 @@
   ],
   "index_identity": {
     "artifact_kind": "repository_entity_index",
-    "content_digest": "3dcf7cf10980e1e22b3a13ee3fdf7fa790e8b3b697bd5cf3f569b760a29db780",
+    "content_digest": "12aac6416ac242998bf931f11831bd6b5458cafe5bef43eecdb2f186ae059dde",
     "index_kind": "entity",
     "local_id": "index:repo-local:entities",
     "schema_ref": "aoa-kag:schemas/repo-local-kag-repository-index.schema.json"
@@ -13634,25 +13480,25 @@
   },
   "schema_version": "aoa-repo-local-kag-repository-index-v1",
   "source_index": {
-    "content_digest": "306743b30935c6808e48f02a0c04f073ad881dfbac7745b210dedae3a5ecbc28",
+    "content_digest": "08ccfeb8b320462c73269423fb079c88821fc5085b185b72a110a90cde4637c0",
     "local_id": "index:repo-local:source-surfaces",
     "path": "kag/indexes/source_surface_index.json"
   },
   "summary": {
-    "entry_count": 972,
+    "entry_count": 961,
     "kind_counts": {
       "agent_route": 16,
       "artifact": 148,
-      "code": 34,
+      "code": 33,
       "command": 31,
       "contract": 34,
-      "decision": 16,
+      "decision": 17,
       "document": 137,
       "manifest": 1,
-      "mechanic_package": 55,
-      "mechanic_part": 459,
+      "mechanic_package": 51,
+      "mechanic_part": 453,
       "owner_surface": 2,
-      "readmodel": 39
+      "readmodel": 38
     }
   }
 }

@@ -442,13 +442,13 @@ def test_authored_profiles_are_the_public_catalog_source() -> None:
     )
     catalog = load_json("generated/summary_surface_catalog.min.json")
 
-    assert len(active) == 23
+    assert len(active) == 22
     assert len(deferred) == 1
-    assert len(retired) == 2
+    assert len(retired) == 3
     assert [profile["catalog_order"] for profile in active] == [
         *range(1, 4),
         *range(5, 21),
-        *range(22, 26),
+        *range(23, 26),
     ]
     assert catalog["surfaces"] == public_active
     assert catalog["deferred_contract_surfaces"] == public_deferred
@@ -458,6 +458,7 @@ def test_authored_profiles_are_the_public_catalog_source() -> None:
         for name, profile in retired_by_name.items()
     } == {
         "owner_landing_summary": 4,
+        "runtime_closeout_summary": 22,
         "titan_summon_summary": 21,
     }
     for profile in retired:
@@ -474,6 +475,7 @@ def test_authored_profiles_are_the_public_catalog_source() -> None:
     assert not (
         REPO_ROOT / "mechanics/method-growth/parts/owner-landing"
     ).exists()
+    assert not (REPO_ROOT / "mechanics/checkpoint").exists()
     assert all("mechanic_routes" not in entry for entry in catalog["surfaces"])
     assert all("catalog_order" not in entry for entry in catalog["surfaces"])
 
@@ -483,7 +485,7 @@ def test_retired_profile_name_cannot_reenter_active_catalog(tmp_path: Path) -> N
     active_ref = "stats/read-models/active/titan_summon_summary.profile.json"
     active = load_repo_json(
         repo_root,
-        "stats/read-models/active/runtime_closeout_summary.profile.json",
+        "stats/read-models/active/stress_recovery_window_summary.profile.json",
     )
     active["name"] = "titan_summon_summary"
     active["surface_ref"] = "generated/titan_summon_summary.min.json"
@@ -496,7 +498,7 @@ def test_retired_profile_name_cannot_reenter_active_catalog(tmp_path: Path) -> N
 
 def test_retired_output_name_cannot_alias_an_active_output(tmp_path: Path) -> None:
     repo_root = copy_repo(tmp_path)
-    active_ref = "stats/read-models/active/runtime_closeout_summary.profile.json"
+    active_ref = "stats/read-models/active/stress_recovery_window_summary.profile.json"
     active = load_repo_json(repo_root, active_ref)
     active["surface_ref"] = "generated/titan_summon_summary.min.json"
     write_repo_json(repo_root, active_ref, active)
@@ -509,7 +511,7 @@ def test_retired_catalog_slot_cannot_be_reused_by_an_active_profile(
     tmp_path: Path,
 ) -> None:
     repo_root = copy_repo(tmp_path)
-    active_ref = "stats/read-models/active/runtime_closeout_summary.profile.json"
+    active_ref = "stats/read-models/active/stress_recovery_window_summary.profile.json"
     active = load_repo_json(repo_root, active_ref)
     active["catalog_order"] = 21
     write_repo_json(repo_root, active_ref, active)

@@ -35,8 +35,8 @@ admitted by the `intake_contract` family.
 - unknown event kinds fail before a summary is built
 - missing or invalid required publishers remain visible as errors
 - a surface with `live_state_capable: false` is not materialized or cataloged
-- the current 23-active plus two-retired managed universe yields exactly 11
-  admitted live outputs, 12 reference-only active cleanup targets, and two
+- the current 22-active plus three-retired managed universe yields exactly 11
+  admitted live outputs, 11 reference-only active cleanup targets, and three
   retired cleanup targets
 - resolving a current owner path on demand does not replace a refresh
   observation route
@@ -44,9 +44,9 @@ admitted by the `intake_contract` family.
   reference-only and retired runtime copies do not survive
 - live materialization does not invoke the Component Refresh, Continuity
   Window, Codex Plane Deployment, Route Progression, Memory Movement, Stress
-  Recovery, Runtime Closeout, trusted rollout-history, or cadence-example
-  reference adapters or infer their missing owner-runtime, observation,
-  deploy-local, semantic projection, receipt-ABI, or active-cadence state
+  Recovery, trusted rollout-history, or cadence-example reference adapters or
+  infer their missing owner-runtime, observation, deploy-local, semantic
+  projection, or active-cadence state
 - derived views cannot strengthen owner evidence or become owner truth
 
 Component Refresh remains a committed reference surface. Live activation
@@ -69,12 +69,14 @@ rollout-receipt artifacts below `.codex/generated/rollout/`. Until a real
 producer and refresh trigger are proven, the authored selector stays false and
 stale runtime copies are removed.
 
-Owner Landing is retired, not a reference-only live candidate. Its accepted
-event kinds remain Supersession Drop inputs, but no standalone builder or
-catalog entry exists. The retired tombstone keeps its former output in stale
-cleanup alongside Titan Summon. A future standalone projection requires a new
-reviewed active profile and slot plus real owner evidence; live refresh must
-not treat the tombstone as activation.
+Owner Landing and Runtime Closeout are retired, not reference-only live
+candidates. Landing event kinds remain Supersession Drop inputs, and the
+historical runtime wave event remains generic Object, Repeated Window, and
+Source Coverage evidence, but neither has a standalone builder or catalog
+entry. Their tombstones keep former outputs in stale cleanup alongside Titan
+Summon. Any future standalone projection requires a new reviewed active
+profile and slot plus real owner evidence; live refresh must not treat a
+tombstone as activation.
 
 Route Progression remains a committed legacy numeric compatibility surface.
 The current `aoa-skills` progression receipt uses semantic axis summaries and
@@ -83,13 +85,13 @@ compatibility builder or invent a score mapping; semantic-only direct
 projection fails clearly. A future live surface requires an explicit
 cross-owner semantic projection and public schema contract.
 
-Runtime Closeout remains a committed historical wave-receipt compatibility
-surface. The active source registry no longer admits the stale
-`runtime-wave-closeouts.jsonl` feed. Current `abyss-stack`
-`runtime_trial_closeout_receipt` and SDK `runtime_return_closeout_receipt`
-contracts are distinct and are not coerced into the wave ABI. Future live
-activation requires an owner-approved canonical receipt, a real observed log,
-registry and watcher parity, and end-to-end refresh proof.
+Runtime Closeout's standalone historical wave-receipt compatibility surface is
+retired. The active source registry does not admit the stale
+`runtime-wave-closeouts.jsonl` feed, and no builder may coerce current
+`abyss-stack` trial or SDK return contracts into the wave ABI. Future
+reintroduction requires an owner-approved canonical receipt, a new active
+profile and slot, a real observed log, registry and watcher parity, and
+end-to-end refresh proof.
 
 Memory Movement remains a committed snapshot of real reviewed `aoa-memo`
 corpus truth. Its catalog, object corpus, reviewed intake, and landing receipts
@@ -127,6 +129,8 @@ The Route Progression semantic-versus-numeric boundary is recorded in
 The Runtime Closeout historical-wave versus current-owner receipt boundary is
 recorded in
 `docs/decisions/AOST-D-0006-runtime-closeout-wave-receipts-are-not-current-trial-live-state.md`.
+Its standalone-surface retirement is recorded in
+`docs/decisions/AOST-D-0010-runtime-closeout-wave-snapshot-is-contract-history-not-active-observability.md`.
 
 ## Compatibility route
 

@@ -26,7 +26,6 @@ ROADMAP_PHRASES = {
     "component_refresh_summary": "component-refresh",
     "memory_movement_summary": "memory-movement",
     "titan_incarnation_summary": "Titan-incarnation",
-    "runtime_closeout_summary": "runtime-closeout",
     "stress_recovery_window_summary": "stress-recovery",
     "source_coverage_summary": "source-coverage",
     "surface_detection_summary": "surface-detection",

@@ -20,7 +20,6 @@ REFERENCE_ONLY_ACTIVE_OUTPUT_NAMES = frozenset(
         "component_refresh_summary.min.json",
         "memory_movement_summary.min.json",
         "route_progression_summary.min.json",
-        "runtime_closeout_summary.min.json",
         "titan_incarnation_summary.min.json",
         "stress_recovery_window_summary.min.json",
     }
@@ -28,6 +27,7 @@ REFERENCE_ONLY_ACTIVE_OUTPUT_NAMES = frozenset(
 RETIRED_OUTPUT_NAMES = frozenset(
     {
         "owner_landing_summary.min.json",
+        "runtime_closeout_summary.min.json",
         "titan_summon_summary.min.json",
     }
 )
@@ -70,6 +70,7 @@ def test_live_output_inventory_is_derived_from_authored_profile_posture() -> Non
     assert len(live_profile_outputs) == 11
     assert retired_profile_outputs == (
         "owner_landing_summary.min.json",
+        "runtime_closeout_summary.min.json",
         "titan_summon_summary.min.json",
     )
     assert module.RETIRED_PROFILE_SURFACE_OUTPUT_NAMES == retired_profile_outputs
@@ -109,9 +110,6 @@ def test_live_allowlist_never_invokes_reference_only_builders() -> None:
     route_progression_builder = Mock(
         side_effect=AssertionError("route progression builder ran live")
     )
-    runtime_closeout_builder = Mock(
-        side_effect=AssertionError("runtime closeout builder ran live")
-    )
     history_adapter = Mock(side_effect=AssertionError("history adapter ran live"))
     cadence_adapter = Mock(side_effect=AssertionError("cadence adapter ran live"))
 
@@ -121,7 +119,6 @@ def test_live_allowlist_never_invokes_reference_only_builders() -> None:
             "build_memory_movement_summary": memory_movement_builder,
             "build_stress_recovery_window_summary": stress_recovery_builder,
             "build_route_progression_summary": route_progression_builder,
-            "build_runtime_closeout_summary": runtime_closeout_builder,
             "codex_trusted_rollout_input_bundle": history_adapter,
             "rollout_cadence_input_bundle": cadence_adapter,
         },
@@ -137,7 +134,6 @@ def test_live_allowlist_never_invokes_reference_only_builders() -> None:
     memory_movement_builder.assert_not_called()
     stress_recovery_builder.assert_not_called()
     route_progression_builder.assert_not_called()
-    runtime_closeout_builder.assert_not_called()
     history_adapter.assert_not_called()
     cadence_adapter.assert_not_called()
     assert "owner_landing_summary.min.json" not in outputs

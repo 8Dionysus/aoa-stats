@@ -116,10 +116,6 @@ from aoa_stats_builder.route_progression import (  # noqa: E402
     axis_template as axis_template,
     build_route_progression_summary,
 )
-from aoa_stats_builder.runtime_closeout import (  # noqa: E402
-    build_runtime_closeout_summary as build_runtime_closeout_summary,
-    runtime_closeout_identity as runtime_closeout_identity,
-)
 from aoa_stats_builder.source_coverage import build_source_coverage_summary  # noqa: E402
 from aoa_stats_builder.stress_recovery import (  # noqa: E402
     build_stress_recovery_window_summary as build_stress_recovery_window_summary_from_inputs,
@@ -647,10 +643,6 @@ def build_all_views(
         ("continuity_window_summary.min.json", build_continuity_window_summary),
         ("component_refresh_summary.min.json", build_component_refresh_summary),
         ("memory_movement_summary.min.json", build_memory_movement_summary),
-        (
-            "runtime_closeout_summary.min.json",
-            lambda: build_runtime_closeout_summary(active_receipts, source),
-        ),
         (
             "stress_recovery_window_summary.min.json",
             lambda: build_stress_recovery_window_summary(

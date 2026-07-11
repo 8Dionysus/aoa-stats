@@ -1730,7 +1730,7 @@
     },
     {
       "artifact_kind": "document",
-      "content_hash": "82675e3b86cca3028472545981db7f7c05045ed50e5d6d4538ea67df1bf6983e",
+      "content_hash": "79f6d0e9444fa8fe02f965b19736ebb94387ab9ec4370aff13348a27469a3c2f",
       "id": "artifact:file:agents.md:a54ff182c7",
       "path": "AGENTS.md",
       "source_record_id": "file:agents.md:a54ff182c7",
@@ -1738,7 +1738,7 @@
     },
     {
       "artifact_kind": "document",
-      "content_hash": "2b407c1a8377bfbe957e8a13ade90f2d45cf25caf85be1b5cd0861b336043b2a",
+      "content_hash": "62ce3794d9c65fa39bb554b8f37ae089945fdf481a9e4b8b22c3151eecd66834",
       "id": "artifact:file:changelog.md:06572a96a5",
       "path": "CHANGELOG.md",
       "source_record_id": "file:changelog.md:06572a96a5",
@@ -1762,7 +1762,7 @@
     },
     {
       "artifact_kind": "document",
-      "content_hash": "4d474773fa47a5c6b7f463235ed36e169c911664a16a65bb0b648b6a7a771351",
+      "content_hash": "10501011cf1f3a320f48bd6e20f13f7308154bc2544dc04b1ddae011ca36fc12",
       "id": "artifact:file:design.md:3dc5dd454e",
       "path": "DESIGN.md",
       "source_record_id": "file:design.md:3dc5dd454e",
@@ -1778,7 +1778,7 @@
     },
     {
       "artifact_kind": "document",
-      "content_hash": "01064f0cb39612f9934adfc615b9ea60f9d22c2f0d2a6595c966e37455d7e7db",
+      "content_hash": "33b6e67aae846523f183315393c7b385a49f8a4bc409d41d71c24100adff0276",
       "id": "artifact:file:readme.md:b335630551",
       "path": "README.md",
       "source_record_id": "file:readme.md:b335630551",
@@ -1786,7 +1786,7 @@
     },
     {
       "artifact_kind": "document",
-      "content_hash": "227fd7e8810f31bafe07d3b48039e7d0ad0d14996489a033c606adce730be595",
+      "content_hash": "a41460356ec193cc8f1477c627675850c3db081b1b722ce1f5a282640d94255d",
       "id": "artifact:file:roadmap.md:683343bdf9",
       "path": "ROADMAP.md",
       "source_record_id": "file:roadmap.md:683343bdf9",
@@ -1802,7 +1802,7 @@
     },
     {
       "artifact_kind": "document",
-      "content_hash": "60b658ce2ef9a3c821f73c07cefe4ed4c43524a7058cc2e0887bf48c31fd6607",
+      "content_hash": "b8fdbe080e672292c88a669b141b63270c0f9f8afde92e1208a43a3dfc1f2688",
       "id": "artifact:file:docs/architecture.md:ff21b6b9a3",
       "path": "docs/ARCHITECTURE.md",
       "source_record_id": "file:docs/architecture.md:ff21b6b9a3",
@@ -1810,7 +1810,7 @@
     },
     {
       "artifact_kind": "document",
-      "content_hash": "7a021349f5624b68e921bcffb5f9ceb3b0a928f9462dfc31616e8d972a109258",
+      "content_hash": "7c131bba1aaeb730929fa106c181113e4c53e1658958091c57901c5e3d64d1d9",
       "id": "artifact:file:docs/boundaries.md:679427f04a",
       "path": "docs/BOUNDARIES.md",
       "source_record_id": "file:docs/boundaries.md:679427f04a",
@@ -1954,6 +1954,14 @@
     },
     {
       "artifact_kind": "document",
+      "content_hash": "f07bc7f019cc30bc32e90a06c9bef697a51977bd4545448e2fde1abdce403b27",
+      "id": "artifact:file:docs/decisions/aost-d-0010-runtime-closeout-wave-snapshot-is-contract-history-not-active-observability.md:b9e3ca3c29",
+      "path": "docs/decisions/AOST-D-0010-runtime-closeout-wave-snapshot-is-contract-history-not-active-observability.md",
+      "source_record_id": "file:docs/decisions/aost-d-0010-runtime-closeout-wave-snapshot-is-contract-history-not-active-observability.md:b9e3ca3c29",
+      "surface_state": "authored_source"
+    },
+    {
+      "artifact_kind": "document",
       "content_hash": "e0e9b61b0afab1087a69ec979caaa790eed6061ce2b9c1cf9644f054d6cf1c36",
       "id": "artifact:file:docs/decisions/readme.md:e5ec0e7030",
       "path": "docs/decisions/README.md",
@@ -1978,7 +1986,7 @@
     },
     {
       "artifact_kind": "generated_readmodel",
-      "content_hash": "0dbca8f512fc124d3c9e1d1f1238fb271da78bf85b34e2b74049eee6ab303207",
+      "content_hash": "231b74d7e7963a9f7f6bcca3d2062c3c1e3c2f1104ac709cf8514460b79d4b5f",
       "id": "artifact:file:docs/decisions/indexes/by-date.md:7f76a83a93",
       "path": "docs/decisions/indexes/by-date.md",
       "source_record_id": "file:docs/decisions/indexes/by-date.md:7f76a83a93",
@@ -1986,7 +1994,7 @@
     },
     {
       "artifact_kind": "generated_readmodel",
-      "content_hash": "9bf5c002fa6e5ef33c8eb4bc695f1c586eeb023cb5a2007e23039689e8b529b9",
+      "content_hash": "61c2190999588f44e83fdaa60471f42406e8c52a0b5117b996f49cfafe655a69",
       "id": "artifact:file:docs/decisions/indexes/by-guard.md:8ae406686a",
       "path": "docs/decisions/indexes/by-guard.md",
       "source_record_id": "file:docs/decisions/indexes/by-guard.md:8ae406686a",
@@ -1994,7 +2002,7 @@
     },
     {
       "artifact_kind": "generated_readmodel",
-      "content_hash": "b4b636c7189d6fed09383b31dd46cc17676d7e14dc1b870525d6009c4920de3d",
+      "content_hash": "01f55fd4d8f499e03368b01840c423c77fc756942a94b9e8da10fef263069e0c",
       "id": "artifact:file:docs/decisions/indexes/by-number.md:02e6940a39",
       "path": "docs/decisions/indexes/by-number.md",
       "source_record_id": "file:docs/decisions/indexes/by-number.md:02e6940a39",
@@ -2002,7 +2010,7 @@
     },
     {
       "artifact_kind": "generated_readmodel",
-      "content_hash": "fbd86f1dc1d7759d11677a1b764551d303168df0e3a872e0a20c727f5bec49ae",
+      "content_hash": "90d14a9bccfdeae11c00d44ebae4659956176b22ac20df2b520dae276914a683",
       "id": "artifact:file:docs/decisions/indexes/by-source-lane.md:d12818b811",
       "path": "docs/decisions/indexes/by-source-lane.md",
       "source_record_id": "file:docs/decisions/indexes/by-source-lane.md:d12818b811",
@@ -2010,7 +2018,7 @@
     },
     {
       "artifact_kind": "generated_readmodel",
-      "content_hash": "6dc363d08f9978173f85855431d35e0d4dc7e895907bd916e7052fc6c92207cb",
+      "content_hash": "14790c9674ce0b3f321b287f08fe7272b93cbbacdcaf8fe9b21759c507d98643",
       "id": "artifact:file:docs/decisions/indexes/by-stats-surface.md:01abbd2708",
       "path": "docs/decisions/indexes/by-stats-surface.md",
       "source_record_id": "file:docs/decisions/indexes/by-stats-surface.md:01abbd2708",
@@ -2018,7 +2026,7 @@
     },
     {
       "artifact_kind": "generated_readmodel",
-      "content_hash": "ea582c48d068b5e1fed7464f4cfe4dca2be625456a90fee8bfaa34072b409a54",
+      "content_hash": "bf06a95a14adffa491e8838e2e141c2319b6766d37c9245f162c8b5570a385cf",
       "id": "artifact:file:docs/decisions/indexes/by-surface.md:acd156903f",
       "path": "docs/decisions/indexes/by-surface.md",
       "source_record_id": "file:docs/decisions/indexes/by-surface.md:acd156903f",
@@ -2306,14 +2314,6 @@
     },
     {
       "artifact_kind": "generated_readmodel",
-      "content_hash": "2f3b958e75099e8ae0a3035eca60be7b8809cf2f6950fdfaa2f934ab1845649c",
-      "id": "artifact:file:generated/runtime_closeout_summary.min.json:6234108dff",
-      "path": "generated/runtime_closeout_summary.min.json",
-      "source_record_id": "file:generated/runtime_closeout_summary.min.json:6234108dff",
-      "surface_state": "generated_readmodel"
-    },
-    {
-      "artifact_kind": "generated_readmodel",
       "content_hash": "5f2896f1a5386c49011dc461494cd31d7f05ce3b6be0fcf16e69ec2c22b14fe0",
       "id": "artifact:file:generated/session_growth_branch_summary.min.json:0c26ac97be",
       "path": "generated/session_growth_branch_summary.min.json",
@@ -2338,7 +2338,7 @@
     },
     {
       "artifact_kind": "generated_readmodel",
-      "content_hash": "3a793848b6c07d0b72e8da99b5f4aadf57d754d8a9c9915b95becee5a13de6f0",
+      "content_hash": "e0b8a0088e359f153ca06eb1880f5b643493548f814fc85fe63e558ddb0cfb00",
       "id": "artifact:file:generated/summary_surface_catalog.min.json:5c31a5556b",
       "path": "generated/summary_surface_catalog.min.json",
       "source_record_id": "file:generated/summary_surface_catalog.min.json:5c31a5556b",
@@ -2466,7 +2466,7 @@
     },
     {
       "artifact_kind": "document",
-      "content_hash": "3d91d46550bda88bfd4dd9c13967717fea0af8c35a308e1de8bf12a6f8a103ea",
+      "content_hash": "464ec9171ed5f682b75766a76bbdfb95ede7d8a9830a478350587bbf97704b1b",
       "id": "artifact:file:mechanics/readme.md:c091f898d3",
       "path": "mechanics/README.md",
       "source_record_id": "file:mechanics/readme.md:c091f898d3",
@@ -3842,7 +3842,7 @@
     },
     {
       "artifact_kind": "document",
-      "content_hash": "199ae1a4c928f085eec36192231f19ecbcf952d99702fc03cb8c66b41e99e65a",
+      "content_hash": "4d7b0082ba3205ae85b92222971bf5062b36b961593523cda8133fcef5ec521d",
       "id": "artifact:file:mechanics/audit/parts/source-coverage/docs/source_coverage_summary.md:3b60baeeb2",
       "path": "mechanics/audit/parts/source-coverage/docs/SOURCE_COVERAGE_SUMMARY.md",
       "source_record_id": "file:mechanics/audit/parts/source-coverage/docs/source_coverage_summary.md:3b60baeeb2",
@@ -4054,86 +4054,6 @@
       "id": "artifact:file:mechanics/boundary-bridge/parts/receipt-abi-crossing/tests/test_receipt_abi_governance.py:68b3a3493b",
       "path": "mechanics/boundary-bridge/parts/receipt-abi-crossing/tests/test_receipt_abi_governance.py",
       "source_record_id": "file:mechanics/boundary-bridge/parts/receipt-abi-crossing/tests/test_receipt_abi_governance.py:68b3a3493b",
-      "surface_state": "authored_source"
-    },
-    {
-      "artifact_kind": "document",
-      "content_hash": "911516a714c136b0490ddb84480f4a611624655b2dc91b740f39e12b4de82c95",
-      "id": "artifact:file:mechanics/checkpoint/agents.md:cc4a61a4cb",
-      "path": "mechanics/checkpoint/AGENTS.md",
-      "source_record_id": "file:mechanics/checkpoint/agents.md:cc4a61a4cb",
-      "surface_state": "authored_source"
-    },
-    {
-      "artifact_kind": "document",
-      "content_hash": "9873b09a379734c46ca8b8744efb2abfa6b79b58ae2a79b130b7092a333f949c",
-      "id": "artifact:file:mechanics/checkpoint/parts.md:cdd82edf13",
-      "path": "mechanics/checkpoint/PARTS.md",
-      "source_record_id": "file:mechanics/checkpoint/parts.md:cdd82edf13",
-      "surface_state": "authored_source"
-    },
-    {
-      "artifact_kind": "document",
-      "content_hash": "be6f24d83733a1823ea9aadb87b25ca4dc02fb206213bec61624bb99426f2dd7",
-      "id": "artifact:file:mechanics/checkpoint/provenance.md:0f645191e8",
-      "path": "mechanics/checkpoint/PROVENANCE.md",
-      "source_record_id": "file:mechanics/checkpoint/provenance.md:0f645191e8",
-      "surface_state": "authored_source"
-    },
-    {
-      "artifact_kind": "document",
-      "content_hash": "d9de72e7132068b6686fe5adecd7ad3aa228be7e2639dbde07b6bfd54a0fd69e",
-      "id": "artifact:file:mechanics/checkpoint/readme.md:b0e9ecf9b0",
-      "path": "mechanics/checkpoint/README.md",
-      "source_record_id": "file:mechanics/checkpoint/readme.md:b0e9ecf9b0",
-      "surface_state": "authored_source"
-    },
-    {
-      "artifact_kind": "document",
-      "content_hash": "df9f2db104b012101be63f3ea79b742a80c318f52961ff82c7dfe51968eeff3b",
-      "id": "artifact:file:mechanics/checkpoint/parts/agents.md:702481da18",
-      "path": "mechanics/checkpoint/parts/AGENTS.md",
-      "source_record_id": "file:mechanics/checkpoint/parts/agents.md:702481da18",
-      "surface_state": "authored_source"
-    },
-    {
-      "artifact_kind": "document",
-      "content_hash": "cc0f09fb9c8963ce6c7142fcc90700b9d1d75112e5dab43c8f098c9ac0b12179",
-      "id": "artifact:file:mechanics/checkpoint/parts/readme.md:bbd408f411",
-      "path": "mechanics/checkpoint/parts/README.md",
-      "source_record_id": "file:mechanics/checkpoint/parts/readme.md:bbd408f411",
-      "surface_state": "authored_source"
-    },
-    {
-      "artifact_kind": "document",
-      "content_hash": "0b1128d01d94bb88864dcc48c104dea8f623dd6747e5ae0553baa2d5b0dba70b",
-      "id": "artifact:file:mechanics/checkpoint/parts/runtime-closeout/contract.md:2182490ddc",
-      "path": "mechanics/checkpoint/parts/runtime-closeout/CONTRACT.md",
-      "source_record_id": "file:mechanics/checkpoint/parts/runtime-closeout/contract.md:2182490ddc",
-      "surface_state": "authored_source"
-    },
-    {
-      "artifact_kind": "document",
-      "content_hash": "416daf6f139f790e93810da2a981b046975fd781acaf0f2b6d3c734916029fe8",
-      "id": "artifact:file:mechanics/checkpoint/parts/runtime-closeout/readme.md:b93f5a470c",
-      "path": "mechanics/checkpoint/parts/runtime-closeout/README.md",
-      "source_record_id": "file:mechanics/checkpoint/parts/runtime-closeout/readme.md:b93f5a470c",
-      "surface_state": "authored_source"
-    },
-    {
-      "artifact_kind": "document",
-      "content_hash": "6e88b174a1c5f8efd448af1cd63f2e9e4d3e56a59c56668486d3dac0177d64a6",
-      "id": "artifact:file:mechanics/checkpoint/parts/runtime-closeout/validation.md:43a771a8b9",
-      "path": "mechanics/checkpoint/parts/runtime-closeout/VALIDATION.md",
-      "source_record_id": "file:mechanics/checkpoint/parts/runtime-closeout/validation.md:43a771a8b9",
-      "surface_state": "authored_source"
-    },
-    {
-      "artifact_kind": "test",
-      "content_hash": "e224316ec1c0d5bb24bae66dbf62d54ee981e12e2825172c11a74414d42b5873",
-      "id": "artifact:file:mechanics/checkpoint/parts/runtime-closeout/tests/test_runtime_closeout.py:3a40888b63",
-      "path": "mechanics/checkpoint/parts/runtime-closeout/tests/test_runtime_closeout.py",
-      "source_record_id": "file:mechanics/checkpoint/parts/runtime-closeout/tests/test_runtime_closeout.py:3a40888b63",
       "surface_state": "authored_source"
     },
     {
@@ -5898,7 +5818,7 @@
     },
     {
       "artifact_kind": "document",
-      "content_hash": "1a96e873bfaf1c125bd0de79d50b5e3ff26a723f6afb64dad761e8ba29b1fc4b",
+      "content_hash": "94240591d7e70a060754c18506dc96e8ab92b2c11c4f0d0693b92ba7c23085ce",
       "id": "artifact:file:mechanics/recurrence/parts/live-receipt-refresh/contract.md:c4b2a7db4d",
       "path": "mechanics/recurrence/parts/live-receipt-refresh/CONTRACT.md",
       "source_record_id": "file:mechanics/recurrence/parts/live-receipt-refresh/contract.md:c4b2a7db4d",
@@ -5906,7 +5826,7 @@
     },
     {
       "artifact_kind": "document",
-      "content_hash": "689b4634490ca2a1e6e32d84f4170ab657f442bacd08f6e517306e0511e9756d",
+      "content_hash": "aad54bea3519b910f92ae9487b3ddd79704d8b32f4ffc90b66547af907b77333",
       "id": "artifact:file:mechanics/recurrence/parts/live-receipt-refresh/readme.md:ed8e247fa6",
       "path": "mechanics/recurrence/parts/live-receipt-refresh/README.md",
       "source_record_id": "file:mechanics/recurrence/parts/live-receipt-refresh/readme.md:ed8e247fa6",
@@ -5914,7 +5834,7 @@
     },
     {
       "artifact_kind": "document",
-      "content_hash": "6d82f5858e8c62c8dde7edf74920a221d48cabed8926df448a5d2b86c910019c",
+      "content_hash": "9be11be07ead12622045fcbe52a909a90c682087e8724a4673f03714087593f9",
       "id": "artifact:file:mechanics/recurrence/parts/live-receipt-refresh/validation.md:c26dcdde9f",
       "path": "mechanics/recurrence/parts/live-receipt-refresh/VALIDATION.md",
       "source_record_id": "file:mechanics/recurrence/parts/live-receipt-refresh/validation.md:c26dcdde9f",
@@ -5946,7 +5866,7 @@
     },
     {
       "artifact_kind": "document",
-      "content_hash": "3d7c6cdc511c89e00b64221fd6e53b59a25cbd9ed10199057ccb08fec48b0f1b",
+      "content_hash": "0e54edb7d7f0a5f46b4acd92181b0f474fab1f9fe0d2c87ec26fd5d9202d0d58",
       "id": "artifact:file:mechanics/recurrence/parts/live-receipt-refresh/docs/live_session_use.md:807ec41ee1",
       "path": "mechanics/recurrence/parts/live-receipt-refresh/docs/LIVE_SESSION_USE.md",
       "source_record_id": "file:mechanics/recurrence/parts/live-receipt-refresh/docs/live_session_use.md:807ec41ee1",
@@ -6018,7 +5938,7 @@
     },
     {
       "artifact_kind": "test",
-      "content_hash": "aae0b6c1808d0f26b9524849bd5b4e9e4f09d6126079a69fc703634f269a7e7b",
+      "content_hash": "6275ad8871e2bd71bb6f0674708bcaebde63d0ff6f0cbedf9e74ea1cf39a7715",
       "id": "artifact:file:mechanics/recurrence/parts/live-receipt-refresh/tests/test_refresh_live_stats.py:7cafbd910d",
       "path": "mechanics/recurrence/parts/live-receipt-refresh/tests/test_refresh_live_stats.py",
       "source_record_id": "file:mechanics/recurrence/parts/live-receipt-refresh/tests/test_refresh_live_stats.py:7cafbd910d",
@@ -6562,7 +6482,7 @@
     },
     {
       "artifact_kind": "config",
-      "content_hash": "2d160522fafd7c2630701d27cbc45fbb319566a6773b7838ab89a6b4cb9d088b",
+      "content_hash": "c77d9fbdec4261321f15a6034bf8c235c12f007bcc2befa8b2333f6df316fed2",
       "id": "artifact:file:mechanics/topology.json:c2f84a03b1",
       "path": "mechanics/topology.json",
       "source_record_id": "file:mechanics/topology.json:c2f84a03b1",
@@ -6826,7 +6746,7 @@
     },
     {
       "artifact_kind": "script",
-      "content_hash": "e1b0578df3134bb2c2d16db212c01a33ef6c16ca72a6b245670f9dda694d2524",
+      "content_hash": "03836052742e47bfe11f5d473f856bdd6641aaf5f593fb6f573121f310a1437f",
       "id": "artifact:file:scripts/build_views.py:b705861394",
       "path": "scripts/build_views.py",
       "source_record_id": "file:scripts/build_views.py:b705861394",
@@ -6930,7 +6850,7 @@
     },
     {
       "artifact_kind": "validator",
-      "content_hash": "a6f64866d9bed20fb79a6fd40abf2f31e77310dee027a89f1091f241ca192bf2",
+      "content_hash": "3325a9a6f646b371c738b0a6a9d5fd36fd771f3e6b9c9868f96d88768a3a6c2a",
       "id": "artifact:file:scripts/validate_stats_source_home.py:6be6e8ef8c",
       "path": "scripts/validate_stats_source_home.py",
       "source_record_id": "file:scripts/validate_stats_source_home.py:6be6e8ef8c",
@@ -6946,7 +6866,7 @@
     },
     {
       "artifact_kind": "source_code",
-      "content_hash": "d8321f47b46943fd882dcd6cb25d0e5e0df07f68154ba6cbf392416faad1128a",
+      "content_hash": "d8e1984c1d9d4f5b5009ad3a89dd8d0d612b2eb1f5261e259ed351238ad2aad6",
       "id": "artifact:file:src/aoa_stats_builder/__init__.py:3d39f7c839",
       "path": "src/aoa_stats_builder/__init__.py",
       "source_record_id": "file:src/aoa_stats_builder/__init__.py:3d39f7c839",
@@ -7122,14 +7042,6 @@
     },
     {
       "artifact_kind": "source_code",
-      "content_hash": "e8049dbbd37d5fac822aa241eee8dfb73c56dfc8492088153a9ffc8fda28d1fe",
-      "id": "artifact:file:src/aoa_stats_builder/runtime_closeout.py:efc18343fe",
-      "path": "src/aoa_stats_builder/runtime_closeout.py",
-      "source_record_id": "file:src/aoa_stats_builder/runtime_closeout.py:efc18343fe",
-      "surface_state": "authored_source"
-    },
-    {
-      "artifact_kind": "source_code",
       "content_hash": "a5bc5edb63a7c1a5b067543740b190fcac5f530ae17746127c2911c142664614",
       "id": "artifact:file:src/aoa_stats_builder/source_coverage.py:5ef0c3ffb9",
       "path": "src/aoa_stats_builder/source_coverage.py",
@@ -7218,7 +7130,7 @@
     },
     {
       "artifact_kind": "document",
-      "content_hash": "716cf39bde868c907f66fa42b7a3c8e43f2f884dcd0fbfd8a1e3957fbb1f1912",
+      "content_hash": "6e0b0bec7344b3da2fad0f6a6a1ea812809a7cda8c5749139ad1226ada1c9bf5",
       "id": "artifact:file:stats/readme.md:6bac6d2ff5",
       "path": "stats/README.md",
       "source_record_id": "file:stats/readme.md:6bac6d2ff5",
@@ -7250,7 +7162,7 @@
     },
     {
       "artifact_kind": "config",
-      "content_hash": "79fae404e504a7c4571d06e9a7b53370b4a8c6d2a1d1aace0753dda6eaf6c97b",
+      "content_hash": "2ccaeb4a951d009bdf0690ccc76b1728a1092d6a54b69013686f260d6d4aee44",
       "id": "artifact:file:stats/intake-contract/event-kind-registry.json:8161385e61",
       "path": "stats/intake-contract/event-kind-registry.json",
       "source_record_id": "file:stats/intake-contract/event-kind-registry.json:8161385e61",
@@ -7418,7 +7330,7 @@
     },
     {
       "artifact_kind": "document",
-      "content_hash": "77d51d587b2caa40bb9c6f87c8903da510f285c67d142526ccae787ed065a3f6",
+      "content_hash": "8b301cb1c384558fd608972519b06d84180135eeff97ac193439c768e5d74f4c",
       "id": "artifact:file:stats/read-models/readme.md:5ba4a92471",
       "path": "stats/read-models/README.md",
       "source_record_id": "file:stats/read-models/readme.md:5ba4a92471",
@@ -7554,14 +7466,6 @@
     },
     {
       "artifact_kind": "config",
-      "content_hash": "37e298a64faf01832553fb651fff656bcf699fd29d8c5c42ea0780caba7cc552",
-      "id": "artifact:file:stats/read-models/active/runtime_closeout_summary.profile.json:4dbafd5b82",
-      "path": "stats/read-models/active/runtime_closeout_summary.profile.json",
-      "source_record_id": "file:stats/read-models/active/runtime_closeout_summary.profile.json:4dbafd5b82",
-      "surface_state": "authored_source"
-    },
-    {
-      "artifact_kind": "config",
       "content_hash": "d23305b29e13a2c6b77e7e6ce71f866753e762ece9801cbddc184d2d4414ebc8",
       "id": "artifact:file:stats/read-models/active/session_growth_branch_summary.profile.json:4164ea6a51",
       "path": "stats/read-models/active/session_growth_branch_summary.profile.json",
@@ -7626,6 +7530,14 @@
     },
     {
       "artifact_kind": "config",
+      "content_hash": "1b1b67258e94fc621daa3a0f6bd70047d2affe2c3e38167f65d53e6ae97ee0a6",
+      "id": "artifact:file:stats/read-models/retired/runtime_closeout_summary.profile.json:46b07c2fae",
+      "path": "stats/read-models/retired/runtime_closeout_summary.profile.json",
+      "source_record_id": "file:stats/read-models/retired/runtime_closeout_summary.profile.json:46b07c2fae",
+      "surface_state": "authored_source"
+    },
+    {
+      "artifact_kind": "config",
       "content_hash": "2bd27f834b662ff579f8e257af2c9ec4bdcb590f94b2f147e6e18e1c37199def",
       "id": "artifact:file:stats/read-models/retired/titan_summon_summary.profile.json:de05c16687",
       "path": "stats/read-models/retired/titan_summon_summary.profile.json",
@@ -7642,7 +7554,7 @@
     },
     {
       "artifact_kind": "config",
-      "content_hash": "41177bda582c0e39f2af596547312838249f76c14cb223b17d7823314b355651",
+      "content_hash": "d9b55cdfe842f1760833e55cae8625a68c2f2177f132df2bc2938e1d068ab6f3",
       "id": "artifact:file:stats/source_home.manifest.json:41b237ff45",
       "path": "stats/source_home.manifest.json",
       "source_record_id": "file:stats/source_home.manifest.json:41b237ff45",
@@ -7698,7 +7610,7 @@
     },
     {
       "artifact_kind": "test",
-      "content_hash": "89d195327c72ec2921104c64d089419b03ec222cbdc81e3f657e28956d618a47",
+      "content_hash": "6064728d7d99ba9d230577134a38aa839ebca3b9c70c581aa1e843b44d2b539e",
       "id": "artifact:file:tests/test_build_views.py:760ef645f6",
       "path": "tests/test_build_views.py",
       "source_record_id": "file:tests/test_build_views.py:760ef645f6",
@@ -7730,7 +7642,7 @@
     },
     {
       "artifact_kind": "test",
-      "content_hash": "832b178cb70334f3f452f6341fb014e1ba745c89fd90d00cdb129948a124f520",
+      "content_hash": "12ad921924b2aa3858a398eea04ce63836851a2ffe1c7b548d13628d1e612c66",
       "id": "artifact:file:tests/test_mechanics_topology.py:915b0d0cb3",
       "path": "tests/test_mechanics_topology.py",
       "source_record_id": "file:tests/test_mechanics_topology.py:915b0d0cb3",
@@ -7746,7 +7658,7 @@
     },
     {
       "artifact_kind": "test",
-      "content_hash": "6bcb2b605c2d99a5c2a609c4b4ee2220948d21f89c7a962372e84d32681a3c96",
+      "content_hash": "6fe4c03e3bda18f20bdf4c7fdbffc09bce0d8d0fd0b75a41f96e7b1b30b36c4c",
       "id": "artifact:file:tests/test_roadmap_parity.py:574915dc67",
       "path": "tests/test_roadmap_parity.py",
       "source_record_id": "file:tests/test_roadmap_parity.py:574915dc67",
@@ -7754,7 +7666,7 @@
     },
     {
       "artifact_kind": "test",
-      "content_hash": "5cda9db44b8ede335435b2a0b821bda957756e963a998422f5cf475a1ad36a65",
+      "content_hash": "584bbde7ea8e7d112585c192833b9cf0c6cad39092f21c4a00afdc6c7aa5edf4",
       "id": "artifact:file:tests/test_stats_source_home.py:a642c9216e",
       "path": "tests/test_stats_source_home.py",
       "source_record_id": "file:tests/test_stats_source_home.py:a642c9216e",
@@ -7779,7 +7691,7 @@
   ],
   "index_identity": {
     "artifact_kind": "repository_artifact_index",
-    "content_digest": "f379af3e5472148dbfc7478f424da5f21e50f9778720c0b6cee58d12ccc6c0a3",
+    "content_digest": "efbccfc867e567156b2701ab0422d0635a0c87896630e8260ba21cb2bf792801",
     "index_kind": "artifact",
     "local_id": "index:repo-local:artifacts",
     "schema_ref": "aoa-kag:schemas/repo-local-kag-repository-index.schema.json"
@@ -7803,18 +7715,18 @@
   },
   "schema_version": "aoa-repo-local-kag-repository-index-v1",
   "source_index": {
-    "content_digest": "306743b30935c6808e48f02a0c04f073ad881dfbac7745b210dedae3a5ecbc28",
+    "content_digest": "08ccfeb8b320462c73269423fb079c88821fc5085b185b72a110a90cde4637c0",
     "local_id": "index:repo-local:source-surfaces",
     "path": "kag/indexes/source_surface_index.json"
   },
   "summary": {
-    "entry_count": 972,
+    "entry_count": 961,
     "kind_counts": {
       "asset": 50,
       "config": 173,
       "dependency_manifest": 2,
-      "document": 462,
-      "generated_readmodel": 40,
+      "document": 454,
+      "generated_readmodel": 39,
       "index": 1,
       "license": 1,
       "manifest": 17,
@@ -7825,8 +7737,8 @@
       "script": 23,
       "security": 1,
       "service_unit": 2,
-      "source_code": 34,
-      "test": 52,
+      "source_code": 33,
+      "test": 51,
       "validator": 18
     }
   }

@@ -74,9 +74,9 @@ REQUIRED_ROUTE_FIELDS = (
     "validator_routes",
 )
 OPTIONAL_ROUTE_FIELDS = ("generated_routes", "read_only_access_routes")
-EXPECTED_ACTIVE_PROFILE_COUNT = 23
+EXPECTED_ACTIVE_PROFILE_COUNT = 22
 EXPECTED_DEFERRED_PROFILE_COUNT = 1
-EXPECTED_RETIRED_PROFILE_COUNT = 2
+EXPECTED_RETIRED_PROFILE_COUNT = 3
 INTAKE_FIXTURE = Path(
     "stats/intake-contract/examples/session_harvest_family.receipts.example.json"
 )

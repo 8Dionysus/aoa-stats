@@ -77,7 +77,7 @@ lockstep with that schema enum.
 
 ## Canonical repo surfaces
 
-The committed builder publishes all 23 active reference and live-capable
+The committed builder publishes all 22 active reference and live-capable
 profiles plus the public catalog:
 
 - `generated/core_skill_application_summary.min.json`
@@ -99,7 +99,6 @@ profiles plus the public catalog:
 - `generated/component_refresh_summary.min.json`
 - `generated/memory_movement_summary.min.json`
 - `generated/titan_incarnation_summary.min.json`
-- `generated/runtime_closeout_summary.min.json`
 - `generated/stress_recovery_window_summary.min.json`
 - `generated/source_coverage_summary.min.json`
 - `generated/surface_detection_summary.min.json`
@@ -115,9 +114,9 @@ profiles are the single inventory source:
   cleanup universe
 - the live catalog lists only outputs actually materialized
 
-The managed cleanup inventory contains 25 names: 23 active read-model outputs
-plus two retired-output tombstones. The authored live-admitted allowlist
-contains exactly 11. The 12 reference-only active profiles are:
+The managed cleanup inventory contains 25 names: 22 active read-model outputs
+plus three retired-output tombstones. The authored live-admitted allowlist
+contains exactly 11. The 11 reference-only active profiles are:
 
 - `route_progression_summary`
 - `codex_plane_deployment_summary`
@@ -128,7 +127,6 @@ contains exactly 11. The 12 reference-only active profiles are:
 - `continuity_window_summary`
 - `component_refresh_summary`
 - `memory_movement_summary`
-- `runtime_closeout_summary`
 - `titan_incarnation_summary`
 - `stress_recovery_window_summary`
 
@@ -145,11 +143,11 @@ legacy numeric receipt snapshot; it rejects the current semantic-only
 `aoa-skills` receipt shape instead of inventing scores. None is a live
 fallback.
 
-`owner_landing_summary.min.json` and `titan_summon_summary.min.json` are
-different: they are retired, not false-live active surfaces. The builder and
-catalogs do not publish them. Their retired profiles keep both names in the
-managed cleanup universe so older copies under `state/generated/` are removed
-deterministically.
+`owner_landing_summary.min.json`, `runtime_closeout_summary.min.json`, and
+`titan_summon_summary.min.json` are different: they are retired, not
+false-live active surfaces. The builder and catalogs do not publish them.
+Their retired profiles keep all three names in the managed cleanup universe so
+older copies under `state/generated/` are removed deterministically.
 
 The history and cadence contexts remain distinct. “Latest” inside checked-in
 history is not deploy-local current state, and the cadence examples do not
@@ -198,19 +196,23 @@ publisher, real stress-recovery receipts and reports, and a registry/watch
 route that observes them. A draft eval definition and example report remain a
 committed contract chain rather than current repeated-window evidence.
 
-Future Runtime Closeout live activation requires an explicit cross-owner
-agreement on one canonical receipt ABI, a real current owner-local receipt log,
-and registry plus watcher parity proven end to end. The committed builder accepts
-only historical `runtime_wave_closeout_receipt`; current `abyss-stack`
-`runtime_trial_closeout_receipt` and SDK `runtime_return_closeout_receipt` are
-distinct contracts and are not implicit aliases. The active registry therefore
-does not read the historical wave log.
+Future Runtime Closeout reintroduction requires an explicit cross-owner
+agreement on one canonical receipt ABI, a new reviewed active profile and
+catalog slot, a real current owner-local receipt log, and registry plus watcher
+parity when live admission is claimed. The historical
+`runtime_wave_closeout_receipt`, current `abyss-stack`
+`runtime_trial_closeout_receipt`, and SDK `runtime_return_closeout_receipt` are
+distinct contracts and are not implicit aliases. The active registry does not
+read the historical wave log, and the committed builder no longer publishes a
+standalone Runtime Closeout summary.
 
 The current-source plus refresh-observation law and these three audit outcomes
 are recorded in
 `docs/decisions/AOST-D-0004-live-admission-requires-refresh-observation.md`.
 The Runtime Closeout owner-contract boundary is recorded separately in
 `docs/decisions/AOST-D-0006-runtime-closeout-wave-receipts-are-not-current-trial-live-state.md`.
+Its standalone-surface retirement is recorded in
+`docs/decisions/AOST-D-0010-runtime-closeout-wave-snapshot-is-contract-history-not-active-observability.md`.
 
 The live feed and committed builders keep raw logs append-only, but the
 receipt-backed live summaries read from the active receipt view after local

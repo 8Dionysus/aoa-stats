@@ -52,9 +52,9 @@ If the registry is absent, the summary must say so through `source_mode` and
 The committed fixture may contain a historical owner receipt that is no longer
 an active live source. In that case the owner is intentionally reported as
 `unexpected` relative to the current registry rather than silently retained as
-an expected publisher. Runtime Closeout is the current example: the historical
-wave receipt remains in the compatibility fixture while the stale wave log is
-removed from live admission.
+an expected publisher. The historical runtime wave receipt is the current
+example: it remains in the compatibility fixture while its stale wave log and
+standalone Runtime Closeout projection are absent from live admission.
 
 ## Verification
 
