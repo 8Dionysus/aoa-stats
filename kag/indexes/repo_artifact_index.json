@@ -1730,7 +1730,7 @@
     },
     {
       "artifact_kind": "document",
-      "content_hash": "ebfcf59a8446d2478290f0db8d20c4cc4df6cac19170197f5958ff3244a86772",
+      "content_hash": "61d9eebb2a1d9de6c8804009f903e47d2a33602454f70f111bf1d932a3f2e1a5",
       "id": "artifact:file:agents.md:a54ff182c7",
       "path": "AGENTS.md",
       "source_record_id": "file:agents.md:a54ff182c7",
@@ -1738,7 +1738,7 @@
     },
     {
       "artifact_kind": "document",
-      "content_hash": "8131428a568cee4b856d0d8aef90e952dd5d0c5499be55935be0098093b8e75c",
+      "content_hash": "4ee24112ddba5523324b791b9589bc098f6f279184f3809903f069e2aae66849",
       "id": "artifact:file:changelog.md:06572a96a5",
       "path": "CHANGELOG.md",
       "source_record_id": "file:changelog.md:06572a96a5",
@@ -1762,7 +1762,7 @@
     },
     {
       "artifact_kind": "document",
-      "content_hash": "53cfa66925e32916c3b5433cedf2a8fca8dfe96bac2d2272e4f6ad9fd880800f",
+      "content_hash": "74171272ebb729079ab4c6f761b0e464761759eaf1faa41627e77f6bab6bbf65",
       "id": "artifact:file:design.md:3dc5dd454e",
       "path": "DESIGN.md",
       "source_record_id": "file:design.md:3dc5dd454e",
@@ -1778,7 +1778,7 @@
     },
     {
       "artifact_kind": "document",
-      "content_hash": "ed061703481122b0adab74b40a0f7a08a2bd35a562c6593347e46edbaeb177ac",
+      "content_hash": "d75526c7631d00494a543dcbfa3e00618bac2c4956390d8280accaba4e43fcd8",
       "id": "artifact:file:readme.md:b335630551",
       "path": "README.md",
       "source_record_id": "file:readme.md:b335630551",
@@ -1786,7 +1786,7 @@
     },
     {
       "artifact_kind": "document",
-      "content_hash": "ea1418f9ee83ceb9ef8a7eff77648125eba1e5b6e6c7417d1c68a1420a104b3c",
+      "content_hash": "31a48167320c28fcc66612cb0467982fb538d6fd981f8915e81b4682a6c90e01",
       "id": "artifact:file:roadmap.md:683343bdf9",
       "path": "ROADMAP.md",
       "source_record_id": "file:roadmap.md:683343bdf9",
@@ -1802,7 +1802,7 @@
     },
     {
       "artifact_kind": "document",
-      "content_hash": "c6465331b47b3be72c52e7ac159a6400f987b5b5f6aa7474e25f9d9a6b0be9ed",
+      "content_hash": "bb71b8ed5d35eb16bc58e9be320b32fa1984e1f7faebe8f9035781830cd4e217",
       "id": "artifact:file:docs/architecture.md:ff21b6b9a3",
       "path": "docs/ARCHITECTURE.md",
       "source_record_id": "file:docs/architecture.md:ff21b6b9a3",
@@ -1866,7 +1866,7 @@
     },
     {
       "artifact_kind": "document",
-      "content_hash": "29edea4e8491acca689b0455327fa6adcff1f982987bb85ba7e5288bf875c98f",
+      "content_hash": "96cbac44eb69564bae9d63cb9477cf5bec8fe27efac0940630d9bb2f8c14e559",
       "id": "artifact:file:docs/surface_strength_model.md:bdc1ce47cd",
       "path": "docs/SURFACE_STRENGTH_MODEL.md",
       "source_record_id": "file:docs/surface_strength_model.md:bdc1ce47cd",
@@ -1906,6 +1906,14 @@
     },
     {
       "artifact_kind": "document",
+      "content_hash": "4c00ec960cae8aa44120f119129f9a8975058f15828d9af055904c23caea3a53",
+      "id": "artifact:file:docs/decisions/aost-d-0004-live-admission-requires-refresh-observation.md:02c9d238aa",
+      "path": "docs/decisions/AOST-D-0004-live-admission-requires-refresh-observation.md",
+      "source_record_id": "file:docs/decisions/aost-d-0004-live-admission-requires-refresh-observation.md:02c9d238aa",
+      "surface_state": "authored_source"
+    },
+    {
+      "artifact_kind": "document",
       "content_hash": "e0e9b61b0afab1087a69ec979caaa790eed6061ce2b9c1cf9644f054d6cf1c36",
       "id": "artifact:file:docs/decisions/readme.md:e5ec0e7030",
       "path": "docs/decisions/README.md",
@@ -1930,7 +1938,7 @@
     },
     {
       "artifact_kind": "generated_readmodel",
-      "content_hash": "b04181c2cab3ccc72038dc5eb61efeb5a4a398a776973a3cdc3047a5aabf8ee1",
+      "content_hash": "7971fa8bda3be3003dbe7f16e7e2e7b295c0e132e21c9a7047d29d4516ea1f08",
       "id": "artifact:file:docs/decisions/indexes/by-date.md:7f76a83a93",
       "path": "docs/decisions/indexes/by-date.md",
       "source_record_id": "file:docs/decisions/indexes/by-date.md:7f76a83a93",
@@ -1938,7 +1946,7 @@
     },
     {
       "artifact_kind": "generated_readmodel",
-      "content_hash": "8d59bb1526ed149c79490085564bf8be1d8a85f54e7867a571f8382c38f067ce",
+      "content_hash": "e8f311ebf018675bb1547075202c1e10abcdf5470f1b54287cce65ec86960659",
       "id": "artifact:file:docs/decisions/indexes/by-guard.md:8ae406686a",
       "path": "docs/decisions/indexes/by-guard.md",
       "source_record_id": "file:docs/decisions/indexes/by-guard.md:8ae406686a",
@@ -1946,7 +1954,7 @@
     },
     {
       "artifact_kind": "generated_readmodel",
-      "content_hash": "3019da8ad0c3696a44209e93d17bd0ded049941fb8dbb7ba2e1042806450130d",
+      "content_hash": "36bb9af450d4872c018ac046549bc081932ba35e247803d86fcfaa75289f2047",
       "id": "artifact:file:docs/decisions/indexes/by-number.md:02e6940a39",
       "path": "docs/decisions/indexes/by-number.md",
       "source_record_id": "file:docs/decisions/indexes/by-number.md:02e6940a39",
@@ -1954,7 +1962,7 @@
     },
     {
       "artifact_kind": "generated_readmodel",
-      "content_hash": "c53e1692e9cb020b3ec8cce917c65bf53f77e7fb61fe958d6d930bdbbf0edcf6",
+      "content_hash": "abb83b588127243668f5fe5c6f3af111562c7a5916ce55728df54f4c2c80e46d",
       "id": "artifact:file:docs/decisions/indexes/by-source-lane.md:d12818b811",
       "path": "docs/decisions/indexes/by-source-lane.md",
       "source_record_id": "file:docs/decisions/indexes/by-source-lane.md:d12818b811",
@@ -1962,7 +1970,7 @@
     },
     {
       "artifact_kind": "generated_readmodel",
-      "content_hash": "2687efd9dfc591098dd78b5aec36001cbecda9a2f17144d9ee668aa66d375c3b",
+      "content_hash": "4633f8fd04233b5abb32187a1393c7e0f0bbb88965cd4f388e0c49ad8c8cbb0b",
       "id": "artifact:file:docs/decisions/indexes/by-stats-surface.md:01abbd2708",
       "path": "docs/decisions/indexes/by-stats-surface.md",
       "source_record_id": "file:docs/decisions/indexes/by-stats-surface.md:01abbd2708",
@@ -1970,7 +1978,7 @@
     },
     {
       "artifact_kind": "generated_readmodel",
-      "content_hash": "59598700ab1b7a0112a16aba1f70c5c2ce85ee27a6d20cf0b839f4685b591690",
+      "content_hash": "7b1d98ea874bb4a99113ae05ddede46e0685a2c86133e0e2ad6381fa50802eb5",
       "id": "artifact:file:docs/decisions/indexes/by-surface.md:acd156903f",
       "path": "docs/decisions/indexes/by-surface.md",
       "source_record_id": "file:docs/decisions/indexes/by-surface.md:acd156903f",
@@ -2298,7 +2306,7 @@
     },
     {
       "artifact_kind": "generated_readmodel",
-      "content_hash": "1e3f213562c3f6236e295a9e08a76fea71670fb001f7908d3406d228bc44c106",
+      "content_hash": "b548689f74845e94ac768417d19f72d6bd7828f680c418b3d29938966cc3b9d3",
       "id": "artifact:file:generated/summary_surface_catalog.min.json:5c31a5556b",
       "path": "generated/summary_surface_catalog.min.json",
       "source_record_id": "file:generated/summary_surface_catalog.min.json:5c31a5556b",
@@ -3522,7 +3530,7 @@
     },
     {
       "artifact_kind": "document",
-      "content_hash": "a87b94585844374745eabe5e605afff22e0fde5141078d5d9c75688acfa2cf9b",
+      "content_hash": "bca2450bd90da281dc3fec7fa3a1fab77ea2512ea2ada5a04cb03ace88111b42",
       "id": "artifact:file:mechanics/antifragility/parts/stress-recovery-windows/contract.md:c4b52f9737",
       "path": "mechanics/antifragility/parts/stress-recovery-windows/CONTRACT.md",
       "source_record_id": "file:mechanics/antifragility/parts/stress-recovery-windows/contract.md:c4b52f9737",
@@ -3530,7 +3538,7 @@
     },
     {
       "artifact_kind": "document",
-      "content_hash": "b84f2c47660fe74a3a006c3a6a0dbf1ffbd725eecb1ef291b28778a6d2553217",
+      "content_hash": "de028d493374ee41ccda40f55fb0e024e63d521f71b24c48b3630a0e61707940",
       "id": "artifact:file:mechanics/antifragility/parts/stress-recovery-windows/readme.md:4e9d8c63f5",
       "path": "mechanics/antifragility/parts/stress-recovery-windows/README.md",
       "source_record_id": "file:mechanics/antifragility/parts/stress-recovery-windows/readme.md:4e9d8c63f5",
@@ -3538,7 +3546,7 @@
     },
     {
       "artifact_kind": "document",
-      "content_hash": "5c567901d2827c5fd619be8ab1253912d6a5b1f42caff545c1e52357514d4b4a",
+      "content_hash": "261bca5e401906ce7d3ac005b8f718d979b4942131338cda91ba3863326f4401",
       "id": "artifact:file:mechanics/antifragility/parts/stress-recovery-windows/validation.md:15a61304a5",
       "path": "mechanics/antifragility/parts/stress-recovery-windows/VALIDATION.md",
       "source_record_id": "file:mechanics/antifragility/parts/stress-recovery-windows/validation.md:15a61304a5",
@@ -3554,7 +3562,7 @@
     },
     {
       "artifact_kind": "document",
-      "content_hash": "31b7c1d8fdfae8c7c6e5edd3ee0f2aad5fd70ad353877cd5a8cbb3829150f026",
+      "content_hash": "b067d43eae46e56a2eaf4f35808f97c66f7e46094668d25c553c769e4245731b",
       "id": "artifact:file:mechanics/antifragility/parts/stress-recovery-windows/docs/stress_recovery_window_summaries.md:0994642bd1",
       "path": "mechanics/antifragility/parts/stress-recovery-windows/docs/STRESS_RECOVERY_WINDOW_SUMMARIES.md",
       "source_record_id": "file:mechanics/antifragility/parts/stress-recovery-windows/docs/stress_recovery_window_summaries.md:0994642bd1",
@@ -3582,6 +3590,14 @@
       "id": "artifact:file:mechanics/antifragility/parts/stress-recovery-windows/schemas/stress_recovery_window_summary_v1.json:62cebeb44f",
       "path": "mechanics/antifragility/parts/stress-recovery-windows/schemas/stress_recovery_window_summary_v1.json",
       "source_record_id": "file:mechanics/antifragility/parts/stress-recovery-windows/schemas/stress_recovery_window_summary_v1.json:62cebeb44f",
+      "surface_state": "authored_source"
+    },
+    {
+      "artifact_kind": "test",
+      "content_hash": "48256cbd654ac865bdc8c24360966e371485085422fe07f4f1a2d23d3c708ed5",
+      "id": "artifact:file:mechanics/antifragility/parts/stress-recovery-windows/tests/test_stress_recovery_projection.py:4d7ab959ed",
+      "path": "mechanics/antifragility/parts/stress-recovery-windows/tests/test_stress_recovery_projection.py",
+      "source_record_id": "file:mechanics/antifragility/parts/stress-recovery-windows/tests/test_stress_recovery_projection.py:4d7ab959ed",
       "surface_state": "authored_source"
     },
     {
@@ -3850,7 +3866,7 @@
     },
     {
       "artifact_kind": "document",
-      "content_hash": "946a418fd4a381b136292867462f1ce5746fff04b8d0fd59fb95472bf3da7b83",
+      "content_hash": "e83c12c14d819f4de98e313070ae6f22508be09198d776a10eaf3e1ea704a641",
       "id": "artifact:file:mechanics/boundary-bridge/provenance.md:03ab6d31c2",
       "path": "mechanics/boundary-bridge/PROVENANCE.md",
       "source_record_id": "file:mechanics/boundary-bridge/provenance.md:03ab6d31c2",
@@ -3922,7 +3938,7 @@
     },
     {
       "artifact_kind": "document",
-      "content_hash": "b6a93e2f3e429a1c20e4a9413995f5d359c675164fd59c188a0107b688f79839",
+      "content_hash": "59d11543eb11af35864783a4863e07e9d2af6e8ced2b41ebacb1cf6f5076e566",
       "id": "artifact:file:mechanics/boundary-bridge/parts/memory-owner-handoff/contract.md:2e9eb29d60",
       "path": "mechanics/boundary-bridge/parts/memory-owner-handoff/CONTRACT.md",
       "source_record_id": "file:mechanics/boundary-bridge/parts/memory-owner-handoff/contract.md:2e9eb29d60",
@@ -3930,7 +3946,7 @@
     },
     {
       "artifact_kind": "document",
-      "content_hash": "64b993f3556139ee9eec374290fa0b2bdca5d16a8bb03ee4ba06bf820adf2345",
+      "content_hash": "fcc47741fc5440864ca9a411d8807fedbd5851e0108efb4614976d4b67d06274",
       "id": "artifact:file:mechanics/boundary-bridge/parts/memory-owner-handoff/readme.md:d484b19684",
       "path": "mechanics/boundary-bridge/parts/memory-owner-handoff/README.md",
       "source_record_id": "file:mechanics/boundary-bridge/parts/memory-owner-handoff/readme.md:d484b19684",
@@ -3938,7 +3954,7 @@
     },
     {
       "artifact_kind": "document",
-      "content_hash": "3322f24fb03dc694cea3c962adcebc73079716a0970c0285b7f6d199e2a64b07",
+      "content_hash": "152f913d451a63af667a053cb5f073398c6388635cb506447aef6df866734f0e",
       "id": "artifact:file:mechanics/boundary-bridge/parts/memory-owner-handoff/validation.md:c70e4a9774",
       "path": "mechanics/boundary-bridge/parts/memory-owner-handoff/VALIDATION.md",
       "source_record_id": "file:mechanics/boundary-bridge/parts/memory-owner-handoff/validation.md:c70e4a9774",
@@ -3946,7 +3962,7 @@
     },
     {
       "artifact_kind": "document",
-      "content_hash": "c84a642b37204eea32a580e742c0d4529310b401fb978df76d0654000d7d2c0b",
+      "content_hash": "5fe5ce87d83823d075c3f018b8742ca076a7a9a041aef0d83d335b3771085998",
       "id": "artifact:file:mechanics/boundary-bridge/parts/memory-owner-handoff/docs/memory_movement_summary.md:be6b11f42a",
       "path": "mechanics/boundary-bridge/parts/memory-owner-handoff/docs/MEMORY_MOVEMENT_SUMMARY.md",
       "source_record_id": "file:mechanics/boundary-bridge/parts/memory-owner-handoff/docs/memory_movement_summary.md:be6b11f42a",
@@ -3954,7 +3970,7 @@
     },
     {
       "artifact_kind": "test",
-      "content_hash": "1ef4a5705acd751442d568778c4e6b95b057c6ac1dd5687ec28a45e417baf05d",
+      "content_hash": "b3a5021fbae124c0a4f406d0d0a0678d012c4abc7ba3ef224db1e9f288a41042",
       "id": "artifact:file:mechanics/boundary-bridge/parts/memory-owner-handoff/tests/test_memory_movement_summary.py:c07fd2d46b",
       "path": "mechanics/boundary-bridge/parts/memory-owner-handoff/tests/test_memory_movement_summary.py",
       "source_record_id": "file:mechanics/boundary-bridge/parts/memory-owner-handoff/tests/test_memory_movement_summary.py:c07fd2d46b",
@@ -5410,7 +5426,7 @@
     },
     {
       "artifact_kind": "document",
-      "content_hash": "ee4d61bd9424df208b06b1c0c53784c05dd9f365c25f92ff47e053fb1e0a5960",
+      "content_hash": "513c0dc9c89c2859b33ef97c8fc3e35e7b208da07193d3b38550903d56b45d1c",
       "id": "artifact:file:mechanics/method-growth/parts/owner-landing/contract.md:04a52211dc",
       "path": "mechanics/method-growth/parts/owner-landing/CONTRACT.md",
       "source_record_id": "file:mechanics/method-growth/parts/owner-landing/contract.md:04a52211dc",
@@ -5418,7 +5434,7 @@
     },
     {
       "artifact_kind": "document",
-      "content_hash": "646509a9d0f4b1ff38d49f73719ff8d5aba087730cc1ba32b7b40988cab16282",
+      "content_hash": "3b98a097ecbc286a49fdde15ee9d5761b70eed9ece65ab56b6ce88783b7add3d",
       "id": "artifact:file:mechanics/method-growth/parts/owner-landing/readme.md:88277d6436",
       "path": "mechanics/method-growth/parts/owner-landing/README.md",
       "source_record_id": "file:mechanics/method-growth/parts/owner-landing/readme.md:88277d6436",
@@ -5426,7 +5442,7 @@
     },
     {
       "artifact_kind": "document",
-      "content_hash": "2577a5b84b22c318a737b1348a009233e216f119f338baa638b9ac530bfef370",
+      "content_hash": "ba8655c294365db467592494ffdb5cbc25f70ccdeb7b0f568bbccae15103e462",
       "id": "artifact:file:mechanics/method-growth/parts/owner-landing/validation.md:4a5089f9a7",
       "path": "mechanics/method-growth/parts/owner-landing/VALIDATION.md",
       "source_record_id": "file:mechanics/method-growth/parts/owner-landing/validation.md:4a5089f9a7",
@@ -5434,7 +5450,7 @@
     },
     {
       "artifact_kind": "document",
-      "content_hash": "74ae0162a4411beafad1808fb6edd3805821c3f28f3db00b1e04ae037f95a447",
+      "content_hash": "4033b121ac63de5d0f3f716a55f1f2411f3f91ac61ef6c083eea9bdafb7f1b12",
       "id": "artifact:file:mechanics/method-growth/parts/owner-landing/docs/owner_landing_summary.md:81ada1be1c",
       "path": "mechanics/method-growth/parts/owner-landing/docs/OWNER_LANDING_SUMMARY.md",
       "source_record_id": "file:mechanics/method-growth/parts/owner-landing/docs/owner_landing_summary.md:81ada1be1c",
@@ -5858,7 +5874,7 @@
     },
     {
       "artifact_kind": "document",
-      "content_hash": "3b4519f6297dd338ffaf042ab51c85bacfe15ebca88bc2203c07d365e7f9683c",
+      "content_hash": "45f6efa356cf33b593bb96fd6a1452bdd9b2d0cda0bbd2c83a65ca227c6fbcb4",
       "id": "artifact:file:mechanics/recurrence/parts/live-receipt-refresh/contract.md:c4b2a7db4d",
       "path": "mechanics/recurrence/parts/live-receipt-refresh/CONTRACT.md",
       "source_record_id": "file:mechanics/recurrence/parts/live-receipt-refresh/contract.md:c4b2a7db4d",
@@ -5866,7 +5882,7 @@
     },
     {
       "artifact_kind": "document",
-      "content_hash": "8f5aaffc902096b1572d7012f1ff941fb1bb96fd0fbc9d5b9484683f35db0044",
+      "content_hash": "c608662272d4e0f53e7aae53cbcec19c1046ad2af396531435f4f2c2f37ac2fe",
       "id": "artifact:file:mechanics/recurrence/parts/live-receipt-refresh/readme.md:ed8e247fa6",
       "path": "mechanics/recurrence/parts/live-receipt-refresh/README.md",
       "source_record_id": "file:mechanics/recurrence/parts/live-receipt-refresh/readme.md:ed8e247fa6",
@@ -5874,7 +5890,7 @@
     },
     {
       "artifact_kind": "document",
-      "content_hash": "520561e0b1588379b8f3e1d0c73e310db1fc4f0aad70f28b72be49dd43e73ab4",
+      "content_hash": "913d8899488aa2baa6af7759216a99e0b6eab0aa2f21927adbce519adc10bc67",
       "id": "artifact:file:mechanics/recurrence/parts/live-receipt-refresh/validation.md:c26dcdde9f",
       "path": "mechanics/recurrence/parts/live-receipt-refresh/VALIDATION.md",
       "source_record_id": "file:mechanics/recurrence/parts/live-receipt-refresh/validation.md:c26dcdde9f",
@@ -5906,7 +5922,7 @@
     },
     {
       "artifact_kind": "document",
-      "content_hash": "c7a542df5f53b67c4b42f345f4fc8ec693cc9e551ba1a552dcc20f4ef8c77ca7",
+      "content_hash": "b617b62b60aa8c23b8ae02701ccaaad08e62cd4e4c6b66975795d4e1be2a09f4",
       "id": "artifact:file:mechanics/recurrence/parts/live-receipt-refresh/docs/live_session_use.md:807ec41ee1",
       "path": "mechanics/recurrence/parts/live-receipt-refresh/docs/LIVE_SESSION_USE.md",
       "source_record_id": "file:mechanics/recurrence/parts/live-receipt-refresh/docs/live_session_use.md:807ec41ee1",
@@ -5978,7 +5994,7 @@
     },
     {
       "artifact_kind": "test",
-      "content_hash": "d605a928ce24cffe5c2b5dfea9ca3cb0f30016a44035e6a25a9f9a2aa049201e",
+      "content_hash": "47b3e8d38042a430747bb5447c1c993d9c2b852a91f917d90f5941284acfeddf",
       "id": "artifact:file:mechanics/recurrence/parts/live-receipt-refresh/tests/test_refresh_live_stats.py:7cafbd910d",
       "path": "mechanics/recurrence/parts/live-receipt-refresh/tests/test_refresh_live_stats.py",
       "source_record_id": "file:mechanics/recurrence/parts/live-receipt-refresh/tests/test_refresh_live_stats.py:7cafbd910d",
@@ -6762,7 +6778,7 @@
     },
     {
       "artifact_kind": "script",
-      "content_hash": "242fac8e2c2fc4ec0cc2d7f359ce2a73a8a2d47b207af9d6add926cb1aaf08c4",
+      "content_hash": "2355eeeff0223a29481c725f2ebc4dac5d0b1c021aa023f2997d08a0a0103207",
       "id": "artifact:file:scripts/build_views.py:b705861394",
       "path": "scripts/build_views.py",
       "source_record_id": "file:scripts/build_views.py:b705861394",
@@ -6978,6 +6994,22 @@
     },
     {
       "artifact_kind": "source_code",
+      "content_hash": "57df573e973e6609032fc0b84217b8e65560e67aa946dad1638e91c5981ee0f9",
+      "id": "artifact:file:src/aoa_stats_builder/memory_movement.py:3860b4dd71",
+      "path": "src/aoa_stats_builder/memory_movement.py",
+      "source_record_id": "file:src/aoa_stats_builder/memory_movement.py:3860b4dd71",
+      "surface_state": "authored_source"
+    },
+    {
+      "artifact_kind": "source_code",
+      "content_hash": "09e83ed041f774dc4142f59e0ec7912769e5f05b778e4cb3c96368868427218d",
+      "id": "artifact:file:src/aoa_stats_builder/memory_movement_sources.py:7b10fd7f72",
+      "path": "src/aoa_stats_builder/memory_movement_sources.py",
+      "source_record_id": "file:src/aoa_stats_builder/memory_movement_sources.py:7b10fd7f72",
+      "surface_state": "authored_source"
+    },
+    {
+      "artifact_kind": "source_code",
       "content_hash": "d2face4affdcd6e00e3433d31bdbabc120c9a1377aa891df059d5f4fa4dbaf85",
       "id": "artifact:file:src/aoa_stats_builder/read_model_values.py:4a1ca0a0f9",
       "path": "src/aoa_stats_builder/read_model_values.py",
@@ -7014,6 +7046,22 @@
       "id": "artifact:file:src/aoa_stats_builder/source_coverage.py:5ef0c3ffb9",
       "path": "src/aoa_stats_builder/source_coverage.py",
       "source_record_id": "file:src/aoa_stats_builder/source_coverage.py:5ef0c3ffb9",
+      "surface_state": "authored_source"
+    },
+    {
+      "artifact_kind": "source_code",
+      "content_hash": "8aeb1386f9f49425dad77c246736ad277020e82a4a25b563d14092007513de12",
+      "id": "artifact:file:src/aoa_stats_builder/stress_recovery.py:4250464321",
+      "path": "src/aoa_stats_builder/stress_recovery.py",
+      "source_record_id": "file:src/aoa_stats_builder/stress_recovery.py:4250464321",
+      "surface_state": "authored_source"
+    },
+    {
+      "artifact_kind": "source_code",
+      "content_hash": "c79e1cf422ec8ed9e1de510716ac5f4076cc56ceac512823ae9fb058d9281688",
+      "id": "artifact:file:src/aoa_stats_builder/stress_recovery_sources.py:76945a3ec2",
+      "path": "src/aoa_stats_builder/stress_recovery_sources.py",
+      "source_record_id": "file:src/aoa_stats_builder/stress_recovery_sources.py:76945a3ec2",
       "surface_state": "authored_source"
     },
     {
@@ -7066,7 +7114,7 @@
     },
     {
       "artifact_kind": "document",
-      "content_hash": "18b952aba5a2d480bf9512629aa6016767779f0ddd7a76bcc33693014c370539",
+      "content_hash": "5dbdd54c5d1fbf80b9b529d2e85012176af134cba6ea86287bb59f6a7ad36d86",
       "id": "artifact:file:stats/readme.md:6bac6d2ff5",
       "path": "stats/README.md",
       "source_record_id": "file:stats/readme.md:6bac6d2ff5",
@@ -7266,7 +7314,7 @@
     },
     {
       "artifact_kind": "document",
-      "content_hash": "56188bbdf338d959d1739cb75f2f7c6633b3a4300679cb76ac2faca123b1da23",
+      "content_hash": "d23c16166f9aebf89b3a03568e522910d58900c87788c3b4064966404ae93d07",
       "id": "artifact:file:stats/read-models/readme.md:5ba4a92471",
       "path": "stats/read-models/README.md",
       "source_record_id": "file:stats/read-models/readme.md:5ba4a92471",
@@ -7362,7 +7410,7 @@
     },
     {
       "artifact_kind": "config",
-      "content_hash": "6a84e228c9a375103424f5890a6ae3819eef707a5608256f217f2fa37a8f4711",
+      "content_hash": "be5c6572b7daa993dc266831d226e690e0541872ebdbb5d63157dd65e056b2e5",
       "id": "artifact:file:stats/read-models/active/memory_movement_summary.profile.json:3941934fdc",
       "path": "stats/read-models/active/memory_movement_summary.profile.json",
       "source_record_id": "file:stats/read-models/active/memory_movement_summary.profile.json:3941934fdc",
@@ -7378,7 +7426,7 @@
     },
     {
       "artifact_kind": "config",
-      "content_hash": "c744ebbf95bf552e5f6e8bac72e6742f08ceee4918ed2df239aad3b264a3c001",
+      "content_hash": "410c5d6e9dab4ab2234c1796cc6d070154ffb5dc02afe6bd9c64287082e4b5c7",
       "id": "artifact:file:stats/read-models/active/owner_landing_summary.profile.json:c1821a1f8b",
       "path": "stats/read-models/active/owner_landing_summary.profile.json",
       "source_record_id": "file:stats/read-models/active/owner_landing_summary.profile.json:c1821a1f8b",
@@ -7434,7 +7482,7 @@
     },
     {
       "artifact_kind": "config",
-      "content_hash": "df28108346a9515006fd7a03a7cb330458f0c62581ce16fc4ed277b8439205e8",
+      "content_hash": "171241b4d090837967ff61acdea7ab47d0f2dc112c64ded3d58eeaa345750047",
       "id": "artifact:file:stats/read-models/active/stress_recovery_window_summary.profile.json:bb4a003393",
       "path": "stats/read-models/active/stress_recovery_window_summary.profile.json",
       "source_record_id": "file:stats/read-models/active/stress_recovery_window_summary.profile.json:bb4a003393",
@@ -7490,7 +7538,7 @@
     },
     {
       "artifact_kind": "config",
-      "content_hash": "d1e7eb570542e407a461f733ab51c56e659be9a5101a3319290e68dd81898aa3",
+      "content_hash": "2d8c06b44941e7c349d4aa50ed6acff0bfa23f44a6b67d773523d4e9c39a80b6",
       "id": "artifact:file:stats/source_home.manifest.json:41b237ff45",
       "path": "stats/source_home.manifest.json",
       "source_record_id": "file:stats/source_home.manifest.json:41b237ff45",
@@ -7546,7 +7594,7 @@
     },
     {
       "artifact_kind": "test",
-      "content_hash": "bb90f13c7ef49a9f2b235fcf60290ef8a09aaa01bd5314c133c7def1e7aeae69",
+      "content_hash": "18740ce5096a46119b88e8b0005d6636a0d4d3e398a02443041126c19b0f1479",
       "id": "artifact:file:tests/test_build_views.py:760ef645f6",
       "path": "tests/test_build_views.py",
       "source_record_id": "file:tests/test_build_views.py:760ef645f6",
@@ -7627,7 +7675,7 @@
   ],
   "index_identity": {
     "artifact_kind": "repository_artifact_index",
-    "content_digest": "dcee427cf0747375ab2da2b2f92e78f69e570cc1c4f816a5e85bea59d7a55311",
+    "content_digest": "19073b4f9c07c019ed3635409a7473c639b59d5b54a1faf5fcf49f5b05713c9a",
     "index_kind": "artifact",
     "local_id": "index:repo-local:artifacts",
     "schema_ref": "aoa-kag:schemas/repo-local-kag-repository-index.schema.json"
@@ -7651,17 +7699,17 @@
   },
   "schema_version": "aoa-repo-local-kag-repository-index-v1",
   "source_index": {
-    "content_digest": "82db605725f2763de33de45a849610690d824d03d2fd4ad9a666c436c10b177c",
+    "content_digest": "9b5e716ce16182c6a543af6198e5fd63f66baa468ae0d9d9099969e7cfc576d1",
     "local_id": "index:repo-local:source-surfaces",
     "path": "kag/indexes/source_surface_index.json"
   },
   "summary": {
-    "entry_count": 953,
+    "entry_count": 959,
     "kind_counts": {
       "asset": 50,
       "config": 174,
       "dependency_manifest": 2,
-      "document": 460,
+      "document": 461,
       "generated_readmodel": 42,
       "index": 1,
       "license": 1,
@@ -7673,8 +7721,8 @@
       "script": 23,
       "security": 1,
       "service_unit": 2,
-      "source_code": 23,
-      "test": 43,
+      "source_code": 27,
+      "test": 44,
       "validator": 18
     }
   }

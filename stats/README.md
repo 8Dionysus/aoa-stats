@@ -97,11 +97,14 @@ materialization selector. The committed catalog may include reference-only
 profiles; the local live catalog contains only admitted, materialized outputs,
 while cleanup still covers every managed active output. Component Refresh,
 Continuity Window, Codex Plane Deployment, trusted rollout-history, and both
-cadence projections are currently reference-only alongside the Titan
-references. The
+cadence projections are currently reference-only alongside Owner Landing,
+Memory Movement, Stress Recovery Window, and the Titan references. Owner
+Landing and Stress Recovery still lack real publishers; Memory Movement has a
+real reviewed owner corpus but no refresh observation route. The
 selector and stale-cleanup precedent is recorded for Component Refresh in
 `docs/decisions/AOST-D-0003-component-refresh-fixtures-are-not-live-state.md`;
-that record is not a decision for the other reference-only profiles, and
-the selector does not independently certify any profile's source posture.
+the current-source plus observation requirement is recorded in
+`docs/decisions/AOST-D-0004-live-admission-requires-refresh-observation.md`.
+The selector does not independently certify any profile's source posture.
 
 Follow the family route card before changing any of those paths.

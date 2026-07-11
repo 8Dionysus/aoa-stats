@@ -22,22 +22,30 @@ the canonical assets from this part.
 - active profiles under `stats/read-models/active/` define the managed output
   universe: currently 25 read models
 - only profiles with `live_state_capable: true` enter the live build allowlist
-  (currently 16 authored profiles)
+  (currently 13 authored profiles)
 - `state/generated/summary_surface_catalog.min.json` lists only outputs
   actually admitted and materialized by that live run
 - cleanup still covers every managed active output, so an older runtime copy
   of a reference-only surface is removed
-- the Component Refresh, Continuity Window, Codex Plane Deployment, trusted
-  rollout-history, and cadence-example adapters are never implicit live
-  fallbacks
+- the Component Refresh, Continuity Window, Codex Plane Deployment, Memory
+  Movement, Stress Recovery, trusted rollout-history, and cadence-example
+  adapters are never implicit live fallbacks
 
-Those nine committed/reference profiles are therefore absent from live output
-until explicit owner-runtime, deploy-local, or active-cadence source contracts
-land. Codex Plane refresh passes an explicit `live` source mode and workspace
-root so future activation cannot silently reuse committed 8Dionysus inputs. The
+All 12 committed/reference profiles are therefore absent from live output
+until both their current owner source and the observation route that can cause
+refresh are real. Owner Landing and Stress Recovery still lack their named
+owner publishers. Memory Movement reads a real reviewed `aoa-memo` corpus,
+but the watcher does not observe changes to its catalog, object, reviewed
+intake, or landing-receipt roots; the memo writeback receipt log is not a
+substitute for that missing corpus trigger.
+
+Codex Plane refresh passes an explicit `live` source mode and workspace root
+so future activation cannot silently reuse committed 8Dionysus inputs. The
 selector and stale-cleanup precedent is recorded for Component Refresh in
-`docs/decisions/AOST-D-0003-component-refresh-fixtures-are-not-live-state.md`;
-it does not decide the other eight reference-only profiles.
+`docs/decisions/AOST-D-0003-component-refresh-fixtures-are-not-live-state.md`.
+The current-source plus observation law, including the three newly closed
+selectors, is recorded in
+`docs/decisions/AOST-D-0004-live-admission-requires-refresh-observation.md`.
 
 ## Payload
 

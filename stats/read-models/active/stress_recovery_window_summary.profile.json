@@ -5,16 +5,17 @@
   "name": "stress_recovery_window_summary",
   "surface_ref": "generated/stress_recovery_window_summary.min.json",
   "schema_ref": "schemas/stress-recovery-window-summary.schema.json",
-  "primary_question": "What does the current repeated-window stress recovery proof family say without inventing a new canonical event kind or outranking owner evidence?",
-  "derivation_rule": "resolve aoa-stress-recovery-window eval_result_receipt report_ref paths through aoa-evals and derive one bounded summary plus suppression posture",
-  "input_posture": "receipt_backed_with_external_reports",
+  "primary_question": "What bounded Stress Recovery posture is represented by the committed draft eval example without presenting it as a current repeated-window proof family?",
+  "derivation_rule": "resolve the committed aoa-stress-recovery-window example receipt to its draft aoa-evals example report and derive one reference summary plus suppression posture",
+  "input_posture": "committed_draft_eval_example_chain",
   "owner_truth_inputs": [
-    "aoa-evals eval result receipts",
-    "aoa-evals stress recovery reports"
+    "stats/intake-contract/examples/session_harvest_family.receipts.example.json stress-recovery eval receipt",
+    "aoa-evals/evals/comparison/longitudinal-window/aoa-stress-recovery-window/reports/example-report.json",
+    "future activated aoa-evals stress-recovery receipts and reports"
   ],
   "authority_ceiling": "Weaker than owner-local stressor receipts, bounded eval reports, and route-owner recovery guidance.",
   "consumer_risk": "high",
-  "live_state_capable": true,
+  "live_state_capable": false,
   "mechanic_routes": [
     "mechanics/antifragility/parts/stress-recovery-windows"
   ]

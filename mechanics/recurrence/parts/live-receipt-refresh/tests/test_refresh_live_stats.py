@@ -9,6 +9,22 @@ from unittest.mock import Mock, patch
 PART_ROOT = Path(__file__).resolve().parents[1]
 REPO_ROOT = Path(__file__).resolve().parents[5]
 MODULE_PATH = REPO_ROOT / "scripts" / "refresh_live_stats.py"
+FALSE_LIVE_OUTPUT_NAMES = frozenset(
+    {
+        "owner_landing_summary.min.json",
+        "codex_plane_deployment_summary.min.json",
+        "codex_rollout_operations_summary.min.json",
+        "codex_rollout_drift_summary.min.json",
+        "rollout_campaign_summary.min.json",
+        "drift_review_summary.min.json",
+        "continuity_window_summary.min.json",
+        "component_refresh_summary.min.json",
+        "memory_movement_summary.min.json",
+        "titan_incarnation_summary.min.json",
+        "titan_summon_summary.min.json",
+        "stress_recovery_window_summary.min.json",
+    }
+)
 
 
 def load_refresh_module():
@@ -41,31 +57,14 @@ def test_live_output_inventory_is_derived_from_authored_profile_posture() -> Non
         module.SUMMARY_SURFACE_CATALOG_OUTPUT_NAME,
     )
     assert len(all_profile_outputs) == 25
-    assert len(live_profile_outputs) == 16
-    assert "memory_movement_summary.min.json" in live_profile_outputs
-    assert "codex_plane_deployment_summary.min.json" not in live_profile_outputs
-    assert "continuity_window_summary.min.json" not in live_profile_outputs
-    assert "component_refresh_summary.min.json" not in live_profile_outputs
-    assert "codex_rollout_operations_summary.min.json" not in live_profile_outputs
-    assert "codex_rollout_drift_summary.min.json" not in live_profile_outputs
-    assert "rollout_campaign_summary.min.json" not in live_profile_outputs
-    assert "drift_review_summary.min.json" not in live_profile_outputs
-    assert "titan_incarnation_summary.min.json" not in live_profile_outputs
-    assert "titan_summon_summary.min.json" not in live_profile_outputs
-    assert set(all_profile_outputs) - set(live_profile_outputs) == {
-        "codex_plane_deployment_summary.min.json",
-        "continuity_window_summary.min.json",
-        "component_refresh_summary.min.json",
-        "codex_rollout_operations_summary.min.json",
-        "codex_rollout_drift_summary.min.json",
-        "rollout_campaign_summary.min.json",
-        "drift_review_summary.min.json",
-        "titan_incarnation_summary.min.json",
-        "titan_summon_summary.min.json",
-    }
+    assert len(live_profile_outputs) == 13
+    assert "owner_landing_summary.min.json" not in live_profile_outputs
+    assert "memory_movement_summary.min.json" not in live_profile_outputs
+    assert "stress_recovery_window_summary.min.json" not in live_profile_outputs
+    assert set(all_profile_outputs) - set(live_profile_outputs) == FALSE_LIVE_OUTPUT_NAMES
 
 
-def test_live_allowlist_never_invokes_rollout_history_or_cadence_reference_adapters() -> None:
+def test_live_allowlist_never_invokes_reference_only_builders() -> None:
     module = load_refresh_module()
     receipts_path = (
         REPO_ROOT
@@ -75,12 +74,24 @@ def test_live_allowlist_never_invokes_rollout_history_or_cadence_reference_adapt
         / "session_harvest_family.receipts.example.json"
     )
     receipts = module.load_receipts([receipts_path])
+    owner_landing_builder = Mock(
+        side_effect=AssertionError("owner landing builder ran live")
+    )
+    memory_movement_builder = Mock(
+        side_effect=AssertionError("memory movement builder ran live")
+    )
+    stress_recovery_builder = Mock(
+        side_effect=AssertionError("stress recovery builder ran live")
+    )
     history_adapter = Mock(side_effect=AssertionError("history adapter ran live"))
     cadence_adapter = Mock(side_effect=AssertionError("cadence adapter ran live"))
 
     with patch.dict(
         module.build_all_views.__globals__,
         {
+            "build_owner_landing_summary": owner_landing_builder,
+            "build_memory_movement_summary": memory_movement_builder,
+            "build_stress_recovery_window_summary": stress_recovery_builder,
             "codex_trusted_rollout_input_bundle": history_adapter,
             "rollout_cadence_input_bundle": cadence_adapter,
         },
@@ -93,8 +104,14 @@ def test_live_allowlist_never_invokes_rollout_history_or_cadence_reference_adapt
             ),
         )
 
+    owner_landing_builder.assert_not_called()
+    memory_movement_builder.assert_not_called()
+    stress_recovery_builder.assert_not_called()
     history_adapter.assert_not_called()
     cadence_adapter.assert_not_called()
+    assert "owner_landing_summary.min.json" not in outputs
+    assert "memory_movement_summary.min.json" not in outputs
+    assert "stress_recovery_window_summary.min.json" not in outputs
     assert "codex_rollout_operations_summary.min.json" not in outputs
     assert "codex_rollout_drift_summary.min.json" not in outputs
     assert "rollout_campaign_summary.min.json" not in outputs
@@ -158,95 +175,33 @@ def test_refresh_materializes_only_live_profile_outputs_and_filters_live_catalog
     )
     summary_output_dir = tmp_path / "state" / "generated"
     summary_output_dir.mkdir(parents=True)
-    for stale_name in (
-        "codex_plane_deployment_summary.min.json",
-        "codex_rollout_operations_summary.min.json",
-        "codex_rollout_drift_summary.min.json",
-        "rollout_campaign_summary.min.json",
-        "drift_review_summary.min.json",
-        "continuity_window_summary.min.json",
-        "component_refresh_summary.min.json",
-        "titan_incarnation_summary.min.json",
-        "titan_summon_summary.min.json",
-    ):
+    for stale_name in FALSE_LIVE_OUTPUT_NAMES:
         (summary_output_dir / stale_name).write_text("stale\n", encoding="utf-8")
 
     build_outputs = {
-        "memory_movement_summary.min.json": {"schema_version": "memory-live"},
-        "codex_plane_deployment_summary.min.json": {
-            "schema_version": "codex-plane-reference"
-        },
-        "codex_rollout_operations_summary.min.json": {
-            "schema_version": "codex-rollout-history-reference"
-        },
-        "codex_rollout_drift_summary.min.json": {
-            "schema_version": "codex-rollout-drift-reference"
-        },
-        "rollout_campaign_summary.min.json": {
-            "schema_version": "rollout-campaign-reference"
-        },
-        "drift_review_summary.min.json": {
-            "schema_version": "drift-review-reference"
-        },
-        "continuity_window_summary.min.json": {"schema_version": "continuity-reference"},
-        "component_refresh_summary.min.json": {"schema_version": "component-reference"},
-        "titan_incarnation_summary.min.json": {"schema_version": "titan-reference"},
-        "titan_summon_summary.min.json": {"schema_version": "titan-seed"},
-        "summary_surface_catalog.min.json": {
-            "schema_version": "aoa_stats_summary_surface_catalog_v2",
-            "surfaces": [
+        name: {"schema_version": f"reference-{name}"}
+        for name in FALSE_LIVE_OUTPUT_NAMES
+    }
+    build_outputs["automation_pipeline_summary.min.json"] = {
+        "schema_version": "automation-live"
+    }
+    build_outputs["summary_surface_catalog.min.json"] = {
+        "schema_version": "aoa_stats_summary_surface_catalog_v2",
+        "surfaces": [
+            {
+                "name": "automation_pipeline_summary",
+                "surface_ref": "generated/automation_pipeline_summary.min.json",
+                "live_state_capable": True,
+            },
+            *[
                 {
-                    "name": "memory_movement_summary",
-                    "surface_ref": "generated/memory_movement_summary.min.json",
-                    "live_state_capable": True,
-                },
-                {
-                    "name": "codex_plane_deployment_summary",
-                    "surface_ref": "generated/codex_plane_deployment_summary.min.json",
+                    "name": name.removesuffix(".min.json"),
+                    "surface_ref": f"generated/{name}",
                     "live_state_capable": False,
-                },
-                {
-                    "name": "codex_rollout_operations_summary",
-                    "surface_ref": "generated/codex_rollout_operations_summary.min.json",
-                    "live_state_capable": False,
-                },
-                {
-                    "name": "codex_rollout_drift_summary",
-                    "surface_ref": "generated/codex_rollout_drift_summary.min.json",
-                    "live_state_capable": False,
-                },
-                {
-                    "name": "rollout_campaign_summary",
-                    "surface_ref": "generated/rollout_campaign_summary.min.json",
-                    "live_state_capable": False,
-                },
-                {
-                    "name": "drift_review_summary",
-                    "surface_ref": "generated/drift_review_summary.min.json",
-                    "live_state_capable": False,
-                },
-                {
-                    "name": "continuity_window_summary",
-                    "surface_ref": "generated/continuity_window_summary.min.json",
-                    "live_state_capable": False,
-                },
-                {
-                    "name": "component_refresh_summary",
-                    "surface_ref": "generated/component_refresh_summary.min.json",
-                    "live_state_capable": False,
-                },
-                {
-                    "name": "titan_incarnation_summary",
-                    "surface_ref": "generated/titan_incarnation_summary.min.json",
-                    "live_state_capable": False,
-                },
-                {
-                    "name": "titan_summon_summary",
-                    "surface_ref": "generated/titan_summon_summary.min.json",
-                    "live_state_capable": False,
-                },
+                }
+                for name in sorted(FALSE_LIVE_OUTPUT_NAMES)
             ],
-        },
+        ],
     }
 
     with patch.object(module, "build_all_views", return_value=build_outputs) as build_mock:
@@ -261,22 +216,29 @@ def test_refresh_materializes_only_live_profile_outputs_and_filters_live_catalog
     assert build_mock.call_args.kwargs["optional_output_names"] == frozenset(
         module.live_profile_surface_output_names()
     )
+    assert FALSE_LIVE_OUTPUT_NAMES.isdisjoint(
+        build_mock.call_args.kwargs["optional_output_names"]
+    )
     assert build_mock.call_args.kwargs["codex_plane_source_mode"] == "live"
     assert build_mock.call_args.kwargs["codex_plane_workspace_root"] == federation_root
     assert {path.name for path in summary_output_dir.glob("*.min.json")} == {
-        "memory_movement_summary.min.json",
+        "automation_pipeline_summary.min.json",
         "summary_surface_catalog.min.json",
     }
+    assert all(
+        not (summary_output_dir / name).exists()
+        for name in FALSE_LIVE_OUTPUT_NAMES
+    )
     live_catalog = json.loads(
         (summary_output_dir / "summary_surface_catalog.min.json").read_text(
             encoding="utf-8"
         )
     )
     assert [surface["name"] for surface in live_catalog["surfaces"]] == [
-        "memory_movement_summary"
+        "automation_pipeline_summary"
     ]
     assert live_catalog["surfaces"][0]["surface_ref"] == (
-        summary_output_dir / "memory_movement_summary.min.json"
+        summary_output_dir / "automation_pipeline_summary.min.json"
     ).as_posix()
 
 
@@ -413,10 +375,11 @@ def test_refresh_live_state_combines_repo_relative_sources(tmp_path: Path) -> No
     )
     assert catalog["artifact_identity"]["verification"][0] == "python scripts/refresh_live_stats.py"
     assert "live surface refs" in catalog["artifact_identity"]["consumer_expectation"]
-    stress_summary = json.loads(
-        (summary_output_dir / "stress_recovery_window_summary.min.json").read_text(encoding="utf-8")
+    assert not (summary_output_dir / "stress_recovery_window_summary.min.json").exists()
+    assert all(
+        surface["name"] != "stress_recovery_window_summary"
+        for surface in catalog["surfaces"]
     )
-    assert stress_summary["suppression"]["status"] == "insufficient_evidence"
 
 
 def test_refresh_live_state_clears_previous_outputs_when_sources_are_empty(tmp_path: Path) -> None:
@@ -460,21 +423,7 @@ def test_refresh_live_state_clears_previous_outputs_when_sources_are_empty(tmp_p
     (summary_output_dir / "summary_surface_catalog.min.json").write_text(
         '{"schema_version":"aoa_stats_summary_surface_catalog_v1"}\n', encoding="utf-8"
     )
-    (summary_output_dir / "codex_plane_deployment_summary.min.json").write_text(
-        '{"schema_version":"aoa_stats_codex_plane_deployment_summary_v1"}\n',
-        encoding="utf-8",
-    )
-    for stale_name in (
-        "memory_movement_summary.min.json",
-        "codex_rollout_operations_summary.min.json",
-        "codex_rollout_drift_summary.min.json",
-        "rollout_campaign_summary.min.json",
-        "drift_review_summary.min.json",
-        "continuity_window_summary.min.json",
-        "component_refresh_summary.min.json",
-        "titan_incarnation_summary.min.json",
-        "titan_summon_summary.min.json",
-    ):
+    for stale_name in FALSE_LIVE_OUTPUT_NAMES:
         (summary_output_dir / stale_name).write_text("stale\n", encoding="utf-8")
 
     source_labels, receipt_count = module.refresh_live_state(
@@ -491,17 +440,10 @@ def test_refresh_live_state_clears_previous_outputs_when_sources_are_empty(tmp_p
     assert receipt_count == 0
     assert feed_output.exists() is False
     assert (summary_output_dir / "summary_surface_catalog.min.json").exists() is False
-    assert (summary_output_dir / "codex_plane_deployment_summary.min.json").exists() is False
-    assert (summary_output_dir / "codex_rollout_operations_summary.min.json").exists() is False
-    assert (summary_output_dir / "codex_rollout_drift_summary.min.json").exists() is False
-    assert (summary_output_dir / "rollout_campaign_summary.min.json").exists() is False
-    assert (summary_output_dir / "drift_review_summary.min.json").exists() is False
-    assert (summary_output_dir / "stress_recovery_window_summary.min.json").exists() is False
-    assert (summary_output_dir / "memory_movement_summary.min.json").exists() is False
-    assert (summary_output_dir / "continuity_window_summary.min.json").exists() is False
-    assert (summary_output_dir / "component_refresh_summary.min.json").exists() is False
-    assert (summary_output_dir / "titan_incarnation_summary.min.json").exists() is False
-    assert (summary_output_dir / "titan_summon_summary.min.json").exists() is False
+    assert all(
+        not (summary_output_dir / name).exists()
+        for name in FALSE_LIVE_OUTPUT_NAMES
+    )
 
 
 def test_refresh_live_state_removes_stale_optional_outputs_when_builder_omits_them(tmp_path: Path) -> None:
@@ -567,13 +509,7 @@ def test_refresh_live_state_removes_stale_optional_outputs_when_builder_omits_th
     summary_output_dir.mkdir(parents=True)
     stale_paths = tuple(
         summary_output_dir / name
-        for name in (
-            "codex_plane_deployment_summary.min.json",
-            "codex_rollout_operations_summary.min.json",
-            "codex_rollout_drift_summary.min.json",
-            "rollout_campaign_summary.min.json",
-            "drift_review_summary.min.json",
-        )
+        for name in FALSE_LIVE_OUTPUT_NAMES
     )
     for stale_path in stale_paths:
         stale_path.write_text("stale\n", encoding="utf-8")
@@ -597,7 +533,9 @@ def test_refresh_live_state_removes_stale_optional_outputs_when_builder_omits_th
     assert all(not stale_path.exists() for stale_path in stale_paths)
 
 
-def test_refresh_live_state_resolves_stress_report_from_federation_root(tmp_path: Path) -> None:
+def test_refresh_live_state_does_not_admit_stress_report_without_live_profile(
+    tmp_path: Path,
+) -> None:
     module = load_refresh_module()
     federation_root = tmp_path / "srv"
     evals_dir = federation_root / "aoa-evals" / ".aoa" / "live_receipts"
@@ -721,17 +659,21 @@ def test_refresh_live_state_resolves_stress_report_from_federation_root(tmp_path
 
     assert source_labels == ["aoa-evals/.aoa/live_receipts/eval-result-receipts.jsonl"]
     assert receipt_count == 1
-    stress_summary = json.loads(
-        (summary_output_dir / "stress_recovery_window_summary.min.json").read_text(encoding="utf-8")
+    assert not (summary_output_dir / "stress_recovery_window_summary.min.json").exists()
+    catalog = json.loads(
+        (summary_output_dir / "summary_surface_catalog.min.json").read_text(
+            encoding="utf-8"
+        )
     )
-    assert stress_summary["suppression"]["status"] == "low_sample"
-    assert stress_summary["scope"]["stressor_family"] == "hybrid-query-kag-unhealthy"
-    assert stress_summary["inputs"]["eval_report_refs"] == [
-        "repo:aoa-evals/bundles/aoa-stress-recovery-window/reports/example-report.json"
-    ]
+    assert all(
+        surface["name"] != "stress_recovery_window_summary"
+        for surface in catalog["surfaces"]
+    )
 
 
-def test_refresh_live_state_prefers_vendored_evals_root_when_present(tmp_path: Path) -> None:
+def test_refresh_live_state_does_not_admit_vendored_stress_report_without_live_profile(
+    tmp_path: Path,
+) -> None:
     module = load_refresh_module()
     federation_root = tmp_path / "srv"
     evals_dir = federation_root / "aoa-evals" / ".aoa" / "live_receipts"
@@ -857,13 +799,16 @@ def test_refresh_live_state_prefers_vendored_evals_root_when_present(tmp_path: P
 
     assert source_labels == ["aoa-evals/.aoa/live_receipts/eval-result-receipts.jsonl"]
     assert receipt_count == 1
-    stress_summary = json.loads(
-        (summary_output_dir / "stress_recovery_window_summary.min.json").read_text(encoding="utf-8")
+    assert not (summary_output_dir / "stress_recovery_window_summary.min.json").exists()
+    catalog = json.loads(
+        (summary_output_dir / "summary_surface_catalog.min.json").read_text(
+            encoding="utf-8"
+        )
     )
-    assert stress_summary["scope"]["stressor_family"] == "hybrid-query-kag-unhealthy"
-    assert stress_summary["inputs"]["eval_report_refs"] == [
-        "repo:aoa-evals/bundles/aoa-stress-recovery-window/reports/vendored-report.json"
-    ]
+    assert all(
+        surface["name"] != "stress_recovery_window_summary"
+        for surface in catalog["surfaces"]
+    )
 
 
 def test_refresh_live_state_combines_playbook_technique_memo_and_runtime_sources(

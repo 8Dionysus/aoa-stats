@@ -73,6 +73,14 @@ Tracking starts with the first public release-prep baseline for this repository.
   from cadence examples, localized strict history and cadence projection seams
   under their mechanic owners, and removed all four committed companion
   summaries from live-state admission while retaining managed stale cleanup.
+- Required live-admitted profiles to have both a current owner source and an
+  observable refresh route; kept Memory Movement, Owner Landing, and Stress
+  Recovery as committed/reference snapshots until their missing corpus trigger
+  or real owner publishers exist, while preserving stale live-output cleanup.
+- Separated Memory Movement and Stress Recovery projection rules from their
+  filesystem adapters so the Boundary Bridge and Antifragility mechanic owners
+  can carry focused invariants while the root builder remains a compatibility
+  facade.
 
 ## [0.1.3] - 2026-04-23
 

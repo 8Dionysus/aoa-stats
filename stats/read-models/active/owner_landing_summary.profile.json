@@ -5,16 +5,17 @@
   "name": "owner_landing_summary",
   "surface_ref": "generated/owner_landing_summary.min.json",
   "schema_ref": "schemas/owner-landing-summary.schema.json",
-  "primary_question": "Which reviewed candidates have landed in owner-local status surfaces and how far has that landing stabilized without turning stats into owner truth?",
-  "derivation_rule": "aggregate reviewed_owner_landing_receipt payloads together with seed_owner_landing_trace_receipt payloads into owner-repo, posture, outcome, and time-to-outcome summaries",
-  "input_posture": "receipt_backed_live",
+  "primary_question": "What owner-landing posture is represented by the committed receipt examples without claiming that an owner-local publisher has landed those candidates?",
+  "derivation_rule": "aggregate committed reviewed_owner_landing_receipt and seed_owner_landing_trace_receipt examples into a bounded reference summary until real owner-local publishers exist",
+  "input_posture": "committed_receipt_example_chain",
   "owner_truth_inputs": [
-    "aoa-skills reviewed owner landing receipts",
-    "Dionysus seed owner landing traces"
+    "stats/intake-contract/examples/session_harvest_family.receipts.example.json reviewed_owner_landing_receipt examples",
+    "stats/intake-contract/examples/session_harvest_family.receipts.example.json seed_owner_landing_trace_receipt examples",
+    "future owner-local landing status surfaces and receipts"
   ],
   "authority_ceiling": "Weaker than owner-local status surfaces, reviewed landing bundles, and owner repository decisions.",
   "consumer_risk": "high",
-  "live_state_capable": true,
+  "live_state_capable": false,
   "mechanic_routes": [
     "mechanics/method-growth/parts/owner-landing"
   ]

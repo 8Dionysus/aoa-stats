@@ -39,6 +39,14 @@ Use these classes as the compact posture vocabulary:
 - `committed_reference_example_catalog_chain`: committed examples, an
   owner-authored contract, and catalog definitions that make a reference shape
   inspectable without claiming runtime occurrence
+- `committed_receipt_example_chain`: committed receipt examples whose event
+  family is inspectable but has no active owner publisher
+- `reviewed_owner_corpus_snapshot`: a committed projection of authentic
+  reviewed owner corpus truth that is not continuously live without an
+  observable refresh route
+- `committed_draft_eval_example_chain`: a committed eval receipt/report example
+  whose draft posture cannot stand in for an activated producer or current
+  proof family
 - `registry_backed_coverage_audit`: receipt counts checked against the live
   source registry
 

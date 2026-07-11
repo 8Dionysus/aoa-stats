@@ -139,13 +139,16 @@ reference-only surfaces. Local live refresh treats `live_state_capable` as an
 executable admission contract: it materializes only `true` profiles, writes a
 live catalog only for outputs actually present, and cleans stale files across
 the full managed active-profile set. The managed read-model inventory is 25;
-the authored live-admitted inventory is 16. Component Refresh, Continuity
-Window, Codex Plane Deployment, trusted rollout-history, cadence examples, and
-Titan reference surfaces are excluded from live mode; other `true` profiles
-retain their declared source posture pending separate audits. The selector and
-stale-cleanup precedent is
+the authored live-admitted inventory is 13. Component Refresh, Continuity
+Window, Codex Plane Deployment, trusted rollout-history, cadence examples,
+Owner Landing, Memory Movement, Stress Recovery, and Titan reference surfaces
+are excluded from live mode. The selector and stale-cleanup precedent is
 `docs/decisions/AOST-D-0003-component-refresh-fixtures-are-not-live-state.md`,
-which decides the Component Refresh case only. Continuity Window remains
+which decides the Component Refresh case only. The cross-profile requirement
+that live state have both a current owner source and an observable refresh
+route is
+`docs/decisions/AOST-D-0004-live-admission-requires-refresh-observation.md`.
+Continuity Window remains
 reference-only because its current cross-owner inputs are examples, an
 experimental playbook, and draft catalog definitions rather than a real
 owner-runtime artifact or receipt. Codex Plane Deployment remains
@@ -156,6 +159,11 @@ Trusted rollout-history is reference-only because its four inputs are
 checked-in owner history, not deploy-local state. Rollout Campaign and Drift
 Review are reference-only because they project a separate three-example chain,
 not an active cadence producer.
+Owner Landing remains reference-only because its event kinds have no real
+publisher. Stress Recovery remains reference-only because its eval/report
+chain is draft and example-backed. Memory Movement reads authentic reviewed
+`aoa-memo` corpus truth, but no automatic refresh trigger observes that corpus;
+the committed snapshot is retained without advertising stale local live state.
 
 `artifact_identity` describes the catalog as a public generated observability
 read-model with an ABI epoch, contract version, consumer checks, privacy
