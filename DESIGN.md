@@ -95,6 +95,12 @@ through an explicit `package_payload_roots` declaration in
 `mechanics/topology.json`. Part-specific payload and validation stay with the
 nearest part.
 
+The current Method Growth and Growth Cycle cores follow this shape: pure
+receipt-to-read-model transformations live in `src/aoa_stats_builder/`, their
+cross-part behavioral tests live with the mechanic package, and
+`scripts/build_views.py` remains the repo-wide input, fan-out, and publication
+facade.
+
 Generated artifacts never become source authority merely because they are
 committed or convenient to query.
 

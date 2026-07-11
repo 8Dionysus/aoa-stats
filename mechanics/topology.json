@@ -663,7 +663,9 @@
       "center_mechanic_ref": "Agents-of-Abyss/mechanics/growth-cycle",
       "local_status": "localized_active",
       "local_function": "Observe route forks, session growth, and automation follow-through.",
-      "package_payload_roots": [],
+      "package_payload_roots": [
+        "tests"
+      ],
       "active_part_routes": [
         {
           "path": "automation-followthrough",

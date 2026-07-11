@@ -69,7 +69,7 @@
       "heading_ref": {
         "anchor": "013-2026-04-23",
         "level": 2,
-        "line": 58,
+        "line": 62,
         "ref": "CHANGELOG.md#013-2026-04-23",
         "title": "[0.1.3] - 2026-04-23"
       },
@@ -84,7 +84,7 @@
       "heading_ref": {
         "anchor": "012-2026-04-19",
         "level": 2,
-        "line": 97,
+        "line": 101,
         "ref": "CHANGELOG.md#012-2026-04-19",
         "title": "[0.1.2] - 2026-04-19"
       },
@@ -99,7 +99,7 @@
       "heading_ref": {
         "anchor": "011-2026-04-12",
         "level": 2,
-        "line": 128,
+        "line": 132,
         "ref": "CHANGELOG.md#011-2026-04-12",
         "title": "[0.1.1] - 2026-04-12"
       },
@@ -114,7 +114,7 @@
       "heading_ref": {
         "anchor": "010-2026-04-10",
         "level": 2,
-        "line": 167,
+        "line": 171,
         "ref": "CHANGELOG.md#010-2026-04-10",
         "title": "[0.1.0] - 2026-04-10"
       },
@@ -538,6 +538,15 @@
       "event_kind": "test_run",
       "event_role": "producer",
       "heading_ref": null,
+      "id": "event:repo:c7669961b2faa9dcf270",
+      "observation_state": "declared",
+      "path": "mechanics/growth-cycle/tests/test_growth_cycle_projections.py",
+      "source_record_id": "file:mechanics/growth-cycle/tests/test_growth_cycle_projections.py:ba645ab066"
+    },
+    {
+      "event_kind": "test_run",
+      "event_role": "producer",
+      "heading_ref": null,
       "id": "event:repo:2cea4c9d2e2b66eb556f",
       "observation_state": "declared",
       "path": "mechanics/method-growth/tests/test_candidate_lifecycle.py",
@@ -870,7 +879,7 @@
   ],
   "index_identity": {
     "artifact_kind": "repository_event_index",
-    "content_digest": "3c9e5c95499da1880b9568eb885534e608b7d25a281915213d5bd53f4c6b174b",
+    "content_digest": "a6a701d62e5649962b4e9f5910a5f1e0a2753da888154579932bccb2a7423262",
     "index_kind": "event",
     "local_id": "index:repo-local:events",
     "schema_ref": "aoa-kag:schemas/repo-local-kag-repository-index.schema.json"
@@ -895,19 +904,19 @@
   },
   "schema_version": "aoa-repo-local-kag-repository-index-v1",
   "source_index": {
-    "content_digest": "c2000b740d1d63dbd50501bbc2f08b527d13621d813d576a3c20cbfcc1c2bae3",
+    "content_digest": "c500c6243379f0a6b6cae5cb5e2fbf4584b6c095d39874af4c2fd782ce03c789",
     "local_id": "index:repo-local:source-surfaces",
     "path": "kag/indexes/source_surface_index.json"
   },
   "summary": {
-    "entry_count": 93,
+    "entry_count": 94,
     "kind_counts": {
       "command_run": 12,
       "decision_record": 9,
       "generation_run": 10,
       "release_declaration": 4,
       "release_lane": 1,
-      "test_run": 36,
+      "test_run": 37,
       "validation_lane_run": 1,
       "validation_receipt": 1,
       "validation_run": 18,

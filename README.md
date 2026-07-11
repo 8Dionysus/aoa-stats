@@ -89,6 +89,9 @@ that package payload root is declared in `mechanics/topology.json`.
   `mechanics/antifragility/parts/stress-recovery-windows/examples/stress_recovery_window_summary.chaos-wave1.example.json`
 - candidate lineage and growth funnel:
   `mechanics/method-growth/parts/candidate-lineage/`
+- route-fork, session-branch, and automation follow-through projections:
+  `mechanics/growth-cycle/`, backed by the shared deterministic core at
+  `src/aoa_stats_builder/growth_cycle.py`
 - memory movement and return to owner:
   `mechanics/boundary-bridge/parts/memory-owner-handoff/`
 - micro-friction contracts:

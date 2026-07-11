@@ -65,6 +65,9 @@ publication and implementation districts:
 - owner-local live-source registration belongs to the recurrence mechanic
 - committed derived surfaces remain under `generated/`
 - builders and readers remain under `src/`
+- the Growth Cycle profile family shares deterministic projection through
+  `src/aoa_stats_builder/growth_cycle.py`, with its focused package check under
+  `mechanics/growth-cycle/tests/`
 - public and compatibility commands remain under `scripts/`
 - repo-wide and compatibility validation remains under root `scripts/` and
   `tests/`; operation-focused validation follows `mechanics/topology.json`,

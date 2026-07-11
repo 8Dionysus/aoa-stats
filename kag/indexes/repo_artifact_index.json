@@ -1730,7 +1730,7 @@
     },
     {
       "artifact_kind": "document",
-      "content_hash": "016e6f0f088d035756cfc7c79f98cb8f2561e97e0bb0d616d5b9d21fe101183c",
+      "content_hash": "141c705ba5f2305a2dff6d98def6d757c5b15541a32437100c48816d01cfdacb",
       "id": "artifact:file:agents.md:a54ff182c7",
       "path": "AGENTS.md",
       "source_record_id": "file:agents.md:a54ff182c7",
@@ -1738,7 +1738,7 @@
     },
     {
       "artifact_kind": "document",
-      "content_hash": "f6a3579725cc7d5d709142a9c427334ffcf5298ce0db3a51158d8eb9fa3375c7",
+      "content_hash": "d2dd1b8074cc463e55d5c2090e9ce15905c2091a22b36b2c08a219e1b6bb86bf",
       "id": "artifact:file:changelog.md:06572a96a5",
       "path": "CHANGELOG.md",
       "source_record_id": "file:changelog.md:06572a96a5",
@@ -1762,7 +1762,7 @@
     },
     {
       "artifact_kind": "document",
-      "content_hash": "8c3fe48377154e1fc812da60765d6481254a8d70f975e9b252449874919ac44f",
+      "content_hash": "20027d453f5b40c2d38e120e118e2a1cded46cb75935880912e0b196694b554a",
       "id": "artifact:file:design.md:3dc5dd454e",
       "path": "DESIGN.md",
       "source_record_id": "file:design.md:3dc5dd454e",
@@ -1778,7 +1778,7 @@
     },
     {
       "artifact_kind": "document",
-      "content_hash": "7a2205279ab9daa67cc184ba33525a746504d5893f09c22868f652af4d5d6afc",
+      "content_hash": "f619dae9f8609bce39cc4b81e4679cd792272a02107ed11f088e29d7978c6a6f",
       "id": "artifact:file:readme.md:b335630551",
       "path": "README.md",
       "source_record_id": "file:readme.md:b335630551",
@@ -1786,7 +1786,7 @@
     },
     {
       "artifact_kind": "document",
-      "content_hash": "9ab6f0f501fa45c131df31decdf7ff3519818f0ea7b30436eaa95bd8715883ca",
+      "content_hash": "5ed1a1fd739c1ff251a588d56fd7010e654dc8acda8b3242f68114267b300cf5",
       "id": "artifact:file:roadmap.md:683343bdf9",
       "path": "ROADMAP.md",
       "source_record_id": "file:roadmap.md:683343bdf9",
@@ -5138,7 +5138,7 @@
     },
     {
       "artifact_kind": "document",
-      "content_hash": "660d2958eb124967490e76ae74b85b3a393ad46807cecad955b8908a2d034c1e",
+      "content_hash": "4ea40a31de2c8ca55be3691e5742e4809fc500ae5555429d4d3342598b204047",
       "id": "artifact:file:mechanics/growth-cycle/agents.md:ac0fbb989b",
       "path": "mechanics/growth-cycle/AGENTS.md",
       "source_record_id": "file:mechanics/growth-cycle/agents.md:ac0fbb989b",
@@ -5162,7 +5162,7 @@
     },
     {
       "artifact_kind": "document",
-      "content_hash": "6183a183ecb5d97545a419a9d935d40599877bfbbc325d723d9e98cc5c3dd575",
+      "content_hash": "05aca38636549d98bf1787a8a00ae02594754d09c1c9948ef157107b6ce0cb50",
       "id": "artifact:file:mechanics/growth-cycle/readme.md:dc9132d584",
       "path": "mechanics/growth-cycle/README.md",
       "source_record_id": "file:mechanics/growth-cycle/readme.md:dc9132d584",
@@ -5186,7 +5186,7 @@
     },
     {
       "artifact_kind": "document",
-      "content_hash": "a87b94585844374745eabe5e605afff22e0fde5141078d5d9c75688acfa2cf9b",
+      "content_hash": "f73367132b3b6fdb1853299003d89c8454c575f125a7045998d8e77ed9415d8a",
       "id": "artifact:file:mechanics/growth-cycle/parts/automation-followthrough/contract.md:2ff73f9de3",
       "path": "mechanics/growth-cycle/parts/automation-followthrough/CONTRACT.md",
       "source_record_id": "file:mechanics/growth-cycle/parts/automation-followthrough/contract.md:2ff73f9de3",
@@ -5194,7 +5194,7 @@
     },
     {
       "artifact_kind": "document",
-      "content_hash": "5a164c5c7d70f4a1f4f40928718e88d3e012944dd00f49476f98c42718e46f02",
+      "content_hash": "e16f3e4c4ad0b5fe0e1a74db48b736fb079ea24955589dd4579ed4c556346418",
       "id": "artifact:file:mechanics/growth-cycle/parts/automation-followthrough/readme.md:87eb085141",
       "path": "mechanics/growth-cycle/parts/automation-followthrough/README.md",
       "source_record_id": "file:mechanics/growth-cycle/parts/automation-followthrough/readme.md:87eb085141",
@@ -5202,7 +5202,7 @@
     },
     {
       "artifact_kind": "document",
-      "content_hash": "045aee7c7d783b6b29b902a7401549c850d272410838cace27b3a25efb441ff3",
+      "content_hash": "e0abbb93a64938e75307f134f9c7667d3cf088ea06ce137f8a21149ebad570cb",
       "id": "artifact:file:mechanics/growth-cycle/parts/automation-followthrough/validation.md:a20c9d30f5",
       "path": "mechanics/growth-cycle/parts/automation-followthrough/VALIDATION.md",
       "source_record_id": "file:mechanics/growth-cycle/parts/automation-followthrough/validation.md:a20c9d30f5",
@@ -5226,7 +5226,7 @@
     },
     {
       "artifact_kind": "document",
-      "content_hash": "a87b94585844374745eabe5e605afff22e0fde5141078d5d9c75688acfa2cf9b",
+      "content_hash": "879666e5a36cc10c67717b083add246a90ef94cf6c1e11e41b7c9345914cb0d6",
       "id": "artifact:file:mechanics/growth-cycle/parts/route-fork-calibration/contract.md:157da78a23",
       "path": "mechanics/growth-cycle/parts/route-fork-calibration/CONTRACT.md",
       "source_record_id": "file:mechanics/growth-cycle/parts/route-fork-calibration/contract.md:157da78a23",
@@ -5234,7 +5234,7 @@
     },
     {
       "artifact_kind": "document",
-      "content_hash": "7f95a7b5be2622698a42751f828137ecb914c1c49a446dc1d447d3cb9c1b5cdb",
+      "content_hash": "9341cca51618f43c22630cb12ddae0effc14958c964a9073581eec0256f39ea2",
       "id": "artifact:file:mechanics/growth-cycle/parts/route-fork-calibration/readme.md:6e5d437961",
       "path": "mechanics/growth-cycle/parts/route-fork-calibration/README.md",
       "source_record_id": "file:mechanics/growth-cycle/parts/route-fork-calibration/readme.md:6e5d437961",
@@ -5242,7 +5242,7 @@
     },
     {
       "artifact_kind": "document",
-      "content_hash": "045aee7c7d783b6b29b902a7401549c850d272410838cace27b3a25efb441ff3",
+      "content_hash": "e0abbb93a64938e75307f134f9c7667d3cf088ea06ce137f8a21149ebad570cb",
       "id": "artifact:file:mechanics/growth-cycle/parts/route-fork-calibration/validation.md:13254f6eff",
       "path": "mechanics/growth-cycle/parts/route-fork-calibration/VALIDATION.md",
       "source_record_id": "file:mechanics/growth-cycle/parts/route-fork-calibration/validation.md:13254f6eff",
@@ -5250,7 +5250,7 @@
     },
     {
       "artifact_kind": "document",
-      "content_hash": "a87b94585844374745eabe5e605afff22e0fde5141078d5d9c75688acfa2cf9b",
+      "content_hash": "93909d91ca1d30d0bc0103731cfb929638d7ac4b0bd45ed8642decd2ed5c910e",
       "id": "artifact:file:mechanics/growth-cycle/parts/session-growth-branch/contract.md:b45d3afa89",
       "path": "mechanics/growth-cycle/parts/session-growth-branch/CONTRACT.md",
       "source_record_id": "file:mechanics/growth-cycle/parts/session-growth-branch/contract.md:b45d3afa89",
@@ -5258,7 +5258,7 @@
     },
     {
       "artifact_kind": "document",
-      "content_hash": "5a7495c3ae0a22e2ce05dde19892267c0053d05c1980d0dd8dc418ddb48d4807",
+      "content_hash": "0e4c2629b92e700f0391b4898f63a9dd759d332381f50c9d69c7bc7154772f98",
       "id": "artifact:file:mechanics/growth-cycle/parts/session-growth-branch/readme.md:e8fc6e371b",
       "path": "mechanics/growth-cycle/parts/session-growth-branch/README.md",
       "source_record_id": "file:mechanics/growth-cycle/parts/session-growth-branch/readme.md:e8fc6e371b",
@@ -5266,7 +5266,7 @@
     },
     {
       "artifact_kind": "document",
-      "content_hash": "045aee7c7d783b6b29b902a7401549c850d272410838cace27b3a25efb441ff3",
+      "content_hash": "e0abbb93a64938e75307f134f9c7667d3cf088ea06ce137f8a21149ebad570cb",
       "id": "artifact:file:mechanics/growth-cycle/parts/session-growth-branch/validation.md:69157e8dde",
       "path": "mechanics/growth-cycle/parts/session-growth-branch/VALIDATION.md",
       "source_record_id": "file:mechanics/growth-cycle/parts/session-growth-branch/validation.md:69157e8dde",
@@ -5286,6 +5286,14 @@
       "id": "artifact:file:mechanics/growth-cycle/parts/session-growth-branch/examples/session_growth_branch_summary.example.json:11f078ba9a",
       "path": "mechanics/growth-cycle/parts/session-growth-branch/examples/session_growth_branch_summary.example.json",
       "source_record_id": "file:mechanics/growth-cycle/parts/session-growth-branch/examples/session_growth_branch_summary.example.json:11f078ba9a",
+      "surface_state": "authored_source"
+    },
+    {
+      "artifact_kind": "test",
+      "content_hash": "9857ac317c991af99062630ef597cb4d20d598e25ea662655f8a071eb33d0190",
+      "id": "artifact:file:mechanics/growth-cycle/tests/test_growth_cycle_projections.py:ba645ab066",
+      "path": "mechanics/growth-cycle/tests/test_growth_cycle_projections.py",
+      "source_record_id": "file:mechanics/growth-cycle/tests/test_growth_cycle_projections.py:ba645ab066",
       "surface_state": "authored_source"
     },
     {
@@ -6402,7 +6410,7 @@
     },
     {
       "artifact_kind": "config",
-      "content_hash": "af3ec5168c830c66fdfa274a88100cee6abe2e4582c45ecb64f23711d0da5eb0",
+      "content_hash": "f05980b7954fa3ff06c8a5ea14cf41b083ad4ca4ed2e1ca71bdcc39806d6d35e",
       "id": "artifact:file:mechanics/topology.json:c2f84a03b1",
       "path": "mechanics/topology.json",
       "source_record_id": "file:mechanics/topology.json:c2f84a03b1",
@@ -6666,7 +6674,7 @@
     },
     {
       "artifact_kind": "script",
-      "content_hash": "294fc54227787389c14a4e0e1a99f3a9d3a93748c45420a45ff2514340f6e028",
+      "content_hash": "65b0af5ca8e5f68d4fd11c3f4254d4541241930821e3bea24ae86c3ed83f7e03",
       "id": "artifact:file:scripts/build_views.py:b705861394",
       "path": "scripts/build_views.py",
       "source_record_id": "file:scripts/build_views.py:b705861394",
@@ -6786,7 +6794,7 @@
     },
     {
       "artifact_kind": "source_code",
-      "content_hash": "4f0996aa68a490c7773903f67e756291326ecb31fcd4894ed5be53ddd8081907",
+      "content_hash": "0b0efec873016283e113e53538901c7c2ff15e4c53c67ec6487e8768303d4dfc",
       "id": "artifact:file:src/aoa_stats_builder/__init__.py:3d39f7c839",
       "path": "src/aoa_stats_builder/__init__.py",
       "source_record_id": "file:src/aoa_stats_builder/__init__.py:3d39f7c839",
@@ -6806,6 +6814,14 @@
       "id": "artifact:file:src/aoa_stats_builder/downstream_canaries.py:3b5aec45b2",
       "path": "src/aoa_stats_builder/downstream_canaries.py",
       "source_record_id": "file:src/aoa_stats_builder/downstream_canaries.py:3b5aec45b2",
+      "surface_state": "authored_source"
+    },
+    {
+      "artifact_kind": "source_code",
+      "content_hash": "2ba08ebe87f03679c74a0c18e91ba3e06bcf8fd7ff255c7e83f854530f7a7bd6",
+      "id": "artifact:file:src/aoa_stats_builder/growth_cycle.py:ced5e4de55",
+      "path": "src/aoa_stats_builder/growth_cycle.py",
+      "source_record_id": "file:src/aoa_stats_builder/growth_cycle.py:ced5e4de55",
       "surface_state": "authored_source"
     },
     {
@@ -6882,7 +6898,7 @@
     },
     {
       "artifact_kind": "document",
-      "content_hash": "068523558a9b3c89b543df02f7257f24444e1c86dc8cb8efe3ad1dff8dd322c8",
+      "content_hash": "bb03dcdde81585b71bfad5163b269ed0fe63206124622a57d981629297e10604",
       "id": "artifact:file:stats/readme.md:6bac6d2ff5",
       "path": "stats/README.md",
       "source_record_id": "file:stats/readme.md:6bac6d2ff5",
@@ -7306,7 +7322,7 @@
     },
     {
       "artifact_kind": "config",
-      "content_hash": "1a3aa2dd7bef5a7949cef7b44557f9a5e7916e574b84c7a53971bfa9965db319",
+      "content_hash": "4256b523eab486c8002dfd35949efa06a22f858ff07f015705bd0bdd32baafbf",
       "id": "artifact:file:stats/source_home.manifest.json:41b237ff45",
       "path": "stats/source_home.manifest.json",
       "source_record_id": "file:stats/source_home.manifest.json:41b237ff45",
@@ -7362,7 +7378,7 @@
     },
     {
       "artifact_kind": "test",
-      "content_hash": "f3fcd5c8553c7aeb55d43d446d7a154f13831eef4ff3f85863b7ac95ca8c3475",
+      "content_hash": "dc048c1c9a938bfa31a811fe7ec763b9891f6bb618523f475f05e036bcadeaf2",
       "id": "artifact:file:tests/test_build_views.py:760ef645f6",
       "path": "tests/test_build_views.py",
       "source_record_id": "file:tests/test_build_views.py:760ef645f6",
@@ -7443,7 +7459,7 @@
   ],
   "index_identity": {
     "artifact_kind": "repository_artifact_index",
-    "content_digest": "b926bd24d1a6795184ce0d0d75bddb6d8d937325204a0bef3e62afa55547eea5",
+    "content_digest": "35f5015ab27e414c08568562b5a0c5b0f933e834d8df97178ab7c375e82a5114",
     "index_kind": "artifact",
     "local_id": "index:repo-local:artifacts",
     "schema_ref": "aoa-kag:schemas/repo-local-kag-repository-index.schema.json"
@@ -7467,12 +7483,12 @@
   },
   "schema_version": "aoa-repo-local-kag-repository-index-v1",
   "source_index": {
-    "content_digest": "c2000b740d1d63dbd50501bbc2f08b527d13621d813d576a3c20cbfcc1c2bae3",
+    "content_digest": "c500c6243379f0a6b6cae5cb5e2fbf4584b6c095d39874af4c2fd782ce03c789",
     "local_id": "index:repo-local:source-surfaces",
     "path": "kag/indexes/source_surface_index.json"
   },
   "summary": {
-    "entry_count": 930,
+    "entry_count": 932,
     "kind_counts": {
       "asset": 50,
       "config": 174,
@@ -7489,8 +7505,8 @@
       "script": 23,
       "security": 1,
       "service_unit": 2,
-      "source_code": 12,
-      "test": 36,
+      "source_code": 13,
+      "test": 37,
       "validator": 18
     }
   }
