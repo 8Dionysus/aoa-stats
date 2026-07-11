@@ -11,5 +11,6 @@ python -m pytest -q mechanics/titan/parts/incarnation-summon/tests tests/test_bu
 
 The part-local suite proves facade delegation, exact cross-owner coherence,
 bounded permutation invariance, rejection of identity/state/gate drift,
-conservation, non-mutation, schema validity, explicit no-ledger semantics, and
-committed output parity.
+conservation, non-mutation, schema validity, committed Incarnation output
+parity, and the absence of a Summon builder, active profile, generated output,
+or catalog entry while its cleanup tombstone remains valid.

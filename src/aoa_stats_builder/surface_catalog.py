@@ -72,6 +72,30 @@ ACTIVE_SOURCE_FIELDS = frozenset(
 DEFERRED_SOURCE_FIELDS = frozenset(
     ("schema_version", "lifecycle", "mechanic_routes", *PUBLIC_DEFERRED_FIELDS)
 )
+RETIRED_SOURCE_FIELDS = frozenset(
+    (
+        "schema_version",
+        "lifecycle",
+        "name",
+        "retired_surface_ref",
+        "schema_ref",
+        "retired_on",
+        "retirement_reason",
+        "replacement_ref",
+        "cleanup_scopes",
+        "consumer_return_routes",
+        "decision_ref",
+        "former_mechanic_routes",
+    )
+)
+RETIRED_CLEANUP_SCOPES = frozenset(
+    (
+        "committed_output",
+        "summary_surface_catalog",
+        "managed_live_state",
+        "consumer_hints",
+    )
+)
 
 
 class SurfaceProfileError(ValueError):
@@ -93,9 +117,11 @@ def _load_profile(path: Path) -> dict[str, Any]:
 
 
 def _validate_profile(profile: dict[str, Any], *, path: Path, lifecycle: str) -> None:
-    expected_fields = (
-        ACTIVE_SOURCE_FIELDS if lifecycle == "active" else DEFERRED_SOURCE_FIELDS
-    )
+    expected_fields = {
+        "active": ACTIVE_SOURCE_FIELDS,
+        "deferred": DEFERRED_SOURCE_FIELDS,
+        "retired": RETIRED_SOURCE_FIELDS,
+    }[lifecycle]
     if set(profile) != expected_fields:
         missing = sorted(expected_fields - set(profile))
         extra = sorted(set(profile) - expected_fields)
@@ -112,7 +138,10 @@ def _validate_profile(profile: dict[str, Any], *, path: Path, lifecycle: str) ->
         raise SurfaceProfileError(f"{path}: name must be a non-empty string")
     if path.name != f"{name}.profile.json":
         raise SurfaceProfileError(f"{path}: filename must match profile name {name!r}")
-    routes = profile.get("mechanic_routes")
+    routes_field = (
+        "former_mechanic_routes" if lifecycle == "retired" else "mechanic_routes"
+    )
+    routes = profile.get(routes_field)
     if (
         not isinstance(routes, list)
         or not routes
@@ -122,25 +151,73 @@ def _validate_profile(profile: dict[str, Any], *, path: Path, lifecycle: str) ->
         )
     ):
         raise SurfaceProfileError(
-            f"{path}: mechanic_routes must be a non-empty mechanics path list"
+            f"{path}: {routes_field} must be a non-empty mechanics path list"
         )
     if len(routes) != len(set(routes)):
-        raise SurfaceProfileError(f"{path}: mechanic_routes must be unique")
+        raise SurfaceProfileError(f"{path}: {routes_field} must be unique")
     if lifecycle == "active":
         order = profile.get("catalog_order")
         if not isinstance(order, int) or isinstance(order, bool) or order < 1:
             raise SurfaceProfileError(
                 f"{path}: catalog_order must be a positive integer"
             )
+    if lifecycle == "retired":
+        retired_surface_ref = profile.get("retired_surface_ref")
+        if not isinstance(retired_surface_ref, str) or not retired_surface_ref:
+            raise SurfaceProfileError(
+                f"{path}: retired_surface_ref must be a non-empty string"
+            )
+        if Path(retired_surface_ref).name != f"{name}.min.json":
+            raise SurfaceProfileError(
+                f"{path}: retired_surface_ref must match profile name {name!r}"
+            )
+        cleanup_scopes = profile.get("cleanup_scopes")
+        if (
+            not isinstance(cleanup_scopes, list)
+            or len(cleanup_scopes) != len(RETIRED_CLEANUP_SCOPES)
+            or set(cleanup_scopes) != set(RETIRED_CLEANUP_SCOPES)
+        ):
+            raise SurfaceProfileError(
+                f"{path}: cleanup_scopes must name the complete retired cleanup set"
+            )
+        for field in (
+            "schema_ref",
+            "retired_on",
+            "retirement_reason",
+            "decision_ref",
+        ):
+            if not isinstance(profile.get(field), str) or not profile[field].strip():
+                raise SurfaceProfileError(f"{path}: {field} must be non-empty")
+        consumer_routes = profile.get("consumer_return_routes")
+        if (
+            not isinstance(consumer_routes, list)
+            or not all(isinstance(route, str) and route for route in consumer_routes)
+            or len(consumer_routes) != len(set(consumer_routes))
+        ):
+            raise SurfaceProfileError(
+                f"{path}: consumer_return_routes must be a unique string list"
+            )
+        replacement_ref = profile.get("replacement_ref")
+        if replacement_ref is not None and (
+            not isinstance(replacement_ref, str) or not replacement_ref.strip()
+        ):
+            raise SurfaceProfileError(
+                f"{path}: replacement_ref must be null or a non-empty string"
+            )
 
 
 def load_surface_profiles(
     profile_root: Path = PROFILE_ROOT,
-) -> tuple[list[dict[str, Any]], list[dict[str, Any]]]:
+) -> tuple[
+    list[dict[str, Any]],
+    list[dict[str, Any]],
+    list[dict[str, Any]],
+]:
     """Load, validate, and deterministically order authored surface profiles."""
 
     active_paths = sorted((profile_root / "active").glob("*.profile.json"))
     deferred_paths = sorted((profile_root / "deferred").glob("*.profile.json"))
+    retired_paths = sorted((profile_root / "retired").glob("*.profile.json"))
     if not active_paths:
         raise SurfaceProfileError(
             f"no active surface profiles found under {profile_root / 'active'}"
@@ -148,6 +225,7 @@ def load_surface_profiles(
 
     active: list[dict[str, Any]] = []
     deferred: list[dict[str, Any]] = []
+    retired: list[dict[str, Any]] = []
     seen_names: set[str] = set()
     seen_orders: set[int] = set()
 
@@ -173,9 +251,32 @@ def load_surface_profiles(
         seen_names.add(name)
         deferred.append(profile)
 
+    for profile_path in retired_paths:
+        profile = _load_profile(profile_path)
+        _validate_profile(profile, path=profile_path, lifecycle="retired")
+        name = profile["name"]
+        if name in seen_names:
+            raise SurfaceProfileError(f"duplicate surface profile name: {name}")
+        seen_names.add(name)
+        retired.append(profile)
+
+    managed_profiles = [
+        *((profile, "surface_ref") for profile in active),
+        *((profile, "retired_surface_ref") for profile in retired),
+    ]
+    managed_output_names: set[str] = set()
+    for profile, ref_field in managed_profiles:
+        output_name = Path(profile[ref_field]).name
+        if output_name in managed_output_names:
+            raise SurfaceProfileError(
+                f"duplicate managed surface output name: {output_name}"
+            )
+        managed_output_names.add(output_name)
+
     active.sort(key=lambda profile: profile["catalog_order"])
     deferred.sort(key=lambda profile: profile["name"])
-    return active, deferred
+    retired.sort(key=lambda profile: profile["name"])
+    return active, deferred, retired
 
 
 def public_surface_profiles(
@@ -183,7 +284,7 @@ def public_surface_profiles(
 ) -> tuple[list[dict[str, Any]], list[dict[str, Any]]]:
     """Project authored profiles into the unchanged public catalog entry shapes."""
 
-    active, deferred = load_surface_profiles(profile_root)
+    active, deferred, _ = load_surface_profiles(profile_root)
     public_active = [
         {field: profile[field] for field in PUBLIC_ACTIVE_FIELDS} for profile in active
     ]
@@ -197,10 +298,22 @@ def public_surface_profiles(
 def all_profile_surface_output_names(
     profile_root: Path = PROFILE_ROOT,
 ) -> tuple[str, ...]:
-    """Return every active profile output basename in catalog order."""
+    """Return active outputs plus retired tombstones for stale cleanup."""
 
-    active, _ = load_surface_profiles(profile_root)
-    return tuple(Path(profile["surface_ref"]).name for profile in active)
+    active, _, retired = load_surface_profiles(profile_root)
+    return (
+        *(Path(profile["surface_ref"]).name for profile in active),
+        *(Path(profile["retired_surface_ref"]).name for profile in retired),
+    )
+
+
+def retired_profile_surface_output_names(
+    profile_root: Path = PROFILE_ROOT,
+) -> tuple[str, ...]:
+    """Return retired output basenames that remain cleanup tombstones."""
+
+    _, _, retired = load_surface_profiles(profile_root)
+    return tuple(Path(profile["retired_surface_ref"]).name for profile in retired)
 
 
 def live_profile_surface_output_names(
@@ -208,7 +321,7 @@ def live_profile_surface_output_names(
 ) -> tuple[str, ...]:
     """Return live-materializable active profile outputs in catalog order."""
 
-    active, _ = load_surface_profiles(profile_root)
+    active, _, _ = load_surface_profiles(profile_root)
     return tuple(
         Path(profile["surface_ref"]).name
         for profile in active

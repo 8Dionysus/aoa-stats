@@ -3,7 +3,8 @@
 This branch is the authored source body behind the public summary-surface
 catalog. Each active derived surface has one profile at
 `active/<surface_name>.profile.json`; contract-only candidates live under
-`deferred/`.
+`deferred/`; removed outputs with an outstanding cleanup obligation leave a
+minimal tombstone under `retired/`.
 
 Profiles carry the stable question, derivation posture, stronger-owner inputs,
 authority ceiling, public schema/output routes, consumer risk, live-state
@@ -17,12 +18,13 @@ by the local live refresh loop when its inputs resolve. A `false` profile stays
 on its committed/reference route and is omitted from live output and the live
 catalog, although refresh cleanup still removes any stale runtime copy.
 
-The current managed inventory contains 25 active profiles; 11 are admitted to
-live materialization. The 14 reference-only profiles are Owner Landing,
+The current inventory contains 24 active profiles and one retired-output
+tombstone. Of the active profiles, 11 are admitted to live materialization and
+13 are reference-only: Owner Landing,
 Codex Plane Deployment, Codex Rollout Operations, Codex Rollout Drift, Rollout
 Campaign, Drift Review, Continuity Window, Component Refresh, Memory Movement,
-Route Progression, Runtime Closeout, Titan Incarnation, Titan Summon, and Stress
-Recovery Window.
+Route Progression, Runtime Closeout, Titan Incarnation, and Stress Recovery
+Window.
 Continuity Window describes the posture represented by its committed
 cross-owner example/catalog chain. Codex Plane Deployment describes the posture
 represented by the committed 8Dionysus trust-state, regeneration-report, and
@@ -74,10 +76,12 @@ causality occurred.
 Titan Incarnation validates one exact committed cross-owner example chain: the
 `aoa-agents` operator and runtime rosters plus the `aoa-sdk` v2 session receipt.
 The shared 5/3/2 partition is a reference projection, not current incarnation
-state. Titan Summon has no committed owner ledger input; its v1 zeros form an
-explicit `no-observed-ledger` compatibility baseline and do not report observed
-zero activity. Both profiles remain outside live materialization. AOST-D-0007
-records the boundary and the future activation conditions.
+state. Titan Summon had no committed owner ledger input, so its no-ledger zero
+baseline carried no active fact and is no longer built or cataloged. Its v1
+schema remains as contract history and its retired profile keeps stale-output
+and consumer cleanup deterministic. AOST-D-0007 records the evidence boundary;
+AOST-D-0008 records the retirement lifecycle. A future observed Summon surface
+needs a new active profile, real owner ledger, producer, and refresh proof.
 
 Use `committed_owner_example_chain` only when one owner repository publishes a
 coherent set of checked-in examples that can drive a deterministic committed
@@ -85,7 +89,7 @@ reference snapshot. The token does not admit the surface to live
 materialization and must never authorize an example fallback when deploy-local
 inputs are missing.
 
-`surface-profile.schema.json` constrains both active and deferred source
+`surface-profile.schema.json` constrains active, deferred, and retired source
 records. Importable implementation stays under `src/aoa_stats_builder/`,
 public schemas stay under `schemas/`, and public derived outputs stay under
 `generated/`.
@@ -96,7 +100,12 @@ public schemas stay under `schemas/`, and public derived outputs stay under
   `generated/summary_surface_catalog.min.json`.
 - `deferred/`: bounded contract candidates that are not emitted as active
   surfaces.
+- `retired/`: cleanup/provenance tombstones for removed outputs; they carry no
+  builder, generated payload, catalog entry, or active mechanic handoff.
 
 Do not activate a deferred profile by moving the file alone. Its producer,
 input chain, public schema/output, mechanic route, and validation must become
 real in the same bounded change.
+
+Do not reactivate a retired tombstone. Reintroduction is a new active-surface
+decision with current evidence and consumer review.

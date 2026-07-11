@@ -16,7 +16,7 @@ or the upstream facts summarized by a profile.
 1. `../AGENTS.md`
 2. `README.md`
 3. `surface-profile.schema.json`
-4. the target profile under `active/` or `deferred/`
+4. the target profile under `active/`, `deferred/`, or `retired/`
 5. every schema, output, and mechanic route named by that profile
 
 ## Profile law
@@ -24,6 +24,9 @@ or the upstream facts summarized by a profile.
 - One active public catalog surface has one authored profile under `active/`.
 - Contract-only candidates live under `deferred/` until their activation
   condition and evidence chain are real.
+- Removed public outputs leave only a minimal tombstone under `retired/` when
+  stale committed, live, catalog, or consumer copies still need deterministic
+  cleanup. A retired profile has no builder, catalog entry, or payload archive.
 - Preserve `catalog_order`; it is the deterministic public catalog order.
 - `mechanic_routes` are source-to-operation handoffs. They do not move source
   meaning into mechanics.
@@ -34,6 +37,9 @@ or the upstream facts summarized by a profile.
   payloads here.
 - Change the authored profile first, then rebuild and check the generated
   catalog.
+- Reintroducing a retired question requires a newly reviewed active profile,
+  real owner evidence, a producer, and validation; moving or copying the
+  tombstone is not activation.
 - For Repeated Window, a window is only the calendar-date prefix carried by
   admitted `observed_at` values. Counts must not be described as proof of
   change, repetition, cadence, causality, or owner chronology.

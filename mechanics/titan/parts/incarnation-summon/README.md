@@ -1,16 +1,17 @@
 # incarnation-summon
 
-Projects two bounded, reference-only Titan surfaces with different evidence
-postures:
+Projects one bounded, reference-only Titan surface and guards one retirement:
 
 - Incarnation validates the exact checked-in `aoa-agents` operator/runtime
   rosters against the `aoa-sdk` v2 session-receipt example before deriving
   active and gate-locked counts.
-- Summon preserves the v1 public count shape as a
-  `no-observed-ledger` compatibility baseline. Its zeros say that no owner
-  ledger was projected, not that a swarm was observed with zero activity.
+- Summon's former `no-observed-ledger` baseline is retired because it carried
+  no observed owner fact. Its schema remains contract history, while the
+  source-home tombstone removes stale output, catalog, live-state, and consumer
+  copies.
 
 This part owns its operation route and the localized payload roots declared in
 `mechanics/topology.json`. Its stats source family owns the bounded meaning;
-public schemas and generated outputs stay at their declared publication paths
-when consumers depend on those paths.
+public schemas and active generated outputs stay at their declared publication
+paths when consumers depend on those paths. Retired payloads are not archived
+inside mechanics.

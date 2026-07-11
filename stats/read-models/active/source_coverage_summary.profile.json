@@ -1,6 +1,6 @@
 {
   "schema_version": "aoa_stats_surface_profile_source_v1",
-  "catalog_order": 24,
+  "catalog_order": 23,
   "lifecycle": "active",
   "name": "source_coverage_summary",
   "surface_ref": "generated/source_coverage_summary.min.json",

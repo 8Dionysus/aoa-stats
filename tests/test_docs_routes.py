@@ -93,6 +93,17 @@ def test_live_session_docs_match_profile_derived_refresh_inventories() -> None:
     documented_committed = tuple(
         re.findall(r"^- `generated/([^`]+\.min\.json)`$", committed_section, re.MULTILINE)
     )
+    retired = frozenset(refresh_live_stats.RETIRED_PROFILE_SURFACE_OUTPUT_NAMES)
+    expected_committed = (
+        *(
+            name
+            for name in refresh_live_stats.ALL_PROFILE_SURFACE_OUTPUT_NAMES
+            if name not in retired
+        ),
+        refresh_live_stats.SUMMARY_SURFACE_CATALOG_OUTPUT_NAME,
+    )
 
     assert documented_live == refresh_live_stats.SUMMARY_OUTPUT_NAMES
-    assert documented_committed == refresh_live_stats.MANAGED_SUMMARY_OUTPUT_NAMES
+    assert documented_committed == expected_committed
+    assert retired.isdisjoint(documented_committed)
+    assert all(name in docs for name in retired)

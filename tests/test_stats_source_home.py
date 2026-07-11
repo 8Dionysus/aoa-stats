@@ -6,6 +6,8 @@ from pathlib import Path
 import shutil
 import sys
 
+import pytest
+
 
 REPO_ROOT = Path(__file__).resolve().parents[1]
 SCRIPT_PATH = REPO_ROOT / "scripts" / "validate_stats_source_home.py"
@@ -81,6 +83,10 @@ def test_source_home_contains_only_declared_source_records() -> None:
         path.relative_to(stats_root).as_posix()
         for path in (stats_root / "read-models" / "deferred").glob("*.profile.json")
     )
+    retired_profiles = sorted(
+        path.relative_to(stats_root).as_posix()
+        for path in (stats_root / "read-models" / "retired").glob("*.profile.json")
+    )
     expected_json = {
         "source_home.manifest.json",
         "intake-contract/event-kind-registry.json",
@@ -90,6 +96,7 @@ def test_source_home_contains_only_declared_source_records() -> None:
         *operation_contracts,
         *active_profiles,
         *deferred_profiles,
+        *retired_profiles,
     }
 
     assert not list(stats_root.rglob("*.py"))
@@ -427,19 +434,75 @@ def test_operation_contract_requires_mechanic_contract_backlink(
 
 
 def test_authored_profiles_are_the_public_catalog_source() -> None:
-    active, deferred = load_surface_profiles(REPO_ROOT / "stats" / "read-models")
+    active, deferred, retired = load_surface_profiles(
+        REPO_ROOT / "stats" / "read-models"
+    )
     public_active, public_deferred = public_surface_profiles(
         REPO_ROOT / "stats" / "read-models"
     )
     catalog = load_json("generated/summary_surface_catalog.min.json")
 
-    assert len(active) == 25
+    assert len(active) == 24
     assert len(deferred) == 1
-    assert [profile["catalog_order"] for profile in active] == list(range(1, 26))
+    assert len(retired) == 1
+    assert [profile["catalog_order"] for profile in active] == list(range(1, 25))
     assert catalog["surfaces"] == public_active
     assert catalog["deferred_contract_surfaces"] == public_deferred
+    assert retired[0]["name"] == "titan_summon_summary"
+    assert retired[0]["cleanup_scopes"] == [
+        "committed_output",
+        "summary_surface_catalog",
+        "managed_live_state",
+        "consumer_hints",
+    ]
+    assert not (REPO_ROOT / retired[0]["retired_surface_ref"]).exists()
+    assert retired[0]["name"] not in {
+        profile["name"] for profile in catalog["surfaces"]
+    }
     assert all("mechanic_routes" not in entry for entry in catalog["surfaces"])
     assert all("catalog_order" not in entry for entry in catalog["surfaces"])
+
+
+def test_retired_profile_name_cannot_reenter_active_catalog(tmp_path: Path) -> None:
+    repo_root = copy_repo(tmp_path)
+    active_ref = "stats/read-models/active/titan_summon_summary.profile.json"
+    active = load_repo_json(
+        repo_root,
+        "stats/read-models/active/runtime_closeout_summary.profile.json",
+    )
+    active["name"] = "titan_summon_summary"
+    active["surface_ref"] = "generated/titan_summon_summary.min.json"
+    active["catalog_order"] = 25
+    write_repo_json(repo_root, active_ref, active)
+
+    with pytest.raises(ValueError, match="duplicate surface profile name"):
+        load_surface_profiles(repo_root / "stats/read-models")
+
+
+def test_retired_output_name_cannot_alias_an_active_output(tmp_path: Path) -> None:
+    repo_root = copy_repo(tmp_path)
+    active_ref = "stats/read-models/active/runtime_closeout_summary.profile.json"
+    active = load_repo_json(repo_root, active_ref)
+    active["surface_ref"] = "generated/titan_summon_summary.min.json"
+    write_repo_json(repo_root, active_ref, active)
+
+    with pytest.raises(ValueError, match="duplicate managed surface output name"):
+        load_surface_profiles(repo_root / "stats/read-models")
+
+
+def test_retired_profile_requires_complete_cleanup_scope(tmp_path: Path) -> None:
+    repo_root = copy_repo(tmp_path)
+    retired_ref = "stats/read-models/retired/titan_summon_summary.profile.json"
+    retired = load_repo_json(repo_root, retired_ref)
+    retired["cleanup_scopes"].remove("consumer_hints")
+    write_repo_json(repo_root, retired_ref, retired)
+
+    issues = validator.validate(repo_root)
+
+    assert any(
+        "cleanup_scopes must name the complete retired cleanup set" in issue
+        for issue in issues
+    )
 
 
 def test_root_contract_and_output_districts_remain_active() -> None:

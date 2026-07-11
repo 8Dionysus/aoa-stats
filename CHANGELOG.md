@@ -27,6 +27,9 @@ Tracking starts with the first public release-prep baseline for this repository.
 - Added active mechanic packages and focused part contracts for Agon,
   Antifragility, Audit, Boundary Bridge, Checkpoint, Experience, Growth Cycle,
   Method Growth, Recurrence, Release Support, RPG, and Titan.
+- Added source-authored retired read-model tombstones so an output can leave
+  active publication while its former name remains in deterministic stale-file
+  cleanup and its rationale remains discoverable.
 
 ### Changed
 
@@ -113,6 +116,10 @@ Tracking starts with the first public release-prep baseline for this repository.
   validation before count projection. Reclassified Titan Summon's static
   zeros as an explicit no-observed-ledger compatibility baseline rather than
   evidence of zero activity, while keeping both surfaces reference-only.
+- Retired the no-input Titan Summon compatibility baseline from active build,
+  catalog, committed output, and root facade surfaces. Kept a minimal
+  source-home tombstone and the former schema so stale live copies are removed
+  without preserving a content-free read model as active observability.
 
 ## [0.1.3] - 2026-04-23
 

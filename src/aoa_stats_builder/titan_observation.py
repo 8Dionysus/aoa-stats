@@ -7,12 +7,6 @@ from .receipt_abi import ReceiptValidationError
 
 
 TITAN_INCARNATION_SUMMARY_REF = "generated:titan-incarnation-summary:reference"
-TITAN_SUMMON_BASELINE_SUMMARY_REF = (
-    "generated:titan-summon-summary:no-observed-ledger"
-)
-TITAN_SUMMON_BASELINE_SOURCE_REF = (
-    "baseline:titan-summon:no-observed-ledger"
-)
 
 
 def _mapping_entries(
@@ -262,19 +256,5 @@ def build_titan_incarnation_summary(
             "seeded_titans": len(names),
             "default_active": len(active),
             "locked_by_gate": len(gates),
-        },
-    }
-
-
-def build_titan_summon_no_observed_ledger_baseline() -> dict[str, Any]:
-    return {
-        "schema_version": "titan_summon_summary/v1",
-        "summary_ref": TITAN_SUMMON_BASELINE_SUMMARY_REF,
-        "source_ledger_refs": [TITAN_SUMMON_BASELINE_SOURCE_REF],
-        "counts": {
-            "agents_invoked": 0,
-            "reports_received": 0,
-            "findings_reported": 0,
-            "memory_candidates_created": 0,
         },
     }

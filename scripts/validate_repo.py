@@ -64,7 +64,9 @@ def load_json(path: Path) -> object:
 def profile_schema_inventory() -> tuple[dict[str, str], set[str]]:
     """Derive output/schema validation routes from the authored source profiles."""
 
-    active, deferred = load_surface_profiles(REPO_ROOT / "stats" / "read-models")
+    active, deferred, retired = load_surface_profiles(
+        REPO_ROOT / "stats" / "read-models"
+    )
     generated_schemas = {
         Path(profile["surface_ref"]).name: profile["schema_ref"] for profile in active
     }
@@ -72,7 +74,7 @@ def profile_schema_inventory() -> tuple[dict[str, str], set[str]]:
         "schemas/summary-surface-catalog.schema.json"
     )
     schema_routes = {
-        *(profile["schema_ref"] for profile in [*active, *deferred]),
+        *(profile["schema_ref"] for profile in [*active, *deferred, *retired]),
         *EXTRA_SCHEMA_ROUTES,
         "schemas/summary-surface-catalog.schema.json",
     }

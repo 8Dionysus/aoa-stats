@@ -3393,6 +3393,20 @@
         "artifact_kind": "document",
         "code_role": "none",
         "command_role": "none",
+        "document_role": "decision",
+        "mechanics_role": "none",
+        "surface_state": "authored_source"
+      },
+      "entity_kind": "decision",
+      "id": "entity:file:docs/decisions/aost-d-0008-retired-outputs-remain-cleanup-tombstones-not-active-stats.md:5e3665792f",
+      "label": "docs/decisions/AOST-D-0008-retired-outputs-remain-cleanup-tombstones-not-active-stats.md",
+      "source_record_id": "file:docs/decisions/aost-d-0008-retired-outputs-remain-cleanup-tombstones-not-active-stats.md:5e3665792f"
+    },
+    {
+      "coordinates": {
+        "artifact_kind": "document",
+        "code_role": "none",
+        "command_role": "none",
         "document_role": "readme",
         "mechanics_role": "none",
         "surface_state": "authored_source"
@@ -4129,20 +4143,6 @@
       "id": "entity:file:generated/titan_incarnation_summary.min.json:cd38db547c",
       "label": "generated/titan_incarnation_summary.min.json",
       "source_record_id": "file:generated/titan_incarnation_summary.min.json:cd38db547c"
-    },
-    {
-      "coordinates": {
-        "artifact_kind": "generated_readmodel",
-        "code_role": "none",
-        "command_role": "none",
-        "document_role": "none",
-        "mechanics_role": "none",
-        "surface_state": "generated_readmodel"
-      },
-      "entity_kind": "readmodel",
-      "id": "entity:file:generated/titan_summon_summary.min.json:d1a90418dc",
-      "label": "generated/titan_summon_summary.min.json",
-      "source_record_id": "file:generated/titan_summon_summary.min.json:d1a90418dc"
     },
     {
       "coordinates": {
@@ -13380,9 +13380,9 @@
         "surface_state": "authored_source"
       },
       "entity_kind": "artifact",
-      "id": "entity:file:stats/read-models/active/titan_summon_summary.profile.json:d7d79a6cea",
-      "label": "stats/read-models/active/titan_summon_summary.profile.json",
-      "source_record_id": "file:stats/read-models/active/titan_summon_summary.profile.json:d7d79a6cea"
+      "id": "entity:file:stats/read-models/deferred/antifragility_vector.profile.json:b675b4b101",
+      "label": "stats/read-models/deferred/antifragility_vector.profile.json",
+      "source_record_id": "file:stats/read-models/deferred/antifragility_vector.profile.json:b675b4b101"
     },
     {
       "coordinates": {
@@ -13394,9 +13394,9 @@
         "surface_state": "authored_source"
       },
       "entity_kind": "artifact",
-      "id": "entity:file:stats/read-models/deferred/antifragility_vector.profile.json:b675b4b101",
-      "label": "stats/read-models/deferred/antifragility_vector.profile.json",
-      "source_record_id": "file:stats/read-models/deferred/antifragility_vector.profile.json:b675b4b101"
+      "id": "entity:file:stats/read-models/retired/titan_summon_summary.profile.json:de05c16687",
+      "label": "stats/read-models/retired/titan_summon_summary.profile.json",
+      "source_record_id": "file:stats/read-models/retired/titan_summon_summary.profile.json:de05c16687"
     },
     {
       "coordinates": {
@@ -13653,7 +13653,7 @@
   ],
   "index_identity": {
     "artifact_kind": "repository_entity_index",
-    "content_digest": "b00bc10987daa43c789607070e9ef21321b7395a2f10c16481d4ab80f242cefc",
+    "content_digest": "5a34d3588521a8e80719745e07860072f160ab22ef2d52cb47e9d87a1a48deb4",
     "index_kind": "entity",
     "local_id": "index:repo-local:entities",
     "schema_ref": "aoa-kag:schemas/repo-local-kag-repository-index.schema.json"
@@ -13676,7 +13676,7 @@
   },
   "schema_version": "aoa-repo-local-kag-repository-index-v1",
   "source_index": {
-    "content_digest": "fd9b3eec9ca9a7d5c7aef4461b75166dff6175b1174006ee6c0857785c7b8f39",
+    "content_digest": "27c725ca86eb8c358d7079378ede8beb70751ba96eb0a369a9e622fef371c70f",
     "local_id": "index:repo-local:source-surfaces",
     "path": "kag/indexes/source_surface_index.json"
   },
@@ -13688,13 +13688,13 @@
       "code": 34,
       "command": 31,
       "contract": 34,
-      "decision": 14,
+      "decision": 15,
       "document": 137,
       "manifest": 1,
       "mechanic_package": 56,
       "mechanic_part": 461,
       "owner_surface": 2,
-      "readmodel": 41
+      "readmodel": 40
     }
   }
 }

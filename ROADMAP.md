@@ -23,11 +23,13 @@ The source/mechanics refactor is part of that contour:
 - `schemas/` and `generated/` remain stable public publication districts
 - `src/` remains the importable implementation and access boundary
 - authored `live_state_capable` profiles select local live materialization;
-  the current split is 11 live-admitted read models across 25 managed active
-  outputs, and cleanup covers the full managed set; Route Progression remains
+  the current split is 11 live-admitted read models across 24 active outputs,
+  while one retired-output tombstone extends cleanup to 25 managed names;
+  Route Progression remains
   a committed legacy-numeric reference surface under AOST-D-0005 while Runtime
   Closeout remains a historical wave-receipt reference under AOST-D-0006 and
-  Titan's committed roster/no-ledger split is fixed by AOST-D-0007
+  Titan Incarnation's committed-roster boundary is fixed by AOST-D-0007 and
+  Titan Summon's cleanup-only retirement by AOST-D-0008
 
 ## Active summary families
 
@@ -44,7 +46,7 @@ The public v2 catalog currently exposes:
 | Boundary Bridge | memory-movement |
 | Checkpoint | runtime-closeout |
 | Antifragility | stress-recovery |
-| Titan | Titan-incarnation, Titan-summon |
+| Titan | Titan-incarnation |
 
 The authoritative inventory is
 `generated/summary_surface_catalog.min.json`, projected from the authored
@@ -101,8 +103,8 @@ contract stays separate from active catalog claims.
   `docs/decisions/AOST-D-0003-component-refresh-fixtures-are-not-live-state.md`;
   the current-source plus refresh-observation admission rule is recorded in
   `docs/decisions/AOST-D-0004-live-admission-requires-refresh-observation.md`
-- live output lifecycle debt: add an explicit retired/renamed-output cleanup
-  record before an active read-model profile leaves the managed inventory
+- live output lifecycle: `stats/read-models/retired/` now keeps explicit
+  cleanup/provenance tombstones without retaining payloads or catalog entries
 - stress-recovery chaos fixture:
   `mechanics/antifragility/parts/stress-recovery-windows/examples/stress_recovery_window_summary.chaos-wave1.example.json`
 - reviewed memory movement:
@@ -113,9 +115,9 @@ contract stays separate from active catalog claims.
   `stats/read-models/active/repeated_window_summary.profile.json`,
   `src/aoa_stats_builder/repeated_window.py`, and
   `mechanics/recurrence/parts/repeated-window/`
-- Titan committed-reference and no-ledger boundaries:
+- Titan committed-reference and retirement boundaries:
   `stats/read-models/active/titan_incarnation_summary.profile.json`,
-  `stats/read-models/active/titan_summon_summary.profile.json`,
+  `stats/read-models/retired/titan_summon_summary.profile.json`,
   `src/aoa_stats_builder/titan_observation.py`,
   `src/aoa_stats_builder/titan_observation_sources.py`, and
   `mechanics/titan/parts/incarnation-summon/`
@@ -134,7 +136,7 @@ Changes on this line should:
 5. update topology, source-home validation, focused tests, and generated
    outputs together
 6. keep `README.md` and `docs/README.md` short and link-driven
-7. keep all 14 committed/reference profiles out of local live output until
+7. keep all 13 active committed/reference profiles out of local live output until
    their real owner-runtime, deploy-local, active-cadence, publisher, and
    refresh-observation contracts exist; audit every remaining
    `live_state_capable: true` profile against both its source and trigger

@@ -145,8 +145,8 @@ the root builder remains the repo-wide fan-out facade. The core reuses the
 receipt object-identity tuple already used by Object Observation; sharing that
 stable value rule does not merge the Recurrence and Audit questions.
 
-Titan Incarnation and Titan Summon form a mechanics-led shared-owner boundary
-with deliberately unequal inputs. The Incarnation reference adapter reads the
+Titan Incarnation remains the active half of a shared-owner boundary. Its
+reference adapter reads the
 exact checked-in `aoa-agents` operator/runtime roster examples and the
 `aoa-sdk` v2 session-receipt example. A filesystem-free core validates that
 their Titan identities, active/locked partition, and gate assignments agree
@@ -154,12 +154,28 @@ before deriving the 5/3/2 reference counts. Those examples are not current
 incarnations and do not admit the surface to live state.
 
 No committed owner swarm-ledger instance or closeout receipt supports the
-Titan Summon output. Its v1 public shape therefore remains only as an explicit
-`no-observed-ledger` compatibility baseline. The four zero values mean that no
-ledger was projected; they do not mean that zero agents, reports, findings, or
-memory candidates were observed. A future observed projection must start from
-an owner-local ledger instance and choose an honest public-contract evolution
-instead of silently reinterpreting the baseline.
+Titan Summon output. After the mechanics-led boundary correction made that
+absence explicit, the following stats-led slice retires the no-ledger baseline
+instead of carrying a content-free active surface. The former schema remains a
+stable contract-history route, while a source-home tombstone keeps the former
+output name in managed stale cleanup. No builder, committed payload, catalog
+entry, or root fan-out remains. A future observed projection must start from an
+owner-local ledger instance and a new reviewed active profile.
+
+Read-model lifecycle is source-owned and asymmetric by design:
+
+- `active/` records author public catalog surfaces and deterministic build
+  fan-out;
+- `deferred/` records author contract-only candidates and activation
+  conditions;
+- `retired/` records are minimal tombstones that preserve cleanup and decision
+  provenance but authorize no publication.
+
+Generated outputs and catalogs are weaker projections of that lifecycle. Live
+refresh derives its materialization allowlist from active profiles and its
+stale-file cleanup universe from active plus retired records. This lets an
+output leave the active repository without becoming an undeletable deployed
+ghost or forcing historical payload back into source authority.
 
 Generated artifacts never become source authority merely because they are
 committed or convenient to query.

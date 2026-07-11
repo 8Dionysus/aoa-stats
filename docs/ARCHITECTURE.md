@@ -138,11 +138,12 @@ The committed catalog contains every active public profile, including bounded
 reference-only surfaces. Local live refresh treats `live_state_capable` as an
 executable admission contract: it materializes only `true` profiles, writes a
 live catalog only for outputs actually present, and cleans stale files across
-the full managed active-profile set. The managed read-model inventory is 25;
-the authored live-admitted inventory is 11. Component Refresh, Continuity
+the active outputs plus retired-output tombstones. The active read-model
+inventory is 24, the retired cleanup inventory is one, and the authored
+live-admitted inventory is 11. Component Refresh, Continuity
 Window, Codex Plane Deployment, trusted rollout-history, cadence examples,
-Owner Landing, Route Progression, Memory Movement, Stress Recovery, and Titan
-reference surfaces, plus Runtime Closeout, are excluded from live mode. The
+Owner Landing, Route Progression, Memory Movement, Stress Recovery, Titan
+Incarnation, and Runtime Closeout are excluded from live mode. The
 selector and stale-cleanup
 precedent is
 `docs/decisions/AOST-D-0003-component-refresh-fixtures-are-not-live-state.md`,
@@ -162,11 +163,13 @@ separate `runtime_return_closeout_receipt` transport. AOST-D-0006 forbids
 implicit aliasing and requires owner-contract plus watcher parity before live
 reactivation.
 Titan Incarnation remains reference-only because it validates three committed
-owner examples rather than current incarnations. Titan Summon has no observed
-owner ledger and preserves only a self-identifying no-ledger compatibility
-baseline; its zeros are not activity measurements. AOST-D-0007 requires an
-owner-local ledger plus refresh observation and public-contract review before
-an observed successor can activate.
+owner examples rather than current incarnations. Titan Summon had no observed
+owner ledger, so its self-identifying no-ledger zero baseline is retired rather
+than presented as an active statistic. The output, builder, and catalog entry
+are absent; its schema remains contract history and its retired profile keeps
+stale cleanup explicit. AOST-D-0008 records that lifecycle. Any observed
+successor requires a new active profile, owner-local ledger, refresh
+observation, and public-contract review.
 Continuity Window remains
 reference-only because its current cross-owner inputs are examples, an
 experimental playbook, and draft catalog definitions rather than a real

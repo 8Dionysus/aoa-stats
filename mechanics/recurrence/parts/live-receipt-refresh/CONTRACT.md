@@ -12,6 +12,8 @@ admitted by the `intake_contract` family.
 - receipts accepted by the canonical stats event envelope
 - active authored read-model profiles, whose `live_state_capable` field selects
   the live materialization allowlist
+- retired read-model tombstones, whose former output names extend stale cleanup
+  without authorizing materialization or catalog publication
 - for every admitted profile, a current owner source and an observation route
   capable of causing refresh when that source changes
 - explicit federation-root and output overrides when supplied by the operator
@@ -33,12 +35,13 @@ admitted by the `intake_contract` family.
 - unknown event kinds fail before a summary is built
 - missing or invalid required publishers remain visible as errors
 - a surface with `live_state_capable: false` is not materialized or cataloged
-- the current 25-profile managed universe yields exactly 11 admitted live
-  outputs and 14 false-live cleanup targets
+- the current 24-active plus one-retired managed universe yields exactly 11
+  admitted live outputs, 13 reference-only active cleanup targets, and one
+  retired cleanup target
 - resolving a current owner path on demand does not replace a refresh
   observation route
-- cleanup covers the full managed active-profile output set, including
-  reference-only outputs, so stale runtime copies do not survive
+- cleanup covers the full active-output plus retired-tombstone set, so stale
+  reference-only and retired runtime copies do not survive
 - live materialization does not invoke the Component Refresh, Continuity
   Window, Codex Plane Deployment, Route Progression, Memory Movement, Stress
   Recovery, Runtime Closeout, trusted rollout-history, or cadence-example

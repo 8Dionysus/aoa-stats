@@ -118,7 +118,7 @@
       "branch": "read_models",
       "path": "stats/read-models",
       "source_kind": "authored_stats_surface_profiles",
-      "meaning": "One source-authored profile per active or deferred derived read model, including its public contract/output routes, authority ceiling, deterministic order, lifecycle, and operation handoffs.",
+      "meaning": "Source-authored active and deferred read-model profiles plus minimal retired-output cleanup tombstones, including public contract/output routes, authority ceiling, deterministic order, lifecycle, and operation handoffs where applicable.",
       "owner_surface": "stats/read-models/AGENTS.md",
       "authority_ceiling": "Profiles define what aoa-stats may derive and how cautiously it may be consumed; they do not own the source facts, proof, routes, runtime state, or memory summarized by the model.",
       "source_routes": [
@@ -126,7 +126,8 @@
         "stats/read-models/README.md",
         "stats/read-models/surface-profile.schema.json",
         "stats/read-models/active/",
-        "stats/read-models/deferred/"
+        "stats/read-models/deferred/",
+        "stats/read-models/retired/"
       ],
       "public_contract_routes": [
         "schemas/core-skill-application-summary.schema.json",
@@ -149,12 +150,12 @@
         "schemas/component-refresh-summary.schema.json",
         "schemas/memory-movement-summary.schema.json",
         "schemas/titan_incarnation_summary.schema.json",
-        "schemas/titan_summon_summary.schema.json",
         "schemas/runtime-closeout-summary.schema.json",
         "schemas/stress-recovery-window-summary.schema.json",
         "schemas/source-coverage-summary.schema.json",
         "schemas/surface-detection-summary.schema.json",
-        "mechanics/antifragility/parts/antifragility-vector/schemas/antifragility_vector_v1.json"
+        "mechanics/antifragility/parts/antifragility-vector/schemas/antifragility_vector_v1.json",
+        "schemas/titan_summon_summary.schema.json"
       ],
       "implementation_routes": [
         "src/aoa_stats_builder/candidate_lifecycle.py",
@@ -206,7 +207,6 @@
         "generated/component_refresh_summary.min.json",
         "generated/memory_movement_summary.min.json",
         "generated/titan_incarnation_summary.min.json",
-        "generated/titan_summon_summary.min.json",
         "generated/runtime_closeout_summary.min.json",
         "generated/stress_recovery_window_summary.min.json",
         "generated/source_coverage_summary.min.json",
@@ -362,6 +362,7 @@
       "stop_lines": [
         "Do not hand-edit the generated summary catalog as source.",
         "Do not put Python implementation or generated output under stats/read-models/.",
+        "Do not publish a retired profile through the build fanout, summary catalog, or live state.",
         "Do not let a profile or count outrank its owner_truth_inputs."
       ]
     },
