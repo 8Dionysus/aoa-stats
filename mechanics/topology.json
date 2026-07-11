@@ -437,7 +437,9 @@
       "center_mechanic_ref": "Agents-of-Abyss/mechanics/audit",
       "local_status": "localized_active",
       "local_function": "Expose coverage, object, skill-use, detection, and drift observations while returning judgment to owners.",
-      "package_payload_roots": [],
+      "package_payload_roots": [
+        "tests"
+      ],
       "active_part_routes": [
         {
           "path": "core-skill-application",
@@ -473,7 +475,9 @@
           "stats_source_family_refs": [
             "read_models"
           ],
-          "localized_payload_roots": [],
+          "localized_payload_roots": [
+            "tests"
+          ],
           "retained_root_routes": []
         },
         {

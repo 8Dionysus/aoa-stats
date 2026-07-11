@@ -41,6 +41,13 @@ necessary but not sufficient for continuously advertised live state; all three
 profiles stay false until their missing producer or refresh observation route
 exists and is tested.
 
+The receipt-backed Audit profiles retain their existing live posture but have
+two explicit implementation boundaries. Core Skill Application and Surface
+Detection share one finish-stage receipt selector; Object Observation reads
+the full active receipt feed through a separate core. Sharing implementation
+does not merge their authored questions, source ceilings, mechanic routes, or
+catalog identities.
+
 Use `committed_owner_example_chain` only when one owner repository publishes a
 coherent set of checked-in examples that can drive a deterministic committed
 reference snapshot. The token does not admit the surface to live

@@ -6,6 +6,10 @@ from .candidate_lifecycle import (
 from .component_refresh import build_component_refresh_summary
 from .codex_plane_deployment import build_codex_plane_deployment_summary
 from .continuity_window import build_continuity_window_summary
+from .core_skill_observation import (
+    build_core_skill_application_summary,
+    build_surface_detection_summary,
+)
 from .downstream_canaries import validate_downstream_canaries
 from .growth_cycle import (
     build_automation_followthrough_summary,
@@ -13,6 +17,7 @@ from .growth_cycle import (
     build_fork_calibration_summary,
     build_session_growth_branch_summary,
 )
+from .object_observation import build_object_summary
 from .receipt_abi import (
     CANONICAL_ENVELOPE_SCHEMA_REF,
     EVENT_KIND_REGISTRY_REF,
@@ -41,11 +46,14 @@ __all__ = [
     "build_codex_plane_deployment_summary",
     "build_component_refresh_summary",
     "build_continuity_window_summary",
+    "build_core_skill_application_summary",
     "build_fork_calibration_summary",
     "build_owner_landing_summary",
+    "build_object_summary",
     "build_session_growth_branch_summary",
     "build_source_coverage_summary",
     "build_summary_surface_catalog",
+    "build_surface_detection_summary",
     "build_supersession_drop_summary",
     "generated_from",
     "load_event_kind_registry",

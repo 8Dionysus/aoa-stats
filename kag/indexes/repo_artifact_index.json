@@ -1730,7 +1730,7 @@
     },
     {
       "artifact_kind": "document",
-      "content_hash": "61d9eebb2a1d9de6c8804009f903e47d2a33602454f70f111bf1d932a3f2e1a5",
+      "content_hash": "1598fe5ee48cdd96f33d775f871a9421e02418e6373ef13a3d30d4e1a42ad660",
       "id": "artifact:file:agents.md:a54ff182c7",
       "path": "AGENTS.md",
       "source_record_id": "file:agents.md:a54ff182c7",
@@ -1738,7 +1738,7 @@
     },
     {
       "artifact_kind": "document",
-      "content_hash": "4ee24112ddba5523324b791b9589bc098f6f279184f3809903f069e2aae66849",
+      "content_hash": "d157d4f96601edd5757bec83132fa831e93b0050acc8b07b2e699dfce82ed417",
       "id": "artifact:file:changelog.md:06572a96a5",
       "path": "CHANGELOG.md",
       "source_record_id": "file:changelog.md:06572a96a5",
@@ -1762,7 +1762,7 @@
     },
     {
       "artifact_kind": "document",
-      "content_hash": "74171272ebb729079ab4c6f761b0e464761759eaf1faa41627e77f6bab6bbf65",
+      "content_hash": "74822fcd484d2128a384b6efcaeef04563a5d2e74037a26ae31e5abc3372afb1",
       "id": "artifact:file:design.md:3dc5dd454e",
       "path": "DESIGN.md",
       "source_record_id": "file:design.md:3dc5dd454e",
@@ -3642,7 +3642,7 @@
     },
     {
       "artifact_kind": "document",
-      "content_hash": "2829023f56298767d92989d020df3ae28b71542b69a8f5d85d602f24b460e3ce",
+      "content_hash": "d5a5cff80f6a14d8873f56dbc071b317800e7a0884ccdcdd82205fd757195f2e",
       "id": "artifact:file:mechanics/audit/agents.md:cceb307272",
       "path": "mechanics/audit/AGENTS.md",
       "source_record_id": "file:mechanics/audit/agents.md:cceb307272",
@@ -3650,7 +3650,7 @@
     },
     {
       "artifact_kind": "document",
-      "content_hash": "68c5b4730453b0c8eaaad6e450c69e5a35693644f52de32cf36db58fee82dee8",
+      "content_hash": "f0da0faf19082500f40981c4a5d2cfb8b87d0cfb2db6702184afbc2ede9d7a75",
       "id": "artifact:file:mechanics/audit/parts.md:7f54be3138",
       "path": "mechanics/audit/PARTS.md",
       "source_record_id": "file:mechanics/audit/parts.md:7f54be3138",
@@ -3658,7 +3658,7 @@
     },
     {
       "artifact_kind": "document",
-      "content_hash": "191e2e0b272991f992430c0e8ba70825ef7b2a0af33f9cc744ffdd15d25c1b73",
+      "content_hash": "6c677471e6d2b389f10269c6762127ec3d16df2760088ec68ee3a1dddde13bf6",
       "id": "artifact:file:mechanics/audit/provenance.md:f27efcdcaf",
       "path": "mechanics/audit/PROVENANCE.md",
       "source_record_id": "file:mechanics/audit/provenance.md:f27efcdcaf",
@@ -3666,7 +3666,7 @@
     },
     {
       "artifact_kind": "document",
-      "content_hash": "4ea38c6d89156cb58991ecd4cdd85fc85f12f71706c1233004a557d0487fd83c",
+      "content_hash": "0e33a8e544acefcaaf6b3a1235b85513e2dc54c6cbc1b73c2ec8e8a2da471533",
       "id": "artifact:file:mechanics/audit/readme.md:8442d8bba8",
       "path": "mechanics/audit/README.md",
       "source_record_id": "file:mechanics/audit/readme.md:8442d8bba8",
@@ -3690,7 +3690,7 @@
     },
     {
       "artifact_kind": "document",
-      "content_hash": "a87b94585844374745eabe5e605afff22e0fde5141078d5d9c75688acfa2cf9b",
+      "content_hash": "55e333c3f380357cba0781574723cdf1ae62b3a159dded1f487d160abe60848b",
       "id": "artifact:file:mechanics/audit/parts/core-skill-application/contract.md:f70a90b622",
       "path": "mechanics/audit/parts/core-skill-application/CONTRACT.md",
       "source_record_id": "file:mechanics/audit/parts/core-skill-application/contract.md:f70a90b622",
@@ -3698,7 +3698,7 @@
     },
     {
       "artifact_kind": "document",
-      "content_hash": "0b14947e50aec74dfc4b849d8a7b36b6638063c002eeeff2fb5153337f4fd207",
+      "content_hash": "619711d66b27a9b7dc86e73fcc52fc3052d85727bcc6bd0521f59093dea5b5e5",
       "id": "artifact:file:mechanics/audit/parts/core-skill-application/readme.md:5d590209e3",
       "path": "mechanics/audit/parts/core-skill-application/README.md",
       "source_record_id": "file:mechanics/audit/parts/core-skill-application/readme.md:5d590209e3",
@@ -3706,7 +3706,7 @@
     },
     {
       "artifact_kind": "document",
-      "content_hash": "045aee7c7d783b6b29b902a7401549c850d272410838cace27b3a25efb441ff3",
+      "content_hash": "365d60b2e76d4d130f01d11a489cfa32c09342c6a8572b129f2c22a51120150b",
       "id": "artifact:file:mechanics/audit/parts/core-skill-application/validation.md:f4abc2bd08",
       "path": "mechanics/audit/parts/core-skill-application/VALIDATION.md",
       "source_record_id": "file:mechanics/audit/parts/core-skill-application/validation.md:f4abc2bd08",
@@ -3762,7 +3762,7 @@
     },
     {
       "artifact_kind": "document",
-      "content_hash": "a87b94585844374745eabe5e605afff22e0fde5141078d5d9c75688acfa2cf9b",
+      "content_hash": "1dd04c9155cd510a0c15b9c4d518d85fed79beb831b0e4fdc2374948a1138a41",
       "id": "artifact:file:mechanics/audit/parts/object-observation/contract.md:f76759f5ee",
       "path": "mechanics/audit/parts/object-observation/CONTRACT.md",
       "source_record_id": "file:mechanics/audit/parts/object-observation/contract.md:f76759f5ee",
@@ -3770,7 +3770,7 @@
     },
     {
       "artifact_kind": "document",
-      "content_hash": "11e1fdba0d3440bede6818d027e9c9a25118dccfce8ff2356972e64a7e3e5ed5",
+      "content_hash": "c295eaefe8a1bb29765596d8884179fa8d0cea4ad3e8f26bc17592c26535a808",
       "id": "artifact:file:mechanics/audit/parts/object-observation/readme.md:29afed69dd",
       "path": "mechanics/audit/parts/object-observation/README.md",
       "source_record_id": "file:mechanics/audit/parts/object-observation/readme.md:29afed69dd",
@@ -3778,10 +3778,18 @@
     },
     {
       "artifact_kind": "document",
-      "content_hash": "045aee7c7d783b6b29b902a7401549c850d272410838cace27b3a25efb441ff3",
+      "content_hash": "a00fa792002bc5befd33c8bb6919f58c6727120292bc883bed3efb053933bf22",
       "id": "artifact:file:mechanics/audit/parts/object-observation/validation.md:14f598fc46",
       "path": "mechanics/audit/parts/object-observation/VALIDATION.md",
       "source_record_id": "file:mechanics/audit/parts/object-observation/validation.md:14f598fc46",
+      "surface_state": "authored_source"
+    },
+    {
+      "artifact_kind": "test",
+      "content_hash": "6b6a4849c41f04b5553485ab369f98d2fba4d0986ea403cf0a521d56f95e67e4",
+      "id": "artifact:file:mechanics/audit/parts/object-observation/tests/test_object_observation.py:768b648354",
+      "path": "mechanics/audit/parts/object-observation/tests/test_object_observation.py",
+      "source_record_id": "file:mechanics/audit/parts/object-observation/tests/test_object_observation.py:768b648354",
       "surface_state": "authored_source"
     },
     {
@@ -3826,7 +3834,7 @@
     },
     {
       "artifact_kind": "document",
-      "content_hash": "a87b94585844374745eabe5e605afff22e0fde5141078d5d9c75688acfa2cf9b",
+      "content_hash": "b364f7055c5988f44baa9b1a5e580543e3ad500fe292009ee7513736b60fcd63",
       "id": "artifact:file:mechanics/audit/parts/surface-strength-detection/contract.md:25723b7ca8",
       "path": "mechanics/audit/parts/surface-strength-detection/CONTRACT.md",
       "source_record_id": "file:mechanics/audit/parts/surface-strength-detection/contract.md:25723b7ca8",
@@ -3834,7 +3842,7 @@
     },
     {
       "artifact_kind": "document",
-      "content_hash": "4d6a64ccfed0a82d73e1761c8edec5cbfc99655bca57cb575c06a55419c291bb",
+      "content_hash": "63364692b6127d48636b66f46506f379ff95ececaa018ff24a0920f24609b852",
       "id": "artifact:file:mechanics/audit/parts/surface-strength-detection/readme.md:8a8b8c2a2a",
       "path": "mechanics/audit/parts/surface-strength-detection/README.md",
       "source_record_id": "file:mechanics/audit/parts/surface-strength-detection/readme.md:8a8b8c2a2a",
@@ -3842,10 +3850,18 @@
     },
     {
       "artifact_kind": "document",
-      "content_hash": "045aee7c7d783b6b29b902a7401549c850d272410838cace27b3a25efb441ff3",
+      "content_hash": "53bbb3764cb5526a865a51e6f779c68feaa104ab9f368a7c2d68f0253927d38f",
       "id": "artifact:file:mechanics/audit/parts/surface-strength-detection/validation.md:beb9820976",
       "path": "mechanics/audit/parts/surface-strength-detection/VALIDATION.md",
       "source_record_id": "file:mechanics/audit/parts/surface-strength-detection/validation.md:beb9820976",
+      "surface_state": "authored_source"
+    },
+    {
+      "artifact_kind": "test",
+      "content_hash": "ebd2ee35ab6a6de76a1381b64f16108e10aff829f53bca8d8a3c6e526bfa9ecb",
+      "id": "artifact:file:mechanics/audit/tests/test_core_skill_observation.py:bba3134c28",
+      "path": "mechanics/audit/tests/test_core_skill_observation.py",
+      "source_record_id": "file:mechanics/audit/tests/test_core_skill_observation.py:bba3134c28",
       "surface_state": "authored_source"
     },
     {
@@ -6514,7 +6530,7 @@
     },
     {
       "artifact_kind": "config",
-      "content_hash": "dcc2460e6443f9c9a0edcfc2a1b135cabca6556d7097b109e556802378b111c8",
+      "content_hash": "8a1021191cb85afb31b8767cb22c3783fa93cbf02fa2097972acb2d6f2fe92d2",
       "id": "artifact:file:mechanics/topology.json:c2f84a03b1",
       "path": "mechanics/topology.json",
       "source_record_id": "file:mechanics/topology.json:c2f84a03b1",
@@ -6778,7 +6794,7 @@
     },
     {
       "artifact_kind": "script",
-      "content_hash": "2355eeeff0223a29481c725f2ebc4dac5d0b1c021aa023f2997d08a0a0103207",
+      "content_hash": "d2996a3e111fd1103aba3c00671d2602686749fb78e74a1fe28b0a7fc0eccbeb",
       "id": "artifact:file:scripts/build_views.py:b705861394",
       "path": "scripts/build_views.py",
       "source_record_id": "file:scripts/build_views.py:b705861394",
@@ -6898,7 +6914,7 @@
     },
     {
       "artifact_kind": "source_code",
-      "content_hash": "d177da28d9337722f3c48b00b9b6c32fdfb48b33bbdf8c9f143145d6df23cf56",
+      "content_hash": "96b841a9c57cd74b42f1fcc4e6eb0aaab6aaaaf5331528e106dac95adac5468a",
       "id": "artifact:file:src/aoa_stats_builder/__init__.py:3d39f7c839",
       "path": "src/aoa_stats_builder/__init__.py",
       "source_record_id": "file:src/aoa_stats_builder/__init__.py:3d39f7c839",
@@ -6978,6 +6994,14 @@
     },
     {
       "artifact_kind": "source_code",
+      "content_hash": "667e8f81652eef2697201c81a5281c9a0e89af3c5df34edfd78b19422c1ba218",
+      "id": "artifact:file:src/aoa_stats_builder/core_skill_observation.py:e015652e16",
+      "path": "src/aoa_stats_builder/core_skill_observation.py",
+      "source_record_id": "file:src/aoa_stats_builder/core_skill_observation.py:e015652e16",
+      "surface_state": "authored_source"
+    },
+    {
+      "artifact_kind": "source_code",
       "content_hash": "ca4a3d34edad2d82305c4d5b3d0eb3a80c0fe0c33729a230f3d8e8753838f951",
       "id": "artifact:file:src/aoa_stats_builder/downstream_canaries.py:3b5aec45b2",
       "path": "src/aoa_stats_builder/downstream_canaries.py",
@@ -7006,6 +7030,14 @@
       "id": "artifact:file:src/aoa_stats_builder/memory_movement_sources.py:7b10fd7f72",
       "path": "src/aoa_stats_builder/memory_movement_sources.py",
       "source_record_id": "file:src/aoa_stats_builder/memory_movement_sources.py:7b10fd7f72",
+      "surface_state": "authored_source"
+    },
+    {
+      "artifact_kind": "source_code",
+      "content_hash": "f85950d53a5a669deaede798437b6fd000f67e00f29710ad58a224c3b313d605",
+      "id": "artifact:file:src/aoa_stats_builder/object_observation.py:c150f766ed",
+      "path": "src/aoa_stats_builder/object_observation.py",
+      "source_record_id": "file:src/aoa_stats_builder/object_observation.py:c150f766ed",
       "surface_state": "authored_source"
     },
     {
@@ -7114,7 +7146,7 @@
     },
     {
       "artifact_kind": "document",
-      "content_hash": "5dbdd54c5d1fbf80b9b529d2e85012176af134cba6ea86287bb59f6a7ad36d86",
+      "content_hash": "c3b7d2d7310d2c44e7871128c2dd0a44c0f6860a2a166192dc8acb1586e093eb",
       "id": "artifact:file:stats/readme.md:6bac6d2ff5",
       "path": "stats/README.md",
       "source_record_id": "file:stats/readme.md:6bac6d2ff5",
@@ -7314,7 +7346,7 @@
     },
     {
       "artifact_kind": "document",
-      "content_hash": "d23c16166f9aebf89b3a03568e522910d58900c87788c3b4064966404ae93d07",
+      "content_hash": "48b9b6aabada0bdc4dbcb98550bfa306289f833e721b731bcbf041f8c51adbb6",
       "id": "artifact:file:stats/read-models/readme.md:5ba4a92471",
       "path": "stats/read-models/README.md",
       "source_record_id": "file:stats/read-models/readme.md:5ba4a92471",
@@ -7538,7 +7570,7 @@
     },
     {
       "artifact_kind": "config",
-      "content_hash": "2d8c06b44941e7c349d4aa50ed6acff0bfa23f44a6b67d773523d4e9c39a80b6",
+      "content_hash": "4e6c01270743ce2c8d7b4fb43e8ec96b8d7b11ec64e1e9cba31e5d708d400490",
       "id": "artifact:file:stats/source_home.manifest.json:41b237ff45",
       "path": "stats/source_home.manifest.json",
       "source_record_id": "file:stats/source_home.manifest.json:41b237ff45",
@@ -7594,7 +7626,7 @@
     },
     {
       "artifact_kind": "test",
-      "content_hash": "18740ce5096a46119b88e8b0005d6636a0d4d3e398a02443041126c19b0f1479",
+      "content_hash": "37564426a5a99be3280dfe2aff5f064658175f45da10faf46d967064585d9716",
       "id": "artifact:file:tests/test_build_views.py:760ef645f6",
       "path": "tests/test_build_views.py",
       "source_record_id": "file:tests/test_build_views.py:760ef645f6",
@@ -7675,7 +7707,7 @@
   ],
   "index_identity": {
     "artifact_kind": "repository_artifact_index",
-    "content_digest": "19073b4f9c07c019ed3635409a7473c639b59d5b54a1faf5fcf49f5b05713c9a",
+    "content_digest": "cfc1c0d7d7c06674aa00347987e16169f563fd6d5b9f28ba7edc4ba24fb4c36f",
     "index_kind": "artifact",
     "local_id": "index:repo-local:artifacts",
     "schema_ref": "aoa-kag:schemas/repo-local-kag-repository-index.schema.json"
@@ -7699,12 +7731,12 @@
   },
   "schema_version": "aoa-repo-local-kag-repository-index-v1",
   "source_index": {
-    "content_digest": "9b5e716ce16182c6a543af6198e5fd63f66baa468ae0d9d9099969e7cfc576d1",
+    "content_digest": "b15d643247c4913c84ac1b94d276d93b9c6e636f3fa1e8e992bf2bf6b98d40ea",
     "local_id": "index:repo-local:source-surfaces",
     "path": "kag/indexes/source_surface_index.json"
   },
   "summary": {
-    "entry_count": 959,
+    "entry_count": 963,
     "kind_counts": {
       "asset": 50,
       "config": 174,
@@ -7721,8 +7753,8 @@
       "script": 23,
       "security": 1,
       "service_unit": 2,
-      "source_code": 27,
-      "test": 44,
+      "source_code": 29,
+      "test": 46,
       "validator": 18
     }
   }
