@@ -48,6 +48,16 @@ from aoa_stats_builder.codex_plane_deployment_sources import (  # noqa: E402
     load_codex_plane_live_bundle,
     load_codex_plane_reference_bundle,
 )
+from aoa_stats_builder.codex_trusted_rollout import (  # noqa: E402
+    build_codex_rollout_drift_summary as build_codex_rollout_drift_summary_from_inputs,
+    build_codex_rollout_operations_summary as build_codex_rollout_operations_summary_from_inputs,
+    latest_rollout_history_row as latest_rollout_history_row_from_inputs,
+)
+from aoa_stats_builder.codex_trusted_rollout_sources import (  # noqa: E402
+    CodexTrustedRolloutInputBundle,
+    codex_trusted_rollout_paths as codex_trusted_rollout_source_paths,
+    load_codex_trusted_rollout_bundle,
+)
 from aoa_stats_builder.continuity_window import (  # noqa: E402
     CONTINUITY_EVAL_ANCHORS as CONTINUITY_EVAL_ANCHORS,
     CONTINUITY_STATUSES as CONTINUITY_STATUSES,
@@ -75,12 +85,19 @@ from aoa_stats_builder.receipt_abi import (  # noqa: E402
 )
 from aoa_stats_builder.receipt_abi import receipt_sort_key  # noqa: E402
 from aoa_stats_builder.read_model_values import (  # noqa: E402
-    collect_datetime_candidates,
     is_nonempty_string,
     is_number,
-    normalize_string_list,
     parse_iso_datetime_or_min,
     string_count_map,
+)
+from aoa_stats_builder.rollout_cadence import (  # noqa: E402
+    build_drift_review_summary as build_drift_review_summary_from_inputs,
+    build_rollout_campaign_summary as build_rollout_campaign_summary_from_inputs,
+)
+from aoa_stats_builder.rollout_cadence_sources import (  # noqa: E402
+    RolloutCadenceInputBundle,
+    load_rollout_cadence_reference_bundle,
+    rollout_cadence_reference_paths,
 )
 from aoa_stats_builder.source_coverage import build_source_coverage_summary  # noqa: E402
 from aoa_stats_builder.surface_catalog import build_summary_surface_catalog  # noqa: E402
@@ -245,33 +262,6 @@ def load_json_object(path: Path, *, label: str) -> dict[str, Any]:
     return payload
 
 
-def load_jsonl_objects(path: Path, *, label: str) -> list[dict[str, Any]]:
-    try:
-        lines = path.read_text(encoding="utf-8").splitlines()
-    except FileNotFoundError as exc:
-        raise ReceiptValidationError(f"missing {label}: {path}") from exc
-
-    rows: list[dict[str, Any]] = []
-    for line_number, raw_line in enumerate(lines, start=1):
-        line = raw_line.strip()
-        if not line:
-            continue
-        try:
-            payload = json.loads(line)
-        except json.JSONDecodeError as exc:
-            raise ReceiptValidationError(
-                f"invalid JSON line in {label}: {path}:{line_number}"
-            ) from exc
-        if not isinstance(payload, dict):
-            raise ReceiptValidationError(
-                f"{label} entries must be JSON objects: {path}:{line_number}"
-            )
-        rows.append(payload)
-    if not rows:
-        raise ReceiptValidationError(f"{label} must expose at least one JSON object: {path}")
-    return rows
-
-
 def codex_plane_example_paths() -> tuple[Path, Path, Path]:
     public_profile_root = repo_root_from_env("AOA_8DIONYSUS_ROOT", DEFAULT_PUBLIC_PROFILE_ROOT)
     return codex_plane_reference_paths(public_profile_root)
@@ -315,118 +305,50 @@ def codex_plane_generated_from() -> tuple[
 
 def codex_trusted_rollout_paths() -> tuple[Path, Path, Path, Path]:
     public_profile_root = repo_root_from_env("AOA_8DIONYSUS_ROOT", DEFAULT_PUBLIC_PROFILE_ROOT)
-    rollout_root = public_profile_root / "generated" / "codex" / "rollout"
-    return (
-        rollout_root / "deploy_history.jsonl",
-        rollout_root / "regeneration_campaigns.min.json",
-        rollout_root / "rollback_windows.min.json",
-        rollout_root / "rollout_latest.min.json",
+    return codex_trusted_rollout_source_paths(public_profile_root)
+
+
+def codex_trusted_rollout_input_bundle() -> CodexTrustedRolloutInputBundle:
+    public_profile_root = repo_root_from_env(
+        "AOA_8DIONYSUS_ROOT", DEFAULT_PUBLIC_PROFILE_ROOT
     )
+    return load_codex_trusted_rollout_bundle(public_profile_root)
 
 
 def codex_trusted_rollout_generated_from() -> tuple[
     dict[str, Any], list[dict[str, Any]], dict[str, Any], dict[str, Any], dict[str, Any]
 ]:
-    (
-        deploy_history_path,
-        regeneration_path,
-        rollback_path,
-        latest_path,
-    ) = codex_trusted_rollout_paths()
-    public_profile_root = repo_root_from_env("AOA_8DIONYSUS_ROOT", DEFAULT_PUBLIC_PROFILE_ROOT)
-    deploy_history = load_jsonl_objects(
-        deploy_history_path,
-        label="codex trusted rollout deploy history",
-    )
-    regeneration = load_json_object(
-        regeneration_path,
-        label="codex trusted rollout regeneration campaigns",
-    )
-    rollback = load_json_object(
-        rollback_path,
-        label="codex trusted rollout rollback windows",
-    )
-    latest = load_json_object(
-        latest_path,
-        label="codex trusted rollout latest summary",
-    )
-    observed_candidates: list[datetime] = []
-    for payload in (deploy_history, regeneration, rollback, latest):
-        observed_candidates.extend(collect_datetime_candidates(payload))
-    if not observed_candidates:
-        raise ReceiptValidationError(
-            "codex trusted rollout sources must expose at least one parseable timestamp"
-        )
-    latest_observed_at = max(observed_candidates).isoformat().replace("+00:00", "Z")
-    source = {
-        "receipt_input_paths": [
-            display_repo_input_path(
-                deploy_history_path,
-                repo_roots=(("8Dionysus", public_profile_root),),
-            ),
-            display_repo_input_path(
-                regeneration_path,
-                repo_roots=(("8Dionysus", public_profile_root),),
-            ),
-            display_repo_input_path(
-                rollback_path,
-                repo_roots=(("8Dionysus", public_profile_root),),
-            ),
-            display_repo_input_path(
-                latest_path,
-                repo_roots=(("8Dionysus", public_profile_root),),
-            ),
-        ],
-        "total_receipts": len(deploy_history),
-        "latest_observed_at": latest_observed_at,
-    }
-    return source, deploy_history, regeneration, rollback, latest
+    """Preserve the historical mutable five-part facade for callers."""
+
+    return codex_trusted_rollout_input_bundle().mutable_parts()
 
 
 def codex_rollout_campaign_paths() -> tuple[Path, Path, Path]:
     public_profile_root = repo_root_from_env("AOA_8DIONYSUS_ROOT", DEFAULT_PUBLIC_PROFILE_ROOT)
-    return (
-        public_profile_root / "examples" / "rollout_campaign_window.example.json",
-        public_profile_root / "examples" / "drift_review_window.example.json",
-        public_profile_root / "examples" / "rollback_followthrough_window.example.json",
+    return rollout_cadence_reference_paths(public_profile_root)
+
+
+def rollout_cadence_input_bundle() -> RolloutCadenceInputBundle:
+    public_profile_root = repo_root_from_env(
+        "AOA_8DIONYSUS_ROOT", DEFAULT_PUBLIC_PROFILE_ROOT
     )
+    return load_rollout_cadence_reference_bundle(public_profile_root)
 
 
 def codex_rollout_campaign_generated_from() -> tuple[dict[str, Any], dict[str, Any], dict[str, Any], dict[str, Any]]:
-    campaign_path, review_path, rollback_path = codex_rollout_campaign_paths()
-    public_profile_root = repo_root_from_env("AOA_8DIONYSUS_ROOT", DEFAULT_PUBLIC_PROFILE_ROOT)
-    campaign = load_json_object(campaign_path, label="rollout campaign window example")
-    review = load_json_object(review_path, label="drift review window example")
-    rollback = load_json_object(rollback_path, label="rollback followthrough window example")
-    latest_observed_at = max(
-        parse_iso_datetime_or_min(campaign.get("window_opened_at")),
-        parse_iso_datetime_or_min(review.get("reviewed_at")),
-        parse_iso_datetime_or_min(rollback.get("prepared_at")),
-    ).isoformat().replace("+00:00", "Z")
-    source = {
-        "receipt_input_paths": [
-            display_repo_input_path(campaign_path, repo_roots=(("8Dionysus", public_profile_root),)),
-            display_repo_input_path(review_path, repo_roots=(("8Dionysus", public_profile_root),)),
-            display_repo_input_path(rollback_path, repo_roots=(("8Dionysus", public_profile_root),)),
-        ],
-        "total_receipts": 1,
-        "latest_observed_at": latest_observed_at,
-    }
-    return source, campaign, review, rollback
+    """Preserve the historical mutable four-part facade for callers."""
+
+    return rollout_cadence_input_bundle().mutable_parts()
 
 
 def latest_rollout_history_row(
     deploy_history: list[dict[str, Any]], latest: dict[str, Any]
 ) -> dict[str, Any]:
-    latest_rollout_campaign_ref = latest.get("latest_rollout_campaign_ref")
-    if is_nonempty_string(latest_rollout_campaign_ref):
-        for row in reversed(deploy_history):
-            if row.get("rollout_campaign_ref") == latest_rollout_campaign_ref:
-                return row
-        raise ReceiptValidationError(
-            "latest rollout campaign ref does not resolve inside deploy history"
-        )
-    return deploy_history[-1]
+    """Preserve the historical root helper while delegating to the pure core."""
+
+    if not is_nonempty_string(latest.get("latest_rollout_campaign_ref")):
+        return dict(deploy_history[-1])
+    return dict(latest_rollout_history_row_from_inputs(deploy_history, latest))
 
 
 def continuity_window_source_paths() -> tuple[Path, Path, Path, Path]:
@@ -990,95 +912,45 @@ def build_codex_plane_deployment_summary(
 
 
 def build_codex_rollout_operations_summary() -> dict[str, Any]:
-    source, deploy_history, _, _, latest = codex_trusted_rollout_generated_from()
-    counts_by_state = Counter(
-        str(row.get("state"))
-        for row in deploy_history
-        if isinstance(row.get("state"), str) and row.get("state")
+    bundle = codex_trusted_rollout_input_bundle()
+    return build_codex_rollout_operations_summary_from_inputs(
+        bundle.source,
+        bundle.deploy_history,
+        bundle.regeneration,
+        bundle.rollback,
+        bundle.latest,
     )
-    return {
-        "schema_version": "aoa_stats_codex_rollout_operations_summary_v1",
-        "generated_from": source,
-        "latest_rollout_campaign_ref": latest.get("latest_rollout_campaign_ref") or "",
-        "latest_state": latest.get("latest_state") or "unknown",
-        "active_drift_window_ref": latest.get("active_drift_window_ref"),
-        "active_rollback_window_ref": latest.get("active_rollback_window_ref"),
-        "latest_stable_rollout_campaign_ref": latest.get("latest_stable_rollout_campaign_ref") or "",
-        "counts_by_state": dict(sorted(counts_by_state.items())),
-        "source_refs": list(normalize_string_list(latest.get("source_refs"))),
-    }
 
 
 def build_codex_rollout_drift_summary() -> dict[str, Any]:
-    source, deploy_history, _, _, latest = codex_trusted_rollout_generated_from()
-    latest_history = latest_rollout_history_row(deploy_history, latest)
-    drift_refs = normalize_string_list(latest_history.get("drift_window_refs"))
-    rollback_refs = normalize_string_list(latest_history.get("rollback_window_refs"))
-    latest_state = str(latest.get("latest_state") or latest_history.get("state") or "unknown")
-    return {
-        "schema_version": "aoa_stats_codex_rollout_drift_summary_v1",
-        "generated_from": source,
-        "latest_rollout_campaign_ref": latest.get("latest_rollout_campaign_ref") or "",
-        "drift_window_ref": drift_refs[0] if drift_refs else None,
-        "drift_state": str(latest_history.get("drift_state") or "quiet"),
-        "repair_attempted": bool(latest_history.get("repair_attempted")),
-        "rollback_required": bool(rollback_refs) or latest_state in {"rollback_open", "rolled_back"},
-        "source_refs": [
-            "8Dionysus/generated/codex/rollout/deploy_history.jsonl",
-            "8Dionysus/generated/codex/rollout/rollback_windows.min.json",
-        ],
-    }
+    bundle = codex_trusted_rollout_input_bundle()
+    return build_codex_rollout_drift_summary_from_inputs(
+        bundle.source,
+        bundle.deploy_history,
+        bundle.regeneration,
+        bundle.rollback,
+        bundle.latest,
+    )
 
 
 def build_rollout_campaign_summary() -> dict[str, Any]:
-    source, campaign, review, rollback = codex_rollout_campaign_generated_from()
-    lineage_refs = campaign.get("lineage_refs")
-    if not isinstance(lineage_refs, dict):
-        lineage_refs = {}
-    review_status = str(review.get("status") or "closed")
-    rollback_status = str(rollback.get("status") or "retired")
-    return {
-        "schema_version": "aoa_stats_rollout_campaign_summary_v1",
-        "generated_from": source,
-        "campaign_ref": str(campaign.get("campaign_ref") or ""),
-        "campaign_state": str(campaign.get("state") or "review_required"),
-        "open_batches": 1 if campaign.get("state") == "open" else 0,
-        "pending_reviews": 1 if review_status in {"review_required", "reanchor", "rollback_considered"} else 0,
-        "rollback_ready_windows": 1 if rollback_status in {"ready_if_needed", "armed"} else 0,
-        "stage_counts": {
-            "candidate_refs": len(normalize_string_list(lineage_refs.get("candidate_refs"))),
-            "seed_refs": len(normalize_string_list(lineage_refs.get("seed_refs"))),
-            "object_refs": len(normalize_string_list(lineage_refs.get("object_refs"))),
-        },
-        "source_refs": list(source["receipt_input_paths"]),
-    }
+    bundle = rollout_cadence_input_bundle()
+    return build_rollout_campaign_summary_from_inputs(
+        bundle.source,
+        bundle.campaign,
+        bundle.review,
+        bundle.rollback,
+    )
 
 
 def build_drift_review_summary() -> dict[str, Any]:
-    source, campaign, review, rollback = codex_rollout_campaign_generated_from()
-    signals = review.get("signals")
-    signal_counts: Counter[str] = Counter()
-    if isinstance(signals, dict):
-        for name in sorted(signals):
-            signal_counts[name] = 1 if signals.get(name) is True else 0
-    decision_counts: dict[str, int] = {}
-    decision = review.get("decision")
-    if is_nonempty_string(decision):
-        decision_counts[str(decision)] = 1
-    rollback_status = str(rollback.get("status") or "retired")
-    return {
-        "schema_version": "aoa_stats_drift_review_summary_v1",
-        "generated_from": source,
-        "campaign_ref": str(campaign.get("campaign_ref") or ""),
-        "review_ref": str(review.get("review_ref") or ""),
-        "review_status": str(review.get("status") or "closed"),
-        "review_windows_total": 1,
-        "signals_seen": dict(sorted(signal_counts.items())),
-        "decision_counts": decision_counts,
-        "rollback_ref": str(rollback.get("rollback_ref") or ""),
-        "rollback_ready": rollback_status in {"ready_if_needed", "armed"},
-        "source_refs": list(source["receipt_input_paths"]),
-    }
+    bundle = rollout_cadence_input_bundle()
+    return build_drift_review_summary_from_inputs(
+        bundle.source,
+        bundle.campaign,
+        bundle.review,
+        bundle.rollback,
+    )
 
 
 def build_continuity_window_summary() -> dict[str, Any]:

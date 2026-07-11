@@ -17,14 +17,21 @@ by the local live refresh loop when its inputs resolve. A `false` profile stays
 on its committed/reference route and is omitted from live output and the live
 catalog, although refresh cleanup still removes any stale runtime copy.
 
-The current managed inventory contains 25 active profiles; 20 are admitted to
-live materialization. The five reference-only profiles are Component Refresh,
-Continuity Window, Codex Plane Deployment, Titan Incarnation, and Titan Summon.
+The current managed inventory contains 25 active profiles; 16 are admitted to
+live materialization. The nine reference-only profiles are Component Refresh,
+Continuity Window, Codex Plane Deployment, Codex Rollout Operations, Codex
+Rollout Drift, Rollout Campaign, Drift Review, Titan Incarnation, and Titan
+Summon.
 Continuity Window describes the posture represented by its committed
 cross-owner example/catalog chain. Codex Plane Deployment describes the posture
 represented by the committed 8Dionysus trust-state, regeneration-report, and
 rollout-receipt examples. Neither example chain constitutes owner-runtime or
 deploy-local state.
+
+Codex Rollout Operations and Codex Rollout Drift describe the exact checked-in
+trusted-history bundle; “latest” is bounded to that history. Rollout Campaign
+and Drift Review describe a separate three-example cadence chain. Checked-in
+history is not runtime state, and examples are not active cadence.
 
 Use `committed_owner_example_chain` only when one owner repository publishes a
 coherent set of checked-in examples that can drive a deterministic committed

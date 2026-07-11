@@ -1,7 +1,7 @@
 # Codex Plane Deployment Summaries
 
-`aoa-stats` owns a derived view over Codex Plane deployment continuity and
-separate checked-in rollout-operation companions.
+`aoa-stats` owns one bounded derived view over Codex Plane deployment
+continuity.
 
 ## Current deployment source posture
 
@@ -33,47 +33,6 @@ This summary does not authorize rollout, trust, doctor success, or rollback.
 - stable MCP name set
 - latest receipt reference
 
-## Trusted rollout operations companions
-
-When `8Dionysus` publishes checked-in shared-root rollout campaign history under
-`generated/codex/rollout/`, `aoa-stats` may derive two bounded companions:
-
-- `generated/codex_rollout_operations_summary.min.json`
-- `generated/codex_rollout_drift_summary.min.json`
-
-These summaries may expose:
-
-- latest rollout campaign ref
-- latest rollout state
-- latest stable rollout campaign ref
-- counts by rollout state
-- latest drift window ref
-- latest drift state
-- whether bounded repair was attempted
-- whether rollback remained required
-
-They remain descriptive only.
-They do not authorize rollout, stabilization, or rollback.
-
-When `8Dionysus` also publishes source-owned cadence windows under
-`examples/rollout_campaign_window.example.json`,
-`examples/drift_review_window.example.json`, and
-`examples/rollback_followthrough_window.example.json`, `aoa-stats` may derive:
-
-- `generated/rollout_campaign_summary.min.json`
-- `generated/drift_review_summary.min.json`
-
-These cadence companions may expose:
-
-- one current campaign ref and campaign state
-- whether one bounded review is still pending
-- whether one rollback-followthrough window is ready
-- simple lineage-ref counts when stronger upstream refs already exist
-- named drift-signal counts and decision counts
-
-They remain descriptive only.
-They do not authorize campaign decisions, cadence closure, or rollback posture.
-
 ## Source precedence
 
 Prefer:
@@ -101,9 +60,10 @@ three files.
 
 ## Companion boundary
 
-The rollout-history and cadence Campaign/Drift summaries below use different
-checked-in source contexts. They are intentionally outside this deployment
-source-mode refactor.
+The rollout-history summaries live under `trusted-rollout-history`. The cadence
+Campaign/Drift summaries live under `rollout-campaign` and
+`drift-shadow-review`. Their source bundles, examples, builders, tests, and
+profiles are intentionally outside this deployment part.
 
 `aoa-stats` may summarize this family, but it does not overrule live trust
 evidence.

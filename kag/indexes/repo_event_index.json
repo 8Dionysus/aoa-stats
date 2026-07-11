@@ -69,7 +69,7 @@
       "heading_ref": {
         "anchor": "013-2026-04-23",
         "level": 2,
-        "line": 73,
+        "line": 77,
         "ref": "CHANGELOG.md#013-2026-04-23",
         "title": "[0.1.3] - 2026-04-23"
       },
@@ -84,7 +84,7 @@
       "heading_ref": {
         "anchor": "012-2026-04-19",
         "level": 2,
-        "line": 112,
+        "line": 116,
         "ref": "CHANGELOG.md#012-2026-04-19",
         "title": "[0.1.2] - 2026-04-19"
       },
@@ -99,7 +99,7 @@
       "heading_ref": {
         "anchor": "011-2026-04-12",
         "level": 2,
-        "line": 143,
+        "line": 147,
         "ref": "CHANGELOG.md#011-2026-04-12",
         "title": "[0.1.1] - 2026-04-12"
       },
@@ -114,7 +114,7 @@
       "heading_ref": {
         "anchor": "010-2026-04-10",
         "level": 2,
-        "line": 182,
+        "line": 186,
         "ref": "CHANGELOG.md#010-2026-04-10",
         "title": "[0.1.0] - 2026-04-10"
       },
@@ -466,6 +466,15 @@
       "event_kind": "test_run",
       "event_role": "producer",
       "heading_ref": null,
+      "id": "event:repo:62713bc1f04603076cb3",
+      "observation_state": "declared",
+      "path": "mechanics/audit/parts/drift-shadow-review/tests/test_drift_review_projection.py",
+      "source_record_id": "file:mechanics/audit/parts/drift-shadow-review/tests/test_drift_review_projection.py:25df01cddd"
+    },
+    {
+      "event_kind": "test_run",
+      "event_role": "producer",
+      "heading_ref": null,
       "id": "event:repo:d52e6e1138e61ae586a4",
       "observation_state": "declared",
       "path": "mechanics/boundary-bridge/parts/consumer-regrounding/tests/test_consumer_regrounding_signals.py",
@@ -670,6 +679,15 @@
       "source_record_id": "file:mechanics/release-support/parts/codex-deployment-rollout/tests/test_codex_plane_deployment_projection.py:b86c4d6720"
     },
     {
+      "event_kind": "test_run",
+      "event_role": "producer",
+      "heading_ref": null,
+      "id": "event:repo:af5ad08b3f8aaf4bb3d1",
+      "observation_state": "declared",
+      "path": "mechanics/release-support/parts/rollout-campaign/tests/test_rollout_campaign_projection.py",
+      "source_record_id": "file:mechanics/release-support/parts/rollout-campaign/tests/test_rollout_campaign_projection.py:be53a2e053"
+    },
+    {
       "event_kind": "validation_run",
       "event_role": "producer",
       "heading_ref": null,
@@ -686,6 +704,15 @@
       "observation_state": "declared",
       "path": "mechanics/release-support/parts/summary-catalog-artifact-bundle/tests/test_summary_catalog_artifact_bundle.py",
       "source_record_id": "file:mechanics/release-support/parts/summary-catalog-artifact-bundle/tests/test_summary_catalog_artifact_bundle.py:1dbcf7b179"
+    },
+    {
+      "event_kind": "test_run",
+      "event_role": "producer",
+      "heading_ref": null,
+      "id": "event:repo:bf03ee5f93e6f6cc47fe",
+      "observation_state": "declared",
+      "path": "mechanics/release-support/parts/trusted-rollout-history/tests/test_codex_trusted_rollout_projection.py",
+      "source_record_id": "file:mechanics/release-support/parts/trusted-rollout-history/tests/test_codex_trusted_rollout_projection.py:76846bce1c"
     },
     {
       "event_kind": "generation_run",
@@ -915,7 +942,7 @@
   ],
   "index_identity": {
     "artifact_kind": "repository_event_index",
-    "content_digest": "8a7aff60a68d4bb00fda9a3d26cd526cd481c3d1e771557ee5fd287cf071aa6c",
+    "content_digest": "d9f3a7ecfd4982bc0b9331e431b71072517e95efa31af6864296084fd1346763",
     "index_kind": "event",
     "local_id": "index:repo-local:events",
     "schema_ref": "aoa-kag:schemas/repo-local-kag-repository-index.schema.json"
@@ -940,19 +967,19 @@
   },
   "schema_version": "aoa-repo-local-kag-repository-index-v1",
   "source_index": {
-    "content_digest": "527f4cec11e2ebdd427e261af7a0f37567c3d21f124dc21bb13aa5045599ae89",
+    "content_digest": "82db605725f2763de33de45a849610690d824d03d2fd4ad9a666c436c10b177c",
     "local_id": "index:repo-local:source-surfaces",
     "path": "kag/indexes/source_surface_index.json"
   },
   "summary": {
-    "entry_count": 98,
+    "entry_count": 101,
     "kind_counts": {
       "command_run": 12,
       "decision_record": 10,
       "generation_run": 10,
       "release_declaration": 4,
       "release_lane": 1,
-      "test_run": 40,
+      "test_run": 43,
       "validation_lane_run": 1,
       "validation_receipt": 1,
       "validation_run": 18,

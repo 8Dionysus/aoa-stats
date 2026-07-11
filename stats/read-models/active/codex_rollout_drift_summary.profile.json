@@ -5,18 +5,19 @@
   "name": "codex_rollout_drift_summary",
   "surface_ref": "generated/codex_rollout_drift_summary.min.json",
   "schema_ref": "schemas/codex-rollout-drift-summary.schema.json",
-  "primary_question": "What is the current bounded drift and rollback posture of the latest trusted Codex rollout campaign without replacing source-owned campaign history?",
-  "derivation_rule": "derive the latest drift window, drift state, repair attempt posture, and rollback requirement from 8Dionysus checked-in rollout history and rollback windows",
+  "primary_question": "What bounded drift and rollback posture is represented by the latest pointer inside the checked-in trusted owner history without replacing source-owned campaign truth?",
+  "derivation_rule": "derive the historical drift window, drift state, explicit repair-attempt posture, and descriptive rollback requirement from the exact four checked-in 8Dionysus rollout-history surfaces",
   "input_posture": "checked_in_owner_history",
   "owner_truth_inputs": [
-    "8Dionysus generated/codex/rollout history",
-    "8Dionysus rollback windows"
+    "8Dionysus/generated/codex/rollout/deploy_history.jsonl",
+    "8Dionysus/generated/codex/rollout/regeneration_campaigns.min.json",
+    "8Dionysus/generated/codex/rollout/rollback_windows.min.json",
+    "8Dionysus/generated/codex/rollout/rollout_latest.min.json"
   ],
   "authority_ceiling": "Weaker than source-owned drift reviews, rollback windows, and campaign history.",
   "consumer_risk": "high",
-  "live_state_capable": true,
+  "live_state_capable": false,
   "mechanic_routes": [
-    "mechanics/release-support/parts/codex-deployment-rollout",
-    "mechanics/release-support/parts/rollout-campaign"
+    "mechanics/release-support/parts/trusted-rollout-history"
   ]
 }

@@ -24,12 +24,12 @@ The focused refresh tests must also prove:
 
 - the live allowlist is derived from active profiles with
   `live_state_capable: true`
-- the authored live-admitted allowlist is exactly 20 while the cleanup universe
+- the authored live-admitted allowlist is exactly 16 while the cleanup universe
   still contains all 25 managed active read-model outputs
-- reference-only Codex Plane Deployment, Continuity Window, Component Refresh,
-  and Titan surfaces are absent from the live output and live catalog
-- stale reference-only runtime files, including stale Codex Plane Deployment
-  and Continuity Window copies, are removed rather than ignored
+- the nine reference-only profiles, including trusted rollout-history and both
+  cadence projections, are absent from the live output and live catalog
+- stale reference-only runtime files, including all four audited rollout and
+  cadence companions, are removed on non-empty and empty receipt paths
 - live refresh passes an explicit Codex Plane `live` source mode and workspace
   root instead of allowing the committed example adapter to run
 

@@ -131,6 +131,23 @@ omits or cleans the optional surface when that runtime chain is absent. The
 authored profile remains non-live until the real producer, artifacts, and
 refresh trigger are proven together.
 
+Trusted Rollout History is a separate mechanics-led release-support boundary.
+It consumes exactly the four checked-in owner-history surfaces under
+`8Dionysus/generated/codex/rollout/`, validates their lifecycle and reference
+coherence in a filesystem-free core, and projects the operations and drift
+companions without treating a reviewed historical latest record as current
+workspace state. Its source adapter is committed-history only; it has no live
+fallback and no deployment-trio responsibility.
+
+Rollout Cadence is a third, deliberately separate source context. The campaign,
+drift-review, and rollback-followthrough examples form one immutable
+owner-example bundle, but the resulting operations keep their mechanic
+owners: campaign projection belongs to release support and drift review belongs
+to audit. Shared validation may be reused across those projections without
+merging their operation ownership or promoting examples into checked-in
+history. Both cadence profiles remain reference-only until a real cadence
+producer and refresh route exist.
+
 ## Operation
 
 The refactor advances in alternating cross-slices:
