@@ -223,6 +223,7 @@
         "scripts/validate_repo.py",
         "mechanics/audit/tests/test_core_skill_observation.py",
         "mechanics/audit/parts/object-observation/tests/test_object_observation.py",
+        "mechanics/audit/parts/source-coverage/tests/test_source_coverage.py",
         "mechanics/growth-cycle/tests/test_growth_cycle_projections.py",
         "mechanics/method-growth/tests/test_candidate_lifecycle.py",
         "mechanics/rpg/parts/route-progression/tests/test_route_progression.py",

@@ -105,6 +105,14 @@ selector. Object observation has a separate core and part-local test boundary
 because it summarizes every admitted event kind. Neither implementation gains
 audit, routing, or proof authority.
 
+Source Coverage follows the separate single-part form. Its filesystem-free core
+audits the admitted feed against an optional source-registry baseline, and its
+producer invariants live with `mechanics/audit/parts/source-coverage/`.
+`boundary-bridge/consumer-regrounding` consumes the resulting catalog and thin
+signals but owns only the return-to-owner interpretation. This prevents a
+consumer mechanic or root integration test from becoming the behavioral proof
+home for an Audit producer.
+
 Route Progression follows the single-part variant of the same architecture.
 Its stats profile owns the bounded question, reference posture, exact
 stronger-owner chain, and authority ceiling. A filesystem-free RPG core may

@@ -45,11 +45,13 @@ profiles stay false until their missing producer or refresh observation route
 exists and is tested.
 
 The receipt-backed Audit profiles retain their existing live posture but have
-two explicit implementation boundaries. Core Skill Application and Surface
+three explicit implementation boundaries. Core Skill Application and Surface
 Detection share one finish-stage receipt selector; Object Observation reads
-the full active receipt feed through a separate core. Sharing implementation
-does not merge their authored questions, source ceilings, mechanic routes, or
-catalog identities.
+the full active receipt feed through a separate core; Source Coverage audits
+that feed against the optional registry baseline through its own core and
+part-local invariant suite. Sharing inputs does not merge their authored
+questions, source ceilings, mechanic routes, catalog identities, or producer
+and consumer proof homes.
 
 Route Progression retains a committed legacy numeric snapshot, but not live
 admission. The RPG center owns progression-reading vocabulary and stop-lines;

@@ -88,8 +88,10 @@ publication and implementation districts:
   finish-stage projection boundary at
   `src/aoa_stats_builder/core_skill_observation.py`, while Object Observation
   keeps its all-event projection separate at
-  `src/aoa_stats_builder/object_observation.py`; focused validation follows the
-  package and part owners declared in `mechanics/topology.json`
+  `src/aoa_stats_builder/object_observation.py` and Source Coverage keeps its
+  registry/feed audit at `src/aoa_stats_builder/source_coverage.py`; focused
+  validation follows the package and part owners declared in
+  `mechanics/topology.json`
 - the Route Progression profile names the RPG center and stronger receipt,
   agent-overlay, and SDK contract owners before handing its committed legacy
   numeric snapshot to `src/aoa_stats_builder/route_progression.py`; current

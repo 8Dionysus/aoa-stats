@@ -143,17 +143,6 @@ def test_build_views_produces_expected_surface_counts() -> None:
     }
     assert len(outputs["runtime_closeout_summary.min.json"]["closeouts"]) == 1
     assert outputs["stress_recovery_window_summary.min.json"]["suppression"]["status"] == "low_sample"
-    assert outputs["source_coverage_summary.min.json"]["source_mode"] == "registry_backed_receipt_feed"
-    assert outputs["source_coverage_summary.min.json"]["missing_owner_repos"] == [
-        "aoa-memo",
-        "aoa-playbooks",
-        "aoa-techniques",
-    ]
-    assert outputs["source_coverage_summary.min.json"]["unexpected_owner_repos"] == [
-        "Dionysus",
-        "abyss-stack",
-    ]
-    assert outputs["source_coverage_summary.min.json"]["owner_repo_counts"]["aoa-skills"] == 12
     assert len(outputs["surface_detection_summary.min.json"]["windows"]) == 1
     assert outputs["core_skill_application_summary.min.json"]["skills"][0]["detail_event_kind_counts"] == {
         "diagnosis_packet_receipt": 1

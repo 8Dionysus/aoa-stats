@@ -89,6 +89,10 @@ Tracking starts with the first public release-prep baseline for this repository.
   monoliths into explicit object and shared core-skill observation cores while
   preserving public outputs, live receipt posture, and root compatibility
   aliases.
+- Returned Source Coverage aggregation proof from the Boundary Bridge consumer
+  and root integration tests to its Audit owner part, adding ordering,
+  conservation, non-mutation, registry-baseline, and authority-stop invariants
+  without changing public bytes or live admission.
 - Clarified the Route Progression owner chain and moved its seven-axis receipt
   aggregation plus focused invariants into an RPG-owned core and part-local
   test boundary while preserving the public output and root compatibility
