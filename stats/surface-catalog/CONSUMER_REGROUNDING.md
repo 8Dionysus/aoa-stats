@@ -65,8 +65,18 @@ If a stats signal and an owner-local source disagree, repair the derivation or
 the source registration. Do not upgrade the stats summary into authority.
 
 For Route Progression, the first stronger owner route is the `aoa-skills`
-progression receipt contract. Its current semantic axis summaries are not
-numeric deltas. Consumers must re-ground there for current progression meaning
-and must not infer scores from the committed legacy numeric compatibility
-snapshot. The RPG center supplies the seven-axis vocabulary and stop-lines;
-the `aoa-agents` and `aoa-sdk` contracts are typed overlays, not receipt truth.
+progression receipt schema at
+`skills/core/session-growth/aoa-session-progression-lift/references/progression-delta-receipt-schema.yaml`,
+followed by its tracked semantic example. Its current semantic axis summaries
+are not numeric deltas. Consumers must re-ground there for current progression
+meaning and must not infer scores from the committed legacy numeric
+compatibility snapshot. The RPG center supplies the seven-axis vocabulary and
+stop-lines; the `aoa-agents` and `aoa-sdk` contracts are typed overlays, not
+receipt truth.
+
+Owner Landing currently has no stronger publisher to return to. Its first
+input therefore names the exact committed aoa-stats compatibility receipt and
+states that limitation instead of pretending an owner-local landing feed
+exists. Stress Recovery does have an owner-side reference report, so its first
+return target is the `aoa-evals` report rather than the stats-local companion
+receipt.

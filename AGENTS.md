@@ -98,6 +98,11 @@ only the committed legacy numeric receipt shape. It must reject semantic-only
 `axis_delta_summary` receipts rather than invent a score, and root builder
 names remain compatibility aliases and fan-out only.
 
+Route Progression consumer re-grounding must lead with the exact current
+`aoa-skills` semantic receipt schema and example. The stats-local legacy
+numeric fixture belongs to the reference input posture; it is not the first
+stronger-owner return target.
+
 Treat `live_state_capable` as an executable profile contract. The live refresh
 mechanic may materialize and advertise only surfaces whose authored profile
 sets it to `true`; it must still remove stale managed runtime files for

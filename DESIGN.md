@@ -117,6 +117,11 @@ typed transport, and `aoa-skills` retains receipt truth. The current semantic
 totals, so Route Progression stays outside live state until a non-invented
 cross-owner projection contract exists.
 
+The first consumer return target is the exact current semantic schema and
+example in `aoa-skills`. Compatibility-fixture wording remains in the
+reference derivation posture only; it must not masquerade as stronger current
+owner truth or make a router prefer the legacy numeric shape.
+
 Generated artifacts never become source authority merely because they are
 committed or convenient to query.
 

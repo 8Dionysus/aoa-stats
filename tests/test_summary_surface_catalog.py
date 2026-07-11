@@ -106,6 +106,30 @@ def test_summary_surface_catalog_contract_is_exact() -> None:
     assert all("mechanic_routes" not in entry for entry in payload["surfaces"])
 
 
+def test_consumer_regrounding_inputs_prefer_real_owner_surfaces() -> None:
+    payload = json.loads(
+        (REPO_ROOT / "generated" / "summary_surface_catalog.min.json").read_text(
+            encoding="utf-8"
+        )
+    )
+    profiles = {item["name"]: item for item in payload["surfaces"]}
+
+    route_inputs = profiles["route_progression_summary"]["owner_truth_inputs"]
+    assert route_inputs[:2] == [
+        "aoa-skills/skills/core/session-growth/aoa-session-progression-lift/references/progression-delta-receipt-schema.yaml",
+        "aoa-skills/mechanics/growth-cycle/examples/session-growth-artifacts/progression_delta_receipt.kernel-maturity.json",
+    ]
+    assert "legacy numeric" not in route_inputs[0]
+
+    owner_landing_input = profiles["owner_landing_summary"]["owner_truth_inputs"][0]
+    assert owner_landing_input.startswith("aoa-stats/stats/intake-contract/")
+    assert "no current stronger publisher" in owner_landing_input
+    assert "seed_owner_landing_trace_receipt" not in owner_landing_input
+
+    stress_input = profiles["stress_recovery_window_summary"]["owner_truth_inputs"][0]
+    assert stress_input.startswith("aoa-evals/")
+
+
 def test_artifact_bundle_manifest_requires_registry_lifecycle_and_sbom_lite() -> None:
     manifest = json.loads(
         (

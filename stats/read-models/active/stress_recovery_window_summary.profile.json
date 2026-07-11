@@ -9,8 +9,8 @@
   "derivation_rule": "resolve the committed aoa-stress-recovery-window example receipt to its draft aoa-evals example report and derive one reference summary plus suppression posture",
   "input_posture": "committed_draft_eval_example_chain",
   "owner_truth_inputs": [
-    "stats/intake-contract/examples/session_harvest_family.receipts.example.json stress-recovery eval receipt",
     "aoa-evals/evals/comparison/longitudinal-window/aoa-stress-recovery-window/reports/example-report.json",
+    "aoa-stats/stats/intake-contract/examples/session_harvest_family.receipts.example.json stress-recovery compatibility eval receipt",
     "future activated aoa-evals stress-recovery receipts and reports"
   ],
   "authority_ceiling": "Weaker than owner-local stressor receipts, bounded eval reports, and route-owner recovery guidance.",
