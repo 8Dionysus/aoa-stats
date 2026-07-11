@@ -1,0 +1,24 @@
+{
+  "schema_version": "aoa_stats_surface_profile_source_v1",
+  "lifecycle": "retired",
+  "name": "runtime_closeout_summary",
+  "former_catalog_order": 22,
+  "retired_surface_ref": "generated/runtime_closeout_summary.min.json",
+  "schema_ref": "schemas/runtime-closeout-summary.schema.json",
+  "retired_on": "2026-07-11",
+  "retirement_reason": "No current owner publishes the historical wave ABI and no direct consumer requires the standalone fixture projection; the receipt remains generic evidence for object_summary, repeated_window_summary, and source_coverage_summary.",
+  "replacement_ref": null,
+  "cleanup_scopes": [
+    "committed_output",
+    "summary_surface_catalog",
+    "managed_live_state",
+    "consumer_hints"
+  ],
+  "consumer_return_routes": [
+    "aoa-routing/generated/stats_regrounding_hints.min.json"
+  ],
+  "decision_ref": "docs/decisions/AOST-D-0010-runtime-closeout-wave-snapshot-is-contract-history-not-active-observability.md",
+  "former_mechanic_routes": [
+    "mechanics/checkpoint/parts/runtime-closeout"
+  ]
+}

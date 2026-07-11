@@ -97,11 +97,10 @@ publication and implementation districts:
   numeric snapshot to `src/aoa_stats_builder/route_progression.py`; current
   semantic owner receipts are not scored, and focused proof belongs to
   `mechanics/rpg/parts/route-progression/tests/`
-- the Runtime Closeout profile routes through the Checkpoint part and the
-  filesystem-free historical compatibility projection at
-  `src/aoa_stats_builder/runtime_closeout.py`; focused proof belongs to
-  `mechanics/checkpoint/parts/runtime-closeout/tests/`, and current trial or
-  return receipts are not silently treated as historical wave receipts
+- the Runtime Closeout profile and repo-local Checkpoint package are retired;
+  the historical wave event kind remains generic intake evidence, its schema
+  remains contract history, and current trial or return receipts are not
+  silently treated as historical wave receipts
 - the Repeated Window profile owns the observed-activity question while
   `src/aoa_stats_builder/repeated_window.py` conserves admitted receipt counts;
   focused invariant proof belongs to
@@ -135,8 +134,8 @@ Cleanup covers every active output plus every retired-output tombstone.
 Component Refresh,
 Continuity Window, Codex Plane Deployment, trusted rollout-history, and both
 cadence projections are currently reference-only alongside Route Progression,
-Runtime Closeout, Memory Movement, Stress Recovery Window, and Titan
-Incarnation. Stress Recovery still lacks a real publisher; Memory Movement has a
+Memory Movement, Stress Recovery Window, and Titan Incarnation. Stress
+Recovery still lacks a real publisher; Memory Movement has a
 real reviewed owner corpus but no refresh observation route. The
 selector and stale-cleanup precedent is recorded for Component Refresh in
 `docs/decisions/AOST-D-0003-component-refresh-fixtures-are-not-live-state.md`;
@@ -144,9 +143,11 @@ the current-source plus observation requirement is recorded in
 `docs/decisions/AOST-D-0004-live-admission-requires-refresh-observation.md`.
 The semantic-versus-numeric Route Progression boundary is recorded in
 `docs/decisions/AOST-D-0005-route-progression-semantic-receipts-are-not-numeric-live-state.md`.
-The historical-wave versus current-owner Runtime Closeout boundary is recorded
-in
-`docs/decisions/AOST-D-0006-runtime-closeout-wave-receipts-are-not-current-trial-live-state.md`.
+The historical-wave versus current-owner Runtime Closeout ABI boundary is
+recorded in
+`docs/decisions/AOST-D-0006-runtime-closeout-wave-receipts-are-not-current-trial-live-state.md`;
+its later standalone-surface retirement is recorded in
+`docs/decisions/AOST-D-0010-runtime-closeout-wave-snapshot-is-contract-history-not-active-observability.md`.
 The committed-roster versus observed-swarm Titan boundary is recorded in
 `docs/decisions/AOST-D-0007-titan-reference-rosters-are-not-observed-swarm-activity.md`.
 Titan Summon's removal from active stats and its cleanup-only lifecycle are

@@ -20,7 +20,6 @@ EXPECTED_PACKAGES = {
     "antifragility",
     "audit",
     "boundary-bridge",
-    "checkpoint",
     "experience",
     "growth-cycle",
     "method-growth",
@@ -71,8 +70,10 @@ def test_only_payload_backed_packages_are_active() -> None:
     assert activation["unlisted_package_status"] == "inactive_not_mapped"
     assert {package["path"] for package in topology["active_packages"]} == EXPECTED_PACKAGES
     assert "codex-projection" not in EXPECTED_PACKAGES
+    assert "checkpoint" not in EXPECTED_PACKAGES
     assert "runtime-seam" not in EXPECTED_PACKAGES
     assert "questbook" not in EXPECTED_PACKAGES
+    assert not (REPO_ROOT / "mechanics/checkpoint").exists()
 
 
 def test_titan_routes_to_its_real_shared_owner_not_a_nonexistent_center_package() -> None:

@@ -44,7 +44,6 @@ It may emit:
 - automation-pipeline summaries
 - automation-followthrough summaries
 - codex-plane deployment summaries
-- runtime-closeout summaries
 - reviewed memory movement summaries
 
 It must not emit:

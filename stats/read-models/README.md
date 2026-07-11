@@ -18,12 +18,12 @@ by the local live refresh loop when its inputs resolve. A `false` profile stays
 on its committed/reference route and is omitted from live output and the live
 catalog, although refresh cleanup still removes any stale runtime copy.
 
-The current inventory contains 23 active profiles and two retired-output
+The current inventory contains 22 active profiles and three retired-output
 tombstones. Of the active profiles, 11 are admitted to live materialization and
-12 are reference-only:
+11 are reference-only:
 Codex Plane Deployment, Codex Rollout Operations, Codex Rollout Drift, Rollout
 Campaign, Drift Review, Continuity Window, Component Refresh, Memory Movement,
-Route Progression, Runtime Closeout, Titan Incarnation, and Stress Recovery
+Route Progression, Titan Incarnation, and Stress Recovery
 Window.
 Continuity Window describes the posture represented by its committed
 cross-owner example/catalog chain. Codex Plane Deployment describes the posture
@@ -64,12 +64,13 @@ than a numeric score, aoa-stats rejects that shape instead of assigning
 numbers. Future live activation needs an explicit cross-owner semantic
 projection contract.
 
-Runtime Closeout retains the committed historical `runtime_wave_closeout_receipt`
-snapshot, but not live admission. The current `abyss-stack` producer emits
-`runtime_trial_closeout_receipt` to a different owner-local log, while
-`aoa-sdk` exposes a separate `runtime_return_closeout_receipt` contract. None
-is an implicit alias. Future live activation needs one owner-approved receipt
-ABI, an observed source, registry and watcher parity, and end-to-end proof.
+Runtime Closeout is no longer an active reference profile. Its standalone
+historical `runtime_wave_closeout_receipt` projection has no current publisher
+or direct consumer, so the builder, payload, catalog entry, and repo-local
+Checkpoint package are retired. The event kind remains generic evidence for
+Object, Repeated Window, and Source Coverage; the schema remains contract
+history. Current `abyss-stack` trial and `aoa-sdk` return contracts are not
+implicit aliases.
 
 Repeated Window remains receipt-backed and live-capable, but its claim is
 deliberately narrower than its historical name. It groups admitted receipts by
@@ -92,6 +93,12 @@ standalone aggregate. AOST-D-0009 retires its builder, output, catalog entry,
 and dedicated mechanic part while preserving both landing event kinds and
 their normalization for the active Supersession Drop read model. Its schema
 remains contract history and its former output remains managed cleanup.
+
+Runtime Closeout follows the same lifecycle under AOST-D-0010. Slot 22 is
+reserved by its retired tombstone, and stale runtime copies remain removable.
+A future closeout surface requires a new active profile and slot, an
+owner-approved canonical ABI, a real publisher, and current evidence rather
+than replaying the tombstone or historical fixture.
 
 Use `committed_owner_example_chain` only when one owner repository publishes a
 coherent set of checked-in examples that can drive a deterministic committed

@@ -41,8 +41,8 @@ their authored source and named owner inputs.
 The checked source home contains:
 
 - the canonical receipt intake contract and active event-kind registry
-- 23 active authored read-model profiles, one deferred contract profile, and
-  two retired-output cleanup tombstones with reserved former catalog slots
+- 22 active authored read-model profiles, one deferred contract profile, and
+  three retired-output cleanup tombstones with reserved former catalog slots
 - 15 authored operation-contract records for active non-catalog parts
 - deterministic projection core under `src/aoa_stats_builder/`, exposed by the
   repo-wide `scripts/build_views.py` entrypoint
@@ -50,8 +50,8 @@ The checked source home contains:
   `generated/`
 - read-only catalog access through `src/aoa_stats_mcp/`
 - mechanics-local payload and validation for Agon, Antifragility, Audit,
-  Boundary Bridge, Checkpoint, Experience, Growth Cycle, Method Growth,
-  Recurrence, Release Support, RPG, and Titan
+  Boundary Bridge, Experience, Growth Cycle, Method Growth, Recurrence,
+  Release Support, RPG, and Titan
 
 The exact catalog is
 [`generated/summary_surface_catalog.min.json`](generated/summary_surface_catalog.min.json).
@@ -149,13 +149,13 @@ ignored `state/`; committed public output stays under `generated/`. Local live
 materialization includes only active profiles with `live_state_capable: true`,
 and its catalog lists only outputs actually materialized. Reference-only
 profiles remain in the committed catalog and stale runtime copies are removed.
-The managed inventory remains 25 read models: 23 active outputs plus two
+The managed inventory remains 25 read models: 22 active outputs plus three
 retired cleanup tombstones. The authored live-admitted allowlist contains 11.
 Checked-in trusted rollout history, the two committed cadence-example
-projections, Route Progression, Runtime Closeout, Memory Movement, Stress
-Recovery, Codex Plane Deployment, Continuity Window, Component Refresh, and
-Titan Incarnation make up the 12 active reference-only surfaces. Owner Landing
-and Titan Summon are retired rather than reference-only.
+projections, Route Progression, Memory Movement, Stress Recovery, Codex Plane
+Deployment, Continuity Window, Component Refresh, and Titan Incarnation make
+up the 11 active reference-only surfaces. Owner Landing, Titan Summon, and
+Runtime Closeout are retired rather than reference-only.
 [`AOST-D-0003`](docs/decisions/AOST-D-0003-component-refresh-fixtures-are-not-live-state.md)
 is the selector and stale-cleanup precedent established for Component Refresh,
 while
@@ -172,11 +172,11 @@ three-example cadence chain rather than an active producer.
 Stress Recovery lacks a real publisher; Memory Movement reads real reviewed
 owner corpus truth, but that corpus has no refresh observation route yet.
 Owner Landing's standalone example aggregate is retired under AOST-D-0009,
-while its receipt kinds remain Supersession Drop inputs. Runtime Closeout
-remains bounded to the historical wave-receipt
-fixture because the current `abyss-stack` trial receipt and the separate SDK
-return receipt do not share its ABI; AOST-D-0006 forbids treating them as
-implicit aliases.
+while its receipt kinds remain Supersession Drop inputs. Runtime Closeout is
+retired under AOST-D-0010 because the current `abyss-stack` trial receipt and
+the separate SDK return receipt do not share its historical wave ABI and no
+direct consumer requires the standalone snapshot. AOST-D-0006 still forbids
+treating those receipt contracts as implicit aliases.
 
 For read-only MCP use, follow
 [`stats/surface-catalog/CODEX_MCP.md`](stats/surface-catalog/CODEX_MCP.md).

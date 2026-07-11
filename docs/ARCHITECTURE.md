@@ -62,7 +62,6 @@ Current v0 derived views:
 - route-progression summary
 - fork-calibration summary
 - automation-pipeline summary
-- runtime-closeout summary
 - source-coverage summary
 - surface-detection summary
 - memory-movement summary
@@ -139,12 +138,12 @@ reference-only surfaces. Local live refresh treats `live_state_capable` as an
 executable admission contract: it materializes only `true` profiles, writes a
 live catalog only for outputs actually present, and cleans stale files across
 the active outputs plus retired-output tombstones. The active read-model
-inventory is 23, the retired cleanup inventory is two, and the authored
+inventory is 22, the retired cleanup inventory is three, and the authored
 live-admitted inventory is 11. Component Refresh, Continuity
 Window, Codex Plane Deployment, trusted rollout-history, cadence examples,
-Route Progression, Memory Movement, Stress Recovery, Titan Incarnation, and
-Runtime Closeout are active but excluded from live mode. Owner Landing and
-Titan Summon are retired and remain cleanup targets only. The
+Route Progression, Memory Movement, Stress Recovery, and Titan Incarnation are
+active but excluded from live mode. Owner Landing, Titan Summon, and Runtime
+Closeout are retired and remain cleanup targets only. The
 selector and stale-cleanup
 precedent is
 `docs/decisions/AOST-D-0003-component-refresh-fixtures-are-not-live-state.md`,
@@ -163,12 +162,13 @@ legacy numeric compatibility projection while the current `aoa-skills` owner
 receipt is semantic and deliberately not score-shaped. AOST-D-0005 forbids an
 invented semantic-to-numeric mapping and requires semantic-only receipts to be
 rejected rather than flattened into zero deltas.
-Runtime Closeout remains reference-only because its stable public output
-projects the historical `runtime_wave_closeout_receipt`, whereas current
-`abyss-stack` produces `runtime_trial_closeout_receipt` and `aoa-sdk` owns a
-separate `runtime_return_closeout_receipt` transport. AOST-D-0006 forbids
-implicit aliasing and requires owner-contract plus watcher parity before live
-reactivation.
+Runtime Closeout is retired because its historical
+`runtime_wave_closeout_receipt` snapshot has no current publisher or direct
+consumer. The event kind remains generic intake evidence for active Object,
+Repeated Window, and Source Coverage summaries, while the schema and slot 22
+remain contract and cleanup history. AOST-D-0010 records the retirement;
+AOST-D-0006 continues to forbid implicit aliasing with current `abyss-stack`
+trial and `aoa-sdk` return contracts.
 Titan Incarnation remains reference-only because it validates three committed
 owner examples rather than current incarnations. Titan Summon had no observed
 owner ledger, so its self-identifying no-ledger zero baseline is retired rather

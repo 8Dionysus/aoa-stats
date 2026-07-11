@@ -174,7 +174,6 @@
       "summary_surface_names": [
         "object_summary",
         "repeated_window_summary",
-        "runtime_closeout_summary",
         "source_coverage_summary"
       ],
       "notes": "Historical program-wave closeout compatibility facts. This kind remains envelope-admissible for committed fixtures but is not a current live source; runtime_trial_closeout_receipt and runtime_return_closeout_receipt are distinct owner contracts."

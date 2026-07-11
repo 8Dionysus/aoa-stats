@@ -23,11 +23,12 @@ The source/mechanics refactor is part of that contour:
 - `schemas/` and `generated/` remain stable public publication districts
 - `src/` remains the importable implementation and access boundary
 - authored `live_state_capable` profiles select local live materialization;
-  the current split is 11 live-admitted read models across 23 active outputs,
-  while two retired-output tombstones keep cleanup at 25 managed names;
+  the current split is 11 live-admitted read models across 22 active outputs,
+  while three retired-output tombstones keep cleanup at 25 managed names;
   Route Progression remains
-  a committed legacy-numeric reference surface under AOST-D-0005 while Runtime
-  Closeout remains a historical wave-receipt reference under AOST-D-0006 and
+  a committed legacy-numeric reference surface under AOST-D-0005 while the
+  Runtime Closeout ABI distinction remains governed by AOST-D-0006 and its
+  standalone historical snapshot is retired by AOST-D-0010;
   Titan Incarnation's committed-roster boundary is fixed by AOST-D-0007 and
   Titan Summon's cleanup-only retirement by AOST-D-0008; AOST-D-0009 retires
   the example-only Owner Landing aggregate and reserves former catalog slots
@@ -45,7 +46,6 @@ The public v2 catalog currently exposes:
 | Growth Cycle | fork-calibration, session-growth branch, automation-pipeline, automation-followthrough |
 | Release Support | Codex-plane deployment, rollout-operations, rollout-drift, rollout-campaign |
 | Boundary Bridge | memory-movement |
-| Checkpoint | runtime-closeout |
 | Antifragility | stress-recovery |
 | Titan | Titan-incarnation |
 
@@ -97,8 +97,8 @@ contract stays separate from active catalog claims.
   `src/aoa_stats_builder/component_refresh_sources.py`; Memory Movement and
   Stress Recovery use the same explicit core/source split through
   `src/aoa_stats_builder/memory_movement*.py` and
-  `src/aoa_stats_builder/stress_recovery*.py`, while the historical Runtime
-  Closeout compatibility core is `src/aoa_stats_builder/runtime_closeout.py`.
+  `src/aoa_stats_builder/stress_recovery*.py`. The historical Runtime Closeout
+  core is retired; only its schema, intake ABI, and cleanup tombstone remain.
   The selector and stale-cleanup
   precedent comes from the Component Refresh-only decision
   `docs/decisions/AOST-D-0003-component-refresh-fixtures-are-not-live-state.md`;
@@ -127,6 +127,10 @@ contract stays separate from active catalog claims.
   `stats/read-models/retired/owner_landing_summary.profile.json`,
   `mechanics/method-growth/parts/supersession-pruning/`, and
   `docs/decisions/AOST-D-0009-retirement-reserves-catalog-slots-without-preserving-empty-mechanics.md`
+- Runtime Closeout retirement and retained generic wave-receipt boundary:
+  `stats/read-models/retired/runtime_closeout_summary.profile.json`,
+  `stats/intake-contract/event-kind-registry.json`, and
+  `docs/decisions/AOST-D-0010-runtime-closeout-wave-snapshot-is-contract-history-not-active-observability.md`
 - public catalog access: `stats/surface-catalog/CODEX_MCP.md`
 
 ## Direction
@@ -142,7 +146,7 @@ Changes on this line should:
 5. update topology, source-home validation, focused tests, and generated
    outputs together
 6. keep `README.md` and `docs/README.md` short and link-driven
-7. keep all 12 active committed/reference profiles out of local live output until
+7. keep all 11 active committed/reference profiles out of local live output until
    their real owner-runtime, deploy-local, active-cadence, publisher, and
    refresh-observation contracts exist; audit every remaining
    `live_state_capable: true` profile against both its source and trigger

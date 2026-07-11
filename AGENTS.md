@@ -119,15 +119,15 @@ Route Progression consumer re-grounding must lead with the exact current
 numeric fixture belongs to the reference input posture; it is not the first
 stronger-owner return target.
 
-Runtime Closeout is a Checkpoint-owned projection boundary. The Checkpoint
-center owns closeout vocabulary and authority stop-lines; `abyss-stack` owns
-runtime trial execution, gate results, and closeout publication; `aoa-sdk`
-owns reviewed-closeout packet and handoff transport. The compatibility summary
-accepts only the historical `runtime_wave_closeout_receipt` shape. The current
-owner producer emits `runtime_trial_closeout_receipt` to a differently named
-feed, so these kinds must not be silently aliased and the profile must remain
-outside live state until the owner ABI, registry, and observation route agree.
-Root builder names remain compatibility aliases and fan-out only.
+Runtime Closeout is retired from active publication. The historical
+`runtime_wave_closeout_receipt` remains admitted generic evidence for Object,
+Repeated Window, and Source Coverage, but no current owner publishes that ABI
+and no direct consumer requires its standalone projection. Keep the schema as
+contract history and slot 22 as a cleanup tombstone; do not restore the
+builder, catalog entry, or an empty repo-local Checkpoint package. The current
+`abyss-stack` trial and `aoa-sdk` return receipt kinds remain distinct and must
+not be silently aliased. Any future closeout surface needs a new reviewed
+profile and slot plus an owner-approved ABI, real publisher, and evidence.
 
 Repeated Window is a Recurrence-owned live projection boundary. Its authored
 question and pure core may count admitted receipt activity by the calendar-date
