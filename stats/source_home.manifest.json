@@ -158,6 +158,7 @@
       ],
       "implementation_routes": [
         "src/aoa_stats_builder/candidate_lifecycle.py",
+        "src/aoa_stats_builder/growth_cycle.py",
         "src/aoa_stats_builder/read_model_values.py",
         "src/aoa_stats_builder/surface_catalog.py",
         "scripts/build_views.py"
@@ -198,6 +199,7 @@
         "scripts/validate_stats_source_home.py",
         "scripts/build_views.py",
         "scripts/validate_repo.py",
+        "mechanics/growth-cycle/tests/test_growth_cycle_projections.py",
         "mechanics/method-growth/tests/test_candidate_lifecycle.py",
         "tests/test_stats_source_home.py",
         "tests/test_summary_surface_catalog.py"

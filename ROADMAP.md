@@ -73,6 +73,8 @@ contract stays separate from active catalog claims.
   `mechanics/antifragility/parts/stress-recovery-windows/examples/stress_recovery_window_summary.chaos-wave1.example.json`
 - reviewed memory movement:
   `mechanics/boundary-bridge/parts/memory-owner-handoff/docs/MEMORY_MOVEMENT_SUMMARY.md`
+- Growth Cycle projection contracts and shared core:
+  `mechanics/growth-cycle/` and `src/aoa_stats_builder/growth_cycle.py`
 - public catalog access: `stats/surface-catalog/CODEX_MCP.md`
 
 ## Direction

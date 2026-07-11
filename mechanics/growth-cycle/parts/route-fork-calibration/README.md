@@ -1,8 +1,13 @@
 # route-fork-calibration
 
-Summarizes explicit route-fork choices and realized-outcome references.
+Summarizes `aoa-skills` `decision_fork_receipt` payloads into per-route
+decision counts, explicit branch counts, option breadth, realized-outcome
+link counts, evidence counts, and the latest observation time.
 
-This part owns its operation route and the localized payload roots declared in
-`mechanics/topology.json`. Its stats source family owns the bounded meaning;
-public schemas and generated outputs stay at their declared publication paths
-when consumers depend on those paths.
+The authored meaning lives in
+`stats/read-models/active/fork_calibration_summary.profile.json`; the stable
+public contract and output remain
+`schemas/fork-calibration-summary.schema.json` and
+`generated/fork_calibration_summary.min.json`. Deterministic projection is
+shared with the other Growth Cycle parts through
+`src/aoa_stats_builder/growth_cycle.py`.

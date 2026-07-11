@@ -65,6 +65,11 @@ Operation payload lives below the nearest mechanic part. Root `schemas/` and
 explicit compatibility routes. The exact exception set is enforced by
 `mechanics/topology.json` and `scripts/validate_mechanics_topology.py`.
 
+When several parts of one mechanic share deterministic receipt-to-read-model
+rules, keep that reusable core under `src/aoa_stats_builder/`, declare its
+focused package-level tests in `mechanics/topology.json`, and leave CLI, input
+loading, output fan-out, and check/write policy in the root build facade.
+
 ## Cross-mode law
 
 Grow `stats/` and `mechanics/` together, but alternate which side leads each

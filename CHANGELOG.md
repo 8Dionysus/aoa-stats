@@ -54,6 +54,10 @@ Tracking starts with the first public release-prep baseline for this repository.
   tests out of the root builder/test monoliths into the importable builder core
   and the `mechanics/method-growth/` package while preserving public outputs
   and the root build compatibility facade.
+- Moved the shared Growth Cycle fork, session-branch, automation-pipeline, and
+  automation-followthrough projections plus focused invariant tests out of the
+  root monoliths into an importable mechanic core while preserving public
+  schemas, generated routes, and the root build facade.
 
 ## [0.1.3] - 2026-04-23
 
