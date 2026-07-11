@@ -19,5 +19,6 @@ A deterministic candidate-only registry published at
 ## Crosswalk
 
 This non-catalog observation contract cross-routes to
-`stats/operation-contracts/`; the reciprocal route is enforced by
+`stats/operation-contracts/active/agon.mechanical-trial-observability.operation.json`;
+the reciprocal route is enforced by
 `mechanics/topology.json`.

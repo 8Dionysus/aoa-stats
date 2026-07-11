@@ -1,8 +1,9 @@
 # runtime-console
 
-Documents bounded runtime and console metrics without runtime authority.
+Documents candidate Titan runtime and console metrics without runtime
+authority.
 
-This part owns its operation route and the localized payload roots declared in
-`mechanics/topology.json`. Its stats source family owns the bounded meaning;
-public schemas and generated outputs stay at their declared publication paths
-when consumers depend on those paths.
+The current payload is documentation in `docs/`; no schema, builder, live feed,
+or runtime-state projection is claimed. The source-authored question and
+owner-return posture live at
+`stats/operation-contracts/active/titan.runtime-console.operation.json`.

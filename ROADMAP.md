@@ -16,7 +16,8 @@ The source/mechanics refactor is part of that contour:
 
 - `stats/intake-contract/` authors receipt admission meaning
 - `stats/read-models/` authors each catalog profile
-- `stats/operation-contracts/` cross-routes real non-catalog part contracts
+- `stats/operation-contracts/` authors one bounded source record per real
+  non-catalog part contract
 - `stats/surface-catalog/` authors catalog and read-only access posture
 - `mechanics/` owns repeatable operations and their localized payload
 - `schemas/` and `generated/` remain stable public publication districts

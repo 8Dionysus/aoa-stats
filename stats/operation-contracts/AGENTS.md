@@ -4,17 +4,38 @@ Route card for `stats/operation-contracts/`.
 
 ## Role
 
-This branch owns the source-family meaning and authority ceiling for active
+This branch owns one schema-backed source record for each of the active
 part-local stats operations that do not publish a public catalog read model.
-The payload, scripts, examples, tests, and operation lifecycle remain with the
+Each record owns the bounded stats question, input maturity, authority ceiling,
+consumer risk, forbidden inference boundary, and return to stronger owners. The
+payload, scripts, examples, tests, and operation lifecycle remain with the
 named mechanic part.
+
+## Read before editing
+
+1. `../AGENTS.md`
+2. `README.md`
+3. `operation-contract.schema.json`
+4. the selected record under `active/`
+5. the exact mechanic contract, validation card, and topology part named by
+   that record
 
 ## Law
 
-- Every routed mechanic part must appear in `stats/source_home.manifest.json`,
-  `mechanics/topology.json`, and the part's `stats_source_family_refs`.
+- Every routed mechanic part has exactly one record under `active/`. The
+  record's `mechanic_route` and the topology part's
+  `stats_operation_contract_ref` must point to one another.
+- Keep `payload_class`, `mechanic_contract_ref`, and `validation_ref` identical
+  to the named topology part.
+- Give every `owner_truth_inputs.owner_repo` an exact `owner_return_routes`
+  entry, including a bounded return beneath the canonical mechanic owner.
+- State whether stronger-owner inputs are actually bound, merely declared by
+  reference, or still symbolic. Do not turn a planned input into current
+  evidence. A bound input requires a mechanic-local proof ref and explicit
+  registration in the source-home validator.
 - Do not add a public surface profile merely to make a part visible here.
-- Do not duplicate part payload under `stats/`.
+- Do not copy mechanic schemas, examples, scripts, tests, metric lists, or
+  generated output under `stats/`.
 - Part-local registries, metrics, examples, and prose remain weaker than their
   stronger-owner evidence.
 

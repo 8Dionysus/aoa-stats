@@ -2,29 +2,29 @@
   "classification_summary": {
     "artifact_kind": {
       "asset": 50,
-      "config": 159,
+      "config": 174,
       "dependency_manifest": 2,
       "document": 455,
       "generated_readmodel": 42,
-      "index": 1,
+      "index": 4,
       "license": 1,
       "manifest": 17,
+      "mechanics_surface": 3,
       "owner_metadata": 2,
       "projection": 1,
       "receipt": 1,
-      "schema": 91,
-      "script": 23,
+      "schema": 92,
+      "script": 11,
       "security": 1,
       "service_unit": 2,
-      "source_code": 12,
+      "source_code": 21,
       "test": 36,
       "validator": 18
     },
     "command_role": {
       "builder": 10,
       "lane_entrypoint": 1,
-      "none": 837,
-      "script": 12,
+      "none": 868,
       "test": 36,
       "validator": 18
     },
@@ -36,7 +36,7 @@
       "decision": 9,
       "design": 1,
       "mechanics_doc": 179,
-      "none": 451,
+      "none": 470,
       "parts": 12,
       "provenance": 12,
       "readme": 84,
@@ -47,7 +47,7 @@
       "legacy": 23,
       "mechanic_package": 54,
       "mechanic_part": 93,
-      "none": 415,
+      "none": 434,
       "part_contract": 42,
       "part_doc": 184,
       "part_schema": 58,
@@ -55,33 +55,33 @@
       "part_test": 24
     },
     "primary_kind": {
-      "artifact": 94,
-      "command": 77,
+      "artifact": 97,
+      "command": 65,
       "document": 463,
-      "surface": 280
+      "surface": 308
     },
     "surface_state": {
-      "authored_source": 844,
+      "authored_source": 863,
       "generated_readmodel": 47,
       "legacy": 23
     }
   },
   "coverage_summary": {
-    "command_count": 77,
+    "command_count": 65,
     "document_count": 463,
     "generated_count": 47,
-    "heading_count": 1759,
+    "heading_count": 1772,
     "mechanics_count": 499,
-    "record_count": 914,
-    "schema_count": 91,
-    "script_count": 23,
+    "record_count": 933,
+    "schema_count": 92,
+    "script_count": 11,
     "test_count": 36,
     "unknown_count": 0,
     "validator_count": 18
   },
   "index_identity": {
     "artifact_kind": "source_surface_index",
-    "content_digest": "60a087e17f1ec241608e850614bd25e3e8c6d66663b96736549a07fe67e6293d",
+    "content_digest": "4d47bb0e6bbb162f7fed9a055face19b59231c5369a96b5fa3f33ae55410dbfe",
     "local_id": "index:repo-local:source-surfaces",
     "schema_ref": "aoa-kag:schemas/repo-local-kag-index.schema.json"
   },
@@ -8815,7 +8815,7 @@
     {
       "abi": {
         "abi_epoch": "source",
-        "artifact_class": "script",
+        "artifact_class": "source_code",
         "compatibility": "stable",
         "contract_version": "none",
         "schema_version": "none"
@@ -8824,13 +8824,13 @@
         "scope": "public",
         "secrets_risk": "none"
       },
-      "artifact_kind": "script",
+      "artifact_kind": "source_code",
       "classification": {
         "confidence": "high",
-        "primary_kind": "command"
+        "primary_kind": "surface"
       },
-      "code_role": "entrypoint",
-      "command_role": "script",
+      "code_role": "source_module",
+      "command_role": "none",
       "consumer_route": {
         "route_kind": "resource",
         "surface": "aoa-kag-mcp"
@@ -8851,9 +8851,9 @@
         "size_bytes": 5952
       },
       "mechanics_role": "none",
-      "observed_form": "command",
+      "observed_form": "file",
       "owner_return_route": {
-        "route_kind": "command_owner",
+        "route_kind": "source_owner",
         "surface": ".agents/skills/aoa-dry-run-first/scripts/dry_run_contract.py"
       },
       "provenance": {
@@ -8891,9 +8891,7 @@
           "git",
           "python"
         ],
-        "owner_commands": [
-          "python .agents/skills/aoa-dry-run-first/scripts/dry_run_contract.py"
-        ],
+        "owner_commands": [],
         "required_tools": [
           "python"
         ]
@@ -8906,7 +8904,7 @@
     {
       "abi": {
         "abi_epoch": "source",
-        "artifact_class": "script",
+        "artifact_class": "source_code",
         "compatibility": "stable",
         "contract_version": "none",
         "schema_version": "none"
@@ -8915,13 +8913,13 @@
         "scope": "public",
         "secrets_risk": "none"
       },
-      "artifact_kind": "script",
+      "artifact_kind": "source_code",
       "classification": {
         "confidence": "high",
-        "primary_kind": "command"
+        "primary_kind": "surface"
       },
-      "code_role": "entrypoint",
-      "command_role": "script",
+      "code_role": "source_module",
+      "command_role": "none",
       "consumer_route": {
         "route_kind": "resource",
         "surface": "aoa-kag-mcp"
@@ -8942,9 +8940,9 @@
         "size_bytes": 3643
       },
       "mechanics_role": "none",
-      "observed_form": "command",
+      "observed_form": "file",
       "owner_return_route": {
-        "route_kind": "command_owner",
+        "route_kind": "source_owner",
         "surface": ".agents/skills/aoa-dry-run-first/scripts/preview_gap_check.py"
       },
       "provenance": {
@@ -8982,9 +8980,7 @@
           "git",
           "python"
         ],
-        "owner_commands": [
-          "python .agents/skills/aoa-dry-run-first/scripts/preview_gap_check.py"
-        ],
+        "owner_commands": [],
         "required_tools": [
           "python"
         ]
@@ -10762,7 +10758,7 @@
     {
       "abi": {
         "abi_epoch": "source",
-        "artifact_class": "script",
+        "artifact_class": "source_code",
         "compatibility": "stable",
         "contract_version": "none",
         "schema_version": "none"
@@ -10771,13 +10767,13 @@
         "scope": "public",
         "secrets_risk": "none"
       },
-      "artifact_kind": "script",
+      "artifact_kind": "source_code",
       "classification": {
         "confidence": "high",
-        "primary_kind": "command"
+        "primary_kind": "surface"
       },
-      "code_role": "entrypoint",
-      "command_role": "script",
+      "code_role": "source_module",
+      "command_role": "none",
       "consumer_route": {
         "route_kind": "resource",
         "surface": "aoa-kag-mcp"
@@ -10798,9 +10794,9 @@
         "size_bytes": 4489
       },
       "mechanics_role": "none",
-      "observed_form": "command",
+      "observed_form": "file",
       "owner_return_route": {
-        "route_kind": "command_owner",
+        "route_kind": "source_owner",
         "surface": ".agents/skills/aoa-local-stack-bringup/scripts/bringup_contract.py"
       },
       "provenance": {
@@ -10838,9 +10834,7 @@
           "git",
           "python"
         ],
-        "owner_commands": [
-          "python .agents/skills/aoa-local-stack-bringup/scripts/bringup_contract.py"
-        ],
+        "owner_commands": [],
         "required_tools": [
           "python"
         ]
@@ -10853,7 +10847,7 @@
     {
       "abi": {
         "abi_epoch": "source",
-        "artifact_class": "script",
+        "artifact_class": "source_code",
         "compatibility": "stable",
         "contract_version": "none",
         "schema_version": "none"
@@ -10862,13 +10856,13 @@
         "scope": "public",
         "secrets_risk": "none"
       },
-      "artifact_kind": "script",
+      "artifact_kind": "source_code",
       "classification": {
         "confidence": "high",
-        "primary_kind": "command"
+        "primary_kind": "surface"
       },
-      "code_role": "entrypoint",
-      "command_role": "script",
+      "code_role": "source_module",
+      "command_role": "none",
       "consumer_route": {
         "route_kind": "resource",
         "surface": "aoa-kag-mcp"
@@ -10889,9 +10883,9 @@
         "size_bytes": 3007
       },
       "mechanics_role": "none",
-      "observed_form": "command",
+      "observed_form": "file",
       "owner_return_route": {
-        "route_kind": "command_owner",
+        "route_kind": "source_owner",
         "surface": ".agents/skills/aoa-local-stack-bringup/scripts/readiness_summary.py"
       },
       "provenance": {
@@ -10929,9 +10923,7 @@
           "git",
           "python"
         ],
-        "owner_commands": [
-          "python .agents/skills/aoa-local-stack-bringup/scripts/readiness_summary.py"
-        ],
+        "owner_commands": [],
         "required_tools": [
           "python"
         ]
@@ -14502,7 +14494,7 @@
     {
       "abi": {
         "abi_epoch": "source",
-        "artifact_class": "script",
+        "artifact_class": "source_code",
         "compatibility": "stable",
         "contract_version": "none",
         "schema_version": "none"
@@ -14511,13 +14503,13 @@
         "scope": "public",
         "secrets_risk": "none"
       },
-      "artifact_kind": "script",
+      "artifact_kind": "source_code",
       "classification": {
         "confidence": "high",
-        "primary_kind": "command"
+        "primary_kind": "surface"
       },
-      "code_role": "entrypoint",
-      "command_role": "script",
+      "code_role": "source_module",
+      "command_role": "none",
       "consumer_route": {
         "route_kind": "resource",
         "surface": "aoa-kag-mcp"
@@ -14538,9 +14530,9 @@
         "size_bytes": 6332
       },
       "mechanics_role": "none",
-      "observed_form": "command",
+      "observed_form": "file",
       "owner_return_route": {
-        "route_kind": "command_owner",
+        "route_kind": "source_owner",
         "surface": ".agents/skills/aoa-safe-infra-change/scripts/infra_change_contract.py"
       },
       "provenance": {
@@ -14578,9 +14570,7 @@
           "git",
           "python"
         ],
-        "owner_commands": [
-          "python .agents/skills/aoa-safe-infra-change/scripts/infra_change_contract.py"
-        ],
+        "owner_commands": [],
         "required_tools": [
           "python"
         ]
@@ -14593,7 +14583,7 @@
     {
       "abi": {
         "abi_epoch": "source",
-        "artifact_class": "script",
+        "artifact_class": "source_code",
         "compatibility": "stable",
         "contract_version": "none",
         "schema_version": "none"
@@ -14602,13 +14592,13 @@
         "scope": "public",
         "secrets_risk": "none"
       },
-      "artifact_kind": "script",
+      "artifact_kind": "source_code",
       "classification": {
         "confidence": "high",
-        "primary_kind": "command"
+        "primary_kind": "surface"
       },
-      "code_role": "entrypoint",
-      "command_role": "script",
+      "code_role": "source_module",
+      "command_role": "none",
       "consumer_route": {
         "route_kind": "resource",
         "surface": "aoa-kag-mcp"
@@ -14629,9 +14619,9 @@
         "size_bytes": 3175
       },
       "mechanics_role": "none",
-      "observed_form": "command",
+      "observed_form": "file",
       "owner_return_route": {
-        "route_kind": "command_owner",
+        "route_kind": "source_owner",
         "surface": ".agents/skills/aoa-safe-infra-change/scripts/risk_surface_scan.py"
       },
       "provenance": {
@@ -14669,9 +14659,7 @@
           "git",
           "python"
         ],
-        "owner_commands": [
-          "python .agents/skills/aoa-safe-infra-change/scripts/risk_surface_scan.py"
-        ],
+        "owner_commands": [],
         "required_tools": [
           "python"
         ]
@@ -24063,13 +24051,13 @@
         "state": "current"
       },
       "identity": {
-        "content_hash": "ec4ff35d0578b1c6981550156258007d8cb5181e0295bf848c6b175724b1fcc1",
+        "content_hash": "016e6f0f088d035756cfc7c79f98cb8f2561e97e0bb0d616d5b9d21fe101183c",
         "git_ref": "git-index-source-tree",
         "id": "file:agents.md:a54ff182c7",
         "mime": "text/markdown",
         "path": "AGENTS.md",
         "repo": "aoa-stats",
-        "size_bytes": 7723
+        "size_bytes": 7787
       },
       "mechanics_role": "none",
       "observed_form": "file",
@@ -24119,77 +24107,77 @@
           {
             "anchor": "start-here",
             "level": 2,
-            "line": 31,
+            "line": 32,
             "ref": "AGENTS.md#start-here",
             "title": "Start here"
           },
           {
             "anchor": "repository-shape",
             "level": 2,
-            "line": 51,
+            "line": 52,
             "ref": "AGENTS.md#repository-shape",
             "title": "Repository shape"
           },
           {
             "anchor": "cross-mode-law",
             "level": 2,
-            "line": 67,
+            "line": 68,
             "ref": "AGENTS.md#cross-mode-law",
             "title": "Cross-mode law"
           },
           {
             "anchor": "agents-stack-law",
             "level": 2,
-            "line": 91,
+            "line": 92,
             "ref": "AGENTS.md#agents-stack-law",
             "title": "AGENTS stack law"
           },
           {
             "anchor": "memory-route",
             "level": 2,
-            "line": 106,
+            "line": 107,
             "ref": "AGENTS.md#memory-route",
             "title": "Memory route"
           },
           {
             "anchor": "decision-review",
             "level": 2,
-            "line": 114,
+            "line": 115,
             "ref": "AGENTS.md#decision-review",
             "title": "Decision review"
           },
           {
             "anchor": "derived-only-rules",
             "level": 2,
-            "line": 125,
+            "line": 126,
             "ref": "AGENTS.md#derived-only-rules",
             "title": "Derived-only rules"
           },
           {
             "anchor": "github-landing-workflow",
             "level": 2,
-            "line": 135,
+            "line": 136,
             "ref": "AGENTS.md#github-landing-workflow",
             "title": "GitHub landing workflow"
           },
           {
             "anchor": "verify",
             "level": 2,
-            "line": 157,
+            "line": 158,
             "ref": "AGENTS.md#verify",
             "title": "Verify"
           },
           {
             "anchor": "report",
             "level": 2,
-            "line": 186,
+            "line": 187,
             "ref": "AGENTS.md#report",
             "title": "Report"
           },
           {
             "anchor": "full-reference",
             "level": 2,
-            "line": 192,
+            "line": 193,
             "ref": "AGENTS.md#full-reference",
             "title": "Full reference"
           }
@@ -24201,7 +24189,7 @@
       },
       "signs": {
         "attestation_ref": "",
-        "digest": "ec4ff35d0578b1c6981550156258007d8cb5181e0295bf848c6b175724b1fcc1",
+        "digest": "016e6f0f088d035756cfc7c79f98cb8f2561e97e0bb0d616d5b9d21fe101183c",
         "signature_ref": "",
         "verification_state": "digest-only"
       },
@@ -24249,13 +24237,13 @@
         "state": "current"
       },
       "identity": {
-        "content_hash": "5bf1cef98d28d7cda7550f914f7d0d510bc8c23a0da87a8f8d9d933f2d976268",
+        "content_hash": "f6a3579725cc7d5d709142a9c427334ffcf5298ce0db3a51158d8eb9fa3375c7",
         "git_ref": "git-index-source-tree",
         "id": "file:changelog.md:06572a96a5",
         "mime": "text/markdown",
         "path": "CHANGELOG.md",
         "repo": "aoa-stats",
-        "size_bytes": 9043
+        "size_bytes": 9444
       },
       "mechanics_role": "none",
       "observed_form": "file",
@@ -24305,182 +24293,182 @@
           {
             "anchor": "changed",
             "level": 3,
-            "line": 25,
+            "line": 31,
             "ref": "CHANGELOG.md#changed",
             "title": "Changed"
           },
           {
             "anchor": "013-2026-04-23",
             "level": 2,
-            "line": 52,
+            "line": 58,
             "ref": "CHANGELOG.md#013-2026-04-23",
             "title": "[0.1.3] - 2026-04-23"
           },
           {
             "anchor": "summary",
             "level": 3,
-            "line": 54,
+            "line": 60,
             "ref": "CHANGELOG.md#summary",
             "title": "Summary"
           },
           {
             "anchor": "added-1",
             "level": 3,
-            "line": 66,
+            "line": 72,
             "ref": "CHANGELOG.md#added-1",
             "title": "Added"
           },
           {
             "anchor": "changed-1",
             "level": 3,
-            "line": 76,
+            "line": 82,
             "ref": "CHANGELOG.md#changed-1",
             "title": "Changed"
           },
           {
             "anchor": "validation",
             "level": 3,
-            "line": 82,
+            "line": 88,
             "ref": "CHANGELOG.md#validation",
             "title": "Validation"
           },
           {
             "anchor": "notes",
             "level": 3,
-            "line": 86,
+            "line": 92,
             "ref": "CHANGELOG.md#notes",
             "title": "Notes"
           },
           {
             "anchor": "012-2026-04-19",
             "level": 2,
-            "line": 91,
+            "line": 97,
             "ref": "CHANGELOG.md#012-2026-04-19",
             "title": "[0.1.2] - 2026-04-19"
           },
           {
             "anchor": "summary-1",
             "level": 3,
-            "line": 93,
+            "line": 99,
             "ref": "CHANGELOG.md#summary-1",
             "title": "Summary"
           },
           {
             "anchor": "added-2",
             "level": 3,
-            "line": 101,
+            "line": 107,
             "ref": "CHANGELOG.md#added-2",
             "title": "Added"
           },
           {
             "anchor": "changed-2",
             "level": 3,
-            "line": 108,
+            "line": 114,
             "ref": "CHANGELOG.md#changed-2",
             "title": "Changed"
           },
           {
             "anchor": "validation-1",
             "level": 3,
-            "line": 113,
+            "line": 119,
             "ref": "CHANGELOG.md#validation-1",
             "title": "Validation"
           },
           {
             "anchor": "notes-1",
             "level": 3,
-            "line": 117,
+            "line": 123,
             "ref": "CHANGELOG.md#notes-1",
             "title": "Notes"
           },
           {
             "anchor": "011-2026-04-12",
             "level": 2,
-            "line": 122,
+            "line": 128,
             "ref": "CHANGELOG.md#011-2026-04-12",
             "title": "[0.1.1] - 2026-04-12"
           },
           {
             "anchor": "summary-2",
             "level": 3,
-            "line": 124,
+            "line": 130,
             "ref": "CHANGELOG.md#summary-2",
             "title": "Summary"
           },
           {
             "anchor": "added-3",
             "level": 3,
-            "line": 132,
+            "line": 138,
             "ref": "CHANGELOG.md#added-3",
             "title": "Added"
           },
           {
             "anchor": "documentation",
             "level": 3,
-            "line": 140,
+            "line": 146,
             "ref": "CHANGELOG.md#documentation",
             "title": "Documentation"
           },
           {
             "anchor": "changed-3",
             "level": 3,
-            "line": 146,
+            "line": 152,
             "ref": "CHANGELOG.md#changed-3",
             "title": "Changed"
           },
           {
             "anchor": "validation-2",
             "level": 3,
-            "line": 153,
+            "line": 159,
             "ref": "CHANGELOG.md#validation-2",
             "title": "Validation"
           },
           {
             "anchor": "notes-2",
             "level": 3,
-            "line": 157,
+            "line": 163,
             "ref": "CHANGELOG.md#notes-2",
             "title": "Notes"
           },
           {
             "anchor": "010-2026-04-10",
             "level": 2,
-            "line": 161,
+            "line": 167,
             "ref": "CHANGELOG.md#010-2026-04-10",
             "title": "[0.1.0] - 2026-04-10"
           },
           {
             "anchor": "summary-3",
             "level": 3,
-            "line": 168,
+            "line": 174,
             "ref": "CHANGELOG.md#summary-3",
             "title": "Summary"
           },
           {
             "anchor": "added-4",
             "level": 3,
-            "line": 179,
+            "line": 185,
             "ref": "CHANGELOG.md#added-4",
             "title": "Added"
           },
           {
             "anchor": "included-in-this-release",
             "level": 3,
-            "line": 192,
+            "line": 198,
             "ref": "CHANGELOG.md#included-in-this-release",
             "title": "Included in this release"
           },
           {
             "anchor": "validation-3",
             "level": 3,
-            "line": 207,
+            "line": 213,
             "ref": "CHANGELOG.md#validation-3",
             "title": "Validation"
           },
           {
             "anchor": "notes-3",
             "level": 3,
-            "line": 213,
+            "line": 219,
             "ref": "CHANGELOG.md#notes-3",
             "title": "Notes"
           }
@@ -24492,7 +24480,7 @@
       },
       "signs": {
         "attestation_ref": "",
-        "digest": "5bf1cef98d28d7cda7550f914f7d0d510bc8c23a0da87a8f8d9d933f2d976268",
+        "digest": "f6a3579725cc7d5d709142a9c427334ffcf5298ce0db3a51158d8eb9fa3375c7",
         "signature_ref": "",
         "verification_state": "digest-only"
       },
@@ -24772,13 +24760,13 @@
         "state": "current"
       },
       "identity": {
-        "content_hash": "ed0ef45b600b3ae2a6a994ae973a91be878e5e8e899a14a2170995fbe7bd55f7",
+        "content_hash": "8c3fe48377154e1fc812da60765d6481254a8d70f975e9b252449874919ac44f",
         "git_ref": "git-index-source-tree",
         "id": "file:design.md:3dc5dd454e",
         "mime": "text/markdown",
         "path": "DESIGN.md",
         "repo": "aoa-stats",
-        "size_bytes": 8305
+        "size_bytes": 8583
       },
       "mechanics_role": "none",
       "observed_form": "file",
@@ -24849,70 +24837,70 @@
           {
             "anchor": "the-mechanics-operation-home",
             "level": 3,
-            "line": 69,
+            "line": 73,
             "ref": "DESIGN.md#the-mechanics-operation-home",
             "title": "The `mechanics/` operation home"
           },
           {
             "anchor": "implementation-and-compatibility-districts",
             "level": 3,
-            "line": 79,
+            "line": 83,
             "ref": "DESIGN.md#implementation-and-compatibility-districts",
             "title": "Implementation and compatibility districts"
           },
           {
             "anchor": "operation",
             "level": 2,
-            "line": 97,
+            "line": 101,
             "ref": "DESIGN.md#operation",
             "title": "Operation"
           },
           {
             "anchor": "authority-model",
             "level": 2,
-            "line": 121,
+            "line": 125,
             "ref": "DESIGN.md#authority-model",
             "title": "Authority model"
           },
           {
             "anchor": "shared-mechanic-vocabulary",
             "level": 2,
-            "line": 135,
+            "line": 139,
             "ref": "DESIGN.md#shared-mechanic-vocabulary",
             "title": "Shared mechanic vocabulary"
           },
           {
             "anchor": "design-principles",
             "level": 2,
-            "line": 146,
+            "line": 150,
             "ref": "DESIGN.md#design-principles",
             "title": "Design principles"
           },
           {
             "anchor": "good-shape",
             "level": 2,
-            "line": 162,
+            "line": 166,
             "ref": "DESIGN.md#good-shape",
             "title": "Good shape"
           },
           {
             "anchor": "bad-shape",
             "level": 2,
-            "line": 171,
+            "line": 175,
             "ref": "DESIGN.md#bad-shape",
             "title": "Bad shape"
           },
           {
             "anchor": "relationship-to-root-guidance",
             "level": 2,
-            "line": 180,
+            "line": 184,
             "ref": "DESIGN.md#relationship-to-root-guidance",
             "title": "Relationship to root guidance"
           },
           {
             "anchor": "use-by-agents",
             "level": 2,
-            "line": 191,
+            "line": 195,
             "ref": "DESIGN.md#use-by-agents",
             "title": "Use by agents"
           }
@@ -24924,7 +24912,7 @@
       },
       "signs": {
         "attestation_ref": "",
-        "digest": "ed0ef45b600b3ae2a6a994ae973a91be878e5e8e899a14a2170995fbe7bd55f7",
+        "digest": "8c3fe48377154e1fc812da60765d6481254a8d70f975e9b252449874919ac44f",
         "signature_ref": "",
         "verification_state": "digest-only"
       },
@@ -25059,13 +25047,13 @@
         "state": "current"
       },
       "identity": {
-        "content_hash": "8883bc47f57757d4c151626917f0ecbb39043ca58711682e8d341d908839a39b",
+        "content_hash": "7a2205279ab9daa67cc184ba33525a746504d5893f09c22868f652af4d5d6afc",
         "git_ref": "git-index-source-tree",
         "id": "file:readme.md:b335630551",
         "mime": "text/markdown",
         "path": "README.md",
         "repo": "aoa-stats",
-        "size_bytes": 6660
+        "size_bytes": 6680
       },
       "mechanics_role": "none",
       "observed_form": "file",
@@ -25162,7 +25150,7 @@
       },
       "signs": {
         "attestation_ref": "",
-        "digest": "8883bc47f57757d4c151626917f0ecbb39043ca58711682e8d341d908839a39b",
+        "digest": "7a2205279ab9daa67cc184ba33525a746504d5893f09c22868f652af4d5d6afc",
         "signature_ref": "",
         "verification_state": "digest-only"
       },
@@ -25210,13 +25198,13 @@
         "state": "current"
       },
       "identity": {
-        "content_hash": "302424798a92d818af755c13b462474551c0352bca1281c5dd46165a92262338",
+        "content_hash": "9ab6f0f501fa45c131df31decdf7ff3519818f0ea7b30436eaa95bd8715883ca",
         "git_ref": "git-index-source-tree",
         "id": "file:roadmap.md:683343bdf9",
         "mime": "text/markdown",
         "path": "ROADMAP.md",
         "repo": "aoa-stats",
-        "size_bytes": 4812
+        "size_bytes": 4838
       },
       "mechanics_role": "none",
       "observed_form": "file",
@@ -25259,35 +25247,35 @@
           {
             "anchor": "active-summary-families",
             "level": 2,
-            "line": 25,
+            "line": 26,
             "ref": "ROADMAP.md#active-summary-families",
             "title": "Active summary families"
           },
           {
             "anchor": "maintained-contracts",
             "level": 2,
-            "line": 47,
+            "line": 48,
             "ref": "ROADMAP.md#maintained-contracts",
             "title": "Maintained contracts"
           },
           {
             "anchor": "direction",
             "level": 2,
-            "line": 77,
+            "line": 78,
             "ref": "ROADMAP.md#direction",
             "title": "Direction"
           },
           {
             "anchor": "non-goals",
             "level": 2,
-            "line": 91,
+            "line": 92,
             "ref": "ROADMAP.md#non-goals",
             "title": "Non-goals"
           },
           {
             "anchor": "release-gate",
             "level": 2,
-            "line": 99,
+            "line": 100,
             "ref": "ROADMAP.md#release-gate",
             "title": "Release gate"
           }
@@ -25299,7 +25287,7 @@
       },
       "signs": {
         "attestation_ref": "",
-        "digest": "302424798a92d818af755c13b462474551c0352bca1281c5dd46165a92262338",
+        "digest": "9ab6f0f501fa45c131df31decdf7ff3519818f0ea7b30436eaa95bd8715883ca",
         "signature_ref": "",
         "verification_state": "digest-only"
       },
@@ -32825,6 +32813,273 @@
     {
       "abi": {
         "abi_epoch": "source",
+        "artifact_class": "index",
+        "compatibility": "stable",
+        "contract_version": "none",
+        "schema_version": "aoa-repo-local-kag-repository-index-v1"
+      },
+      "access": {
+        "scope": "public",
+        "secrets_risk": "none"
+      },
+      "artifact_kind": "index",
+      "classification": {
+        "confidence": "high",
+        "primary_kind": "artifact"
+      },
+      "code_role": "none",
+      "command_role": "none",
+      "consumer_route": {
+        "route_kind": "resource",
+        "surface": "aoa-kag-mcp"
+      },
+      "document_role": "none",
+      "freshness": {
+        "checked_ref": "git-index-source-tree",
+        "mode": "source_snapshot",
+        "state": "current"
+      },
+      "identity": {
+        "content_hash": "d8ff86f29fa29a470548ff0875111054da2b6947cea5dbeddc631036d7f5e4e0",
+        "git_ref": "git-index-source-tree",
+        "id": "file:kag/indexes/repo_artifact_index.json:55e977ab16",
+        "mime": "application/json",
+        "path": "kag/indexes/repo_artifact_index.json",
+        "repo": "aoa-stats",
+        "size_bytes": 435506
+      },
+      "mechanics_role": "none",
+      "observed_form": "file",
+      "owner_return_route": {
+        "route_kind": "source_owner",
+        "surface": "kag/indexes/repo_artifact_index.json"
+      },
+      "provenance": {
+        "generated_by": "",
+        "materials": [],
+        "observed_by": "aoa-kag:scripts/generate_repo_local_kag_index.py",
+        "source_refs": [
+          {
+            "authority": "authored_source",
+            "path": "kag/indexes/repo_artifact_index.json",
+            "repo": "aoa-stats",
+            "role": "primary"
+          }
+        ],
+        "validated_by": [
+          "aoa-kag:scripts/validate_kag.py"
+        ]
+      },
+      "refs": {
+        "heading_refs": [],
+        "line_refs": [
+          "kag/indexes/repo_artifact_index.json:1"
+        ],
+        "path_ref": "kag/indexes/repo_artifact_index.json"
+      },
+      "signs": {
+        "attestation_ref": "",
+        "digest": "d8ff86f29fa29a470548ff0875111054da2b6947cea5dbeddc631036d7f5e4e0",
+        "signature_ref": "",
+        "verification_state": "digest-only"
+      },
+      "surface_state": "authored_source",
+      "toolchain": {
+        "detected_tools": [
+          "git",
+          "python"
+        ],
+        "owner_commands": [],
+        "required_tools": [
+          "jq"
+        ]
+      },
+      "validator_route": {
+        "route_kind": "source_fast",
+        "surface": "aoa-kag:scripts/validate_kag.py"
+      }
+    },
+    {
+      "abi": {
+        "abi_epoch": "source",
+        "artifact_class": "index",
+        "compatibility": "stable",
+        "contract_version": "none",
+        "schema_version": "aoa-repo-local-kag-repository-index-v1"
+      },
+      "access": {
+        "scope": "public",
+        "secrets_risk": "none"
+      },
+      "artifact_kind": "index",
+      "classification": {
+        "confidence": "high",
+        "primary_kind": "artifact"
+      },
+      "code_role": "none",
+      "command_role": "none",
+      "consumer_route": {
+        "route_kind": "resource",
+        "surface": "aoa-kag-mcp"
+      },
+      "document_role": "none",
+      "freshness": {
+        "checked_ref": "git-index-source-tree",
+        "mode": "source_snapshot",
+        "state": "current"
+      },
+      "identity": {
+        "content_hash": "20a6a6d6a623117c1dffbb439c85f71ce488220ffe9b466d1bbd4c1908e60a98",
+        "git_ref": "git-index-source-tree",
+        "id": "file:kag/indexes/repo_entity_index.json:a5811e181b",
+        "mime": "application/json",
+        "path": "kag/indexes/repo_entity_index.json",
+        "repo": "aoa-stats",
+        "size_bytes": 541175
+      },
+      "mechanics_role": "none",
+      "observed_form": "file",
+      "owner_return_route": {
+        "route_kind": "source_owner",
+        "surface": "kag/indexes/repo_entity_index.json"
+      },
+      "provenance": {
+        "generated_by": "",
+        "materials": [],
+        "observed_by": "aoa-kag:scripts/generate_repo_local_kag_index.py",
+        "source_refs": [
+          {
+            "authority": "authored_source",
+            "path": "kag/indexes/repo_entity_index.json",
+            "repo": "aoa-stats",
+            "role": "primary"
+          }
+        ],
+        "validated_by": [
+          "aoa-kag:scripts/validate_kag.py"
+        ]
+      },
+      "refs": {
+        "heading_refs": [],
+        "line_refs": [
+          "kag/indexes/repo_entity_index.json:1"
+        ],
+        "path_ref": "kag/indexes/repo_entity_index.json"
+      },
+      "signs": {
+        "attestation_ref": "",
+        "digest": "20a6a6d6a623117c1dffbb439c85f71ce488220ffe9b466d1bbd4c1908e60a98",
+        "signature_ref": "",
+        "verification_state": "digest-only"
+      },
+      "surface_state": "authored_source",
+      "toolchain": {
+        "detected_tools": [
+          "git",
+          "python"
+        ],
+        "owner_commands": [],
+        "required_tools": [
+          "jq"
+        ]
+      },
+      "validator_route": {
+        "route_kind": "source_fast",
+        "surface": "aoa-kag:scripts/validate_kag.py"
+      }
+    },
+    {
+      "abi": {
+        "abi_epoch": "source",
+        "artifact_class": "index",
+        "compatibility": "stable",
+        "contract_version": "none",
+        "schema_version": "aoa-repo-local-kag-repository-index-v1"
+      },
+      "access": {
+        "scope": "public",
+        "secrets_risk": "none"
+      },
+      "artifact_kind": "index",
+      "classification": {
+        "confidence": "high",
+        "primary_kind": "artifact"
+      },
+      "code_role": "none",
+      "command_role": "none",
+      "consumer_route": {
+        "route_kind": "resource",
+        "surface": "aoa-kag-mcp"
+      },
+      "document_role": "none",
+      "freshness": {
+        "checked_ref": "git-index-source-tree",
+        "mode": "source_snapshot",
+        "state": "current"
+      },
+      "identity": {
+        "content_hash": "05a3703f8cd5672ecd2bc35c28c7cbcad8401d08fc05ed35d9707529ec46e227",
+        "git_ref": "git-index-source-tree",
+        "id": "file:kag/indexes/repo_event_index.json:a69583e024",
+        "mime": "application/json",
+        "path": "kag/indexes/repo_event_index.json",
+        "repo": "aoa-stats",
+        "size_bytes": 38281
+      },
+      "mechanics_role": "none",
+      "observed_form": "file",
+      "owner_return_route": {
+        "route_kind": "source_owner",
+        "surface": "kag/indexes/repo_event_index.json"
+      },
+      "provenance": {
+        "generated_by": "",
+        "materials": [],
+        "observed_by": "aoa-kag:scripts/generate_repo_local_kag_index.py",
+        "source_refs": [
+          {
+            "authority": "authored_source",
+            "path": "kag/indexes/repo_event_index.json",
+            "repo": "aoa-stats",
+            "role": "primary"
+          }
+        ],
+        "validated_by": [
+          "aoa-kag:scripts/validate_kag.py"
+        ]
+      },
+      "refs": {
+        "heading_refs": [],
+        "line_refs": [
+          "kag/indexes/repo_event_index.json:1"
+        ],
+        "path_ref": "kag/indexes/repo_event_index.json"
+      },
+      "signs": {
+        "attestation_ref": "",
+        "digest": "05a3703f8cd5672ecd2bc35c28c7cbcad8401d08fc05ed35d9707529ec46e227",
+        "signature_ref": "",
+        "verification_state": "digest-only"
+      },
+      "surface_state": "authored_source",
+      "toolchain": {
+        "detected_tools": [
+          "git",
+          "python"
+        ],
+        "owner_commands": [],
+        "required_tools": [
+          "jq"
+        ]
+      },
+      "validator_route": {
+        "route_kind": "source_fast",
+        "surface": "aoa-kag:scripts/validate_kag.py"
+      }
+    },
+    {
+      "abi": {
+        "abi_epoch": "source",
         "artifact_class": "config",
         "compatibility": "stable",
         "contract_version": "none",
@@ -36778,13 +37033,13 @@
         "state": "current"
       },
       "identity": {
-        "content_hash": "3cc6769ad93dabd261a2fb5905e8f11c8af0995a45bd88e644e30c26abe6f4a2",
+        "content_hash": "0a497cf7de6b5c4420c8daadead8584bcad1717f7c585f0f86bccfd1f9388824",
         "git_ref": "git-index-source-tree",
         "id": "file:mechanics/agon/parts/epistemic-observability/contract.md:f08c90f0fe",
         "mime": "text/markdown",
         "path": "mechanics/agon/parts/epistemic-observability/CONTRACT.md",
         "repo": "aoa-stats",
-        "size_bytes": 727
+        "size_bytes": 777
       },
       "mechanics_role": "part_contract",
       "observed_form": "file",
@@ -36853,7 +37108,7 @@
       },
       "signs": {
         "attestation_ref": "",
-        "digest": "3cc6769ad93dabd261a2fb5905e8f11c8af0995a45bd88e644e30c26abe6f4a2",
+        "digest": "0a497cf7de6b5c4420c8daadead8584bcad1717f7c585f0f86bccfd1f9388824",
         "signature_ref": "",
         "verification_state": "digest-only"
       },
@@ -37910,13 +38165,13 @@
         "state": "current"
       },
       "identity": {
-        "content_hash": "990ea18b798cd59f03b68df0d85d3ce94ea131897f2e713e9b7165926915ae90",
+        "content_hash": "82b71d4bb92db42f175ebd72cc846213f4ce8f189d106281f964747ca50d1814",
         "git_ref": "git-index-source-tree",
         "id": "file:mechanics/agon/parts/kag-observability/contract.md:ddf786f6b5",
         "mime": "text/markdown",
         "path": "mechanics/agon/parts/kag-observability/CONTRACT.md",
         "repo": "aoa-stats",
-        "size_bytes": 780
+        "size_bytes": 824
       },
       "mechanics_role": "part_contract",
       "observed_form": "file",
@@ -37985,7 +38240,7 @@
       },
       "signs": {
         "attestation_ref": "",
-        "digest": "990ea18b798cd59f03b68df0d85d3ce94ea131897f2e713e9b7165926915ae90",
+        "digest": "82b71d4bb92db42f175ebd72cc846213f4ce8f189d106281f964747ca50d1814",
         "signature_ref": "",
         "verification_state": "digest-only"
       },
@@ -39042,13 +39297,13 @@
         "state": "current"
       },
       "identity": {
-        "content_hash": "2400ae18f45d6574eeba18d4f42c76dfac4470e7fe5cef6f7fb2742742e31b5a",
+        "content_hash": "943c21b61bc30aafacd6a2e59bc5c02553cbdde01ff13da821e725165437f573",
         "git_ref": "git-index-source-tree",
         "id": "file:mechanics/agon/parts/mechanical-trial-observability/contract.md:9835746195",
         "mime": "text/markdown",
         "path": "mechanics/agon/parts/mechanical-trial-observability/CONTRACT.md",
         "repo": "aoa-stats",
-        "size_bytes": 663
+        "size_bytes": 720
       },
       "mechanics_role": "part_contract",
       "observed_form": "file",
@@ -39117,7 +39372,7 @@
       },
       "signs": {
         "attestation_ref": "",
-        "digest": "2400ae18f45d6574eeba18d4f42c76dfac4470e7fe5cef6f7fb2742742e31b5a",
+        "digest": "943c21b61bc30aafacd6a2e59bc5c02553cbdde01ff13da821e725165437f573",
         "signature_ref": "",
         "verification_state": "digest-only"
       },
@@ -40079,13 +40334,13 @@
         "state": "current"
       },
       "identity": {
-        "content_hash": "3debad63ba3577802012336d52a5670a691834d0469952908f64f0274c064571",
+        "content_hash": "5f7c4e8a0f554a6b9dca91b8a33569ade8bcdb4d070971a118ebde583521be26",
         "git_ref": "git-index-source-tree",
         "id": "file:mechanics/agon/parts/retention-rank-observability/contract.md:67d58a0605",
         "mime": "text/markdown",
         "path": "mechanics/agon/parts/retention-rank-observability/CONTRACT.md",
         "repo": "aoa-stats",
-        "size_bytes": 668
+        "size_bytes": 723
       },
       "mechanics_role": "part_contract",
       "observed_form": "file",
@@ -40154,7 +40409,7 @@
       },
       "signs": {
         "attestation_ref": "",
-        "digest": "3debad63ba3577802012336d52a5670a691834d0469952908f64f0274c064571",
+        "digest": "5f7c4e8a0f554a6b9dca91b8a33569ade8bcdb4d070971a118ebde583521be26",
         "signature_ref": "",
         "verification_state": "digest-only"
       },
@@ -41116,13 +41371,13 @@
         "state": "current"
       },
       "identity": {
-        "content_hash": "396b364278501fade3927029bed8c5659cdea2c2b867ec56ddc7d1fa31160161",
+        "content_hash": "40b6e56649a4f04e55039481f6fc0e6210757800d7a58843d4ad5d7814c24f3d",
         "git_ref": "git-index-source-tree",
         "id": "file:mechanics/agon/parts/schools-lineages-campaigns-observability/contract.md:a5deb1f5f9",
         "mime": "text/markdown",
         "path": "mechanics/agon/parts/schools-lineages-campaigns-observability/CONTRACT.md",
         "repo": "aoa-stats",
-        "size_bytes": 718
+        "size_bytes": 785
       },
       "mechanics_role": "part_contract",
       "observed_form": "file",
@@ -41191,7 +41446,7 @@
       },
       "signs": {
         "attestation_ref": "",
-        "digest": "396b364278501fade3927029bed8c5659cdea2c2b867ec56ddc7d1fa31160161",
+        "digest": "40b6e56649a4f04e55039481f6fc0e6210757800d7a58843d4ad5d7814c24f3d",
         "signature_ref": "",
         "verification_state": "digest-only"
       },
@@ -42248,13 +42503,13 @@
         "state": "current"
       },
       "identity": {
-        "content_hash": "cb86a0a7878a776594bb86d524fb38500004052fd47a5c12d64f8858df0a2eda",
+        "content_hash": "5b0237ce6bf9aed31063ee8ef6710bb88575fce1b673b55bba2c60c53b3eddfa",
         "git_ref": "git-index-source-tree",
         "id": "file:mechanics/agon/parts/sophian-observability/contract.md:6f05d1d9dc",
         "mime": "text/markdown",
         "path": "mechanics/agon/parts/sophian-observability/CONTRACT.md",
         "repo": "aoa-stats",
-        "size_bytes": 711
+        "size_bytes": 759
       },
       "mechanics_role": "part_contract",
       "observed_form": "file",
@@ -42323,7 +42578,7 @@
       },
       "signs": {
         "attestation_ref": "",
-        "digest": "cb86a0a7878a776594bb86d524fb38500004052fd47a5c12d64f8858df0a2eda",
+        "digest": "5b0237ce6bf9aed31063ee8ef6710bb88575fce1b673b55bba2c60c53b3eddfa",
         "signature_ref": "",
         "verification_state": "digest-only"
       },
@@ -43299,13 +43554,13 @@
         "state": "current"
       },
       "identity": {
-        "content_hash": "fec203a24108df6813bc74da645f2accaa1eb5b40cd6f5a925a7bb6659574bfb",
+        "content_hash": "ea9657f202aa52feae0c9ee69198b55f912f4aec84718cdc8974cf40e28c4987",
         "git_ref": "git-index-source-tree",
         "id": "file:mechanics/agon/parts/stats-prebinding/contract.md:5c331fc92a",
         "mime": "text/markdown",
         "path": "mechanics/agon/parts/stats-prebinding/CONTRACT.md",
         "repo": "aoa-stats",
-        "size_bytes": 763
+        "size_bytes": 806
       },
       "mechanics_role": "part_contract",
       "observed_form": "file",
@@ -43374,7 +43629,7 @@
       },
       "signs": {
         "attestation_ref": "",
-        "digest": "fec203a24108df6813bc74da645f2accaa1eb5b40cd6f5a925a7bb6659574bfb",
+        "digest": "ea9657f202aa52feae0c9ee69198b55f912f4aec84718cdc8974cf40e28c4987",
         "signature_ref": "",
         "verification_state": "digest-only"
       },
@@ -44336,13 +44591,13 @@
         "state": "current"
       },
       "identity": {
-        "content_hash": "c0b1811358d8fb22860831540cb72089cf73c2c58427800394c0ce0b3a2a63c6",
+        "content_hash": "5e2517080cbb8a5d7c3bbb4daca2e462f384b1d56369443efa8887f5590ef482",
         "git_ref": "git-index-source-tree",
         "id": "file:mechanics/agon/parts/verdict-delta-scar-observability/contract.md:67594ade7c",
         "mime": "text/markdown",
         "path": "mechanics/agon/parts/verdict-delta-scar-observability/CONTRACT.md",
         "repo": "aoa-stats",
-        "size_bytes": 727
+        "size_bytes": 786
       },
       "mechanics_role": "part_contract",
       "observed_form": "file",
@@ -44411,7 +44666,7 @@
       },
       "signs": {
         "attestation_ref": "",
-        "digest": "c0b1811358d8fb22860831540cb72089cf73c2c58427800394c0ce0b3a2a63c6",
+        "digest": "5e2517080cbb8a5d7c3bbb4daca2e462f384b1d56369443efa8887f5590ef482",
         "signature_ref": "",
         "verification_state": "digest-only"
       },
@@ -47555,13 +47810,13 @@
         "state": "current"
       },
       "identity": {
-        "content_hash": "9913b6bb589c67c529b9d4b72b5778740eac5c4f9db3a3e59c53c4f85c5a46e2",
+        "content_hash": "9fc3d0c66eaaadfa8ec646ae4ce8f6939f9b513018df6b340e194011e7c214d1",
         "git_ref": "git-index-source-tree",
         "id": "file:mechanics/antifragility/parts/via-negativa/contract.md:6ad8f31370",
         "mime": "text/markdown",
         "path": "mechanics/antifragility/parts/via-negativa/CONTRACT.md",
         "repo": "aoa-stats",
-        "size_bytes": 351
+        "size_bytes": 797
       },
       "mechanics_role": "part_contract",
       "observed_form": "file",
@@ -47588,11 +47843,39 @@
       "refs": {
         "heading_refs": [
           {
-            "anchor": "contract",
+            "anchor": "via-negativa-stats-review-contract",
             "level": 1,
             "line": 1,
-            "ref": "mechanics/antifragility/parts/via-negativa/CONTRACT.md#contract",
-            "title": "Contract"
+            "ref": "mechanics/antifragility/parts/via-negativa/CONTRACT.md#via-negativa-stats-review-contract",
+            "title": "Via-negativa stats review contract"
+          },
+          {
+            "anchor": "input",
+            "level": 2,
+            "line": 3,
+            "ref": "mechanics/antifragility/parts/via-negativa/CONTRACT.md#input",
+            "title": "Input"
+          },
+          {
+            "anchor": "operation",
+            "level": 2,
+            "line": 8,
+            "ref": "mechanics/antifragility/parts/via-negativa/CONTRACT.md#operation",
+            "title": "Operation"
+          },
+          {
+            "anchor": "boundary",
+            "level": 2,
+            "line": 14,
+            "ref": "mechanics/antifragility/parts/via-negativa/CONTRACT.md#boundary",
+            "title": "Boundary"
+          },
+          {
+            "anchor": "crosswalk",
+            "level": 2,
+            "line": 20,
+            "ref": "mechanics/antifragility/parts/via-negativa/CONTRACT.md#crosswalk",
+            "title": "Crosswalk"
           }
         ],
         "line_refs": [
@@ -47602,7 +47885,7 @@
       },
       "signs": {
         "attestation_ref": "",
-        "digest": "9913b6bb589c67c529b9d4b72b5778740eac5c4f9db3a3e59c53c4f85c5a46e2",
+        "digest": "9fc3d0c66eaaadfa8ec646ae4ce8f6939f9b513018df6b340e194011e7c214d1",
         "signature_ref": "",
         "verification_state": "digest-only"
       },
@@ -47650,13 +47933,13 @@
         "state": "current"
       },
       "identity": {
-        "content_hash": "ed911f5cb4aa38735671f9b15e5a39d644c86f6f727cde219c3d9fbf37016c42",
+        "content_hash": "2124867636f0d60371f3a1f63021e14e5d2d31c5fabb08d937e1f00d9dea1875",
         "git_ref": "git-index-source-tree",
         "id": "file:mechanics/antifragility/parts/via-negativa/readme.md:343c5e3981",
         "mime": "text/markdown",
         "path": "mechanics/antifragility/parts/via-negativa/README.md",
         "repo": "aoa-stats",
-        "size_bytes": 377
+        "size_bytes": 445
       },
       "mechanics_role": "part_doc",
       "observed_form": "file",
@@ -47697,7 +47980,7 @@
       },
       "signs": {
         "attestation_ref": "",
-        "digest": "ed911f5cb4aa38735671f9b15e5a39d644c86f6f727cde219c3d9fbf37016c42",
+        "digest": "2124867636f0d60371f3a1f63021e14e5d2d31c5fabb08d937e1f00d9dea1875",
         "signature_ref": "",
         "verification_state": "digest-only"
       },
@@ -47745,13 +48028,13 @@
         "state": "current"
       },
       "identity": {
-        "content_hash": "045aee7c7d783b6b29b902a7401549c850d272410838cace27b3a25efb441ff3",
+        "content_hash": "8d47c921683f3b648a495cf915d642d3b81ce8c25314d4b8460525de7fe88fd3",
         "git_ref": "git-index-source-tree",
         "id": "file:mechanics/antifragility/parts/via-negativa/validation.md:04beafabc7",
         "mime": "text/markdown",
         "path": "mechanics/antifragility/parts/via-negativa/VALIDATION.md",
         "repo": "aoa-stats",
-        "size_bytes": 443
+        "size_bytes": 446
       },
       "mechanics_role": "part_doc",
       "observed_form": "file",
@@ -47792,7 +48075,7 @@
       },
       "signs": {
         "attestation_ref": "",
-        "digest": "045aee7c7d783b6b29b902a7401549c850d272410838cace27b3a25efb441ff3",
+        "digest": "8d47c921683f3b648a495cf915d642d3b81ce8c25314d4b8460525de7fe88fd3",
         "signature_ref": "",
         "verification_state": "digest-only"
       },
@@ -54027,13 +54310,13 @@
         "state": "current"
       },
       "identity": {
-        "content_hash": "b977969b3437e9fb96b7acb4c75095b874eafc0a5a5768d5f5e6777e03b88d76",
+        "content_hash": "b1b245802ff74d07e197bac3dee93fffa6e27fe6fc91abe4fb29302d75a9c3e7",
         "git_ref": "git-index-source-tree",
         "id": "file:mechanics/experience/parts/adoption-federation-harvest/contract.md:8a16c205e0",
         "mime": "text/markdown",
         "path": "mechanics/experience/parts/adoption-federation-harvest/CONTRACT.md",
         "repo": "aoa-stats",
-        "size_bytes": 539
+        "size_bytes": 599
       },
       "mechanics_role": "part_contract",
       "observed_form": "file",
@@ -54102,7 +54385,7 @@
       },
       "signs": {
         "attestation_ref": "",
-        "digest": "b977969b3437e9fb96b7acb4c75095b874eafc0a5a5768d5f5e6777e03b88d76",
+        "digest": "b1b245802ff74d07e197bac3dee93fffa6e27fe6fc91abe4fb29302d75a9c3e7",
         "signature_ref": "",
         "verification_state": "digest-only"
       },
@@ -58535,13 +58818,13 @@
         "state": "current"
       },
       "identity": {
-        "content_hash": "4a80053dd8713e558b9d09ac7e9780782f6063367bb0d55ccec329610b3391c7",
+        "content_hash": "4145b6aa0b1484d9094a82a95a974475fedae1569c21794abfd996c780904743",
         "git_ref": "git-index-source-tree",
         "id": "file:mechanics/experience/parts/governance-runtime-signals/contract.md:7497d8d2ca",
         "mime": "text/markdown",
         "path": "mechanics/experience/parts/governance-runtime-signals/CONTRACT.md",
         "repo": "aoa-stats",
-        "size_bytes": 460
+        "size_bytes": 519
       },
       "mechanics_role": "part_contract",
       "observed_form": "file",
@@ -58610,7 +58893,7 @@
       },
       "signs": {
         "attestation_ref": "",
-        "digest": "4a80053dd8713e558b9d09ac7e9780782f6063367bb0d55ccec329610b3391c7",
+        "digest": "4145b6aa0b1484d9094a82a95a974475fedae1569c21794abfd996c780904743",
         "signature_ref": "",
         "verification_state": "digest-only"
       },
@@ -60824,13 +61107,13 @@
         "state": "current"
       },
       "identity": {
-        "content_hash": "c67e3a69ea7a468d3b694c99b0e41fda66c953ad1e46561cce34c5967b994ce5",
+        "content_hash": "57bf20589b661955f985fca6bffcec3cb16fa66f6ab701292ee8c6d63e856386",
         "git_ref": "git-index-source-tree",
         "id": "file:mechanics/experience/parts/micro-friction-receipts/contract.md:42a646372f",
         "mime": "text/markdown",
         "path": "mechanics/experience/parts/micro-friction-receipts/CONTRACT.md",
         "repo": "aoa-stats",
-        "size_bytes": 514
+        "size_bytes": 570
       },
       "mechanics_role": "part_contract",
       "observed_form": "file",
@@ -60899,7 +61182,7 @@
       },
       "signs": {
         "attestation_ref": "",
-        "digest": "c67e3a69ea7a468d3b694c99b0e41fda66c953ad1e46561cce34c5967b994ce5",
+        "digest": "57bf20589b661955f985fca6bffcec3cb16fa66f6ab701292ee8c6d63e856386",
         "signature_ref": "",
         "verification_state": "digest-only"
       },
@@ -61864,13 +62147,13 @@
         "state": "current"
       },
       "identity": {
-        "content_hash": "0c13a607acf66c556acbfec564166134faf7525c32565a71f766b82109e288e5",
+        "content_hash": "efb9985f74bf57513570f86d8905a0a548a1fb2f4dd061b4b081ab49d3194ec9",
         "git_ref": "git-index-source-tree",
         "id": "file:mechanics/experience/parts/release-watch-office-health/contract.md:ba17ed8d10",
         "mime": "text/markdown",
         "path": "mechanics/experience/parts/release-watch-office-health/CONTRACT.md",
         "repo": "aoa-stats",
-        "size_bytes": 694
+        "size_bytes": 754
       },
       "mechanics_role": "part_contract",
       "observed_form": "file",
@@ -61939,7 +62222,7 @@
       },
       "signs": {
         "attestation_ref": "",
-        "digest": "0c13a607acf66c556acbfec564166134faf7525c32565a71f766b82109e288e5",
+        "digest": "efb9985f74bf57513570f86d8905a0a548a1fb2f4dd061b4b081ab49d3194ec9",
         "signature_ref": "",
         "verification_state": "digest-only"
       },
@@ -76168,7 +76451,7 @@
     {
       "abi": {
         "abi_epoch": "source",
-        "artifact_class": "script",
+        "artifact_class": "mechanics_surface",
         "compatibility": "stable",
         "contract_version": "none",
         "schema_version": "none"
@@ -76177,13 +76460,13 @@
         "scope": "public",
         "secrets_risk": "none"
       },
-      "artifact_kind": "script",
+      "artifact_kind": "mechanics_surface",
       "classification": {
         "confidence": "high",
-        "primary_kind": "command"
+        "primary_kind": "surface"
       },
-      "code_role": "entrypoint",
-      "command_role": "script",
+      "code_role": "source_module",
+      "command_role": "none",
       "consumer_route": {
         "route_kind": "resource",
         "surface": "aoa-kag-mcp"
@@ -76204,9 +76487,9 @@
         "size_bytes": 5438
       },
       "mechanics_role": "part_script",
-      "observed_form": "command",
+      "observed_form": "file",
       "owner_return_route": {
-        "route_kind": "command_owner",
+        "route_kind": "source_owner",
         "surface": "mechanics/recurrence/parts/live-receipt-refresh/scripts/check_live_publishers.py"
       },
       "provenance": {
@@ -76244,9 +76527,7 @@
           "git",
           "python"
         ],
-        "owner_commands": [
-          "python mechanics/recurrence/parts/live-receipt-refresh/scripts/check_live_publishers.py"
-        ],
+        "owner_commands": [],
         "required_tools": [
           "python"
         ]
@@ -76259,7 +76540,7 @@
     {
       "abi": {
         "abi_epoch": "source",
-        "artifact_class": "script",
+        "artifact_class": "mechanics_surface",
         "compatibility": "stable",
         "contract_version": "none",
         "schema_version": "none"
@@ -76268,13 +76549,13 @@
         "scope": "public",
         "secrets_risk": "none"
       },
-      "artifact_kind": "script",
+      "artifact_kind": "mechanics_surface",
       "classification": {
         "confidence": "high",
-        "primary_kind": "command"
+        "primary_kind": "surface"
       },
-      "code_role": "entrypoint",
-      "command_role": "script",
+      "code_role": "source_module",
+      "command_role": "none",
       "consumer_route": {
         "route_kind": "resource",
         "surface": "aoa-kag-mcp"
@@ -76295,9 +76576,9 @@
         "size_bytes": 9418
       },
       "mechanics_role": "part_script",
-      "observed_form": "command",
+      "observed_form": "file",
       "owner_return_route": {
-        "route_kind": "command_owner",
+        "route_kind": "source_owner",
         "surface": "mechanics/recurrence/parts/live-receipt-refresh/scripts/install_live_refresh_units.py"
       },
       "provenance": {
@@ -76335,9 +76616,7 @@
           "git",
           "python"
         ],
-        "owner_commands": [
-          "python mechanics/recurrence/parts/live-receipt-refresh/scripts/install_live_refresh_units.py"
-        ],
+        "owner_commands": [],
         "required_tools": [
           "python"
         ]
@@ -76350,7 +76629,7 @@
     {
       "abi": {
         "abi_epoch": "source",
-        "artifact_class": "script",
+        "artifact_class": "mechanics_surface",
         "compatibility": "stable",
         "contract_version": "none",
         "schema_version": "none"
@@ -76359,13 +76638,13 @@
         "scope": "public",
         "secrets_risk": "none"
       },
-      "artifact_kind": "script",
+      "artifact_kind": "mechanics_surface",
       "classification": {
         "confidence": "high",
-        "primary_kind": "command"
+        "primary_kind": "surface"
       },
-      "code_role": "entrypoint",
-      "command_role": "script",
+      "code_role": "source_module",
+      "command_role": "none",
       "consumer_route": {
         "route_kind": "resource",
         "surface": "aoa-kag-mcp"
@@ -76386,9 +76665,9 @@
         "size_bytes": 11058
       },
       "mechanics_role": "part_script",
-      "observed_form": "command",
+      "observed_form": "file",
       "owner_return_route": {
-        "route_kind": "command_owner",
+        "route_kind": "source_owner",
         "surface": "mechanics/recurrence/parts/live-receipt-refresh/scripts/refresh_live_stats.py"
       },
       "provenance": {
@@ -76426,9 +76705,7 @@
           "git",
           "python"
         ],
-        "owner_commands": [
-          "python mechanics/recurrence/parts/live-receipt-refresh/scripts/refresh_live_stats.py"
-        ],
+        "owner_commands": [],
         "required_tools": [
           "python"
         ]
@@ -81399,13 +81676,13 @@
         "state": "current"
       },
       "identity": {
-        "content_hash": "9913b6bb589c67c529b9d4b72b5778740eac5c4f9db3a3e59c53c4f85c5a46e2",
+        "content_hash": "06b92f81108ff0f124e4b3994e83d73a64bee0dddb4aa073a05de5838ede58de",
         "git_ref": "git-index-source-tree",
         "id": "file:mechanics/titan/parts/memory-owner-bridge/contract.md:7b6ac4e0eb",
         "mime": "text/markdown",
         "path": "mechanics/titan/parts/memory-owner-bridge/CONTRACT.md",
         "repo": "aoa-stats",
-        "size_bytes": 351
+        "size_bytes": 832
       },
       "mechanics_role": "part_contract",
       "observed_form": "file",
@@ -81432,11 +81709,39 @@
       "refs": {
         "heading_refs": [
           {
-            "anchor": "contract",
+            "anchor": "titan-memory-owner-bridge-contract",
             "level": 1,
             "line": 1,
-            "ref": "mechanics/titan/parts/memory-owner-bridge/CONTRACT.md#contract",
-            "title": "Contract"
+            "ref": "mechanics/titan/parts/memory-owner-bridge/CONTRACT.md#titan-memory-owner-bridge-contract",
+            "title": "Titan memory-owner bridge contract"
+          },
+          {
+            "anchor": "input",
+            "level": 2,
+            "line": 3,
+            "ref": "mechanics/titan/parts/memory-owner-bridge/CONTRACT.md#input",
+            "title": "Input"
+          },
+          {
+            "anchor": "operation",
+            "level": 2,
+            "line": 9,
+            "ref": "mechanics/titan/parts/memory-owner-bridge/CONTRACT.md#operation",
+            "title": "Operation"
+          },
+          {
+            "anchor": "boundary",
+            "level": 2,
+            "line": 15,
+            "ref": "mechanics/titan/parts/memory-owner-bridge/CONTRACT.md#boundary",
+            "title": "Boundary"
+          },
+          {
+            "anchor": "crosswalk",
+            "level": 2,
+            "line": 20,
+            "ref": "mechanics/titan/parts/memory-owner-bridge/CONTRACT.md#crosswalk",
+            "title": "Crosswalk"
           }
         ],
         "line_refs": [
@@ -81446,7 +81751,7 @@
       },
       "signs": {
         "attestation_ref": "",
-        "digest": "9913b6bb589c67c529b9d4b72b5778740eac5c4f9db3a3e59c53c4f85c5a46e2",
+        "digest": "06b92f81108ff0f124e4b3994e83d73a64bee0dddb4aa073a05de5838ede58de",
         "signature_ref": "",
         "verification_state": "digest-only"
       },
@@ -81494,13 +81799,13 @@
         "state": "current"
       },
       "identity": {
-        "content_hash": "b6cf76454ea7c01e15639b8228810c69a18d37aa7b1e6071d21e298a78a068a0",
+        "content_hash": "6f72a9d58cfa6ccee5a0c67c2b5308d69ac1c1ae5c6c282069a5eab7c49612d1",
         "git_ref": "git-index-source-tree",
         "id": "file:mechanics/titan/parts/memory-owner-bridge/readme.md:b2d6a37953",
         "mime": "text/markdown",
         "path": "mechanics/titan/parts/memory-owner-bridge/README.md",
         "repo": "aoa-stats",
-        "size_bytes": 383
+        "size_bytes": 472
       },
       "mechanics_role": "part_doc",
       "observed_form": "file",
@@ -81541,7 +81846,7 @@
       },
       "signs": {
         "attestation_ref": "",
-        "digest": "b6cf76454ea7c01e15639b8228810c69a18d37aa7b1e6071d21e298a78a068a0",
+        "digest": "6f72a9d58cfa6ccee5a0c67c2b5308d69ac1c1ae5c6c282069a5eab7c49612d1",
         "signature_ref": "",
         "verification_state": "digest-only"
       },
@@ -81589,13 +81894,13 @@
         "state": "current"
       },
       "identity": {
-        "content_hash": "045aee7c7d783b6b29b902a7401549c850d272410838cace27b3a25efb441ff3",
+        "content_hash": "ac529d21fc658179e7dd539662834856035fc620a339d8bb52563ba5e83d8c04",
         "git_ref": "git-index-source-tree",
         "id": "file:mechanics/titan/parts/memory-owner-bridge/validation.md:630dca6676",
         "mime": "text/markdown",
         "path": "mechanics/titan/parts/memory-owner-bridge/VALIDATION.md",
         "repo": "aoa-stats",
-        "size_bytes": 443
+        "size_bytes": 471
       },
       "mechanics_role": "part_doc",
       "observed_form": "file",
@@ -81636,7 +81941,7 @@
       },
       "signs": {
         "attestation_ref": "",
-        "digest": "045aee7c7d783b6b29b902a7401549c850d272410838cace27b3a25efb441ff3",
+        "digest": "ac529d21fc658179e7dd539662834856035fc620a339d8bb52563ba5e83d8c04",
         "signature_ref": "",
         "verification_state": "digest-only"
       },
@@ -82086,13 +82391,13 @@
         "state": "current"
       },
       "identity": {
-        "content_hash": "9913b6bb589c67c529b9d4b72b5778740eac5c4f9db3a3e59c53c4f85c5a46e2",
+        "content_hash": "f546cc38a6e6ad9ebf5a976f1fc3dd7a740e46e691fabeb03c95b9f1fb6d4ff4",
         "git_ref": "git-index-source-tree",
         "id": "file:mechanics/titan/parts/runtime-console/contract.md:558f2a6b96",
         "mime": "text/markdown",
         "path": "mechanics/titan/parts/runtime-console/CONTRACT.md",
         "repo": "aoa-stats",
-        "size_bytes": 351
+        "size_bytes": 792
       },
       "mechanics_role": "part_contract",
       "observed_form": "file",
@@ -82119,11 +82424,39 @@
       "refs": {
         "heading_refs": [
           {
-            "anchor": "contract",
+            "anchor": "titan-runtime-console-stats-contract",
             "level": 1,
             "line": 1,
-            "ref": "mechanics/titan/parts/runtime-console/CONTRACT.md#contract",
-            "title": "Contract"
+            "ref": "mechanics/titan/parts/runtime-console/CONTRACT.md#titan-runtime-console-stats-contract",
+            "title": "Titan runtime-console stats contract"
+          },
+          {
+            "anchor": "input",
+            "level": 2,
+            "line": 3,
+            "ref": "mechanics/titan/parts/runtime-console/CONTRACT.md#input",
+            "title": "Input"
+          },
+          {
+            "anchor": "operation",
+            "level": 2,
+            "line": 8,
+            "ref": "mechanics/titan/parts/runtime-console/CONTRACT.md#operation",
+            "title": "Operation"
+          },
+          {
+            "anchor": "boundary",
+            "level": 2,
+            "line": 14,
+            "ref": "mechanics/titan/parts/runtime-console/CONTRACT.md#boundary",
+            "title": "Boundary"
+          },
+          {
+            "anchor": "crosswalk",
+            "level": 2,
+            "line": 20,
+            "ref": "mechanics/titan/parts/runtime-console/CONTRACT.md#crosswalk",
+            "title": "Crosswalk"
           }
         ],
         "line_refs": [
@@ -82133,7 +82466,7 @@
       },
       "signs": {
         "attestation_ref": "",
-        "digest": "9913b6bb589c67c529b9d4b72b5778740eac5c4f9db3a3e59c53c4f85c5a46e2",
+        "digest": "f546cc38a6e6ad9ebf5a976f1fc3dd7a740e46e691fabeb03c95b9f1fb6d4ff4",
         "signature_ref": "",
         "verification_state": "digest-only"
       },
@@ -82181,13 +82514,13 @@
         "state": "current"
       },
       "identity": {
-        "content_hash": "bd46259ca568d31835c0fb12f4296e810df4bf431c8ef0f0f2775e5ac9a1c31e",
+        "content_hash": "f6dc6d11d7d5314b952d5e7f4e501e817a9f6b6011e7b37af9bbb6a275aa20ba",
         "git_ref": "git-index-source-tree",
         "id": "file:mechanics/titan/parts/runtime-console/readme.md:c0e8de2f73",
         "mime": "text/markdown",
         "path": "mechanics/titan/parts/runtime-console/README.md",
         "repo": "aoa-stats",
-        "size_bytes": 365
+        "size_bytes": 356
       },
       "mechanics_role": "part_doc",
       "observed_form": "file",
@@ -82228,7 +82561,7 @@
       },
       "signs": {
         "attestation_ref": "",
-        "digest": "bd46259ca568d31835c0fb12f4296e810df4bf431c8ef0f0f2775e5ac9a1c31e",
+        "digest": "f6dc6d11d7d5314b952d5e7f4e501e817a9f6b6011e7b37af9bbb6a275aa20ba",
         "signature_ref": "",
         "verification_state": "digest-only"
       },
@@ -82276,13 +82609,13 @@
         "state": "current"
       },
       "identity": {
-        "content_hash": "045aee7c7d783b6b29b902a7401549c850d272410838cace27b3a25efb441ff3",
+        "content_hash": "7c8d97d8004cd9fb8572fd4788e54dfbc594fa850bb9376cdff6ce59eb71029a",
         "git_ref": "git-index-source-tree",
         "id": "file:mechanics/titan/parts/runtime-console/validation.md:23dad7832e",
         "mime": "text/markdown",
         "path": "mechanics/titan/parts/runtime-console/VALIDATION.md",
         "repo": "aoa-stats",
-        "size_bytes": 443
+        "size_bytes": 447
       },
       "mechanics_role": "part_doc",
       "observed_form": "file",
@@ -82323,7 +82656,7 @@
       },
       "signs": {
         "attestation_ref": "",
-        "digest": "045aee7c7d783b6b29b902a7401549c850d272410838cace27b3a25efb441ff3",
+        "digest": "7c8d97d8004cd9fb8572fd4788e54dfbc594fa850bb9376cdff6ce59eb71029a",
         "signature_ref": "",
         "verification_state": "digest-only"
       },
@@ -82582,13 +82915,13 @@
         "state": "current"
       },
       "identity": {
-        "content_hash": "6b33fb16194f08318e76bd713e73a54c6e941b3a10c0855fad026d8040f24722",
+        "content_hash": "af3ec5168c830c66fdfa274a88100cee6abe2e4582c45ecb64f23711d0da5eb0",
         "git_ref": "git-index-source-tree",
         "id": "file:mechanics/topology.json:c2f84a03b1",
         "mime": "application/json",
         "path": "mechanics/topology.json",
         "repo": "aoa-stats",
-        "size_bytes": 36951
+        "size_bytes": 38898
       },
       "mechanics_role": "mechanic_package",
       "observed_form": "file",
@@ -82621,7 +82954,7 @@
       },
       "signs": {
         "attestation_ref": "",
-        "digest": "6b33fb16194f08318e76bd713e73a54c6e941b3a10c0855fad026d8040f24722",
+        "digest": "af3ec5168c830c66fdfa274a88100cee6abe2e4582c45ecb64f23711d0da5eb0",
         "signature_ref": "",
         "verification_state": "digest-only"
       },
@@ -85647,7 +85980,7 @@
     {
       "abi": {
         "abi_epoch": "source",
-        "artifact_class": "script",
+        "artifact_class": "source_code",
         "compatibility": "stable",
         "contract_version": "none",
         "schema_version": "none"
@@ -85656,13 +85989,13 @@
         "scope": "public",
         "secrets_risk": "none"
       },
-      "artifact_kind": "script",
+      "artifact_kind": "source_code",
       "classification": {
         "confidence": "high",
-        "primary_kind": "command"
+        "primary_kind": "surface"
       },
-      "code_role": "entrypoint",
-      "command_role": "script",
+      "code_role": "source_module",
+      "command_role": "none",
       "consumer_route": {
         "route_kind": "resource",
         "surface": "aoa-kag-mcp"
@@ -85683,9 +86016,9 @@
         "size_bytes": 2349
       },
       "mechanics_role": "none",
-      "observed_form": "command",
+      "observed_form": "file",
       "owner_return_route": {
-        "route_kind": "command_owner",
+        "route_kind": "source_owner",
         "surface": "scripts/check_live_publishers.py"
       },
       "provenance": {
@@ -85723,9 +86056,7 @@
           "git",
           "python"
         ],
-        "owner_commands": [
-          "python scripts/check_live_publishers.py"
-        ],
+        "owner_commands": [],
         "required_tools": [
           "python"
         ]
@@ -85829,7 +86160,7 @@
     {
       "abi": {
         "abi_epoch": "source",
-        "artifact_class": "script",
+        "artifact_class": "source_code",
         "compatibility": "stable",
         "contract_version": "none",
         "schema_version": "none"
@@ -85838,13 +86169,13 @@
         "scope": "public",
         "secrets_risk": "none"
       },
-      "artifact_kind": "script",
+      "artifact_kind": "source_code",
       "classification": {
         "confidence": "high",
-        "primary_kind": "command"
+        "primary_kind": "surface"
       },
-      "code_role": "entrypoint",
-      "command_role": "script",
+      "code_role": "source_module",
+      "command_role": "none",
       "consumer_route": {
         "route_kind": "resource",
         "surface": "aoa-kag-mcp"
@@ -85865,9 +86196,9 @@
         "size_bytes": 2351
       },
       "mechanics_role": "none",
-      "observed_form": "command",
+      "observed_form": "file",
       "owner_return_route": {
-        "route_kind": "command_owner",
+        "route_kind": "source_owner",
         "surface": "scripts/install_live_refresh_units.py"
       },
       "provenance": {
@@ -85905,9 +86236,7 @@
           "git",
           "python"
         ],
-        "owner_commands": [
-          "python scripts/install_live_refresh_units.py"
-        ],
+        "owner_commands": [],
         "required_tools": [
           "python"
         ]
@@ -85920,7 +86249,7 @@
     {
       "abi": {
         "abi_epoch": "source",
-        "artifact_class": "script",
+        "artifact_class": "source_code",
         "compatibility": "stable",
         "contract_version": "none",
         "schema_version": "none"
@@ -85929,13 +86258,13 @@
         "scope": "public",
         "secrets_risk": "none"
       },
-      "artifact_kind": "script",
+      "artifact_kind": "source_code",
       "classification": {
         "confidence": "high",
-        "primary_kind": "command"
+        "primary_kind": "surface"
       },
-      "code_role": "entrypoint",
-      "command_role": "script",
+      "code_role": "source_module",
+      "command_role": "none",
       "consumer_route": {
         "route_kind": "resource",
         "surface": "aoa-kag-mcp"
@@ -85956,9 +86285,9 @@
         "size_bytes": 2346
       },
       "mechanics_role": "none",
-      "observed_form": "command",
+      "observed_form": "file",
       "owner_return_route": {
-        "route_kind": "command_owner",
+        "route_kind": "source_owner",
         "surface": "scripts/refresh_live_stats.py"
       },
       "provenance": {
@@ -85996,9 +86325,7 @@
           "git",
           "python"
         ],
-        "owner_commands": [
-          "python scripts/refresh_live_stats.py"
-        ],
+        "owner_commands": [],
         "required_tools": [
           "python"
         ]
@@ -86402,13 +86729,13 @@
         "state": "current"
       },
       "identity": {
-        "content_hash": "69d99ab27b3dc4f7623cd2bb154988bb7a1a1d10b54e92cc0840da9df60a584a",
+        "content_hash": "14fdf95c14c87a88a5f02ff76d4875397758b00d901c1812f9158fa65d8a3250",
         "git_ref": "git-index-source-tree",
         "id": "file:scripts/validate_mechanics_topology.py:2914a033b8",
         "mime": "text/x-python",
         "path": "scripts/validate_mechanics_topology.py",
         "repo": "aoa-stats",
-        "size_bytes": 21978
+        "size_bytes": 25366
       },
       "mechanics_role": "none",
       "observed_form": "command",
@@ -86441,7 +86768,7 @@
       },
       "signs": {
         "attestation_ref": "",
-        "digest": "69d99ab27b3dc4f7623cd2bb154988bb7a1a1d10b54e92cc0840da9df60a584a",
+        "digest": "14fdf95c14c87a88a5f02ff76d4875397758b00d901c1812f9158fa65d8a3250",
         "signature_ref": "",
         "verification_state": "digest-only"
       },
@@ -86766,13 +87093,13 @@
         "state": "current"
       },
       "identity": {
-        "content_hash": "d7ff5b4c4b7ba4ac90f75fa7b25fe691d27a0f5d03e5f50950f271f4cf0d3520",
+        "content_hash": "3295680b18bc2365ff5c016dea7b2464cf2f412c377e957c2fb265ca6956e781",
         "git_ref": "git-index-source-tree",
         "id": "file:scripts/validate_stats_source_home.py:6be6e8ef8c",
         "mime": "text/x-python",
         "path": "scripts/validate_stats_source_home.py",
         "repo": "aoa-stats",
-        "size_bytes": 25298
+        "size_bytes": 43585
       },
       "mechanics_role": "none",
       "observed_form": "command",
@@ -86805,7 +87132,7 @@
       },
       "signs": {
         "attestation_ref": "",
-        "digest": "d7ff5b4c4b7ba4ac90f75fa7b25fe691d27a0f5d03e5f50950f271f4cf0d3520",
+        "digest": "3295680b18bc2365ff5c016dea7b2464cf2f412c377e957c2fb265ca6956e781",
         "signature_ref": "",
         "verification_state": "digest-only"
       },
@@ -87959,13 +88286,13 @@
         "state": "current"
       },
       "identity": {
-        "content_hash": "99ba01c41c36023a4a45ba786c3c50e9d1b4083a618f0436b5be08eb0517b2b6",
+        "content_hash": "a83e6b2dc7db6c4935d4b8d3e10533150e2bae36bfea3c9c997e6ddda56bfbca",
         "git_ref": "git-index-source-tree",
         "id": "file:stats/agents.md:3f9a778b41",
         "mime": "text/markdown",
         "path": "stats/AGENTS.md",
         "repo": "aoa-stats",
-        "size_bytes": 3198
+        "size_bytes": 3325
       },
       "mechanics_role": "none",
       "observed_form": "file",
@@ -88029,21 +88356,21 @@
           {
             "anchor": "cross-route-law",
             "level": 2,
-            "line": 51,
+            "line": 53,
             "ref": "stats/AGENTS.md#cross-route-law",
             "title": "Cross-route law"
           },
           {
             "anchor": "current-root-posture",
             "level": 2,
-            "line": 65,
+            "line": 67,
             "ref": "stats/AGENTS.md#current-root-posture",
             "title": "Current root posture"
           },
           {
             "anchor": "verify",
             "level": 2,
-            "line": 72,
+            "line": 74,
             "ref": "stats/AGENTS.md#verify",
             "title": "Verify"
           }
@@ -88055,7 +88382,7 @@
       },
       "signs": {
         "attestation_ref": "",
-        "digest": "99ba01c41c36023a4a45ba786c3c50e9d1b4083a618f0436b5be08eb0517b2b6",
+        "digest": "a83e6b2dc7db6c4935d4b8d3e10533150e2bae36bfea3c9c997e6ddda56bfbca",
         "signature_ref": "",
         "verification_state": "digest-only"
       },
@@ -88103,13 +88430,13 @@
         "state": "current"
       },
       "identity": {
-        "content_hash": "7bca157fd59dceb9a3e01ed937e87a65064679936029e74769f18c6ce440a45a",
+        "content_hash": "068523558a9b3c89b543df02f7257f24444e1c86dc8cb8efe3ad1dff8dd322c8",
         "git_ref": "git-index-source-tree",
         "id": "file:stats/readme.md:6bac6d2ff5",
         "mime": "text/markdown",
         "path": "stats/README.md",
         "repo": "aoa-stats",
-        "size_bytes": 3290
+        "size_bytes": 3446
       },
       "mechanics_role": "none",
       "observed_form": "file",
@@ -88152,14 +88479,14 @@
           {
             "anchor": "families",
             "level": 2,
-            "line": 40,
+            "line": 42,
             "ref": "stats/README.md#families",
             "title": "Families"
           },
           {
             "anchor": "current-canonical-routes",
             "level": 2,
-            "line": 52,
+            "line": 54,
             "ref": "stats/README.md#current-canonical-routes",
             "title": "Current canonical routes"
           }
@@ -88171,7 +88498,7 @@
       },
       "signs": {
         "attestation_ref": "",
-        "digest": "7bca157fd59dceb9a3e01ed937e87a65064679936029e74769f18c6ce440a45a",
+        "digest": "068523558a9b3c89b543df02f7257f24444e1c86dc8cb8efe3ad1dff8dd322c8",
         "signature_ref": "",
         "verification_state": "digest-only"
       },
@@ -88787,13 +89114,13 @@
         "state": "current"
       },
       "identity": {
-        "content_hash": "f0fde4c26a706cf2e1a32aa63802cfdbbdeb93cd900fc470424bbe494a279277",
+        "content_hash": "5c44312065363d4d3eef6cc1d43bd6e3406102a76a88012d279f10b851001252",
         "git_ref": "git-index-source-tree",
         "id": "file:stats/operation-contracts/agents.md:59daffdcbc",
         "mime": "text/markdown",
         "path": "stats/operation-contracts/AGENTS.md",
         "repo": "aoa-stats",
-        "size_bytes": 909
+        "size_bytes": 1911
       },
       "mechanics_role": "none",
       "observed_form": "file",
@@ -88834,16 +89161,23 @@
             "title": "Role"
           },
           {
+            "anchor": "read-before-editing",
+            "level": 2,
+            "line": 14,
+            "ref": "stats/operation-contracts/AGENTS.md#read-before-editing",
+            "title": "Read before editing"
+          },
+          {
             "anchor": "law",
             "level": 2,
-            "line": 12,
+            "line": 23,
             "ref": "stats/operation-contracts/AGENTS.md#law",
             "title": "Law"
           },
           {
             "anchor": "verify",
             "level": 2,
-            "line": 21,
+            "line": 42,
             "ref": "stats/operation-contracts/AGENTS.md#verify",
             "title": "Verify"
           }
@@ -88855,7 +89189,7 @@
       },
       "signs": {
         "attestation_ref": "",
-        "digest": "f0fde4c26a706cf2e1a32aa63802cfdbbdeb93cd900fc470424bbe494a279277",
+        "digest": "5c44312065363d4d3eef6cc1d43bd6e3406102a76a88012d279f10b851001252",
         "signature_ref": "",
         "verification_state": "digest-only"
       },
@@ -88903,13 +89237,13 @@
         "state": "current"
       },
       "identity": {
-        "content_hash": "608850ec6cb430cb5940e6bd771fc3a580569d8f4036fd0df83a1f441924f5df",
+        "content_hash": "acd18c219862dabda7a9a029843170d5f1300a49e3ed089a7be4098b6c3c67b4",
         "git_ref": "git-index-source-tree",
         "id": "file:stats/operation-contracts/readme.md:a87ef0f29a",
         "mime": "text/markdown",
         "path": "stats/operation-contracts/README.md",
         "repo": "aoa-stats",
-        "size_bytes": 687
+        "size_bytes": 1716
       },
       "mechanics_role": "none",
       "observed_form": "file",
@@ -88950,7 +89284,7 @@
       },
       "signs": {
         "attestation_ref": "",
-        "digest": "608850ec6cb430cb5940e6bd771fc3a580569d8f4036fd0df83a1f441924f5df",
+        "digest": "acd18c219862dabda7a9a029843170d5f1300a49e3ed089a7be4098b6c3c67b4",
         "signature_ref": "",
         "verification_state": "digest-only"
       },
@@ -88962,6 +89296,1430 @@
         ],
         "owner_commands": [],
         "required_tools": []
+      },
+      "validator_route": {
+        "route_kind": "source_fast",
+        "surface": "aoa-kag:scripts/validate_kag.py"
+      }
+    },
+    {
+      "abi": {
+        "abi_epoch": "source",
+        "artifact_class": "config",
+        "compatibility": "stable",
+        "contract_version": "none",
+        "schema_version": "aoa_stats_operation_contract_source_v1"
+      },
+      "access": {
+        "scope": "public",
+        "secrets_risk": "none"
+      },
+      "artifact_kind": "config",
+      "classification": {
+        "confidence": "high",
+        "primary_kind": "surface"
+      },
+      "code_role": "none",
+      "command_role": "none",
+      "consumer_route": {
+        "route_kind": "resource",
+        "surface": "aoa-kag-mcp"
+      },
+      "document_role": "none",
+      "freshness": {
+        "checked_ref": "git-index-source-tree",
+        "mode": "source_snapshot",
+        "state": "current"
+      },
+      "identity": {
+        "content_hash": "11578df2fa055316c556dfbc99443b3d7a59830df60d90cec2f714ff71b78dc5",
+        "git_ref": "git-index-source-tree",
+        "id": "file:stats/operation-contracts/active/agon.epistemic-observability.operation.json:fe07f0b22d",
+        "mime": "application/json",
+        "path": "stats/operation-contracts/active/agon.epistemic-observability.operation.json",
+        "repo": "aoa-stats",
+        "size_bytes": 1973
+      },
+      "mechanics_role": "none",
+      "observed_form": "file",
+      "owner_return_route": {
+        "route_kind": "source_owner",
+        "surface": "stats/operation-contracts/active/agon.epistemic-observability.operation.json"
+      },
+      "provenance": {
+        "generated_by": "",
+        "materials": [],
+        "observed_by": "aoa-kag:scripts/generate_repo_local_kag_index.py",
+        "source_refs": [
+          {
+            "authority": "authored_source",
+            "path": "stats/operation-contracts/active/agon.epistemic-observability.operation.json",
+            "repo": "aoa-stats",
+            "role": "primary"
+          }
+        ],
+        "validated_by": [
+          "aoa-kag:scripts/validate_kag.py"
+        ]
+      },
+      "refs": {
+        "heading_refs": [],
+        "line_refs": [
+          "stats/operation-contracts/active/agon.epistemic-observability.operation.json:1"
+        ],
+        "path_ref": "stats/operation-contracts/active/agon.epistemic-observability.operation.json"
+      },
+      "signs": {
+        "attestation_ref": "",
+        "digest": "11578df2fa055316c556dfbc99443b3d7a59830df60d90cec2f714ff71b78dc5",
+        "signature_ref": "",
+        "verification_state": "digest-only"
+      },
+      "surface_state": "authored_source",
+      "toolchain": {
+        "detected_tools": [
+          "git",
+          "python"
+        ],
+        "owner_commands": [],
+        "required_tools": [
+          "jq"
+        ]
+      },
+      "validator_route": {
+        "route_kind": "source_fast",
+        "surface": "aoa-kag:scripts/validate_kag.py"
+      }
+    },
+    {
+      "abi": {
+        "abi_epoch": "source",
+        "artifact_class": "config",
+        "compatibility": "stable",
+        "contract_version": "none",
+        "schema_version": "aoa_stats_operation_contract_source_v1"
+      },
+      "access": {
+        "scope": "public",
+        "secrets_risk": "none"
+      },
+      "artifact_kind": "config",
+      "classification": {
+        "confidence": "high",
+        "primary_kind": "surface"
+      },
+      "code_role": "none",
+      "command_role": "none",
+      "consumer_route": {
+        "route_kind": "resource",
+        "surface": "aoa-kag-mcp"
+      },
+      "document_role": "none",
+      "freshness": {
+        "checked_ref": "git-index-source-tree",
+        "mode": "source_snapshot",
+        "state": "current"
+      },
+      "identity": {
+        "content_hash": "5890eef93f3b7f6effcd77c9048cc8b27811c6fb87769a3d42750a7542541c9d",
+        "git_ref": "git-index-source-tree",
+        "id": "file:stats/operation-contracts/active/agon.kag-observability.operation.json:2511c0ea86",
+        "mime": "application/json",
+        "path": "stats/operation-contracts/active/agon.kag-observability.operation.json",
+        "repo": "aoa-stats",
+        "size_bytes": 2931
+      },
+      "mechanics_role": "none",
+      "observed_form": "file",
+      "owner_return_route": {
+        "route_kind": "source_owner",
+        "surface": "stats/operation-contracts/active/agon.kag-observability.operation.json"
+      },
+      "provenance": {
+        "generated_by": "",
+        "materials": [],
+        "observed_by": "aoa-kag:scripts/generate_repo_local_kag_index.py",
+        "source_refs": [
+          {
+            "authority": "authored_source",
+            "path": "stats/operation-contracts/active/agon.kag-observability.operation.json",
+            "repo": "aoa-stats",
+            "role": "primary"
+          }
+        ],
+        "validated_by": [
+          "aoa-kag:scripts/validate_kag.py"
+        ]
+      },
+      "refs": {
+        "heading_refs": [],
+        "line_refs": [
+          "stats/operation-contracts/active/agon.kag-observability.operation.json:1"
+        ],
+        "path_ref": "stats/operation-contracts/active/agon.kag-observability.operation.json"
+      },
+      "signs": {
+        "attestation_ref": "",
+        "digest": "5890eef93f3b7f6effcd77c9048cc8b27811c6fb87769a3d42750a7542541c9d",
+        "signature_ref": "",
+        "verification_state": "digest-only"
+      },
+      "surface_state": "authored_source",
+      "toolchain": {
+        "detected_tools": [
+          "git",
+          "python"
+        ],
+        "owner_commands": [],
+        "required_tools": [
+          "jq"
+        ]
+      },
+      "validator_route": {
+        "route_kind": "source_fast",
+        "surface": "aoa-kag:scripts/validate_kag.py"
+      }
+    },
+    {
+      "abi": {
+        "abi_epoch": "source",
+        "artifact_class": "config",
+        "compatibility": "stable",
+        "contract_version": "none",
+        "schema_version": "aoa_stats_operation_contract_source_v1"
+      },
+      "access": {
+        "scope": "public",
+        "secrets_risk": "none"
+      },
+      "artifact_kind": "config",
+      "classification": {
+        "confidence": "high",
+        "primary_kind": "surface"
+      },
+      "code_role": "none",
+      "command_role": "none",
+      "consumer_route": {
+        "route_kind": "resource",
+        "surface": "aoa-kag-mcp"
+      },
+      "document_role": "none",
+      "freshness": {
+        "checked_ref": "git-index-source-tree",
+        "mode": "source_snapshot",
+        "state": "current"
+      },
+      "identity": {
+        "content_hash": "b5d1aefc2529f6ebde423740659b329704acaa1b38c017ec540794a96bc82782",
+        "git_ref": "git-index-source-tree",
+        "id": "file:stats/operation-contracts/active/agon.mechanical-trial-observability.operation.json:8c9b092f2f",
+        "mime": "application/json",
+        "path": "stats/operation-contracts/active/agon.mechanical-trial-observability.operation.json",
+        "repo": "aoa-stats",
+        "size_bytes": 3014
+      },
+      "mechanics_role": "none",
+      "observed_form": "file",
+      "owner_return_route": {
+        "route_kind": "source_owner",
+        "surface": "stats/operation-contracts/active/agon.mechanical-trial-observability.operation.json"
+      },
+      "provenance": {
+        "generated_by": "",
+        "materials": [],
+        "observed_by": "aoa-kag:scripts/generate_repo_local_kag_index.py",
+        "source_refs": [
+          {
+            "authority": "authored_source",
+            "path": "stats/operation-contracts/active/agon.mechanical-trial-observability.operation.json",
+            "repo": "aoa-stats",
+            "role": "primary"
+          }
+        ],
+        "validated_by": [
+          "aoa-kag:scripts/validate_kag.py"
+        ]
+      },
+      "refs": {
+        "heading_refs": [],
+        "line_refs": [
+          "stats/operation-contracts/active/agon.mechanical-trial-observability.operation.json:1"
+        ],
+        "path_ref": "stats/operation-contracts/active/agon.mechanical-trial-observability.operation.json"
+      },
+      "signs": {
+        "attestation_ref": "",
+        "digest": "b5d1aefc2529f6ebde423740659b329704acaa1b38c017ec540794a96bc82782",
+        "signature_ref": "",
+        "verification_state": "digest-only"
+      },
+      "surface_state": "authored_source",
+      "toolchain": {
+        "detected_tools": [
+          "git",
+          "python"
+        ],
+        "owner_commands": [],
+        "required_tools": [
+          "jq"
+        ]
+      },
+      "validator_route": {
+        "route_kind": "source_fast",
+        "surface": "aoa-kag:scripts/validate_kag.py"
+      }
+    },
+    {
+      "abi": {
+        "abi_epoch": "source",
+        "artifact_class": "config",
+        "compatibility": "stable",
+        "contract_version": "none",
+        "schema_version": "aoa_stats_operation_contract_source_v1"
+      },
+      "access": {
+        "scope": "public",
+        "secrets_risk": "none"
+      },
+      "artifact_kind": "config",
+      "classification": {
+        "confidence": "high",
+        "primary_kind": "surface"
+      },
+      "code_role": "none",
+      "command_role": "none",
+      "consumer_route": {
+        "route_kind": "resource",
+        "surface": "aoa-kag-mcp"
+      },
+      "document_role": "none",
+      "freshness": {
+        "checked_ref": "git-index-source-tree",
+        "mode": "source_snapshot",
+        "state": "current"
+      },
+      "identity": {
+        "content_hash": "125dc07c434494967e77b9b4763f6e64c9798f30f4918c3fd9874686f3af17d0",
+        "git_ref": "git-index-source-tree",
+        "id": "file:stats/operation-contracts/active/agon.retention-rank-observability.operation.json:fdae638589",
+        "mime": "application/json",
+        "path": "stats/operation-contracts/active/agon.retention-rank-observability.operation.json",
+        "repo": "aoa-stats",
+        "size_bytes": 1983
+      },
+      "mechanics_role": "none",
+      "observed_form": "file",
+      "owner_return_route": {
+        "route_kind": "source_owner",
+        "surface": "stats/operation-contracts/active/agon.retention-rank-observability.operation.json"
+      },
+      "provenance": {
+        "generated_by": "",
+        "materials": [],
+        "observed_by": "aoa-kag:scripts/generate_repo_local_kag_index.py",
+        "source_refs": [
+          {
+            "authority": "authored_source",
+            "path": "stats/operation-contracts/active/agon.retention-rank-observability.operation.json",
+            "repo": "aoa-stats",
+            "role": "primary"
+          }
+        ],
+        "validated_by": [
+          "aoa-kag:scripts/validate_kag.py"
+        ]
+      },
+      "refs": {
+        "heading_refs": [],
+        "line_refs": [
+          "stats/operation-contracts/active/agon.retention-rank-observability.operation.json:1"
+        ],
+        "path_ref": "stats/operation-contracts/active/agon.retention-rank-observability.operation.json"
+      },
+      "signs": {
+        "attestation_ref": "",
+        "digest": "125dc07c434494967e77b9b4763f6e64c9798f30f4918c3fd9874686f3af17d0",
+        "signature_ref": "",
+        "verification_state": "digest-only"
+      },
+      "surface_state": "authored_source",
+      "toolchain": {
+        "detected_tools": [
+          "git",
+          "python"
+        ],
+        "owner_commands": [],
+        "required_tools": [
+          "jq"
+        ]
+      },
+      "validator_route": {
+        "route_kind": "source_fast",
+        "surface": "aoa-kag:scripts/validate_kag.py"
+      }
+    },
+    {
+      "abi": {
+        "abi_epoch": "source",
+        "artifact_class": "config",
+        "compatibility": "stable",
+        "contract_version": "none",
+        "schema_version": "aoa_stats_operation_contract_source_v1"
+      },
+      "access": {
+        "scope": "public",
+        "secrets_risk": "none"
+      },
+      "artifact_kind": "config",
+      "classification": {
+        "confidence": "high",
+        "primary_kind": "surface"
+      },
+      "code_role": "none",
+      "command_role": "none",
+      "consumer_route": {
+        "route_kind": "resource",
+        "surface": "aoa-kag-mcp"
+      },
+      "document_role": "none",
+      "freshness": {
+        "checked_ref": "git-index-source-tree",
+        "mode": "source_snapshot",
+        "state": "current"
+      },
+      "identity": {
+        "content_hash": "b3fdef981a0e31d926669f3de7f14a530aa79e2aeff01234ef49c8f14d68d4f9",
+        "git_ref": "git-index-source-tree",
+        "id": "file:stats/operation-contracts/active/agon.schools-lineages-campaigns-observability.operation.json:7655a1ea0f",
+        "mime": "application/json",
+        "path": "stats/operation-contracts/active/agon.schools-lineages-campaigns-observability.operation.json",
+        "repo": "aoa-stats",
+        "size_bytes": 2081
+      },
+      "mechanics_role": "none",
+      "observed_form": "file",
+      "owner_return_route": {
+        "route_kind": "source_owner",
+        "surface": "stats/operation-contracts/active/agon.schools-lineages-campaigns-observability.operation.json"
+      },
+      "provenance": {
+        "generated_by": "",
+        "materials": [],
+        "observed_by": "aoa-kag:scripts/generate_repo_local_kag_index.py",
+        "source_refs": [
+          {
+            "authority": "authored_source",
+            "path": "stats/operation-contracts/active/agon.schools-lineages-campaigns-observability.operation.json",
+            "repo": "aoa-stats",
+            "role": "primary"
+          }
+        ],
+        "validated_by": [
+          "aoa-kag:scripts/validate_kag.py"
+        ]
+      },
+      "refs": {
+        "heading_refs": [],
+        "line_refs": [
+          "stats/operation-contracts/active/agon.schools-lineages-campaigns-observability.operation.json:1"
+        ],
+        "path_ref": "stats/operation-contracts/active/agon.schools-lineages-campaigns-observability.operation.json"
+      },
+      "signs": {
+        "attestation_ref": "",
+        "digest": "b3fdef981a0e31d926669f3de7f14a530aa79e2aeff01234ef49c8f14d68d4f9",
+        "signature_ref": "",
+        "verification_state": "digest-only"
+      },
+      "surface_state": "authored_source",
+      "toolchain": {
+        "detected_tools": [
+          "git",
+          "python"
+        ],
+        "owner_commands": [],
+        "required_tools": [
+          "jq"
+        ]
+      },
+      "validator_route": {
+        "route_kind": "source_fast",
+        "surface": "aoa-kag:scripts/validate_kag.py"
+      }
+    },
+    {
+      "abi": {
+        "abi_epoch": "source",
+        "artifact_class": "config",
+        "compatibility": "stable",
+        "contract_version": "none",
+        "schema_version": "aoa_stats_operation_contract_source_v1"
+      },
+      "access": {
+        "scope": "public",
+        "secrets_risk": "none"
+      },
+      "artifact_kind": "config",
+      "classification": {
+        "confidence": "high",
+        "primary_kind": "surface"
+      },
+      "code_role": "none",
+      "command_role": "none",
+      "consumer_route": {
+        "route_kind": "resource",
+        "surface": "aoa-kag-mcp"
+      },
+      "document_role": "none",
+      "freshness": {
+        "checked_ref": "git-index-source-tree",
+        "mode": "source_snapshot",
+        "state": "current"
+      },
+      "identity": {
+        "content_hash": "a387f584ab3f31ca389f70fb137487f2f25f2357a2a0013e2383093eaf19592c",
+        "git_ref": "git-index-source-tree",
+        "id": "file:stats/operation-contracts/active/agon.sophian-observability.operation.json:fc9683e980",
+        "mime": "application/json",
+        "path": "stats/operation-contracts/active/agon.sophian-observability.operation.json",
+        "repo": "aoa-stats",
+        "size_bytes": 2311
+      },
+      "mechanics_role": "none",
+      "observed_form": "file",
+      "owner_return_route": {
+        "route_kind": "source_owner",
+        "surface": "stats/operation-contracts/active/agon.sophian-observability.operation.json"
+      },
+      "provenance": {
+        "generated_by": "",
+        "materials": [],
+        "observed_by": "aoa-kag:scripts/generate_repo_local_kag_index.py",
+        "source_refs": [
+          {
+            "authority": "authored_source",
+            "path": "stats/operation-contracts/active/agon.sophian-observability.operation.json",
+            "repo": "aoa-stats",
+            "role": "primary"
+          }
+        ],
+        "validated_by": [
+          "aoa-kag:scripts/validate_kag.py"
+        ]
+      },
+      "refs": {
+        "heading_refs": [],
+        "line_refs": [
+          "stats/operation-contracts/active/agon.sophian-observability.operation.json:1"
+        ],
+        "path_ref": "stats/operation-contracts/active/agon.sophian-observability.operation.json"
+      },
+      "signs": {
+        "attestation_ref": "",
+        "digest": "a387f584ab3f31ca389f70fb137487f2f25f2357a2a0013e2383093eaf19592c",
+        "signature_ref": "",
+        "verification_state": "digest-only"
+      },
+      "surface_state": "authored_source",
+      "toolchain": {
+        "detected_tools": [
+          "git",
+          "python"
+        ],
+        "owner_commands": [],
+        "required_tools": [
+          "jq"
+        ]
+      },
+      "validator_route": {
+        "route_kind": "source_fast",
+        "surface": "aoa-kag:scripts/validate_kag.py"
+      }
+    },
+    {
+      "abi": {
+        "abi_epoch": "source",
+        "artifact_class": "config",
+        "compatibility": "stable",
+        "contract_version": "none",
+        "schema_version": "aoa_stats_operation_contract_source_v1"
+      },
+      "access": {
+        "scope": "public",
+        "secrets_risk": "none"
+      },
+      "artifact_kind": "config",
+      "classification": {
+        "confidence": "high",
+        "primary_kind": "surface"
+      },
+      "code_role": "none",
+      "command_role": "none",
+      "consumer_route": {
+        "route_kind": "resource",
+        "surface": "aoa-kag-mcp"
+      },
+      "document_role": "none",
+      "freshness": {
+        "checked_ref": "git-index-source-tree",
+        "mode": "source_snapshot",
+        "state": "current"
+      },
+      "identity": {
+        "content_hash": "e32c81978566d70f627cc75bfa55ef9c1142353bc2339e2779aa09def8fd09dd",
+        "git_ref": "git-index-source-tree",
+        "id": "file:stats/operation-contracts/active/agon.stats-prebinding.operation.json:e5df95bc79",
+        "mime": "application/json",
+        "path": "stats/operation-contracts/active/agon.stats-prebinding.operation.json",
+        "repo": "aoa-stats",
+        "size_bytes": 2623
+      },
+      "mechanics_role": "none",
+      "observed_form": "file",
+      "owner_return_route": {
+        "route_kind": "source_owner",
+        "surface": "stats/operation-contracts/active/agon.stats-prebinding.operation.json"
+      },
+      "provenance": {
+        "generated_by": "",
+        "materials": [],
+        "observed_by": "aoa-kag:scripts/generate_repo_local_kag_index.py",
+        "source_refs": [
+          {
+            "authority": "authored_source",
+            "path": "stats/operation-contracts/active/agon.stats-prebinding.operation.json",
+            "repo": "aoa-stats",
+            "role": "primary"
+          }
+        ],
+        "validated_by": [
+          "aoa-kag:scripts/validate_kag.py"
+        ]
+      },
+      "refs": {
+        "heading_refs": [],
+        "line_refs": [
+          "stats/operation-contracts/active/agon.stats-prebinding.operation.json:1"
+        ],
+        "path_ref": "stats/operation-contracts/active/agon.stats-prebinding.operation.json"
+      },
+      "signs": {
+        "attestation_ref": "",
+        "digest": "e32c81978566d70f627cc75bfa55ef9c1142353bc2339e2779aa09def8fd09dd",
+        "signature_ref": "",
+        "verification_state": "digest-only"
+      },
+      "surface_state": "authored_source",
+      "toolchain": {
+        "detected_tools": [
+          "git",
+          "python"
+        ],
+        "owner_commands": [],
+        "required_tools": [
+          "jq"
+        ]
+      },
+      "validator_route": {
+        "route_kind": "source_fast",
+        "surface": "aoa-kag:scripts/validate_kag.py"
+      }
+    },
+    {
+      "abi": {
+        "abi_epoch": "source",
+        "artifact_class": "config",
+        "compatibility": "stable",
+        "contract_version": "none",
+        "schema_version": "aoa_stats_operation_contract_source_v1"
+      },
+      "access": {
+        "scope": "public",
+        "secrets_risk": "none"
+      },
+      "artifact_kind": "config",
+      "classification": {
+        "confidence": "high",
+        "primary_kind": "surface"
+      },
+      "code_role": "none",
+      "command_role": "none",
+      "consumer_route": {
+        "route_kind": "resource",
+        "surface": "aoa-kag-mcp"
+      },
+      "document_role": "none",
+      "freshness": {
+        "checked_ref": "git-index-source-tree",
+        "mode": "source_snapshot",
+        "state": "current"
+      },
+      "identity": {
+        "content_hash": "c84af55caf035118223c6cfcb4b736ff5a6bb7c372073f5313dfb7c2fb6f5afd",
+        "git_ref": "git-index-source-tree",
+        "id": "file:stats/operation-contracts/active/agon.verdict-delta-scar-observability.operation.json:55ffd6d572",
+        "mime": "application/json",
+        "path": "stats/operation-contracts/active/agon.verdict-delta-scar-observability.operation.json",
+        "repo": "aoa-stats",
+        "size_bytes": 2736
+      },
+      "mechanics_role": "none",
+      "observed_form": "file",
+      "owner_return_route": {
+        "route_kind": "source_owner",
+        "surface": "stats/operation-contracts/active/agon.verdict-delta-scar-observability.operation.json"
+      },
+      "provenance": {
+        "generated_by": "",
+        "materials": [],
+        "observed_by": "aoa-kag:scripts/generate_repo_local_kag_index.py",
+        "source_refs": [
+          {
+            "authority": "authored_source",
+            "path": "stats/operation-contracts/active/agon.verdict-delta-scar-observability.operation.json",
+            "repo": "aoa-stats",
+            "role": "primary"
+          }
+        ],
+        "validated_by": [
+          "aoa-kag:scripts/validate_kag.py"
+        ]
+      },
+      "refs": {
+        "heading_refs": [],
+        "line_refs": [
+          "stats/operation-contracts/active/agon.verdict-delta-scar-observability.operation.json:1"
+        ],
+        "path_ref": "stats/operation-contracts/active/agon.verdict-delta-scar-observability.operation.json"
+      },
+      "signs": {
+        "attestation_ref": "",
+        "digest": "c84af55caf035118223c6cfcb4b736ff5a6bb7c372073f5313dfb7c2fb6f5afd",
+        "signature_ref": "",
+        "verification_state": "digest-only"
+      },
+      "surface_state": "authored_source",
+      "toolchain": {
+        "detected_tools": [
+          "git",
+          "python"
+        ],
+        "owner_commands": [],
+        "required_tools": [
+          "jq"
+        ]
+      },
+      "validator_route": {
+        "route_kind": "source_fast",
+        "surface": "aoa-kag:scripts/validate_kag.py"
+      }
+    },
+    {
+      "abi": {
+        "abi_epoch": "source",
+        "artifact_class": "config",
+        "compatibility": "stable",
+        "contract_version": "none",
+        "schema_version": "aoa_stats_operation_contract_source_v1"
+      },
+      "access": {
+        "scope": "public",
+        "secrets_risk": "none"
+      },
+      "artifact_kind": "config",
+      "classification": {
+        "confidence": "high",
+        "primary_kind": "surface"
+      },
+      "code_role": "none",
+      "command_role": "none",
+      "consumer_route": {
+        "route_kind": "resource",
+        "surface": "aoa-kag-mcp"
+      },
+      "document_role": "none",
+      "freshness": {
+        "checked_ref": "git-index-source-tree",
+        "mode": "source_snapshot",
+        "state": "current"
+      },
+      "identity": {
+        "content_hash": "55a50740ce842250454be24f964d5dd775151cf5f56dac203acf1df96b1cb6b7",
+        "git_ref": "git-index-source-tree",
+        "id": "file:stats/operation-contracts/active/antifragility.via-negativa.operation.json:2d49a676a4",
+        "mime": "application/json",
+        "path": "stats/operation-contracts/active/antifragility.via-negativa.operation.json",
+        "repo": "aoa-stats",
+        "size_bytes": 1931
+      },
+      "mechanics_role": "none",
+      "observed_form": "file",
+      "owner_return_route": {
+        "route_kind": "source_owner",
+        "surface": "stats/operation-contracts/active/antifragility.via-negativa.operation.json"
+      },
+      "provenance": {
+        "generated_by": "",
+        "materials": [],
+        "observed_by": "aoa-kag:scripts/generate_repo_local_kag_index.py",
+        "source_refs": [
+          {
+            "authority": "authored_source",
+            "path": "stats/operation-contracts/active/antifragility.via-negativa.operation.json",
+            "repo": "aoa-stats",
+            "role": "primary"
+          }
+        ],
+        "validated_by": [
+          "aoa-kag:scripts/validate_kag.py"
+        ]
+      },
+      "refs": {
+        "heading_refs": [],
+        "line_refs": [
+          "stats/operation-contracts/active/antifragility.via-negativa.operation.json:1"
+        ],
+        "path_ref": "stats/operation-contracts/active/antifragility.via-negativa.operation.json"
+      },
+      "signs": {
+        "attestation_ref": "",
+        "digest": "55a50740ce842250454be24f964d5dd775151cf5f56dac203acf1df96b1cb6b7",
+        "signature_ref": "",
+        "verification_state": "digest-only"
+      },
+      "surface_state": "authored_source",
+      "toolchain": {
+        "detected_tools": [
+          "git",
+          "python"
+        ],
+        "owner_commands": [],
+        "required_tools": [
+          "jq"
+        ]
+      },
+      "validator_route": {
+        "route_kind": "source_fast",
+        "surface": "aoa-kag:scripts/validate_kag.py"
+      }
+    },
+    {
+      "abi": {
+        "abi_epoch": "source",
+        "artifact_class": "config",
+        "compatibility": "stable",
+        "contract_version": "none",
+        "schema_version": "aoa_stats_operation_contract_source_v1"
+      },
+      "access": {
+        "scope": "public",
+        "secrets_risk": "none"
+      },
+      "artifact_kind": "config",
+      "classification": {
+        "confidence": "high",
+        "primary_kind": "surface"
+      },
+      "code_role": "none",
+      "command_role": "none",
+      "consumer_route": {
+        "route_kind": "resource",
+        "surface": "aoa-kag-mcp"
+      },
+      "document_role": "none",
+      "freshness": {
+        "checked_ref": "git-index-source-tree",
+        "mode": "source_snapshot",
+        "state": "current"
+      },
+      "identity": {
+        "content_hash": "dde03b789c368f3c9afb0c59e2b20362d5600686ea76c6b62a6be009522cdb8a",
+        "git_ref": "git-index-source-tree",
+        "id": "file:stats/operation-contracts/active/experience.adoption-federation-harvest.operation.json:0eb7530984",
+        "mime": "application/json",
+        "path": "stats/operation-contracts/active/experience.adoption-federation-harvest.operation.json",
+        "repo": "aoa-stats",
+        "size_bytes": 2783
+      },
+      "mechanics_role": "none",
+      "observed_form": "file",
+      "owner_return_route": {
+        "route_kind": "source_owner",
+        "surface": "stats/operation-contracts/active/experience.adoption-federation-harvest.operation.json"
+      },
+      "provenance": {
+        "generated_by": "",
+        "materials": [],
+        "observed_by": "aoa-kag:scripts/generate_repo_local_kag_index.py",
+        "source_refs": [
+          {
+            "authority": "authored_source",
+            "path": "stats/operation-contracts/active/experience.adoption-federation-harvest.operation.json",
+            "repo": "aoa-stats",
+            "role": "primary"
+          }
+        ],
+        "validated_by": [
+          "aoa-kag:scripts/validate_kag.py"
+        ]
+      },
+      "refs": {
+        "heading_refs": [],
+        "line_refs": [
+          "stats/operation-contracts/active/experience.adoption-federation-harvest.operation.json:1"
+        ],
+        "path_ref": "stats/operation-contracts/active/experience.adoption-federation-harvest.operation.json"
+      },
+      "signs": {
+        "attestation_ref": "",
+        "digest": "dde03b789c368f3c9afb0c59e2b20362d5600686ea76c6b62a6be009522cdb8a",
+        "signature_ref": "",
+        "verification_state": "digest-only"
+      },
+      "surface_state": "authored_source",
+      "toolchain": {
+        "detected_tools": [
+          "git",
+          "python"
+        ],
+        "owner_commands": [],
+        "required_tools": [
+          "jq"
+        ]
+      },
+      "validator_route": {
+        "route_kind": "source_fast",
+        "surface": "aoa-kag:scripts/validate_kag.py"
+      }
+    },
+    {
+      "abi": {
+        "abi_epoch": "source",
+        "artifact_class": "config",
+        "compatibility": "stable",
+        "contract_version": "none",
+        "schema_version": "aoa_stats_operation_contract_source_v1"
+      },
+      "access": {
+        "scope": "public",
+        "secrets_risk": "none"
+      },
+      "artifact_kind": "config",
+      "classification": {
+        "confidence": "high",
+        "primary_kind": "surface"
+      },
+      "code_role": "none",
+      "command_role": "none",
+      "consumer_route": {
+        "route_kind": "resource",
+        "surface": "aoa-kag-mcp"
+      },
+      "document_role": "none",
+      "freshness": {
+        "checked_ref": "git-index-source-tree",
+        "mode": "source_snapshot",
+        "state": "current"
+      },
+      "identity": {
+        "content_hash": "58e954cfe655aca4bdebd7dfaf4c12cb6f27196e3b8b90e4706c7ffb70f2fbcf",
+        "git_ref": "git-index-source-tree",
+        "id": "file:stats/operation-contracts/active/experience.governance-runtime-signals.operation.json:094800cc80",
+        "mime": "application/json",
+        "path": "stats/operation-contracts/active/experience.governance-runtime-signals.operation.json",
+        "repo": "aoa-stats",
+        "size_bytes": 2281
+      },
+      "mechanics_role": "none",
+      "observed_form": "file",
+      "owner_return_route": {
+        "route_kind": "source_owner",
+        "surface": "stats/operation-contracts/active/experience.governance-runtime-signals.operation.json"
+      },
+      "provenance": {
+        "generated_by": "",
+        "materials": [],
+        "observed_by": "aoa-kag:scripts/generate_repo_local_kag_index.py",
+        "source_refs": [
+          {
+            "authority": "authored_source",
+            "path": "stats/operation-contracts/active/experience.governance-runtime-signals.operation.json",
+            "repo": "aoa-stats",
+            "role": "primary"
+          }
+        ],
+        "validated_by": [
+          "aoa-kag:scripts/validate_kag.py"
+        ]
+      },
+      "refs": {
+        "heading_refs": [],
+        "line_refs": [
+          "stats/operation-contracts/active/experience.governance-runtime-signals.operation.json:1"
+        ],
+        "path_ref": "stats/operation-contracts/active/experience.governance-runtime-signals.operation.json"
+      },
+      "signs": {
+        "attestation_ref": "",
+        "digest": "58e954cfe655aca4bdebd7dfaf4c12cb6f27196e3b8b90e4706c7ffb70f2fbcf",
+        "signature_ref": "",
+        "verification_state": "digest-only"
+      },
+      "surface_state": "authored_source",
+      "toolchain": {
+        "detected_tools": [
+          "git",
+          "python"
+        ],
+        "owner_commands": [],
+        "required_tools": [
+          "jq"
+        ]
+      },
+      "validator_route": {
+        "route_kind": "source_fast",
+        "surface": "aoa-kag:scripts/validate_kag.py"
+      }
+    },
+    {
+      "abi": {
+        "abi_epoch": "source",
+        "artifact_class": "config",
+        "compatibility": "stable",
+        "contract_version": "none",
+        "schema_version": "aoa_stats_operation_contract_source_v1"
+      },
+      "access": {
+        "scope": "public",
+        "secrets_risk": "none"
+      },
+      "artifact_kind": "config",
+      "classification": {
+        "confidence": "high",
+        "primary_kind": "surface"
+      },
+      "code_role": "none",
+      "command_role": "none",
+      "consumer_route": {
+        "route_kind": "resource",
+        "surface": "aoa-kag-mcp"
+      },
+      "document_role": "none",
+      "freshness": {
+        "checked_ref": "git-index-source-tree",
+        "mode": "source_snapshot",
+        "state": "current"
+      },
+      "identity": {
+        "content_hash": "1c011db31838f683fd1d1e54c7bb064307545928c1bc4a6fef95ab72bc5826a6",
+        "git_ref": "git-index-source-tree",
+        "id": "file:stats/operation-contracts/active/experience.micro-friction-receipts.operation.json:e84a0412e2",
+        "mime": "application/json",
+        "path": "stats/operation-contracts/active/experience.micro-friction-receipts.operation.json",
+        "repo": "aoa-stats",
+        "size_bytes": 1988
+      },
+      "mechanics_role": "none",
+      "observed_form": "file",
+      "owner_return_route": {
+        "route_kind": "source_owner",
+        "surface": "stats/operation-contracts/active/experience.micro-friction-receipts.operation.json"
+      },
+      "provenance": {
+        "generated_by": "",
+        "materials": [],
+        "observed_by": "aoa-kag:scripts/generate_repo_local_kag_index.py",
+        "source_refs": [
+          {
+            "authority": "authored_source",
+            "path": "stats/operation-contracts/active/experience.micro-friction-receipts.operation.json",
+            "repo": "aoa-stats",
+            "role": "primary"
+          }
+        ],
+        "validated_by": [
+          "aoa-kag:scripts/validate_kag.py"
+        ]
+      },
+      "refs": {
+        "heading_refs": [],
+        "line_refs": [
+          "stats/operation-contracts/active/experience.micro-friction-receipts.operation.json:1"
+        ],
+        "path_ref": "stats/operation-contracts/active/experience.micro-friction-receipts.operation.json"
+      },
+      "signs": {
+        "attestation_ref": "",
+        "digest": "1c011db31838f683fd1d1e54c7bb064307545928c1bc4a6fef95ab72bc5826a6",
+        "signature_ref": "",
+        "verification_state": "digest-only"
+      },
+      "surface_state": "authored_source",
+      "toolchain": {
+        "detected_tools": [
+          "git",
+          "python"
+        ],
+        "owner_commands": [],
+        "required_tools": [
+          "jq"
+        ]
+      },
+      "validator_route": {
+        "route_kind": "source_fast",
+        "surface": "aoa-kag:scripts/validate_kag.py"
+      }
+    },
+    {
+      "abi": {
+        "abi_epoch": "source",
+        "artifact_class": "config",
+        "compatibility": "stable",
+        "contract_version": "none",
+        "schema_version": "aoa_stats_operation_contract_source_v1"
+      },
+      "access": {
+        "scope": "public",
+        "secrets_risk": "none"
+      },
+      "artifact_kind": "config",
+      "classification": {
+        "confidence": "high",
+        "primary_kind": "surface"
+      },
+      "code_role": "none",
+      "command_role": "none",
+      "consumer_route": {
+        "route_kind": "resource",
+        "surface": "aoa-kag-mcp"
+      },
+      "document_role": "none",
+      "freshness": {
+        "checked_ref": "git-index-source-tree",
+        "mode": "source_snapshot",
+        "state": "current"
+      },
+      "identity": {
+        "content_hash": "30182c40da7c4b7a065a9c73d9f70e64985273ed54d073981379fee377af1d04",
+        "git_ref": "git-index-source-tree",
+        "id": "file:stats/operation-contracts/active/experience.release-watch-office-health.operation.json:c101608c7d",
+        "mime": "application/json",
+        "path": "stats/operation-contracts/active/experience.release-watch-office-health.operation.json",
+        "repo": "aoa-stats",
+        "size_bytes": 2744
+      },
+      "mechanics_role": "none",
+      "observed_form": "file",
+      "owner_return_route": {
+        "route_kind": "source_owner",
+        "surface": "stats/operation-contracts/active/experience.release-watch-office-health.operation.json"
+      },
+      "provenance": {
+        "generated_by": "",
+        "materials": [],
+        "observed_by": "aoa-kag:scripts/generate_repo_local_kag_index.py",
+        "source_refs": [
+          {
+            "authority": "authored_source",
+            "path": "stats/operation-contracts/active/experience.release-watch-office-health.operation.json",
+            "repo": "aoa-stats",
+            "role": "primary"
+          }
+        ],
+        "validated_by": [
+          "aoa-kag:scripts/validate_kag.py"
+        ]
+      },
+      "refs": {
+        "heading_refs": [],
+        "line_refs": [
+          "stats/operation-contracts/active/experience.release-watch-office-health.operation.json:1"
+        ],
+        "path_ref": "stats/operation-contracts/active/experience.release-watch-office-health.operation.json"
+      },
+      "signs": {
+        "attestation_ref": "",
+        "digest": "30182c40da7c4b7a065a9c73d9f70e64985273ed54d073981379fee377af1d04",
+        "signature_ref": "",
+        "verification_state": "digest-only"
+      },
+      "surface_state": "authored_source",
+      "toolchain": {
+        "detected_tools": [
+          "git",
+          "python"
+        ],
+        "owner_commands": [],
+        "required_tools": [
+          "jq"
+        ]
+      },
+      "validator_route": {
+        "route_kind": "source_fast",
+        "surface": "aoa-kag:scripts/validate_kag.py"
+      }
+    },
+    {
+      "abi": {
+        "abi_epoch": "source",
+        "artifact_class": "config",
+        "compatibility": "stable",
+        "contract_version": "none",
+        "schema_version": "aoa_stats_operation_contract_source_v1"
+      },
+      "access": {
+        "scope": "public",
+        "secrets_risk": "none"
+      },
+      "artifact_kind": "config",
+      "classification": {
+        "confidence": "high",
+        "primary_kind": "surface"
+      },
+      "code_role": "none",
+      "command_role": "none",
+      "consumer_route": {
+        "route_kind": "resource",
+        "surface": "aoa-kag-mcp"
+      },
+      "document_role": "none",
+      "freshness": {
+        "checked_ref": "git-index-source-tree",
+        "mode": "source_snapshot",
+        "state": "current"
+      },
+      "identity": {
+        "content_hash": "61355b1b7d44f20f7dd8043259f5c53e07767bd3134b8acb13f2a8a00dfbdf1f",
+        "git_ref": "git-index-source-tree",
+        "id": "file:stats/operation-contracts/active/titan.memory-owner-bridge.operation.json:4859a20fad",
+        "mime": "application/json",
+        "path": "stats/operation-contracts/active/titan.memory-owner-bridge.operation.json",
+        "repo": "aoa-stats",
+        "size_bytes": 2967
+      },
+      "mechanics_role": "none",
+      "observed_form": "file",
+      "owner_return_route": {
+        "route_kind": "source_owner",
+        "surface": "stats/operation-contracts/active/titan.memory-owner-bridge.operation.json"
+      },
+      "provenance": {
+        "generated_by": "",
+        "materials": [],
+        "observed_by": "aoa-kag:scripts/generate_repo_local_kag_index.py",
+        "source_refs": [
+          {
+            "authority": "authored_source",
+            "path": "stats/operation-contracts/active/titan.memory-owner-bridge.operation.json",
+            "repo": "aoa-stats",
+            "role": "primary"
+          }
+        ],
+        "validated_by": [
+          "aoa-kag:scripts/validate_kag.py"
+        ]
+      },
+      "refs": {
+        "heading_refs": [],
+        "line_refs": [
+          "stats/operation-contracts/active/titan.memory-owner-bridge.operation.json:1"
+        ],
+        "path_ref": "stats/operation-contracts/active/titan.memory-owner-bridge.operation.json"
+      },
+      "signs": {
+        "attestation_ref": "",
+        "digest": "61355b1b7d44f20f7dd8043259f5c53e07767bd3134b8acb13f2a8a00dfbdf1f",
+        "signature_ref": "",
+        "verification_state": "digest-only"
+      },
+      "surface_state": "authored_source",
+      "toolchain": {
+        "detected_tools": [
+          "git",
+          "python"
+        ],
+        "owner_commands": [],
+        "required_tools": [
+          "jq"
+        ]
+      },
+      "validator_route": {
+        "route_kind": "source_fast",
+        "surface": "aoa-kag:scripts/validate_kag.py"
+      }
+    },
+    {
+      "abi": {
+        "abi_epoch": "source",
+        "artifact_class": "config",
+        "compatibility": "stable",
+        "contract_version": "none",
+        "schema_version": "aoa_stats_operation_contract_source_v1"
+      },
+      "access": {
+        "scope": "public",
+        "secrets_risk": "none"
+      },
+      "artifact_kind": "config",
+      "classification": {
+        "confidence": "high",
+        "primary_kind": "surface"
+      },
+      "code_role": "none",
+      "command_role": "none",
+      "consumer_route": {
+        "route_kind": "resource",
+        "surface": "aoa-kag-mcp"
+      },
+      "document_role": "none",
+      "freshness": {
+        "checked_ref": "git-index-source-tree",
+        "mode": "source_snapshot",
+        "state": "current"
+      },
+      "identity": {
+        "content_hash": "0716cac3b3e2cbfea6a7ac7b3f0f2973c25c04413a440fe5f1758fbdd7300fc1",
+        "git_ref": "git-index-source-tree",
+        "id": "file:stats/operation-contracts/active/titan.runtime-console.operation.json:f7a9e59338",
+        "mime": "application/json",
+        "path": "stats/operation-contracts/active/titan.runtime-console.operation.json",
+        "repo": "aoa-stats",
+        "size_bytes": 2706
+      },
+      "mechanics_role": "none",
+      "observed_form": "file",
+      "owner_return_route": {
+        "route_kind": "source_owner",
+        "surface": "stats/operation-contracts/active/titan.runtime-console.operation.json"
+      },
+      "provenance": {
+        "generated_by": "",
+        "materials": [],
+        "observed_by": "aoa-kag:scripts/generate_repo_local_kag_index.py",
+        "source_refs": [
+          {
+            "authority": "authored_source",
+            "path": "stats/operation-contracts/active/titan.runtime-console.operation.json",
+            "repo": "aoa-stats",
+            "role": "primary"
+          }
+        ],
+        "validated_by": [
+          "aoa-kag:scripts/validate_kag.py"
+        ]
+      },
+      "refs": {
+        "heading_refs": [],
+        "line_refs": [
+          "stats/operation-contracts/active/titan.runtime-console.operation.json:1"
+        ],
+        "path_ref": "stats/operation-contracts/active/titan.runtime-console.operation.json"
+      },
+      "signs": {
+        "attestation_ref": "",
+        "digest": "0716cac3b3e2cbfea6a7ac7b3f0f2973c25c04413a440fe5f1758fbdd7300fc1",
+        "signature_ref": "",
+        "verification_state": "digest-only"
+      },
+      "surface_state": "authored_source",
+      "toolchain": {
+        "detected_tools": [
+          "git",
+          "python"
+        ],
+        "owner_commands": [],
+        "required_tools": [
+          "jq"
+        ]
+      },
+      "validator_route": {
+        "route_kind": "source_fast",
+        "surface": "aoa-kag:scripts/validate_kag.py"
+      }
+    },
+    {
+      "abi": {
+        "abi_epoch": "source",
+        "artifact_class": "schema",
+        "compatibility": "stable",
+        "contract_version": "https://abyss.local/aoa-stats/operation-contract-source-v1.schema.json",
+        "schema_version": "https://json-schema.org/draft/2020-12/schema"
+      },
+      "access": {
+        "scope": "public",
+        "secrets_risk": "none"
+      },
+      "artifact_kind": "schema",
+      "classification": {
+        "confidence": "high",
+        "primary_kind": "surface"
+      },
+      "code_role": "none",
+      "command_role": "none",
+      "consumer_route": {
+        "route_kind": "resource",
+        "surface": "aoa-kag-mcp"
+      },
+      "document_role": "none",
+      "freshness": {
+        "checked_ref": "git-index-source-tree",
+        "mode": "source_snapshot",
+        "state": "current"
+      },
+      "identity": {
+        "content_hash": "38a5a0e3b398b3027184d66b502bad1cc0368135678840b04d5b267b26ea4810",
+        "git_ref": "git-index-source-tree",
+        "id": "file:stats/operation-contracts/operation-contract.schema.json:38163d7d64",
+        "mime": "application/json",
+        "path": "stats/operation-contracts/operation-contract.schema.json",
+        "repo": "aoa-stats",
+        "size_bytes": 6209
+      },
+      "mechanics_role": "none",
+      "observed_form": "file",
+      "owner_return_route": {
+        "route_kind": "schema_owner",
+        "surface": "stats/operation-contracts/operation-contract.schema.json"
+      },
+      "provenance": {
+        "generated_by": "",
+        "materials": [],
+        "observed_by": "aoa-kag:scripts/generate_repo_local_kag_index.py",
+        "source_refs": [
+          {
+            "authority": "authored_source",
+            "path": "stats/operation-contracts/operation-contract.schema.json",
+            "repo": "aoa-stats",
+            "role": "primary"
+          }
+        ],
+        "validated_by": [
+          "aoa-kag:scripts/validate_kag.py"
+        ]
+      },
+      "refs": {
+        "heading_refs": [],
+        "line_refs": [
+          "stats/operation-contracts/operation-contract.schema.json:1"
+        ],
+        "path_ref": "stats/operation-contracts/operation-contract.schema.json"
+      },
+      "signs": {
+        "attestation_ref": "",
+        "digest": "38a5a0e3b398b3027184d66b502bad1cc0368135678840b04d5b267b26ea4810",
+        "signature_ref": "",
+        "verification_state": "digest-only"
+      },
+      "surface_state": "authored_source",
+      "toolchain": {
+        "detected_tools": [
+          "git",
+          "python"
+        ],
+        "owner_commands": [],
+        "required_tools": [
+          "jq"
+        ]
       },
       "validator_route": {
         "route_kind": "source_fast",
@@ -91626,13 +93384,13 @@
         "state": "current"
       },
       "identity": {
-        "content_hash": "ed76826e596ba07df968490635b6fface6644da2434f53155b7af0d9d3f4083e",
+        "content_hash": "1a3aa2dd7bef5a7949cef7b44557f9a5e7916e574b84c7a53971bfa9965db319",
         "git_ref": "git-index-source-tree",
         "id": "file:stats/source_home.manifest.json:41b237ff45",
         "mime": "application/json",
         "path": "stats/source_home.manifest.json",
         "repo": "aoa-stats",
-        "size_bytes": 23549
+        "size_bytes": 24122
       },
       "mechanics_role": "none",
       "observed_form": "file",
@@ -91665,7 +93423,7 @@
       },
       "signs": {
         "attestation_ref": "",
-        "digest": "ed76826e596ba07df968490635b6fface6644da2434f53155b7af0d9d3f4083e",
+        "digest": "1a3aa2dd7bef5a7949cef7b44557f9a5e7916e574b84c7a53971bfa9965db319",
         "signature_ref": "",
         "verification_state": "digest-only"
       },
@@ -92806,13 +94564,13 @@
         "state": "current"
       },
       "identity": {
-        "content_hash": "a362c4142b5ffc819b8a8118714adfbd698bb4713ba469495399a0e472efbda4",
+        "content_hash": "832b178cb70334f3f452f6341fb014e1ba745c89fd90d00cdb129948a124f520",
         "git_ref": "git-index-source-tree",
         "id": "file:tests/test_mechanics_topology.py:915b0d0cb3",
         "mime": "text/x-python",
         "path": "tests/test_mechanics_topology.py",
         "repo": "aoa-stats",
-        "size_bytes": 6176
+        "size_bytes": 10313
       },
       "mechanics_role": "none",
       "observed_form": "command",
@@ -92845,7 +94603,7 @@
       },
       "signs": {
         "attestation_ref": "",
-        "digest": "a362c4142b5ffc819b8a8118714adfbd698bb4713ba469495399a0e472efbda4",
+        "digest": "832b178cb70334f3f452f6341fb014e1ba745c89fd90d00cdb129948a124f520",
         "signature_ref": "",
         "verification_state": "digest-only"
       },
@@ -93079,13 +94837,13 @@
         "state": "current"
       },
       "identity": {
-        "content_hash": "69bb17a54f9f1bf8aa31c3f59de8b2f8725a8af781666036625fa42440140a77",
+        "content_hash": "bbc47142522c6b5d8fba813c7ba3c39b58910f29fa077896e485e5a356290f9e",
         "git_ref": "git-index-source-tree",
         "id": "file:tests/test_stats_source_home.py:a642c9216e",
         "mime": "text/x-python",
         "path": "tests/test_stats_source_home.py",
         "repo": "aoa-stats",
-        "size_bytes": 4463
+        "size_bytes": 14912
       },
       "mechanics_role": "none",
       "observed_form": "command",
@@ -93118,7 +94876,7 @@
       },
       "signs": {
         "attestation_ref": "",
-        "digest": "69bb17a54f9f1bf8aa31c3f59de8b2f8725a8af781666036625fa42440140a77",
+        "digest": "bbc47142522c6b5d8fba813c7ba3c39b58910f29fa077896e485e5a356290f9e",
         "signature_ref": "",
         "verification_state": "digest-only"
       },

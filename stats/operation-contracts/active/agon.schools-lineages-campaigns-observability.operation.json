@@ -1,0 +1,36 @@
+{
+  "schema_version": "aoa_stats_operation_contract_source_v1",
+  "lifecycle": "active",
+  "operation_id": "agon.schools-lineages-campaigns-observability",
+  "publication_posture": "non_catalog",
+  "mechanic_route": "mechanics/agon/parts/schools-lineages-campaigns-observability",
+  "payload_class": "schools-lineages-campaigns-observability-stats-operation",
+  "primary_question": "Which campaign, lineage, school, rivalry, branch, doctrine, consensus, and closeout pressures are declared as candidate observation aids?",
+  "input_posture": "seed_registry_compiler",
+  "observation_rule": "Compile only declared counts, pressure, health, and drift candidates; no school, lineage, campaign, branch, doctrine, or owner event is bound as observed source truth.",
+  "owner_truth_inputs": [
+    {
+      "owner_repo": "Agents-of-Abyss",
+      "truth_scope": "Agon school, lineage, campaign, branch, doctrine, and closeout meaning",
+      "binding": "symbolic_unbound"
+    }
+  ],
+  "result_posture": "retained_compatibility_registry",
+  "authority_ceiling": "The operation may publish candidate observation declarations but cannot declare a school, canonize a lineage, open or close a campaign, rank actors, promote a branch, rewrite doctrine, or establish truth.",
+  "consumer_risk": "high",
+  "non_catalog_reason": "The result is a compatibility registry of candidate categories rather than a catalog read model over bound campaign or lineage evidence.",
+  "owner_return_routes": [
+    {
+      "repo": "Agents-of-Abyss",
+      "surface": "mechanics/agon",
+      "route_kind": "authored_meaning"
+    }
+  ],
+  "prohibited_inferences": [
+    "A named school or lineage candidate is an authority or canon surface.",
+    "Campaign health or closeout pressure grants closure or selects a winner.",
+    "Counts or pressure authorize rank, punishment, doctrine change, or promotion."
+  ],
+  "mechanic_contract_ref": "mechanics/agon/parts/schools-lineages-campaigns-observability/CONTRACT.md",
+  "validation_ref": "mechanics/agon/parts/schools-lineages-campaigns-observability/VALIDATION.md"
+}

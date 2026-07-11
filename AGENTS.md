@@ -15,7 +15,8 @@ Dashboards are lanterns, not sovereigns.
 This repository owns:
 
 - the stable meaning and contracts of stats-authored read models
-- the source-family posture of active non-catalog stats operation contracts
+- one authored question, evidence posture, authority ceiling, and owner-return
+  route for each active non-catalog stats operation contract
 - the shared receipt envelope and event-kind vocabulary needed by those models
 - deterministic projection, refresh, and validation mechanics around those
   source contracts

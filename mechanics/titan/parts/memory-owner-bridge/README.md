@@ -1,8 +1,11 @@
 # memory-owner-bridge
 
-Documents Titan memory derivation and bridge observations without owning memory truth.
+Documents candidate Titan receipt and memory-bridge projections without owning
+memory truth.
 
-This part owns its operation route and the localized payload roots declared in
-`mechanics/topology.json`. Its stats source family owns the bounded meaning;
-public schemas and generated outputs stay at their declared publication paths
-when consumers depend on those paths.
+Start with `docs/TITAN_RECEIPT_DERIVATION.md` and
+`schemas/titan_memory_metrics.schema.json`. The source-authored question,
+evidence maturity, and return to Titan and memory owners live at
+`stats/operation-contracts/active/titan.memory-owner-bridge.operation.json`.
+This part currently claims documentation and a schema, not a builder or live
+projection.

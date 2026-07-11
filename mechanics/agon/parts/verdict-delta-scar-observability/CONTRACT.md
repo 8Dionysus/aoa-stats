@@ -21,5 +21,6 @@ A deterministic derived registry published at
 ## Crosswalk
 
 This non-catalog observation contract cross-routes to
-`stats/operation-contracts/`; the reciprocal route is enforced by
+`stats/operation-contracts/active/agon.verdict-delta-scar-observability.operation.json`;
+the reciprocal route is enforced by
 `mechanics/topology.json`.

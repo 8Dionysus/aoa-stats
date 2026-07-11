@@ -1,0 +1,56 @@
+{
+  "schema_version": "aoa_stats_operation_contract_source_v1",
+  "lifecycle": "active",
+  "operation_id": "titan.runtime-console",
+  "publication_posture": "non_catalog",
+  "mechanic_route": "mechanics/titan/parts/runtime-console",
+  "payload_class": "runtime-console-stats-operation",
+  "primary_question": "Which Titan session, console, event, approval, Forge, Delta, closeout, memory-candidate, risk, violation, and validation measures may be described without runtime authority?",
+  "input_posture": "documentation_projection_spec",
+  "observation_rule": "Treat the documented console and runtime metric vocabulary as a projection specification only; no receipt stream, session state, gate state, service state, or validation event is bound or computed.",
+  "owner_truth_inputs": [
+    {
+      "owner_repo": "aoa-agents",
+      "truth_scope": "Titan identity, role, Forge, Delta, and gate meaning",
+      "binding": "symbolic_unbound"
+    },
+    {
+      "owner_repo": "aoa-sdk",
+      "truth_scope": "Titan session, console, event, approval, closeout, and receipt helper contracts",
+      "binding": "symbolic_unbound"
+    },
+    {
+      "owner_repo": "abyss-stack",
+      "truth_scope": "Live runtime and service state",
+      "binding": "symbolic_unbound"
+    }
+  ],
+  "result_posture": "part_local_projection_spec",
+  "authority_ceiling": "The operation may document candidate runtime and console projections but cannot own session truth, activate Forge or Delta, approve an action, mutate a receipt, control a service, or establish identity, proof, routing, gate, or workflow truth.",
+  "consumer_risk": "high",
+  "non_catalog_reason": "The part is a documentation-level projection specification with no active computed public read model.",
+  "owner_return_routes": [
+    {
+      "repo": "aoa-agents",
+      "surface": "mechanics/titan/parts/incarnation-spine/docs/operator-console-boundary.md",
+      "route_kind": "authored_meaning"
+    },
+    {
+      "repo": "aoa-sdk",
+      "surface": "mechanics/titan/parts/operator-console-helper-contracts/CONTRACT.md",
+      "route_kind": "source_export"
+    },
+    {
+      "repo": "abyss-stack",
+      "surface": "mechanics/runtime-lifecycle/parts/logs-status/README.md",
+      "route_kind": "runtime"
+    }
+  ],
+  "prohibited_inferences": [
+    "A documented console metric proves current session, service, gate, or validation state.",
+    "Forge or Delta counts authorize activation or judgment.",
+    "Stats may mutate receipts, approve actions, control runtime, or define Titan identity."
+  ],
+  "mechanic_contract_ref": "mechanics/titan/parts/runtime-console/CONTRACT.md",
+  "validation_ref": "mechanics/titan/parts/runtime-console/VALIDATION.md"
+}

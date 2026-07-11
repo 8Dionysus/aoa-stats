@@ -1,0 +1,66 @@
+{
+  "schema_version": "aoa_stats_operation_contract_source_v1",
+  "lifecycle": "active",
+  "operation_id": "titan.memory-owner-bridge",
+  "publication_posture": "non_catalog",
+  "mechanic_route": "mechanics/titan/parts/memory-owner-bridge",
+  "payload_class": "memory-owner-bridge-stats-operation",
+  "primary_question": "Which Titan session, gate, closeout, memory, recall, redaction, candidate, owner-route, and bridge measures may be described as weaker projections?",
+  "input_posture": "documentation_projection_spec",
+  "observation_rule": "Treat the documented metric vocabulary as a projection specification only; no Titan receipt, evaluation output, memory record, gate event, or owner route is bound or computed by this part.",
+  "owner_truth_inputs": [
+    {
+      "owner_repo": "aoa-agents",
+      "truth_scope": "Titan identity, role, cohort, gate, and owner-mechanic meaning",
+      "binding": "symbolic_unbound"
+    },
+    {
+      "owner_repo": "aoa-sdk",
+      "truth_scope": "Titan session and receipt helper contracts",
+      "binding": "symbolic_unbound"
+    },
+    {
+      "owner_repo": "aoa-evals",
+      "truth_scope": "Titan seed-canary and future scorer alignment, without a current full verdict surface",
+      "binding": "symbolic_unbound"
+    },
+    {
+      "owner_repo": "aoa-memo",
+      "truth_scope": "Durable memory truth, recall, redaction, and confirmation state",
+      "binding": "symbolic_unbound"
+    }
+  ],
+  "result_posture": "part_local_projection_spec",
+  "authority_ceiling": "The operation may document candidate projection fields but cannot own memory truth, Titan identity, role meaning, gate state, session truth, proof, routing, or workflow state.",
+  "consumer_risk": "high",
+  "non_catalog_reason": "The part is a documentation-level projection specification with no active computed public surface.",
+  "owner_return_routes": [
+    {
+      "repo": "aoa-agents",
+      "surface": "mechanics/titan/parts/role-bearing/config/role-classes.v0.json",
+      "route_kind": "authored_meaning"
+    },
+    {
+      "repo": "aoa-sdk",
+      "surface": "mechanics/titan/parts/incarnation-identity-runtime-helper-contracts/CONTRACT.md",
+      "route_kind": "source_export"
+    },
+    {
+      "repo": "aoa-evals",
+      "surface": "mechanics/titan/parts/seed-boundary/README.md",
+      "route_kind": "proof"
+    },
+    {
+      "repo": "aoa-memo",
+      "surface": "mechanics/titan/parts/recall-and-remembrance-posture/CONTRACT.md",
+      "route_kind": "memory"
+    }
+  ],
+  "prohibited_inferences": [
+    "A documented metric proves that a receipt, memory record, recall, redaction, or gate event exists.",
+    "Counts establish Titan identity, role, cohort, or owner authority.",
+    "Stats may confirm memory, open a gate, or replace proof and workflow owners."
+  ],
+  "mechanic_contract_ref": "mechanics/titan/parts/memory-owner-bridge/CONTRACT.md",
+  "validation_ref": "mechanics/titan/parts/memory-owner-bridge/VALIDATION.md"
+}

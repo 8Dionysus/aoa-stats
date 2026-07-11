@@ -1,0 +1,46 @@
+{
+  "schema_version": "aoa_stats_operation_contract_source_v1",
+  "lifecycle": "active",
+  "operation_id": "experience.governance-runtime-signals",
+  "publication_posture": "non_catalog",
+  "mechanic_route": "mechanics/experience/parts/governance-runtime-signals",
+  "payload_class": "governance-runtime-signals-stats-operation",
+  "primary_question": "Which appeal, policy, veto, governance-queue, and runtime-queue observations may be represented as bounded derived contract shapes?",
+  "input_posture": "schema_example_contracts",
+  "observation_rule": "Constrain illustrative governance summaries and queue observations; no live governance event, decision, authority grant, queue state, stay, seal, or replay result is bound.",
+  "owner_truth_inputs": [
+    {
+      "owner_repo": "Agents-of-Abyss",
+      "truth_scope": "Experience governance, appeal, policy, veto, vote, and review meaning",
+      "binding": "symbolic_unbound"
+    },
+    {
+      "owner_repo": "abyss-stack",
+      "truth_scope": "Runtime queue and live service state",
+      "binding": "symbolic_unbound"
+    }
+  ],
+  "result_posture": "part_local_schema_contracts",
+  "authority_ceiling": "The operation may define derived summary contracts but cannot decide an appeal, write policy, exercise a veto, seal a vote, issue a stay, mutate a runtime queue, or replace owner governance authority.",
+  "consumer_risk": "high",
+  "non_catalog_reason": "The part contains several schema/example contracts and no single generated catalog read model.",
+  "owner_return_routes": [
+    {
+      "repo": "Agents-of-Abyss",
+      "surface": "mechanics/experience/parts/governance-polis/CONTRACT.md",
+      "route_kind": "authored_meaning"
+    },
+    {
+      "repo": "abyss-stack",
+      "surface": "mechanics/experience-runtime/README.md",
+      "route_kind": "runtime"
+    }
+  ],
+  "prohibited_inferences": [
+    "A governance summary is a policy decision, vote, appeal result, veto, or stay order.",
+    "Queue counts grant priority or mutate runtime state.",
+    "Schema-valid examples prove that a governance event occurred."
+  ],
+  "mechanic_contract_ref": "mechanics/experience/parts/governance-runtime-signals/CONTRACT.md",
+  "validation_ref": "mechanics/experience/parts/governance-runtime-signals/VALIDATION.md"
+}

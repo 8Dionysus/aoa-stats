@@ -47,8 +47,9 @@ not by path depth alone.
 - the receipt admission registry and bounded fixture used to exercise the
   shared envelope
 - one profile per active or deferred read model under `stats/read-models/`
-- a source-family route for part-local observation contracts that deliberately
-  do not publish catalog profiles under `stats/operation-contracts/`
+- one authored source record per part-local observation contract that
+  deliberately does not publish a catalog profile under
+  `stats/operation-contracts/`
 - the families of read models this organ can honestly produce
 - the dimensions, windows, freshness states, and authority ceilings those
   models use
@@ -63,8 +64,11 @@ not a second Python package, an output dump, or an archive.
 
 Part-local observation contracts remain visible through
 `stats/operation-contracts/` when they have real mechanics payload but no
-public catalog surface. This keeps the crosswalk complete without inventing
-fake surface profiles.
+public catalog surface. Each source record owns only the bounded stats
+question, evidence posture, authority ceiling, consumer risk, and return to
+stronger owners. The mechanic part remains the sole owner of schemas,
+examples, scripts, tests, and generated payload. This keeps the crosswalk
+complete without inventing fake surface profiles or a shadow mechanics tree.
 
 ### The `mechanics/` operation home
 

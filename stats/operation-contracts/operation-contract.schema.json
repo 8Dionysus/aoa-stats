@@ -1,0 +1,266 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://abyss.local/aoa-stats/operation-contract-source-v1.schema.json",
+  "title": "AoA stats operation contract source v1",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema_version",
+    "lifecycle",
+    "operation_id",
+    "publication_posture",
+    "mechanic_route",
+    "payload_class",
+    "primary_question",
+    "input_posture",
+    "observation_rule",
+    "owner_truth_inputs",
+    "result_posture",
+    "authority_ceiling",
+    "consumer_risk",
+    "non_catalog_reason",
+    "owner_return_routes",
+    "prohibited_inferences",
+    "mechanic_contract_ref",
+    "validation_ref"
+  ],
+  "properties": {
+    "schema_version": {
+      "const": "aoa_stats_operation_contract_source_v1"
+    },
+    "lifecycle": {
+      "const": "active"
+    },
+    "operation_id": {
+      "type": "string",
+      "pattern": "^[a-z0-9]+(?:[.-][a-z0-9]+)*$"
+    },
+    "publication_posture": {
+      "const": "non_catalog"
+    },
+    "mechanic_route": {
+      "type": "string",
+      "pattern": "^mechanics/[a-z0-9-]+/parts/[a-z0-9-]+$"
+    },
+    "payload_class": {
+      "type": "string",
+      "minLength": 1
+    },
+    "primary_question": {
+      "type": "string",
+      "minLength": 1
+    },
+    "input_posture": {
+      "enum": [
+        "seed_registry_compiler",
+        "schema_example_contracts",
+        "documentation_checklist",
+        "documentation_projection_spec"
+      ]
+    },
+    "observation_rule": {
+      "type": "string",
+      "minLength": 1
+    },
+    "owner_truth_inputs": {
+      "type": "array",
+      "minItems": 1,
+      "uniqueItems": true,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "owner_repo",
+          "truth_scope",
+          "binding"
+        ],
+        "properties": {
+          "owner_repo": {
+            "type": "string",
+            "minLength": 1
+          },
+          "truth_scope": {
+            "type": "string",
+            "minLength": 1
+          },
+          "binding": {
+            "enum": [
+              "symbolic_unbound",
+              "declared_reference_only",
+              "bound_current_source"
+            ]
+          },
+          "source_ref": {
+            "type": "string",
+            "minLength": 1
+          },
+          "binding_evidence_ref": {
+            "type": "string",
+            "pattern": "^mechanics/[a-z0-9-]+/parts/[a-z0-9-]+/.+$"
+          }
+        },
+        "allOf": [
+          {
+            "if": {
+              "properties": {
+                "binding": {
+                  "enum": [
+                    "declared_reference_only",
+                    "bound_current_source"
+                  ]
+                }
+              },
+              "required": [
+                "binding"
+              ]
+            },
+            "then": {
+              "required": [
+                "source_ref"
+              ]
+            }
+          },
+          {
+            "if": {
+              "properties": {
+                "binding": {
+                  "const": "bound_current_source"
+                }
+              },
+              "required": [
+                "binding"
+              ]
+            },
+            "then": {
+              "required": [
+                "binding_evidence_ref"
+              ]
+            }
+          },
+          {
+            "if": {
+              "properties": {
+                "binding": {
+                  "const": "declared_reference_only"
+                }
+              },
+              "required": [
+                "binding"
+              ]
+            },
+            "then": {
+              "not": {
+                "required": [
+                  "binding_evidence_ref"
+                ]
+              }
+            }
+          },
+          {
+            "if": {
+              "properties": {
+                "binding": {
+                  "const": "symbolic_unbound"
+                }
+              },
+              "required": [
+                "binding"
+              ]
+            },
+            "then": {
+              "not": {
+                "anyOf": [
+                  {
+                    "required": [
+                      "source_ref"
+                    ]
+                  },
+                  {
+                    "required": [
+                      "binding_evidence_ref"
+                    ]
+                  }
+                ]
+              }
+            }
+          }
+        ]
+      }
+    },
+    "result_posture": {
+      "enum": [
+        "retained_compatibility_registry",
+        "part_local_schema_contracts",
+        "part_local_review_guidance",
+        "part_local_projection_spec"
+      ]
+    },
+    "authority_ceiling": {
+      "type": "string",
+      "minLength": 1
+    },
+    "consumer_risk": {
+      "enum": [
+        "low",
+        "medium",
+        "high"
+      ]
+    },
+    "non_catalog_reason": {
+      "type": "string",
+      "minLength": 1
+    },
+    "owner_return_routes": {
+      "type": "array",
+      "minItems": 1,
+      "uniqueItems": true,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "repo",
+          "surface",
+          "route_kind"
+        ],
+        "properties": {
+          "repo": {
+            "type": "string",
+            "minLength": 1
+          },
+          "surface": {
+            "type": "string",
+            "minLength": 1
+          },
+          "route_kind": {
+            "enum": [
+              "authored_meaning",
+              "proof",
+              "memory",
+              "routing",
+              "runtime",
+              "source_export",
+              "validation"
+            ]
+          }
+        }
+      }
+    },
+    "prohibited_inferences": {
+      "type": "array",
+      "minItems": 1,
+      "uniqueItems": true,
+      "items": {
+        "type": "string",
+        "minLength": 1
+      }
+    },
+    "mechanic_contract_ref": {
+      "type": "string",
+      "pattern": "^mechanics/[a-z0-9-]+/parts/[a-z0-9-]+/CONTRACT\\.md$"
+    },
+    "validation_ref": {
+      "type": "string",
+      "pattern": "^mechanics/[a-z0-9-]+/parts/[a-z0-9-]+/VALIDATION\\.md$"
+    }
+  }
+}

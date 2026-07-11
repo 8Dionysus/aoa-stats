@@ -1,0 +1,56 @@
+{
+  "schema_version": "aoa_stats_operation_contract_source_v1",
+  "lifecycle": "active",
+  "operation_id": "experience.adoption-federation-harvest",
+  "publication_posture": "non_catalog",
+  "mechanic_route": "mechanics/experience/parts/adoption-federation-harvest",
+  "payload_class": "adoption-federation-harvest-stats-operation",
+  "primary_question": "Which owner-local adoption, federation recurrence, pattern, harvest, retention, rollback, office-health, and noise signals may be represented as bounded contract shapes?",
+  "input_posture": "schema_example_contracts",
+  "observation_rule": "Constrain illustrative owner-linked adoption and federation readouts with part-local contracts; examples do not bind live receipts, owner consent, route landings, evaluation verdicts, or promotion events.",
+  "owner_truth_inputs": [
+    {
+      "owner_repo": "Agents-of-Abyss",
+      "truth_scope": "Experience federation, harvest, adoption, retention, and promotion-boundary meaning",
+      "binding": "symbolic_unbound"
+    },
+    {
+      "owner_repo": "aoa-routing",
+      "truth_scope": "Owner landing and adoption-route state",
+      "binding": "symbolic_unbound"
+    },
+    {
+      "owner_repo": "aoa-evals",
+      "truth_scope": "Bounded evidence and evaluation verdicts for pattern review",
+      "binding": "symbolic_unbound"
+    }
+  ],
+  "result_posture": "part_local_schema_contracts",
+  "authority_ceiling": "The operation may define derived contract shapes but cannot infer owner consent, certify pattern quality, approve adoption, execute rollback, promote to KAG or Tree of Sophia, or treat recurrence volume as proof.",
+  "consumer_risk": "high",
+  "non_catalog_reason": "The part owns a portfolio of schema/example contracts without a single computed public read model.",
+  "owner_return_routes": [
+    {
+      "repo": "Agents-of-Abyss",
+      "surface": "mechanics/experience/parts/adoption-federation/CONTRACT.md",
+      "route_kind": "authored_meaning"
+    },
+    {
+      "repo": "aoa-routing",
+      "surface": "mechanics/boundary-bridge/parts/federation-harvest-routing/docs/federation-owner-landing.md",
+      "route_kind": "routing"
+    },
+    {
+      "repo": "aoa-evals",
+      "surface": "mechanics/experience/parts/adoption-federation/docs/FEDERATION_HARVEST_EVAL_BUNDLES.md",
+      "route_kind": "proof"
+    }
+  ],
+  "prohibited_inferences": [
+    "An illustrative adoption record proves owner consent or live adoption.",
+    "Cross-repo recurrence certifies pattern quality or authorizes promotion.",
+    "A dashboard or rollup may execute owner-local action."
+  ],
+  "mechanic_contract_ref": "mechanics/experience/parts/adoption-federation-harvest/CONTRACT.md",
+  "validation_ref": "mechanics/experience/parts/adoption-federation-harvest/VALIDATION.md"
+}

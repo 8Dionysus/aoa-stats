@@ -29,7 +29,9 @@ stats/
 │   └── deferred/
 ├── operation-contracts/
 │   ├── AGENTS.md
-│   └── README.md
+│   ├── README.md
+│   ├── operation-contract.schema.json
+│   └── active/
 └── surface-catalog/
     ├── AGENTS.md
     ├── README.md
@@ -43,7 +45,7 @@ stats/
 | --- | --- | --- |
 | `intake-contract` | Shared stats envelope and event-family admission law, without taking payload meaning from source owners. | `recurrence/live-receipt-refresh`, `boundary-bridge/receipt-abi-crossing` |
 | `read-models` | One authored profile per active or deferred derived surface, including public routes, authority ceiling, order, lifecycle, and operation handoffs. | Profile-local `mechanic_routes` under the shared mechanic parents. |
-| `operation-contracts` | Stats meaning and authority ceilings for active part-local observations without public catalog surfaces. | Agon registries, Experience contracts, via-negativa, and Titan memory/runtime parts. |
+| `operation-contracts` | One authored question, input posture, authority ceiling, consumer risk, and owner-return route per active non-catalog observation. | Exact reciprocal records for Agon registries, Experience contracts, via-negativa, and Titan memory/runtime parts. |
 | `surface-catalog` | Compact catalog profile and per-surface authority ceilings, without promoting summaries into owner truth. | `recurrence/component-manifests`, `boundary-bridge/consumer-regrounding` |
 
 The full mechanics paths, current root routes, and validators are recorded in
@@ -58,8 +60,8 @@ publication and implementation districts:
 - the active event-kind registry and bounded build fixture live under
   `stats/intake-contract/`
 - read-model source profiles live under `stats/read-models/`
-- non-catalog part-local operations cross back through
-  `stats/operation-contracts/`
+- non-catalog part-local operations cross back through one authored record in
+  `stats/operation-contracts/active/`
 - owner-local live-source registration belongs to the recurrence mechanic
 - committed derived surfaces remain under `generated/`
 - builders and readers remain under `src/`

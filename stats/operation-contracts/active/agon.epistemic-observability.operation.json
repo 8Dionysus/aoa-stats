@@ -1,0 +1,36 @@
+{
+  "schema_version": "aoa_stats_operation_contract_source_v1",
+  "lifecycle": "active",
+  "operation_id": "agon.epistemic-observability",
+  "publication_posture": "non_catalog",
+  "mechanic_route": "mechanics/agon/parts/epistemic-observability",
+  "payload_class": "epistemic-observability-stats-operation",
+  "primary_question": "Which declared epistemic pressures are visible as candidate-only summaries without turning observation into truth, doctrine, or promotion authority?",
+  "input_posture": "seed_registry_compiler",
+  "observation_rule": "Compile only the part-local seed declarations into a candidate registry; do not infer that an owner review, runtime event, doctrine change, or promotion occurred.",
+  "owner_truth_inputs": [
+    {
+      "owner_repo": "Agents-of-Abyss",
+      "truth_scope": "Agon epistemic review, doctrine, candidate, and promotion meaning",
+      "binding": "symbolic_unbound"
+    }
+  ],
+  "result_posture": "retained_compatibility_registry",
+  "authority_ceiling": "The operation may define and publish derived candidate summary declarations but cannot decide truth, rewrite doctrine, issue a verdict, execute retention, or promote material to KAG or Tree of Sophia.",
+  "consumer_risk": "high",
+  "non_catalog_reason": "The result is a compatibility registry of candidate definitions, not a computed public summary read model over bound owner evidence.",
+  "owner_return_routes": [
+    {
+      "repo": "Agents-of-Abyss",
+      "surface": "mechanics/agon",
+      "route_kind": "authored_meaning"
+    }
+  ],
+  "prohibited_inferences": [
+    "A declared epistemic summary proves that the underlying event occurred.",
+    "Candidate pressure determines truth, doctrine, verdict, retention, or promotion.",
+    "Registry presence means owner review has completed."
+  ],
+  "mechanic_contract_ref": "mechanics/agon/parts/epistemic-observability/CONTRACT.md",
+  "validation_ref": "mechanics/agon/parts/epistemic-observability/VALIDATION.md"
+}

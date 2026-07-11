@@ -4,6 +4,7 @@
   "common_mechanic_source": "Agents-of-Abyss/mechanics",
   "stats_source_manifest": "stats/source_home.manifest.json",
   "stats_profile_root": "stats/read-models",
+  "stats_operation_contract_root": "stats/operation-contracts/active",
   "root_contract": {
     "allowed_root_files": [
       "AGENTS.md",
@@ -206,6 +207,7 @@
       "active_part_routes": [
         {
           "path": "epistemic-observability",
+          "stats_operation_contract_ref": "stats/operation-contracts/active/agon.epistemic-observability.operation.json",
           "owner_surface": "mechanics/agon/parts/epistemic-observability/CONTRACT.md",
           "validation_surface": "mechanics/agon/parts/epistemic-observability/VALIDATION.md",
           "payload_class": "epistemic-observability-stats-operation",
@@ -226,6 +228,7 @@
         },
         {
           "path": "kag-observability",
+          "stats_operation_contract_ref": "stats/operation-contracts/active/agon.kag-observability.operation.json",
           "owner_surface": "mechanics/agon/parts/kag-observability/CONTRACT.md",
           "validation_surface": "mechanics/agon/parts/kag-observability/VALIDATION.md",
           "payload_class": "kag-observability-stats-operation",
@@ -246,6 +249,7 @@
         },
         {
           "path": "mechanical-trial-observability",
+          "stats_operation_contract_ref": "stats/operation-contracts/active/agon.mechanical-trial-observability.operation.json",
           "owner_surface": "mechanics/agon/parts/mechanical-trial-observability/CONTRACT.md",
           "validation_surface": "mechanics/agon/parts/mechanical-trial-observability/VALIDATION.md",
           "payload_class": "mechanical-trial-observability-stats-operation",
@@ -266,6 +270,7 @@
         },
         {
           "path": "retention-rank-observability",
+          "stats_operation_contract_ref": "stats/operation-contracts/active/agon.retention-rank-observability.operation.json",
           "owner_surface": "mechanics/agon/parts/retention-rank-observability/CONTRACT.md",
           "validation_surface": "mechanics/agon/parts/retention-rank-observability/VALIDATION.md",
           "payload_class": "retention-rank-observability-stats-operation",
@@ -286,6 +291,7 @@
         },
         {
           "path": "schools-lineages-campaigns-observability",
+          "stats_operation_contract_ref": "stats/operation-contracts/active/agon.schools-lineages-campaigns-observability.operation.json",
           "owner_surface": "mechanics/agon/parts/schools-lineages-campaigns-observability/CONTRACT.md",
           "validation_surface": "mechanics/agon/parts/schools-lineages-campaigns-observability/VALIDATION.md",
           "payload_class": "schools-lineages-campaigns-observability-stats-operation",
@@ -306,6 +312,7 @@
         },
         {
           "path": "sophian-observability",
+          "stats_operation_contract_ref": "stats/operation-contracts/active/agon.sophian-observability.operation.json",
           "owner_surface": "mechanics/agon/parts/sophian-observability/CONTRACT.md",
           "validation_surface": "mechanics/agon/parts/sophian-observability/VALIDATION.md",
           "payload_class": "sophian-observability-stats-operation",
@@ -326,6 +333,7 @@
         },
         {
           "path": "stats-prebinding",
+          "stats_operation_contract_ref": "stats/operation-contracts/active/agon.stats-prebinding.operation.json",
           "owner_surface": "mechanics/agon/parts/stats-prebinding/CONTRACT.md",
           "validation_surface": "mechanics/agon/parts/stats-prebinding/VALIDATION.md",
           "payload_class": "stats-prebinding-stats-operation",
@@ -346,6 +354,7 @@
         },
         {
           "path": "verdict-delta-scar-observability",
+          "stats_operation_contract_ref": "stats/operation-contracts/active/agon.verdict-delta-scar-observability.operation.json",
           "owner_surface": "mechanics/agon/parts/verdict-delta-scar-observability/CONTRACT.md",
           "validation_surface": "mechanics/agon/parts/verdict-delta-scar-observability/VALIDATION.md",
           "payload_class": "verdict-delta-scar-observability-stats-operation",
@@ -407,6 +416,7 @@
         },
         {
           "path": "via-negativa",
+          "stats_operation_contract_ref": "stats/operation-contracts/active/antifragility.via-negativa.operation.json",
           "owner_surface": "mechanics/antifragility/parts/via-negativa/CONTRACT.md",
           "validation_surface": "mechanics/antifragility/parts/via-negativa/VALIDATION.md",
           "payload_class": "via-negativa-stats-operation",
@@ -579,6 +589,7 @@
       "active_part_routes": [
         {
           "path": "adoption-federation-harvest",
+          "stats_operation_contract_ref": "stats/operation-contracts/active/experience.adoption-federation-harvest.operation.json",
           "owner_surface": "mechanics/experience/parts/adoption-federation-harvest/CONTRACT.md",
           "validation_surface": "mechanics/experience/parts/adoption-federation-harvest/VALIDATION.md",
           "payload_class": "adoption-federation-harvest-stats-operation",
@@ -595,6 +606,7 @@
         },
         {
           "path": "governance-runtime-signals",
+          "stats_operation_contract_ref": "stats/operation-contracts/active/experience.governance-runtime-signals.operation.json",
           "owner_surface": "mechanics/experience/parts/governance-runtime-signals/CONTRACT.md",
           "validation_surface": "mechanics/experience/parts/governance-runtime-signals/VALIDATION.md",
           "payload_class": "governance-runtime-signals-stats-operation",
@@ -611,6 +623,7 @@
         },
         {
           "path": "micro-friction-receipts",
+          "stats_operation_contract_ref": "stats/operation-contracts/active/experience.micro-friction-receipts.operation.json",
           "owner_surface": "mechanics/experience/parts/micro-friction-receipts/CONTRACT.md",
           "validation_surface": "mechanics/experience/parts/micro-friction-receipts/VALIDATION.md",
           "payload_class": "micro-friction-receipts-stats-operation",
@@ -627,6 +640,7 @@
         },
         {
           "path": "release-watch-office-health",
+          "stats_operation_contract_ref": "stats/operation-contracts/active/experience.release-watch-office-health.operation.json",
           "owner_surface": "mechanics/experience/parts/release-watch-office-health/CONTRACT.md",
           "validation_surface": "mechanics/experience/parts/release-watch-office-health/VALIDATION.md",
           "payload_class": "release-watch-office-health-stats-operation",
@@ -947,6 +961,7 @@
         },
         {
           "path": "memory-owner-bridge",
+          "stats_operation_contract_ref": "stats/operation-contracts/active/titan.memory-owner-bridge.operation.json",
           "owner_surface": "mechanics/titan/parts/memory-owner-bridge/CONTRACT.md",
           "validation_surface": "mechanics/titan/parts/memory-owner-bridge/VALIDATION.md",
           "payload_class": "memory-owner-bridge-stats-operation",
@@ -961,6 +976,7 @@
         },
         {
           "path": "runtime-console",
+          "stats_operation_contract_ref": "stats/operation-contracts/active/titan.runtime-console.operation.json",
           "owner_surface": "mechanics/titan/parts/runtime-console/CONTRACT.md",
           "validation_surface": "mechanics/titan/parts/runtime-console/VALIDATION.md",
           "payload_class": "runtime-console-stats-operation",

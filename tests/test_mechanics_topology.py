@@ -3,6 +3,7 @@ from __future__ import annotations
 import importlib.util
 import json
 from pathlib import Path
+import shutil
 import sys
 
 
@@ -34,6 +35,29 @@ def load_json(relative_path: str) -> dict:
     payload = json.loads((REPO_ROOT / relative_path).read_text(encoding="utf-8"))
     assert isinstance(payload, dict)
     return payload
+
+
+def copy_repo(tmp_path: Path) -> Path:
+    copied_root = tmp_path / "repo"
+    shutil.copytree(
+        REPO_ROOT,
+        copied_root,
+        ignore=shutil.ignore_patterns(".git", ".pytest_cache", "__pycache__"),
+    )
+    return copied_root
+
+
+def write_json(path: Path, payload: dict) -> None:
+    path.write_text(json.dumps(payload, indent=2) + "\n", encoding="utf-8")
+
+
+def operation_parts(topology: dict) -> list[tuple[str, dict]]:
+    return [
+        (f"mechanics/{package['path']}/parts/{part['path']}", part)
+        for package in topology["active_packages"]
+        for part in package["active_part_routes"]
+        if "operation_contracts" in part["stats_source_family_refs"]
+    ]
 
 
 def test_live_mechanics_topology_passes() -> None:
@@ -105,6 +129,95 @@ def test_source_family_crosswalks_match_manifest_and_part_backrefs() -> None:
             for family in part["stats_source_family_refs"]:
                 from_parts.setdefault(family, set()).add(route)
     assert from_topology == from_manifest == from_parts
+
+
+def test_operation_contract_records_and_parts_have_exact_reciprocal_links() -> None:
+    topology = load_json("mechanics/topology.json")
+    part_entries = operation_parts(topology)
+    part_refs = [part["stats_operation_contract_ref"] for _, part in part_entries]
+    record_paths = sorted(
+        (REPO_ROOT / "stats" / "operation-contracts" / "active").glob(
+            "*.operation.json"
+        )
+    )
+    record_bindings = {}
+    for path in record_paths:
+        record = json.loads(path.read_text(encoding="utf-8"))
+        operation_id = path.name.removesuffix(".operation.json")
+        assert record["operation_id"] == operation_id
+        package, part = record["mechanic_route"].removeprefix("mechanics/").split(
+            "/parts/",
+            1,
+        )
+        assert operation_id == f"{package}.{part}"
+        record_bindings[path.relative_to(REPO_ROOT).as_posix()] = record[
+            "mechanic_route"
+        ]
+
+    assert len(part_entries) == len(part_refs) == len(set(part_refs)) == 15
+    assert len(record_bindings) == 15
+    assert {
+        part["stats_operation_contract_ref"]: route for route, part in part_entries
+    } == record_bindings
+
+
+def test_operation_contract_part_cannot_swap_to_another_record(tmp_path: Path) -> None:
+    copied_root = copy_repo(tmp_path)
+    topology_path = copied_root / "mechanics" / "topology.json"
+    topology = json.loads(topology_path.read_text(encoding="utf-8"))
+    parts = operation_parts(topology)
+    parts[0][1]["stats_operation_contract_ref"], parts[1][1][
+        "stats_operation_contract_ref"
+    ] = (
+        parts[1][1]["stats_operation_contract_ref"],
+        parts[0][1]["stats_operation_contract_ref"],
+    )
+    write_json(topology_path, topology)
+
+    issues = validator.validate(copied_root)
+
+    assert sum("stats operation contract binds" in issue for issue in issues) == 2
+
+
+def test_operation_contract_part_requires_its_backlink(tmp_path: Path) -> None:
+    copied_root = copy_repo(tmp_path)
+    topology_path = copied_root / "mechanics" / "topology.json"
+    topology = json.loads(topology_path.read_text(encoding="utf-8"))
+    route, part = operation_parts(topology)[0]
+    part.pop("stats_operation_contract_ref")
+    write_json(topology_path, topology)
+
+    issues = validator.validate(copied_root)
+
+    assert f"{route}: stats_operation_contract_ref is required" in issues
+    assert any("operation contract backlinks do not match" in issue for issue in issues)
+
+
+def test_non_operation_part_cannot_claim_operation_contract_backlink(
+    tmp_path: Path,
+) -> None:
+    copied_root = copy_repo(tmp_path)
+    topology_path = copied_root / "mechanics" / "topology.json"
+    topology = json.loads(topology_path.read_text(encoding="utf-8"))
+    operation_ref = operation_parts(topology)[0][1]["stats_operation_contract_ref"]
+    route, part = next(
+        (
+            f"mechanics/{package['path']}/parts/{candidate['path']}",
+            candidate,
+        )
+        for package in topology["active_packages"]
+        for candidate in package["active_part_routes"]
+        if "operation_contracts" not in candidate["stats_source_family_refs"]
+    )
+    part["stats_operation_contract_ref"] = operation_ref
+    write_json(topology_path, topology)
+
+    issues = validator.validate(copied_root)
+
+    assert (
+        f"{route}: stats_operation_contract_ref is forbidden outside "
+        "operation_contracts"
+    ) in issues
 
 
 def test_flat_operation_districts_are_empty_and_public_districts_are_explicit() -> None:

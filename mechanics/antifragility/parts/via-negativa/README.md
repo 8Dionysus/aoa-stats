@@ -1,8 +1,10 @@
 # via-negativa
 
-Records exclusion and removal checks that prevent weak signals from becoming authority.
+Guides review of merge, move, suppression, quarantine, deprecation, and removal
+pressure so weak signals do not become authority.
 
-This part owns its operation route and the localized payload roots declared in
-`mechanics/topology.json`. Its stats source family owns the bounded meaning;
-public schemas and generated outputs stay at their declared publication paths
-when consumers depend on those paths.
+The operation payload is the human review checklist in
+`docs/VIA_NEGATIVA_CHECKLIST.md`. Its bounded stats question and owner-return
+posture are authored in
+`stats/operation-contracts/active/antifragility.via-negativa.operation.json`.
+No automatic deletion or mutation is implemented by this part.

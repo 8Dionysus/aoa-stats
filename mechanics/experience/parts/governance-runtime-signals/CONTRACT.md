@@ -17,5 +17,6 @@ mutate runtime state.
 ## Crosswalk
 
 This non-catalog observation contract cross-routes to
-`stats/operation-contracts/`; the reciprocal route is enforced by
+`stats/operation-contracts/active/experience.governance-runtime-signals.operation.json`;
+the reciprocal route is enforced by
 `mechanics/topology.json`.

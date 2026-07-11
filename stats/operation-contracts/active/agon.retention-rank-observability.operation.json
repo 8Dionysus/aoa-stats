@@ -1,0 +1,36 @@
+{
+  "schema_version": "aoa_stats_operation_contract_source_v1",
+  "lifecycle": "active",
+  "operation_id": "agon.retention-rank-observability",
+  "publication_posture": "non_catalog",
+  "mechanic_route": "mechanics/agon/parts/retention-rank-observability",
+  "payload_class": "retention-rank-observability-stats-operation",
+  "primary_question": "Which retention, repeat-failure, rank, jurisdiction, review-latency, and scar-to-retention pressures are declared for candidate-only observation?",
+  "input_posture": "seed_registry_compiler",
+  "observation_rule": "Compile the Wave XIV candidate declarations only; no owner retention decision, rank state, jurisdiction state, scar request, or review event is bound as live input.",
+  "owner_truth_inputs": [
+    {
+      "owner_repo": "Agents-of-Abyss",
+      "truth_scope": "Agon retention, rank, jurisdiction, scar, and review decisions",
+      "binding": "symbolic_unbound"
+    }
+  ],
+  "result_posture": "retained_compatibility_registry",
+  "authority_ceiling": "The operation may publish derived candidate declarations but cannot execute retention, mutate rank or trust, change jurisdiction, write memory, schedule action, or treat a scar request as a retention result.",
+  "consumer_risk": "high",
+  "non_catalog_reason": "The result is a candidate-definition registry and not a public read model computed from owner retention or rank records.",
+  "owner_return_routes": [
+    {
+      "repo": "Agents-of-Abyss",
+      "surface": "mechanics/agon",
+      "route_kind": "authored_meaning"
+    }
+  ],
+  "prohibited_inferences": [
+    "Retention pressure means retention was requested, approved, or executed.",
+    "Rank or jurisdiction pressure changes standing or authority.",
+    "Scar-to-retention declaration proves learning or durable memory."
+  ],
+  "mechanic_contract_ref": "mechanics/agon/parts/retention-rank-observability/CONTRACT.md",
+  "validation_ref": "mechanics/agon/parts/retention-rank-observability/VALIDATION.md"
+}

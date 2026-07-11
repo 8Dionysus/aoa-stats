@@ -20,5 +20,6 @@ A deterministic schema-backed registry published at
 ## Crosswalk
 
 This non-catalog observation contract cross-routes to
-`stats/operation-contracts/`; the reciprocal route is enforced by
+`stats/operation-contracts/active/agon.schools-lineages-campaigns-observability.operation.json`;
+the reciprocal route is enforced by
 `mechanics/topology.json`.

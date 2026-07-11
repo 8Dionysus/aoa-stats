@@ -29,9 +29,9 @@ or source-owner facts. Those remain in the active routes named by
   compatibility commands under `scripts/` unless their owner route changes
   explicitly.
 - Keep only declared source records here: intake admission records, the bounded
-  intake fixture, and authored read-model profiles. Do not add `__init__.py`,
-  executable payloads, generated JSON, owner-local receipt feeds, or runtime
-  state under `stats/`.
+  intake fixture, authored read-model profiles, and authored non-catalog
+  operation records. Do not add `__init__.py`, executable payloads, generated
+  JSON, owner-local receipt feeds, or runtime state under `stats/`.
 - One current payload has one active owner. A source-family route may point to
   it; it must not duplicate it.
 - Treat `source_home.manifest.json` as the machine-readable crosswalk. The
@@ -43,8 +43,10 @@ or source-owner facts. Those remain in the active routes named by
   admission meaning, below each source repo's payload authority.
 - `read-models/` owns one authored profile per active or deferred derived
   surface and hands repeatable operation to named mechanic parts.
-- `operation-contracts/` owns the source-family posture for active part-local
-  observation contracts that do not publish a public catalog surface.
+- `operation-contracts/` owns one bounded stats question, evidence posture,
+  authority ceiling, consumer risk, and owner-return route for each active
+  part-local observation contract that does not publish a public catalog
+  surface.
 - `surface-catalog/` owns the meaning and authority ceilings of the compact
   generated summary-surface catalog, below every owner-local fact it indexes.
 

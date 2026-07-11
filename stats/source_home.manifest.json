@@ -11,7 +11,7 @@
     "Canonical published schemas remain under schemas/.",
     "Committed derived outputs remain under generated/.",
     "Repeatable operation payloads and validation remain under mechanics/.",
-    "Part-local observation contracts without public catalog surfaces cross back through stats/operation-contracts/.",
+    "Part-local observation contracts without public catalog surfaces have one authored meaning record under stats/operation-contracts/ and cross back to their mechanic owner.",
     "The repo-local MCP remains a read-only derived access route.",
     "No generated catalog or owner payload is copied under stats/."
   ],
@@ -39,7 +39,7 @@
     {
       "id": "operation_contracts",
       "path": "stats/operation-contracts",
-      "role": "Source-family posture for active part-local observation contracts that do not publish a public catalog read model.",
+      "role": "One authored stats question, evidence posture, authority ceiling, and owner-return route per active part-local observation contract that does not publish a public catalog read model.",
       "families": [
         "operation_contracts"
       ],
@@ -324,16 +324,23 @@
       "id": "operation_contracts",
       "branch": "operation_contracts",
       "path": "stats/operation-contracts",
-      "source_kind": "part_local_stats_operation_contracts",
-      "meaning": "Active stats observation contracts whose payload is local to a mechanic part and whose result is not a public summary-surface catalog entry.",
+      "source_kind": "authored_part_local_stats_operation_contracts",
+      "meaning": "One schema-backed source record per active non-catalog stats operation, owning its bounded question, evidence posture, authority ceiling, consumer risk, and return to stronger owners while mechanic parts retain every payload and execution surface.",
       "owner_surface": "stats/operation-contracts/AGENTS.md",
+      "object_pattern": "active/*.operation.json",
+      "schema_refs": [
+        "stats/operation-contracts/operation-contract.schema.json"
+      ],
       "authority_ceiling": "This family owns the bounded stats question and owner-return posture only; it does not turn part-local examples, registries, metrics, or docs into proof, workflow truth, runtime truth, identity, or canon.",
       "source_routes": [
         "stats/operation-contracts/AGENTS.md",
         "stats/operation-contracts/README.md",
+        "stats/operation-contracts/operation-contract.schema.json",
+        "stats/operation-contracts/active",
         "DESIGN.md"
       ],
       "public_contract_routes": [
+        "stats/operation-contracts/operation-contract.schema.json",
         "mechanics/topology.json"
       ],
       "implementation_routes": [
