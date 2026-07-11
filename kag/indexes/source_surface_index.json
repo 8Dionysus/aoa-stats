@@ -81,7 +81,7 @@
   },
   "index_identity": {
     "artifact_kind": "source_surface_index",
-    "content_digest": "c7e6a27550295c7abc3b133e2068465289e9d74f45dc6e80d6c9d811d9633c68",
+    "content_digest": "e6bf5432aaf9f68d021bebdaad190ab76c5518dc50cfdb22839944143b227365",
     "local_id": "index:repo-local:source-surfaces",
     "schema_ref": "aoa-kag:schemas/repo-local-kag-index.schema.json"
   },
@@ -78895,13 +78895,13 @@
         "state": "current"
       },
       "identity": {
-        "content_hash": "1d725dde62b11795f78f98ebd89cd250ba4531e32e68c6de4dceac55b09c0765",
+        "content_hash": "38d760a3ddd94ecf187007be451d8099e3a2288aa51a6f6623a92e5f61cf752a",
         "git_ref": "git-index-source-tree",
         "id": "file:mechanics/release-support/parts/summary-catalog-artifact-bundle/contract.md:9f3fc8c16b",
         "mime": "text/markdown",
         "path": "mechanics/release-support/parts/summary-catalog-artifact-bundle/CONTRACT.md",
         "repo": "aoa-stats",
-        "size_bytes": 651
+        "size_bytes": 668
       },
       "mechanics_role": "part_contract",
       "observed_form": "file",
@@ -78942,7 +78942,7 @@
       },
       "signs": {
         "attestation_ref": "",
-        "digest": "1d725dde62b11795f78f98ebd89cd250ba4531e32e68c6de4dceac55b09c0765",
+        "digest": "38d760a3ddd94ecf187007be451d8099e3a2288aa51a6f6623a92e5f61cf752a",
         "signature_ref": "",
         "verification_state": "digest-only"
       },
@@ -78990,13 +78990,13 @@
         "state": "current"
       },
       "identity": {
-        "content_hash": "3638253020d99beb9fc831e10e3e3f89e0ca6266f3defb4ea12b3e8f0b4ef877",
+        "content_hash": "4ab8113cbeee4396883b74a83032c0e29e27a30603250f6aa72bba9533bf49e9",
         "git_ref": "git-index-source-tree",
         "id": "file:mechanics/release-support/parts/summary-catalog-artifact-bundle/readme.md:292ddb2462",
         "mime": "text/markdown",
         "path": "mechanics/release-support/parts/summary-catalog-artifact-bundle/README.md",
         "repo": "aoa-stats",
-        "size_bytes": 421
+        "size_bytes": 491
       },
       "mechanics_role": "part_doc",
       "observed_form": "file",
@@ -79037,7 +79037,7 @@
       },
       "signs": {
         "attestation_ref": "",
-        "digest": "3638253020d99beb9fc831e10e3e3f89e0ca6266f3defb4ea12b3e8f0b4ef877",
+        "digest": "4ab8113cbeee4396883b74a83032c0e29e27a30603250f6aa72bba9533bf49e9",
         "signature_ref": "",
         "verification_state": "digest-only"
       },
@@ -82473,13 +82473,13 @@
         "state": "current"
       },
       "identity": {
-        "content_hash": "317be4ae34fa1ae982f63b31376b3ce30cb84b7529ca37377d38ef04f6e70e32",
+        "content_hash": "6128d3737b14975c300f914e703e8108ecee8e2f3d669683fcea96569fcb407b",
         "git_ref": "git-index-source-tree",
         "id": "file:mechanics/topology.json:c2f84a03b1",
         "mime": "application/json",
         "path": "mechanics/topology.json",
         "repo": "aoa-stats",
-        "size_bytes": 36798
+        "size_bytes": 36928
       },
       "mechanics_role": "mechanic_package",
       "observed_form": "file",
@@ -82512,7 +82512,7 @@
       },
       "signs": {
         "attestation_ref": "",
-        "digest": "317be4ae34fa1ae982f63b31376b3ce30cb84b7529ca37377d38ef04f6e70e32",
+        "digest": "6128d3737b14975c300f914e703e8108ecee8e2f3d669683fcea96569fcb407b",
         "signature_ref": "",
         "verification_state": "digest-only"
       },
@@ -86287,13 +86287,13 @@
         "state": "current"
       },
       "identity": {
-        "content_hash": "437ac69a92a6c824d23a8148ad113736f8b5ef1f83473362326a5d211de66fae",
+        "content_hash": "69d99ab27b3dc4f7623cd2bb154988bb7a1a1d10b54e92cc0840da9df60a584a",
         "git_ref": "git-index-source-tree",
         "id": "file:scripts/validate_mechanics_topology.py:2914a033b8",
         "mime": "text/x-python",
         "path": "scripts/validate_mechanics_topology.py",
         "repo": "aoa-stats",
-        "size_bytes": 21154
+        "size_bytes": 21978
       },
       "mechanics_role": "none",
       "observed_form": "command",
@@ -86326,7 +86326,7 @@
       },
       "signs": {
         "attestation_ref": "",
-        "digest": "437ac69a92a6c824d23a8148ad113736f8b5ef1f83473362326a5d211de66fae",
+        "digest": "69d99ab27b3dc4f7623cd2bb154988bb7a1a1d10b54e92cc0840da9df60a584a",
         "signature_ref": "",
         "verification_state": "digest-only"
       },
@@ -92513,13 +92513,13 @@
         "state": "current"
       },
       "identity": {
-        "content_hash": "a5d71005b05a2c55314c7694f0297ea65fbbce423c727b9c0e098767b5cec051",
+        "content_hash": "a362c4142b5ffc819b8a8118714adfbd698bb4713ba469495399a0e472efbda4",
         "git_ref": "git-index-source-tree",
         "id": "file:tests/test_mechanics_topology.py:915b0d0cb3",
         "mime": "text/x-python",
         "path": "tests/test_mechanics_topology.py",
         "repo": "aoa-stats",
-        "size_bytes": 5269
+        "size_bytes": 6176
       },
       "mechanics_role": "none",
       "observed_form": "command",
@@ -92552,7 +92552,7 @@
       },
       "signs": {
         "attestation_ref": "",
-        "digest": "a5d71005b05a2c55314c7694f0297ea65fbbce423c727b9c0e098767b5cec051",
+        "digest": "a362c4142b5ffc819b8a8118714adfbd698bb4713ba469495399a0e472efbda4",
         "signature_ref": "",
         "verification_state": "digest-only"
       },

@@ -891,9 +891,12 @@
           ],
           "retained_root_routes": [
             "manifests/artifact_bundles",
+            "scripts/validate_abyss_machine_summary_catalog_bundle.py"
+          ],
+          "materialized_root_routes": [
             "dist/abyss-artifact-bundle/aoa-stats-summary-surface-catalog",
             "dist/abyss-artifact-registry/aoa-stats-summary-surface-catalog",
-            "scripts/validate_abyss_machine_summary_catalog_bundle.py"
+            "dist/abyss-artifact-subjects/aoa-stats-summary-surface-catalog"
           ]
         }
       ]

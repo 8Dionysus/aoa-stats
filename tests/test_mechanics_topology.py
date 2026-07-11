@@ -122,6 +122,30 @@ def test_flat_operation_districts_are_empty_and_public_districts_are_explicit() 
     ]["additional_schema_routes"]
 
 
+def test_artifact_runtime_outputs_are_materialized_not_retained_source_routes() -> None:
+    topology = load_json("mechanics/topology.json")
+    release_support = next(
+        package
+        for package in topology["active_packages"]
+        if package["path"] == "release-support"
+    )
+    artifact_part = next(
+        part
+        for part in release_support["active_part_routes"]
+        if part["path"] == "summary-catalog-artifact-bundle"
+    )
+
+    assert artifact_part["retained_root_routes"] == [
+        "manifests/artifact_bundles",
+        "scripts/validate_abyss_machine_summary_catalog_bundle.py",
+    ]
+    assert artifact_part["materialized_root_routes"] == [
+        "dist/abyss-artifact-bundle/aoa-stats-summary-surface-catalog",
+        "dist/abyss-artifact-registry/aoa-stats-summary-surface-catalog",
+        "dist/abyss-artifact-subjects/aoa-stats-summary-surface-catalog",
+    ]
+
+
 def test_agon_former_routes_are_active_first() -> None:
     ledger = load_json("mechanics/agon/legacy/former-routes.json")
     for route in ledger["active_routes"]:

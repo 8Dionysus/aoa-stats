@@ -388,6 +388,7 @@ def validate(repo_root: Path = REPO_ROOT) -> list[str]:
             part_root = repo_root / route
             localized = part.get("localized_payload_roots", [])
             retained = part.get("retained_root_routes", [])
+            materialized = part.get("materialized_root_routes", [])
             family_refs = part.get("stats_source_family_refs", [])
             if not _string_list(localized, allow_empty=True):
                 issues.append(f"{route}: localized_payload_roots must be a string list")
@@ -395,6 +396,9 @@ def validate(repo_root: Path = REPO_ROOT) -> list[str]:
             if not _string_list(retained, allow_empty=True):
                 issues.append(f"{route}: retained_root_routes must be a string list")
                 retained = []
+            if not _string_list(materialized, allow_empty=True):
+                issues.append(f"{route}: materialized_root_routes must be a string list")
+                materialized = []
             if not _string_list(family_refs):
                 issues.append(f"{route}: stats_source_family_refs must be a non-empty string list")
                 family_refs = []
@@ -417,7 +421,18 @@ def validate(repo_root: Path = REPO_ROOT) -> list[str]:
             for retained_route in retained:
                 if not (repo_root / retained_route).exists():
                     issues.append(f"{route}: retained root route is missing: {retained_route}")
-            if not localized and not retained and route not in profile_mechanics:
+            for materialized_route in materialized:
+                if not materialized_route.startswith("dist/"):
+                    issues.append(
+                        f"{route}: materialized root route must stay under dist/: "
+                        f"{materialized_route}"
+                    )
+                if materialized_route in retained:
+                    issues.append(
+                        f"{route}: materialized root route cannot also be retained: "
+                        f"{materialized_route}"
+                    )
+            if not localized and not retained and not materialized and route not in profile_mechanics:
                 issues.append(f"{route}: active part has no payload, public route, or profile handoff")
             for family in family_refs:
                 part_crosswalks.setdefault(family, set()).add(route)
