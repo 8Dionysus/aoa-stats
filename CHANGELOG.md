@@ -66,6 +66,9 @@ Tracking starts with the first public release-prep baseline for this repository.
   separated its source adapter from filesystem-free validation/projection, and
   removed status-only reanchor success inference while excluding the static
   example chain from local live state.
+- Reclassified Codex Plane Deployment as a committed owner-example reference,
+  separated its reference and deploy-local source contracts, and stopped
+  missing runtime rollout evidence from falling back to examples in live state.
 
 ## [0.1.3] - 2026-04-23
 

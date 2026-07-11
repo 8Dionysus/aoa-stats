@@ -37,6 +37,17 @@ from aoa_stats_builder.component_refresh_sources import (  # noqa: E402
     load_reviewed_sdk_example_bundle,
     reviewed_sdk_example_paths,
 )
+from aoa_stats_builder.codex_plane_deployment import (  # noqa: E402
+    TRUST_POSTURES as TRUST_POSTURES,
+    build_codex_plane_deployment_summary as build_codex_plane_deployment_summary_from_inputs,
+)
+from aoa_stats_builder.codex_plane_deployment_sources import (  # noqa: E402
+    CODEX_PLANE_LIVE_ROLLOUT_ROOT,
+    CodexPlaneDeploymentInputBundle,
+    codex_plane_reference_paths,
+    load_codex_plane_live_bundle,
+    load_codex_plane_reference_bundle,
+)
 from aoa_stats_builder.continuity_window import (  # noqa: E402
     CONTINUITY_EVAL_ANCHORS as CONTINUITY_EVAL_ANCHORS,
     CONTINUITY_STATUSES as CONTINUITY_STATUSES,
@@ -117,14 +128,6 @@ AXES = (
     "proof_discipline",
     "provenance_hygiene",
     "deep_readiness",
-)
-TRUST_POSTURES = (
-    "unknown",
-    "root_mismatch",
-    "config_inactive",
-    "trusted_ready",
-    "rollout_active",
-    "rollback_recommended",
 )
 MEMORY_CONSUMER_REFS = (
     "repo:aoa-evals",
@@ -271,51 +274,43 @@ def load_jsonl_objects(path: Path, *, label: str) -> list[dict[str, Any]]:
 
 def codex_plane_example_paths() -> tuple[Path, Path, Path]:
     public_profile_root = repo_root_from_env("AOA_8DIONYSUS_ROOT", DEFAULT_PUBLIC_PROFILE_ROOT)
-    sdk_root = repo_root_from_env("AOA_SDK_ROOT", DEFAULT_AOA_SDK_ROOT)
-    return (
-        public_profile_root / "examples" / "codex_plane_trust_state.example.json",
-        sdk_root
-        / "mechanics"
-        / "codex-projection"
-        / "parts"
-        / "live-rollout-status-readout"
-        / "examples"
-        / "live-rollout-status-snapshot.example.json",
-        public_profile_root / "examples" / "codex_plane_rollout_receipt.example.json",
+    return codex_plane_reference_paths(public_profile_root)
+
+
+def codex_plane_input_bundle(
+    *,
+    source_mode: str = "reference",
+    workspace_root: Path | None = None,
+) -> CodexPlaneDeploymentInputBundle:
+    if source_mode == "reference":
+        public_profile_root = repo_root_from_env(
+            "AOA_8DIONYSUS_ROOT", DEFAULT_PUBLIC_PROFILE_ROOT
+        )
+        return load_codex_plane_reference_bundle(public_profile_root)
+    if source_mode == "live":
+        if workspace_root is None:
+            raise ReceiptValidationError(
+                "Codex Plane live source mode requires an explicit workspace root"
+            )
+        resolved_workspace_root = workspace_root.expanduser().resolve()
+        bundle = load_codex_plane_live_bundle(resolved_workspace_root)
+        if bundle is None:
+            raise ReceiptValidationError(
+                "missing Codex Plane live rollout artifacts: "
+                f"{resolved_workspace_root / CODEX_PLANE_LIVE_ROLLOUT_ROOT}"
+            )
+        return bundle
+    raise ReceiptValidationError(
+        f"unsupported Codex Plane source mode: {source_mode!r}"
     )
 
 
-def codex_plane_generated_from() -> tuple[dict[str, Any], dict[str, Any], dict[str, Any], dict[str, Any]]:
-    trust_path, status_path, receipt_path = codex_plane_example_paths()
-    public_profile_root = repo_root_from_env("AOA_8DIONYSUS_ROOT", DEFAULT_PUBLIC_PROFILE_ROOT)
-    sdk_root = repo_root_from_env("AOA_SDK_ROOT", DEFAULT_AOA_SDK_ROOT)
-    trust = load_json_object(trust_path, label="codex plane trust-state example")
-    status = load_json_object(status_path, label="codex plane deploy-status example")
-    receipt = load_json_object(receipt_path, label="codex plane rollout receipt example")
-    latest_observed_at = max(
-        parse_iso_datetime_or_min(trust.get("captured_at")),
-        parse_iso_datetime_or_min(status.get("observed_at")),
-        parse_iso_datetime_or_min(receipt.get("verified_at")),
-    ).isoformat().replace("+00:00", "Z")
-    source = {
-        "receipt_input_paths": [
-            display_repo_input_path(
-                trust_path,
-                repo_roots=(("8Dionysus", public_profile_root), ("aoa-sdk", sdk_root)),
-            ),
-            display_repo_input_path(
-                status_path,
-                repo_roots=(("8Dionysus", public_profile_root), ("aoa-sdk", sdk_root)),
-            ),
-            display_repo_input_path(
-                receipt_path,
-                repo_roots=(("8Dionysus", public_profile_root), ("aoa-sdk", sdk_root)),
-            ),
-        ],
-        "total_receipts": 1,
-        "latest_observed_at": latest_observed_at,
-    }
-    return source, trust, status, receipt
+def codex_plane_generated_from() -> tuple[
+    dict[str, Any], dict[str, Any], dict[str, Any], dict[str, Any]
+]:
+    """Preserve the legacy mutable tuple facade for compatibility callers."""
+
+    return codex_plane_input_bundle().mutable_parts()
 
 
 def codex_trusted_rollout_paths() -> tuple[Path, Path, Path, Path]:
@@ -977,38 +972,21 @@ def build_route_progression_summary(
     }
 
 
-def build_codex_plane_deployment_summary() -> dict[str, Any]:
-    source, trust, status, receipt = codex_plane_generated_from()
-    trust_posture = str(trust.get("trust_posture") or "unknown")
-    trust_posture_counts = {posture: 0 for posture in TRUST_POSTURES}
-    if trust_posture in trust_posture_counts:
-        trust_posture_counts[trust_posture] = 1
-
-    stable_mcp_name_set = sorted(
-        {
-            str(name)
-            for name in status.get("active_mcp_servers", [])
-            if isinstance(name, str) and name
-        }
+def build_codex_plane_deployment_summary(
+    *,
+    source_mode: str = "reference",
+    workspace_root: Path | None = None,
+) -> dict[str, Any]:
+    bundle = codex_plane_input_bundle(
+        source_mode=source_mode,
+        workspace_root=workspace_root,
     )
-    drift_count = 1 if status.get("drift_detected") is True or receipt.get("deployment_state") == "drifted" else 0
-    rollback_recommended_count = 1 if (
-        trust_posture == "rollback_recommended"
-        or receipt.get("deployment_state") == "rollback_recommended"
-        or status.get("next_action") == "rollback"
-    ) else 0
-
-    return {
-        "schema_version": "aoa_stats_codex_plane_deployment_summary_v1",
-        "generated_from": source,
-        "workspaces_total": 1,
-        "latest_rollout_state": receipt.get("deployment_state") or "render_only",
-        "trust_posture_counts": trust_posture_counts,
-        "drift_count": drift_count,
-        "rollback_recommended_count": rollback_recommended_count,
-        "stable_mcp_name_set": stable_mcp_name_set,
-        "latest_receipt_ref": receipt.get("rollout_receipt_id") or "",
-    }
+    return build_codex_plane_deployment_summary_from_inputs(
+        bundle.source,
+        bundle.trust,
+        bundle.regeneration,
+        bundle.receipt,
+    )
 
 
 def build_codex_rollout_operations_summary() -> dict[str, Any]:
@@ -1534,6 +1512,8 @@ def build_all_views(
     source_registry: dict[str, Any] | None = None,
     source_registry_ref: str | None = None,
     optional_output_names: AbstractSet[str] | None = None,
+    codex_plane_source_mode: str = "reference",
+    codex_plane_workspace_root: Path | None = None,
 ) -> dict[str, dict[str, Any]]:
     active_receipts = resolve_active_receipts(receipts)
     source = generated_from(active_receipts, input_paths)
@@ -1589,8 +1569,15 @@ def build_all_views(
     allowed_optional_outputs = (
         None if optional_output_names is None else frozenset(optional_output_names)
     )
+
+    def build_codex_plane_optional() -> dict[str, Any]:
+        return build_codex_plane_deployment_summary(
+            source_mode=codex_plane_source_mode,
+            workspace_root=codex_plane_workspace_root,
+        )
+
     for name, builder in (
-        ("codex_plane_deployment_summary.min.json", build_codex_plane_deployment_summary),
+        ("codex_plane_deployment_summary.min.json", build_codex_plane_optional),
         ("codex_rollout_operations_summary.min.json", build_codex_rollout_operations_summary),
         ("codex_rollout_drift_summary.min.json", build_codex_rollout_drift_summary),
         ("rollout_campaign_summary.min.json", build_rollout_campaign_summary),

@@ -33,6 +33,9 @@ Use these classes as the compact posture vocabulary:
 - `checked_in_owner_history`: checked-in source-owned history or runtime entry
   surfaces
 - `reviewed_example_chain`: reviewed examples and anchor artifacts
+- `committed_owner_example_chain`: a coherent set of checked-in examples from
+  one owner repository that supports a deterministic committed reference
+  snapshot without claiming deploy-local or runtime occurrence
 - `committed_reference_example_catalog_chain`: committed examples, an
   owner-authored contract, and catalog definitions that make a reference shape
   inspectable without claiming runtime occurrence

@@ -3,7 +3,7 @@
   "generated_from": {
     "receipt_input_paths": [
       "8Dionysus/examples/codex_plane_trust_state.example.json",
-      "aoa-sdk/mechanics/codex-projection/parts/live-rollout-status-readout/examples/live-rollout-status-snapshot.example.json",
+      "8Dionysus/examples/codex_plane_regeneration_report.example.json",
       "8Dionysus/examples/codex_plane_rollout_receipt.example.json"
     ],
     "total_receipts": 1,
@@ -22,6 +22,11 @@
   "drift_count": 0,
   "rollback_recommended_count": 0,
   "stable_mcp_name_set": [
+    "abyss_machine",
+    "aoa_decisions",
+    "aoa_evals",
+    "aoa_memo",
+    "aoa_session_memory",
     "aoa_stats",
     "aoa_workspace",
     "dionysus"

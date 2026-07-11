@@ -279,6 +279,8 @@ def refresh_live_state(
         source_registry=registry,
         source_registry_ref=display_registry_ref(registry_path),
         optional_output_names=frozenset(LIVE_PROFILE_SURFACE_OUTPUT_NAMES),
+        codex_plane_source_mode="live",
+        codex_plane_workspace_root=federation_root,
     )
     outputs = select_live_outputs(outputs)
     outputs = rewrite_catalog_surface_refs(outputs, summary_output_dir=summary_output_dir)

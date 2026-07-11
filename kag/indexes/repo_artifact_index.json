@@ -1730,7 +1730,7 @@
     },
     {
       "artifact_kind": "document",
-      "content_hash": "6bd12802c10cd808143e59c9d47bcafabe410042e40c262087d13e4da012b144",
+      "content_hash": "43e3b82344289c5d06a7fe99af1e5cfe6b7c4e51f858dd228b3eff9a22eee30b",
       "id": "artifact:file:agents.md:a54ff182c7",
       "path": "AGENTS.md",
       "source_record_id": "file:agents.md:a54ff182c7",
@@ -1738,7 +1738,7 @@
     },
     {
       "artifact_kind": "document",
-      "content_hash": "bdceeb804c5a19d0c80ebcebbb92e69323f63b78c9feca8ab236b5d4c9b4c6bd",
+      "content_hash": "1223bbe92c3e5b2cefe60401aeb4d75885d7950ac27a30c3beafb123fa3cdb0a",
       "id": "artifact:file:changelog.md:06572a96a5",
       "path": "CHANGELOG.md",
       "source_record_id": "file:changelog.md:06572a96a5",
@@ -1762,7 +1762,7 @@
     },
     {
       "artifact_kind": "document",
-      "content_hash": "e82b6e92f406af1ccb133eb2fbb3bf36c9425d1cc3a9cf257b8ef70d9f272fa8",
+      "content_hash": "0b60eed0099a3e66bf6370ae89bc5c88320db6d34708db17754658209c4f8213",
       "id": "artifact:file:design.md:3dc5dd454e",
       "path": "DESIGN.md",
       "source_record_id": "file:design.md:3dc5dd454e",
@@ -1778,7 +1778,7 @@
     },
     {
       "artifact_kind": "document",
-      "content_hash": "ab830b23b73147b6d56eb6437ad14fb0091ba1c73257aa0d7e307d3ed8c6f9b8",
+      "content_hash": "f60c8acd88df27c726ec5b5f53097780126e8cd306a81021459842b3e63497ef",
       "id": "artifact:file:readme.md:b335630551",
       "path": "README.md",
       "source_record_id": "file:readme.md:b335630551",
@@ -1786,7 +1786,7 @@
     },
     {
       "artifact_kind": "document",
-      "content_hash": "58cc05093c0b966fd2053b0d18c7fb88b582222c93438377c7736e4389fee01d",
+      "content_hash": "b3d389f9dff56dd097e519f78edbd10ae7fa6c8bde6152c95a598fa4d85b652d",
       "id": "artifact:file:roadmap.md:683343bdf9",
       "path": "ROADMAP.md",
       "source_record_id": "file:roadmap.md:683343bdf9",
@@ -1802,7 +1802,7 @@
     },
     {
       "artifact_kind": "document",
-      "content_hash": "b0edf1570809198254c5a9dff7e4ab939ce96cd2b4fa10daace52dcc1405da9e",
+      "content_hash": "12932be4bad8f81c929c0634702952a8777eb88ebb825007d483ac1b1361db05",
       "id": "artifact:file:docs/architecture.md:ff21b6b9a3",
       "path": "docs/ARCHITECTURE.md",
       "source_record_id": "file:docs/architecture.md:ff21b6b9a3",
@@ -1866,7 +1866,7 @@
     },
     {
       "artifact_kind": "document",
-      "content_hash": "ce52069c2d7c5ba754574afcd1955ccab032873d1afe8aef26d3e8f485745bd5",
+      "content_hash": "29edea4e8491acca689b0455327fa6adcff1f982987bb85ba7e5288bf875c98f",
       "id": "artifact:file:docs/surface_strength_model.md:bdc1ce47cd",
       "path": "docs/SURFACE_STRENGTH_MODEL.md",
       "source_record_id": "file:docs/surface_strength_model.md:bdc1ce47cd",
@@ -2050,7 +2050,7 @@
     },
     {
       "artifact_kind": "config",
-      "content_hash": "90a3c6cb6f2bc091f9ba8b287332f27219387e5db4d6e0d26d9ed964897bf594",
+      "content_hash": "b8724e54debdebce48427e5a0e5f768a4320a16f6fd8604aa5c6d12a3f2ea77f",
       "id": "artifact:file:examples/codex_plane_deployment_summary.example.json:a80f7f68e8",
       "path": "examples/codex_plane_deployment_summary.example.json",
       "source_record_id": "file:examples/codex_plane_deployment_summary.example.json:a80f7f68e8",
@@ -2154,7 +2154,7 @@
     },
     {
       "artifact_kind": "generated_readmodel",
-      "content_hash": "90a3c6cb6f2bc091f9ba8b287332f27219387e5db4d6e0d26d9ed964897bf594",
+      "content_hash": "b8724e54debdebce48427e5a0e5f768a4320a16f6fd8604aa5c6d12a3f2ea77f",
       "id": "artifact:file:generated/codex_plane_deployment_summary.min.json:62d0171445",
       "path": "generated/codex_plane_deployment_summary.min.json",
       "source_record_id": "file:generated/codex_plane_deployment_summary.min.json:62d0171445",
@@ -2298,7 +2298,7 @@
     },
     {
       "artifact_kind": "generated_readmodel",
-      "content_hash": "8d7befe3192e9490892a9ce6447d9bf2b454934b327c6b0930dd07ef4ae14152",
+      "content_hash": "8c7c42c530bd3e78ff827d697e868b1ac9fed7c128c1a410e7f0c555b70b780e",
       "id": "artifact:file:generated/summary_surface_catalog.min.json:5c31a5556b",
       "path": "generated/summary_surface_catalog.min.json",
       "source_record_id": "file:generated/summary_surface_catalog.min.json:5c31a5556b",
@@ -5506,7 +5506,7 @@
     },
     {
       "artifact_kind": "document",
-      "content_hash": "7d8c83838e50daa37de73a733741f5a8ad220ae987cfefe50da8c6f974fb461e",
+      "content_hash": "e6ddd77b1de1f09ae753f432da5de013ca192cf5dc9ed5c5e1fc8ef5c94159ea",
       "id": "artifact:file:mechanics/recurrence/provenance.md:8876379d2e",
       "path": "mechanics/recurrence/PROVENANCE.md",
       "source_record_id": "file:mechanics/recurrence/provenance.md:8876379d2e",
@@ -5514,7 +5514,7 @@
     },
     {
       "artifact_kind": "document",
-      "content_hash": "1d05032eb6abb9fea9e6258e93a00a572199fe043c061433c64cdaacd7019dcf",
+      "content_hash": "2a267bc557de11e391561d17c51e9fb5cc03b2359c4a12cd0808cb52d70aabb5",
       "id": "artifact:file:mechanics/recurrence/readme.md:19fb3d55a5",
       "path": "mechanics/recurrence/README.md",
       "source_record_id": "file:mechanics/recurrence/readme.md:19fb3d55a5",
@@ -5850,7 +5850,7 @@
     },
     {
       "artifact_kind": "document",
-      "content_hash": "69068069c2bf6e3ce4efcd81e2acabb596385f879f472a22fbddf48c75500576",
+      "content_hash": "c84fc3303784c4aab1481f99e433ddf819ad68fd8de732c4399f318f7f0309a3",
       "id": "artifact:file:mechanics/recurrence/parts/live-receipt-refresh/contract.md:c4b2a7db4d",
       "path": "mechanics/recurrence/parts/live-receipt-refresh/CONTRACT.md",
       "source_record_id": "file:mechanics/recurrence/parts/live-receipt-refresh/contract.md:c4b2a7db4d",
@@ -5858,7 +5858,7 @@
     },
     {
       "artifact_kind": "document",
-      "content_hash": "74ff6396fe853730d7a41657be26bd77d43bc681f2e029ecd0b814dc3c8c8cb9",
+      "content_hash": "fff1ae42b02d790f405e95d2a922a311d9b5dd37bfc13233706e93fab91b7e91",
       "id": "artifact:file:mechanics/recurrence/parts/live-receipt-refresh/readme.md:ed8e247fa6",
       "path": "mechanics/recurrence/parts/live-receipt-refresh/README.md",
       "source_record_id": "file:mechanics/recurrence/parts/live-receipt-refresh/readme.md:ed8e247fa6",
@@ -5866,7 +5866,7 @@
     },
     {
       "artifact_kind": "document",
-      "content_hash": "5cd961f1f6e240420b36935939af33d41c5e9f71b4837236965f58d171406b6e",
+      "content_hash": "c0ba23ad8c9a4c7b5f504c96a930a83dde82daaf2a61b7ee322a2b62e705cff1",
       "id": "artifact:file:mechanics/recurrence/parts/live-receipt-refresh/validation.md:c26dcdde9f",
       "path": "mechanics/recurrence/parts/live-receipt-refresh/VALIDATION.md",
       "source_record_id": "file:mechanics/recurrence/parts/live-receipt-refresh/validation.md:c26dcdde9f",
@@ -5898,7 +5898,7 @@
     },
     {
       "artifact_kind": "document",
-      "content_hash": "54ae559941502701b56579ed94ca1568813160c14cb4a44ec01964d69fd9b83a",
+      "content_hash": "a5d5c1d556d6e7ec91e094299e580e47ce11e88d7a83ed16bd9aebdbd02c9ca6",
       "id": "artifact:file:mechanics/recurrence/parts/live-receipt-refresh/docs/live_session_use.md:807ec41ee1",
       "path": "mechanics/recurrence/parts/live-receipt-refresh/docs/LIVE_SESSION_USE.md",
       "source_record_id": "file:mechanics/recurrence/parts/live-receipt-refresh/docs/live_session_use.md:807ec41ee1",
@@ -5922,7 +5922,7 @@
     },
     {
       "artifact_kind": "script",
-      "content_hash": "d3b98889cd6b040ef2b029fdb0f05bffbd1241aa2e2781038c43779258f36cc5",
+      "content_hash": "1895ff100674710fd7192e47a972f60ed6c5f14fcc9e35d375b5d0bf3757e96f",
       "id": "artifact:file:mechanics/recurrence/parts/live-receipt-refresh/scripts/refresh_live_stats.py:300ae5a4c1",
       "path": "mechanics/recurrence/parts/live-receipt-refresh/scripts/refresh_live_stats.py",
       "source_record_id": "file:mechanics/recurrence/parts/live-receipt-refresh/scripts/refresh_live_stats.py:300ae5a4c1",
@@ -5970,7 +5970,7 @@
     },
     {
       "artifact_kind": "test",
-      "content_hash": "f91b2471ff33887f090984dfc0f8bd7f46a2a4b5c0e0a051244c81e5ca922426",
+      "content_hash": "6611099c219a7cbf081331f1eeb57516aa1d6b6c557ccb9a2f03285227198a4b",
       "id": "artifact:file:mechanics/recurrence/parts/live-receipt-refresh/tests/test_refresh_live_stats.py:7cafbd910d",
       "path": "mechanics/recurrence/parts/live-receipt-refresh/tests/test_refresh_live_stats.py",
       "source_record_id": "file:mechanics/recurrence/parts/live-receipt-refresh/tests/test_refresh_live_stats.py:7cafbd910d",
@@ -6050,7 +6050,7 @@
     },
     {
       "artifact_kind": "document",
-      "content_hash": "a87b94585844374745eabe5e605afff22e0fde5141078d5d9c75688acfa2cf9b",
+      "content_hash": "be1891c9ff5c47849b28dbcac313171addd7fd4cbc9a1e96f6199f916f1e6078",
       "id": "artifact:file:mechanics/release-support/parts/codex-deployment-rollout/contract.md:e8978ce675",
       "path": "mechanics/release-support/parts/codex-deployment-rollout/CONTRACT.md",
       "source_record_id": "file:mechanics/release-support/parts/codex-deployment-rollout/contract.md:e8978ce675",
@@ -6058,7 +6058,7 @@
     },
     {
       "artifact_kind": "document",
-      "content_hash": "2b7c5b6bd2ae9a23aa4aedf8f227005663462a25ce47a3af40cf634854f11cbe",
+      "content_hash": "0fa3dd584daa7fa08507f3c21158f663ae3f8c5bb2d6684171dbd80ea6c8a242",
       "id": "artifact:file:mechanics/release-support/parts/codex-deployment-rollout/readme.md:81314e5d30",
       "path": "mechanics/release-support/parts/codex-deployment-rollout/README.md",
       "source_record_id": "file:mechanics/release-support/parts/codex-deployment-rollout/readme.md:81314e5d30",
@@ -6066,7 +6066,7 @@
     },
     {
       "artifact_kind": "document",
-      "content_hash": "045aee7c7d783b6b29b902a7401549c850d272410838cace27b3a25efb441ff3",
+      "content_hash": "ff910cbdf3ff5e9a29a4a8a767856b18135ca28ef2d535ace843b5d1bfda89ce",
       "id": "artifact:file:mechanics/release-support/parts/codex-deployment-rollout/validation.md:efe11a4e97",
       "path": "mechanics/release-support/parts/codex-deployment-rollout/VALIDATION.md",
       "source_record_id": "file:mechanics/release-support/parts/codex-deployment-rollout/validation.md:efe11a4e97",
@@ -6074,7 +6074,7 @@
     },
     {
       "artifact_kind": "document",
-      "content_hash": "64f97a51a0ade787c16e09eba8ed26461c389cc634d2ee44e8e9f742ca2544c4",
+      "content_hash": "dddaf0f25f9cbe7fe0c9d808b4a056972963ce2a39ce73d8e8e348036c23b45e",
       "id": "artifact:file:mechanics/release-support/parts/codex-deployment-rollout/docs/codex_plane_deployment_summaries.md:6071cb5f8f",
       "path": "mechanics/release-support/parts/codex-deployment-rollout/docs/CODEX_PLANE_DEPLOYMENT_SUMMARIES.md",
       "source_record_id": "file:mechanics/release-support/parts/codex-deployment-rollout/docs/codex_plane_deployment_summaries.md:6071cb5f8f",
@@ -6094,6 +6094,14 @@
       "id": "artifact:file:mechanics/release-support/parts/codex-deployment-rollout/examples/codex_rollout_operations_summary.example.json:fa09f4fc13",
       "path": "mechanics/release-support/parts/codex-deployment-rollout/examples/codex_rollout_operations_summary.example.json",
       "source_record_id": "file:mechanics/release-support/parts/codex-deployment-rollout/examples/codex_rollout_operations_summary.example.json:fa09f4fc13",
+      "surface_state": "authored_source"
+    },
+    {
+      "artifact_kind": "test",
+      "content_hash": "f4e02c7518157f2b7eaced92bc0cc8ae1d67ba68e4b6555acb60ff0a41b879bb",
+      "id": "artifact:file:mechanics/release-support/parts/codex-deployment-rollout/tests/test_codex_plane_deployment_projection.py:b86c4d6720",
+      "path": "mechanics/release-support/parts/codex-deployment-rollout/tests/test_codex_plane_deployment_projection.py",
+      "source_record_id": "file:mechanics/release-support/parts/codex-deployment-rollout/tests/test_codex_plane_deployment_projection.py:b86c4d6720",
       "surface_state": "authored_source"
     },
     {
@@ -6434,7 +6442,7 @@
     },
     {
       "artifact_kind": "config",
-      "content_hash": "f1bc03696252e66636807c0fb47f426e4ff7541cc2a291c469d1dfceab4ffa21",
+      "content_hash": "1b9ccb73654009bf0d094fd154b14bae767b7d89389fcfc61f8476afc2b57d9c",
       "id": "artifact:file:mechanics/topology.json:c2f84a03b1",
       "path": "mechanics/topology.json",
       "source_record_id": "file:mechanics/topology.json:c2f84a03b1",
@@ -6698,7 +6706,7 @@
     },
     {
       "artifact_kind": "script",
-      "content_hash": "597c19c44af894a0be7d8b73b356c953ac6133d12474f04b7132a810e83eae26",
+      "content_hash": "2e231b600c82b63f9c0084c9d26856354db51b72a26f96ec0baf5aa607db3d70",
       "id": "artifact:file:scripts/build_views.py:b705861394",
       "path": "scripts/build_views.py",
       "source_record_id": "file:scripts/build_views.py:b705861394",
@@ -6818,7 +6826,7 @@
     },
     {
       "artifact_kind": "source_code",
-      "content_hash": "33e992035b3146d974be16de7d6e14c6087c3c7c06104421af8077ed08f3a9f9",
+      "content_hash": "d177da28d9337722f3c48b00b9b6c32fdfb48b33bbdf8c9f143145d6df23cf56",
       "id": "artifact:file:src/aoa_stats_builder/__init__.py:3d39f7c839",
       "path": "src/aoa_stats_builder/__init__.py",
       "source_record_id": "file:src/aoa_stats_builder/__init__.py:3d39f7c839",
@@ -6830,6 +6838,22 @@
       "id": "artifact:file:src/aoa_stats_builder/candidate_lifecycle.py:991c3f7565",
       "path": "src/aoa_stats_builder/candidate_lifecycle.py",
       "source_record_id": "file:src/aoa_stats_builder/candidate_lifecycle.py:991c3f7565",
+      "surface_state": "authored_source"
+    },
+    {
+      "artifact_kind": "source_code",
+      "content_hash": "2df8808292a547c5ef20ba174e2422e6169aa4477a02a4108fa9d57cd06c3206",
+      "id": "artifact:file:src/aoa_stats_builder/codex_plane_deployment.py:384c50b061",
+      "path": "src/aoa_stats_builder/codex_plane_deployment.py",
+      "source_record_id": "file:src/aoa_stats_builder/codex_plane_deployment.py:384c50b061",
+      "surface_state": "authored_source"
+    },
+    {
+      "artifact_kind": "source_code",
+      "content_hash": "f249893b87b80305c3846d7dc3865e26a7f0ef55a89e04b80efecec0fe6aa865",
+      "id": "artifact:file:src/aoa_stats_builder/codex_plane_deployment_sources.py:0d28a7881c",
+      "path": "src/aoa_stats_builder/codex_plane_deployment_sources.py",
+      "source_record_id": "file:src/aoa_stats_builder/codex_plane_deployment_sources.py:0d28a7881c",
       "surface_state": "authored_source"
     },
     {
@@ -6954,7 +6978,7 @@
     },
     {
       "artifact_kind": "document",
-      "content_hash": "8338cdcfcac5c88f3ca18c71fa42ef97d4803a413d14acbc6692b7f6c30a924f",
+      "content_hash": "0d0e7e52ac4856fa4f599a189e2bfc3ffe4f33e9c868c07c382cc2beb951b629",
       "id": "artifact:file:stats/readme.md:6bac6d2ff5",
       "path": "stats/README.md",
       "source_record_id": "file:stats/readme.md:6bac6d2ff5",
@@ -7154,7 +7178,7 @@
     },
     {
       "artifact_kind": "document",
-      "content_hash": "f2dc1baa1430357c2f10aa8680adb1d2964fb3d5f680f04fb0a81f28187da651",
+      "content_hash": "4e1075ca1230fe3346f4f078a52d906bb7a52d9252324c11cf0b0d66368da384",
       "id": "artifact:file:stats/read-models/readme.md:5ba4a92471",
       "path": "stats/read-models/README.md",
       "source_record_id": "file:stats/read-models/readme.md:5ba4a92471",
@@ -7186,7 +7210,7 @@
     },
     {
       "artifact_kind": "config",
-      "content_hash": "642a7b9ebf042718d4b46ff18fe68564a01de96037a17e129207c5104b28dbee",
+      "content_hash": "f24c06e66c150ccc972c229f024b3d08f2b5ca7e53c68f95b907d886871e5a2f",
       "id": "artifact:file:stats/read-models/active/codex_plane_deployment_summary.profile.json:2315357674",
       "path": "stats/read-models/active/codex_plane_deployment_summary.profile.json",
       "source_record_id": "file:stats/read-models/active/codex_plane_deployment_summary.profile.json:2315357674",
@@ -7378,7 +7402,7 @@
     },
     {
       "artifact_kind": "config",
-      "content_hash": "93e2048169be318528f283bb7ac9a27cbd1cb0fedb334a1d41c4722cd4858d79",
+      "content_hash": "728e8b2c57f60f9c932a8bd41fba380e816543cd1acb8140286787e974861c2e",
       "id": "artifact:file:stats/source_home.manifest.json:41b237ff45",
       "path": "stats/source_home.manifest.json",
       "source_record_id": "file:stats/source_home.manifest.json:41b237ff45",
@@ -7434,7 +7458,7 @@
     },
     {
       "artifact_kind": "test",
-      "content_hash": "e6bf340feb651f2a20588033f47c1d10f9efe5976eff63a3d0ec17b9f0864464",
+      "content_hash": "c11bd95c511c9951b0aa149529aac32d23cf2d43f6b92a2c53f3767509a9f9da",
       "id": "artifact:file:tests/test_build_views.py:760ef645f6",
       "path": "tests/test_build_views.py",
       "source_record_id": "file:tests/test_build_views.py:760ef645f6",
@@ -7515,7 +7539,7 @@
   ],
   "index_identity": {
     "artifact_kind": "repository_artifact_index",
-    "content_digest": "0e159a40622c84ef60e77b5dccf81666200a6db649ac5aefcf9f18cb0f3559d4",
+    "content_digest": "7a22eec4ee7f1d7f42e4108945cbf6307386a278c8e6878c83fe3169e85748b6",
     "index_kind": "artifact",
     "local_id": "index:repo-local:artifacts",
     "schema_ref": "aoa-kag:schemas/repo-local-kag-repository-index.schema.json"
@@ -7539,12 +7563,12 @@
   },
   "schema_version": "aoa-repo-local-kag-repository-index-v1",
   "source_index": {
-    "content_digest": "7ab9aac82548067cd5655b8be6391c232a12ef15cf60ba492a312d47adca61d1",
+    "content_digest": "527f4cec11e2ebdd427e261af7a0f37567c3d21f124dc21bb13aa5045599ae89",
     "local_id": "index:repo-local:source-surfaces",
     "path": "kag/indexes/source_surface_index.json"
   },
   "summary": {
-    "entry_count": 939,
+    "entry_count": 942,
     "kind_counts": {
       "asset": 50,
       "config": 174,
@@ -7561,8 +7585,8 @@
       "script": 23,
       "security": 1,
       "service_unit": 2,
-      "source_code": 17,
-      "test": 39,
+      "source_code": 19,
+      "test": 40,
       "validator": 18
     }
   }

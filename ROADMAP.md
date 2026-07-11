@@ -23,7 +23,8 @@ The source/mechanics refactor is part of that contour:
 - `schemas/` and `generated/` remain stable public publication districts
 - `src/` remains the importable implementation and access boundary
 - authored `live_state_capable` profiles select local live materialization;
-  cleanup covers the full managed active-output set
+  the current split is 20 live-admitted read models across 25 managed active
+  outputs, and cleanup covers the full managed set
 
 ## Active summary families
 
@@ -65,6 +66,10 @@ contract stays separate from active catalog claims.
   `mechanics/audit/parts/source-coverage/docs/SOURCE_COVERAGE_SUMMARY.md`
 - rollout observations:
   `mechanics/release-support/parts/codex-deployment-rollout/docs/CODEX_PLANE_DEPLOYMENT_SUMMARIES.md`
+- committed Codex Plane Deployment reference boundary:
+  `src/aoa_stats_builder/codex_plane_deployment.py` and
+  `src/aoa_stats_builder/codex_plane_deployment_sources.py`; the current source
+  is the bounded 8Dionysus owner-example chain, not deploy-local rollout state
 - campaign and drift review:
   `mechanics/release-support/parts/rollout-campaign/docs/ROLLOUT_CAMPAIGN_SUMMARY.md`
   and `mechanics/audit/parts/drift-shadow-review/docs/DRIFT_REVIEW_SUMMARY.md`
@@ -72,6 +77,8 @@ contract stays separate from active catalog claims.
   `mechanics/recurrence/parts/continuity-window/docs/CONTINUITY_WINDOW_SUMMARY.md`
   and `mechanics/recurrence/parts/component-refresh/docs/COMPONENT_REFRESH_SUMMARIES.md`
 - committed reference projection boundaries:
+  `src/aoa_stats_builder/codex_plane_deployment.py`,
+  `src/aoa_stats_builder/codex_plane_deployment_sources.py`,
   `src/aoa_stats_builder/continuity_window.py`,
   `src/aoa_stats_builder/continuity_window_sources.py`,
   `src/aoa_stats_builder/component_refresh.py`, and
@@ -101,9 +108,10 @@ Changes on this line should:
 5. update topology, source-home validation, focused tests, and generated
    outputs together
 6. keep `README.md` and `docs/README.md` short and link-driven
-7. keep Component Refresh and Continuity Window reference fixtures out of local
-   live output until their real owner-runtime sources and activation contracts
-   exist; audit the remaining non-receipt or example-backed
+7. keep Component Refresh, Continuity Window, and Codex Plane Deployment
+   reference fixtures out of local live output until their real owner-runtime
+   or deploy-local sources and activation contracts exist; audit the remaining
+   non-receipt or example-backed
    `live_state_capable: true` profiles separately
 
 ## Non-goals

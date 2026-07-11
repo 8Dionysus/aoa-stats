@@ -145,12 +145,15 @@ ignored `state/`; committed public output stays under `generated/`. Local live
 materialization includes only active profiles with `live_state_capable: true`,
 and its catalog lists only outputs actually materialized. Reference-only
 profiles remain in the committed catalog and stale runtime copies are removed.
-The managed inventory remains 25 read models; the current live inventory is 21.
+The managed inventory remains 25 read models; the authored live-admitted
+allowlist contains 20.
 [`AOST-D-0003`](docs/decisions/AOST-D-0003-component-refresh-fixtures-are-not-live-state.md)
 is the selector and stale-cleanup precedent established for Component Refresh,
-not a Continuity Window decision. Continuity Window is excluded because its
-current owner inputs are a committed example/catalog chain rather than a real
-owner-runtime artifact or receipt.
+not a Continuity Window or Codex Plane Deployment decision. Continuity Window
+is excluded because its current owner inputs are a committed example/catalog
+chain rather than a real owner-runtime artifact or receipt. Codex Plane
+Deployment is likewise excluded because its current output comes from three
+committed 8Dionysus examples, not the deploy-local rollout artifact trio.
 
 For read-only MCP use, follow
 [`stats/surface-catalog/CODEX_MCP.md`](stats/surface-catalog/CODEX_MCP.md).

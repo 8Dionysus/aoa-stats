@@ -139,15 +139,18 @@ reference-only surfaces. Local live refresh treats `live_state_capable` as an
 executable admission contract: it materializes only `true` profiles, writes a
 live catalog only for outputs actually present, and cleans stale files across
 the full managed active-profile set. The managed read-model inventory is 25;
-the current live-admitted inventory is 21. Component Refresh and Continuity
-Window reference adapters are excluded from live mode; other `true` profiles
-retain their declared source posture pending separate audits. The selector and
-stale-cleanup precedent is
+the authored live-admitted inventory is 20. Component Refresh, Continuity
+Window, and Codex Plane Deployment reference adapters are excluded from live
+mode; other `true` profiles retain their declared source posture pending
+separate audits. The selector and stale-cleanup precedent is
 `docs/decisions/AOST-D-0003-component-refresh-fixtures-are-not-live-state.md`,
 which decides the Component Refresh case only. Continuity Window remains
 reference-only because its current cross-owner inputs are examples, an
 experimental playbook, and draft catalog definitions rather than a real
-owner-runtime artifact or receipt.
+owner-runtime artifact or receipt. Codex Plane Deployment remains
+reference-only because its three committed owner examples are weaker than the
+deploy-local trust, regeneration, and rollout artifacts. Its explicit live
+adapter has no example fallback.
 
 `artifact_identity` describes the catalog as a public generated observability
 read-model with an ABI epoch, contract version, consumer checks, privacy

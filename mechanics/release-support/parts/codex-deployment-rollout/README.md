@@ -1,8 +1,22 @@
 # codex-deployment-rollout
 
-Summarizes checked-in Codex deployment, rollout operations, and drift windows.
+This part owns the bounded Codex Plane Deployment projection and its explicit
+committed-reference versus deploy-local source seam. It keeps deployment
+observability weaker than the trust, regeneration, rollout, and doctor evidence
+that owns current workspace state.
 
-This part owns its operation route and the localized payload roots declared in
-`mechanics/topology.json`. Its stats source family owns the bounded meaning;
-public schemas and generated outputs stay at their declared publication paths
-when consumers depend on those paths.
+- source profile:
+  `stats/read-models/active/codex_plane_deployment_summary.profile.json`
+- guide: `docs/CODEX_PLANE_DEPLOYMENT_SUMMARIES.md`
+- public schema: `schemas/codex-plane-deployment-summary.schema.json`
+- retained public example: `examples/codex_plane_deployment_summary.example.json`
+- committed output: `generated/codex_plane_deployment_summary.min.json`
+- filesystem-free core: `src/aoa_stats_builder/codex_plane_deployment.py`
+- reference/live adapters:
+  `src/aoa_stats_builder/codex_plane_deployment_sources.py`
+- root compatibility facade: `scripts/build_views.py`
+- checks: `VALIDATION.md`
+
+The checked-in rollout-history and cadence companions described in the guide
+remain separate operations for later audit. They are not inputs to the
+deployment projection and are not widened by this slice.

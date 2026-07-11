@@ -121,6 +121,16 @@ manufacture a successful-reanchor count; only explicit timeline evidence can.
 Until an owner-runtime continuity artifact or receipt exists, the surface stays
 absent from local live materialization.
 
+Codex Plane Deployment is the stats-led counterpart. Its committed snapshot
+may derive from owner-authored rollout examples, but those examples are not
+current deployment evidence. The projection core must be filesystem-free, and
+the source adapter must expose separate `reference` and `live` entry paths.
+Live mode reads only the three deploy-local trust, regeneration, and rollout
+artifacts from an explicit workspace root, never falls back to examples, and
+omits or cleans the optional surface when that runtime chain is absent. The
+authored profile remains non-live until the real producer, artifacts, and
+refresh trigger are proven together.
+
 ## Operation
 
 The refactor advances in alternating cross-slices:

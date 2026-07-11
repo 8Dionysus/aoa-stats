@@ -17,12 +17,20 @@ by the local live refresh loop when its inputs resolve. A `false` profile stays
 on its committed/reference route and is omitted from live output and the live
 catalog, although refresh cleanup still removes any stale runtime copy.
 
-The current managed inventory contains 25 active profiles; 21 are admitted to
-live materialization. Continuity Window is one of the four reference-only
-profiles. Its authored question describes the posture represented by the
-committed aoa-agents example, experimental aoa-playbooks contract, aoa-memo
-example, and aoa-evals catalog definitions. Those inputs do not constitute an
-owner-runtime continuity artifact or receipt.
+The current managed inventory contains 25 active profiles; 20 are admitted to
+live materialization. The five reference-only profiles are Component Refresh,
+Continuity Window, Codex Plane Deployment, Titan Incarnation, and Titan Summon.
+Continuity Window describes the posture represented by its committed
+cross-owner example/catalog chain. Codex Plane Deployment describes the posture
+represented by the committed 8Dionysus trust-state, regeneration-report, and
+rollout-receipt examples. Neither example chain constitutes owner-runtime or
+deploy-local state.
+
+Use `committed_owner_example_chain` only when one owner repository publishes a
+coherent set of checked-in examples that can drive a deterministic committed
+reference snapshot. The token does not admit the surface to live
+materialization and must never authorize an example fallback when deploy-local
+inputs are missing.
 
 `surface-profile.schema.json` constrains both active and deferred source
 records. Importable implementation stays under `src/aoa_stats_builder/`,
