@@ -34,6 +34,9 @@ or the upstream facts summarized by a profile.
   payloads here.
 - Change the authored profile first, then rebuild and check the generated
   catalog.
+- For Repeated Window, a window is only the calendar-date prefix carried by
+  admitted `observed_at` values. Counts must not be described as proof of
+  change, repetition, cadence, causality, or owner chronology.
 - For Route Progression, return progression-reading vocabulary to the RPG
   center, receipt payloads to `aoa-skills`, the agent-layer overlay to
   `aoa-agents`, and typed transport to `aoa-sdk`. The committed legacy numeric

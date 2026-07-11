@@ -203,6 +203,13 @@ release/export bundle or public media export.
 `surface_detection_summary` are inclusive of active receipts only, not of
 superseded raw history.
 
+`repeated_window_summary` groups those admitted receipts by the calendar-date
+prefix carried in `observed_at`. Its deterministic counts describe activity
+seen in each bucket; they do not compare state or prove change, recurrence,
+cadence, causality, or owner chronology. The pure transformation lives in
+`src/aoa_stats_builder/repeated_window.py`, with focused proof under the
+Recurrence mechanic and root publication paths preserved.
+
 `source_coverage_summary` is the self-audit that says which owner repos are
 actually represented in the active feed and where the stats layer is still
 thin. It stays weaker than both the live source registry and the owner-local

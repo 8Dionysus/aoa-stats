@@ -32,6 +32,7 @@ from .receipt_abi import (
     validate_receipt,
     validate_receipt_abi_governance,
 )
+from .repeated_window import build_repeated_window_summary
 from .route_progression import build_route_progression_summary
 from .runtime_closeout import build_runtime_closeout_summary
 from .source_coverage import build_source_coverage_summary
@@ -52,6 +53,7 @@ __all__ = [
     "build_fork_calibration_summary",
     "build_owner_landing_summary",
     "build_object_summary",
+    "build_repeated_window_summary",
     "build_route_progression_summary",
     "build_runtime_closeout_summary",
     "build_session_growth_branch_summary",

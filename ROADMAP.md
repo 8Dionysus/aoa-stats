@@ -108,6 +108,10 @@ contract stays separate from active catalog claims.
   `mechanics/boundary-bridge/parts/memory-owner-handoff/docs/MEMORY_MOVEMENT_SUMMARY.md`
 - Growth Cycle projection contracts and shared core:
   `mechanics/growth-cycle/` and `src/aoa_stats_builder/growth_cycle.py`
+- Repeated Window source contract and Recurrence projection core:
+  `stats/read-models/active/repeated_window_summary.profile.json`,
+  `src/aoa_stats_builder/repeated_window.py`, and
+  `mechanics/recurrence/parts/repeated-window/`
 - public catalog access: `stats/surface-catalog/CODEX_MCP.md`
 
 ## Direction

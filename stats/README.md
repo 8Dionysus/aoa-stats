@@ -99,6 +99,11 @@ publication and implementation districts:
   `src/aoa_stats_builder/runtime_closeout.py`; focused proof belongs to
   `mechanics/checkpoint/parts/runtime-closeout/tests/`, and current trial or
   return receipts are not silently treated as historical wave receipts
+- the Repeated Window profile owns the observed-activity question while
+  `src/aoa_stats_builder/repeated_window.py` conserves admitted receipt counts;
+  focused invariant proof belongs to
+  `mechanics/recurrence/parts/repeated-window/tests/`, and date buckets do not
+  become claims of change or recurrence
 - public and compatibility commands remain under `scripts/`
 - repo-wide and compatibility validation remains under root `scripts/` and
   `tests/`; operation-focused validation follows `mechanics/topology.json`,

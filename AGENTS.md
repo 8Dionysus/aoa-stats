@@ -113,6 +113,12 @@ feed, so these kinds must not be silently aliased and the profile must remain
 outside live state until the owner ABI, registry, and observation route agree.
 Root builder names remain compatibility aliases and fan-out only.
 
+Repeated Window is a Recurrence-owned live projection boundary. Its authored
+question and pure core may count admitted receipt activity by the calendar-date
+prefix of `observed_at`; those buckets do not prove change, recurrence, cadence,
+causality, or owner chronology. The root builder remains a thin compatibility
+facade and fan-out route, including its historical object-identity hook.
+
 Treat `live_state_capable` as an executable profile contract. The live refresh
 mechanic may materialize and advertise only surfaces whose authored profile
 sets it to `true`; it must still remove stale managed runtime files for
