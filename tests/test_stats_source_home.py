@@ -581,3 +581,34 @@ def test_source_coverage_proof_routes_to_its_audit_owner_part() -> None:
     assert test_ref in read_models["validator_routes"]
     assert "tests" in source_coverage["localized_payload_roots"]
     assert (REPO_ROOT / test_ref).is_file()
+
+
+def test_method_growth_producer_proof_routes_to_each_active_part() -> None:
+    manifest = load_json("stats/source_home.manifest.json")
+    read_models = next(
+        family for family in manifest["families"] if family["id"] == "read_models"
+    )
+    topology = load_json("mechanics/topology.json")
+    method_growth = next(
+        package
+        for package in topology["active_packages"]
+        if package["path"] == "method-growth"
+    )
+    expected_tests = {
+        "candidate-lineage": (
+            "mechanics/method-growth/parts/candidate-lineage/tests/"
+            "test_candidate_lineage.py"
+        ),
+        "supersession-pruning": (
+            "mechanics/method-growth/parts/supersession-pruning/tests/"
+            "test_supersession_pruning.py"
+        ),
+    }
+
+    assert method_growth["package_payload_roots"] == []
+    assert not (REPO_ROOT / "mechanics/method-growth/tests").exists()
+    for part in method_growth["active_part_routes"]:
+        test_ref = expected_tests[part["path"]]
+        assert "tests" in part["localized_payload_roots"]
+        assert test_ref in read_models["validator_routes"]
+        assert (REPO_ROOT / test_ref).is_file()

@@ -77,6 +77,16 @@ When several parts of one mechanic share deterministic receipt-to-read-model
 rules, keep that reusable core under `src/aoa_stats_builder/`, declare its
 focused package-level tests in `mechanics/topology.json`, and leave CLI, input
 loading, output fan-out, and check/write policy in the root build facade.
+Package-level proof is for genuinely cross-part invariants, not a convenient
+home for unrelated producer behavior. When a shared core exposes distinct
+read-model builders, return each builder's schema, ordering, conservation,
+non-inference, and public-byte proof to the part that owns that output.
+
+Method Growth keeps one shared candidate-lifecycle core because Supersession
+Pruning consumes normalized Candidate Lineage and landing receipts. Candidate
+Lineage and Supersession Pruning nevertheless own separate behavioral test
+homes under their parts. No package-level test district is needed merely
+because both builders live in one Python module.
 
 The Audit receipt-observation cluster uses two explicit core boundaries. Core-skill
 application and surface-strength detection share finish-stage
