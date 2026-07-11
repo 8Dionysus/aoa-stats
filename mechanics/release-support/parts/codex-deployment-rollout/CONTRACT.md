@@ -75,8 +75,9 @@ changing owner authority requires a separate decision review.
 ## Companion stop-line
 
 Checked-in rollout-history operations and cadence Campaign/Drift examples are
-not deployment inputs. Their builders, profiles, and mechanic routing remain
-unchanged in this cycle.
+not deployment inputs. History belongs to `trusted-rollout-history`; cadence
+belongs to `rollout-campaign` and `drift-shadow-review`. This part must not
+regain their builders, examples, profiles, tests, or mechanic routes.
 
 ## Crosswalk
 

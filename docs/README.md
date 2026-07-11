@@ -38,7 +38,8 @@ documentation lives with its mechanic part.
 | stress recovery | `../mechanics/antifragility/parts/stress-recovery-windows/docs/STRESS_RECOVERY_WINDOW_SUMMARIES.md` |
 | chaos-wave stress example | `mechanics/antifragility/parts/stress-recovery-windows/docs/STRESS_RECOVERY_SUMMARIES_CHAOS_WAVE1.md` |
 | memory movement | `../mechanics/boundary-bridge/parts/memory-owner-handoff/docs/MEMORY_MOVEMENT_SUMMARY.md` |
-| Codex deployment and rollout | `../mechanics/release-support/parts/codex-deployment-rollout/docs/CODEX_PLANE_DEPLOYMENT_SUMMARIES.md` |
+| Codex Plane deployment | `../mechanics/release-support/parts/codex-deployment-rollout/docs/CODEX_PLANE_DEPLOYMENT_SUMMARIES.md` |
+| trusted rollout history | `../mechanics/release-support/parts/trusted-rollout-history/docs/TRUSTED_ROLLOUT_HISTORY_SUMMARIES.md` |
 | rollout campaign | `../mechanics/release-support/parts/rollout-campaign/docs/ROLLOUT_CAMPAIGN_SUMMARY.md` |
 
 Experience and Agon have denser local maps; start at

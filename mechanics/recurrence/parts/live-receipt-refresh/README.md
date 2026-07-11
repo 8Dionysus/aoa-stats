@@ -22,22 +22,22 @@ the canonical assets from this part.
 - active profiles under `stats/read-models/active/` define the managed output
   universe: currently 25 read models
 - only profiles with `live_state_capable: true` enter the live build allowlist
-  (currently 20 authored profiles)
+  (currently 16 authored profiles)
 - `state/generated/summary_surface_catalog.min.json` lists only outputs
   actually admitted and materialized by that live run
 - cleanup still covers every managed active output, so an older runtime copy
   of a reference-only surface is removed
-- the Component Refresh, Continuity Window, and Codex Plane Deployment
-  reference adapters are never implicit live fallbacks
+- the Component Refresh, Continuity Window, Codex Plane Deployment, trusted
+  rollout-history, and cadence-example adapters are never implicit live
+  fallbacks
 
-The Component Refresh, Continuity Window, and Codex Plane Deployment committed
-reference profiles are therefore absent from live output until explicit
-owner-runtime or deploy-local source contracts land. Codex Plane refresh passes
-an explicit `live` source mode and workspace root so future activation cannot
-silently reuse the committed 8Dionysus examples. The selector and stale-cleanup
-precedent is recorded for Component Refresh in
+Those nine committed/reference profiles are therefore absent from live output
+until explicit owner-runtime, deploy-local, or active-cadence source contracts
+land. Codex Plane refresh passes an explicit `live` source mode and workspace
+root so future activation cannot silently reuse committed 8Dionysus inputs. The
+selector and stale-cleanup precedent is recorded for Component Refresh in
 `docs/decisions/AOST-D-0003-component-refresh-fixtures-are-not-live-state.md`;
-it is not a Continuity Window or Codex Plane Deployment decision.
+it does not decide the other eight reference-only profiles.
 
 ## Payload
 

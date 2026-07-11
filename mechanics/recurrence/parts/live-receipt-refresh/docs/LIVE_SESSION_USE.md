@@ -37,10 +37,6 @@ declared source contract resolves:
 - `state/generated/session_growth_branch_summary.min.json`
 - `state/generated/automation_pipeline_summary.min.json`
 - `state/generated/automation_followthrough_summary.min.json`
-- `state/generated/codex_rollout_operations_summary.min.json`
-- `state/generated/codex_rollout_drift_summary.min.json`
-- `state/generated/rollout_campaign_summary.min.json`
-- `state/generated/drift_review_summary.min.json`
 - `state/generated/memory_movement_summary.min.json`
 - `state/generated/runtime_closeout_summary.min.json`
 - `state/generated/stress_recovery_window_summary.min.json`
@@ -126,9 +122,13 @@ profiles are the single inventory source:
 - the live catalog lists only outputs actually materialized
 
 The managed inventory contains 25 active read-model outputs. The authored
-live-admitted allowlist contains exactly 20. The five false-live profiles are:
+live-admitted allowlist contains exactly 16. The nine false-live profiles are:
 
 - `codex_plane_deployment_summary`
+- `codex_rollout_operations_summary`
+- `codex_rollout_drift_summary`
+- `rollout_campaign_summary`
+- `drift_review_summary`
 - `continuity_window_summary`
 - `component_refresh_summary`
 - `titan_incarnation_summary`
@@ -140,7 +140,13 @@ removes it. In particular, the Codex Plane Deployment adapter may load the
 three 8Dionysus owner examples for the committed build only, the Component
 Refresh adapter may load reviewed `aoa-sdk` examples for the committed build
 only, and the Continuity Window adapter may load its explicit cross-owner
-example/catalog chain for the committed build only. None is a live fallback.
+example/catalog chain for the committed build only. Trusted rollout-history
+may load its exact four checked-in owner-history files, and cadence may load
+its three owner examples. None is a live fallback.
+
+The history and cadence contexts remain distinct. “Latest” inside checked-in
+history is not deploy-local current state, and the cadence examples do not
+prove active review posture or freshness against current owner history.
 
 Future Codex Plane Deployment live activation requires a real producer for the
 trust-state, regeneration-report, and rollout-receipt trio under the explicit
@@ -148,14 +154,19 @@ workspace root, a successful typed SDK consistency readout, and a watcher or
 refresh signal that observes those artifacts. Live refresh already passes
 `source_mode=live`; until the rest exists, the authored profile remains false.
 
+Future trusted rollout-history activation requires a named runtime owner
+artifact or receipt chain and a refresh trigger; a newer checked-in history
+commit is still not live state. Future cadence activation likewise requires a
+real campaign/review producer and observation route. The three published
+examples cannot satisfy that contract.
+
 Future Component Refresh live activation requires a canonical owner-runtime
 artifact whose reviewed chain reaches an owner-local
 `component_refresh_receipt`. Owner laws or example packets cannot fill that
 absence. See
 `docs/decisions/AOST-D-0003-component-refresh-fixtures-are-not-live-state.md`.
 That decision supplies the selector and stale-cleanup precedent for
-reference-only profiles; it is not a Continuity Window or Codex Plane
-Deployment decision.
+reference-only profiles; it does not decide the other eight profiles.
 
 Future Continuity Window live activation requires a timestamped owner-runtime
 artifact or receipt with resolvable continuity, revision, reanchor or explicit

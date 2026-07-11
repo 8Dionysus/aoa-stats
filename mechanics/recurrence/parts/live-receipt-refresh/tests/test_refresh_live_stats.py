@@ -3,7 +3,7 @@ from __future__ import annotations
 import importlib.util
 import json
 from pathlib import Path
-from unittest.mock import patch
+from unittest.mock import Mock, patch
 
 
 PART_ROOT = Path(__file__).resolve().parents[1]
@@ -41,20 +41,64 @@ def test_live_output_inventory_is_derived_from_authored_profile_posture() -> Non
         module.SUMMARY_SURFACE_CATALOG_OUTPUT_NAME,
     )
     assert len(all_profile_outputs) == 25
-    assert len(live_profile_outputs) == 20
+    assert len(live_profile_outputs) == 16
     assert "memory_movement_summary.min.json" in live_profile_outputs
     assert "codex_plane_deployment_summary.min.json" not in live_profile_outputs
     assert "continuity_window_summary.min.json" not in live_profile_outputs
     assert "component_refresh_summary.min.json" not in live_profile_outputs
+    assert "codex_rollout_operations_summary.min.json" not in live_profile_outputs
+    assert "codex_rollout_drift_summary.min.json" not in live_profile_outputs
+    assert "rollout_campaign_summary.min.json" not in live_profile_outputs
+    assert "drift_review_summary.min.json" not in live_profile_outputs
     assert "titan_incarnation_summary.min.json" not in live_profile_outputs
     assert "titan_summon_summary.min.json" not in live_profile_outputs
     assert set(all_profile_outputs) - set(live_profile_outputs) == {
         "codex_plane_deployment_summary.min.json",
         "continuity_window_summary.min.json",
         "component_refresh_summary.min.json",
+        "codex_rollout_operations_summary.min.json",
+        "codex_rollout_drift_summary.min.json",
+        "rollout_campaign_summary.min.json",
+        "drift_review_summary.min.json",
         "titan_incarnation_summary.min.json",
         "titan_summon_summary.min.json",
     }
+
+
+def test_live_allowlist_never_invokes_rollout_history_or_cadence_reference_adapters() -> None:
+    module = load_refresh_module()
+    receipts_path = (
+        REPO_ROOT
+        / "stats"
+        / "intake-contract"
+        / "examples"
+        / "session_harvest_family.receipts.example.json"
+    )
+    receipts = module.load_receipts([receipts_path])
+    history_adapter = Mock(side_effect=AssertionError("history adapter ran live"))
+    cadence_adapter = Mock(side_effect=AssertionError("cadence adapter ran live"))
+
+    with patch.dict(
+        module.build_all_views.__globals__,
+        {
+            "codex_trusted_rollout_input_bundle": history_adapter,
+            "rollout_cadence_input_bundle": cadence_adapter,
+        },
+    ):
+        outputs = module.build_all_views(
+            receipts,
+            ["stats/intake-contract/examples/session_harvest_family.receipts.example.json"],
+            optional_output_names=frozenset(
+                module.live_profile_surface_output_names()
+            ),
+        )
+
+    history_adapter.assert_not_called()
+    cadence_adapter.assert_not_called()
+    assert "codex_rollout_operations_summary.min.json" not in outputs
+    assert "codex_rollout_drift_summary.min.json" not in outputs
+    assert "rollout_campaign_summary.min.json" not in outputs
+    assert "drift_review_summary.min.json" not in outputs
 
 
 def test_refresh_materializes_only_live_profile_outputs_and_filters_live_catalog(
@@ -116,6 +160,10 @@ def test_refresh_materializes_only_live_profile_outputs_and_filters_live_catalog
     summary_output_dir.mkdir(parents=True)
     for stale_name in (
         "codex_plane_deployment_summary.min.json",
+        "codex_rollout_operations_summary.min.json",
+        "codex_rollout_drift_summary.min.json",
+        "rollout_campaign_summary.min.json",
+        "drift_review_summary.min.json",
         "continuity_window_summary.min.json",
         "component_refresh_summary.min.json",
         "titan_incarnation_summary.min.json",
@@ -127,6 +175,18 @@ def test_refresh_materializes_only_live_profile_outputs_and_filters_live_catalog
         "memory_movement_summary.min.json": {"schema_version": "memory-live"},
         "codex_plane_deployment_summary.min.json": {
             "schema_version": "codex-plane-reference"
+        },
+        "codex_rollout_operations_summary.min.json": {
+            "schema_version": "codex-rollout-history-reference"
+        },
+        "codex_rollout_drift_summary.min.json": {
+            "schema_version": "codex-rollout-drift-reference"
+        },
+        "rollout_campaign_summary.min.json": {
+            "schema_version": "rollout-campaign-reference"
+        },
+        "drift_review_summary.min.json": {
+            "schema_version": "drift-review-reference"
         },
         "continuity_window_summary.min.json": {"schema_version": "continuity-reference"},
         "component_refresh_summary.min.json": {"schema_version": "component-reference"},
@@ -143,6 +203,26 @@ def test_refresh_materializes_only_live_profile_outputs_and_filters_live_catalog
                 {
                     "name": "codex_plane_deployment_summary",
                     "surface_ref": "generated/codex_plane_deployment_summary.min.json",
+                    "live_state_capable": False,
+                },
+                {
+                    "name": "codex_rollout_operations_summary",
+                    "surface_ref": "generated/codex_rollout_operations_summary.min.json",
+                    "live_state_capable": False,
+                },
+                {
+                    "name": "codex_rollout_drift_summary",
+                    "surface_ref": "generated/codex_rollout_drift_summary.min.json",
+                    "live_state_capable": False,
+                },
+                {
+                    "name": "rollout_campaign_summary",
+                    "surface_ref": "generated/rollout_campaign_summary.min.json",
+                    "live_state_capable": False,
+                },
+                {
+                    "name": "drift_review_summary",
+                    "surface_ref": "generated/drift_review_summary.min.json",
                     "live_state_capable": False,
                 },
                 {
@@ -386,6 +466,10 @@ def test_refresh_live_state_clears_previous_outputs_when_sources_are_empty(tmp_p
     )
     for stale_name in (
         "memory_movement_summary.min.json",
+        "codex_rollout_operations_summary.min.json",
+        "codex_rollout_drift_summary.min.json",
+        "rollout_campaign_summary.min.json",
+        "drift_review_summary.min.json",
         "continuity_window_summary.min.json",
         "component_refresh_summary.min.json",
         "titan_incarnation_summary.min.json",
@@ -408,6 +492,10 @@ def test_refresh_live_state_clears_previous_outputs_when_sources_are_empty(tmp_p
     assert feed_output.exists() is False
     assert (summary_output_dir / "summary_surface_catalog.min.json").exists() is False
     assert (summary_output_dir / "codex_plane_deployment_summary.min.json").exists() is False
+    assert (summary_output_dir / "codex_rollout_operations_summary.min.json").exists() is False
+    assert (summary_output_dir / "codex_rollout_drift_summary.min.json").exists() is False
+    assert (summary_output_dir / "rollout_campaign_summary.min.json").exists() is False
+    assert (summary_output_dir / "drift_review_summary.min.json").exists() is False
     assert (summary_output_dir / "stress_recovery_window_summary.min.json").exists() is False
     assert (summary_output_dir / "memory_movement_summary.min.json").exists() is False
     assert (summary_output_dir / "continuity_window_summary.min.json").exists() is False
@@ -477,8 +565,18 @@ def test_refresh_live_state_removes_stale_optional_outputs_when_builder_omits_th
     feed_output = tmp_path / "state" / "live_receipts.min.json"
     summary_output_dir = tmp_path / "state" / "generated"
     summary_output_dir.mkdir(parents=True)
-    stale_path = summary_output_dir / "codex_plane_deployment_summary.min.json"
-    stale_path.write_text("stale\n", encoding="utf-8")
+    stale_paths = tuple(
+        summary_output_dir / name
+        for name in (
+            "codex_plane_deployment_summary.min.json",
+            "codex_rollout_operations_summary.min.json",
+            "codex_rollout_drift_summary.min.json",
+            "rollout_campaign_summary.min.json",
+            "drift_review_summary.min.json",
+        )
+    )
+    for stale_path in stale_paths:
+        stale_path.write_text("stale\n", encoding="utf-8")
 
     with patch.object(
         module,
@@ -496,7 +594,7 @@ def test_refresh_live_state_removes_stale_optional_outputs_when_builder_omits_th
         )
 
     assert receipt_count == 1
-    assert stale_path.exists() is False
+    assert all(not stale_path.exists() for stale_path in stale_paths)
 
 
 def test_refresh_live_state_resolves_stress_report_from_federation_root(tmp_path: Path) -> None:

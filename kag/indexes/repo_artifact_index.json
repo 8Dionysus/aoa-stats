@@ -1730,7 +1730,7 @@
     },
     {
       "artifact_kind": "document",
-      "content_hash": "43e3b82344289c5d06a7fe99af1e5cfe6b7c4e51f858dd228b3eff9a22eee30b",
+      "content_hash": "ebfcf59a8446d2478290f0db8d20c4cc4df6cac19170197f5958ff3244a86772",
       "id": "artifact:file:agents.md:a54ff182c7",
       "path": "AGENTS.md",
       "source_record_id": "file:agents.md:a54ff182c7",
@@ -1738,7 +1738,7 @@
     },
     {
       "artifact_kind": "document",
-      "content_hash": "1223bbe92c3e5b2cefe60401aeb4d75885d7950ac27a30c3beafb123fa3cdb0a",
+      "content_hash": "8131428a568cee4b856d0d8aef90e952dd5d0c5499be55935be0098093b8e75c",
       "id": "artifact:file:changelog.md:06572a96a5",
       "path": "CHANGELOG.md",
       "source_record_id": "file:changelog.md:06572a96a5",
@@ -1762,7 +1762,7 @@
     },
     {
       "artifact_kind": "document",
-      "content_hash": "0b60eed0099a3e66bf6370ae89bc5c88320db6d34708db17754658209c4f8213",
+      "content_hash": "53cfa66925e32916c3b5433cedf2a8fca8dfe96bac2d2272e4f6ad9fd880800f",
       "id": "artifact:file:design.md:3dc5dd454e",
       "path": "DESIGN.md",
       "source_record_id": "file:design.md:3dc5dd454e",
@@ -1778,7 +1778,7 @@
     },
     {
       "artifact_kind": "document",
-      "content_hash": "f60c8acd88df27c726ec5b5f53097780126e8cd306a81021459842b3e63497ef",
+      "content_hash": "ed061703481122b0adab74b40a0f7a08a2bd35a562c6593347e46edbaeb177ac",
       "id": "artifact:file:readme.md:b335630551",
       "path": "README.md",
       "source_record_id": "file:readme.md:b335630551",
@@ -1786,7 +1786,7 @@
     },
     {
       "artifact_kind": "document",
-      "content_hash": "b3d389f9dff56dd097e519f78edbd10ae7fa6c8bde6152c95a598fa4d85b652d",
+      "content_hash": "ea1418f9ee83ceb9ef8a7eff77648125eba1e5b6e6c7417d1c68a1420a104b3c",
       "id": "artifact:file:roadmap.md:683343bdf9",
       "path": "ROADMAP.md",
       "source_record_id": "file:roadmap.md:683343bdf9",
@@ -1802,7 +1802,7 @@
     },
     {
       "artifact_kind": "document",
-      "content_hash": "12932be4bad8f81c929c0634702952a8777eb88ebb825007d483ac1b1361db05",
+      "content_hash": "c6465331b47b3be72c52e7ac159a6400f987b5b5f6aa7474e25f9d9a6b0be9ed",
       "id": "artifact:file:docs/architecture.md:ff21b6b9a3",
       "path": "docs/ARCHITECTURE.md",
       "source_record_id": "file:docs/architecture.md:ff21b6b9a3",
@@ -1842,7 +1842,7 @@
     },
     {
       "artifact_kind": "document",
-      "content_hash": "2ee866df2be4c50b5733e8b54719555ece70956cb8a7b0032dae970d9df2e8f4",
+      "content_hash": "f016c0d36800cc9a6a5036302651c43c4c21624a992b7c30923c1ed04cc87526",
       "id": "artifact:file:docs/readme.md:0b5ca119d2",
       "path": "docs/README.md",
       "source_record_id": "file:docs/readme.md:0b5ca119d2",
@@ -2298,7 +2298,7 @@
     },
     {
       "artifact_kind": "generated_readmodel",
-      "content_hash": "8c7c42c530bd3e78ff827d697e868b1ac9fed7c128c1a410e7f0c555b70b780e",
+      "content_hash": "1e3f213562c3f6236e295a9e08a76fea71670fb001f7908d3406d228bc44c106",
       "id": "artifact:file:generated/summary_surface_catalog.min.json:5c31a5556b",
       "path": "generated/summary_surface_catalog.min.json",
       "source_record_id": "file:generated/summary_surface_catalog.min.json:5c31a5556b",
@@ -3634,7 +3634,7 @@
     },
     {
       "artifact_kind": "document",
-      "content_hash": "4bf19c6f37fe072e2da977331de6503c6d92e31362298697e9b3b3f421b3f520",
+      "content_hash": "68c5b4730453b0c8eaaad6e450c69e5a35693644f52de32cf36db58fee82dee8",
       "id": "artifact:file:mechanics/audit/parts.md:7f54be3138",
       "path": "mechanics/audit/PARTS.md",
       "source_record_id": "file:mechanics/audit/parts.md:7f54be3138",
@@ -3698,7 +3698,7 @@
     },
     {
       "artifact_kind": "document",
-      "content_hash": "a87b94585844374745eabe5e605afff22e0fde5141078d5d9c75688acfa2cf9b",
+      "content_hash": "a9da0d6d16812614bac35e9e500e7fa997fdb0ff28bb853b4b1ba297ad4a153b",
       "id": "artifact:file:mechanics/audit/parts/drift-shadow-review/contract.md:afa4f97a00",
       "path": "mechanics/audit/parts/drift-shadow-review/CONTRACT.md",
       "source_record_id": "file:mechanics/audit/parts/drift-shadow-review/contract.md:afa4f97a00",
@@ -3706,7 +3706,7 @@
     },
     {
       "artifact_kind": "document",
-      "content_hash": "229fc793bcdbc0828afeca1097f8e07ddbdb4ad4733074267200dfc406119649",
+      "content_hash": "fb660370ca8e1a3860726c399743b530c19692e6ff424ca16f8f7710973062fc",
       "id": "artifact:file:mechanics/audit/parts/drift-shadow-review/readme.md:9086a0e976",
       "path": "mechanics/audit/parts/drift-shadow-review/README.md",
       "source_record_id": "file:mechanics/audit/parts/drift-shadow-review/readme.md:9086a0e976",
@@ -3714,7 +3714,7 @@
     },
     {
       "artifact_kind": "document",
-      "content_hash": "045aee7c7d783b6b29b902a7401549c850d272410838cace27b3a25efb441ff3",
+      "content_hash": "e37ad8a34fd039f1a680a7a164f00111910edf314332b80097167ded21762e5b",
       "id": "artifact:file:mechanics/audit/parts/drift-shadow-review/validation.md:35845f9f9a",
       "path": "mechanics/audit/parts/drift-shadow-review/VALIDATION.md",
       "source_record_id": "file:mechanics/audit/parts/drift-shadow-review/validation.md:35845f9f9a",
@@ -3722,7 +3722,7 @@
     },
     {
       "artifact_kind": "document",
-      "content_hash": "977fc3a8f65414810e0be82abab12bf56eb382ff7bfbd7902c4e1d42ef53bd0d",
+      "content_hash": "33210167851c2b4bc7110616cb288e234e5c5644ca4dc4c3bca18bec296328b5",
       "id": "artifact:file:mechanics/audit/parts/drift-shadow-review/docs/drift_review_summary.md:89ed0c227c",
       "path": "mechanics/audit/parts/drift-shadow-review/docs/DRIFT_REVIEW_SUMMARY.md",
       "source_record_id": "file:mechanics/audit/parts/drift-shadow-review/docs/drift_review_summary.md:89ed0c227c",
@@ -3734,6 +3734,14 @@
       "id": "artifact:file:mechanics/audit/parts/drift-shadow-review/examples/drift_review_summary.example.json:a97e72d591",
       "path": "mechanics/audit/parts/drift-shadow-review/examples/drift_review_summary.example.json",
       "source_record_id": "file:mechanics/audit/parts/drift-shadow-review/examples/drift_review_summary.example.json:a97e72d591",
+      "surface_state": "authored_source"
+    },
+    {
+      "artifact_kind": "test",
+      "content_hash": "856ed7af9f55893f9c1823edf4b163d55069ed6178ed4e2d974c6265c9ea1620",
+      "id": "artifact:file:mechanics/audit/parts/drift-shadow-review/tests/test_drift_review_projection.py:25df01cddd",
+      "path": "mechanics/audit/parts/drift-shadow-review/tests/test_drift_review_projection.py",
+      "source_record_id": "file:mechanics/audit/parts/drift-shadow-review/tests/test_drift_review_projection.py:25df01cddd",
       "surface_state": "authored_source"
     },
     {
@@ -5850,7 +5858,7 @@
     },
     {
       "artifact_kind": "document",
-      "content_hash": "c84fc3303784c4aab1481f99e433ddf819ad68fd8de732c4399f318f7f0309a3",
+      "content_hash": "3b4519f6297dd338ffaf042ab51c85bacfe15ebca88bc2203c07d365e7f9683c",
       "id": "artifact:file:mechanics/recurrence/parts/live-receipt-refresh/contract.md:c4b2a7db4d",
       "path": "mechanics/recurrence/parts/live-receipt-refresh/CONTRACT.md",
       "source_record_id": "file:mechanics/recurrence/parts/live-receipt-refresh/contract.md:c4b2a7db4d",
@@ -5858,7 +5866,7 @@
     },
     {
       "artifact_kind": "document",
-      "content_hash": "fff1ae42b02d790f405e95d2a922a311d9b5dd37bfc13233706e93fab91b7e91",
+      "content_hash": "8f5aaffc902096b1572d7012f1ff941fb1bb96fd0fbc9d5b9484683f35db0044",
       "id": "artifact:file:mechanics/recurrence/parts/live-receipt-refresh/readme.md:ed8e247fa6",
       "path": "mechanics/recurrence/parts/live-receipt-refresh/README.md",
       "source_record_id": "file:mechanics/recurrence/parts/live-receipt-refresh/readme.md:ed8e247fa6",
@@ -5866,7 +5874,7 @@
     },
     {
       "artifact_kind": "document",
-      "content_hash": "c0ba23ad8c9a4c7b5f504c96a930a83dde82daaf2a61b7ee322a2b62e705cff1",
+      "content_hash": "520561e0b1588379b8f3e1d0c73e310db1fc4f0aad70f28b72be49dd43e73ab4",
       "id": "artifact:file:mechanics/recurrence/parts/live-receipt-refresh/validation.md:c26dcdde9f",
       "path": "mechanics/recurrence/parts/live-receipt-refresh/VALIDATION.md",
       "source_record_id": "file:mechanics/recurrence/parts/live-receipt-refresh/validation.md:c26dcdde9f",
@@ -5898,7 +5906,7 @@
     },
     {
       "artifact_kind": "document",
-      "content_hash": "a5d5c1d556d6e7ec91e094299e580e47ce11e88d7a83ed16bd9aebdbd02c9ca6",
+      "content_hash": "c7a542df5f53b67c4b42f345f4fc8ec693cc9e551ba1a552dcc20f4ef8c77ca7",
       "id": "artifact:file:mechanics/recurrence/parts/live-receipt-refresh/docs/live_session_use.md:807ec41ee1",
       "path": "mechanics/recurrence/parts/live-receipt-refresh/docs/LIVE_SESSION_USE.md",
       "source_record_id": "file:mechanics/recurrence/parts/live-receipt-refresh/docs/live_session_use.md:807ec41ee1",
@@ -5970,7 +5978,7 @@
     },
     {
       "artifact_kind": "test",
-      "content_hash": "6611099c219a7cbf081331f1eeb57516aa1d6b6c557ccb9a2f03285227198a4b",
+      "content_hash": "d605a928ce24cffe5c2b5dfea9ca3cb0f30016a44035e6a25a9f9a2aa049201e",
       "id": "artifact:file:mechanics/recurrence/parts/live-receipt-refresh/tests/test_refresh_live_stats.py:7cafbd910d",
       "path": "mechanics/recurrence/parts/live-receipt-refresh/tests/test_refresh_live_stats.py",
       "source_record_id": "file:mechanics/recurrence/parts/live-receipt-refresh/tests/test_refresh_live_stats.py:7cafbd910d",
@@ -6010,7 +6018,7 @@
     },
     {
       "artifact_kind": "document",
-      "content_hash": "5bfb65a33ef282d0f47cfa6d3e93ea1a8586492e5c6933f6a706485687ea7f84",
+      "content_hash": "3571e7c6ff85b2108fa5659c0623d81373424240c50267807b2dec27d197f3cc",
       "id": "artifact:file:mechanics/release-support/parts.md:07208cf1e5",
       "path": "mechanics/release-support/PARTS.md",
       "source_record_id": "file:mechanics/release-support/parts.md:07208cf1e5",
@@ -6042,7 +6050,7 @@
     },
     {
       "artifact_kind": "document",
-      "content_hash": "0bc052357866d950fc41c46af489525322dc3ffaa9870f61b8cb54779d39304c",
+      "content_hash": "1243797cbcec15f2617cfc74ce2bb9e43e7924091213917760417ec655296b71",
       "id": "artifact:file:mechanics/release-support/parts/readme.md:890ede11a1",
       "path": "mechanics/release-support/parts/README.md",
       "source_record_id": "file:mechanics/release-support/parts/readme.md:890ede11a1",
@@ -6050,7 +6058,7 @@
     },
     {
       "artifact_kind": "document",
-      "content_hash": "be1891c9ff5c47849b28dbcac313171addd7fd4cbc9a1e96f6199f916f1e6078",
+      "content_hash": "34af862acd72234d9b0cfe7acaf1cf8c67935cc68afcaa93c861e7bf6348a432",
       "id": "artifact:file:mechanics/release-support/parts/codex-deployment-rollout/contract.md:e8978ce675",
       "path": "mechanics/release-support/parts/codex-deployment-rollout/CONTRACT.md",
       "source_record_id": "file:mechanics/release-support/parts/codex-deployment-rollout/contract.md:e8978ce675",
@@ -6058,7 +6066,7 @@
     },
     {
       "artifact_kind": "document",
-      "content_hash": "0fa3dd584daa7fa08507f3c21158f663ae3f8c5bb2d6684171dbd80ea6c8a242",
+      "content_hash": "fd1152684d135a1aa73b0f68f775bede02caf7065fb33dd986f163a4f13407a9",
       "id": "artifact:file:mechanics/release-support/parts/codex-deployment-rollout/readme.md:81314e5d30",
       "path": "mechanics/release-support/parts/codex-deployment-rollout/README.md",
       "source_record_id": "file:mechanics/release-support/parts/codex-deployment-rollout/readme.md:81314e5d30",
@@ -6074,26 +6082,10 @@
     },
     {
       "artifact_kind": "document",
-      "content_hash": "dddaf0f25f9cbe7fe0c9d808b4a056972963ce2a39ce73d8e8e348036c23b45e",
+      "content_hash": "e8568e0aa9595b89be57691057c90be5392ab1cb9642091d17dd67961186a153",
       "id": "artifact:file:mechanics/release-support/parts/codex-deployment-rollout/docs/codex_plane_deployment_summaries.md:6071cb5f8f",
       "path": "mechanics/release-support/parts/codex-deployment-rollout/docs/CODEX_PLANE_DEPLOYMENT_SUMMARIES.md",
       "source_record_id": "file:mechanics/release-support/parts/codex-deployment-rollout/docs/codex_plane_deployment_summaries.md:6071cb5f8f",
-      "surface_state": "authored_source"
-    },
-    {
-      "artifact_kind": "config",
-      "content_hash": "2621110d22862d82a36c8c9e3a7b965cc6c469f4a24b5843229e59a93b0497a6",
-      "id": "artifact:file:mechanics/release-support/parts/codex-deployment-rollout/examples/codex_rollout_drift_summary.example.json:c12808f132",
-      "path": "mechanics/release-support/parts/codex-deployment-rollout/examples/codex_rollout_drift_summary.example.json",
-      "source_record_id": "file:mechanics/release-support/parts/codex-deployment-rollout/examples/codex_rollout_drift_summary.example.json:c12808f132",
-      "surface_state": "authored_source"
-    },
-    {
-      "artifact_kind": "config",
-      "content_hash": "f2f5d3effad3b3b23f18e0b1c226d04512080e8be10618bd52ec45e58dd42da0",
-      "id": "artifact:file:mechanics/release-support/parts/codex-deployment-rollout/examples/codex_rollout_operations_summary.example.json:fa09f4fc13",
-      "path": "mechanics/release-support/parts/codex-deployment-rollout/examples/codex_rollout_operations_summary.example.json",
-      "source_record_id": "file:mechanics/release-support/parts/codex-deployment-rollout/examples/codex_rollout_operations_summary.example.json:fa09f4fc13",
       "surface_state": "authored_source"
     },
     {
@@ -6106,7 +6098,7 @@
     },
     {
       "artifact_kind": "document",
-      "content_hash": "a87b94585844374745eabe5e605afff22e0fde5141078d5d9c75688acfa2cf9b",
+      "content_hash": "ae8feaf611a0811aea4aa84259b3207007bfda244bb3d01912d1f1cb1e78ca7e",
       "id": "artifact:file:mechanics/release-support/parts/rollout-campaign/contract.md:fb0d9d074d",
       "path": "mechanics/release-support/parts/rollout-campaign/CONTRACT.md",
       "source_record_id": "file:mechanics/release-support/parts/rollout-campaign/contract.md:fb0d9d074d",
@@ -6114,7 +6106,7 @@
     },
     {
       "artifact_kind": "document",
-      "content_hash": "01612a61503f67e6b571b1cff002ffeba7e1b9b8809c4025c9a4e5b7c8e9703d",
+      "content_hash": "48e9d36a38ca80ac9d01e49e03f73a0ed469fa2c858706438adef0bc64801c7f",
       "id": "artifact:file:mechanics/release-support/parts/rollout-campaign/readme.md:d6edec1b04",
       "path": "mechanics/release-support/parts/rollout-campaign/README.md",
       "source_record_id": "file:mechanics/release-support/parts/rollout-campaign/readme.md:d6edec1b04",
@@ -6122,7 +6114,7 @@
     },
     {
       "artifact_kind": "document",
-      "content_hash": "045aee7c7d783b6b29b902a7401549c850d272410838cace27b3a25efb441ff3",
+      "content_hash": "d72597681754cc582664c2411138aa76827819fbaf5aa6feb03b935db7f8d0a9",
       "id": "artifact:file:mechanics/release-support/parts/rollout-campaign/validation.md:40cd2ad0f9",
       "path": "mechanics/release-support/parts/rollout-campaign/VALIDATION.md",
       "source_record_id": "file:mechanics/release-support/parts/rollout-campaign/validation.md:40cd2ad0f9",
@@ -6130,7 +6122,7 @@
     },
     {
       "artifact_kind": "document",
-      "content_hash": "9c2b4f4904f849c728580d129341c90957d3d8290d22e22ec9cf744cff3ef870",
+      "content_hash": "34c3320bb96ba665edb486ff328447fb1fa282f1d347ce87a6aba7fcb382cba1",
       "id": "artifact:file:mechanics/release-support/parts/rollout-campaign/docs/rollout_campaign_summary.md:665584080f",
       "path": "mechanics/release-support/parts/rollout-campaign/docs/ROLLOUT_CAMPAIGN_SUMMARY.md",
       "source_record_id": "file:mechanics/release-support/parts/rollout-campaign/docs/rollout_campaign_summary.md:665584080f",
@@ -6142,6 +6134,14 @@
       "id": "artifact:file:mechanics/release-support/parts/rollout-campaign/examples/rollout_campaign_summary.example.json:474886ac8c",
       "path": "mechanics/release-support/parts/rollout-campaign/examples/rollout_campaign_summary.example.json",
       "source_record_id": "file:mechanics/release-support/parts/rollout-campaign/examples/rollout_campaign_summary.example.json:474886ac8c",
+      "surface_state": "authored_source"
+    },
+    {
+      "artifact_kind": "test",
+      "content_hash": "b81be8f6cef433749ecaf5a74a130650b44ccd2dd57aad0d3e801085641bc011",
+      "id": "artifact:file:mechanics/release-support/parts/rollout-campaign/tests/test_rollout_campaign_projection.py:be53a2e053",
+      "path": "mechanics/release-support/parts/rollout-campaign/tests/test_rollout_campaign_projection.py",
+      "source_record_id": "file:mechanics/release-support/parts/rollout-campaign/tests/test_rollout_campaign_projection.py:be53a2e053",
       "surface_state": "authored_source"
     },
     {
@@ -6182,6 +6182,62 @@
       "id": "artifact:file:mechanics/release-support/parts/summary-catalog-artifact-bundle/tests/test_summary_catalog_artifact_bundle.py:1dbcf7b179",
       "path": "mechanics/release-support/parts/summary-catalog-artifact-bundle/tests/test_summary_catalog_artifact_bundle.py",
       "source_record_id": "file:mechanics/release-support/parts/summary-catalog-artifact-bundle/tests/test_summary_catalog_artifact_bundle.py:1dbcf7b179",
+      "surface_state": "authored_source"
+    },
+    {
+      "artifact_kind": "document",
+      "content_hash": "8103f19f6cd83405a9023ce4a0012ca310d5959a1823a4b36b2b2fd0f9721de0",
+      "id": "artifact:file:mechanics/release-support/parts/trusted-rollout-history/contract.md:db59758858",
+      "path": "mechanics/release-support/parts/trusted-rollout-history/CONTRACT.md",
+      "source_record_id": "file:mechanics/release-support/parts/trusted-rollout-history/contract.md:db59758858",
+      "surface_state": "authored_source"
+    },
+    {
+      "artifact_kind": "document",
+      "content_hash": "291f2dc8ab32ec9b1a3d773b31a9f797c10feebdb8af62cd0ff5e8d9bd752ac2",
+      "id": "artifact:file:mechanics/release-support/parts/trusted-rollout-history/readme.md:d2b4666ed0",
+      "path": "mechanics/release-support/parts/trusted-rollout-history/README.md",
+      "source_record_id": "file:mechanics/release-support/parts/trusted-rollout-history/readme.md:d2b4666ed0",
+      "surface_state": "authored_source"
+    },
+    {
+      "artifact_kind": "document",
+      "content_hash": "b8f74189860a4d23787b4954307a8b0474bf856368f6597a6543d236deadfcc0",
+      "id": "artifact:file:mechanics/release-support/parts/trusted-rollout-history/validation.md:0e46cb3645",
+      "path": "mechanics/release-support/parts/trusted-rollout-history/VALIDATION.md",
+      "source_record_id": "file:mechanics/release-support/parts/trusted-rollout-history/validation.md:0e46cb3645",
+      "surface_state": "authored_source"
+    },
+    {
+      "artifact_kind": "document",
+      "content_hash": "5197393fbe36b9cab5d001ffa080a2ff0929a2ef655eeebf677e524c2eeaac3a",
+      "id": "artifact:file:mechanics/release-support/parts/trusted-rollout-history/docs/trusted_rollout_history_summaries.md:f16e384560",
+      "path": "mechanics/release-support/parts/trusted-rollout-history/docs/TRUSTED_ROLLOUT_HISTORY_SUMMARIES.md",
+      "source_record_id": "file:mechanics/release-support/parts/trusted-rollout-history/docs/trusted_rollout_history_summaries.md:f16e384560",
+      "surface_state": "authored_source"
+    },
+    {
+      "artifact_kind": "config",
+      "content_hash": "2621110d22862d82a36c8c9e3a7b965cc6c469f4a24b5843229e59a93b0497a6",
+      "id": "artifact:file:mechanics/release-support/parts/trusted-rollout-history/examples/codex_rollout_drift_summary.example.json:c6e7a387a3",
+      "path": "mechanics/release-support/parts/trusted-rollout-history/examples/codex_rollout_drift_summary.example.json",
+      "source_record_id": "file:mechanics/release-support/parts/trusted-rollout-history/examples/codex_rollout_drift_summary.example.json:c6e7a387a3",
+      "surface_state": "authored_source"
+    },
+    {
+      "artifact_kind": "config",
+      "content_hash": "f2f5d3effad3b3b23f18e0b1c226d04512080e8be10618bd52ec45e58dd42da0",
+      "id": "artifact:file:mechanics/release-support/parts/trusted-rollout-history/examples/codex_rollout_operations_summary.example.json:fc53cc764c",
+      "path": "mechanics/release-support/parts/trusted-rollout-history/examples/codex_rollout_operations_summary.example.json",
+      "source_record_id": "file:mechanics/release-support/parts/trusted-rollout-history/examples/codex_rollout_operations_summary.example.json:fc53cc764c",
+      "surface_state": "authored_source"
+    },
+    {
+      "artifact_kind": "test",
+      "content_hash": "dc0b6e662e6bd8ce7d2e75a7ed69fbcafe916ed299ac8907860077eaebdd9b41",
+      "id": "artifact:file:mechanics/release-support/parts/trusted-rollout-history/tests/test_codex_trusted_rollout_projection.py:76846bce1c",
+      "path": "mechanics/release-support/parts/trusted-rollout-history/tests/test_codex_trusted_rollout_projection.py",
+      "source_record_id": "file:mechanics/release-support/parts/trusted-rollout-history/tests/test_codex_trusted_rollout_projection.py:76846bce1c",
       "surface_state": "authored_source"
     },
     {
@@ -6442,7 +6498,7 @@
     },
     {
       "artifact_kind": "config",
-      "content_hash": "1b9ccb73654009bf0d094fd154b14bae767b7d89389fcfc61f8476afc2b57d9c",
+      "content_hash": "dcc2460e6443f9c9a0edcfc2a1b135cabca6556d7097b109e556802378b111c8",
       "id": "artifact:file:mechanics/topology.json:c2f84a03b1",
       "path": "mechanics/topology.json",
       "source_record_id": "file:mechanics/topology.json:c2f84a03b1",
@@ -6706,7 +6762,7 @@
     },
     {
       "artifact_kind": "script",
-      "content_hash": "2e231b600c82b63f9c0084c9d26856354db51b72a26f96ec0baf5aa607db3d70",
+      "content_hash": "242fac8e2c2fc4ec0cc2d7f359ce2a73a8a2d47b207af9d6add926cb1aaf08c4",
       "id": "artifact:file:scripts/build_views.py:b705861394",
       "path": "scripts/build_views.py",
       "source_record_id": "file:scripts/build_views.py:b705861394",
@@ -6858,6 +6914,22 @@
     },
     {
       "artifact_kind": "source_code",
+      "content_hash": "dfccfedba14f0cf08bc1a9afed35df75b2243213ff821f1d10fc05d806de0689",
+      "id": "artifact:file:src/aoa_stats_builder/codex_trusted_rollout.py:5099615307",
+      "path": "src/aoa_stats_builder/codex_trusted_rollout.py",
+      "source_record_id": "file:src/aoa_stats_builder/codex_trusted_rollout.py:5099615307",
+      "surface_state": "authored_source"
+    },
+    {
+      "artifact_kind": "source_code",
+      "content_hash": "5836ded2e1b43e1b37a9670ee92fe83622361323f13ba1bd3180d8e89ce8c238",
+      "id": "artifact:file:src/aoa_stats_builder/codex_trusted_rollout_sources.py:701848e048",
+      "path": "src/aoa_stats_builder/codex_trusted_rollout_sources.py",
+      "source_record_id": "file:src/aoa_stats_builder/codex_trusted_rollout_sources.py:701848e048",
+      "surface_state": "authored_source"
+    },
+    {
+      "artifact_kind": "source_code",
       "content_hash": "c3f18ac62abcc19a47d5f2da57849354d39fc2845c9b33813f5a563a577c6719",
       "id": "artifact:file:src/aoa_stats_builder/component_refresh.py:6919e275af",
       "path": "src/aoa_stats_builder/component_refresh.py",
@@ -6922,6 +6994,22 @@
     },
     {
       "artifact_kind": "source_code",
+      "content_hash": "9c82dec8ce3143015d0818c9254112159784a248c20bd2a89db747d5f63e3015",
+      "id": "artifact:file:src/aoa_stats_builder/rollout_cadence.py:d79f092a68",
+      "path": "src/aoa_stats_builder/rollout_cadence.py",
+      "source_record_id": "file:src/aoa_stats_builder/rollout_cadence.py:d79f092a68",
+      "surface_state": "authored_source"
+    },
+    {
+      "artifact_kind": "source_code",
+      "content_hash": "37c84dd8fba51d868d9a676a08b625821bc5bffa1a4ec2ed82809c6774873287",
+      "id": "artifact:file:src/aoa_stats_builder/rollout_cadence_sources.py:6e1dde79ca",
+      "path": "src/aoa_stats_builder/rollout_cadence_sources.py",
+      "source_record_id": "file:src/aoa_stats_builder/rollout_cadence_sources.py:6e1dde79ca",
+      "surface_state": "authored_source"
+    },
+    {
+      "artifact_kind": "source_code",
       "content_hash": "a5bc5edb63a7c1a5b067543740b190fcac5f530ae17746127c2911c142664614",
       "id": "artifact:file:src/aoa_stats_builder/source_coverage.py:5ef0c3ffb9",
       "path": "src/aoa_stats_builder/source_coverage.py",
@@ -6978,7 +7066,7 @@
     },
     {
       "artifact_kind": "document",
-      "content_hash": "0d0e7e52ac4856fa4f599a189e2bfc3ffe4f33e9c868c07c382cc2beb951b629",
+      "content_hash": "18b952aba5a2d480bf9512629aa6016767779f0ddd7a76bcc33693014c370539",
       "id": "artifact:file:stats/readme.md:6bac6d2ff5",
       "path": "stats/README.md",
       "source_record_id": "file:stats/readme.md:6bac6d2ff5",
@@ -7178,7 +7266,7 @@
     },
     {
       "artifact_kind": "document",
-      "content_hash": "4e1075ca1230fe3346f4f078a52d906bb7a52d9252324c11cf0b0d66368da384",
+      "content_hash": "56188bbdf338d959d1739cb75f2f7c6633b3a4300679cb76ac2faca123b1da23",
       "id": "artifact:file:stats/read-models/readme.md:5ba4a92471",
       "path": "stats/read-models/README.md",
       "source_record_id": "file:stats/read-models/readme.md:5ba4a92471",
@@ -7218,7 +7306,7 @@
     },
     {
       "artifact_kind": "config",
-      "content_hash": "1d158c627620b6bc288458596acc38d6497b154da5a9c22504c4f1259ac7da5d",
+      "content_hash": "f22fe1deca643dac0738d4e0c36c16ae7697645f6908961d77938eed396b4aa0",
       "id": "artifact:file:stats/read-models/active/codex_rollout_drift_summary.profile.json:a25bcb7e04",
       "path": "stats/read-models/active/codex_rollout_drift_summary.profile.json",
       "source_record_id": "file:stats/read-models/active/codex_rollout_drift_summary.profile.json:a25bcb7e04",
@@ -7226,7 +7314,7 @@
     },
     {
       "artifact_kind": "config",
-      "content_hash": "38fb009a570e6db39d18f89951c097e4dd5460b152a10dc0c4a657f3bf5820a9",
+      "content_hash": "d5bb27d90eb717da8e1ffcb988d1c76f1a416335676110051ae294e8f891bb88",
       "id": "artifact:file:stats/read-models/active/codex_rollout_operations_summary.profile.json:f2dc6de097",
       "path": "stats/read-models/active/codex_rollout_operations_summary.profile.json",
       "source_record_id": "file:stats/read-models/active/codex_rollout_operations_summary.profile.json:f2dc6de097",
@@ -7258,7 +7346,7 @@
     },
     {
       "artifact_kind": "config",
-      "content_hash": "ab53035edafe0d8a6d5fa2dce38fa35d2c08c1e49dbcb60cd1bb6eb0acbb42bb",
+      "content_hash": "116d9d1b1470440edf0bc59fd9a56ee297f7e02ecd0f3bf56b803fca82201371",
       "id": "artifact:file:stats/read-models/active/drift_review_summary.profile.json:cef110f2bd",
       "path": "stats/read-models/active/drift_review_summary.profile.json",
       "source_record_id": "file:stats/read-models/active/drift_review_summary.profile.json:cef110f2bd",
@@ -7306,7 +7394,7 @@
     },
     {
       "artifact_kind": "config",
-      "content_hash": "ea1e3203744f2ebb6bf91a4b89c636e06ee9c502eda6955c83b917d8549f47b8",
+      "content_hash": "57b7e21b1b7a25c6936c9c66bb148a7c17870f4fc540bceb671dc8a4d372ad31",
       "id": "artifact:file:stats/read-models/active/rollout_campaign_summary.profile.json:f32d6d20e6",
       "path": "stats/read-models/active/rollout_campaign_summary.profile.json",
       "source_record_id": "file:stats/read-models/active/rollout_campaign_summary.profile.json:f32d6d20e6",
@@ -7402,7 +7490,7 @@
     },
     {
       "artifact_kind": "config",
-      "content_hash": "728e8b2c57f60f9c932a8bd41fba380e816543cd1acb8140286787e974861c2e",
+      "content_hash": "d1e7eb570542e407a461f733ab51c56e659be9a5101a3319290e68dd81898aa3",
       "id": "artifact:file:stats/source_home.manifest.json:41b237ff45",
       "path": "stats/source_home.manifest.json",
       "source_record_id": "file:stats/source_home.manifest.json:41b237ff45",
@@ -7458,7 +7546,7 @@
     },
     {
       "artifact_kind": "test",
-      "content_hash": "c11bd95c511c9951b0aa149529aac32d23cf2d43f6b92a2c53f3767509a9f9da",
+      "content_hash": "bb90f13c7ef49a9f2b235fcf60290ef8a09aaa01bd5314c133c7def1e7aeae69",
       "id": "artifact:file:tests/test_build_views.py:760ef645f6",
       "path": "tests/test_build_views.py",
       "source_record_id": "file:tests/test_build_views.py:760ef645f6",
@@ -7539,7 +7627,7 @@
   ],
   "index_identity": {
     "artifact_kind": "repository_artifact_index",
-    "content_digest": "7a22eec4ee7f1d7f42e4108945cbf6307386a278c8e6878c83fe3169e85748b6",
+    "content_digest": "dcee427cf0747375ab2da2b2f92e78f69e570cc1c4f816a5e85bea59d7a55311",
     "index_kind": "artifact",
     "local_id": "index:repo-local:artifacts",
     "schema_ref": "aoa-kag:schemas/repo-local-kag-repository-index.schema.json"
@@ -7563,17 +7651,17 @@
   },
   "schema_version": "aoa-repo-local-kag-repository-index-v1",
   "source_index": {
-    "content_digest": "527f4cec11e2ebdd427e261af7a0f37567c3d21f124dc21bb13aa5045599ae89",
+    "content_digest": "82db605725f2763de33de45a849610690d824d03d2fd4ad9a666c436c10b177c",
     "local_id": "index:repo-local:source-surfaces",
     "path": "kag/indexes/source_surface_index.json"
   },
   "summary": {
-    "entry_count": 942,
+    "entry_count": 953,
     "kind_counts": {
       "asset": 50,
       "config": 174,
       "dependency_manifest": 2,
-      "document": 456,
+      "document": 460,
       "generated_readmodel": 42,
       "index": 1,
       "license": 1,
@@ -7585,8 +7673,8 @@
       "script": 23,
       "security": 1,
       "service_unit": 2,
-      "source_code": 19,
-      "test": 40,
+      "source_code": 23,
+      "test": 43,
       "validator": 18
     }
   }

@@ -158,6 +158,7 @@
         "mechanics/recurrence/parts/repeated-window",
         "mechanics/release-support/parts/codex-deployment-rollout",
         "mechanics/release-support/parts/rollout-campaign",
+        "mechanics/release-support/parts/trusted-rollout-history",
         "mechanics/rpg/parts/route-progression",
         "mechanics/titan/parts/incarnation-summon"
       ]
@@ -459,7 +460,8 @@
           ],
           "localized_payload_roots": [
             "docs",
-            "examples"
+            "examples",
+            "tests"
           ],
           "retained_root_routes": []
         },
@@ -876,12 +878,26 @@
           ],
           "localized_payload_roots": [
             "docs",
-            "examples",
             "tests"
           ],
           "retained_root_routes": [
             "examples/codex_plane_deployment_summary.example.json"
           ]
+        },
+        {
+          "path": "trusted-rollout-history",
+          "owner_surface": "mechanics/release-support/parts/trusted-rollout-history/CONTRACT.md",
+          "validation_surface": "mechanics/release-support/parts/trusted-rollout-history/VALIDATION.md",
+          "payload_class": "trusted-rollout-history-stats-operation",
+          "stats_source_family_refs": [
+            "read_models"
+          ],
+          "localized_payload_roots": [
+            "docs",
+            "examples",
+            "tests"
+          ],
+          "retained_root_routes": []
         },
         {
           "path": "rollout-campaign",
@@ -893,7 +909,8 @@
           ],
           "localized_payload_roots": [
             "docs",
-            "examples"
+            "examples",
+            "tests"
           ],
           "retained_root_routes": []
         },

@@ -45,10 +45,16 @@ It does not own:
     for derived-only component refresh posture
 11. `mechanics/release-support/parts/codex-deployment-rollout/docs/CODEX_PLANE_DEPLOYMENT_SUMMARIES.md`
     for committed-reference versus deploy-local Codex Plane posture
-12. `mechanics/boundary-bridge/parts/memory-owner-handoff/docs/MEMORY_MOVEMENT_SUMMARY.md`
+12. `mechanics/release-support/parts/trusted-rollout-history/docs/TRUSTED_ROLLOUT_HISTORY_SUMMARIES.md`
+    for checked-in owner-history posture and its separation from deployment
+    and cadence examples
+13. `mechanics/release-support/parts/rollout-campaign/docs/ROLLOUT_CAMPAIGN_SUMMARY.md`
+    and `mechanics/audit/parts/drift-shadow-review/docs/DRIFT_REVIEW_SUMMARY.md`
+    for committed cadence-example posture
+14. `mechanics/boundary-bridge/parts/memory-owner-handoff/docs/MEMORY_MOVEMENT_SUMMARY.md`
     for reviewed corpus movement posture
-13. the nearest nested `AGENTS.md` for every path you touch
-14. `docs/history/AGENTS_ROOT_REFERENCE.md` only when historical pre-refactor
+15. the nearest nested `AGENTS.md` for every path you touch
+16. `docs/history/AGENTS_ROOT_REFERENCE.md` only when historical pre-refactor
     guidance is needed as provenance
 
 ## Repository shape
@@ -90,6 +96,13 @@ explicit. The committed build may project owner-authored examples; live refresh
 may read only the named deploy-local rollout artifacts from its explicit
 workspace root. Missing live artifacts omit the optional output and trigger
 stale cleanup; they never authorize fallback to examples.
+
+Keep Codex rollout history and cadence examples outside that deployment
+boundary. The trusted-history mechanic reads the exact four checked-in
+`8Dionysus/generated/codex/rollout/` owner surfaces. Campaign and drift-review
+cadence projections read the separate three-example chain. Neither committed
+context is live state, and neither may fall back to or impersonate the
+deploy-local trio.
 
 ## Cross-mode law
 

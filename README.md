@@ -146,14 +146,19 @@ materialization includes only active profiles with `live_state_capable: true`,
 and its catalog lists only outputs actually materialized. Reference-only
 profiles remain in the committed catalog and stale runtime copies are removed.
 The managed inventory remains 25 read models; the authored live-admitted
-allowlist contains 20.
+allowlist contains 16. Checked-in trusted rollout history and the two committed
+cadence-example projections now join Codex Plane Deployment, Continuity Window,
+Component Refresh, and the two Titan surfaces on the reference-only route.
 [`AOST-D-0003`](docs/decisions/AOST-D-0003-component-refresh-fixtures-are-not-live-state.md)
 is the selector and stale-cleanup precedent established for Component Refresh,
-not a Continuity Window or Codex Plane Deployment decision. Continuity Window
+not a decision for the other eight reference-only profiles. Continuity Window
 is excluded because its current owner inputs are a committed example/catalog
 chain rather than a real owner-runtime artifact or receipt. Codex Plane
 Deployment is likewise excluded because its current output comes from three
 committed 8Dionysus examples, not the deploy-local rollout artifact trio.
+The rollout-history pair is excluded because checked-in review history is not
+runtime state; the Campaign/Drift pair is excluded because its source is a
+three-example cadence chain rather than an active producer.
 
 For read-only MCP use, follow
 [`stats/surface-catalog/CODEX_MCP.md`](stats/surface-catalog/CODEX_MCP.md).

@@ -17,6 +17,6 @@ that owns current workspace state.
 - root compatibility facade: `scripts/build_views.py`
 - checks: `VALIDATION.md`
 
-The checked-in rollout-history and cadence companions described in the guide
-remain separate operations for later audit. They are not inputs to the
-deployment projection and are not widened by this slice.
+Checked-in rollout history belongs to the sibling
+`trusted-rollout-history` part. Cadence examples belong to `rollout-campaign`
+and `drift-shadow-review`. They are not deployment inputs.

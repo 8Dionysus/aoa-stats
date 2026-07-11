@@ -69,6 +69,10 @@ Tracking starts with the first public release-prep baseline for this repository.
 - Reclassified Codex Plane Deployment as a committed owner-example reference,
   separated its reference and deploy-local source contracts, and stopped
   missing runtime rollout evidence from falling back to examples in live state.
+- Separated checked-in trusted rollout history from Codex Plane Deployment and
+  from cadence examples, localized strict history and cadence projection seams
+  under their mechanic owners, and removed all four committed companion
+  summaries from live-state admission while retaining managed stale cleanup.
 
 ## [0.1.3] - 2026-04-23
 

@@ -96,10 +96,12 @@ publication and implementation districts:
 materialization selector. The committed catalog may include reference-only
 profiles; the local live catalog contains only admitted, materialized outputs,
 while cleanup still covers every managed active output. Component Refresh,
-Continuity Window, and Codex Plane Deployment are currently reference-only. The
+Continuity Window, Codex Plane Deployment, trusted rollout-history, and both
+cadence projections are currently reference-only alongside the Titan
+references. The
 selector and stale-cleanup precedent is recorded for Component Refresh in
 `docs/decisions/AOST-D-0003-component-refresh-fixtures-are-not-live-state.md`;
-that record is not a Continuity Window or Codex Plane Deployment decision, and
+that record is not a decision for the other reference-only profiles, and
 the selector does not independently certify any profile's source posture.
 
 Follow the family route card before changing any of those paths.

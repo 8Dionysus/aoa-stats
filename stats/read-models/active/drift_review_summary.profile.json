@@ -5,17 +5,18 @@
   "name": "drift_review_summary",
   "surface_ref": "generated/drift_review_summary.min.json",
   "schema_ref": "schemas/drift-review-summary.schema.json",
-  "primary_question": "What named drift signals and explicit review decisions are currently visible in the source-owned cadence windows without replacing rollout or campaign truth?",
-  "derivation_rule": "derive one bounded drift-review summary from the current 8Dionysus cadence windows and keep rollback readiness descriptive only",
-  "input_posture": "checked_in_owner_history",
+  "primary_question": "What named drift signals and explicit review decision are represented by the committed 8Dionysus cadence examples without replacing rollout or campaign truth?",
+  "derivation_rule": "derive one committed reference drift-review summary from the 8Dionysus rollout-campaign, drift-review, and rollback-followthrough examples while keeping rollback readiness descriptive only",
+  "input_posture": "committed_owner_example_chain",
   "owner_truth_inputs": [
-    "8Dionysus drift review windows"
+    "8Dionysus/examples/rollout_campaign_window.example.json",
+    "8Dionysus/examples/drift_review_window.example.json",
+    "8Dionysus/examples/rollback_followthrough_window.example.json"
   ],
   "authority_ceiling": "Weaker than source-owned drift reviews, campaign windows, and rollback decisions.",
   "consumer_risk": "high",
-  "live_state_capable": true,
+  "live_state_capable": false,
   "mechanic_routes": [
-    "mechanics/audit/parts/drift-shadow-review",
-    "mechanics/release-support/parts/rollout-campaign"
+    "mechanics/audit/parts/drift-shadow-review"
   ]
 }

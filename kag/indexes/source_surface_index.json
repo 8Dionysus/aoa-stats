@@ -4,7 +4,7 @@
       "asset": 50,
       "config": 174,
       "dependency_manifest": 2,
-      "document": 456,
+      "document": 460,
       "generated_readmodel": 42,
       "index": 1,
       "license": 1,
@@ -16,16 +16,16 @@
       "script": 23,
       "security": 1,
       "service_unit": 2,
-      "source_code": 19,
-      "test": 40,
+      "source_code": 23,
+      "test": 43,
       "validator": 18
     },
     "command_role": {
       "builder": 10,
       "lane_entrypoint": 1,
-      "none": 861,
+      "none": 869,
       "script": 12,
-      "test": 40,
+      "test": 43,
       "validator": 18
     },
     "document_role": {
@@ -35,11 +35,11 @@
       "changelog": 1,
       "decision": 10,
       "design": 1,
-      "mechanics_doc": 179,
-      "none": 478,
+      "mechanics_doc": 182,
+      "none": 485,
       "parts": 12,
       "provenance": 12,
-      "readme": 84,
+      "readme": 85,
       "roadmap": 1,
       "unknown_document": 116
     },
@@ -47,41 +47,41 @@
       "legacy": 23,
       "mechanic_package": 55,
       "mechanic_part": 93,
-      "none": 439,
-      "part_contract": 42,
-      "part_doc": 184,
+      "none": 443,
+      "part_contract": 43,
+      "part_doc": 187,
       "part_schema": 58,
       "part_script": 21,
-      "part_test": 27
+      "part_test": 30
     },
     "primary_kind": {
       "artifact": 94,
-      "command": 81,
-      "document": 464,
-      "surface": 303
+      "command": 84,
+      "document": 468,
+      "surface": 307
     },
     "surface_state": {
-      "authored_source": 872,
+      "authored_source": 883,
       "generated_readmodel": 47,
       "legacy": 23
     }
   },
   "coverage_summary": {
-    "command_count": 81,
-    "document_count": 464,
+    "command_count": 84,
+    "document_count": 468,
     "generated_count": 47,
-    "heading_count": 1815,
-    "mechanics_count": 503,
-    "record_count": 942,
+    "heading_count": 1830,
+    "mechanics_count": 510,
+    "record_count": 953,
     "schema_count": 92,
     "script_count": 23,
-    "test_count": 40,
+    "test_count": 43,
     "unknown_count": 0,
     "validator_count": 18
   },
   "index_identity": {
     "artifact_kind": "source_surface_index",
-    "content_digest": "527f4cec11e2ebdd427e261af7a0f37567c3d21f124dc21bb13aa5045599ae89",
+    "content_digest": "82db605725f2763de33de45a849610690d824d03d2fd4ad9a666c436c10b177c",
     "local_id": "index:repo-local:source-surfaces",
     "schema_ref": "aoa-kag:schemas/repo-local-kag-index.schema.json"
   },
@@ -24063,13 +24063,13 @@
         "state": "current"
       },
       "identity": {
-        "content_hash": "43e3b82344289c5d06a7fe99af1e5cfe6b7c4e51f858dd228b3eff9a22eee30b",
+        "content_hash": "ebfcf59a8446d2478290f0db8d20c4cc4df6cac19170197f5958ff3244a86772",
         "git_ref": "git-index-source-tree",
         "id": "file:agents.md:a54ff182c7",
         "mime": "text/markdown",
         "path": "AGENTS.md",
         "repo": "aoa-stats",
-        "size_bytes": 9371
+        "size_bytes": 10177
       },
       "mechanics_role": "none",
       "observed_form": "file",
@@ -24126,70 +24126,70 @@
           {
             "anchor": "repository-shape",
             "level": 2,
-            "line": 54,
+            "line": 60,
             "ref": "AGENTS.md#repository-shape",
             "title": "Repository shape"
           },
           {
             "anchor": "cross-mode-law",
             "level": 2,
-            "line": 94,
+            "line": 107,
             "ref": "AGENTS.md#cross-mode-law",
             "title": "Cross-mode law"
           },
           {
             "anchor": "agents-stack-law",
             "level": 2,
-            "line": 118,
+            "line": 131,
             "ref": "AGENTS.md#agents-stack-law",
             "title": "AGENTS stack law"
           },
           {
             "anchor": "memory-route",
             "level": 2,
-            "line": 133,
+            "line": 146,
             "ref": "AGENTS.md#memory-route",
             "title": "Memory route"
           },
           {
             "anchor": "decision-review",
             "level": 2,
-            "line": 141,
+            "line": 154,
             "ref": "AGENTS.md#decision-review",
             "title": "Decision review"
           },
           {
             "anchor": "derived-only-rules",
             "level": 2,
-            "line": 152,
+            "line": 165,
             "ref": "AGENTS.md#derived-only-rules",
             "title": "Derived-only rules"
           },
           {
             "anchor": "github-landing-workflow",
             "level": 2,
-            "line": 162,
+            "line": 175,
             "ref": "AGENTS.md#github-landing-workflow",
             "title": "GitHub landing workflow"
           },
           {
             "anchor": "verify",
             "level": 2,
-            "line": 184,
+            "line": 197,
             "ref": "AGENTS.md#verify",
             "title": "Verify"
           },
           {
             "anchor": "report",
             "level": 2,
-            "line": 213,
+            "line": 226,
             "ref": "AGENTS.md#report",
             "title": "Report"
           },
           {
             "anchor": "full-reference",
             "level": 2,
-            "line": 219,
+            "line": 232,
             "ref": "AGENTS.md#full-reference",
             "title": "Full reference"
           }
@@ -24201,7 +24201,7 @@
       },
       "signs": {
         "attestation_ref": "",
-        "digest": "43e3b82344289c5d06a7fe99af1e5cfe6b7c4e51f858dd228b3eff9a22eee30b",
+        "digest": "ebfcf59a8446d2478290f0db8d20c4cc4df6cac19170197f5958ff3244a86772",
         "signature_ref": "",
         "verification_state": "digest-only"
       },
@@ -24249,13 +24249,13 @@
         "state": "current"
       },
       "identity": {
-        "content_hash": "1223bbe92c3e5b2cefe60401aeb4d75885d7950ac27a30c3beafb123fa3cdb0a",
+        "content_hash": "8131428a568cee4b856d0d8aef90e952dd5d0c5499be55935be0098093b8e75c",
         "git_ref": "git-index-source-tree",
         "id": "file:changelog.md:06572a96a5",
         "mime": "text/markdown",
         "path": "CHANGELOG.md",
         "repo": "aoa-stats",
-        "size_bytes": 10543
+        "size_bytes": 10850
       },
       "mechanics_role": "none",
       "observed_form": "file",
@@ -24312,175 +24312,175 @@
           {
             "anchor": "013-2026-04-23",
             "level": 2,
-            "line": 73,
+            "line": 77,
             "ref": "CHANGELOG.md#013-2026-04-23",
             "title": "[0.1.3] - 2026-04-23"
           },
           {
             "anchor": "summary",
             "level": 3,
-            "line": 75,
+            "line": 79,
             "ref": "CHANGELOG.md#summary",
             "title": "Summary"
           },
           {
             "anchor": "added-1",
             "level": 3,
-            "line": 87,
+            "line": 91,
             "ref": "CHANGELOG.md#added-1",
             "title": "Added"
           },
           {
             "anchor": "changed-1",
             "level": 3,
-            "line": 97,
+            "line": 101,
             "ref": "CHANGELOG.md#changed-1",
             "title": "Changed"
           },
           {
             "anchor": "validation",
             "level": 3,
-            "line": 103,
+            "line": 107,
             "ref": "CHANGELOG.md#validation",
             "title": "Validation"
           },
           {
             "anchor": "notes",
             "level": 3,
-            "line": 107,
+            "line": 111,
             "ref": "CHANGELOG.md#notes",
             "title": "Notes"
           },
           {
             "anchor": "012-2026-04-19",
             "level": 2,
-            "line": 112,
+            "line": 116,
             "ref": "CHANGELOG.md#012-2026-04-19",
             "title": "[0.1.2] - 2026-04-19"
           },
           {
             "anchor": "summary-1",
             "level": 3,
-            "line": 114,
+            "line": 118,
             "ref": "CHANGELOG.md#summary-1",
             "title": "Summary"
           },
           {
             "anchor": "added-2",
             "level": 3,
-            "line": 122,
+            "line": 126,
             "ref": "CHANGELOG.md#added-2",
             "title": "Added"
           },
           {
             "anchor": "changed-2",
             "level": 3,
-            "line": 129,
+            "line": 133,
             "ref": "CHANGELOG.md#changed-2",
             "title": "Changed"
           },
           {
             "anchor": "validation-1",
             "level": 3,
-            "line": 134,
+            "line": 138,
             "ref": "CHANGELOG.md#validation-1",
             "title": "Validation"
           },
           {
             "anchor": "notes-1",
             "level": 3,
-            "line": 138,
+            "line": 142,
             "ref": "CHANGELOG.md#notes-1",
             "title": "Notes"
           },
           {
             "anchor": "011-2026-04-12",
             "level": 2,
-            "line": 143,
+            "line": 147,
             "ref": "CHANGELOG.md#011-2026-04-12",
             "title": "[0.1.1] - 2026-04-12"
           },
           {
             "anchor": "summary-2",
             "level": 3,
-            "line": 145,
+            "line": 149,
             "ref": "CHANGELOG.md#summary-2",
             "title": "Summary"
           },
           {
             "anchor": "added-3",
             "level": 3,
-            "line": 153,
+            "line": 157,
             "ref": "CHANGELOG.md#added-3",
             "title": "Added"
           },
           {
             "anchor": "documentation",
             "level": 3,
-            "line": 161,
+            "line": 165,
             "ref": "CHANGELOG.md#documentation",
             "title": "Documentation"
           },
           {
             "anchor": "changed-3",
             "level": 3,
-            "line": 167,
+            "line": 171,
             "ref": "CHANGELOG.md#changed-3",
             "title": "Changed"
           },
           {
             "anchor": "validation-2",
             "level": 3,
-            "line": 174,
+            "line": 178,
             "ref": "CHANGELOG.md#validation-2",
             "title": "Validation"
           },
           {
             "anchor": "notes-2",
             "level": 3,
-            "line": 178,
+            "line": 182,
             "ref": "CHANGELOG.md#notes-2",
             "title": "Notes"
           },
           {
             "anchor": "010-2026-04-10",
             "level": 2,
-            "line": 182,
+            "line": 186,
             "ref": "CHANGELOG.md#010-2026-04-10",
             "title": "[0.1.0] - 2026-04-10"
           },
           {
             "anchor": "summary-3",
             "level": 3,
-            "line": 189,
+            "line": 193,
             "ref": "CHANGELOG.md#summary-3",
             "title": "Summary"
           },
           {
             "anchor": "added-4",
             "level": 3,
-            "line": 200,
+            "line": 204,
             "ref": "CHANGELOG.md#added-4",
             "title": "Added"
           },
           {
             "anchor": "included-in-this-release",
             "level": 3,
-            "line": 213,
+            "line": 217,
             "ref": "CHANGELOG.md#included-in-this-release",
             "title": "Included in this release"
           },
           {
             "anchor": "validation-3",
             "level": 3,
-            "line": 228,
+            "line": 232,
             "ref": "CHANGELOG.md#validation-3",
             "title": "Validation"
           },
           {
             "anchor": "notes-3",
             "level": 3,
-            "line": 234,
+            "line": 238,
             "ref": "CHANGELOG.md#notes-3",
             "title": "Notes"
           }
@@ -24492,7 +24492,7 @@
       },
       "signs": {
         "attestation_ref": "",
-        "digest": "1223bbe92c3e5b2cefe60401aeb4d75885d7950ac27a30c3beafb123fa3cdb0a",
+        "digest": "8131428a568cee4b856d0d8aef90e952dd5d0c5499be55935be0098093b8e75c",
         "signature_ref": "",
         "verification_state": "digest-only"
       },
@@ -24772,13 +24772,13 @@
         "state": "current"
       },
       "identity": {
-        "content_hash": "0b60eed0099a3e66bf6370ae89bc5c88320db6d34708db17754658209c4f8213",
+        "content_hash": "53cfa66925e32916c3b5433cedf2a8fca8dfe96bac2d2272e4f6ad9fd880800f",
         "git_ref": "git-index-source-tree",
         "id": "file:design.md:3dc5dd454e",
         "mime": "text/markdown",
         "path": "DESIGN.md",
         "repo": "aoa-stats",
-        "size_bytes": 10633
+        "size_bytes": 11691
       },
       "mechanics_role": "none",
       "observed_form": "file",
@@ -24863,56 +24863,56 @@
           {
             "anchor": "operation",
             "level": 2,
-            "line": 134,
+            "line": 151,
             "ref": "DESIGN.md#operation",
             "title": "Operation"
           },
           {
             "anchor": "authority-model",
             "level": 2,
-            "line": 158,
+            "line": 175,
             "ref": "DESIGN.md#authority-model",
             "title": "Authority model"
           },
           {
             "anchor": "shared-mechanic-vocabulary",
             "level": 2,
-            "line": 172,
+            "line": 189,
             "ref": "DESIGN.md#shared-mechanic-vocabulary",
             "title": "Shared mechanic vocabulary"
           },
           {
             "anchor": "design-principles",
             "level": 2,
-            "line": 183,
+            "line": 200,
             "ref": "DESIGN.md#design-principles",
             "title": "Design principles"
           },
           {
             "anchor": "good-shape",
             "level": 2,
-            "line": 199,
+            "line": 216,
             "ref": "DESIGN.md#good-shape",
             "title": "Good shape"
           },
           {
             "anchor": "bad-shape",
             "level": 2,
-            "line": 208,
+            "line": 225,
             "ref": "DESIGN.md#bad-shape",
             "title": "Bad shape"
           },
           {
             "anchor": "relationship-to-root-guidance",
             "level": 2,
-            "line": 217,
+            "line": 234,
             "ref": "DESIGN.md#relationship-to-root-guidance",
             "title": "Relationship to root guidance"
           },
           {
             "anchor": "use-by-agents",
             "level": 2,
-            "line": 228,
+            "line": 245,
             "ref": "DESIGN.md#use-by-agents",
             "title": "Use by agents"
           }
@@ -24924,7 +24924,7 @@
       },
       "signs": {
         "attestation_ref": "",
-        "digest": "0b60eed0099a3e66bf6370ae89bc5c88320db6d34708db17754658209c4f8213",
+        "digest": "53cfa66925e32916c3b5433cedf2a8fca8dfe96bac2d2272e4f6ad9fd880800f",
         "signature_ref": "",
         "verification_state": "digest-only"
       },
@@ -25059,13 +25059,13 @@
         "state": "current"
       },
       "identity": {
-        "content_hash": "f60c8acd88df27c726ec5b5f53097780126e8cd306a81021459842b3e63497ef",
+        "content_hash": "ed061703481122b0adab74b40a0f7a08a2bd35a562c6593347e46edbaeb177ac",
         "git_ref": "git-index-source-tree",
         "id": "file:readme.md:b335630551",
         "mime": "text/markdown",
         "path": "README.md",
         "repo": "aoa-stats",
-        "size_bytes": 8416
+        "size_bytes": 8841
       },
       "mechanics_role": "none",
       "observed_form": "file",
@@ -25143,14 +25143,14 @@
           {
             "anchor": "boundaries",
             "level": 2,
-            "line": 161,
+            "line": 166,
             "ref": "README.md#boundaries",
             "title": "Boundaries"
           },
           {
             "anchor": "contribution-and-release",
             "level": 2,
-            "line": 172,
+            "line": 177,
             "ref": "README.md#contribution-and-release",
             "title": "Contribution and release"
           }
@@ -25162,7 +25162,7 @@
       },
       "signs": {
         "attestation_ref": "",
-        "digest": "f60c8acd88df27c726ec5b5f53097780126e8cd306a81021459842b3e63497ef",
+        "digest": "ed061703481122b0adab74b40a0f7a08a2bd35a562c6593347e46edbaeb177ac",
         "signature_ref": "",
         "verification_state": "digest-only"
       },
@@ -25210,13 +25210,13 @@
         "state": "current"
       },
       "identity": {
-        "content_hash": "b3d389f9dff56dd097e519f78edbd10ae7fa6c8bde6152c95a598fa4d85b652d",
+        "content_hash": "ea1418f9ee83ceb9ef8a7eff77648125eba1e5b6e6c7417d1c68a1420a104b3c",
         "git_ref": "git-index-source-tree",
         "id": "file:roadmap.md:683343bdf9",
         "mime": "text/markdown",
         "path": "ROADMAP.md",
         "repo": "aoa-stats",
-        "size_bytes": 6442
+        "size_bytes": 6767
       },
       "mechanics_role": "none",
       "observed_form": "file",
@@ -25273,21 +25273,21 @@
           {
             "anchor": "direction",
             "level": 2,
-            "line": 98,
+            "line": 104,
             "ref": "ROADMAP.md#direction",
             "title": "Direction"
           },
           {
             "anchor": "non-goals",
             "level": 2,
-            "line": 117,
+            "line": 122,
             "ref": "ROADMAP.md#non-goals",
             "title": "Non-goals"
           },
           {
             "anchor": "release-gate",
             "level": 2,
-            "line": 125,
+            "line": 130,
             "ref": "ROADMAP.md#release-gate",
             "title": "Release gate"
           }
@@ -25299,7 +25299,7 @@
       },
       "signs": {
         "attestation_ref": "",
-        "digest": "b3d389f9dff56dd097e519f78edbd10ae7fa6c8bde6152c95a598fa4d85b652d",
+        "digest": "ea1418f9ee83ceb9ef8a7eff77648125eba1e5b6e6c7417d1c68a1420a104b3c",
         "signature_ref": "",
         "verification_state": "digest-only"
       },
@@ -25470,13 +25470,13 @@
         "state": "current"
       },
       "identity": {
-        "content_hash": "12932be4bad8f81c929c0634702952a8777eb88ebb825007d483ac1b1361db05",
+        "content_hash": "c6465331b47b3be72c52e7ac159a6400f987b5b5f6aa7474e25f9d9a6b0be9ed",
         "git_ref": "git-index-source-tree",
         "id": "file:docs/architecture.md:ff21b6b9a3",
         "mime": "text/markdown",
         "path": "docs/ARCHITECTURE.md",
         "repo": "aoa-stats",
-        "size_bytes": 7539
+        "size_bytes": 7847
       },
       "mechanics_role": "none",
       "observed_form": "file",
@@ -25561,7 +25561,7 @@
           {
             "anchor": "canonical-split",
             "level": 2,
-            "line": 168,
+            "line": 173,
             "ref": "docs/ARCHITECTURE.md#canonical-split",
             "title": "Canonical split"
           }
@@ -25573,7 +25573,7 @@
       },
       "signs": {
         "attestation_ref": "",
-        "digest": "12932be4bad8f81c929c0634702952a8777eb88ebb825007d483ac1b1361db05",
+        "digest": "c6465331b47b3be72c52e7ac159a6400f987b5b5f6aa7474e25f9d9a6b0be9ed",
         "signature_ref": "",
         "verification_state": "digest-only"
       },
@@ -26071,13 +26071,13 @@
         "state": "current"
       },
       "identity": {
-        "content_hash": "2ee866df2be4c50b5733e8b54719555ece70956cb8a7b0032dae970d9df2e8f4",
+        "content_hash": "f016c0d36800cc9a6a5036302651c43c4c21624a992b7c30923c1ed04cc87526",
         "git_ref": "git-index-source-tree",
         "id": "file:docs/readme.md:0b5ca119d2",
         "mime": "text/markdown",
         "path": "docs/README.md",
         "repo": "aoa-stats",
-        "size_bytes": 3882
+        "size_bytes": 4009
       },
       "mechanics_role": "none",
       "observed_form": "file",
@@ -26127,14 +26127,14 @@
           {
             "anchor": "repository-wide-contracts",
             "level": 2,
-            "line": 47,
+            "line": 48,
             "ref": "docs/README.md#repository-wide-contracts",
             "title": "Repository-wide contracts"
           },
           {
             "anchor": "history",
             "level": 2,
-            "line": 58,
+            "line": 59,
             "ref": "docs/README.md#history",
             "title": "History"
           }
@@ -26146,7 +26146,7 @@
       },
       "signs": {
         "attestation_ref": "",
-        "digest": "2ee866df2be4c50b5733e8b54719555ece70956cb8a7b0032dae970d9df2e8f4",
+        "digest": "f016c0d36800cc9a6a5036302651c43c4c21624a992b7c30923c1ed04cc87526",
         "signature_ref": "",
         "verification_state": "digest-only"
       },
@@ -32239,13 +32239,13 @@
         "state": "current"
       },
       "identity": {
-        "content_hash": "8c7c42c530bd3e78ff827d697e868b1ac9fed7c128c1a410e7f0c555b70b780e",
+        "content_hash": "1e3f213562c3f6236e295a9e08a76fea71670fb001f7908d3406d228bc44c106",
         "git_ref": "git-index-source-tree",
         "id": "file:generated/summary_surface_catalog.min.json:5c31a5556b",
         "mime": "application/json",
         "path": "generated/summary_surface_catalog.min.json",
         "repo": "aoa-stats",
-        "size_bytes": 25064
+        "size_bytes": 26023
       },
       "mechanics_role": "none",
       "observed_form": "generated_output",
@@ -32278,7 +32278,7 @@
       },
       "signs": {
         "attestation_ref": "",
-        "digest": "8c7c42c530bd3e78ff827d697e868b1ac9fed7c128c1a410e7f0c555b70b780e",
+        "digest": "1e3f213562c3f6236e295a9e08a76fea71670fb001f7908d3406d228bc44c106",
         "signature_ref": "",
         "verification_state": "digest-only"
       },
@@ -48356,13 +48356,13 @@
         "state": "current"
       },
       "identity": {
-        "content_hash": "4bf19c6f37fe072e2da977331de6503c6d92e31362298697e9b3b3f421b3f520",
+        "content_hash": "68c5b4730453b0c8eaaad6e450c69e5a35693644f52de32cf36db58fee82dee8",
         "git_ref": "git-index-source-tree",
         "id": "file:mechanics/audit/parts.md:7f54be3138",
         "mime": "text/markdown",
         "path": "mechanics/audit/PARTS.md",
         "repo": "aoa-stats",
-        "size_bytes": 666
+        "size_bytes": 679
       },
       "mechanics_role": "mechanic_package",
       "observed_form": "file",
@@ -48403,7 +48403,7 @@
       },
       "signs": {
         "attestation_ref": "",
-        "digest": "4bf19c6f37fe072e2da977331de6503c6d92e31362298697e9b3b3f421b3f520",
+        "digest": "68c5b4730453b0c8eaaad6e450c69e5a35693644f52de32cf36db58fee82dee8",
         "signature_ref": "",
         "verification_state": "digest-only"
       },
@@ -49123,13 +49123,13 @@
         "state": "current"
       },
       "identity": {
-        "content_hash": "a87b94585844374745eabe5e605afff22e0fde5141078d5d9c75688acfa2cf9b",
+        "content_hash": "a9da0d6d16812614bac35e9e500e7fa997fdb0ff28bb853b4b1ba297ad4a153b",
         "git_ref": "git-index-source-tree",
         "id": "file:mechanics/audit/parts/drift-shadow-review/contract.md:afa4f97a00",
         "mime": "text/markdown",
         "path": "mechanics/audit/parts/drift-shadow-review/CONTRACT.md",
         "repo": "aoa-stats",
-        "size_bytes": 360
+        "size_bytes": 942
       },
       "mechanics_role": "part_contract",
       "observed_form": "file",
@@ -49156,11 +49156,11 @@
       "refs": {
         "heading_refs": [
           {
-            "anchor": "contract",
+            "anchor": "drift-shadow-review-contract",
             "level": 1,
             "line": 1,
-            "ref": "mechanics/audit/parts/drift-shadow-review/CONTRACT.md#contract",
-            "title": "Contract"
+            "ref": "mechanics/audit/parts/drift-shadow-review/CONTRACT.md#drift-shadow-review-contract",
+            "title": "Drift Shadow Review contract"
           }
         ],
         "line_refs": [
@@ -49170,7 +49170,7 @@
       },
       "signs": {
         "attestation_ref": "",
-        "digest": "a87b94585844374745eabe5e605afff22e0fde5141078d5d9c75688acfa2cf9b",
+        "digest": "a9da0d6d16812614bac35e9e500e7fa997fdb0ff28bb853b4b1ba297ad4a153b",
         "signature_ref": "",
         "verification_state": "digest-only"
       },
@@ -49218,13 +49218,13 @@
         "state": "current"
       },
       "identity": {
-        "content_hash": "229fc793bcdbc0828afeca1097f8e07ddbdb4ad4733074267200dfc406119649",
+        "content_hash": "fb660370ca8e1a3860726c399743b530c19692e6ff424ca16f8f7710973062fc",
         "git_ref": "git-index-source-tree",
         "id": "file:mechanics/audit/parts/drift-shadow-review/readme.md:9086a0e976",
         "mime": "text/markdown",
         "path": "mechanics/audit/parts/drift-shadow-review/README.md",
         "repo": "aoa-stats",
-        "size_bytes": 372
+        "size_bytes": 1089
       },
       "mechanics_role": "part_doc",
       "observed_form": "file",
@@ -49265,7 +49265,7 @@
       },
       "signs": {
         "attestation_ref": "",
-        "digest": "229fc793bcdbc0828afeca1097f8e07ddbdb4ad4733074267200dfc406119649",
+        "digest": "fb660370ca8e1a3860726c399743b530c19692e6ff424ca16f8f7710973062fc",
         "signature_ref": "",
         "verification_state": "digest-only"
       },
@@ -49313,13 +49313,13 @@
         "state": "current"
       },
       "identity": {
-        "content_hash": "045aee7c7d783b6b29b902a7401549c850d272410838cace27b3a25efb441ff3",
+        "content_hash": "e37ad8a34fd039f1a680a7a164f00111910edf314332b80097167ded21762e5b",
         "git_ref": "git-index-source-tree",
         "id": "file:mechanics/audit/parts/drift-shadow-review/validation.md:35845f9f9a",
         "mime": "text/markdown",
         "path": "mechanics/audit/parts/drift-shadow-review/VALIDATION.md",
         "repo": "aoa-stats",
-        "size_bytes": 443
+        "size_bytes": 734
       },
       "mechanics_role": "part_doc",
       "observed_form": "file",
@@ -49346,11 +49346,11 @@
       "refs": {
         "heading_refs": [
           {
-            "anchor": "validation",
+            "anchor": "drift-shadow-review-validation",
             "level": 1,
             "line": 1,
-            "ref": "mechanics/audit/parts/drift-shadow-review/VALIDATION.md#validation",
-            "title": "Validation"
+            "ref": "mechanics/audit/parts/drift-shadow-review/VALIDATION.md#drift-shadow-review-validation",
+            "title": "Drift Shadow Review validation"
           }
         ],
         "line_refs": [
@@ -49360,7 +49360,7 @@
       },
       "signs": {
         "attestation_ref": "",
-        "digest": "045aee7c7d783b6b29b902a7401549c850d272410838cace27b3a25efb441ff3",
+        "digest": "e37ad8a34fd039f1a680a7a164f00111910edf314332b80097167ded21762e5b",
         "signature_ref": "",
         "verification_state": "digest-only"
       },
@@ -49408,13 +49408,13 @@
         "state": "current"
       },
       "identity": {
-        "content_hash": "977fc3a8f65414810e0be82abab12bf56eb382ff7bfbd7902c4e1d42ef53bd0d",
+        "content_hash": "33210167851c2b4bc7110616cb288e234e5c5644ca4dc4c3bca18bec296328b5",
         "git_ref": "git-index-source-tree",
         "id": "file:mechanics/audit/parts/drift-shadow-review/docs/drift_review_summary.md:89ed0c227c",
         "mime": "text/markdown",
         "path": "mechanics/audit/parts/drift-shadow-review/docs/DRIFT_REVIEW_SUMMARY.md",
         "repo": "aoa-stats",
-        "size_bytes": 685
+        "size_bytes": 1160
       },
       "mechanics_role": "part_doc",
       "observed_form": "file",
@@ -49450,14 +49450,14 @@
           {
             "anchor": "minimum-fields",
             "level": 2,
-            "line": 9,
+            "line": 10,
             "ref": "mechanics/audit/parts/drift-shadow-review/docs/DRIFT_REVIEW_SUMMARY.md#minimum-fields",
             "title": "Minimum fields"
           },
           {
             "anchor": "boundary",
             "level": 2,
-            "line": 18,
+            "line": 19,
             "ref": "mechanics/audit/parts/drift-shadow-review/docs/DRIFT_REVIEW_SUMMARY.md#boundary",
             "title": "Boundary"
           }
@@ -49469,7 +49469,7 @@
       },
       "signs": {
         "attestation_ref": "",
-        "digest": "977fc3a8f65414810e0be82abab12bf56eb382ff7bfbd7902c4e1d42ef53bd0d",
+        "digest": "33210167851c2b4bc7110616cb288e234e5c5644ca4dc4c3bca18bec296328b5",
         "signature_ref": "",
         "verification_state": "digest-only"
       },
@@ -49569,6 +49569,97 @@
         "owner_commands": [],
         "required_tools": [
           "jq"
+        ]
+      },
+      "validator_route": {
+        "route_kind": "source_fast",
+        "surface": "aoa-kag:scripts/validate_kag.py"
+      }
+    },
+    {
+      "abi": {
+        "abi_epoch": "source",
+        "artifact_class": "test",
+        "compatibility": "stable",
+        "contract_version": "none",
+        "schema_version": "none"
+      },
+      "access": {
+        "scope": "public",
+        "secrets_risk": "none"
+      },
+      "artifact_kind": "test",
+      "classification": {
+        "confidence": "high",
+        "primary_kind": "command"
+      },
+      "code_role": "test",
+      "command_role": "test",
+      "consumer_route": {
+        "route_kind": "resource",
+        "surface": "aoa-kag-mcp"
+      },
+      "document_role": "none",
+      "freshness": {
+        "checked_ref": "git-index-source-tree",
+        "mode": "source_snapshot",
+        "state": "current"
+      },
+      "identity": {
+        "content_hash": "856ed7af9f55893f9c1823edf4b163d55069ed6178ed4e2d974c6265c9ea1620",
+        "git_ref": "git-index-source-tree",
+        "id": "file:mechanics/audit/parts/drift-shadow-review/tests/test_drift_review_projection.py:25df01cddd",
+        "mime": "text/x-python",
+        "path": "mechanics/audit/parts/drift-shadow-review/tests/test_drift_review_projection.py",
+        "repo": "aoa-stats",
+        "size_bytes": 5590
+      },
+      "mechanics_role": "part_test",
+      "observed_form": "command",
+      "owner_return_route": {
+        "route_kind": "test_owner",
+        "surface": "mechanics/audit/parts/drift-shadow-review/tests/test_drift_review_projection.py"
+      },
+      "provenance": {
+        "generated_by": "",
+        "materials": [],
+        "observed_by": "aoa-kag:scripts/generate_repo_local_kag_index.py",
+        "source_refs": [
+          {
+            "authority": "authored_source",
+            "path": "mechanics/audit/parts/drift-shadow-review/tests/test_drift_review_projection.py",
+            "repo": "aoa-stats",
+            "role": "primary"
+          }
+        ],
+        "validated_by": [
+          "aoa-kag:scripts/validate_kag.py"
+        ]
+      },
+      "refs": {
+        "heading_refs": [],
+        "line_refs": [
+          "mechanics/audit/parts/drift-shadow-review/tests/test_drift_review_projection.py:1"
+        ],
+        "path_ref": "mechanics/audit/parts/drift-shadow-review/tests/test_drift_review_projection.py"
+      },
+      "signs": {
+        "attestation_ref": "",
+        "digest": "856ed7af9f55893f9c1823edf4b163d55069ed6178ed4e2d974c6265c9ea1620",
+        "signature_ref": "",
+        "verification_state": "digest-only"
+      },
+      "surface_state": "authored_source",
+      "toolchain": {
+        "detected_tools": [
+          "git",
+          "python"
+        ],
+        "owner_commands": [
+          "python -m unittest mechanics/audit/parts/drift-shadow-review/tests/test_drift_review_projection.py"
+        ],
+        "required_tools": [
+          "python"
         ]
       },
       "validator_route": {
@@ -75987,13 +76078,13 @@
         "state": "current"
       },
       "identity": {
-        "content_hash": "c84fc3303784c4aab1481f99e433ddf819ad68fd8de732c4399f318f7f0309a3",
+        "content_hash": "3b4519f6297dd338ffaf042ab51c85bacfe15ebca88bc2203c07d365e7f9683c",
         "git_ref": "git-index-source-tree",
         "id": "file:mechanics/recurrence/parts/live-receipt-refresh/contract.md:c4b2a7db4d",
         "mime": "text/markdown",
         "path": "mechanics/recurrence/parts/live-receipt-refresh/CONTRACT.md",
         "repo": "aoa-stats",
-        "size_bytes": 3768
+        "size_bytes": 3807
       },
       "mechanics_role": "part_contract",
       "observed_form": "file",
@@ -76057,7 +76148,7 @@
           {
             "anchor": "crosswalk",
             "level": 2,
-            "line": 65,
+            "line": 66,
             "ref": "mechanics/recurrence/parts/live-receipt-refresh/CONTRACT.md#crosswalk",
             "title": "Crosswalk"
           },
@@ -76076,7 +76167,7 @@
       },
       "signs": {
         "attestation_ref": "",
-        "digest": "c84fc3303784c4aab1481f99e433ddf819ad68fd8de732c4399f318f7f0309a3",
+        "digest": "3b4519f6297dd338ffaf042ab51c85bacfe15ebca88bc2203c07d365e7f9683c",
         "signature_ref": "",
         "verification_state": "digest-only"
       },
@@ -76124,13 +76215,13 @@
         "state": "current"
       },
       "identity": {
-        "content_hash": "fff1ae42b02d790f405e95d2a922a311d9b5dd37bfc13233706e93fab91b7e91",
+        "content_hash": "8f5aaffc902096b1572d7012f1ff941fb1bb96fd0fbc9d5b9484683f35db0044",
         "git_ref": "git-index-source-tree",
         "id": "file:mechanics/recurrence/parts/live-receipt-refresh/readme.md:ed8e247fa6",
         "mime": "text/markdown",
         "path": "mechanics/recurrence/parts/live-receipt-refresh/README.md",
         "repo": "aoa-stats",
-        "size_bytes": 2062
+        "size_bytes": 2043
       },
       "mechanics_role": "part_doc",
       "observed_form": "file",
@@ -76192,7 +76283,7 @@
       },
       "signs": {
         "attestation_ref": "",
-        "digest": "fff1ae42b02d790f405e95d2a922a311d9b5dd37bfc13233706e93fab91b7e91",
+        "digest": "8f5aaffc902096b1572d7012f1ff941fb1bb96fd0fbc9d5b9484683f35db0044",
         "signature_ref": "",
         "verification_state": "digest-only"
       },
@@ -76240,13 +76331,13 @@
         "state": "current"
       },
       "identity": {
-        "content_hash": "c0ba23ad8c9a4c7b5f504c96a930a83dde82daaf2a61b7ee322a2b62e705cff1",
+        "content_hash": "520561e0b1588379b8f3e1d0c73e310db1fc4f0aad70f28b72be49dd43e73ab4",
         "git_ref": "git-index-source-tree",
         "id": "file:mechanics/recurrence/parts/live-receipt-refresh/validation.md:c26dcdde9f",
         "mime": "text/markdown",
         "path": "mechanics/recurrence/parts/live-receipt-refresh/VALIDATION.md",
         "repo": "aoa-stats",
-        "size_bytes": 1768
+        "size_bytes": 1777
       },
       "mechanics_role": "part_doc",
       "observed_form": "file",
@@ -76301,7 +76392,7 @@
       },
       "signs": {
         "attestation_ref": "",
-        "digest": "c0ba23ad8c9a4c7b5f504c96a930a83dde82daaf2a61b7ee322a2b62e705cff1",
+        "digest": "520561e0b1588379b8f3e1d0c73e310db1fc4f0aad70f28b72be49dd43e73ab4",
         "signature_ref": "",
         "verification_state": "digest-only"
       },
@@ -76650,13 +76741,13 @@
         "state": "current"
       },
       "identity": {
-        "content_hash": "a5d5c1d556d6e7ec91e094299e580e47ce11e88d7a83ed16bd9aebdbd02c9ca6",
+        "content_hash": "c7a542df5f53b67c4b42f345f4fc8ec693cc9e551ba1a552dcc20f4ef8c77ca7",
         "git_ref": "git-index-source-tree",
         "id": "file:mechanics/recurrence/parts/live-receipt-refresh/docs/live_session_use.md:807ec41ee1",
         "mime": "text/markdown",
         "path": "mechanics/recurrence/parts/live-receipt-refresh/docs/LIVE_SESSION_USE.md",
         "repo": "aoa-stats",
-        "size_bytes": 9269
+        "size_bytes": 9844
       },
       "mechanics_role": "part_doc",
       "observed_form": "file",
@@ -76713,42 +76804,42 @@
           {
             "anchor": "what-the-builder-accepts",
             "level": 2,
-            "line": 57,
+            "line": 53,
             "ref": "mechanics/recurrence/parts/live-receipt-refresh/docs/LIVE_SESSION_USE.md#what-the-builder-accepts",
             "title": "What the builder accepts"
           },
           {
             "anchor": "canonical-repo-surfaces",
             "level": 2,
-            "line": 87,
+            "line": 83,
             "ref": "mechanics/recurrence/parts/live-receipt-refresh/docs/LIVE_SESSION_USE.md#canonical-repo-surfaces",
             "title": "Canonical repo surfaces"
           },
           {
             "anchor": "live-local-surfaces",
             "level": 2,
-            "line": 119,
+            "line": 115,
             "ref": "mechanics/recurrence/parts/live-receipt-refresh/docs/LIVE_SESSION_USE.md#live-local-surfaces",
             "title": "Live local surfaces"
           },
           {
             "anchor": "automatic-watcher",
             "level": 2,
-            "line": 181,
+            "line": 192,
             "ref": "mechanics/recurrence/parts/live-receipt-refresh/docs/LIVE_SESSION_USE.md#automatic-watcher",
             "title": "Automatic watcher"
           },
           {
             "anchor": "readiness-audit",
             "level": 2,
-            "line": 207,
+            "line": 218,
             "ref": "mechanics/recurrence/parts/live-receipt-refresh/docs/LIVE_SESSION_USE.md#readiness-audit",
             "title": "Readiness audit"
           },
           {
             "anchor": "boundary-reminder",
             "level": 2,
-            "line": 220,
+            "line": 231,
             "ref": "mechanics/recurrence/parts/live-receipt-refresh/docs/LIVE_SESSION_USE.md#boundary-reminder",
             "title": "Boundary reminder"
           }
@@ -76760,7 +76851,7 @@
       },
       "signs": {
         "attestation_ref": "",
-        "digest": "a5d5c1d556d6e7ec91e094299e580e47ce11e88d7a83ed16bd9aebdbd02c9ca6",
+        "digest": "c7a542df5f53b67c4b42f345f4fc8ec693cc9e551ba1a552dcc20f4ef8c77ca7",
         "signature_ref": "",
         "verification_state": "digest-only"
       },
@@ -77560,13 +77651,13 @@
         "state": "current"
       },
       "identity": {
-        "content_hash": "6611099c219a7cbf081331f1eeb57516aa1d6b6c557ccb9a2f03285227198a4b",
+        "content_hash": "d605a928ce24cffe5c2b5dfea9ca3cb0f30016a44035e6a25a9f9a2aa049201e",
         "git_ref": "git-index-source-tree",
         "id": "file:mechanics/recurrence/parts/live-receipt-refresh/tests/test_refresh_live_stats.py:7cafbd910d",
         "mime": "text/x-python",
         "path": "mechanics/recurrence/parts/live-receipt-refresh/tests/test_refresh_live_stats.py",
         "repo": "aoa-stats",
-        "size_bytes": 47641
+        "size_bytes": 51972
       },
       "mechanics_role": "part_test",
       "observed_form": "command",
@@ -77599,7 +77690,7 @@
       },
       "signs": {
         "attestation_ref": "",
-        "digest": "6611099c219a7cbf081331f1eeb57516aa1d6b6c557ccb9a2f03285227198a4b",
+        "digest": "d605a928ce24cffe5c2b5dfea9ca3cb0f30016a44035e6a25a9f9a2aa049201e",
         "signature_ref": "",
         "verification_state": "digest-only"
       },
@@ -78073,13 +78164,13 @@
         "state": "current"
       },
       "identity": {
-        "content_hash": "5bfb65a33ef282d0f47cfa6d3e93ea1a8586492e5c6933f6a706485687ea7f84",
+        "content_hash": "3571e7c6ff85b2108fa5659c0623d81373424240c50267807b2dec27d197f3cc",
         "git_ref": "git-index-source-tree",
         "id": "file:mechanics/release-support/parts.md:07208cf1e5",
         "mime": "text/markdown",
         "path": "mechanics/release-support/PARTS.md",
         "repo": "aoa-stats",
-        "size_bytes": 518
+        "size_bytes": 624
       },
       "mechanics_role": "mechanic_package",
       "observed_form": "file",
@@ -78120,7 +78211,7 @@
       },
       "signs": {
         "attestation_ref": "",
-        "digest": "5bfb65a33ef282d0f47cfa6d3e93ea1a8586492e5c6933f6a706485687ea7f84",
+        "digest": "3571e7c6ff85b2108fa5659c0623d81373424240c50267807b2dec27d197f3cc",
         "signature_ref": "",
         "verification_state": "digest-only"
       },
@@ -78460,13 +78551,13 @@
         "state": "current"
       },
       "identity": {
-        "content_hash": "0bc052357866d950fc41c46af489525322dc3ffaa9870f61b8cb54779d39304c",
+        "content_hash": "1243797cbcec15f2617cfc74ce2bb9e43e7924091213917760417ec655296b71",
         "git_ref": "git-index-source-tree",
         "id": "file:mechanics/release-support/parts/readme.md:890ede11a1",
         "mime": "text/markdown",
         "path": "mechanics/release-support/parts/README.md",
         "repo": "aoa-stats",
-        "size_bytes": 129
+        "size_bytes": 160
       },
       "mechanics_role": "part_doc",
       "observed_form": "file",
@@ -78507,7 +78598,7 @@
       },
       "signs": {
         "attestation_ref": "",
-        "digest": "0bc052357866d950fc41c46af489525322dc3ffaa9870f61b8cb54779d39304c",
+        "digest": "1243797cbcec15f2617cfc74ce2bb9e43e7924091213917760417ec655296b71",
         "signature_ref": "",
         "verification_state": "digest-only"
       },
@@ -78555,13 +78646,13 @@
         "state": "current"
       },
       "identity": {
-        "content_hash": "be1891c9ff5c47849b28dbcac313171addd7fd4cbc9a1e96f6199f916f1e6078",
+        "content_hash": "34af862acd72234d9b0cfe7acaf1cf8c67935cc68afcaa93c861e7bf6348a432",
         "git_ref": "git-index-source-tree",
         "id": "file:mechanics/release-support/parts/codex-deployment-rollout/contract.md:e8978ce675",
         "mime": "text/markdown",
         "path": "mechanics/release-support/parts/codex-deployment-rollout/CONTRACT.md",
         "repo": "aoa-stats",
-        "size_bytes": 3822
+        "size_bytes": 3943
       },
       "mechanics_role": "part_contract",
       "observed_form": "file",
@@ -78646,7 +78737,7 @@
           {
             "anchor": "crosswalk",
             "level": 2,
-            "line": 81,
+            "line": 82,
             "ref": "mechanics/release-support/parts/codex-deployment-rollout/CONTRACT.md#crosswalk",
             "title": "Crosswalk"
           }
@@ -78658,7 +78749,7 @@
       },
       "signs": {
         "attestation_ref": "",
-        "digest": "be1891c9ff5c47849b28dbcac313171addd7fd4cbc9a1e96f6199f916f1e6078",
+        "digest": "34af862acd72234d9b0cfe7acaf1cf8c67935cc68afcaa93c861e7bf6348a432",
         "signature_ref": "",
         "verification_state": "digest-only"
       },
@@ -78706,13 +78797,13 @@
         "state": "current"
       },
       "identity": {
-        "content_hash": "0fa3dd584daa7fa08507f3c21158f663ae3f8c5bb2d6684171dbd80ea6c8a242",
+        "content_hash": "fd1152684d135a1aa73b0f68f775bede02caf7065fb33dd986f163a4f13407a9",
         "git_ref": "git-index-source-tree",
         "id": "file:mechanics/release-support/parts/codex-deployment-rollout/readme.md:81314e5d30",
         "mime": "text/markdown",
         "path": "mechanics/release-support/parts/codex-deployment-rollout/README.md",
         "repo": "aoa-stats",
-        "size_bytes": 1109
+        "size_bytes": 1091
       },
       "mechanics_role": "part_doc",
       "observed_form": "file",
@@ -78753,7 +78844,7 @@
       },
       "signs": {
         "attestation_ref": "",
-        "digest": "0fa3dd584daa7fa08507f3c21158f663ae3f8c5bb2d6684171dbd80ea6c8a242",
+        "digest": "fd1152684d135a1aa73b0f68f775bede02caf7065fb33dd986f163a4f13407a9",
         "signature_ref": "",
         "verification_state": "digest-only"
       },
@@ -78896,13 +78987,13 @@
         "state": "current"
       },
       "identity": {
-        "content_hash": "dddaf0f25f9cbe7fe0c9d808b4a056972963ce2a39ce73d8e8e348036c23b45e",
+        "content_hash": "e8568e0aa9595b89be57691057c90be5392ab1cb9642091d17dd67961186a153",
         "git_ref": "git-index-source-tree",
         "id": "file:mechanics/release-support/parts/codex-deployment-rollout/docs/codex_plane_deployment_summaries.md:6071cb5f8f",
         "mime": "text/markdown",
         "path": "mechanics/release-support/parts/codex-deployment-rollout/docs/CODEX_PLANE_DEPLOYMENT_SUMMARIES.md",
         "repo": "aoa-stats",
-        "size_bytes": 4052
+        "size_bytes": 2690
       },
       "mechanics_role": "part_doc",
       "observed_form": "file",
@@ -78950,30 +79041,23 @@
             "title": "Minimum fields"
           },
           {
-            "anchor": "trusted-rollout-operations-companions",
-            "level": 2,
-            "line": 36,
-            "ref": "mechanics/release-support/parts/codex-deployment-rollout/docs/CODEX_PLANE_DEPLOYMENT_SUMMARIES.md#trusted-rollout-operations-companions",
-            "title": "Trusted rollout operations companions"
-          },
-          {
             "anchor": "source-precedence",
             "level": 2,
-            "line": 77,
+            "line": 36,
             "ref": "mechanics/release-support/parts/codex-deployment-rollout/docs/CODEX_PLANE_DEPLOYMENT_SUMMARIES.md#source-precedence",
             "title": "Source precedence"
           },
           {
             "anchor": "future-live-activation",
             "level": 2,
-            "line": 90,
+            "line": 49,
             "ref": "mechanics/release-support/parts/codex-deployment-rollout/docs/CODEX_PLANE_DEPLOYMENT_SUMMARIES.md#future-live-activation",
             "title": "Future live activation"
           },
           {
             "anchor": "companion-boundary",
             "level": 2,
-            "line": 102,
+            "line": 61,
             "ref": "mechanics/release-support/parts/codex-deployment-rollout/docs/CODEX_PLANE_DEPLOYMENT_SUMMARIES.md#companion-boundary",
             "title": "Companion boundary"
           }
@@ -78985,7 +79069,7 @@
       },
       "signs": {
         "attestation_ref": "",
-        "digest": "dddaf0f25f9cbe7fe0c9d808b4a056972963ce2a39ce73d8e8e348036c23b45e",
+        "digest": "e8568e0aa9595b89be57691057c90be5392ab1cb9642091d17dd67961186a153",
         "signature_ref": "",
         "verification_state": "digest-only"
       },
@@ -78997,184 +79081,6 @@
         ],
         "owner_commands": [],
         "required_tools": []
-      },
-      "validator_route": {
-        "route_kind": "source_fast",
-        "surface": "aoa-kag:scripts/validate_kag.py"
-      }
-    },
-    {
-      "abi": {
-        "abi_epoch": "source",
-        "artifact_class": "config",
-        "compatibility": "stable",
-        "contract_version": "none",
-        "schema_version": "aoa_stats_codex_rollout_drift_summary_v1"
-      },
-      "access": {
-        "scope": "public",
-        "secrets_risk": "none"
-      },
-      "artifact_kind": "config",
-      "classification": {
-        "confidence": "high",
-        "primary_kind": "surface"
-      },
-      "code_role": "none",
-      "command_role": "none",
-      "consumer_route": {
-        "route_kind": "resource",
-        "surface": "aoa-kag-mcp"
-      },
-      "document_role": "none",
-      "freshness": {
-        "checked_ref": "git-index-source-tree",
-        "mode": "source_snapshot",
-        "state": "current"
-      },
-      "identity": {
-        "content_hash": "2621110d22862d82a36c8c9e3a7b965cc6c469f4a24b5843229e59a93b0497a6",
-        "git_ref": "git-index-source-tree",
-        "id": "file:mechanics/release-support/parts/codex-deployment-rollout/examples/codex_rollout_drift_summary.example.json:c12808f132",
-        "mime": "application/json",
-        "path": "mechanics/release-support/parts/codex-deployment-rollout/examples/codex_rollout_drift_summary.example.json",
-        "repo": "aoa-stats",
-        "size_bytes": 855
-      },
-      "mechanics_role": "mechanic_part",
-      "observed_form": "file",
-      "owner_return_route": {
-        "route_kind": "source_owner",
-        "surface": "mechanics/release-support/parts/codex-deployment-rollout/examples/codex_rollout_drift_summary.example.json"
-      },
-      "provenance": {
-        "generated_by": "",
-        "materials": [],
-        "observed_by": "aoa-kag:scripts/generate_repo_local_kag_index.py",
-        "source_refs": [
-          {
-            "authority": "authored_source",
-            "path": "mechanics/release-support/parts/codex-deployment-rollout/examples/codex_rollout_drift_summary.example.json",
-            "repo": "aoa-stats",
-            "role": "primary"
-          }
-        ],
-        "validated_by": [
-          "aoa-kag:scripts/validate_kag.py"
-        ]
-      },
-      "refs": {
-        "heading_refs": [],
-        "line_refs": [
-          "mechanics/release-support/parts/codex-deployment-rollout/examples/codex_rollout_drift_summary.example.json:1"
-        ],
-        "path_ref": "mechanics/release-support/parts/codex-deployment-rollout/examples/codex_rollout_drift_summary.example.json"
-      },
-      "signs": {
-        "attestation_ref": "",
-        "digest": "2621110d22862d82a36c8c9e3a7b965cc6c469f4a24b5843229e59a93b0497a6",
-        "signature_ref": "",
-        "verification_state": "digest-only"
-      },
-      "surface_state": "authored_source",
-      "toolchain": {
-        "detected_tools": [
-          "git",
-          "python"
-        ],
-        "owner_commands": [],
-        "required_tools": [
-          "jq"
-        ]
-      },
-      "validator_route": {
-        "route_kind": "source_fast",
-        "surface": "aoa-kag:scripts/validate_kag.py"
-      }
-    },
-    {
-      "abi": {
-        "abi_epoch": "source",
-        "artifact_class": "config",
-        "compatibility": "stable",
-        "contract_version": "none",
-        "schema_version": "aoa_stats_codex_rollout_operations_summary_v1"
-      },
-      "access": {
-        "scope": "public",
-        "secrets_risk": "none"
-      },
-      "artifact_kind": "config",
-      "classification": {
-        "confidence": "high",
-        "primary_kind": "surface"
-      },
-      "code_role": "none",
-      "command_role": "none",
-      "consumer_route": {
-        "route_kind": "resource",
-        "surface": "aoa-kag-mcp"
-      },
-      "document_role": "none",
-      "freshness": {
-        "checked_ref": "git-index-source-tree",
-        "mode": "source_snapshot",
-        "state": "current"
-      },
-      "identity": {
-        "content_hash": "f2f5d3effad3b3b23f18e0b1c226d04512080e8be10618bd52ec45e58dd42da0",
-        "git_ref": "git-index-source-tree",
-        "id": "file:mechanics/release-support/parts/codex-deployment-rollout/examples/codex_rollout_operations_summary.example.json:fa09f4fc13",
-        "mime": "application/json",
-        "path": "mechanics/release-support/parts/codex-deployment-rollout/examples/codex_rollout_operations_summary.example.json",
-        "repo": "aoa-stats",
-        "size_bytes": 1005
-      },
-      "mechanics_role": "mechanic_part",
-      "observed_form": "file",
-      "owner_return_route": {
-        "route_kind": "source_owner",
-        "surface": "mechanics/release-support/parts/codex-deployment-rollout/examples/codex_rollout_operations_summary.example.json"
-      },
-      "provenance": {
-        "generated_by": "",
-        "materials": [],
-        "observed_by": "aoa-kag:scripts/generate_repo_local_kag_index.py",
-        "source_refs": [
-          {
-            "authority": "authored_source",
-            "path": "mechanics/release-support/parts/codex-deployment-rollout/examples/codex_rollout_operations_summary.example.json",
-            "repo": "aoa-stats",
-            "role": "primary"
-          }
-        ],
-        "validated_by": [
-          "aoa-kag:scripts/validate_kag.py"
-        ]
-      },
-      "refs": {
-        "heading_refs": [],
-        "line_refs": [
-          "mechanics/release-support/parts/codex-deployment-rollout/examples/codex_rollout_operations_summary.example.json:1"
-        ],
-        "path_ref": "mechanics/release-support/parts/codex-deployment-rollout/examples/codex_rollout_operations_summary.example.json"
-      },
-      "signs": {
-        "attestation_ref": "",
-        "digest": "f2f5d3effad3b3b23f18e0b1c226d04512080e8be10618bd52ec45e58dd42da0",
-        "signature_ref": "",
-        "verification_state": "digest-only"
-      },
-      "surface_state": "authored_source",
-      "toolchain": {
-        "detected_tools": [
-          "git",
-          "python"
-        ],
-        "owner_commands": [],
-        "required_tools": [
-          "jq"
-        ]
       },
       "validator_route": {
         "route_kind": "source_fast",
@@ -79302,13 +79208,13 @@
         "state": "current"
       },
       "identity": {
-        "content_hash": "a87b94585844374745eabe5e605afff22e0fde5141078d5d9c75688acfa2cf9b",
+        "content_hash": "ae8feaf611a0811aea4aa84259b3207007bfda244bb3d01912d1f1cb1e78ca7e",
         "git_ref": "git-index-source-tree",
         "id": "file:mechanics/release-support/parts/rollout-campaign/contract.md:fb0d9d074d",
         "mime": "text/markdown",
         "path": "mechanics/release-support/parts/rollout-campaign/CONTRACT.md",
         "repo": "aoa-stats",
-        "size_bytes": 360
+        "size_bytes": 1946
       },
       "mechanics_role": "part_contract",
       "observed_form": "file",
@@ -79335,11 +79241,39 @@
       "refs": {
         "heading_refs": [
           {
-            "anchor": "contract",
+            "anchor": "rollout-campaign-contract",
             "level": 1,
             "line": 1,
-            "ref": "mechanics/release-support/parts/rollout-campaign/CONTRACT.md#contract",
-            "title": "Contract"
+            "ref": "mechanics/release-support/parts/rollout-campaign/CONTRACT.md#rollout-campaign-contract",
+            "title": "Rollout Campaign contract"
+          },
+          {
+            "anchor": "exact-input-context",
+            "level": 2,
+            "line": 3,
+            "ref": "mechanics/release-support/parts/rollout-campaign/CONTRACT.md#exact-input-context",
+            "title": "Exact input context"
+          },
+          {
+            "anchor": "operation-boundary",
+            "level": 2,
+            "line": 14,
+            "ref": "mechanics/release-support/parts/rollout-campaign/CONTRACT.md#operation-boundary",
+            "title": "Operation boundary"
+          },
+          {
+            "anchor": "invariants",
+            "level": 2,
+            "line": 24,
+            "ref": "mechanics/release-support/parts/rollout-campaign/CONTRACT.md#invariants",
+            "title": "Invariants"
+          },
+          {
+            "anchor": "authority-and-live-boundary",
+            "level": 2,
+            "line": 40,
+            "ref": "mechanics/release-support/parts/rollout-campaign/CONTRACT.md#authority-and-live-boundary",
+            "title": "Authority and live boundary"
           }
         ],
         "line_refs": [
@@ -79349,7 +79283,7 @@
       },
       "signs": {
         "attestation_ref": "",
-        "digest": "a87b94585844374745eabe5e605afff22e0fde5141078d5d9c75688acfa2cf9b",
+        "digest": "ae8feaf611a0811aea4aa84259b3207007bfda244bb3d01912d1f1cb1e78ca7e",
         "signature_ref": "",
         "verification_state": "digest-only"
       },
@@ -79397,13 +79331,13 @@
         "state": "current"
       },
       "identity": {
-        "content_hash": "01612a61503f67e6b571b1cff002ffeba7e1b9b8809c4025c9a4e5b7c8e9703d",
+        "content_hash": "48e9d36a38ca80ac9d01e49e03f73a0ed469fa2c858706438adef0bc64801c7f",
         "git_ref": "git-index-source-tree",
         "id": "file:mechanics/release-support/parts/rollout-campaign/readme.md:d6edec1b04",
         "mime": "text/markdown",
         "path": "mechanics/release-support/parts/rollout-campaign/README.md",
         "repo": "aoa-stats",
-        "size_bytes": 357
+        "size_bytes": 1056
       },
       "mechanics_role": "part_doc",
       "observed_form": "file",
@@ -79444,7 +79378,7 @@
       },
       "signs": {
         "attestation_ref": "",
-        "digest": "01612a61503f67e6b571b1cff002ffeba7e1b9b8809c4025c9a4e5b7c8e9703d",
+        "digest": "48e9d36a38ca80ac9d01e49e03f73a0ed469fa2c858706438adef0bc64801c7f",
         "signature_ref": "",
         "verification_state": "digest-only"
       },
@@ -79492,13 +79426,13 @@
         "state": "current"
       },
       "identity": {
-        "content_hash": "045aee7c7d783b6b29b902a7401549c850d272410838cace27b3a25efb441ff3",
+        "content_hash": "d72597681754cc582664c2411138aa76827819fbaf5aa6feb03b935db7f8d0a9",
         "git_ref": "git-index-source-tree",
         "id": "file:mechanics/release-support/parts/rollout-campaign/validation.md:40cd2ad0f9",
         "mime": "text/markdown",
         "path": "mechanics/release-support/parts/rollout-campaign/VALIDATION.md",
         "repo": "aoa-stats",
-        "size_bytes": 443
+        "size_bytes": 786
       },
       "mechanics_role": "part_doc",
       "observed_form": "file",
@@ -79525,11 +79459,11 @@
       "refs": {
         "heading_refs": [
           {
-            "anchor": "validation",
+            "anchor": "rollout-campaign-validation",
             "level": 1,
             "line": 1,
-            "ref": "mechanics/release-support/parts/rollout-campaign/VALIDATION.md#validation",
-            "title": "Validation"
+            "ref": "mechanics/release-support/parts/rollout-campaign/VALIDATION.md#rollout-campaign-validation",
+            "title": "Rollout Campaign validation"
           }
         ],
         "line_refs": [
@@ -79539,7 +79473,7 @@
       },
       "signs": {
         "attestation_ref": "",
-        "digest": "045aee7c7d783b6b29b902a7401549c850d272410838cace27b3a25efb441ff3",
+        "digest": "d72597681754cc582664c2411138aa76827819fbaf5aa6feb03b935db7f8d0a9",
         "signature_ref": "",
         "verification_state": "digest-only"
       },
@@ -79587,13 +79521,13 @@
         "state": "current"
       },
       "identity": {
-        "content_hash": "9c2b4f4904f849c728580d129341c90957d3d8290d22e22ec9cf744cff3ef870",
+        "content_hash": "34c3320bb96ba665edb486ff328447fb1fa282f1d347ce87a6aba7fcb382cba1",
         "git_ref": "git-index-source-tree",
         "id": "file:mechanics/release-support/parts/rollout-campaign/docs/rollout_campaign_summary.md:665584080f",
         "mime": "text/markdown",
         "path": "mechanics/release-support/parts/rollout-campaign/docs/ROLLOUT_CAMPAIGN_SUMMARY.md",
         "repo": "aoa-stats",
-        "size_bytes": 695
+        "size_bytes": 1283
       },
       "mechanics_role": "part_doc",
       "observed_form": "file",
@@ -79629,14 +79563,14 @@
           {
             "anchor": "minimum-fields",
             "level": 2,
-            "line": 9,
+            "line": 10,
             "ref": "mechanics/release-support/parts/rollout-campaign/docs/ROLLOUT_CAMPAIGN_SUMMARY.md#minimum-fields",
             "title": "Minimum fields"
           },
           {
             "anchor": "boundary",
             "level": 2,
-            "line": 17,
+            "line": 18,
             "ref": "mechanics/release-support/parts/rollout-campaign/docs/ROLLOUT_CAMPAIGN_SUMMARY.md#boundary",
             "title": "Boundary"
           }
@@ -79648,7 +79582,7 @@
       },
       "signs": {
         "attestation_ref": "",
-        "digest": "9c2b4f4904f849c728580d129341c90957d3d8290d22e22ec9cf744cff3ef870",
+        "digest": "34c3320bb96ba665edb486ff328447fb1fa282f1d347ce87a6aba7fcb382cba1",
         "signature_ref": "",
         "verification_state": "digest-only"
       },
@@ -79748,6 +79682,97 @@
         "owner_commands": [],
         "required_tools": [
           "jq"
+        ]
+      },
+      "validator_route": {
+        "route_kind": "source_fast",
+        "surface": "aoa-kag:scripts/validate_kag.py"
+      }
+    },
+    {
+      "abi": {
+        "abi_epoch": "source",
+        "artifact_class": "test",
+        "compatibility": "stable",
+        "contract_version": "none",
+        "schema_version": "none"
+      },
+      "access": {
+        "scope": "public",
+        "secrets_risk": "none"
+      },
+      "artifact_kind": "test",
+      "classification": {
+        "confidence": "high",
+        "primary_kind": "command"
+      },
+      "code_role": "test",
+      "command_role": "test",
+      "consumer_route": {
+        "route_kind": "resource",
+        "surface": "aoa-kag-mcp"
+      },
+      "document_role": "none",
+      "freshness": {
+        "checked_ref": "git-index-source-tree",
+        "mode": "source_snapshot",
+        "state": "current"
+      },
+      "identity": {
+        "content_hash": "b81be8f6cef433749ecaf5a74a130650b44ccd2dd57aad0d3e801085641bc011",
+        "git_ref": "git-index-source-tree",
+        "id": "file:mechanics/release-support/parts/rollout-campaign/tests/test_rollout_campaign_projection.py:be53a2e053",
+        "mime": "text/x-python",
+        "path": "mechanics/release-support/parts/rollout-campaign/tests/test_rollout_campaign_projection.py",
+        "repo": "aoa-stats",
+        "size_bytes": 9068
+      },
+      "mechanics_role": "part_test",
+      "observed_form": "command",
+      "owner_return_route": {
+        "route_kind": "test_owner",
+        "surface": "mechanics/release-support/parts/rollout-campaign/tests/test_rollout_campaign_projection.py"
+      },
+      "provenance": {
+        "generated_by": "",
+        "materials": [],
+        "observed_by": "aoa-kag:scripts/generate_repo_local_kag_index.py",
+        "source_refs": [
+          {
+            "authority": "authored_source",
+            "path": "mechanics/release-support/parts/rollout-campaign/tests/test_rollout_campaign_projection.py",
+            "repo": "aoa-stats",
+            "role": "primary"
+          }
+        ],
+        "validated_by": [
+          "aoa-kag:scripts/validate_kag.py"
+        ]
+      },
+      "refs": {
+        "heading_refs": [],
+        "line_refs": [
+          "mechanics/release-support/parts/rollout-campaign/tests/test_rollout_campaign_projection.py:1"
+        ],
+        "path_ref": "mechanics/release-support/parts/rollout-campaign/tests/test_rollout_campaign_projection.py"
+      },
+      "signs": {
+        "attestation_ref": "",
+        "digest": "b81be8f6cef433749ecaf5a74a130650b44ccd2dd57aad0d3e801085641bc011",
+        "signature_ref": "",
+        "verification_state": "digest-only"
+      },
+      "surface_state": "authored_source",
+      "toolchain": {
+        "detected_tools": [
+          "git",
+          "python"
+        ],
+        "owner_commands": [
+          "python -m unittest mechanics/release-support/parts/rollout-campaign/tests/test_rollout_campaign_projection.py"
+        ],
+        "required_tools": [
+          "python"
         ]
       },
       "validator_route": {
@@ -80212,6 +80237,711 @@
         ],
         "owner_commands": [
           "python -m unittest mechanics/release-support/parts/summary-catalog-artifact-bundle/tests/test_summary_catalog_artifact_bundle.py"
+        ],
+        "required_tools": [
+          "python"
+        ]
+      },
+      "validator_route": {
+        "route_kind": "source_fast",
+        "surface": "aoa-kag:scripts/validate_kag.py"
+      }
+    },
+    {
+      "abi": {
+        "abi_epoch": "source",
+        "artifact_class": "document",
+        "compatibility": "stable",
+        "contract_version": "none",
+        "schema_version": "none"
+      },
+      "access": {
+        "scope": "public",
+        "secrets_risk": "none"
+      },
+      "artifact_kind": "document",
+      "classification": {
+        "confidence": "high",
+        "primary_kind": "document"
+      },
+      "code_role": "none",
+      "command_role": "none",
+      "consumer_route": {
+        "route_kind": "resource",
+        "surface": "aoa-kag-mcp"
+      },
+      "document_role": "mechanics_doc",
+      "freshness": {
+        "checked_ref": "git-index-source-tree",
+        "mode": "source_snapshot",
+        "state": "current"
+      },
+      "identity": {
+        "content_hash": "8103f19f6cd83405a9023ce4a0012ca310d5959a1823a4b36b2b2fd0f9721de0",
+        "git_ref": "git-index-source-tree",
+        "id": "file:mechanics/release-support/parts/trusted-rollout-history/contract.md:db59758858",
+        "mime": "text/markdown",
+        "path": "mechanics/release-support/parts/trusted-rollout-history/CONTRACT.md",
+        "repo": "aoa-stats",
+        "size_bytes": 2255
+      },
+      "mechanics_role": "part_contract",
+      "observed_form": "file",
+      "owner_return_route": {
+        "route_kind": "document_owner",
+        "surface": "mechanics/release-support/parts/trusted-rollout-history/CONTRACT.md"
+      },
+      "provenance": {
+        "generated_by": "",
+        "materials": [],
+        "observed_by": "aoa-kag:scripts/generate_repo_local_kag_index.py",
+        "source_refs": [
+          {
+            "authority": "authored_source",
+            "path": "mechanics/release-support/parts/trusted-rollout-history/CONTRACT.md",
+            "repo": "aoa-stats",
+            "role": "primary"
+          }
+        ],
+        "validated_by": [
+          "aoa-kag:scripts/validate_kag.py"
+        ]
+      },
+      "refs": {
+        "heading_refs": [
+          {
+            "anchor": "trusted-rollout-history-contract",
+            "level": 1,
+            "line": 1,
+            "ref": "mechanics/release-support/parts/trusted-rollout-history/CONTRACT.md#trusted-rollout-history-contract",
+            "title": "Trusted Rollout History contract"
+          },
+          {
+            "anchor": "purpose",
+            "level": 2,
+            "line": 3,
+            "ref": "mechanics/release-support/parts/trusted-rollout-history/CONTRACT.md#purpose",
+            "title": "Purpose"
+          },
+          {
+            "anchor": "exact-inputs",
+            "level": 2,
+            "line": 9,
+            "ref": "mechanics/release-support/parts/trusted-rollout-history/CONTRACT.md#exact-inputs",
+            "title": "Exact inputs"
+          },
+          {
+            "anchor": "adapter-boundary",
+            "level": 2,
+            "line": 21,
+            "ref": "mechanics/release-support/parts/trusted-rollout-history/CONTRACT.md#adapter-boundary",
+            "title": "Adapter boundary"
+          },
+          {
+            "anchor": "invariants",
+            "level": 2,
+            "line": 30,
+            "ref": "mechanics/release-support/parts/trusted-rollout-history/CONTRACT.md#invariants",
+            "title": "Invariants"
+          },
+          {
+            "anchor": "authority-and-live-boundary",
+            "level": 2,
+            "line": 44,
+            "ref": "mechanics/release-support/parts/trusted-rollout-history/CONTRACT.md#authority-and-live-boundary",
+            "title": "Authority and live boundary"
+          }
+        ],
+        "line_refs": [
+          "mechanics/release-support/parts/trusted-rollout-history/CONTRACT.md:1"
+        ],
+        "path_ref": "mechanics/release-support/parts/trusted-rollout-history/CONTRACT.md"
+      },
+      "signs": {
+        "attestation_ref": "",
+        "digest": "8103f19f6cd83405a9023ce4a0012ca310d5959a1823a4b36b2b2fd0f9721de0",
+        "signature_ref": "",
+        "verification_state": "digest-only"
+      },
+      "surface_state": "authored_source",
+      "toolchain": {
+        "detected_tools": [
+          "git",
+          "python"
+        ],
+        "owner_commands": [],
+        "required_tools": []
+      },
+      "validator_route": {
+        "route_kind": "source_fast",
+        "surface": "aoa-kag:scripts/validate_kag.py"
+      }
+    },
+    {
+      "abi": {
+        "abi_epoch": "source",
+        "artifact_class": "document",
+        "compatibility": "stable",
+        "contract_version": "none",
+        "schema_version": "none"
+      },
+      "access": {
+        "scope": "public",
+        "secrets_risk": "none"
+      },
+      "artifact_kind": "document",
+      "classification": {
+        "confidence": "high",
+        "primary_kind": "document"
+      },
+      "code_role": "none",
+      "command_role": "none",
+      "consumer_route": {
+        "route_kind": "resource",
+        "surface": "aoa-kag-mcp"
+      },
+      "document_role": "readme",
+      "freshness": {
+        "checked_ref": "git-index-source-tree",
+        "mode": "source_snapshot",
+        "state": "current"
+      },
+      "identity": {
+        "content_hash": "291f2dc8ab32ec9b1a3d773b31a9f797c10feebdb8af62cd0ff5e8d9bd752ac2",
+        "git_ref": "git-index-source-tree",
+        "id": "file:mechanics/release-support/parts/trusted-rollout-history/readme.md:d2b4666ed0",
+        "mime": "text/markdown",
+        "path": "mechanics/release-support/parts/trusted-rollout-history/README.md",
+        "repo": "aoa-stats",
+        "size_bytes": 1113
+      },
+      "mechanics_role": "part_doc",
+      "observed_form": "file",
+      "owner_return_route": {
+        "route_kind": "document_owner",
+        "surface": "mechanics/release-support/parts/trusted-rollout-history/README.md"
+      },
+      "provenance": {
+        "generated_by": "",
+        "materials": [],
+        "observed_by": "aoa-kag:scripts/generate_repo_local_kag_index.py",
+        "source_refs": [
+          {
+            "authority": "authored_source",
+            "path": "mechanics/release-support/parts/trusted-rollout-history/README.md",
+            "repo": "aoa-stats",
+            "role": "primary"
+          }
+        ],
+        "validated_by": [
+          "aoa-kag:scripts/validate_kag.py"
+        ]
+      },
+      "refs": {
+        "heading_refs": [
+          {
+            "anchor": "trusted-rollout-history",
+            "level": 1,
+            "line": 1,
+            "ref": "mechanics/release-support/parts/trusted-rollout-history/README.md#trusted-rollout-history",
+            "title": "trusted-rollout-history"
+          }
+        ],
+        "line_refs": [
+          "mechanics/release-support/parts/trusted-rollout-history/README.md:1"
+        ],
+        "path_ref": "mechanics/release-support/parts/trusted-rollout-history/README.md"
+      },
+      "signs": {
+        "attestation_ref": "",
+        "digest": "291f2dc8ab32ec9b1a3d773b31a9f797c10feebdb8af62cd0ff5e8d9bd752ac2",
+        "signature_ref": "",
+        "verification_state": "digest-only"
+      },
+      "surface_state": "authored_source",
+      "toolchain": {
+        "detected_tools": [
+          "git",
+          "python"
+        ],
+        "owner_commands": [],
+        "required_tools": []
+      },
+      "validator_route": {
+        "route_kind": "source_fast",
+        "surface": "aoa-kag:scripts/validate_kag.py"
+      }
+    },
+    {
+      "abi": {
+        "abi_epoch": "source",
+        "artifact_class": "document",
+        "compatibility": "stable",
+        "contract_version": "none",
+        "schema_version": "none"
+      },
+      "access": {
+        "scope": "public",
+        "secrets_risk": "none"
+      },
+      "artifact_kind": "document",
+      "classification": {
+        "confidence": "high",
+        "primary_kind": "document"
+      },
+      "code_role": "none",
+      "command_role": "none",
+      "consumer_route": {
+        "route_kind": "resource",
+        "surface": "aoa-kag-mcp"
+      },
+      "document_role": "mechanics_doc",
+      "freshness": {
+        "checked_ref": "git-index-source-tree",
+        "mode": "source_snapshot",
+        "state": "current"
+      },
+      "identity": {
+        "content_hash": "b8f74189860a4d23787b4954307a8b0474bf856368f6597a6543d236deadfcc0",
+        "git_ref": "git-index-source-tree",
+        "id": "file:mechanics/release-support/parts/trusted-rollout-history/validation.md:0e46cb3645",
+        "mime": "text/markdown",
+        "path": "mechanics/release-support/parts/trusted-rollout-history/VALIDATION.md",
+        "repo": "aoa-stats",
+        "size_bytes": 679
+      },
+      "mechanics_role": "part_doc",
+      "observed_form": "file",
+      "owner_return_route": {
+        "route_kind": "document_owner",
+        "surface": "mechanics/release-support/parts/trusted-rollout-history/VALIDATION.md"
+      },
+      "provenance": {
+        "generated_by": "",
+        "materials": [],
+        "observed_by": "aoa-kag:scripts/generate_repo_local_kag_index.py",
+        "source_refs": [
+          {
+            "authority": "authored_source",
+            "path": "mechanics/release-support/parts/trusted-rollout-history/VALIDATION.md",
+            "repo": "aoa-stats",
+            "role": "primary"
+          }
+        ],
+        "validated_by": [
+          "aoa-kag:scripts/validate_kag.py"
+        ]
+      },
+      "refs": {
+        "heading_refs": [
+          {
+            "anchor": "trusted-rollout-history-validation",
+            "level": 1,
+            "line": 1,
+            "ref": "mechanics/release-support/parts/trusted-rollout-history/VALIDATION.md#trusted-rollout-history-validation",
+            "title": "Trusted Rollout History validation"
+          }
+        ],
+        "line_refs": [
+          "mechanics/release-support/parts/trusted-rollout-history/VALIDATION.md:1"
+        ],
+        "path_ref": "mechanics/release-support/parts/trusted-rollout-history/VALIDATION.md"
+      },
+      "signs": {
+        "attestation_ref": "",
+        "digest": "b8f74189860a4d23787b4954307a8b0474bf856368f6597a6543d236deadfcc0",
+        "signature_ref": "",
+        "verification_state": "digest-only"
+      },
+      "surface_state": "authored_source",
+      "toolchain": {
+        "detected_tools": [
+          "git",
+          "python"
+        ],
+        "owner_commands": [],
+        "required_tools": []
+      },
+      "validator_route": {
+        "route_kind": "source_fast",
+        "surface": "aoa-kag:scripts/validate_kag.py"
+      }
+    },
+    {
+      "abi": {
+        "abi_epoch": "source",
+        "artifact_class": "document",
+        "compatibility": "stable",
+        "contract_version": "none",
+        "schema_version": "none"
+      },
+      "access": {
+        "scope": "public",
+        "secrets_risk": "none"
+      },
+      "artifact_kind": "document",
+      "classification": {
+        "confidence": "high",
+        "primary_kind": "document"
+      },
+      "code_role": "none",
+      "command_role": "none",
+      "consumer_route": {
+        "route_kind": "resource",
+        "surface": "aoa-kag-mcp"
+      },
+      "document_role": "mechanics_doc",
+      "freshness": {
+        "checked_ref": "git-index-source-tree",
+        "mode": "source_snapshot",
+        "state": "current"
+      },
+      "identity": {
+        "content_hash": "5197393fbe36b9cab5d001ffa080a2ff0929a2ef655eeebf677e524c2eeaac3a",
+        "git_ref": "git-index-source-tree",
+        "id": "file:mechanics/release-support/parts/trusted-rollout-history/docs/trusted_rollout_history_summaries.md:f16e384560",
+        "mime": "text/markdown",
+        "path": "mechanics/release-support/parts/trusted-rollout-history/docs/TRUSTED_ROLLOUT_HISTORY_SUMMARIES.md",
+        "repo": "aoa-stats",
+        "size_bytes": 1685
+      },
+      "mechanics_role": "part_doc",
+      "observed_form": "file",
+      "owner_return_route": {
+        "route_kind": "document_owner",
+        "surface": "mechanics/release-support/parts/trusted-rollout-history/docs/TRUSTED_ROLLOUT_HISTORY_SUMMARIES.md"
+      },
+      "provenance": {
+        "generated_by": "",
+        "materials": [],
+        "observed_by": "aoa-kag:scripts/generate_repo_local_kag_index.py",
+        "source_refs": [
+          {
+            "authority": "authored_source",
+            "path": "mechanics/release-support/parts/trusted-rollout-history/docs/TRUSTED_ROLLOUT_HISTORY_SUMMARIES.md",
+            "repo": "aoa-stats",
+            "role": "primary"
+          }
+        ],
+        "validated_by": [
+          "aoa-kag:scripts/validate_kag.py"
+        ]
+      },
+      "refs": {
+        "heading_refs": [
+          {
+            "anchor": "trusted-rollout-history-summaries",
+            "level": 1,
+            "line": 1,
+            "ref": "mechanics/release-support/parts/trusted-rollout-history/docs/TRUSTED_ROLLOUT_HISTORY_SUMMARIES.md#trusted-rollout-history-summaries",
+            "title": "Trusted Rollout History Summaries"
+          },
+          {
+            "anchor": "operations-summary",
+            "level": 2,
+            "line": 15,
+            "ref": "mechanics/release-support/parts/trusted-rollout-history/docs/TRUSTED_ROLLOUT_HISTORY_SUMMARIES.md#operations-summary",
+            "title": "Operations summary"
+          },
+          {
+            "anchor": "drift-summary",
+            "level": 2,
+            "line": 21,
+            "ref": "mechanics/release-support/parts/trusted-rollout-history/docs/TRUSTED_ROLLOUT_HISTORY_SUMMARIES.md#drift-summary",
+            "title": "Drift summary"
+          },
+          {
+            "anchor": "source-and-freshness-boundary",
+            "level": 2,
+            "line": 27,
+            "ref": "mechanics/release-support/parts/trusted-rollout-history/docs/TRUSTED_ROLLOUT_HISTORY_SUMMARIES.md#source-and-freshness-boundary",
+            "title": "Source and freshness boundary"
+          }
+        ],
+        "line_refs": [
+          "mechanics/release-support/parts/trusted-rollout-history/docs/TRUSTED_ROLLOUT_HISTORY_SUMMARIES.md:1"
+        ],
+        "path_ref": "mechanics/release-support/parts/trusted-rollout-history/docs/TRUSTED_ROLLOUT_HISTORY_SUMMARIES.md"
+      },
+      "signs": {
+        "attestation_ref": "",
+        "digest": "5197393fbe36b9cab5d001ffa080a2ff0929a2ef655eeebf677e524c2eeaac3a",
+        "signature_ref": "",
+        "verification_state": "digest-only"
+      },
+      "surface_state": "authored_source",
+      "toolchain": {
+        "detected_tools": [
+          "git",
+          "python"
+        ],
+        "owner_commands": [],
+        "required_tools": []
+      },
+      "validator_route": {
+        "route_kind": "source_fast",
+        "surface": "aoa-kag:scripts/validate_kag.py"
+      }
+    },
+    {
+      "abi": {
+        "abi_epoch": "source",
+        "artifact_class": "config",
+        "compatibility": "stable",
+        "contract_version": "none",
+        "schema_version": "aoa_stats_codex_rollout_drift_summary_v1"
+      },
+      "access": {
+        "scope": "public",
+        "secrets_risk": "none"
+      },
+      "artifact_kind": "config",
+      "classification": {
+        "confidence": "high",
+        "primary_kind": "surface"
+      },
+      "code_role": "none",
+      "command_role": "none",
+      "consumer_route": {
+        "route_kind": "resource",
+        "surface": "aoa-kag-mcp"
+      },
+      "document_role": "none",
+      "freshness": {
+        "checked_ref": "git-index-source-tree",
+        "mode": "source_snapshot",
+        "state": "current"
+      },
+      "identity": {
+        "content_hash": "2621110d22862d82a36c8c9e3a7b965cc6c469f4a24b5843229e59a93b0497a6",
+        "git_ref": "git-index-source-tree",
+        "id": "file:mechanics/release-support/parts/trusted-rollout-history/examples/codex_rollout_drift_summary.example.json:c6e7a387a3",
+        "mime": "application/json",
+        "path": "mechanics/release-support/parts/trusted-rollout-history/examples/codex_rollout_drift_summary.example.json",
+        "repo": "aoa-stats",
+        "size_bytes": 855
+      },
+      "mechanics_role": "mechanic_part",
+      "observed_form": "file",
+      "owner_return_route": {
+        "route_kind": "source_owner",
+        "surface": "mechanics/release-support/parts/trusted-rollout-history/examples/codex_rollout_drift_summary.example.json"
+      },
+      "provenance": {
+        "generated_by": "",
+        "materials": [],
+        "observed_by": "aoa-kag:scripts/generate_repo_local_kag_index.py",
+        "source_refs": [
+          {
+            "authority": "authored_source",
+            "path": "mechanics/release-support/parts/trusted-rollout-history/examples/codex_rollout_drift_summary.example.json",
+            "repo": "aoa-stats",
+            "role": "primary"
+          }
+        ],
+        "validated_by": [
+          "aoa-kag:scripts/validate_kag.py"
+        ]
+      },
+      "refs": {
+        "heading_refs": [],
+        "line_refs": [
+          "mechanics/release-support/parts/trusted-rollout-history/examples/codex_rollout_drift_summary.example.json:1"
+        ],
+        "path_ref": "mechanics/release-support/parts/trusted-rollout-history/examples/codex_rollout_drift_summary.example.json"
+      },
+      "signs": {
+        "attestation_ref": "",
+        "digest": "2621110d22862d82a36c8c9e3a7b965cc6c469f4a24b5843229e59a93b0497a6",
+        "signature_ref": "",
+        "verification_state": "digest-only"
+      },
+      "surface_state": "authored_source",
+      "toolchain": {
+        "detected_tools": [
+          "git",
+          "python"
+        ],
+        "owner_commands": [],
+        "required_tools": [
+          "jq"
+        ]
+      },
+      "validator_route": {
+        "route_kind": "source_fast",
+        "surface": "aoa-kag:scripts/validate_kag.py"
+      }
+    },
+    {
+      "abi": {
+        "abi_epoch": "source",
+        "artifact_class": "config",
+        "compatibility": "stable",
+        "contract_version": "none",
+        "schema_version": "aoa_stats_codex_rollout_operations_summary_v1"
+      },
+      "access": {
+        "scope": "public",
+        "secrets_risk": "none"
+      },
+      "artifact_kind": "config",
+      "classification": {
+        "confidence": "high",
+        "primary_kind": "surface"
+      },
+      "code_role": "none",
+      "command_role": "none",
+      "consumer_route": {
+        "route_kind": "resource",
+        "surface": "aoa-kag-mcp"
+      },
+      "document_role": "none",
+      "freshness": {
+        "checked_ref": "git-index-source-tree",
+        "mode": "source_snapshot",
+        "state": "current"
+      },
+      "identity": {
+        "content_hash": "f2f5d3effad3b3b23f18e0b1c226d04512080e8be10618bd52ec45e58dd42da0",
+        "git_ref": "git-index-source-tree",
+        "id": "file:mechanics/release-support/parts/trusted-rollout-history/examples/codex_rollout_operations_summary.example.json:fc53cc764c",
+        "mime": "application/json",
+        "path": "mechanics/release-support/parts/trusted-rollout-history/examples/codex_rollout_operations_summary.example.json",
+        "repo": "aoa-stats",
+        "size_bytes": 1005
+      },
+      "mechanics_role": "mechanic_part",
+      "observed_form": "file",
+      "owner_return_route": {
+        "route_kind": "source_owner",
+        "surface": "mechanics/release-support/parts/trusted-rollout-history/examples/codex_rollout_operations_summary.example.json"
+      },
+      "provenance": {
+        "generated_by": "",
+        "materials": [],
+        "observed_by": "aoa-kag:scripts/generate_repo_local_kag_index.py",
+        "source_refs": [
+          {
+            "authority": "authored_source",
+            "path": "mechanics/release-support/parts/trusted-rollout-history/examples/codex_rollout_operations_summary.example.json",
+            "repo": "aoa-stats",
+            "role": "primary"
+          }
+        ],
+        "validated_by": [
+          "aoa-kag:scripts/validate_kag.py"
+        ]
+      },
+      "refs": {
+        "heading_refs": [],
+        "line_refs": [
+          "mechanics/release-support/parts/trusted-rollout-history/examples/codex_rollout_operations_summary.example.json:1"
+        ],
+        "path_ref": "mechanics/release-support/parts/trusted-rollout-history/examples/codex_rollout_operations_summary.example.json"
+      },
+      "signs": {
+        "attestation_ref": "",
+        "digest": "f2f5d3effad3b3b23f18e0b1c226d04512080e8be10618bd52ec45e58dd42da0",
+        "signature_ref": "",
+        "verification_state": "digest-only"
+      },
+      "surface_state": "authored_source",
+      "toolchain": {
+        "detected_tools": [
+          "git",
+          "python"
+        ],
+        "owner_commands": [],
+        "required_tools": [
+          "jq"
+        ]
+      },
+      "validator_route": {
+        "route_kind": "source_fast",
+        "surface": "aoa-kag:scripts/validate_kag.py"
+      }
+    },
+    {
+      "abi": {
+        "abi_epoch": "source",
+        "artifact_class": "test",
+        "compatibility": "stable",
+        "contract_version": "none",
+        "schema_version": "none"
+      },
+      "access": {
+        "scope": "public",
+        "secrets_risk": "none"
+      },
+      "artifact_kind": "test",
+      "classification": {
+        "confidence": "high",
+        "primary_kind": "command"
+      },
+      "code_role": "test",
+      "command_role": "test",
+      "consumer_route": {
+        "route_kind": "resource",
+        "surface": "aoa-kag-mcp"
+      },
+      "document_role": "none",
+      "freshness": {
+        "checked_ref": "git-index-source-tree",
+        "mode": "source_snapshot",
+        "state": "current"
+      },
+      "identity": {
+        "content_hash": "dc0b6e662e6bd8ce7d2e75a7ed69fbcafe916ed299ac8907860077eaebdd9b41",
+        "git_ref": "git-index-source-tree",
+        "id": "file:mechanics/release-support/parts/trusted-rollout-history/tests/test_codex_trusted_rollout_projection.py:76846bce1c",
+        "mime": "text/x-python",
+        "path": "mechanics/release-support/parts/trusted-rollout-history/tests/test_codex_trusted_rollout_projection.py",
+        "repo": "aoa-stats",
+        "size_bytes": 10751
+      },
+      "mechanics_role": "part_test",
+      "observed_form": "command",
+      "owner_return_route": {
+        "route_kind": "test_owner",
+        "surface": "mechanics/release-support/parts/trusted-rollout-history/tests/test_codex_trusted_rollout_projection.py"
+      },
+      "provenance": {
+        "generated_by": "",
+        "materials": [],
+        "observed_by": "aoa-kag:scripts/generate_repo_local_kag_index.py",
+        "source_refs": [
+          {
+            "authority": "authored_source",
+            "path": "mechanics/release-support/parts/trusted-rollout-history/tests/test_codex_trusted_rollout_projection.py",
+            "repo": "aoa-stats",
+            "role": "primary"
+          }
+        ],
+        "validated_by": [
+          "aoa-kag:scripts/validate_kag.py"
+        ]
+      },
+      "refs": {
+        "heading_refs": [],
+        "line_refs": [
+          "mechanics/release-support/parts/trusted-rollout-history/tests/test_codex_trusted_rollout_projection.py:1"
+        ],
+        "path_ref": "mechanics/release-support/parts/trusted-rollout-history/tests/test_codex_trusted_rollout_projection.py"
+      },
+      "signs": {
+        "attestation_ref": "",
+        "digest": "dc0b6e662e6bd8ce7d2e75a7ed69fbcafe916ed299ac8907860077eaebdd9b41",
+        "signature_ref": "",
+        "verification_state": "digest-only"
+      },
+      "surface_state": "authored_source",
+      "toolchain": {
+        "detected_tools": [
+          "git",
+          "python"
+        ],
+        "owner_commands": [
+          "python -m unittest mechanics/release-support/parts/trusted-rollout-history/tests/test_codex_trusted_rollout_projection.py"
         ],
         "required_tools": [
           "python"
@@ -83419,13 +84149,13 @@
         "state": "current"
       },
       "identity": {
-        "content_hash": "1b9ccb73654009bf0d094fd154b14bae767b7d89389fcfc61f8476afc2b57d9c",
+        "content_hash": "dcc2460e6443f9c9a0edcfc2a1b135cabca6556d7097b109e556802378b111c8",
         "git_ref": "git-index-source-tree",
         "id": "file:mechanics/topology.json:c2f84a03b1",
         "mime": "application/json",
         "path": "mechanics/topology.json",
         "repo": "aoa-stats",
-        "size_bytes": 38963
+        "size_bytes": 39619
       },
       "mechanics_role": "mechanic_package",
       "observed_form": "file",
@@ -83458,7 +84188,7 @@
       },
       "signs": {
         "attestation_ref": "",
-        "digest": "1b9ccb73654009bf0d094fd154b14bae767b7d89389fcfc61f8476afc2b57d9c",
+        "digest": "dcc2460e6443f9c9a0edcfc2a1b135cabca6556d7097b109e556802378b111c8",
         "signature_ref": "",
         "verification_state": "digest-only"
       },
@@ -86420,13 +87150,13 @@
         "state": "current"
       },
       "identity": {
-        "content_hash": "2e231b600c82b63f9c0084c9d26856354db51b72a26f96ec0baf5aa607db3d70",
+        "content_hash": "242fac8e2c2fc4ec0cc2d7f359ce2a73a8a2d47b207af9d6add926cb1aaf08c4",
         "git_ref": "git-index-source-tree",
         "id": "file:scripts/build_views.py:b705861394",
         "mime": "text/x-python",
         "path": "scripts/build_views.py",
         "repo": "aoa-stats",
-        "size_bytes": 67022
+        "size_bytes": 60337
       },
       "mechanics_role": "none",
       "observed_form": "command",
@@ -86459,7 +87189,7 @@
       },
       "signs": {
         "attestation_ref": "",
-        "digest": "2e231b600c82b63f9c0084c9d26856354db51b72a26f96ec0baf5aa607db3d70",
+        "digest": "242fac8e2c2fc4ec0cc2d7f359ce2a73a8a2d47b207af9d6add926cb1aaf08c4",
         "signature_ref": "",
         "verification_state": "digest-only"
       },
@@ -88173,6 +88903,184 @@
         "state": "current"
       },
       "identity": {
+        "content_hash": "dfccfedba14f0cf08bc1a9afed35df75b2243213ff821f1d10fc05d806de0689",
+        "git_ref": "git-index-source-tree",
+        "id": "file:src/aoa_stats_builder/codex_trusted_rollout.py:5099615307",
+        "mime": "text/x-python",
+        "path": "src/aoa_stats_builder/codex_trusted_rollout.py",
+        "repo": "aoa-stats",
+        "size_bytes": 19196
+      },
+      "mechanics_role": "none",
+      "observed_form": "file",
+      "owner_return_route": {
+        "route_kind": "source_owner",
+        "surface": "src/aoa_stats_builder/codex_trusted_rollout.py"
+      },
+      "provenance": {
+        "generated_by": "",
+        "materials": [],
+        "observed_by": "aoa-kag:scripts/generate_repo_local_kag_index.py",
+        "source_refs": [
+          {
+            "authority": "authored_source",
+            "path": "src/aoa_stats_builder/codex_trusted_rollout.py",
+            "repo": "aoa-stats",
+            "role": "primary"
+          }
+        ],
+        "validated_by": [
+          "aoa-kag:scripts/validate_kag.py"
+        ]
+      },
+      "refs": {
+        "heading_refs": [],
+        "line_refs": [
+          "src/aoa_stats_builder/codex_trusted_rollout.py:1"
+        ],
+        "path_ref": "src/aoa_stats_builder/codex_trusted_rollout.py"
+      },
+      "signs": {
+        "attestation_ref": "",
+        "digest": "dfccfedba14f0cf08bc1a9afed35df75b2243213ff821f1d10fc05d806de0689",
+        "signature_ref": "",
+        "verification_state": "digest-only"
+      },
+      "surface_state": "authored_source",
+      "toolchain": {
+        "detected_tools": [
+          "git",
+          "python"
+        ],
+        "owner_commands": [],
+        "required_tools": [
+          "python"
+        ]
+      },
+      "validator_route": {
+        "route_kind": "source_fast",
+        "surface": "aoa-kag:scripts/validate_kag.py"
+      }
+    },
+    {
+      "abi": {
+        "abi_epoch": "source",
+        "artifact_class": "source_code",
+        "compatibility": "stable",
+        "contract_version": "none",
+        "schema_version": "none"
+      },
+      "access": {
+        "scope": "public",
+        "secrets_risk": "none"
+      },
+      "artifact_kind": "source_code",
+      "classification": {
+        "confidence": "high",
+        "primary_kind": "surface"
+      },
+      "code_role": "source_module",
+      "command_role": "none",
+      "consumer_route": {
+        "route_kind": "resource",
+        "surface": "aoa-kag-mcp"
+      },
+      "document_role": "none",
+      "freshness": {
+        "checked_ref": "git-index-source-tree",
+        "mode": "source_snapshot",
+        "state": "current"
+      },
+      "identity": {
+        "content_hash": "5836ded2e1b43e1b37a9670ee92fe83622361323f13ba1bd3180d8e89ce8c238",
+        "git_ref": "git-index-source-tree",
+        "id": "file:src/aoa_stats_builder/codex_trusted_rollout_sources.py:701848e048",
+        "mime": "text/x-python",
+        "path": "src/aoa_stats_builder/codex_trusted_rollout_sources.py",
+        "repo": "aoa-stats",
+        "size_bytes": 5802
+      },
+      "mechanics_role": "none",
+      "observed_form": "file",
+      "owner_return_route": {
+        "route_kind": "source_owner",
+        "surface": "src/aoa_stats_builder/codex_trusted_rollout_sources.py"
+      },
+      "provenance": {
+        "generated_by": "",
+        "materials": [],
+        "observed_by": "aoa-kag:scripts/generate_repo_local_kag_index.py",
+        "source_refs": [
+          {
+            "authority": "authored_source",
+            "path": "src/aoa_stats_builder/codex_trusted_rollout_sources.py",
+            "repo": "aoa-stats",
+            "role": "primary"
+          }
+        ],
+        "validated_by": [
+          "aoa-kag:scripts/validate_kag.py"
+        ]
+      },
+      "refs": {
+        "heading_refs": [],
+        "line_refs": [
+          "src/aoa_stats_builder/codex_trusted_rollout_sources.py:1"
+        ],
+        "path_ref": "src/aoa_stats_builder/codex_trusted_rollout_sources.py"
+      },
+      "signs": {
+        "attestation_ref": "",
+        "digest": "5836ded2e1b43e1b37a9670ee92fe83622361323f13ba1bd3180d8e89ce8c238",
+        "signature_ref": "",
+        "verification_state": "digest-only"
+      },
+      "surface_state": "authored_source",
+      "toolchain": {
+        "detected_tools": [
+          "git",
+          "python"
+        ],
+        "owner_commands": [],
+        "required_tools": [
+          "python"
+        ]
+      },
+      "validator_route": {
+        "route_kind": "source_fast",
+        "surface": "aoa-kag:scripts/validate_kag.py"
+      }
+    },
+    {
+      "abi": {
+        "abi_epoch": "source",
+        "artifact_class": "source_code",
+        "compatibility": "stable",
+        "contract_version": "none",
+        "schema_version": "none"
+      },
+      "access": {
+        "scope": "public",
+        "secrets_risk": "none"
+      },
+      "artifact_kind": "source_code",
+      "classification": {
+        "confidence": "high",
+        "primary_kind": "surface"
+      },
+      "code_role": "source_module",
+      "command_role": "none",
+      "consumer_route": {
+        "route_kind": "resource",
+        "surface": "aoa-kag-mcp"
+      },
+      "document_role": "none",
+      "freshness": {
+        "checked_ref": "git-index-source-tree",
+        "mode": "source_snapshot",
+        "state": "current"
+      },
+      "identity": {
         "content_hash": "c3f18ac62abcc19a47d5f2da57849354d39fc2845c9b33813f5a563a577c6719",
         "git_ref": "git-index-source-tree",
         "id": "file:src/aoa_stats_builder/component_refresh.py:6919e275af",
@@ -88836,6 +89744,184 @@
       "signs": {
         "attestation_ref": "",
         "digest": "af1407989fbe89424139ec3612e267a3177ca3981eff1bbebd9d59fa993ddd40",
+        "signature_ref": "",
+        "verification_state": "digest-only"
+      },
+      "surface_state": "authored_source",
+      "toolchain": {
+        "detected_tools": [
+          "git",
+          "python"
+        ],
+        "owner_commands": [],
+        "required_tools": [
+          "python"
+        ]
+      },
+      "validator_route": {
+        "route_kind": "source_fast",
+        "surface": "aoa-kag:scripts/validate_kag.py"
+      }
+    },
+    {
+      "abi": {
+        "abi_epoch": "source",
+        "artifact_class": "source_code",
+        "compatibility": "stable",
+        "contract_version": "none",
+        "schema_version": "none"
+      },
+      "access": {
+        "scope": "public",
+        "secrets_risk": "none"
+      },
+      "artifact_kind": "source_code",
+      "classification": {
+        "confidence": "high",
+        "primary_kind": "surface"
+      },
+      "code_role": "source_module",
+      "command_role": "none",
+      "consumer_route": {
+        "route_kind": "resource",
+        "surface": "aoa-kag-mcp"
+      },
+      "document_role": "none",
+      "freshness": {
+        "checked_ref": "git-index-source-tree",
+        "mode": "source_snapshot",
+        "state": "current"
+      },
+      "identity": {
+        "content_hash": "9c82dec8ce3143015d0818c9254112159784a248c20bd2a89db747d5f63e3015",
+        "git_ref": "git-index-source-tree",
+        "id": "file:src/aoa_stats_builder/rollout_cadence.py:d79f092a68",
+        "mime": "text/x-python",
+        "path": "src/aoa_stats_builder/rollout_cadence.py",
+        "repo": "aoa-stats",
+        "size_bytes": 19171
+      },
+      "mechanics_role": "none",
+      "observed_form": "file",
+      "owner_return_route": {
+        "route_kind": "source_owner",
+        "surface": "src/aoa_stats_builder/rollout_cadence.py"
+      },
+      "provenance": {
+        "generated_by": "",
+        "materials": [],
+        "observed_by": "aoa-kag:scripts/generate_repo_local_kag_index.py",
+        "source_refs": [
+          {
+            "authority": "authored_source",
+            "path": "src/aoa_stats_builder/rollout_cadence.py",
+            "repo": "aoa-stats",
+            "role": "primary"
+          }
+        ],
+        "validated_by": [
+          "aoa-kag:scripts/validate_kag.py"
+        ]
+      },
+      "refs": {
+        "heading_refs": [],
+        "line_refs": [
+          "src/aoa_stats_builder/rollout_cadence.py:1"
+        ],
+        "path_ref": "src/aoa_stats_builder/rollout_cadence.py"
+      },
+      "signs": {
+        "attestation_ref": "",
+        "digest": "9c82dec8ce3143015d0818c9254112159784a248c20bd2a89db747d5f63e3015",
+        "signature_ref": "",
+        "verification_state": "digest-only"
+      },
+      "surface_state": "authored_source",
+      "toolchain": {
+        "detected_tools": [
+          "git",
+          "python"
+        ],
+        "owner_commands": [],
+        "required_tools": [
+          "python"
+        ]
+      },
+      "validator_route": {
+        "route_kind": "source_fast",
+        "surface": "aoa-kag:scripts/validate_kag.py"
+      }
+    },
+    {
+      "abi": {
+        "abi_epoch": "source",
+        "artifact_class": "source_code",
+        "compatibility": "stable",
+        "contract_version": "none",
+        "schema_version": "none"
+      },
+      "access": {
+        "scope": "public",
+        "secrets_risk": "none"
+      },
+      "artifact_kind": "source_code",
+      "classification": {
+        "confidence": "high",
+        "primary_kind": "surface"
+      },
+      "code_role": "source_module",
+      "command_role": "none",
+      "consumer_route": {
+        "route_kind": "resource",
+        "surface": "aoa-kag-mcp"
+      },
+      "document_role": "none",
+      "freshness": {
+        "checked_ref": "git-index-source-tree",
+        "mode": "source_snapshot",
+        "state": "current"
+      },
+      "identity": {
+        "content_hash": "37c84dd8fba51d868d9a676a08b625821bc5bffa1a4ec2ed82809c6774873287",
+        "git_ref": "git-index-source-tree",
+        "id": "file:src/aoa_stats_builder/rollout_cadence_sources.py:6e1dde79ca",
+        "mime": "text/x-python",
+        "path": "src/aoa_stats_builder/rollout_cadence_sources.py",
+        "repo": "aoa-stats",
+        "size_bytes": 3884
+      },
+      "mechanics_role": "none",
+      "observed_form": "file",
+      "owner_return_route": {
+        "route_kind": "source_owner",
+        "surface": "src/aoa_stats_builder/rollout_cadence_sources.py"
+      },
+      "provenance": {
+        "generated_by": "",
+        "materials": [],
+        "observed_by": "aoa-kag:scripts/generate_repo_local_kag_index.py",
+        "source_refs": [
+          {
+            "authority": "authored_source",
+            "path": "src/aoa_stats_builder/rollout_cadence_sources.py",
+            "repo": "aoa-stats",
+            "role": "primary"
+          }
+        ],
+        "validated_by": [
+          "aoa-kag:scripts/validate_kag.py"
+        ]
+      },
+      "refs": {
+        "heading_refs": [],
+        "line_refs": [
+          "src/aoa_stats_builder/rollout_cadence_sources.py:1"
+        ],
+        "path_ref": "src/aoa_stats_builder/rollout_cadence_sources.py"
+      },
+      "signs": {
+        "attestation_ref": "",
+        "digest": "37c84dd8fba51d868d9a676a08b625821bc5bffa1a4ec2ed82809c6774873287",
         "signature_ref": "",
         "verification_state": "digest-only"
       },
@@ -89563,13 +90649,13 @@
         "state": "current"
       },
       "identity": {
-        "content_hash": "0d0e7e52ac4856fa4f599a189e2bfc3ffe4f33e9c868c07c382cc2beb951b629",
+        "content_hash": "18b952aba5a2d480bf9512629aa6016767779f0ddd7a76bcc33693014c370539",
         "git_ref": "git-index-source-tree",
         "id": "file:stats/readme.md:6bac6d2ff5",
         "mime": "text/markdown",
         "path": "stats/README.md",
         "repo": "aoa-stats",
-        "size_bytes": 5226
+        "size_bytes": 5302
       },
       "mechanics_role": "none",
       "observed_form": "file",
@@ -89631,7 +90717,7 @@
       },
       "signs": {
         "attestation_ref": "",
-        "digest": "0d0e7e52ac4856fa4f599a189e2bfc3ffe4f33e9c868c07c382cc2beb951b629",
+        "digest": "18b952aba5a2d480bf9512629aa6016767779f0ddd7a76bcc33693014c370539",
         "signature_ref": "",
         "verification_state": "digest-only"
       },
@@ -92012,13 +93098,13 @@
         "state": "current"
       },
       "identity": {
-        "content_hash": "4e1075ca1230fe3346f4f078a52d906bb7a52d9252324c11cf0b0d66368da384",
+        "content_hash": "56188bbdf338d959d1739cb75f2f7c6633b3a4300679cb76ac2faca123b1da23",
         "git_ref": "git-index-source-tree",
         "id": "file:stats/read-models/readme.md:5ba4a92471",
         "mime": "text/markdown",
         "path": "stats/read-models/README.md",
         "repo": "aoa-stats",
-        "size_bytes": 2442
+        "size_bytes": 2827
       },
       "mechanics_role": "none",
       "observed_form": "file",
@@ -92054,7 +93140,7 @@
           {
             "anchor": "lifecycle",
             "level": 2,
-            "line": 40,
+            "line": 47,
             "ref": "stats/read-models/README.md#lifecycle",
             "title": "Lifecycle"
           }
@@ -92066,7 +93152,7 @@
       },
       "signs": {
         "attestation_ref": "",
-        "digest": "4e1075ca1230fe3346f4f078a52d906bb7a52d9252324c11cf0b0d66368da384",
+        "digest": "56188bbdf338d959d1739cb75f2f7c6633b3a4300679cb76ac2faca123b1da23",
         "signature_ref": "",
         "verification_state": "digest-only"
       },
@@ -92470,13 +93556,13 @@
         "state": "current"
       },
       "identity": {
-        "content_hash": "1d158c627620b6bc288458596acc38d6497b154da5a9c22504c4f1259ac7da5d",
+        "content_hash": "f22fe1deca643dac0738d4e0c36c16ae7697645f6908961d77938eed396b4aa0",
         "git_ref": "git-index-source-tree",
         "id": "file:stats/read-models/active/codex_rollout_drift_summary.profile.json:a25bcb7e04",
         "mime": "application/json",
         "path": "stats/read-models/active/codex_rollout_drift_summary.profile.json",
         "repo": "aoa-stats",
-        "size_bytes": 1110
+        "size_bytes": 1285
       },
       "mechanics_role": "none",
       "observed_form": "file",
@@ -92509,7 +93595,7 @@
       },
       "signs": {
         "attestation_ref": "",
-        "digest": "1d158c627620b6bc288458596acc38d6497b154da5a9c22504c4f1259ac7da5d",
+        "digest": "f22fe1deca643dac0738d4e0c36c16ae7697645f6908961d77938eed396b4aa0",
         "signature_ref": "",
         "verification_state": "digest-only"
       },
@@ -92559,13 +93645,13 @@
         "state": "current"
       },
       "identity": {
-        "content_hash": "38fb009a570e6db39d18f89951c097e4dd5460b152a10dc0c4a657f3bf5820a9",
+        "content_hash": "d5bb27d90eb717da8e1ffcb988d1c76f1a416335676110051ae294e8f891bb88",
         "git_ref": "git-index-source-tree",
         "id": "file:stats/read-models/active/codex_rollout_operations_summary.profile.json:f2dc6de097",
         "mime": "application/json",
         "path": "stats/read-models/active/codex_rollout_operations_summary.profile.json",
         "repo": "aoa-stats",
-        "size_bytes": 1046
+        "size_bytes": 1248
       },
       "mechanics_role": "none",
       "observed_form": "file",
@@ -92598,7 +93684,7 @@
       },
       "signs": {
         "attestation_ref": "",
-        "digest": "38fb009a570e6db39d18f89951c097e4dd5460b152a10dc0c4a657f3bf5820a9",
+        "digest": "d5bb27d90eb717da8e1ffcb988d1c76f1a416335676110051ae294e8f891bb88",
         "signature_ref": "",
         "verification_state": "digest-only"
       },
@@ -92915,13 +94001,13 @@
         "state": "current"
       },
       "identity": {
-        "content_hash": "ab53035edafe0d8a6d5fa2dce38fa35d2c08c1e49dbcb60cd1bb6eb0acbb42bb",
+        "content_hash": "116d9d1b1470440edf0bc59fd9a56ee297f7e02ecd0f3bf56b803fca82201371",
         "git_ref": "git-index-source-tree",
         "id": "file:stats/read-models/active/drift_review_summary.profile.json:cef110f2bd",
         "mime": "application/json",
         "path": "stats/read-models/active/drift_review_summary.profile.json",
         "repo": "aoa-stats",
-        "size_bytes": 1011
+        "size_bytes": 1176
       },
       "mechanics_role": "none",
       "observed_form": "file",
@@ -92954,7 +94040,7 @@
       },
       "signs": {
         "attestation_ref": "",
-        "digest": "ab53035edafe0d8a6d5fa2dce38fa35d2c08c1e49dbcb60cd1bb6eb0acbb42bb",
+        "digest": "116d9d1b1470440edf0bc59fd9a56ee297f7e02ecd0f3bf56b803fca82201371",
         "signature_ref": "",
         "verification_state": "digest-only"
       },
@@ -93449,13 +94535,13 @@
         "state": "current"
       },
       "identity": {
-        "content_hash": "ea1e3203744f2ebb6bf91a4b89c636e06ee9c502eda6955c83b917d8549f47b8",
+        "content_hash": "57b7e21b1b7a25c6936c9c66bb148a7c17870f4fc540bceb671dc8a4d372ad31",
         "git_ref": "git-index-source-tree",
         "id": "file:stats/read-models/active/rollout_campaign_summary.profile.json:f32d6d20e6",
         "mime": "application/json",
         "path": "stats/read-models/active/rollout_campaign_summary.profile.json",
         "repo": "aoa-stats",
-        "size_bytes": 960
+        "size_bytes": 1171
       },
       "mechanics_role": "none",
       "observed_form": "file",
@@ -93488,7 +94574,7 @@
       },
       "signs": {
         "attestation_ref": "",
-        "digest": "ea1e3203744f2ebb6bf91a4b89c636e06ee9c502eda6955c83b917d8549f47b8",
+        "digest": "57b7e21b1b7a25c6936c9c66bb148a7c17870f4fc540bceb671dc8a4d372ad31",
         "signature_ref": "",
         "verification_state": "digest-only"
       },
@@ -94517,13 +95603,13 @@
         "state": "current"
       },
       "identity": {
-        "content_hash": "728e8b2c57f60f9c932a8bd41fba380e816543cd1acb8140286787e974861c2e",
+        "content_hash": "d1e7eb570542e407a461f733ab51c56e659be9a5101a3319290e68dd81898aa3",
         "git_ref": "git-index-source-tree",
         "id": "file:stats/source_home.manifest.json:41b237ff45",
         "mime": "application/json",
         "path": "stats/source_home.manifest.json",
         "repo": "aoa-stats",
-        "size_bytes": 25193
+        "size_bytes": 25918
       },
       "mechanics_role": "none",
       "observed_form": "file",
@@ -94556,7 +95642,7 @@
       },
       "signs": {
         "attestation_ref": "",
-        "digest": "728e8b2c57f60f9c932a8bd41fba380e816543cd1acb8140286787e974861c2e",
+        "digest": "d1e7eb570542e407a461f733ab51c56e659be9a5101a3319290e68dd81898aa3",
         "signature_ref": "",
         "verification_state": "digest-only"
       },
@@ -95333,13 +96419,13 @@
         "state": "current"
       },
       "identity": {
-        "content_hash": "c11bd95c511c9951b0aa149529aac32d23cf2d43f6b92a2c53f3767509a9f9da",
+        "content_hash": "bb90f13c7ef49a9f2b235fcf60290ef8a09aaa01bd5314c133c7def1e7aeae69",
         "git_ref": "git-index-source-tree",
         "id": "file:tests/test_build_views.py:760ef645f6",
         "mime": "text/x-python",
         "path": "tests/test_build_views.py",
         "repo": "aoa-stats",
-        "size_bytes": 57211
+        "size_bytes": 50360
       },
       "mechanics_role": "none",
       "observed_form": "command",
@@ -95372,7 +96458,7 @@
       },
       "signs": {
         "attestation_ref": "",
-        "digest": "c11bd95c511c9951b0aa149529aac32d23cf2d43f6b92a2c53f3767509a9f9da",
+        "digest": "bb90f13c7ef49a9f2b235fcf60290ef8a09aaa01bd5314c133c7def1e7aeae69",
         "signature_ref": "",
         "verification_state": "digest-only"
       },

@@ -5,17 +5,19 @@
   "name": "codex_rollout_operations_summary",
   "surface_ref": "generated/codex_rollout_operations_summary.min.json",
   "schema_ref": "schemas/codex-rollout-operations-summary.schema.json",
-  "primary_question": "What checked-in trusted rollout campaign posture is currently visible for the shared-root Codex plane without turning stats into rollout authority?",
-  "derivation_rule": "derive bounded rollout state counts and latest campaign posture from 8Dionysus checked-in generated/codex/rollout source surfaces",
+  "primary_question": "What bounded rollout campaign posture is represented by the checked-in trusted owner history without turning stats into current deployment or rollout authority?",
+  "derivation_rule": "derive bounded historical rollout state counts and the source-owned latest pointer from the exact four checked-in 8Dionysus generated/codex/rollout surfaces",
   "input_posture": "checked_in_owner_history",
   "owner_truth_inputs": [
-    "8Dionysus generated/codex/rollout history"
+    "8Dionysus/generated/codex/rollout/deploy_history.jsonl",
+    "8Dionysus/generated/codex/rollout/regeneration_campaigns.min.json",
+    "8Dionysus/generated/codex/rollout/rollback_windows.min.json",
+    "8Dionysus/generated/codex/rollout/rollout_latest.min.json"
   ],
   "authority_ceiling": "Weaker than source-owned rollout history and rollback windows.",
   "consumer_risk": "high",
-  "live_state_capable": true,
+  "live_state_capable": false,
   "mechanic_routes": [
-    "mechanics/release-support/parts/codex-deployment-rollout",
-    "mechanics/release-support/parts/rollout-campaign"
+    "mechanics/release-support/parts/trusted-rollout-history"
   ]
 }
