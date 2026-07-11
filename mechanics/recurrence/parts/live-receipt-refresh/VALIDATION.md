@@ -25,10 +25,12 @@ The focused refresh tests must also prove:
 - the live allowlist is derived from active profiles with
   `live_state_capable: true`
 - the authored live-admitted allowlist is exactly 11 while the cleanup universe
-  still contains all 25 managed active read-model outputs
-- the 14 reference-only profiles, including Owner Landing, Route Progression,
+  still contains all 24 active outputs plus the retired Titan Summon output name
+- the 13 reference-only active profiles, including Owner Landing, Route Progression,
   Runtime Closeout, Memory Movement, Stress Recovery, trusted rollout-history,
   and both cadence projections, are absent from the live output and live catalog
+- the retired Titan Summon builder and catalog entry stay absent while its
+  tombstone removes any stale runtime copy
 - stale reference-only runtime files, including all three newly closed
   selectors and all four audited rollout and cadence companions, are removed
   on non-empty and empty receipt paths

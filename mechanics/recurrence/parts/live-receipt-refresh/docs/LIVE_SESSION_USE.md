@@ -77,7 +77,7 @@ lockstep with that schema enum.
 
 ## Canonical repo surfaces
 
-The committed builder publishes all 25 active reference and live-capable
+The committed builder publishes all 24 active reference and live-capable
 profiles plus the public catalog:
 
 - `generated/core_skill_application_summary.min.json`
@@ -100,7 +100,6 @@ profiles plus the public catalog:
 - `generated/component_refresh_summary.min.json`
 - `generated/memory_movement_summary.min.json`
 - `generated/titan_incarnation_summary.min.json`
-- `generated/titan_summon_summary.min.json`
 - `generated/runtime_closeout_summary.min.json`
 - `generated/stress_recovery_window_summary.min.json`
 - `generated/source_coverage_summary.min.json`
@@ -109,15 +108,17 @@ profiles plus the public catalog:
 
 ## Live local surfaces
 
-The live refresh path does not mirror the committed output set. The active
+The live refresh path does not mirror the committed output set. Authored
 profiles are the single inventory source:
 
 - `live_state_capable: true` selects the materialization allowlist
-- all active profile output names form the stale-file cleanup universe
+- active output names plus retired-output tombstones form the stale-file
+  cleanup universe
 - the live catalog lists only outputs actually materialized
 
-The managed inventory contains 25 active read-model outputs. The authored
-live-admitted allowlist contains exactly 11. The 14 false-live profiles are:
+The managed cleanup inventory contains 25 names: 24 active read-model outputs
+plus one retired-output tombstone. The authored live-admitted allowlist contains
+exactly 11. The 13 reference-only active profiles are:
 
 - `owner_landing_summary`
 - `route_progression_summary`
@@ -131,7 +132,6 @@ live-admitted allowlist contains exactly 11. The 14 false-live profiles are:
 - `memory_movement_summary`
 - `runtime_closeout_summary`
 - `titan_incarnation_summary`
-- `titan_summon_summary`
 - `stress_recovery_window_summary`
 
 They remain valid committed public reference surfaces, but the live run does
@@ -146,6 +146,11 @@ its three owner examples. Route Progression may project only its committed
 legacy numeric receipt snapshot; it rejects the current semantic-only
 `aoa-skills` receipt shape instead of inventing scores. None is a live
 fallback.
+
+`titan_summon_summary.min.json` is different: it is retired, not a false-live
+active surface. The builder and catalogs do not publish it. Its retired profile
+keeps the name in the managed cleanup universe so any older copy under
+`state/generated/` is removed deterministically.
 
 The history and cadence contexts remain distinct. “Latest” inside checked-in
 history is not deploy-local current state, and the cadence examples do not

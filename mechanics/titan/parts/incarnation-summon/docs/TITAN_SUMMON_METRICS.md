@@ -1,8 +1,10 @@
-# Titan Summon Metrics
+# Retired Titan Summon Metrics Contract
 
-The committed v1 surface is a compatibility baseline for the case where no
-owner swarm-ledger instance was observed. Its four zero fields mean “no ledger
-was projected”; they are not measurements of a zero-activity swarm.
+The former committed v1 surface was a compatibility baseline for the case where
+no owner swarm-ledger instance was observed. Because it projected no owner fact,
+the builder, output, and catalog entry are retired. The v1 schema remains only
+as contract history, and the source-home tombstone exists only to remove stale
+copies from committed output, live state, and downstream consumer hints.
 
 An observed successor may derive the following only from an owner-local ledger
 or closeout artifact whose contract and refresh route are explicit:
@@ -14,6 +16,7 @@ or closeout artifact whose contract and refresh route are explicit:
 
 Further finding lifecycle, timeout, interruption, grade, orchestration, and
 prompt-fault measures require their own public contract review; they are not
-silently implied by the current v1 shape.
+silently implied by the retired v1 shape. An observed successor must enter as a
+new active profile backed by an owner-local ledger and refresh proof.
 
 Stats are pulse, not verdict.

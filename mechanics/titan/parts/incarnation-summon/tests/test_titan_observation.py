@@ -99,7 +99,7 @@ def stable_json(payload: dict[str, Any]) -> str:
     return json.dumps(payload, indent=2, sort_keys=False) + "\n"
 
 
-def test_root_facades_delegate_to_core_and_explicit_baseline() -> None:
+def test_root_incarnation_facade_delegates_to_core() -> None:
     facade = load_build_views_module()
     operator, runtime, session = owner_examples()
     bundle = TitanIncarnationInputBundle(
@@ -109,8 +109,6 @@ def test_root_facades_delegate_to_core_and_explicit_baseline() -> None:
         source_refs=SOURCE_REFS,
     )
     incarnation_calls: list[tuple[Any, Any, Any, tuple[str, ...]]] = []
-    summon_calls: list[bool] = []
-
     def tracked_incarnation(
         operator_roster: Any,
         runtime_roster: Any,
@@ -128,22 +126,13 @@ def test_root_facades_delegate_to_core_and_explicit_baseline() -> None:
             source_refs=source_refs,
         )
 
-    def tracked_summon() -> dict[str, Any]:
-        summon_calls.append(True)
-        return titan_observation.build_titan_summon_no_observed_ledger_baseline()
-
     facade.titan_incarnation_input_bundle = lambda: bundle
     facade.build_titan_incarnation_summary_from_inputs = tracked_incarnation
-    facade.build_titan_summon_no_observed_ledger_baseline = tracked_summon
 
     assert facade.build_titan_incarnation_summary() == build_incarnation()
-    assert facade.build_titan_summon_summary() == (
-        titan_observation.build_titan_summon_no_observed_ledger_baseline()
-    )
     assert incarnation_calls == [
         (bundle.operator_roster, bundle.runtime_roster, bundle.session_receipt, SOURCE_REFS)
     ]
-    assert summon_calls == [True]
 
 
 def test_incarnation_derives_exact_coherent_reference_counts() -> None:
@@ -258,30 +247,40 @@ def test_source_adapter_uses_exact_owner_paths_and_frozen_bundle(tmp_path: Path)
         bundle.operator_roster["version"] = 2
 
 
-def test_summon_zeros_are_only_a_no_observed_ledger_baseline() -> None:
-    summary = titan_observation.build_titan_summon_no_observed_ledger_baseline()
+def test_summon_retirement_has_no_active_builder_output_or_catalog_entry() -> None:
+    facade = load_build_views_module()
+    retired = json.loads(
+        (
+            REPO_ROOT
+            / "stats/read-models/retired/titan_summon_summary.profile.json"
+        ).read_text(encoding="utf-8")
+    )
+    catalog = json.loads(
+        (REPO_ROOT / "generated/summary_surface_catalog.min.json").read_text(
+            encoding="utf-8"
+        )
+    )
 
-    assert summary == {
-        "schema_version": "titan_summon_summary/v1",
-        "summary_ref": "generated:titan-summon-summary:no-observed-ledger",
-        "source_ledger_refs": ["baseline:titan-summon:no-observed-ledger"],
-        "counts": {
-            "agents_invoked": 0,
-            "reports_received": 0,
-            "findings_reported": 0,
-            "memory_candidates_created": 0,
-        },
+    assert not hasattr(facade, "build_titan_summon_summary")
+    assert not hasattr(
+        titan_observation,
+        "build_titan_summon_no_observed_ledger_baseline",
+    )
+    assert not (REPO_ROOT / retired["retired_surface_ref"]).exists()
+    assert not (
+        REPO_ROOT / "stats/read-models/active/titan_summon_summary.profile.json"
+    ).exists()
+    assert (REPO_ROOT / retired["schema_ref"]).is_file()
+    assert retired["replacement_ref"] is None
+    assert retired["former_mechanic_routes"] == [
+        "mechanics/titan/parts/incarnation-summon"
+    ]
+    assert "titan_summon_summary" not in {
+        entry["name"] for entry in catalog["surfaces"]
     }
-    assert "seed" not in stable_json(summary)
-    assert_schema_valid("titan_summon_summary.schema.json", summary)
 
 
-def test_committed_titan_outputs_match_exact_core_bytes() -> None:
+def test_committed_titan_incarnation_output_matches_exact_core_bytes() -> None:
     assert stable_json(build_incarnation()) == (
         REPO_ROOT / "generated" / "titan_incarnation_summary.min.json"
     ).read_text(encoding="utf-8")
-    assert stable_json(
-        titan_observation.build_titan_summon_no_observed_ledger_baseline()
-    ) == (REPO_ROOT / "generated" / "titan_summon_summary.min.json").read_text(
-        encoding="utf-8"
-    )

@@ -51,6 +51,7 @@ EXPECTED_BRANCH_ENTRIES = {
         "surface-profile.schema.json",
         "active",
         "deferred",
+        "retired",
     },
     "stats/operation-contracts": {
         "AGENTS.md",
@@ -73,8 +74,9 @@ REQUIRED_ROUTE_FIELDS = (
     "validator_routes",
 )
 OPTIONAL_ROUTE_FIELDS = ("generated_routes", "read_only_access_routes")
-EXPECTED_ACTIVE_PROFILE_COUNT = 25
+EXPECTED_ACTIVE_PROFILE_COUNT = 24
 EXPECTED_DEFERRED_PROFILE_COUNT = 1
+EXPECTED_RETIRED_PROFILE_COUNT = 1
 INTAKE_FIXTURE = Path(
     "stats/intake-contract/examples/session_harvest_family.receipts.example.json"
 )
@@ -195,6 +197,7 @@ def _validate_profile_schema(
     repo_root: Path,
     active_paths: list[Path],
     deferred_paths: list[Path],
+    retired_paths: list[Path],
     issues: list[str],
 ) -> None:
     schema, error = _load_object(repo_root / PROFILE_SCHEMA_PATH)
@@ -210,7 +213,7 @@ def _validate_profile_schema(
         )
         return
     validator = Draft202012Validator(schema)
-    for path in [*active_paths, *deferred_paths]:
+    for path in [*active_paths, *deferred_paths, *retired_paths]:
         profile, profile_error = _load_object(path)
         if profile_error:
             issues.append(profile_error)
@@ -280,6 +283,7 @@ def _validate_stats_json_allowlist(
     repo_root: Path,
     active_paths: list[Path],
     deferred_paths: list[Path],
+    retired_paths: list[Path],
     operation_paths: list[Path],
     issues: list[str],
 ) -> None:
@@ -291,6 +295,7 @@ def _validate_stats_json_allowlist(
         INTAKE_FIXTURE.as_posix(),
         *[path.relative_to(repo_root).as_posix() for path in active_paths],
         *[path.relative_to(repo_root).as_posix() for path in deferred_paths],
+        *[path.relative_to(repo_root).as_posix() for path in retired_paths],
         *[path.relative_to(repo_root).as_posix() for path in operation_paths],
     }
     actual = {
@@ -336,11 +341,17 @@ def _validate_profiles(
     deferred_paths = sorted(
         (repo_root / "stats/read-models/deferred").glob("*.profile.json")
     )
-    _validate_profile_schema(repo_root, active_paths, deferred_paths, issues)
+    retired_paths = sorted(
+        (repo_root / "stats/read-models/retired").glob("*.profile.json")
+    )
+    _validate_profile_schema(
+        repo_root, active_paths, deferred_paths, retired_paths, issues
+    )
     _validate_stats_json_allowlist(
         repo_root,
         active_paths,
         deferred_paths,
+        retired_paths,
         operation_paths,
         issues,
     )
@@ -355,9 +366,16 @@ def _validate_profiles(
             "stats/read-models/deferred: expected "
             f"{EXPECTED_DEFERRED_PROFILE_COUNT} profile, found {len(deferred_paths)}"
         )
+    if len(retired_paths) != EXPECTED_RETIRED_PROFILE_COUNT:
+        issues.append(
+            "stats/read-models/retired: expected "
+            f"{EXPECTED_RETIRED_PROFILE_COUNT} profile, found {len(retired_paths)}"
+        )
 
     try:
-        active, deferred = load_surface_profiles(repo_root / "stats/read-models")
+        active, deferred, retired = load_surface_profiles(
+            repo_root / "stats/read-models"
+        )
         public_active, public_deferred = public_surface_profiles(
             repo_root / "stats/read-models"
         )
@@ -391,7 +409,7 @@ def _validate_profiles(
     schema_routes: list[str] = []
     generated_routes: list[str] = []
     mechanic_routes: list[str] = []
-    for profile in [*active, *deferred]:
+    for profile in [*active, *deferred, *retired]:
         schema_ref = profile["schema_ref"]
         if schema_ref not in schema_routes:
             schema_routes.append(schema_ref)
@@ -407,12 +425,34 @@ def _validate_profiles(
                 issues.append(
                     f"stats/read-models: profile output route is missing: {surface_ref}"
                 )
+        retired_surface_ref = profile.get("retired_surface_ref")
+        if isinstance(retired_surface_ref, str):
+            if (repo_root / retired_surface_ref).exists():
+                issues.append(
+                    "stats/read-models: retired output route must be absent: "
+                    f"{retired_surface_ref}"
+                )
+            decision_ref = profile.get("decision_ref")
+            if not isinstance(decision_ref, str) or not (
+                repo_root / decision_ref
+            ).is_file():
+                issues.append(
+                    "stats/read-models: retired decision route is missing: "
+                    f"{decision_ref}"
+                )
+            if require_mechanics:
+                for route in profile.get("former_mechanic_routes", []):
+                    if not (repo_root / route).is_dir():
+                        issues.append(
+                            "stats/read-models: retired former mechanic route is "
+                            f"missing: {route}"
+                        )
         contract_ref = profile.get("contract_ref")
         if isinstance(contract_ref, str) and not (repo_root / contract_ref).is_file():
             issues.append(
                 f"stats/read-models: deferred contract route is missing: {contract_ref}"
             )
-        for route in profile["mechanic_routes"]:
+        for route in profile.get("mechanic_routes", []):
             if route not in mechanic_routes:
                 mechanic_routes.append(route)
             if require_mechanics:

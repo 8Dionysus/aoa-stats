@@ -132,7 +132,6 @@ from aoa_stats_builder.stress_recovery_sources import (  # noqa: E402
 from aoa_stats_builder.surface_catalog import build_summary_surface_catalog  # noqa: E402
 from aoa_stats_builder.titan_observation import (  # noqa: E402
     build_titan_incarnation_summary as build_titan_incarnation_summary_from_inputs,
-    build_titan_summon_no_observed_ledger_baseline,
 )
 from aoa_stats_builder.titan_observation_sources import (  # noqa: E402
     TitanIncarnationInputBundle,
@@ -570,10 +569,6 @@ def build_titan_incarnation_summary() -> dict[str, Any]:
     )
 
 
-def build_titan_summon_summary() -> dict[str, Any]:
-    return build_titan_summon_no_observed_ledger_baseline()
-
-
 def build_all_views(
     receipts: list[dict[str, Any]],
     input_paths: list[str],
@@ -670,7 +665,6 @@ def build_all_views(
             ),
         ),
         ("titan_incarnation_summary.min.json", build_titan_incarnation_summary),
-        ("titan_summon_summary.min.json", build_titan_summon_summary),
     ):
         if allowed_optional_outputs is not None and name not in allowed_optional_outputs:
             continue

@@ -8,6 +8,9 @@
     },
     {
       "$ref": "#/$defs/deferredProfile"
+    },
+    {
+      "$ref": "#/$defs/retiredProfile"
     }
   ],
   "$defs": {
@@ -147,6 +150,88 @@
           "minLength": 1
         },
         "mechanic_routes": {
+          "$ref": "#/$defs/mechanicRoutes"
+        }
+      }
+    },
+    "retiredProfile": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "schema_version",
+        "lifecycle",
+        "name",
+        "retired_surface_ref",
+        "schema_ref",
+        "retired_on",
+        "retirement_reason",
+        "replacement_ref",
+        "cleanup_scopes",
+        "consumer_return_routes",
+        "decision_ref",
+        "former_mechanic_routes"
+      ],
+      "properties": {
+        "schema_version": {
+          "const": "aoa_stats_surface_profile_source_v1"
+        },
+        "lifecycle": {
+          "const": "retired"
+        },
+        "name": {
+          "type": "string",
+          "pattern": "^[a-z][a-z0-9_]*$"
+        },
+        "retired_surface_ref": {
+          "type": "string",
+          "pattern": "^generated/[a-z0-9_]+\\.min\\.json$"
+        },
+        "schema_ref": {
+          "type": "string",
+          "pattern": "^schemas/[A-Za-z0-9_.-]+\\.json$"
+        },
+        "retired_on": {
+          "type": "string",
+          "format": "date"
+        },
+        "retirement_reason": {
+          "type": "string",
+          "minLength": 1
+        },
+        "replacement_ref": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "minLength": 1
+        },
+        "cleanup_scopes": {
+          "type": "array",
+          "minItems": 4,
+          "maxItems": 4,
+          "uniqueItems": true,
+          "items": {
+            "enum": [
+              "committed_output",
+              "summary_surface_catalog",
+              "managed_live_state",
+              "consumer_hints"
+            ]
+          }
+        },
+        "consumer_return_routes": {
+          "type": "array",
+          "uniqueItems": true,
+          "items": {
+            "type": "string",
+            "pattern": "^[A-Za-z0-9-]+/.+$"
+          }
+        },
+        "decision_ref": {
+          "type": "string",
+          "pattern": "^docs/decisions/AOST-D-[0-9]{4}-[a-z0-9-]+\\.md$"
+        },
+        "former_mechanic_routes": {
           "$ref": "#/$defs/mechanicRoutes"
         }
       }

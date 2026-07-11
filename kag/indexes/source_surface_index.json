@@ -4,8 +4,8 @@
       "asset": 50,
       "config": 174,
       "dependency_manifest": 2,
-      "document": 464,
-      "generated_readmodel": 42,
+      "document": 465,
+      "generated_readmodel": 41,
       "index": 1,
       "license": 1,
       "manifest": 17,
@@ -33,10 +33,10 @@
       "audit": 3,
       "boundary": 1,
       "changelog": 1,
-      "decision": 14,
+      "decision": 15,
       "design": 1,
       "mechanics_doc": 182,
-      "none": 503,
+      "none": 502,
       "parts": 12,
       "provenance": 12,
       "readme": 85,
@@ -55,22 +55,22 @@
       "part_test": 36
     },
     "primary_kind": {
-      "artifact": 94,
+      "artifact": 93,
       "command": 91,
-      "document": 472,
+      "document": 473,
       "surface": 318
     },
     "surface_state": {
-      "authored_source": 905,
-      "generated_readmodel": 47,
+      "authored_source": 906,
+      "generated_readmodel": 46,
       "legacy": 23
     }
   },
   "coverage_summary": {
     "command_count": 91,
-    "document_count": 472,
-    "generated_count": 47,
-    "heading_count": 1947,
+    "document_count": 473,
+    "generated_count": 46,
+    "heading_count": 1967,
     "mechanics_count": 517,
     "record_count": 975,
     "schema_count": 92,
@@ -81,7 +81,7 @@
   },
   "index_identity": {
     "artifact_kind": "source_surface_index",
-    "content_digest": "fd9b3eec9ca9a7d5c7aef4461b75166dff6175b1174006ee6c0857785c7b8f39",
+    "content_digest": "27c725ca86eb8c358d7079378ede8beb70751ba96eb0a369a9e622fef371c70f",
     "local_id": "index:repo-local:source-surfaces",
     "schema_ref": "aoa-kag:schemas/repo-local-kag-index.schema.json"
   },
@@ -24063,13 +24063,13 @@
         "state": "current"
       },
       "identity": {
-        "content_hash": "93469d33a97b7069bb926a10c866a2826a37588857a9163e82703f26a1b6cfad",
+        "content_hash": "e55710678c1d28d380a2a3bce88b26985c706d9da63a6289e0861272dd97bdf4",
         "git_ref": "git-index-source-tree",
         "id": "file:agents.md:a54ff182c7",
         "mime": "text/markdown",
         "path": "AGENTS.md",
         "repo": "aoa-stats",
-        "size_bytes": 14180
+        "size_bytes": 14571
       },
       "mechanics_role": "none",
       "observed_form": "file",
@@ -24133,63 +24133,63 @@
           {
             "anchor": "cross-mode-law",
             "level": 2,
-            "line": 170,
+            "line": 176,
             "ref": "AGENTS.md#cross-mode-law",
             "title": "Cross-mode law"
           },
           {
             "anchor": "agents-stack-law",
             "level": 2,
-            "line": 194,
+            "line": 200,
             "ref": "AGENTS.md#agents-stack-law",
             "title": "AGENTS stack law"
           },
           {
             "anchor": "memory-route",
             "level": 2,
-            "line": 209,
+            "line": 215,
             "ref": "AGENTS.md#memory-route",
             "title": "Memory route"
           },
           {
             "anchor": "decision-review",
             "level": 2,
-            "line": 217,
+            "line": 223,
             "ref": "AGENTS.md#decision-review",
             "title": "Decision review"
           },
           {
             "anchor": "derived-only-rules",
             "level": 2,
-            "line": 228,
+            "line": 234,
             "ref": "AGENTS.md#derived-only-rules",
             "title": "Derived-only rules"
           },
           {
             "anchor": "github-landing-workflow",
             "level": 2,
-            "line": 238,
+            "line": 244,
             "ref": "AGENTS.md#github-landing-workflow",
             "title": "GitHub landing workflow"
           },
           {
             "anchor": "verify",
             "level": 2,
-            "line": 260,
+            "line": 266,
             "ref": "AGENTS.md#verify",
             "title": "Verify"
           },
           {
             "anchor": "report",
             "level": 2,
-            "line": 289,
+            "line": 295,
             "ref": "AGENTS.md#report",
             "title": "Report"
           },
           {
             "anchor": "full-reference",
             "level": 2,
-            "line": 295,
+            "line": 301,
             "ref": "AGENTS.md#full-reference",
             "title": "Full reference"
           }
@@ -24201,7 +24201,7 @@
       },
       "signs": {
         "attestation_ref": "",
-        "digest": "93469d33a97b7069bb926a10c866a2826a37588857a9163e82703f26a1b6cfad",
+        "digest": "e55710678c1d28d380a2a3bce88b26985c706d9da63a6289e0861272dd97bdf4",
         "signature_ref": "",
         "verification_state": "digest-only"
       },
@@ -24249,13 +24249,13 @@
         "state": "current"
       },
       "identity": {
-        "content_hash": "d8136bc098f60eb239dc7ab10d70364bd35c8dc6cd5abd72043e9dbf3f0d85fd",
+        "content_hash": "1959b8a8617b878f294253ae07d22578fa60745cc270400447623f360502b4d0",
         "git_ref": "git-index-source-tree",
         "id": "file:changelog.md:06572a96a5",
         "mime": "text/markdown",
         "path": "CHANGELOG.md",
         "repo": "aoa-stats",
-        "size_bytes": 13652
+        "size_bytes": 14157
       },
       "mechanics_role": "none",
       "observed_form": "file",
@@ -24305,182 +24305,182 @@
           {
             "anchor": "changed",
             "level": 3,
-            "line": 31,
+            "line": 34,
             "ref": "CHANGELOG.md#changed",
             "title": "Changed"
           },
           {
             "anchor": "013-2026-04-23",
             "level": 2,
-            "line": 117,
+            "line": 124,
             "ref": "CHANGELOG.md#013-2026-04-23",
             "title": "[0.1.3] - 2026-04-23"
           },
           {
             "anchor": "summary",
             "level": 3,
-            "line": 119,
+            "line": 126,
             "ref": "CHANGELOG.md#summary",
             "title": "Summary"
           },
           {
             "anchor": "added-1",
             "level": 3,
-            "line": 131,
+            "line": 138,
             "ref": "CHANGELOG.md#added-1",
             "title": "Added"
           },
           {
             "anchor": "changed-1",
             "level": 3,
-            "line": 141,
+            "line": 148,
             "ref": "CHANGELOG.md#changed-1",
             "title": "Changed"
           },
           {
             "anchor": "validation",
             "level": 3,
-            "line": 147,
+            "line": 154,
             "ref": "CHANGELOG.md#validation",
             "title": "Validation"
           },
           {
             "anchor": "notes",
             "level": 3,
-            "line": 151,
+            "line": 158,
             "ref": "CHANGELOG.md#notes",
             "title": "Notes"
           },
           {
             "anchor": "012-2026-04-19",
             "level": 2,
-            "line": 156,
+            "line": 163,
             "ref": "CHANGELOG.md#012-2026-04-19",
             "title": "[0.1.2] - 2026-04-19"
           },
           {
             "anchor": "summary-1",
             "level": 3,
-            "line": 158,
+            "line": 165,
             "ref": "CHANGELOG.md#summary-1",
             "title": "Summary"
           },
           {
             "anchor": "added-2",
             "level": 3,
-            "line": 166,
+            "line": 173,
             "ref": "CHANGELOG.md#added-2",
             "title": "Added"
           },
           {
             "anchor": "changed-2",
             "level": 3,
-            "line": 173,
+            "line": 180,
             "ref": "CHANGELOG.md#changed-2",
             "title": "Changed"
           },
           {
             "anchor": "validation-1",
             "level": 3,
-            "line": 178,
+            "line": 185,
             "ref": "CHANGELOG.md#validation-1",
             "title": "Validation"
           },
           {
             "anchor": "notes-1",
             "level": 3,
-            "line": 182,
+            "line": 189,
             "ref": "CHANGELOG.md#notes-1",
             "title": "Notes"
           },
           {
             "anchor": "011-2026-04-12",
             "level": 2,
-            "line": 187,
+            "line": 194,
             "ref": "CHANGELOG.md#011-2026-04-12",
             "title": "[0.1.1] - 2026-04-12"
           },
           {
             "anchor": "summary-2",
             "level": 3,
-            "line": 189,
+            "line": 196,
             "ref": "CHANGELOG.md#summary-2",
             "title": "Summary"
           },
           {
             "anchor": "added-3",
             "level": 3,
-            "line": 197,
+            "line": 204,
             "ref": "CHANGELOG.md#added-3",
             "title": "Added"
           },
           {
             "anchor": "documentation",
             "level": 3,
-            "line": 205,
+            "line": 212,
             "ref": "CHANGELOG.md#documentation",
             "title": "Documentation"
           },
           {
             "anchor": "changed-3",
             "level": 3,
-            "line": 211,
+            "line": 218,
             "ref": "CHANGELOG.md#changed-3",
             "title": "Changed"
           },
           {
             "anchor": "validation-2",
             "level": 3,
-            "line": 218,
+            "line": 225,
             "ref": "CHANGELOG.md#validation-2",
             "title": "Validation"
           },
           {
             "anchor": "notes-2",
             "level": 3,
-            "line": 222,
+            "line": 229,
             "ref": "CHANGELOG.md#notes-2",
             "title": "Notes"
           },
           {
             "anchor": "010-2026-04-10",
             "level": 2,
-            "line": 226,
+            "line": 233,
             "ref": "CHANGELOG.md#010-2026-04-10",
             "title": "[0.1.0] - 2026-04-10"
           },
           {
             "anchor": "summary-3",
             "level": 3,
-            "line": 233,
+            "line": 240,
             "ref": "CHANGELOG.md#summary-3",
             "title": "Summary"
           },
           {
             "anchor": "added-4",
             "level": 3,
-            "line": 244,
+            "line": 251,
             "ref": "CHANGELOG.md#added-4",
             "title": "Added"
           },
           {
             "anchor": "included-in-this-release",
             "level": 3,
-            "line": 257,
+            "line": 264,
             "ref": "CHANGELOG.md#included-in-this-release",
             "title": "Included in this release"
           },
           {
             "anchor": "validation-3",
             "level": 3,
-            "line": 272,
+            "line": 279,
             "ref": "CHANGELOG.md#validation-3",
             "title": "Validation"
           },
           {
             "anchor": "notes-3",
             "level": 3,
-            "line": 278,
+            "line": 285,
             "ref": "CHANGELOG.md#notes-3",
             "title": "Notes"
           }
@@ -24492,7 +24492,7 @@
       },
       "signs": {
         "attestation_ref": "",
-        "digest": "d8136bc098f60eb239dc7ab10d70364bd35c8dc6cd5abd72043e9dbf3f0d85fd",
+        "digest": "1959b8a8617b878f294253ae07d22578fa60745cc270400447623f360502b4d0",
         "signature_ref": "",
         "verification_state": "digest-only"
       },
@@ -24772,13 +24772,13 @@
         "state": "current"
       },
       "identity": {
-        "content_hash": "535189c1d52a44e2a796c0ab873fe51c48d8b761f92f34628a60e4f482bd9d5c",
+        "content_hash": "7946c146754d0fbea203b533ef179f6a45d9acc4bce5a8527acc6b6d1473c587",
         "git_ref": "git-index-source-tree",
         "id": "file:design.md:3dc5dd454e",
         "mime": "text/markdown",
         "path": "DESIGN.md",
         "repo": "aoa-stats",
-        "size_bytes": 16466
+        "size_bytes": 17226
       },
       "mechanics_role": "none",
       "observed_form": "file",
@@ -24863,56 +24863,56 @@
           {
             "anchor": "operation",
             "level": 2,
-            "line": 222,
+            "line": 238,
             "ref": "DESIGN.md#operation",
             "title": "Operation"
           },
           {
             "anchor": "authority-model",
             "level": 2,
-            "line": 246,
+            "line": 262,
             "ref": "DESIGN.md#authority-model",
             "title": "Authority model"
           },
           {
             "anchor": "shared-mechanic-vocabulary",
             "level": 2,
-            "line": 260,
+            "line": 276,
             "ref": "DESIGN.md#shared-mechanic-vocabulary",
             "title": "Shared mechanic vocabulary"
           },
           {
             "anchor": "design-principles",
             "level": 2,
-            "line": 271,
+            "line": 287,
             "ref": "DESIGN.md#design-principles",
             "title": "Design principles"
           },
           {
             "anchor": "good-shape",
             "level": 2,
-            "line": 287,
+            "line": 303,
             "ref": "DESIGN.md#good-shape",
             "title": "Good shape"
           },
           {
             "anchor": "bad-shape",
             "level": 2,
-            "line": 296,
+            "line": 312,
             "ref": "DESIGN.md#bad-shape",
             "title": "Bad shape"
           },
           {
             "anchor": "relationship-to-root-guidance",
             "level": 2,
-            "line": 305,
+            "line": 321,
             "ref": "DESIGN.md#relationship-to-root-guidance",
             "title": "Relationship to root guidance"
           },
           {
             "anchor": "use-by-agents",
             "level": 2,
-            "line": 316,
+            "line": 332,
             "ref": "DESIGN.md#use-by-agents",
             "title": "Use by agents"
           }
@@ -24924,7 +24924,7 @@
       },
       "signs": {
         "attestation_ref": "",
-        "digest": "535189c1d52a44e2a796c0ab873fe51c48d8b761f92f34628a60e4f482bd9d5c",
+        "digest": "7946c146754d0fbea203b533ef179f6a45d9acc4bce5a8527acc6b6d1473c587",
         "signature_ref": "",
         "verification_state": "digest-only"
       },
@@ -25059,13 +25059,13 @@
         "state": "current"
       },
       "identity": {
-        "content_hash": "bf19e16a46e654c8c95691d141196df4c023159f2b7d0bc3b4bc018975f6845d",
+        "content_hash": "c6adfe9a930b915067494cd7381ce29b93f9d0df2ab2c92e14233df64c8d3978",
         "git_ref": "git-index-source-tree",
         "id": "file:readme.md:b335630551",
         "mime": "text/markdown",
         "path": "README.md",
         "repo": "aoa-stats",
-        "size_bytes": 9620
+        "size_bytes": 9694
       },
       "mechanics_role": "none",
       "observed_form": "file",
@@ -25122,35 +25122,35 @@
           {
             "anchor": "public-root-exceptions",
             "level": 3,
-            "line": 59,
+            "line": 60,
             "ref": "README.md#public-root-exceptions",
             "title": "Public-root exceptions"
           },
           {
             "anchor": "important-operation-routes",
             "level": 2,
-            "line": 80,
+            "line": 81,
             "ref": "README.md#important-operation-routes",
             "title": "Important operation routes"
           },
           {
             "anchor": "build-and-verify",
             "level": 2,
-            "line": 118,
+            "line": 119,
             "ref": "README.md#build-and-verify",
             "title": "Build and verify"
           },
           {
             "anchor": "boundaries",
             "level": 2,
-            "line": 180,
+            "line": 181,
             "ref": "README.md#boundaries",
             "title": "Boundaries"
           },
           {
             "anchor": "contribution-and-release",
             "level": 2,
-            "line": 191,
+            "line": 192,
             "ref": "README.md#contribution-and-release",
             "title": "Contribution and release"
           }
@@ -25162,7 +25162,7 @@
       },
       "signs": {
         "attestation_ref": "",
-        "digest": "bf19e16a46e654c8c95691d141196df4c023159f2b7d0bc3b4bc018975f6845d",
+        "digest": "c6adfe9a930b915067494cd7381ce29b93f9d0df2ab2c92e14233df64c8d3978",
         "signature_ref": "",
         "verification_state": "digest-only"
       },
@@ -25210,13 +25210,13 @@
         "state": "current"
       },
       "identity": {
-        "content_hash": "9efa4f6726d2cbe912a5b328475f35815dbc29c5a23878cc84b7f742cedae7ab",
+        "content_hash": "dbd9f591fc180241d0d5d6213ca5b29ec075123d23c9ae0bd655cc23bb87e3c4",
         "git_ref": "git-index-source-tree",
         "id": "file:roadmap.md:683343bdf9",
         "mime": "text/markdown",
         "path": "ROADMAP.md",
         "repo": "aoa-stats",
-        "size_bytes": 8040
+        "size_bytes": 8125
       },
       "mechanics_role": "none",
       "observed_form": "file",
@@ -25259,35 +25259,35 @@
           {
             "anchor": "active-summary-families",
             "level": 2,
-            "line": 32,
+            "line": 34,
             "ref": "ROADMAP.md#active-summary-families",
             "title": "Active summary families"
           },
           {
             "anchor": "maintained-contracts",
             "level": 2,
-            "line": 54,
+            "line": 56,
             "ref": "ROADMAP.md#maintained-contracts",
             "title": "Maintained contracts"
           },
           {
             "anchor": "direction",
             "level": 2,
-            "line": 124,
+            "line": 126,
             "ref": "ROADMAP.md#direction",
             "title": "Direction"
           },
           {
             "anchor": "non-goals",
             "level": 2,
-            "line": 142,
+            "line": 144,
             "ref": "ROADMAP.md#non-goals",
             "title": "Non-goals"
           },
           {
             "anchor": "release-gate",
             "level": 2,
-            "line": 150,
+            "line": 152,
             "ref": "ROADMAP.md#release-gate",
             "title": "Release gate"
           }
@@ -25299,7 +25299,7 @@
       },
       "signs": {
         "attestation_ref": "",
-        "digest": "9efa4f6726d2cbe912a5b328475f35815dbc29c5a23878cc84b7f742cedae7ab",
+        "digest": "dbd9f591fc180241d0d5d6213ca5b29ec075123d23c9ae0bd655cc23bb87e3c4",
         "signature_ref": "",
         "verification_state": "digest-only"
       },
@@ -25470,13 +25470,13 @@
         "state": "current"
       },
       "identity": {
-        "content_hash": "482376014a0c909925d0f78c0078e9f5387056057702607c3b3abc762cda9ec4",
+        "content_hash": "42ac7558e1ae3506522fe34618fd7e76f006292904fbfefad11ec9df33cc776b",
         "git_ref": "git-index-source-tree",
         "id": "file:docs/architecture.md:ff21b6b9a3",
         "mime": "text/markdown",
         "path": "docs/ARCHITECTURE.md",
         "repo": "aoa-stats",
-        "size_bytes": 10036
+        "size_bytes": 10233
       },
       "mechanics_role": "none",
       "observed_form": "file",
@@ -25561,7 +25561,7 @@
           {
             "anchor": "canonical-split",
             "level": 2,
-            "line": 200,
+            "line": 203,
             "ref": "docs/ARCHITECTURE.md#canonical-split",
             "title": "Canonical split"
           }
@@ -25573,7 +25573,7 @@
       },
       "signs": {
         "attestation_ref": "",
-        "digest": "482376014a0c909925d0f78c0078e9f5387056057702607c3b3abc762cda9ec4",
+        "digest": "42ac7558e1ae3506522fe34618fd7e76f006292904fbfefad11ec9df33cc776b",
         "signature_ref": "",
         "verification_state": "digest-only"
       },
@@ -27785,6 +27785,164 @@
         "route_kind": "resource",
         "surface": "aoa-kag-mcp"
       },
+      "document_role": "decision",
+      "freshness": {
+        "checked_ref": "git-index-source-tree",
+        "mode": "source_snapshot",
+        "state": "current"
+      },
+      "identity": {
+        "content_hash": "3a8604b9c5bc0a8080d502606b251d22f454cde97d1eb02f6fc5cb8d094b7f56",
+        "git_ref": "git-index-source-tree",
+        "id": "file:docs/decisions/aost-d-0008-retired-outputs-remain-cleanup-tombstones-not-active-stats.md:5e3665792f",
+        "mime": "text/markdown",
+        "path": "docs/decisions/AOST-D-0008-retired-outputs-remain-cleanup-tombstones-not-active-stats.md",
+        "repo": "aoa-stats",
+        "size_bytes": 7359
+      },
+      "mechanics_role": "none",
+      "observed_form": "file",
+      "owner_return_route": {
+        "route_kind": "document_owner",
+        "surface": "docs/decisions/AOST-D-0008-retired-outputs-remain-cleanup-tombstones-not-active-stats.md"
+      },
+      "provenance": {
+        "generated_by": "",
+        "materials": [],
+        "observed_by": "aoa-kag:scripts/generate_repo_local_kag_index.py",
+        "source_refs": [
+          {
+            "authority": "authored_source",
+            "path": "docs/decisions/AOST-D-0008-retired-outputs-remain-cleanup-tombstones-not-active-stats.md",
+            "repo": "aoa-stats",
+            "role": "primary"
+          }
+        ],
+        "validated_by": [
+          "aoa-kag:scripts/validate_kag.py"
+        ]
+      },
+      "refs": {
+        "heading_refs": [
+          {
+            "anchor": "aost-d-0008-retired-outputs-remain-cleanup-tombstones-not-active-stats",
+            "level": 1,
+            "line": 1,
+            "ref": "docs/decisions/AOST-D-0008-retired-outputs-remain-cleanup-tombstones-not-active-stats.md#aost-d-0008-retired-outputs-remain-cleanup-tombstones-not-active-stats",
+            "title": "AOST-D-0008 Retired Outputs Remain Cleanup Tombstones, Not Active Stats"
+          },
+          {
+            "anchor": "index-metadata",
+            "level": 2,
+            "line": 3,
+            "ref": "docs/decisions/AOST-D-0008-retired-outputs-remain-cleanup-tombstones-not-active-stats.md#index-metadata",
+            "title": "Index Metadata"
+          },
+          {
+            "anchor": "status",
+            "level": 2,
+            "line": 13,
+            "ref": "docs/decisions/AOST-D-0008-retired-outputs-remain-cleanup-tombstones-not-active-stats.md#status",
+            "title": "Status"
+          },
+          {
+            "anchor": "context",
+            "level": 2,
+            "line": 17,
+            "ref": "docs/decisions/AOST-D-0008-retired-outputs-remain-cleanup-tombstones-not-active-stats.md#context",
+            "title": "Context"
+          },
+          {
+            "anchor": "decision",
+            "level": 2,
+            "line": 38,
+            "ref": "docs/decisions/AOST-D-0008-retired-outputs-remain-cleanup-tombstones-not-active-stats.md#decision",
+            "title": "Decision"
+          },
+          {
+            "anchor": "options-considered",
+            "level": 2,
+            "line": 68,
+            "ref": "docs/decisions/AOST-D-0008-retired-outputs-remain-cleanup-tombstones-not-active-stats.md#options-considered",
+            "title": "Options Considered"
+          },
+          {
+            "anchor": "rationale",
+            "level": 2,
+            "line": 84,
+            "ref": "docs/decisions/AOST-D-0008-retired-outputs-remain-cleanup-tombstones-not-active-stats.md#rationale",
+            "title": "Rationale"
+          },
+          {
+            "anchor": "consequences",
+            "level": 2,
+            "line": 97,
+            "ref": "docs/decisions/AOST-D-0008-retired-outputs-remain-cleanup-tombstones-not-active-stats.md#consequences",
+            "title": "Consequences"
+          },
+          {
+            "anchor": "source-surfaces",
+            "level": 2,
+            "line": 116,
+            "ref": "docs/decisions/AOST-D-0008-retired-outputs-remain-cleanup-tombstones-not-active-stats.md#source-surfaces",
+            "title": "Source Surfaces"
+          },
+          {
+            "anchor": "validation",
+            "level": 2,
+            "line": 137,
+            "ref": "docs/decisions/AOST-D-0008-retired-outputs-remain-cleanup-tombstones-not-active-stats.md#validation",
+            "title": "Validation"
+          }
+        ],
+        "line_refs": [
+          "docs/decisions/AOST-D-0008-retired-outputs-remain-cleanup-tombstones-not-active-stats.md:1"
+        ],
+        "path_ref": "docs/decisions/AOST-D-0008-retired-outputs-remain-cleanup-tombstones-not-active-stats.md"
+      },
+      "signs": {
+        "attestation_ref": "",
+        "digest": "3a8604b9c5bc0a8080d502606b251d22f454cde97d1eb02f6fc5cb8d094b7f56",
+        "signature_ref": "",
+        "verification_state": "digest-only"
+      },
+      "surface_state": "authored_source",
+      "toolchain": {
+        "detected_tools": [
+          "git",
+          "python"
+        ],
+        "owner_commands": [],
+        "required_tools": []
+      },
+      "validator_route": {
+        "route_kind": "source_fast",
+        "surface": "aoa-kag:scripts/validate_kag.py"
+      }
+    },
+    {
+      "abi": {
+        "abi_epoch": "source",
+        "artifact_class": "document",
+        "compatibility": "stable",
+        "contract_version": "none",
+        "schema_version": "none"
+      },
+      "access": {
+        "scope": "public",
+        "secrets_risk": "none"
+      },
+      "artifact_kind": "document",
+      "classification": {
+        "confidence": "high",
+        "primary_kind": "document"
+      },
+      "code_role": "none",
+      "command_role": "none",
+      "consumer_route": {
+        "route_kind": "resource",
+        "surface": "aoa-kag-mcp"
+      },
       "document_role": "readme",
       "freshness": {
         "checked_ref": "git-index-source-tree",
@@ -28189,13 +28347,13 @@
         "state": "current"
       },
       "identity": {
-        "content_hash": "80e8143bd4fc072680d472bacbd8de19e427c6054c39ad4976d100fd5cc1b183",
+        "content_hash": "a541d2967f381dbc74b14346d6eda5eaef72dd1c4a3f1911507f8611b21e1767",
         "git_ref": "git-index-source-tree",
         "id": "file:docs/decisions/indexes/by-date.md:7f76a83a93",
         "mime": "text/markdown",
         "path": "docs/decisions/indexes/by-date.md",
         "repo": "aoa-stats",
-        "size_bytes": 1649
+        "size_bytes": 1898
       },
       "mechanics_role": "none",
       "observed_form": "generated_output",
@@ -28257,7 +28415,7 @@
       },
       "signs": {
         "attestation_ref": "",
-        "digest": "80e8143bd4fc072680d472bacbd8de19e427c6054c39ad4976d100fd5cc1b183",
+        "digest": "a541d2967f381dbc74b14346d6eda5eaef72dd1c4a3f1911507f8611b21e1767",
         "signature_ref": "",
         "verification_state": "digest-only"
       },
@@ -28305,13 +28463,13 @@
         "state": "current"
       },
       "identity": {
-        "content_hash": "8b4eab469e98e6fb6a757d39503df88d4da02d5471dd51caa41493b44eab0034",
+        "content_hash": "8bd972b9e2b71485263c6f8e1a55193362846c13e06cdc66ba9d9a9e3b066925",
         "git_ref": "git-index-source-tree",
         "id": "file:docs/decisions/indexes/by-guard.md:8ae406686a",
         "mime": "text/markdown",
         "path": "docs/decisions/indexes/by-guard.md",
         "repo": "aoa-stats",
-        "size_bytes": 8251
+        "size_bytes": 9853
       },
       "mechanics_role": "none",
       "observed_form": "generated_output",
@@ -28345,121 +28503,149 @@
             "title": "Decisions By Validation Or Guard Family"
           },
           {
-            "anchor": "consumer-regrounding",
+            "anchor": "catalog-output-parity",
             "level": 2,
             "line": 5,
+            "ref": "docs/decisions/indexes/by-guard.md#catalog-output-parity",
+            "title": "catalog-output parity"
+          },
+          {
+            "anchor": "consumer-handoff",
+            "level": 2,
+            "line": 9,
+            "ref": "docs/decisions/indexes/by-guard.md#consumer-handoff",
+            "title": "consumer handoff"
+          },
+          {
+            "anchor": "consumer-regrounding",
+            "level": 2,
+            "line": 13,
             "ref": "docs/decisions/indexes/by-guard.md#consumer-regrounding",
             "title": "consumer regrounding"
           },
           {
             "anchor": "cross-owner-coherence",
             "level": 2,
-            "line": 9,
+            "line": 17,
             "ref": "docs/decisions/indexes/by-guard.md#cross-owner-coherence",
             "title": "cross-owner coherence"
           },
           {
             "anchor": "derived-only-authority",
             "level": 2,
-            "line": 13,
+            "line": 21,
             "ref": "docs/decisions/indexes/by-guard.md#derived-only-authority",
             "title": "derived-only authority"
           },
           {
             "anchor": "downstream-canaries",
             "level": 2,
-            "line": 23,
+            "line": 32,
             "ref": "docs/decisions/indexes/by-guard.md#downstream-canaries",
             "title": "downstream canaries"
           },
           {
             "anchor": "generated-index-parity",
             "level": 2,
-            "line": 27,
+            "line": 36,
             "ref": "docs/decisions/indexes/by-guard.md#generated-index-parity",
             "title": "generated-index parity"
           },
           {
             "anchor": "intake-governance",
             "level": 2,
-            "line": 31,
+            "line": 40,
             "ref": "docs/decisions/indexes/by-guard.md#intake-governance",
             "title": "intake governance"
           },
           {
             "anchor": "live-source-admission",
             "level": 2,
-            "line": 35,
+            "line": 44,
             "ref": "docs/decisions/indexes/by-guard.md#live-source-admission",
             "title": "live-source admission"
           },
           {
             "anchor": "missing-evidence-visibility",
             "level": 2,
-            "line": 43,
+            "line": 52,
             "ref": "docs/decisions/indexes/by-guard.md#missing-evidence-visibility",
             "title": "missing-evidence visibility"
           },
           {
             "anchor": "owner-contract-compatibility",
             "level": 2,
-            "line": 47,
+            "line": 57,
             "ref": "docs/decisions/indexes/by-guard.md#owner-contract-compatibility",
             "title": "owner-contract compatibility"
           },
           {
             "anchor": "profile-output-parity",
             "level": 2,
-            "line": 52,
+            "line": 62,
             "ref": "docs/decisions/indexes/by-guard.md#profile-output-parity",
             "title": "profile-output parity"
           },
           {
             "anchor": "reference-source-posture",
             "level": 2,
-            "line": 57,
+            "line": 67,
             "ref": "docs/decisions/indexes/by-guard.md#reference-source-posture",
             "title": "reference-source posture"
           },
           {
             "anchor": "refresh-observation",
             "level": 2,
-            "line": 61,
+            "line": 71,
             "ref": "docs/decisions/indexes/by-guard.md#refresh-observation",
             "title": "refresh observation"
           },
           {
+            "anchor": "retired-output-cleanup",
+            "level": 2,
+            "line": 76,
+            "ref": "docs/decisions/indexes/by-guard.md#retired-output-cleanup",
+            "title": "retired-output cleanup"
+          },
+          {
             "anchor": "route-law-validation",
             "level": 2,
-            "line": 66,
+            "line": 80,
             "ref": "docs/decisions/indexes/by-guard.md#route-law-validation",
             "title": "route-law validation"
           },
           {
             "anchor": "schema-output-parity",
             "level": 2,
-            "line": 70,
+            "line": 84,
             "ref": "docs/decisions/indexes/by-guard.md#schema-output-parity",
             "title": "schema-output parity"
           },
           {
             "anchor": "source-coverage",
             "level": 2,
-            "line": 75,
+            "line": 89,
             "ref": "docs/decisions/indexes/by-guard.md#source-coverage",
             "title": "source coverage"
           },
           {
+            "anchor": "source-of-truth-lifecycle",
+            "level": 2,
+            "line": 93,
+            "ref": "docs/decisions/indexes/by-guard.md#source-of-truth-lifecycle",
+            "title": "source-of-truth lifecycle"
+          },
+          {
             "anchor": "stale-output-cleanup",
             "level": 2,
-            "line": 79,
+            "line": 97,
             "ref": "docs/decisions/indexes/by-guard.md#stale-output-cleanup",
             "title": "stale-output cleanup"
           },
           {
             "anchor": "zero-baseline-interpretation",
             "level": 2,
-            "line": 86,
+            "line": 104,
             "ref": "docs/decisions/indexes/by-guard.md#zero-baseline-interpretation",
             "title": "zero-baseline interpretation"
           }
@@ -28471,7 +28657,7 @@
       },
       "signs": {
         "attestation_ref": "",
-        "digest": "8b4eab469e98e6fb6a757d39503df88d4da02d5471dd51caa41493b44eab0034",
+        "digest": "8bd972b9e2b71485263c6f8e1a55193362846c13e06cdc66ba9d9a9e3b066925",
         "signature_ref": "",
         "verification_state": "digest-only"
       },
@@ -28519,13 +28705,13 @@
         "state": "current"
       },
       "identity": {
-        "content_hash": "645aa80193e627323ca3ec8063c60460c7b704324e8811561e38a20c6b694879",
+        "content_hash": "4811780bd3c1d764ea56de56344919140b9e10bb0c143ba02ec0afe9a0d7cbe2",
         "git_ref": "git-index-source-tree",
         "id": "file:docs/decisions/indexes/by-number.md:02e6940a39",
         "mime": "text/markdown",
         "path": "docs/decisions/indexes/by-number.md",
         "repo": "aoa-stats",
-        "size_bytes": 4660
+        "size_bytes": 5391
       },
       "mechanics_role": "none",
       "observed_form": "generated_output",
@@ -28566,7 +28752,7 @@
       },
       "signs": {
         "attestation_ref": "",
-        "digest": "645aa80193e627323ca3ec8063c60460c7b704324e8811561e38a20c6b694879",
+        "digest": "4811780bd3c1d764ea56de56344919140b9e10bb0c143ba02ec0afe9a0d7cbe2",
         "signature_ref": "",
         "verification_state": "digest-only"
       },
@@ -28614,13 +28800,13 @@
         "state": "current"
       },
       "identity": {
-        "content_hash": "f4c89af102f220719c02eb334420463644285baeb3165e0206b03eb56e60357e",
+        "content_hash": "ba3c1ccd2e8ee62867a2e1e9d6a63aa31be5d584aed6a0badc29e335682b7f5f",
         "git_ref": "git-index-source-tree",
         "id": "file:docs/decisions/indexes/by-source-lane.md:d12818b811",
         "mime": "text/markdown",
         "path": "docs/decisions/indexes/by-source-lane.md",
         "repo": "aoa-stats",
-        "size_bytes": 4966
+        "size_bytes": 5826
       },
       "mechanics_role": "none",
       "observed_form": "generated_output",
@@ -28710,72 +28896,93 @@
             "title": "aoa-memo reviewed corpus"
           },
           {
-            "anchor": "aoa-sdk-incarnation-receipt-examples",
+            "anchor": "aoa-routing-consumer-re-grounding",
             "level": 2,
             "line": 37,
+            "ref": "docs/decisions/indexes/by-source-lane.md#aoa-routing-consumer-re-grounding",
+            "title": "aoa-routing consumer re-grounding"
+          },
+          {
+            "anchor": "aoa-sdk-incarnation-receipt-examples",
+            "level": 2,
+            "line": 41,
             "ref": "docs/decisions/indexes/by-source-lane.md#aoa-sdk-incarnation-receipt-examples",
             "title": "aoa-sdk incarnation receipt examples"
           },
           {
             "anchor": "aoa-sdk-reviewed-closeout-transport",
             "level": 2,
-            "line": 41,
+            "line": 45,
             "ref": "docs/decisions/indexes/by-source-lane.md#aoa-sdk-reviewed-closeout-transport",
             "title": "aoa-sdk reviewed closeout transport"
           },
           {
             "anchor": "aoa-sdk-reviewed-component-refresh-examples",
             "level": 2,
-            "line": 45,
+            "line": 49,
             "ref": "docs/decisions/indexes/by-source-lane.md#aoa-sdk-reviewed-component-refresh-examples",
             "title": "aoa-sdk reviewed component refresh examples"
           },
           {
             "anchor": "aoa-sdk-stats-contracts",
             "level": 2,
-            "line": 49,
+            "line": 53,
             "ref": "docs/decisions/indexes/by-source-lane.md#aoa-sdk-stats-contracts",
             "title": "aoa-sdk stats contracts"
           },
           {
             "anchor": "aoa-sdk-swarm-ledger-contract",
             "level": 2,
-            "line": 53,
+            "line": 57,
             "ref": "docs/decisions/indexes/by-source-lane.md#aoa-sdk-swarm-ledger-contract",
             "title": "aoa-sdk swarm-ledger contract"
           },
           {
+            "anchor": "aoa-sdk-titan-swarm-ledger-contract",
+            "level": 2,
+            "line": 61,
+            "ref": "docs/decisions/indexes/by-source-lane.md#aoa-sdk-titan-swarm-ledger-contract",
+            "title": "aoa-sdk Titan swarm-ledger contract"
+          },
+          {
             "anchor": "aoa-skills-progression-receipts",
             "level": 2,
-            "line": 57,
+            "line": 65,
             "ref": "docs/decisions/indexes/by-source-lane.md#aoa-skills-progression-receipts",
             "title": "aoa-skills progression receipts"
           },
           {
             "anchor": "aoa-stats",
             "level": 2,
-            "line": 61,
+            "line": 69,
             "ref": "docs/decisions/indexes/by-source-lane.md#aoa-stats",
             "title": "aoa-stats"
           },
           {
+            "anchor": "aoa-stats-authored-profiles",
+            "level": 2,
+            "line": 74,
+            "ref": "docs/decisions/indexes/by-source-lane.md#aoa-stats-authored-profiles",
+            "title": "aoa-stats authored profiles"
+          },
+          {
             "anchor": "owner-local-component-refresh-receipts",
             "level": 2,
-            "line": 66,
+            "line": 78,
             "ref": "docs/decisions/indexes/by-source-lane.md#owner-local-component-refresh-receipts",
             "title": "owner-local component refresh receipts"
           },
           {
             "anchor": "owner-local-landing-receipts",
             "level": 2,
-            "line": 70,
+            "line": 82,
             "ref": "docs/decisions/indexes/by-source-lane.md#owner-local-landing-receipts",
             "title": "owner-local landing receipts"
           },
           {
             "anchor": "sibling-decision-lane-pattern",
             "level": 2,
-            "line": 74,
+            "line": 86,
             "ref": "docs/decisions/indexes/by-source-lane.md#sibling-decision-lane-pattern",
             "title": "sibling decision-lane pattern"
           }
@@ -28787,7 +28994,7 @@
       },
       "signs": {
         "attestation_ref": "",
-        "digest": "f4c89af102f220719c02eb334420463644285baeb3165e0206b03eb56e60357e",
+        "digest": "ba3c1ccd2e8ee62867a2e1e9d6a63aa31be5d584aed6a0badc29e335682b7f5f",
         "signature_ref": "",
         "verification_state": "digest-only"
       },
@@ -28835,13 +29042,13 @@
         "state": "current"
       },
       "identity": {
-        "content_hash": "7f62f9f198f9975d855a7028345a045bd9646860dc387ae7ca24df08ec0eb8f8",
+        "content_hash": "a9889db32a520575617f6217182ada2507399c530e9c8c1af4aa4e9a3d927a72",
         "git_ref": "git-index-source-tree",
         "id": "file:docs/decisions/indexes/by-stats-surface.md:01abbd2708",
         "mime": "text/markdown",
         "path": "docs/decisions/indexes/by-stats-surface.md",
         "repo": "aoa-stats",
-        "size_bytes": 5692
+        "size_bytes": 6738
       },
       "mechanics_role": "none",
       "observed_form": "generated_output",
@@ -28924,100 +29131,114 @@
             "title": "live receipt source registry"
           },
           {
-            "anchor": "live-summary-catalog",
+            "anchor": "live-stale-cleanup",
             "level": 2,
             "line": 33,
+            "ref": "docs/decisions/indexes/by-stats-surface.md#live-stale-cleanup",
+            "title": "live stale cleanup"
+          },
+          {
+            "anchor": "live-summary-catalog",
+            "level": 2,
+            "line": 37,
             "ref": "docs/decisions/indexes/by-stats-surface.md#live-summary-catalog",
             "title": "live summary catalog"
           },
           {
             "anchor": "local-live-output-inventory",
             "level": 2,
-            "line": 40,
+            "line": 44,
             "ref": "docs/decisions/indexes/by-stats-surface.md#local-live-output-inventory",
             "title": "local live output inventory"
           },
           {
             "anchor": "memory-movement",
             "level": 2,
-            "line": 44,
+            "line": 48,
             "ref": "docs/decisions/indexes/by-stats-surface.md#memory-movement",
             "title": "Memory Movement"
           },
           {
             "anchor": "owner-landing",
             "level": 2,
-            "line": 48,
+            "line": 52,
             "ref": "docs/decisions/indexes/by-stats-surface.md#owner-landing",
             "title": "Owner Landing"
           },
           {
+            "anchor": "read-model-lifecycle",
+            "level": 2,
+            "line": 56,
+            "ref": "docs/decisions/indexes/by-stats-surface.md#read-model-lifecycle",
+            "title": "read-model lifecycle"
+          },
+          {
             "anchor": "receipt-abi",
             "level": 2,
-            "line": 52,
+            "line": 60,
             "ref": "docs/decisions/indexes/by-stats-surface.md#receipt-abi",
             "title": "receipt ABI"
           },
           {
             "anchor": "route-progression",
             "level": 2,
-            "line": 56,
+            "line": 64,
             "ref": "docs/decisions/indexes/by-stats-surface.md#route-progression",
             "title": "Route Progression"
           },
           {
             "anchor": "runtime-closeout",
             "level": 2,
-            "line": 60,
+            "line": 68,
             "ref": "docs/decisions/indexes/by-stats-surface.md#runtime-closeout",
             "title": "Runtime Closeout"
           },
           {
             "anchor": "source-coverage",
             "level": 2,
-            "line": 64,
+            "line": 72,
             "ref": "docs/decisions/indexes/by-stats-surface.md#source-coverage",
             "title": "source coverage"
           },
           {
             "anchor": "source-coverage-1",
             "level": 2,
-            "line": 68,
+            "line": 76,
             "ref": "docs/decisions/indexes/by-stats-surface.md#source-coverage-1",
             "title": "Source Coverage"
           },
           {
             "anchor": "stress-recovery-window",
             "level": 2,
-            "line": 72,
+            "line": 80,
             "ref": "docs/decisions/indexes/by-stats-surface.md#stress-recovery-window",
             "title": "Stress Recovery Window"
           },
           {
             "anchor": "summary-surface-catalog",
             "level": 2,
-            "line": 76,
+            "line": 84,
             "ref": "docs/decisions/indexes/by-stats-surface.md#summary-surface-catalog",
             "title": "summary surface catalog"
           },
           {
             "anchor": "surface-strength",
             "level": 2,
-            "line": 80,
+            "line": 89,
             "ref": "docs/decisions/indexes/by-stats-surface.md#surface-strength",
             "title": "surface strength"
           },
           {
             "anchor": "titan-incarnation",
             "level": 2,
-            "line": 84,
+            "line": 93,
             "ref": "docs/decisions/indexes/by-stats-surface.md#titan-incarnation",
             "title": "Titan Incarnation"
           },
           {
             "anchor": "titan-summon",
             "level": 2,
-            "line": 88,
+            "line": 97,
             "ref": "docs/decisions/indexes/by-stats-surface.md#titan-summon",
             "title": "Titan Summon"
           }
@@ -29029,7 +29250,7 @@
       },
       "signs": {
         "attestation_ref": "",
-        "digest": "7f62f9f198f9975d855a7028345a045bd9646860dc387ae7ca24df08ec0eb8f8",
+        "digest": "a9889db32a520575617f6217182ada2507399c530e9c8c1af4aa4e9a3d927a72",
         "signature_ref": "",
         "verification_state": "digest-only"
       },
@@ -29077,13 +29298,13 @@
         "state": "current"
       },
       "identity": {
-        "content_hash": "ce506a90eaca3ba29ea610bbf1675700ecbf1d5750285404452f3781f947d8b6",
+        "content_hash": "6b01d29b631b64385b8f47aca1be3cdb4f7f5d5216a2fc86602642ab47bcc6ad",
         "git_ref": "git-index-source-tree",
         "id": "file:docs/decisions/indexes/by-surface.md:acd156903f",
         "mime": "text/markdown",
         "path": "docs/decisions/indexes/by-surface.md",
         "repo": "aoa-stats",
-        "size_bytes": 8864
+        "size_bytes": 10375
       },
       "mechanics_role": "none",
       "observed_form": "generated_output",
@@ -29168,105 +29389,112 @@
           {
             "anchor": "mcpcatalog",
             "level": 2,
-            "line": 34,
+            "line": 35,
             "ref": "docs/decisions/indexes/by-surface.md#mcpcatalog",
             "title": "MCP/catalog"
           },
           {
             "anchor": "mechanicsantifragility",
             "level": 2,
-            "line": 39,
+            "line": 40,
             "ref": "docs/decisions/indexes/by-surface.md#mechanicsantifragility",
             "title": "mechanics/antifragility"
           },
           {
             "anchor": "mechanicsboundary-bridge",
             "level": 2,
-            "line": 43,
+            "line": 44,
             "ref": "docs/decisions/indexes/by-surface.md#mechanicsboundary-bridge",
             "title": "mechanics/boundary-bridge"
           },
           {
             "anchor": "mechanicscheckpoint",
             "level": 2,
-            "line": 47,
+            "line": 48,
             "ref": "docs/decisions/indexes/by-surface.md#mechanicscheckpoint",
             "title": "mechanics/checkpoint"
           },
           {
             "anchor": "mechanicsmethod-growth",
             "level": 2,
-            "line": 51,
+            "line": 52,
             "ref": "docs/decisions/indexes/by-surface.md#mechanicsmethod-growth",
             "title": "mechanics/method-growth"
           },
           {
             "anchor": "mechanicsrecurrence",
             "level": 2,
-            "line": 55,
+            "line": 56,
             "ref": "docs/decisions/indexes/by-surface.md#mechanicsrecurrence",
             "title": "mechanics/recurrence"
           },
           {
             "anchor": "mechanicsrpg",
             "level": 2,
-            "line": 62,
+            "line": 64,
             "ref": "docs/decisions/indexes/by-surface.md#mechanicsrpg",
             "title": "mechanics/rpg"
           },
           {
             "anchor": "mechanicstitan",
             "level": 2,
-            "line": 66,
+            "line": 68,
             "ref": "docs/decisions/indexes/by-surface.md#mechanicstitan",
             "title": "mechanics/titan"
           },
           {
             "anchor": "schemasreceipt-abi",
             "level": 2,
-            "line": 70,
+            "line": 73,
             "ref": "docs/decisions/indexes/by-surface.md#schemasreceipt-abi",
             "title": "schemas/receipt-abi"
           },
           {
             "anchor": "scriptsvalidators",
             "level": 2,
-            "line": 74,
+            "line": 77,
             "ref": "docs/decisions/indexes/by-surface.md#scriptsvalidators",
             "title": "scripts/validators"
           },
           {
             "anchor": "srcadapters",
             "level": 2,
-            "line": 79,
+            "line": 82,
             "ref": "docs/decisions/indexes/by-surface.md#srcadapters",
             "title": "src/adapters"
           },
           {
+            "anchor": "srccatalog",
+            "level": 2,
+            "line": 87,
+            "ref": "docs/decisions/indexes/by-surface.md#srccatalog",
+            "title": "src/catalog"
+          },
+          {
             "anchor": "srcprojection",
             "level": 2,
-            "line": 84,
+            "line": 91,
             "ref": "docs/decisions/indexes/by-surface.md#srcprojection",
             "title": "src/projection"
           },
           {
             "anchor": "stategenerated",
             "level": 2,
-            "line": 90,
+            "line": 97,
             "ref": "docs/decisions/indexes/by-surface.md#stategenerated",
             "title": "state/generated"
           },
           {
             "anchor": "statsread-models",
             "level": 2,
-            "line": 97,
+            "line": 105,
             "ref": "docs/decisions/indexes/by-surface.md#statsread-models",
             "title": "stats/read-models"
           },
           {
             "anchor": "testsrelease-checks",
             "level": 2,
-            "line": 105,
+            "line": 114,
             "ref": "docs/decisions/indexes/by-surface.md#testsrelease-checks",
             "title": "tests/release-checks"
           }
@@ -29278,7 +29506,7 @@
       },
       "signs": {
         "attestation_ref": "",
-        "digest": "ce506a90eaca3ba29ea610bbf1675700ecbf1d5750285404452f3781f947d8b6",
+        "digest": "6b01d29b631b64385b8f47aca1be3cdb4f7f5d5216a2fc86602642ab47bcc6ad",
         "signature_ref": "",
         "verification_state": "digest-only"
       },
@@ -33158,13 +33386,13 @@
         "state": "current"
       },
       "identity": {
-        "content_hash": "f59b34114444d8258125e6d257b43238d949993de926a2006ef3bbf7dc53b656",
+        "content_hash": "0e573c1c2d211b3311cb51ea6bc70de4fe54b30d64cd020936d031ff8f8e0c84",
         "git_ref": "git-index-source-tree",
         "id": "file:generated/summary_surface_catalog.min.json:5c31a5556b",
         "mime": "application/json",
         "path": "generated/summary_surface_catalog.min.json",
         "repo": "aoa-stats",
-        "size_bytes": 28710
+        "size_bytes": 27573
       },
       "mechanics_role": "none",
       "observed_form": "generated_output",
@@ -33197,7 +33425,7 @@
       },
       "signs": {
         "attestation_ref": "",
-        "digest": "f59b34114444d8258125e6d257b43238d949993de926a2006ef3bbf7dc53b656",
+        "digest": "0e573c1c2d211b3311cb51ea6bc70de4fe54b30d64cd020936d031ff8f8e0c84",
         "signature_ref": "",
         "verification_state": "digest-only"
       },
@@ -33465,95 +33693,6 @@
       "signs": {
         "attestation_ref": "",
         "digest": "76fa5174c7a22444009c0317c3a2d79b114081b5120becab4422050b8f6d87e6",
-        "signature_ref": "",
-        "verification_state": "digest-only"
-      },
-      "surface_state": "generated_readmodel",
-      "toolchain": {
-        "detected_tools": [
-          "git",
-          "python"
-        ],
-        "owner_commands": [],
-        "required_tools": [
-          "jq"
-        ]
-      },
-      "validator_route": {
-        "route_kind": "source_fast",
-        "surface": "aoa-kag:scripts/validate_kag.py"
-      }
-    },
-    {
-      "abi": {
-        "abi_epoch": "source",
-        "artifact_class": "generated_readmodel",
-        "compatibility": "generated",
-        "contract_version": "none",
-        "schema_version": "titan_summon_summary/v1"
-      },
-      "access": {
-        "scope": "public",
-        "secrets_risk": "none"
-      },
-      "artifact_kind": "generated_readmodel",
-      "classification": {
-        "confidence": "high",
-        "primary_kind": "artifact"
-      },
-      "code_role": "none",
-      "command_role": "none",
-      "consumer_route": {
-        "route_kind": "resource",
-        "surface": "aoa-kag-mcp"
-      },
-      "document_role": "none",
-      "freshness": {
-        "checked_ref": "git-index-source-tree",
-        "mode": "source_snapshot",
-        "state": "current"
-      },
-      "identity": {
-        "content_hash": "1297e1f0a556a06458e04ac098c078af477d18fe28832014f4e9bd6465b850f7",
-        "git_ref": "git-index-source-tree",
-        "id": "file:generated/titan_summon_summary.min.json:d1a90418dc",
-        "mime": "application/json",
-        "path": "generated/titan_summon_summary.min.json",
-        "repo": "aoa-stats",
-        "size_bytes": 332
-      },
-      "mechanics_role": "none",
-      "observed_form": "generated_output",
-      "owner_return_route": {
-        "route_kind": "source_owner",
-        "surface": "generated/titan_summon_summary.min.json"
-      },
-      "provenance": {
-        "generated_by": "",
-        "materials": [],
-        "observed_by": "aoa-kag:scripts/generate_repo_local_kag_index.py",
-        "source_refs": [
-          {
-            "authority": "derived_readmodel",
-            "path": "generated/titan_summon_summary.min.json",
-            "repo": "aoa-stats",
-            "role": "primary"
-          }
-        ],
-        "validated_by": [
-          "aoa-kag:scripts/validate_kag.py"
-        ]
-      },
-      "refs": {
-        "heading_refs": [],
-        "line_refs": [
-          "generated/titan_summon_summary.min.json:1"
-        ],
-        "path_ref": "generated/titan_summon_summary.min.json"
-      },
-      "signs": {
-        "attestation_ref": "",
-        "digest": "1297e1f0a556a06458e04ac098c078af477d18fe28832014f4e9bd6465b850f7",
         "signature_ref": "",
         "verification_state": "digest-only"
       },
@@ -77571,13 +77710,13 @@
         "state": "current"
       },
       "identity": {
-        "content_hash": "d4498d7ecc2a28dfa1d6b79bf4f57ef1f6f73086dce496a320a3e7797f05ef87",
+        "content_hash": "2777c4d092d5aef1893d944ee931cd7721f600e83e4873aaeaacf5da9fddfb09",
         "git_ref": "git-index-source-tree",
         "id": "file:mechanics/recurrence/parts/live-receipt-refresh/contract.md:c4b2a7db4d",
         "mime": "text/markdown",
         "path": "mechanics/recurrence/parts/live-receipt-refresh/CONTRACT.md",
         "repo": "aoa-stats",
-        "size_bytes": 6839
+        "size_bytes": 7038
       },
       "mechanics_role": "part_contract",
       "observed_form": "file",
@@ -77627,28 +77766,28 @@
           {
             "anchor": "outputs",
             "level": 2,
-            "line": 19,
+            "line": 21,
             "ref": "mechanics/recurrence/parts/live-receipt-refresh/CONTRACT.md#outputs",
             "title": "Outputs"
           },
           {
             "anchor": "invariants",
             "level": 2,
-            "line": 28,
+            "line": 30,
             "ref": "mechanics/recurrence/parts/live-receipt-refresh/CONTRACT.md#invariants",
             "title": "Invariants"
           },
           {
             "anchor": "crosswalk",
             "level": 2,
-            "line": 107,
+            "line": 110,
             "ref": "mechanics/recurrence/parts/live-receipt-refresh/CONTRACT.md#crosswalk",
             "title": "Crosswalk"
           },
           {
             "anchor": "compatibility-route",
             "level": 2,
-            "line": 125,
+            "line": 128,
             "ref": "mechanics/recurrence/parts/live-receipt-refresh/CONTRACT.md#compatibility-route",
             "title": "Compatibility route"
           }
@@ -77660,7 +77799,7 @@
       },
       "signs": {
         "attestation_ref": "",
-        "digest": "d4498d7ecc2a28dfa1d6b79bf4f57ef1f6f73086dce496a320a3e7797f05ef87",
+        "digest": "2777c4d092d5aef1893d944ee931cd7721f600e83e4873aaeaacf5da9fddfb09",
         "signature_ref": "",
         "verification_state": "digest-only"
       },
@@ -77824,13 +77963,13 @@
         "state": "current"
       },
       "identity": {
-        "content_hash": "3e6903c3add52541045ff5d1b8d0f8357272d70334a95df6e2ce1d43241452cb",
+        "content_hash": "e24dd11119e700b99e4a0cd7a78158ba54c89e944ee2eef4bdcf56085c757954",
         "git_ref": "git-index-source-tree",
         "id": "file:mechanics/recurrence/parts/live-receipt-refresh/validation.md:c26dcdde9f",
         "mime": "text/markdown",
         "path": "mechanics/recurrence/parts/live-receipt-refresh/VALIDATION.md",
         "repo": "aoa-stats",
-        "size_bytes": 2317
+        "size_bytes": 2465
       },
       "mechanics_role": "part_doc",
       "observed_form": "file",
@@ -77873,7 +78012,7 @@
           {
             "anchor": "cli-smoke",
             "level": 2,
-            "line": 44,
+            "line": 46,
             "ref": "mechanics/recurrence/parts/live-receipt-refresh/VALIDATION.md#cli-smoke",
             "title": "CLI smoke"
           }
@@ -77885,7 +78024,7 @@
       },
       "signs": {
         "attestation_ref": "",
-        "digest": "3e6903c3add52541045ff5d1b8d0f8357272d70334a95df6e2ce1d43241452cb",
+        "digest": "e24dd11119e700b99e4a0cd7a78158ba54c89e944ee2eef4bdcf56085c757954",
         "signature_ref": "",
         "verification_state": "digest-only"
       },
@@ -78234,13 +78373,13 @@
         "state": "current"
       },
       "identity": {
-        "content_hash": "758528b46b2d04cc03196cc654e91dfc533ff1788fbcba7f3cbdc7601e823a4a",
+        "content_hash": "1ea68ed2da88245376cfb7405e4cae41c6540222af836f0731a33b7f39dc41dd",
         "git_ref": "git-index-source-tree",
         "id": "file:mechanics/recurrence/parts/live-receipt-refresh/docs/live_session_use.md:807ec41ee1",
         "mime": "text/markdown",
         "path": "mechanics/recurrence/parts/live-receipt-refresh/docs/LIVE_SESSION_USE.md",
         "repo": "aoa-stats",
-        "size_bytes": 12434
+        "size_bytes": 12726
       },
       "mechanics_role": "part_doc",
       "observed_form": "file",
@@ -78311,28 +78450,28 @@
           {
             "anchor": "live-local-surfaces",
             "level": 2,
-            "line": 110,
+            "line": 109,
             "ref": "mechanics/recurrence/parts/live-receipt-refresh/docs/LIVE_SESSION_USE.md#live-local-surfaces",
             "title": "Live local surfaces"
           },
           {
             "anchor": "automatic-watcher",
             "level": 2,
-            "line": 226,
+            "line": 231,
             "ref": "mechanics/recurrence/parts/live-receipt-refresh/docs/LIVE_SESSION_USE.md#automatic-watcher",
             "title": "Automatic watcher"
           },
           {
             "anchor": "readiness-audit",
             "level": 2,
-            "line": 265,
+            "line": 270,
             "ref": "mechanics/recurrence/parts/live-receipt-refresh/docs/LIVE_SESSION_USE.md#readiness-audit",
             "title": "Readiness audit"
           },
           {
             "anchor": "boundary-reminder",
             "level": 2,
-            "line": 278,
+            "line": 283,
             "ref": "mechanics/recurrence/parts/live-receipt-refresh/docs/LIVE_SESSION_USE.md#boundary-reminder",
             "title": "Boundary reminder"
           }
@@ -78344,7 +78483,7 @@
       },
       "signs": {
         "attestation_ref": "",
-        "digest": "758528b46b2d04cc03196cc654e91dfc533ff1788fbcba7f3cbdc7601e823a4a",
+        "digest": "1ea68ed2da88245376cfb7405e4cae41c6540222af836f0731a33b7f39dc41dd",
         "signature_ref": "",
         "verification_state": "digest-only"
       },
@@ -78574,13 +78713,13 @@
         "state": "current"
       },
       "identity": {
-        "content_hash": "1895ff100674710fd7192e47a972f60ed6c5f14fcc9e35d375b5d0bf3757e96f",
+        "content_hash": "e550b746021735a151a5728e7356d2d9e86a78aa7904847262e8627f8a50eea7",
         "git_ref": "git-index-source-tree",
         "id": "file:mechanics/recurrence/parts/live-receipt-refresh/scripts/refresh_live_stats.py:300ae5a4c1",
         "mime": "text/x-python",
         "path": "mechanics/recurrence/parts/live-receipt-refresh/scripts/refresh_live_stats.py",
         "repo": "aoa-stats",
-        "size_bytes": 12005
+        "size_bytes": 12125
       },
       "mechanics_role": "part_script",
       "observed_form": "command",
@@ -78613,7 +78752,7 @@
       },
       "signs": {
         "attestation_ref": "",
-        "digest": "1895ff100674710fd7192e47a972f60ed6c5f14fcc9e35d375b5d0bf3757e96f",
+        "digest": "e550b746021735a151a5728e7356d2d9e86a78aa7904847262e8627f8a50eea7",
         "signature_ref": "",
         "verification_state": "digest-only"
       },
@@ -79144,13 +79283,13 @@
         "state": "current"
       },
       "identity": {
-        "content_hash": "aa327a828a687ea065499d3e676b6666d67cded2db90e1ab6e1d4fc51fd7f740",
+        "content_hash": "44bc0b806b5d44c002ca9f93a1536437527f8a45db31866689979e8a6957a1e2",
         "git_ref": "git-index-source-tree",
         "id": "file:mechanics/recurrence/parts/live-receipt-refresh/tests/test_refresh_live_stats.py:7cafbd910d",
         "mime": "text/x-python",
         "path": "mechanics/recurrence/parts/live-receipt-refresh/tests/test_refresh_live_stats.py",
         "repo": "aoa-stats",
-        "size_bytes": 48470
+        "size_bytes": 49088
       },
       "mechanics_role": "part_test",
       "observed_form": "command",
@@ -79183,7 +79322,7 @@
       },
       "signs": {
         "attestation_ref": "",
-        "digest": "aa327a828a687ea065499d3e676b6666d67cded2db90e1ab6e1d4fc51fd7f740",
+        "digest": "44bc0b806b5d44c002ca9f93a1536437527f8a45db31866689979e8a6957a1e2",
         "signature_ref": "",
         "verification_state": "digest-only"
       },
@@ -83670,13 +83809,13 @@
         "state": "current"
       },
       "identity": {
-        "content_hash": "353a053fdc65f083f6ad7f0c43ff91d55651e5f6642f63bb10baedbf863dde70",
+        "content_hash": "43d8b7e6d0d1b4dcc2b80a5f15d1def29ebebf765684055eacd28f649140b283",
         "git_ref": "git-index-source-tree",
         "id": "file:mechanics/titan/parts.md:3d536b324c",
         "mime": "text/markdown",
         "path": "mechanics/titan/PARTS.md",
         "repo": "aoa-stats",
-        "size_bytes": 560
+        "size_bytes": 563
       },
       "mechanics_role": "mechanic_package",
       "observed_form": "file",
@@ -83717,7 +83856,7 @@
       },
       "signs": {
         "attestation_ref": "",
-        "digest": "353a053fdc65f083f6ad7f0c43ff91d55651e5f6642f63bb10baedbf863dde70",
+        "digest": "43d8b7e6d0d1b4dcc2b80a5f15d1def29ebebf765684055eacd28f649140b283",
         "signature_ref": "",
         "verification_state": "digest-only"
       },
@@ -83860,13 +83999,13 @@
         "state": "current"
       },
       "identity": {
-        "content_hash": "7c643cabdbf87789e2681cf99beb0065bd1e9309c825f7b99609e8f1d84d9f66",
+        "content_hash": "41f486644e53e5a11b1c89ce5a2a33d07406df8024d53ed07ddf91398c33fadd",
         "git_ref": "git-index-source-tree",
         "id": "file:mechanics/titan/readme.md:53ded8a1fc",
         "mime": "text/markdown",
         "path": "mechanics/titan/README.md",
         "repo": "aoa-stats",
-        "size_bytes": 528
+        "size_bytes": 549
       },
       "mechanics_role": "mechanic_package",
       "observed_form": "file",
@@ -83907,7 +84046,7 @@
       },
       "signs": {
         "attestation_ref": "",
-        "digest": "7c643cabdbf87789e2681cf99beb0065bd1e9309c825f7b99609e8f1d84d9f66",
+        "digest": "41f486644e53e5a11b1c89ce5a2a33d07406df8024d53ed07ddf91398c33fadd",
         "signature_ref": "",
         "verification_state": "digest-only"
       },
@@ -84152,13 +84291,13 @@
         "state": "current"
       },
       "identity": {
-        "content_hash": "28ba1150566ad536f95078ba5368610b5749b30792b51802ada42d046ca24273",
+        "content_hash": "81de4d50dfa0bc2852a265b4a0193b1d111c1444d71f64530609a11b39c9c4a2",
         "git_ref": "git-index-source-tree",
         "id": "file:mechanics/titan/parts/incarnation-summon/contract.md:3687750a6f",
         "mime": "text/markdown",
         "path": "mechanics/titan/parts/incarnation-summon/CONTRACT.md",
         "repo": "aoa-stats",
-        "size_bytes": 1183
+        "size_bytes": 1370
       },
       "mechanics_role": "part_contract",
       "observed_form": "file",
@@ -84199,7 +84338,7 @@
       },
       "signs": {
         "attestation_ref": "",
-        "digest": "28ba1150566ad536f95078ba5368610b5749b30792b51802ada42d046ca24273",
+        "digest": "81de4d50dfa0bc2852a265b4a0193b1d111c1444d71f64530609a11b39c9c4a2",
         "signature_ref": "",
         "verification_state": "digest-only"
       },
@@ -84247,13 +84386,13 @@
         "state": "current"
       },
       "identity": {
-        "content_hash": "498d30384d17998700a00949115c4ded9c7b1854d0341f57189efb2b7494297c",
+        "content_hash": "f87badb1a8e2076fdb8099efced6cbfed9745889a37edf24dca7cafaa0d2cbe6",
         "git_ref": "git-index-source-tree",
         "id": "file:mechanics/titan/parts/incarnation-summon/readme.md:39e48f023e",
         "mime": "text/markdown",
         "path": "mechanics/titan/parts/incarnation-summon/README.md",
         "repo": "aoa-stats",
-        "size_bytes": 764
+        "size_bytes": 857
       },
       "mechanics_role": "part_doc",
       "observed_form": "file",
@@ -84294,7 +84433,7 @@
       },
       "signs": {
         "attestation_ref": "",
-        "digest": "498d30384d17998700a00949115c4ded9c7b1854d0341f57189efb2b7494297c",
+        "digest": "f87badb1a8e2076fdb8099efced6cbfed9745889a37edf24dca7cafaa0d2cbe6",
         "signature_ref": "",
         "verification_state": "digest-only"
       },
@@ -84342,13 +84481,13 @@
         "state": "current"
       },
       "identity": {
-        "content_hash": "d2c566e0ad6c44e6087fa63e396e1fc8fa4c5d7c6fc8d1d02b8d032b2f627ddc",
+        "content_hash": "4ef7f72dfa6e91bdf99d5083f07036e51bd6557b55007842d8d5a0e9c849f43e",
         "git_ref": "git-index-source-tree",
         "id": "file:mechanics/titan/parts/incarnation-summon/validation.md:326fb4de66",
         "mime": "text/markdown",
         "path": "mechanics/titan/parts/incarnation-summon/VALIDATION.md",
         "repo": "aoa-stats",
-        "size_bytes": 680
+        "size_bytes": 789
       },
       "mechanics_role": "part_doc",
       "observed_form": "file",
@@ -84389,7 +84528,7 @@
       },
       "signs": {
         "attestation_ref": "",
-        "digest": "d2c566e0ad6c44e6087fa63e396e1fc8fa4c5d7c6fc8d1d02b8d032b2f627ddc",
+        "digest": "4ef7f72dfa6e91bdf99d5083f07036e51bd6557b55007842d8d5a0e9c849f43e",
         "signature_ref": "",
         "verification_state": "digest-only"
       },
@@ -84532,13 +84671,13 @@
         "state": "current"
       },
       "identity": {
-        "content_hash": "e4eaa354b3202cc6f9ce45724678130b8891baaf00f25d7e1a27db136ce3882e",
+        "content_hash": "511f0b1d5e59b58b6ca3d9b7728b34823f0e0e49443601cccc15c50124953297",
         "git_ref": "git-index-source-tree",
         "id": "file:mechanics/titan/parts/incarnation-summon/docs/titan_summon_metrics.md:fab75b6ba7",
         "mime": "text/markdown",
         "path": "mechanics/titan/parts/incarnation-summon/docs/TITAN_SUMMON_METRICS.md",
         "repo": "aoa-stats",
-        "size_bytes": 718
+        "size_bytes": 1009
       },
       "mechanics_role": "part_doc",
       "observed_form": "file",
@@ -84565,11 +84704,11 @@
       "refs": {
         "heading_refs": [
           {
-            "anchor": "titan-summon-metrics",
+            "anchor": "retired-titan-summon-metrics-contract",
             "level": 1,
             "line": 1,
-            "ref": "mechanics/titan/parts/incarnation-summon/docs/TITAN_SUMMON_METRICS.md#titan-summon-metrics",
-            "title": "Titan Summon Metrics"
+            "ref": "mechanics/titan/parts/incarnation-summon/docs/TITAN_SUMMON_METRICS.md#retired-titan-summon-metrics-contract",
+            "title": "Retired Titan Summon Metrics Contract"
           }
         ],
         "line_refs": [
@@ -84579,7 +84718,7 @@
       },
       "signs": {
         "attestation_ref": "",
-        "digest": "e4eaa354b3202cc6f9ce45724678130b8891baaf00f25d7e1a27db136ce3882e",
+        "digest": "511f0b1d5e59b58b6ca3d9b7728b34823f0e0e49443601cccc15c50124953297",
         "signature_ref": "",
         "verification_state": "digest-only"
       },
@@ -84627,13 +84766,13 @@
         "state": "current"
       },
       "identity": {
-        "content_hash": "2a8383568710ca3d68f2d2f54adc23676579d3ce29125921e823ddd05e4e1d25",
+        "content_hash": "97ebd0621bbea30d9af0f631bbc6dec43305dd14a7bbc6870cf5923778e72fc5",
         "git_ref": "git-index-source-tree",
         "id": "file:mechanics/titan/parts/incarnation-summon/tests/test_titan_observation.py:9ab951cabb",
         "mime": "text/x-python",
         "path": "mechanics/titan/parts/incarnation-summon/tests/test_titan_observation.py",
         "repo": "aoa-stats",
-        "size_bytes": 10516
+        "size_bytes": 10311
       },
       "mechanics_role": "part_test",
       "observed_form": "command",
@@ -84666,7 +84805,7 @@
       },
       "signs": {
         "attestation_ref": "",
-        "digest": "2a8383568710ca3d68f2d2f54adc23676579d3ce29125921e823ddd05e4e1d25",
+        "digest": "97ebd0621bbea30d9af0f631bbc6dec43305dd14a7bbc6870cf5923778e72fc5",
         "signature_ref": "",
         "verification_state": "digest-only"
       },
@@ -88958,13 +89097,13 @@
         "state": "current"
       },
       "identity": {
-        "content_hash": "c60e247c2125776480df41b8bde454622e614870b868249494e04b900513fc0f",
+        "content_hash": "6cd6233cfe47c0a87b78eea8d9cdc23f231c701fd04d1fb782a37acedd481f44",
         "git_ref": "git-index-source-tree",
         "id": "file:scripts/build_views.py:b705861394",
         "mime": "text/x-python",
         "path": "scripts/build_views.py",
         "repo": "aoa-stats",
-        "size_bytes": 27403
+        "size_bytes": 27166
       },
       "mechanics_role": "none",
       "observed_form": "command",
@@ -88997,7 +89136,7 @@
       },
       "signs": {
         "attestation_ref": "",
-        "digest": "c60e247c2125776480df41b8bde454622e614870b868249494e04b900513fc0f",
+        "digest": "6cd6233cfe47c0a87b78eea8d9cdc23f231c701fd04d1fb782a37acedd481f44",
         "signature_ref": "",
         "verification_state": "digest-only"
       },
@@ -89777,13 +89916,13 @@
         "state": "current"
       },
       "identity": {
-        "content_hash": "14fdf95c14c87a88a5f02ff76d4875397758b00d901c1812f9158fa65d8a3250",
+        "content_hash": "1c62d602f15617da5a56472ec6ba2b24c38c1ecc7588e4913086babe6e48ed7d",
         "git_ref": "git-index-source-tree",
         "id": "file:scripts/validate_mechanics_topology.py:2914a033b8",
         "mime": "text/x-python",
         "path": "scripts/validate_mechanics_topology.py",
         "repo": "aoa-stats",
-        "size_bytes": 25366
+        "size_bytes": 25675
       },
       "mechanics_role": "none",
       "observed_form": "command",
@@ -89816,7 +89955,7 @@
       },
       "signs": {
         "attestation_ref": "",
-        "digest": "14fdf95c14c87a88a5f02ff76d4875397758b00d901c1812f9158fa65d8a3250",
+        "digest": "1c62d602f15617da5a56472ec6ba2b24c38c1ecc7588e4913086babe6e48ed7d",
         "signature_ref": "",
         "verification_state": "digest-only"
       },
@@ -90050,13 +90189,13 @@
         "state": "current"
       },
       "identity": {
-        "content_hash": "8c255a6214c7f04c1ff4756bcf7545bd47c23a8a338574a057f5f2e9bf789e77",
+        "content_hash": "395f5f5ea8db5e57c88e5b3a217fe45f0f970a743e855f8bfe01bdeabe5a677b",
         "git_ref": "git-index-source-tree",
         "id": "file:scripts/validate_repo.py:1c4be8b173",
         "mime": "text/x-python",
         "path": "scripts/validate_repo.py",
         "repo": "aoa-stats",
-        "size_bytes": 8185
+        "size_bytes": 8218
       },
       "mechanics_role": "none",
       "observed_form": "command",
@@ -90089,7 +90228,7 @@
       },
       "signs": {
         "attestation_ref": "",
-        "digest": "8c255a6214c7f04c1ff4756bcf7545bd47c23a8a338574a057f5f2e9bf789e77",
+        "digest": "395f5f5ea8db5e57c88e5b3a217fe45f0f970a743e855f8bfe01bdeabe5a677b",
         "signature_ref": "",
         "verification_state": "digest-only"
       },
@@ -90141,13 +90280,13 @@
         "state": "current"
       },
       "identity": {
-        "content_hash": "3295680b18bc2365ff5c016dea7b2464cf2f412c377e957c2fb265ca6956e781",
+        "content_hash": "ee275a15e861ae2d5bb1cce9d0a51238e7d183cc20e094926b5356cb8c6b66fc",
         "git_ref": "git-index-source-tree",
         "id": "file:scripts/validate_stats_source_home.py:6be6e8ef8c",
         "mime": "text/x-python",
         "path": "scripts/validate_stats_source_home.py",
         "repo": "aoa-stats",
-        "size_bytes": 43585
+        "size_bytes": 45279
       },
       "mechanics_role": "none",
       "observed_form": "command",
@@ -90180,7 +90319,7 @@
       },
       "signs": {
         "attestation_ref": "",
-        "digest": "3295680b18bc2365ff5c016dea7b2464cf2f412c377e957c2fb265ca6956e781",
+        "digest": "ee275a15e861ae2d5bb1cce9d0a51238e7d183cc20e094926b5356cb8c6b66fc",
         "signature_ref": "",
         "verification_state": "digest-only"
       },
@@ -92669,13 +92808,13 @@
         "state": "current"
       },
       "identity": {
-        "content_hash": "ca7beac4a87835998108bfc6824d2a87d7cdea95bc93c84ca0a34d178cf6fc92",
+        "content_hash": "e3dfbaa3172ba62f55028d3cedf5b6000c26186a848c77526d18df4756ce3e4c",
         "git_ref": "git-index-source-tree",
         "id": "file:src/aoa_stats_builder/surface_catalog.py:42888f91da",
         "mime": "text/x-python",
         "path": "src/aoa_stats_builder/surface_catalog.py",
         "repo": "aoa-stats",
-        "size_bytes": 8996
+        "size_bytes": 13170
       },
       "mechanics_role": "none",
       "observed_form": "file",
@@ -92708,7 +92847,7 @@
       },
       "signs": {
         "attestation_ref": "",
-        "digest": "ca7beac4a87835998108bfc6824d2a87d7cdea95bc93c84ca0a34d178cf6fc92",
+        "digest": "e3dfbaa3172ba62f55028d3cedf5b6000c26186a848c77526d18df4756ce3e4c",
         "signature_ref": "",
         "verification_state": "digest-only"
       },
@@ -92758,13 +92897,13 @@
         "state": "current"
       },
       "identity": {
-        "content_hash": "4a3e52760e3b4b0a49aee61eca34760bb2978ca6262862d972168c05613300da",
+        "content_hash": "e27a83ae690ff8b80d201e7bc879501c9d9e542651e667c5a0717daa30cae97c",
         "git_ref": "git-index-source-tree",
         "id": "file:src/aoa_stats_builder/titan_observation.py:4b0159e113",
         "mime": "text/x-python",
         "path": "src/aoa_stats_builder/titan_observation.py",
         "repo": "aoa-stats",
-        "size_bytes": 10897
+        "size_bytes": 10266
       },
       "mechanics_role": "none",
       "observed_form": "file",
@@ -92797,7 +92936,7 @@
       },
       "signs": {
         "attestation_ref": "",
-        "digest": "4a3e52760e3b4b0a49aee61eca34760bb2978ca6262862d972168c05613300da",
+        "digest": "e27a83ae690ff8b80d201e7bc879501c9d9e542651e667c5a0717daa30cae97c",
         "signature_ref": "",
         "verification_state": "digest-only"
       },
@@ -93292,13 +93431,13 @@
         "state": "current"
       },
       "identity": {
-        "content_hash": "5aad596ec28f5b69f7aa6df62d1e854a77c21907ed0e5bfb46aca4611d488352",
+        "content_hash": "9ac84a85a2c62c1f5d430cc8ae4d786c080bbb45c315ae4ef90158c0afa938e0",
         "git_ref": "git-index-source-tree",
         "id": "file:stats/agents.md:3f9a778b41",
         "mime": "text/markdown",
         "path": "stats/AGENTS.md",
         "repo": "aoa-stats",
-        "size_bytes": 3577
+        "size_bytes": 3801
       },
       "mechanics_role": "none",
       "observed_form": "file",
@@ -93355,28 +93494,28 @@
           {
             "anchor": "branch-routes",
             "level": 2,
-            "line": 44,
+            "line": 47,
             "ref": "stats/AGENTS.md#branch-routes",
             "title": "Branch routes"
           },
           {
             "anchor": "cross-route-law",
             "level": 2,
-            "line": 57,
+            "line": 60,
             "ref": "stats/AGENTS.md#cross-route-law",
             "title": "Cross-route law"
           },
           {
             "anchor": "current-root-posture",
             "level": 2,
-            "line": 71,
+            "line": 74,
             "ref": "stats/AGENTS.md#current-root-posture",
             "title": "Current root posture"
           },
           {
             "anchor": "verify",
             "level": 2,
-            "line": 78,
+            "line": 81,
             "ref": "stats/AGENTS.md#verify",
             "title": "Verify"
           }
@@ -93388,7 +93527,7 @@
       },
       "signs": {
         "attestation_ref": "",
-        "digest": "5aad596ec28f5b69f7aa6df62d1e854a77c21907ed0e5bfb46aca4611d488352",
+        "digest": "9ac84a85a2c62c1f5d430cc8ae4d786c080bbb45c315ae4ef90158c0afa938e0",
         "signature_ref": "",
         "verification_state": "digest-only"
       },
@@ -93436,13 +93575,13 @@
         "state": "current"
       },
       "identity": {
-        "content_hash": "55ecaab643724c266675e8b15c1d79a2a0d0e10444ae5d0eb1b7ecce68d519de",
+        "content_hash": "1a250d3d21fa268d521e211c9385f15b86278157b2e4d377502e61aeb7da79cd",
         "git_ref": "git-index-source-tree",
         "id": "file:stats/readme.md:6bac6d2ff5",
         "mime": "text/markdown",
         "path": "stats/README.md",
         "repo": "aoa-stats",
-        "size_bytes": 7930
+        "size_bytes": 8174
       },
       "mechanics_role": "none",
       "observed_form": "file",
@@ -93485,14 +93624,14 @@
           {
             "anchor": "families",
             "level": 2,
-            "line": 42,
+            "line": 43,
             "ref": "stats/README.md#families",
             "title": "Families"
           },
           {
             "anchor": "current-canonical-routes",
             "level": 2,
-            "line": 54,
+            "line": 55,
             "ref": "stats/README.md#current-canonical-routes",
             "title": "Current canonical routes"
           }
@@ -93504,7 +93643,7 @@
       },
       "signs": {
         "attestation_ref": "",
-        "digest": "55ecaab643724c266675e8b15c1d79a2a0d0e10444ae5d0eb1b7ecce68d519de",
+        "digest": "1a250d3d21fa268d521e211c9385f15b86278157b2e4d377502e61aeb7da79cd",
         "signature_ref": "",
         "verification_state": "digest-only"
       },
@@ -95762,13 +95901,13 @@
         "state": "current"
       },
       "identity": {
-        "content_hash": "b8a643a0cec6cf3f9130f680e31050380d93136a16e4ea58cacc5ecec46bdf8f",
+        "content_hash": "55af629a01ddfa234d0559a328feb7214676890ab2b86a66555c6e810f3ae35d",
         "git_ref": "git-index-source-tree",
         "id": "file:stats/read-models/agents.md:ebf32cdc74",
         "mime": "text/markdown",
         "path": "stats/read-models/AGENTS.md",
         "repo": "aoa-stats",
-        "size_bytes": 2191
+        "size_bytes": 2621
       },
       "mechanics_role": "none",
       "observed_form": "file",
@@ -95825,7 +95964,7 @@
           {
             "anchor": "verification",
             "level": 2,
-            "line": 46,
+            "line": 52,
             "ref": "stats/read-models/AGENTS.md#verification",
             "title": "Verification"
           }
@@ -95837,7 +95976,7 @@
       },
       "signs": {
         "attestation_ref": "",
-        "digest": "b8a643a0cec6cf3f9130f680e31050380d93136a16e4ea58cacc5ecec46bdf8f",
+        "digest": "55af629a01ddfa234d0559a328feb7214676890ab2b86a66555c6e810f3ae35d",
         "signature_ref": "",
         "verification_state": "digest-only"
       },
@@ -95885,13 +96024,13 @@
         "state": "current"
       },
       "identity": {
-        "content_hash": "f3e32d55f35cbc40b2e562c60844b352b2ad0252d2e4630955e77abf97e0f03c",
+        "content_hash": "357c5377c4b8ca18cdb3815376dd08f092286fd4a293e8d031de0d53b3d9e653",
         "git_ref": "git-index-source-tree",
         "id": "file:stats/read-models/readme.md:5ba4a92471",
         "mime": "text/markdown",
         "path": "stats/read-models/README.md",
         "repo": "aoa-stats",
-        "size_bytes": 5690
+        "size_bytes": 6275
       },
       "mechanics_role": "none",
       "observed_form": "file",
@@ -95927,7 +96066,7 @@
           {
             "anchor": "lifecycle",
             "level": 2,
-            "line": 93,
+            "line": 97,
             "ref": "stats/read-models/README.md#lifecycle",
             "title": "Lifecycle"
           }
@@ -95939,7 +96078,7 @@
       },
       "signs": {
         "attestation_ref": "",
-        "digest": "f3e32d55f35cbc40b2e562c60844b352b2ad0252d2e4630955e77abf97e0f03c",
+        "digest": "357c5377c4b8ca18cdb3815376dd08f092286fd4a293e8d031de0d53b3d9e653",
         "signature_ref": "",
         "verification_state": "digest-only"
       },
@@ -97500,7 +97639,7 @@
         "state": "current"
       },
       "identity": {
-        "content_hash": "37e298a64faf01832553fb651fff656bcf699fd29d8c5c42ea0780caba7cc552",
+        "content_hash": "e304de5720640be3c1e8d904afcdec2a985cf976f0b5ace132fed2b1f439f639",
         "git_ref": "git-index-source-tree",
         "id": "file:stats/read-models/active/runtime_closeout_summary.profile.json:4dbafd5b82",
         "mime": "application/json",
@@ -97539,7 +97678,7 @@
       },
       "signs": {
         "attestation_ref": "",
-        "digest": "37e298a64faf01832553fb651fff656bcf699fd29d8c5c42ea0780caba7cc552",
+        "digest": "e304de5720640be3c1e8d904afcdec2a985cf976f0b5ace132fed2b1f439f639",
         "signature_ref": "",
         "verification_state": "digest-only"
       },
@@ -97678,7 +97817,7 @@
         "state": "current"
       },
       "identity": {
-        "content_hash": "f1d5a81148c58950f68f8906c9a1f4f57fbd8c42eaccd5503de7b6f39da16ae1",
+        "content_hash": "3c115ec5971f22f4931b5503072a7b1e7828066f93f3cfbdfc04d0d1e1bd1449",
         "git_ref": "git-index-source-tree",
         "id": "file:stats/read-models/active/source_coverage_summary.profile.json:aa05b63e2e",
         "mime": "application/json",
@@ -97717,7 +97856,7 @@
       },
       "signs": {
         "attestation_ref": "",
-        "digest": "f1d5a81148c58950f68f8906c9a1f4f57fbd8c42eaccd5503de7b6f39da16ae1",
+        "digest": "3c115ec5971f22f4931b5503072a7b1e7828066f93f3cfbdfc04d0d1e1bd1449",
         "signature_ref": "",
         "verification_state": "digest-only"
       },
@@ -97767,7 +97906,7 @@
         "state": "current"
       },
       "identity": {
-        "content_hash": "49cf3af89266b3f65d35fa11a4b2dbea27f52e4bc1f70f4621e425ae2c12bcba",
+        "content_hash": "334eb8b2ab2ef736bc783f856769f0affe21c00282a7b5e2b746a4fbdb4905e8",
         "git_ref": "git-index-source-tree",
         "id": "file:stats/read-models/active/stress_recovery_window_summary.profile.json:bb4a003393",
         "mime": "application/json",
@@ -97806,7 +97945,7 @@
       },
       "signs": {
         "attestation_ref": "",
-        "digest": "49cf3af89266b3f65d35fa11a4b2dbea27f52e4bc1f70f4621e425ae2c12bcba",
+        "digest": "334eb8b2ab2ef736bc783f856769f0affe21c00282a7b5e2b746a4fbdb4905e8",
         "signature_ref": "",
         "verification_state": "digest-only"
       },
@@ -97945,7 +98084,7 @@
         "state": "current"
       },
       "identity": {
-        "content_hash": "28264f65e41258ffa6937580757f3d1cb3da62a4469bf5f622f0e304befe923b",
+        "content_hash": "fae9437b60629e1ef3a8f77d4bb32a9e7effbe211cd4e296e53e1304376c689a",
         "git_ref": "git-index-source-tree",
         "id": "file:stats/read-models/active/surface_detection_summary.profile.json:d8a2bffcaf",
         "mime": "application/json",
@@ -97984,7 +98123,7 @@
       },
       "signs": {
         "attestation_ref": "",
-        "digest": "28264f65e41258ffa6937580757f3d1cb3da62a4469bf5f622f0e304befe923b",
+        "digest": "fae9437b60629e1ef3a8f77d4bb32a9e7effbe211cd4e296e53e1304376c689a",
         "signature_ref": "",
         "verification_state": "digest-only"
       },
@@ -98123,95 +98262,6 @@
         "state": "current"
       },
       "identity": {
-        "content_hash": "61333baf7b1e3e649f845c0ca924817fb36f44479c8ba18e5478de6e7fb3d035",
-        "git_ref": "git-index-source-tree",
-        "id": "file:stats/read-models/active/titan_summon_summary.profile.json:d7d79a6cea",
-        "mime": "application/json",
-        "path": "stats/read-models/active/titan_summon_summary.profile.json",
-        "repo": "aoa-stats",
-        "size_bytes": 1258
-      },
-      "mechanics_role": "none",
-      "observed_form": "file",
-      "owner_return_route": {
-        "route_kind": "source_owner",
-        "surface": "stats/read-models/active/titan_summon_summary.profile.json"
-      },
-      "provenance": {
-        "generated_by": "",
-        "materials": [],
-        "observed_by": "aoa-kag:scripts/generate_repo_local_kag_index.py",
-        "source_refs": [
-          {
-            "authority": "authored_source",
-            "path": "stats/read-models/active/titan_summon_summary.profile.json",
-            "repo": "aoa-stats",
-            "role": "primary"
-          }
-        ],
-        "validated_by": [
-          "aoa-kag:scripts/validate_kag.py"
-        ]
-      },
-      "refs": {
-        "heading_refs": [],
-        "line_refs": [
-          "stats/read-models/active/titan_summon_summary.profile.json:1"
-        ],
-        "path_ref": "stats/read-models/active/titan_summon_summary.profile.json"
-      },
-      "signs": {
-        "attestation_ref": "",
-        "digest": "61333baf7b1e3e649f845c0ca924817fb36f44479c8ba18e5478de6e7fb3d035",
-        "signature_ref": "",
-        "verification_state": "digest-only"
-      },
-      "surface_state": "authored_source",
-      "toolchain": {
-        "detected_tools": [
-          "git",
-          "python"
-        ],
-        "owner_commands": [],
-        "required_tools": [
-          "jq"
-        ]
-      },
-      "validator_route": {
-        "route_kind": "source_fast",
-        "surface": "aoa-kag:scripts/validate_kag.py"
-      }
-    },
-    {
-      "abi": {
-        "abi_epoch": "source",
-        "artifact_class": "config",
-        "compatibility": "stable",
-        "contract_version": "none",
-        "schema_version": "aoa_stats_surface_profile_source_v1"
-      },
-      "access": {
-        "scope": "public",
-        "secrets_risk": "none"
-      },
-      "artifact_kind": "config",
-      "classification": {
-        "confidence": "high",
-        "primary_kind": "surface"
-      },
-      "code_role": "none",
-      "command_role": "none",
-      "consumer_route": {
-        "route_kind": "resource",
-        "surface": "aoa-kag-mcp"
-      },
-      "document_role": "none",
-      "freshness": {
-        "checked_ref": "git-index-source-tree",
-        "mode": "source_snapshot",
-        "state": "current"
-      },
-      "identity": {
         "content_hash": "466d0555d97e94b75a99b5408f6d6a12b25468da88b86066c98ea811ea34ef94",
         "git_ref": "git-index-source-tree",
         "id": "file:stats/read-models/deferred/antifragility_vector.profile.json:b675b4b101",
@@ -98274,6 +98324,95 @@
     {
       "abi": {
         "abi_epoch": "source",
+        "artifact_class": "config",
+        "compatibility": "stable",
+        "contract_version": "none",
+        "schema_version": "aoa_stats_surface_profile_source_v1"
+      },
+      "access": {
+        "scope": "public",
+        "secrets_risk": "none"
+      },
+      "artifact_kind": "config",
+      "classification": {
+        "confidence": "high",
+        "primary_kind": "surface"
+      },
+      "code_role": "none",
+      "command_role": "none",
+      "consumer_route": {
+        "route_kind": "resource",
+        "surface": "aoa-kag-mcp"
+      },
+      "document_role": "none",
+      "freshness": {
+        "checked_ref": "git-index-source-tree",
+        "mode": "source_snapshot",
+        "state": "current"
+      },
+      "identity": {
+        "content_hash": "97616595e6832f2d376d917c34153d897efce466cfebf0f79d267a5cb8b9ba9d",
+        "git_ref": "git-index-source-tree",
+        "id": "file:stats/read-models/retired/titan_summon_summary.profile.json:de05c16687",
+        "mime": "application/json",
+        "path": "stats/read-models/retired/titan_summon_summary.profile.json",
+        "repo": "aoa-stats",
+        "size_bytes": 880
+      },
+      "mechanics_role": "none",
+      "observed_form": "file",
+      "owner_return_route": {
+        "route_kind": "source_owner",
+        "surface": "stats/read-models/retired/titan_summon_summary.profile.json"
+      },
+      "provenance": {
+        "generated_by": "",
+        "materials": [],
+        "observed_by": "aoa-kag:scripts/generate_repo_local_kag_index.py",
+        "source_refs": [
+          {
+            "authority": "authored_source",
+            "path": "stats/read-models/retired/titan_summon_summary.profile.json",
+            "repo": "aoa-stats",
+            "role": "primary"
+          }
+        ],
+        "validated_by": [
+          "aoa-kag:scripts/validate_kag.py"
+        ]
+      },
+      "refs": {
+        "heading_refs": [],
+        "line_refs": [
+          "stats/read-models/retired/titan_summon_summary.profile.json:1"
+        ],
+        "path_ref": "stats/read-models/retired/titan_summon_summary.profile.json"
+      },
+      "signs": {
+        "attestation_ref": "",
+        "digest": "97616595e6832f2d376d917c34153d897efce466cfebf0f79d267a5cb8b9ba9d",
+        "signature_ref": "",
+        "verification_state": "digest-only"
+      },
+      "surface_state": "authored_source",
+      "toolchain": {
+        "detected_tools": [
+          "git",
+          "python"
+        ],
+        "owner_commands": [],
+        "required_tools": [
+          "jq"
+        ]
+      },
+      "validator_route": {
+        "route_kind": "source_fast",
+        "surface": "aoa-kag:scripts/validate_kag.py"
+      }
+    },
+    {
+      "abi": {
+        "abi_epoch": "source",
         "artifact_class": "schema",
         "compatibility": "stable",
         "contract_version": "https://aoa-stats/stats/read-models/surface-profile.schema.json",
@@ -98301,13 +98440,13 @@
         "state": "current"
       },
       "identity": {
-        "content_hash": "d96871039385baf014a9ad26cf0fb8c743d61e46a288a0f0bd6e9739367bcfec",
+        "content_hash": "b3d4c6c80d0765964a1f0a976fee568e70f14394e69afced0341403e1096664d",
         "git_ref": "git-index-source-tree",
         "id": "file:stats/read-models/surface-profile.schema.json:f9c44f851d",
         "mime": "application/json",
         "path": "stats/read-models/surface-profile.schema.json",
         "repo": "aoa-stats",
-        "size_bytes": 3827
+        "size_bytes": 5968
       },
       "mechanics_role": "none",
       "observed_form": "file",
@@ -98340,7 +98479,7 @@
       },
       "signs": {
         "attestation_ref": "",
-        "digest": "d96871039385baf014a9ad26cf0fb8c743d61e46a288a0f0bd6e9739367bcfec",
+        "digest": "b3d4c6c80d0765964a1f0a976fee568e70f14394e69afced0341403e1096664d",
         "signature_ref": "",
         "verification_state": "digest-only"
       },
@@ -98390,13 +98529,13 @@
         "state": "current"
       },
       "identity": {
-        "content_hash": "7012bd0db991c6bcb7f34d32ece3fceb5eb89f42da68f19338481a3a8cc9b4fa",
+        "content_hash": "ea251b99dbb6aeb8487e40003e3acea105c3aeb884379a693d527b2440accff8",
         "git_ref": "git-index-source-tree",
         "id": "file:stats/source_home.manifest.json:41b237ff45",
         "mime": "application/json",
         "path": "stats/source_home.manifest.json",
         "repo": "aoa-stats",
-        "size_bytes": 27223
+        "size_bytes": 27358
       },
       "mechanics_role": "none",
       "observed_form": "file",
@@ -98429,7 +98568,7 @@
       },
       "signs": {
         "attestation_ref": "",
-        "digest": "7012bd0db991c6bcb7f34d32ece3fceb5eb89f42da68f19338481a3a8cc9b4fa",
+        "digest": "ea251b99dbb6aeb8487e40003e3acea105c3aeb884379a693d527b2440accff8",
         "signature_ref": "",
         "verification_state": "digest-only"
       },
@@ -99206,13 +99345,13 @@
         "state": "current"
       },
       "identity": {
-        "content_hash": "73dd9c49a0f9c0a36a76facbf43de77065b65b345b96b2110b0bb5e9f1f102cb",
+        "content_hash": "d7902fe96df99a3516eb206b9769babb53b8713df117c1996eead3524d30b11f",
         "git_ref": "git-index-source-tree",
         "id": "file:tests/test_build_views.py:760ef645f6",
         "mime": "text/x-python",
         "path": "tests/test_build_views.py",
         "repo": "aoa-stats",
-        "size_bytes": 29403
+        "size_bytes": 29399
       },
       "mechanics_role": "none",
       "observed_form": "command",
@@ -99245,7 +99384,7 @@
       },
       "signs": {
         "attestation_ref": "",
-        "digest": "73dd9c49a0f9c0a36a76facbf43de77065b65b345b96b2110b0bb5e9f1f102cb",
+        "digest": "d7902fe96df99a3516eb206b9769babb53b8713df117c1996eead3524d30b11f",
         "signature_ref": "",
         "verification_state": "digest-only"
       },
@@ -99388,13 +99527,13 @@
         "state": "current"
       },
       "identity": {
-        "content_hash": "75aea4090bd57b75a723f31188d6ffd0dd1e85f832f8fa989b61ac82cdaa220d",
+        "content_hash": "142d3a7dec2c025f538554befc05a9d891b735f2a42240fe3bfa1ac17e8d4f73",
         "git_ref": "git-index-source-tree",
         "id": "file:tests/test_docs_routes.py:2789463ffa",
         "mime": "text/x-python",
         "path": "tests/test_docs_routes.py",
         "repo": "aoa-stats",
-        "size_bytes": 3656
+        "size_bytes": 4056
       },
       "mechanics_role": "none",
       "observed_form": "command",
@@ -99427,7 +99566,7 @@
       },
       "signs": {
         "attestation_ref": "",
-        "digest": "75aea4090bd57b75a723f31188d6ffd0dd1e85f832f8fa989b61ac82cdaa220d",
+        "digest": "142d3a7dec2c025f538554befc05a9d891b735f2a42240fe3bfa1ac17e8d4f73",
         "signature_ref": "",
         "verification_state": "digest-only"
       },
@@ -99752,13 +99891,13 @@
         "state": "current"
       },
       "identity": {
-        "content_hash": "e495b6259bfef1d8bf0a1848a1ded263df91f47ecb8dc9ae0bef72967548753e",
+        "content_hash": "13785693e8a9c5506b2208c387c76e638876f7efb9444c2655d0dcb883e1887a",
         "git_ref": "git-index-source-tree",
         "id": "file:tests/test_roadmap_parity.py:574915dc67",
         "mime": "text/x-python",
         "path": "tests/test_roadmap_parity.py",
         "repo": "aoa-stats",
-        "size_bytes": 4682
+        "size_bytes": 4638
       },
       "mechanics_role": "none",
       "observed_form": "command",
@@ -99791,7 +99930,7 @@
       },
       "signs": {
         "attestation_ref": "",
-        "digest": "e495b6259bfef1d8bf0a1848a1ded263df91f47ecb8dc9ae0bef72967548753e",
+        "digest": "13785693e8a9c5506b2208c387c76e638876f7efb9444c2655d0dcb883e1887a",
         "signature_ref": "",
         "verification_state": "digest-only"
       },
@@ -99843,13 +99982,13 @@
         "state": "current"
       },
       "identity": {
-        "content_hash": "bbc47142522c6b5d8fba813c7ba3c39b58910f29fa077896e485e5a356290f9e",
+        "content_hash": "9dd894b2b605783c3a3d3f8ad802f4420aacd9c6e58502216b5dac5abb78ff6d",
         "git_ref": "git-index-source-tree",
         "id": "file:tests/test_stats_source_home.py:a642c9216e",
         "mime": "text/x-python",
         "path": "tests/test_stats_source_home.py",
         "repo": "aoa-stats",
-        "size_bytes": 14912
+        "size_bytes": 17300
       },
       "mechanics_role": "none",
       "observed_form": "command",
@@ -99882,7 +100021,7 @@
       },
       "signs": {
         "attestation_ref": "",
-        "digest": "bbc47142522c6b5d8fba813c7ba3c39b58910f29fa077896e485e5a356290f9e",
+        "digest": "9dd894b2b605783c3a3d3f8ad802f4420aacd9c6e58502216b5dac5abb78ff6d",
         "signature_ref": "",
         "verification_state": "digest-only"
       },

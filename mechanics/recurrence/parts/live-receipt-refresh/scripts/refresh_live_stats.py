@@ -19,6 +19,7 @@ from build_views import build_all_views, load_receipts, resolve_active_receipts,
 from aoa_stats_builder.surface_catalog import (  # noqa: E402
     all_profile_surface_output_names,
     live_profile_surface_output_names,
+    retired_profile_surface_output_names,
 )
 
 
@@ -29,6 +30,7 @@ DEFAULT_SUMMARY_OUTPUT_DIR = REPO_ROOT / "state" / "generated"
 SUMMARY_SURFACE_CATALOG_OUTPUT_NAME = "summary_surface_catalog.min.json"
 ALL_PROFILE_SURFACE_OUTPUT_NAMES = all_profile_surface_output_names()
 LIVE_PROFILE_SURFACE_OUTPUT_NAMES = live_profile_surface_output_names()
+RETIRED_PROFILE_SURFACE_OUTPUT_NAMES = retired_profile_surface_output_names()
 MANAGED_SUMMARY_OUTPUT_NAMES = (
     *ALL_PROFILE_SURFACE_OUTPUT_NAMES,
     SUMMARY_SURFACE_CATALOG_OUTPUT_NAME,

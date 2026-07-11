@@ -58,7 +58,6 @@ def test_build_views_produces_expected_surface_counts() -> None:
         "component_refresh_summary.min.json",
         "memory_movement_summary.min.json",
         "titan_incarnation_summary.min.json",
-        "titan_summon_summary.min.json",
         "runtime_closeout_summary.min.json",
         "stress_recovery_window_summary.min.json",
         "source_coverage_summary.min.json",
@@ -199,16 +198,18 @@ def test_build_views_produces_expected_surface_counts() -> None:
         "generated/codex_rollout_drift_summary.min.json",
         "generated/rollout_campaign_summary.min.json",
         "generated/drift_review_summary.min.json",
-            "generated/continuity_window_summary.min.json",
-            "generated/component_refresh_summary.min.json",
-            "generated/memory_movement_summary.min.json",
-            "generated/titan_incarnation_summary.min.json",
-        "generated/titan_summon_summary.min.json",
+        "generated/continuity_window_summary.min.json",
+        "generated/component_refresh_summary.min.json",
+        "generated/memory_movement_summary.min.json",
+        "generated/titan_incarnation_summary.min.json",
         "generated/runtime_closeout_summary.min.json",
         "generated/stress_recovery_window_summary.min.json",
         "generated/source_coverage_summary.min.json",
         "generated/surface_detection_summary.min.json",
     ]
+    assert "titan_summon_summary" not in {
+        entry["name"] for entry in catalog["surfaces"]
+    }
     assert catalog["surfaces"][-2]["name"] == "source_coverage_summary"
     assert catalog["surfaces"][-2]["input_posture"] == "registry_backed_coverage_audit"
 

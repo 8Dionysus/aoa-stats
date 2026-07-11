@@ -26,7 +26,8 @@ stats/
 │   ├── README.md
 │   ├── surface-profile.schema.json
 │   ├── active/
-│   └── deferred/
+│   ├── deferred/
+│   └── retired/
 ├── operation-contracts/
 │   ├── AGENTS.md
 │   ├── README.md
@@ -44,7 +45,7 @@ stats/
 | Family | Authored meaning | Mechanics crosswalk |
 | --- | --- | --- |
 | `intake-contract` | Shared stats envelope and event-family admission law, without taking payload meaning from source owners. | `recurrence/live-receipt-refresh`, `boundary-bridge/receipt-abi-crossing` |
-| `read-models` | One authored profile per active or deferred derived surface, including public routes, authority ceiling, order, lifecycle, and operation handoffs. | Profile-local `mechanic_routes` under the shared mechanic parents. |
+| `read-models` | Active and deferred surface profiles plus minimal retired-output cleanup tombstones, including public routes, authority ceiling, order, lifecycle, and operation handoffs where applicable. | Profile-local mechanic routes under the shared mechanic parents. |
 | `operation-contracts` | One authored question, input posture, authority ceiling, consumer risk, and owner-return route per active non-catalog observation. | Exact reciprocal records for Agon registries, Experience contracts, via-negativa, and Titan memory/runtime parts. |
 | `surface-catalog` | Compact catalog profile and per-surface authority ceilings, without promoting summaries into owner truth. | `recurrence/component-manifests`, `boundary-bridge/consumer-regrounding` |
 
@@ -104,12 +105,13 @@ publication and implementation districts:
   focused invariant proof belongs to
   `mechanics/recurrence/parts/repeated-window/tests/`, and date buckets do not
   become claims of change or recurrence
-- the Titan profiles share one mechanic part but keep different evidence
-  postures: `src/aoa_stats_builder/titan_observation_sources.py` loads the exact
-  committed incarnation example chain for validation by
-  `src/aoa_stats_builder/titan_observation.py`, while Titan Summon exposes only
-  an explicit no-observed-ledger compatibility baseline; focused proof belongs
-  to `mechanics/titan/parts/incarnation-summon/tests/`
+- the active Titan Incarnation profile uses
+  `src/aoa_stats_builder/titan_observation_sources.py` to load the exact
+  committed example chain for validation by
+  `src/aoa_stats_builder/titan_observation.py`; Titan Summon's former no-ledger
+  baseline is retired, with only its public schema history and cleanup
+  tombstone retained; focused proof belongs to
+  `mechanics/titan/parts/incarnation-summon/tests/`
 - public and compatibility commands remain under `scripts/`
 - repo-wide and compatibility validation remains under root `scripts/` and
   `tests/`; operation-focused validation follows `mechanics/topology.json`,
@@ -121,12 +123,13 @@ publication and implementation districts:
 
 `live_state_capable` in each active read-model profile is the executable live
 materialization selector. The committed catalog may include reference-only
-profiles; the local live catalog contains only admitted, materialized outputs,
-while cleanup still covers every managed active output. Component Refresh,
+profiles; the local live catalog contains only admitted, materialized outputs.
+Cleanup covers every active output plus every retired-output tombstone.
+Component Refresh,
 Continuity Window, Codex Plane Deployment, trusted rollout-history, and both
 cadence projections are currently reference-only alongside Owner Landing,
 Route Progression, Runtime Closeout, Memory Movement, Stress Recovery Window,
-and the Titan references. Owner
+and Titan Incarnation. Owner
 Landing and Stress Recovery still lack real publishers; Memory Movement has a
 real reviewed owner corpus but no refresh observation route. The
 selector and stale-cleanup precedent is recorded for Component Refresh in
@@ -140,6 +143,9 @@ in
 `docs/decisions/AOST-D-0006-runtime-closeout-wave-receipts-are-not-current-trial-live-state.md`.
 The committed-roster versus observed-swarm Titan boundary is recorded in
 `docs/decisions/AOST-D-0007-titan-reference-rosters-are-not-observed-swarm-activity.md`.
+Titan Summon's removal from active stats and its cleanup-only lifecycle are
+recorded in
+`docs/decisions/AOST-D-0008-retired-outputs-remain-cleanup-tombstones-not-active-stats.md`.
 The selector does not independently certify any profile's source posture.
 
 Follow the family route card before changing any of those paths.

@@ -9,7 +9,7 @@ from unittest.mock import Mock, patch
 PART_ROOT = Path(__file__).resolve().parents[1]
 REPO_ROOT = Path(__file__).resolve().parents[5]
 MODULE_PATH = REPO_ROOT / "scripts" / "refresh_live_stats.py"
-FALSE_LIVE_OUTPUT_NAMES = frozenset(
+REFERENCE_ONLY_ACTIVE_OUTPUT_NAMES = frozenset(
     {
         "owner_landing_summary.min.json",
         "codex_plane_deployment_summary.min.json",
@@ -23,9 +23,12 @@ FALSE_LIVE_OUTPUT_NAMES = frozenset(
         "route_progression_summary.min.json",
         "runtime_closeout_summary.min.json",
         "titan_incarnation_summary.min.json",
-        "titan_summon_summary.min.json",
         "stress_recovery_window_summary.min.json",
     }
+)
+RETIRED_OUTPUT_NAMES = frozenset({"titan_summon_summary.min.json"})
+NON_LIVE_MANAGED_OUTPUT_NAMES = (
+    REFERENCE_ONLY_ACTIVE_OUTPUT_NAMES | RETIRED_OUTPUT_NAMES
 )
 
 
@@ -49,6 +52,7 @@ def test_live_output_inventory_is_derived_from_authored_profile_posture() -> Non
 
     all_profile_outputs = module.all_profile_surface_output_names()
     live_profile_outputs = module.live_profile_surface_output_names()
+    retired_profile_outputs = module.retired_profile_surface_output_names()
 
     assert module.MANAGED_SUMMARY_OUTPUT_NAMES == (
         *all_profile_outputs,
@@ -60,12 +64,23 @@ def test_live_output_inventory_is_derived_from_authored_profile_posture() -> Non
     )
     assert len(all_profile_outputs) == 25
     assert len(live_profile_outputs) == 11
+    assert retired_profile_outputs == ("titan_summon_summary.min.json",)
+    assert module.RETIRED_PROFILE_SURFACE_OUTPUT_NAMES == retired_profile_outputs
     assert "owner_landing_summary.min.json" not in live_profile_outputs
     assert "memory_movement_summary.min.json" not in live_profile_outputs
     assert "route_progression_summary.min.json" not in live_profile_outputs
     assert "runtime_closeout_summary.min.json" not in live_profile_outputs
     assert "stress_recovery_window_summary.min.json" not in live_profile_outputs
-    assert set(all_profile_outputs) - set(live_profile_outputs) == FALSE_LIVE_OUTPUT_NAMES
+    assert (
+        set(all_profile_outputs) - set(live_profile_outputs)
+        == NON_LIVE_MANAGED_OUTPUT_NAMES
+    )
+    assert (
+        set(all_profile_outputs)
+        - set(live_profile_outputs)
+        - set(retired_profile_outputs)
+        == REFERENCE_ONLY_ACTIVE_OUTPUT_NAMES
+    )
 
 
 def test_live_allowlist_never_invokes_reference_only_builders() -> None:
@@ -191,12 +206,12 @@ def test_refresh_materializes_only_live_profile_outputs_and_filters_live_catalog
     )
     summary_output_dir = tmp_path / "state" / "generated"
     summary_output_dir.mkdir(parents=True)
-    for stale_name in FALSE_LIVE_OUTPUT_NAMES:
+    for stale_name in NON_LIVE_MANAGED_OUTPUT_NAMES:
         (summary_output_dir / stale_name).write_text("stale\n", encoding="utf-8")
 
     build_outputs = {
         name: {"schema_version": f"reference-{name}"}
-        for name in FALSE_LIVE_OUTPUT_NAMES
+        for name in NON_LIVE_MANAGED_OUTPUT_NAMES
     }
     build_outputs["automation_pipeline_summary.min.json"] = {
         "schema_version": "automation-live"
@@ -215,7 +230,7 @@ def test_refresh_materializes_only_live_profile_outputs_and_filters_live_catalog
                     "surface_ref": f"generated/{name}",
                     "live_state_capable": False,
                 }
-                for name in sorted(FALSE_LIVE_OUTPUT_NAMES)
+                for name in sorted(NON_LIVE_MANAGED_OUTPUT_NAMES)
             ],
         ],
     }
@@ -232,7 +247,7 @@ def test_refresh_materializes_only_live_profile_outputs_and_filters_live_catalog
     assert build_mock.call_args.kwargs["optional_output_names"] == frozenset(
         module.live_profile_surface_output_names()
     )
-    assert FALSE_LIVE_OUTPUT_NAMES.isdisjoint(
+    assert NON_LIVE_MANAGED_OUTPUT_NAMES.isdisjoint(
         build_mock.call_args.kwargs["optional_output_names"]
     )
     assert build_mock.call_args.kwargs["codex_plane_source_mode"] == "live"
@@ -243,7 +258,7 @@ def test_refresh_materializes_only_live_profile_outputs_and_filters_live_catalog
     }
     assert all(
         not (summary_output_dir / name).exists()
-        for name in FALSE_LIVE_OUTPUT_NAMES
+        for name in NON_LIVE_MANAGED_OUTPUT_NAMES
     )
     live_catalog = json.loads(
         (summary_output_dir / "summary_surface_catalog.min.json").read_text(
@@ -439,7 +454,7 @@ def test_refresh_live_state_clears_previous_outputs_when_sources_are_empty(tmp_p
     (summary_output_dir / "summary_surface_catalog.min.json").write_text(
         '{"schema_version":"aoa_stats_summary_surface_catalog_v1"}\n', encoding="utf-8"
     )
-    for stale_name in FALSE_LIVE_OUTPUT_NAMES:
+    for stale_name in NON_LIVE_MANAGED_OUTPUT_NAMES:
         (summary_output_dir / stale_name).write_text("stale\n", encoding="utf-8")
 
     source_labels, receipt_count = module.refresh_live_state(
@@ -458,7 +473,7 @@ def test_refresh_live_state_clears_previous_outputs_when_sources_are_empty(tmp_p
     assert (summary_output_dir / "summary_surface_catalog.min.json").exists() is False
     assert all(
         not (summary_output_dir / name).exists()
-        for name in FALSE_LIVE_OUTPUT_NAMES
+        for name in NON_LIVE_MANAGED_OUTPUT_NAMES
     )
 
 
@@ -525,7 +540,7 @@ def test_refresh_live_state_removes_stale_optional_outputs_when_builder_omits_th
     summary_output_dir.mkdir(parents=True)
     stale_paths = tuple(
         summary_output_dir / name
-        for name in FALSE_LIVE_OUTPUT_NAMES
+        for name in NON_LIVE_MANAGED_OUTPUT_NAMES
     )
     for stale_path in stale_paths:
         stale_path.write_text("stale\n", encoding="utf-8")

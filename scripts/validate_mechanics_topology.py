@@ -80,6 +80,7 @@ def _profile_routes(repo_root: Path) -> tuple[set[str], set[str], set[str], list
         [
             *(repo_root / PROFILE_ROOT / "active").glob("*.profile.json"),
             *(repo_root / PROFILE_ROOT / "deferred").glob("*.profile.json"),
+            *(repo_root / PROFILE_ROOT / "retired").glob("*.profile.json"),
         ]
     )
     if not profile_paths:
@@ -90,10 +91,17 @@ def _profile_routes(repo_root: Path) -> tuple[set[str], set[str], set[str], list
             issues.append(error)
             continue
         assert profile is not None
-        routes = profile.get("mechanic_routes")
+        lifecycle = profile.get("lifecycle")
+        routes_field = (
+            "former_mechanic_routes" if lifecycle == "retired" else "mechanic_routes"
+        )
+        routes = profile.get(routes_field)
         if not _string_list(routes):
-            issues.append(f"{path.relative_to(repo_root).as_posix()}: mechanic_routes must be non-empty")
-        else:
+            issues.append(
+                f"{path.relative_to(repo_root).as_posix()}: "
+                f"{routes_field} must be non-empty"
+            )
+        elif lifecycle != "retired":
             mechanic_routes.update(routes)
         schema_ref = profile.get("schema_ref")
         if isinstance(schema_ref, str):
