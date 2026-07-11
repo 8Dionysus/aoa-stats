@@ -5,16 +5,20 @@
   "name": "codex_plane_deployment_summary",
   "surface_ref": "generated/codex_plane_deployment_summary.min.json",
   "schema_ref": "schemas/codex-plane-deployment-summary.schema.json",
-  "primary_question": "What is the current derived deployment continuity posture for the shared-root Codex plane without letting stats overrule live trust evidence?",
-  "derivation_rule": "derive one bounded deployment summary from the 8Dionysus trust-state and rollout receipt examples plus the aoa-sdk deploy-status example",
-  "input_posture": "checked_in_owner_history",
+  "primary_question": "What bounded shared-root Codex Plane deployment posture is represented by the committed 8Dionysus owner-example chain without letting stats overrule deploy-local trust or rollout evidence?",
+  "derivation_rule": "derive one committed reference snapshot from the 8Dionysus trust-state, regeneration-report, and rollout-receipt examples without treating those fixtures as current deploy-local state or a live fallback",
+  "input_posture": "committed_owner_example_chain",
   "owner_truth_inputs": [
-    "8Dionysus checked-in trust-state surfaces",
-    "aoa-sdk deploy-status example"
+    "8Dionysus/examples/codex_plane_trust_state.example.json",
+    "8Dionysus/examples/codex_plane_regeneration_report.example.json",
+    "8Dionysus/examples/codex_plane_rollout_receipt.example.json",
+    "<workspace-root>/.codex/generated/rollout/codex_plane_trust_state.current.json",
+    "<workspace-root>/.codex/generated/rollout/codex_plane_regeneration_report.latest.json",
+    "<workspace-root>/.codex/generated/rollout/codex_plane_rollout_receipt.latest.json"
   ],
-  "authority_ceiling": "Weaker than 8Dionysus rollout history, trust-state receipts, and aoa-sdk deployment status.",
+  "authority_ceiling": "Weaker than deploy-local workspace-root trust state, regeneration reports, rollout receipts, live doctor or verify outcomes, and source-owner validation.",
   "consumer_risk": "high",
-  "live_state_capable": true,
+  "live_state_capable": false,
   "mechanic_routes": [
     "mechanics/release-support/parts/codex-deployment-rollout"
   ]

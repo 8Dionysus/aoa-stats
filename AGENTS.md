@@ -43,10 +43,12 @@ It does not own:
    for the current receipt refresh route
 10. `mechanics/recurrence/parts/component-refresh/docs/COMPONENT_REFRESH_SUMMARIES.md`
     for derived-only component refresh posture
-11. `mechanics/boundary-bridge/parts/memory-owner-handoff/docs/MEMORY_MOVEMENT_SUMMARY.md`
+11. `mechanics/release-support/parts/codex-deployment-rollout/docs/CODEX_PLANE_DEPLOYMENT_SUMMARIES.md`
+    for committed-reference versus deploy-local Codex Plane posture
+12. `mechanics/boundary-bridge/parts/memory-owner-handoff/docs/MEMORY_MOVEMENT_SUMMARY.md`
     for reviewed corpus movement posture
-12. the nearest nested `AGENTS.md` for every path you touch
-13. `docs/history/AGENTS_ROOT_REFERENCE.md` only when historical pre-refactor
+13. the nearest nested `AGENTS.md` for every path you touch
+14. `docs/history/AGENTS_ROOT_REFERENCE.md` only when historical pre-refactor
     guidance is needed as provenance
 
 ## Repository shape
@@ -82,6 +84,12 @@ contract. Classify the current source chain as runtime/receipt-backed or
 committed reference, make I/O and reference adaptation explicit, and only then
 change the authored profile and source-home manifest to reflect that proven
 mechanic boundary.
+
+For Codex Plane Deployment, keep committed-reference and deploy-local modes
+explicit. The committed build may project owner-authored examples; live refresh
+may read only the named deploy-local rollout artifacts from its explicit
+workspace root. Missing live artifacts omit the optional output and trigger
+stale cleanup; they never authorize fallback to examples.
 
 ## Cross-mode law
 

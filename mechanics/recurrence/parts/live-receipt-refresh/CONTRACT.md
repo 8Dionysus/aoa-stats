@@ -33,9 +33,9 @@ admitted by the `intake_contract` family.
 - a surface with `live_state_capable: false` is not materialized or cataloged
 - cleanup covers the full managed active-profile output set, including
   reference-only outputs, so stale runtime copies do not survive
-- live materialization does not invoke the Component Refresh or Continuity
-  Window committed-reference adapters or infer their missing owner-runtime
-  state
+- live materialization does not invoke the Component Refresh, Continuity
+  Window, or Codex Plane Deployment committed-reference adapters or infer
+  their missing owner-runtime or deploy-local state
 - derived views cannot strengthen owner evidence or become owner truth
 
 Component Refresh remains a committed reference surface. Live activation
@@ -51,6 +51,13 @@ resolvable continuity, revision, reanchor or explicit no-drift, and anchor
 references plus applicable proof reports. The live receipt registry does not
 currently provide that chain.
 
+Codex Plane Deployment remains a committed owner-example reference surface.
+Live refresh passes the explicit federation/workspace root into the no-fallback
+live adapter, which may read only the trust-state, regeneration-report, and
+rollout-receipt artifacts below `.codex/generated/rollout/`. Until a real
+producer and refresh trigger are proven, the authored selector stays false and
+stale runtime copies are removed.
+
 This contract does not certify that every other `live_state_capable: true`
 profile is receipt-backed. Their declared source postures require separate,
 profile-by-profile audits.
@@ -64,7 +71,8 @@ route is recorded in `stats/source_home.manifest.json` and
 The selector/output split and stale-cleanup precedent is recorded for Component
 Refresh in
 `docs/decisions/AOST-D-0003-component-refresh-fixtures-are-not-live-state.md`.
-That record does not decide Continuity Window posture.
+That record does not decide Continuity Window or Codex Plane Deployment
+posture.
 
 ## Compatibility route
 

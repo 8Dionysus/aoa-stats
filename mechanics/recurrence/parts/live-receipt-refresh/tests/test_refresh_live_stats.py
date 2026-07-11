@@ -41,13 +41,15 @@ def test_live_output_inventory_is_derived_from_authored_profile_posture() -> Non
         module.SUMMARY_SURFACE_CATALOG_OUTPUT_NAME,
     )
     assert len(all_profile_outputs) == 25
-    assert len(live_profile_outputs) == 21
+    assert len(live_profile_outputs) == 20
     assert "memory_movement_summary.min.json" in live_profile_outputs
+    assert "codex_plane_deployment_summary.min.json" not in live_profile_outputs
     assert "continuity_window_summary.min.json" not in live_profile_outputs
     assert "component_refresh_summary.min.json" not in live_profile_outputs
     assert "titan_incarnation_summary.min.json" not in live_profile_outputs
     assert "titan_summon_summary.min.json" not in live_profile_outputs
     assert set(all_profile_outputs) - set(live_profile_outputs) == {
+        "codex_plane_deployment_summary.min.json",
         "continuity_window_summary.min.json",
         "component_refresh_summary.min.json",
         "titan_incarnation_summary.min.json",
@@ -113,6 +115,7 @@ def test_refresh_materializes_only_live_profile_outputs_and_filters_live_catalog
     summary_output_dir = tmp_path / "state" / "generated"
     summary_output_dir.mkdir(parents=True)
     for stale_name in (
+        "codex_plane_deployment_summary.min.json",
         "continuity_window_summary.min.json",
         "component_refresh_summary.min.json",
         "titan_incarnation_summary.min.json",
@@ -122,6 +125,9 @@ def test_refresh_materializes_only_live_profile_outputs_and_filters_live_catalog
 
     build_outputs = {
         "memory_movement_summary.min.json": {"schema_version": "memory-live"},
+        "codex_plane_deployment_summary.min.json": {
+            "schema_version": "codex-plane-reference"
+        },
         "continuity_window_summary.min.json": {"schema_version": "continuity-reference"},
         "component_refresh_summary.min.json": {"schema_version": "component-reference"},
         "titan_incarnation_summary.min.json": {"schema_version": "titan-reference"},
@@ -133,6 +139,11 @@ def test_refresh_materializes_only_live_profile_outputs_and_filters_live_catalog
                     "name": "memory_movement_summary",
                     "surface_ref": "generated/memory_movement_summary.min.json",
                     "live_state_capable": True,
+                },
+                {
+                    "name": "codex_plane_deployment_summary",
+                    "surface_ref": "generated/codex_plane_deployment_summary.min.json",
+                    "live_state_capable": False,
                 },
                 {
                     "name": "continuity_window_summary",
@@ -170,6 +181,8 @@ def test_refresh_materializes_only_live_profile_outputs_and_filters_live_catalog
     assert build_mock.call_args.kwargs["optional_output_names"] == frozenset(
         module.live_profile_surface_output_names()
     )
+    assert build_mock.call_args.kwargs["codex_plane_source_mode"] == "live"
+    assert build_mock.call_args.kwargs["codex_plane_workspace_root"] == federation_root
     assert {path.name for path in summary_output_dir.glob("*.min.json")} == {
         "memory_movement_summary.min.json",
         "summary_surface_catalog.min.json",

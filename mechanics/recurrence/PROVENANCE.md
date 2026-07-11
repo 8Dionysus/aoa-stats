@@ -47,6 +47,11 @@ without widening the component-specific decision. Its committed example chain
 is reference-only, `continuity_status` does not prove reanchor occurrence, and
 future live activation requires a separate owner-runtime continuity source.
 
+Codex Plane Deployment applies the selector at the release-support boundary.
+Its committed 8Dionysus example chain is reference-only; live refresh carries
+an explicit no-fallback source mode and workspace root while stale output stays
+inside the managed cleanup universe.
+
 ## Public compatibility exceptions
 
 Published read-model schemas and generated outputs remain under root

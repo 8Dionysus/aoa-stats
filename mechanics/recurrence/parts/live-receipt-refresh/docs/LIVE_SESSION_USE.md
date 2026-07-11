@@ -37,7 +37,6 @@ declared source contract resolves:
 - `state/generated/session_growth_branch_summary.min.json`
 - `state/generated/automation_pipeline_summary.min.json`
 - `state/generated/automation_followthrough_summary.min.json`
-- `state/generated/codex_plane_deployment_summary.min.json`
 - `state/generated/codex_rollout_operations_summary.min.json`
 - `state/generated/codex_rollout_drift_summary.min.json`
 - `state/generated/rollout_campaign_summary.min.json`
@@ -126,9 +125,10 @@ profiles are the single inventory source:
 - all active profile output names form the stale-file cleanup universe
 - the live catalog lists only outputs actually materialized
 
-The managed inventory contains 25 active read-model outputs. The current live
-inventory contains exactly 21. The four false-live profiles are:
+The managed inventory contains 25 active read-model outputs. The authored
+live-admitted allowlist contains exactly 20. The five false-live profiles are:
 
+- `codex_plane_deployment_summary`
 - `continuity_window_summary`
 - `component_refresh_summary`
 - `titan_incarnation_summary`
@@ -136,10 +136,17 @@ inventory contains exactly 21. The four false-live profiles are:
 
 They remain valid committed public reference surfaces, but the live run does
 not recreate them. If an older copy exists under `state/generated/`, cleanup
-removes it. In particular, the Component Refresh adapter may load reviewed
-`aoa-sdk` examples for the committed build only, and the Continuity Window
-adapter may load its explicit cross-owner example/catalog chain for the
-committed build only. Neither is a live fallback.
+removes it. In particular, the Codex Plane Deployment adapter may load the
+three 8Dionysus owner examples for the committed build only, the Component
+Refresh adapter may load reviewed `aoa-sdk` examples for the committed build
+only, and the Continuity Window adapter may load its explicit cross-owner
+example/catalog chain for the committed build only. None is a live fallback.
+
+Future Codex Plane Deployment live activation requires a real producer for the
+trust-state, regeneration-report, and rollout-receipt trio under the explicit
+workspace root, a successful typed SDK consistency readout, and a watcher or
+refresh signal that observes those artifacts. Live refresh already passes
+`source_mode=live`; until the rest exists, the authored profile remains false.
 
 Future Component Refresh live activation requires a canonical owner-runtime
 artifact whose reviewed chain reaches an owner-local
@@ -147,7 +154,8 @@ artifact whose reviewed chain reaches an owner-local
 absence. See
 `docs/decisions/AOST-D-0003-component-refresh-fixtures-are-not-live-state.md`.
 That decision supplies the selector and stale-cleanup precedent for
-reference-only profiles; it is not a Continuity Window decision.
+reference-only profiles; it is not a Continuity Window or Codex Plane
+Deployment decision.
 
 Future Continuity Window live activation requires a timestamped owner-runtime
 artifact or receipt with resolvable continuity, revision, reanchor or explicit

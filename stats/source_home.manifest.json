@@ -158,6 +158,8 @@
       ],
       "implementation_routes": [
         "src/aoa_stats_builder/candidate_lifecycle.py",
+        "src/aoa_stats_builder/codex_plane_deployment.py",
+        "src/aoa_stats_builder/codex_plane_deployment_sources.py",
         "src/aoa_stats_builder/component_refresh.py",
         "src/aoa_stats_builder/component_refresh_sources.py",
         "src/aoa_stats_builder/continuity_window.py",
@@ -206,6 +208,7 @@
         "scripts/validate_repo.py",
         "mechanics/growth-cycle/tests/test_growth_cycle_projections.py",
         "mechanics/method-growth/tests/test_candidate_lifecycle.py",
+        "mechanics/release-support/parts/codex-deployment-rollout/tests/test_codex_plane_deployment_projection.py",
         "mechanics/recurrence/parts/component-refresh/tests/test_component_refresh_summary.py",
         "mechanics/recurrence/parts/component-refresh/tests/test_component_refresh_projection.py",
         "mechanics/recurrence/parts/continuity-window/tests/test_continuity_window_projection.py",

@@ -4,6 +4,7 @@ from .candidate_lifecycle import (
     build_supersession_drop_summary,
 )
 from .component_refresh import build_component_refresh_summary
+from .codex_plane_deployment import build_codex_plane_deployment_summary
 from .continuity_window import build_continuity_window_summary
 from .downstream_canaries import validate_downstream_canaries
 from .growth_cycle import (
@@ -37,6 +38,7 @@ __all__ = [
     "build_automation_followthrough_summary",
     "build_automation_pipeline_summary",
     "build_candidate_lineage_summary",
+    "build_codex_plane_deployment_summary",
     "build_component_refresh_summary",
     "build_continuity_window_summary",
     "build_fork_calibration_summary",

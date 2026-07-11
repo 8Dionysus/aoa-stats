@@ -75,6 +75,11 @@ publication and implementation districts:
   example/catalog adapter at `src/aoa_stats_builder/continuity_window_sources.py`;
   its represented posture is committed reference state, not current runtime
   continuity
+- the Codex Plane Deployment reference profile uses the filesystem-free
+  projection at `src/aoa_stats_builder/codex_plane_deployment.py` and the
+  owner-example adapter at
+  `src/aoa_stats_builder/codex_plane_deployment_sources.py`; its committed
+  8Dionysus example chain is not deploy-local rollout state
 - the Growth Cycle profile family shares deterministic projection through
   `src/aoa_stats_builder/growth_cycle.py`, with its focused package check under
   `mechanics/growth-cycle/tests/`
@@ -90,11 +95,11 @@ publication and implementation districts:
 `live_state_capable` in each active read-model profile is the executable live
 materialization selector. The committed catalog may include reference-only
 profiles; the local live catalog contains only admitted, materialized outputs,
-while cleanup still covers every managed active output. Component Refresh and
-Continuity Window are currently reference-only. The selector and stale-cleanup
-precedent is recorded for Component Refresh in
+while cleanup still covers every managed active output. Component Refresh,
+Continuity Window, and Codex Plane Deployment are currently reference-only. The
+selector and stale-cleanup precedent is recorded for Component Refresh in
 `docs/decisions/AOST-D-0003-component-refresh-fixtures-are-not-live-state.md`;
-that record is not a Continuity Window decision, and the selector does not
-independently certify any profile's source posture.
+that record is not a Continuity Window or Codex Plane Deployment decision, and
+the selector does not independently certify any profile's source posture.
 
 Follow the family route card before changing any of those paths.

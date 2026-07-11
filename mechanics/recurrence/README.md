@@ -51,11 +51,14 @@ because a live refresh command can call the same projection core. This rule
 does not certify the source posture of other live-capable profiles. See
 `docs/decisions/AOST-D-0003-component-refresh-fixtures-are-not-live-state.md`.
 
-The Continuity Window route is the next profile-by-profile audit: its
-cross-owner examples, experimental playbook, and eval catalog form a committed
-reference chain, not current runtime evidence. Reanchor counts remain
-evidence-backed, and the reference adapter stays outside live refresh until a
-canonical owner-runtime continuity source exists.
+The Continuity Window route has the same audited reference-only posture: its
+cross-owner examples, experimental playbook, and eval catalog are not current
+runtime evidence. Reanchor counts remain evidence-backed, and its adapter stays
+outside live refresh until a canonical owner-runtime continuity source exists.
+
+Codex Plane Deployment is also excluded by its authored profile. Live refresh
+passes an explicit workspace root and `live` mode for that operation, so the
+committed 8Dionysus example chain cannot become an implicit runtime fallback.
 
 ### Next route
 
