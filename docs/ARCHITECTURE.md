@@ -161,6 +161,12 @@ projects the historical `runtime_wave_closeout_receipt`, whereas current
 separate `runtime_return_closeout_receipt` transport. AOST-D-0006 forbids
 implicit aliasing and requires owner-contract plus watcher parity before live
 reactivation.
+Titan Incarnation remains reference-only because it validates three committed
+owner examples rather than current incarnations. Titan Summon has no observed
+owner ledger and preserves only a self-identifying no-ledger compatibility
+baseline; its zeros are not activity measurements. AOST-D-0007 requires an
+owner-local ledger plus refresh observation and public-contract review before
+an observed successor can activate.
 Continuity Window remains
 reference-only because its current cross-owner inputs are examples, an
 experimental playbook, and draft catalog definitions rather than a real

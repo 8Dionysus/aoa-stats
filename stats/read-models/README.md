@@ -71,6 +71,14 @@ the calendar-date prefix already present in `observed_at` and reports conserved
 counts. It does not compare states or infer that change, recurrence, cadence, or
 causality occurred.
 
+Titan Incarnation validates one exact committed cross-owner example chain: the
+`aoa-agents` operator and runtime rosters plus the `aoa-sdk` v2 session receipt.
+The shared 5/3/2 partition is a reference projection, not current incarnation
+state. Titan Summon has no committed owner ledger input; its v1 zeros form an
+explicit `no-observed-ledger` compatibility baseline and do not report observed
+zero activity. Both profiles remain outside live materialization. AOST-D-0007
+records the boundary and the future activation conditions.
+
 Use `committed_owner_example_chain` only when one owner repository publishes a
 coherent set of checked-in examples that can drive a deterministic committed
 reference snapshot. The token does not admit the surface to live

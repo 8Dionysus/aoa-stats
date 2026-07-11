@@ -108,6 +108,11 @@ Tracking starts with the first public release-prep baseline for this repository.
   aggregation core and focused permutation, conservation, identity,
   non-mutation, schema, compatibility-hook, and public-byte invariants under
   Recurrence.
+- Re-grounded Titan Incarnation in the exact checked-in `aoa-agents` roster
+  examples and `aoa-sdk` session-receipt example, with cross-owner coherence
+  validation before count projection. Reclassified Titan Summon's static
+  zeros as an explicit no-observed-ledger compatibility baseline rather than
+  evidence of zero activity, while keeping both surfaces reference-only.
 
 ## [0.1.3] - 2026-04-23
 

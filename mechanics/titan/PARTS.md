@@ -2,7 +2,7 @@
 
 | Part | Stats operation |
 | --- | --- |
-| `incarnation-summon` | Summarizes seed-level incarnation and summon posture. |
+| `incarnation-summon` | Validates the committed cross-owner incarnation roster and publishes an explicit no-ledger summon compatibility baseline. |
 | `runtime-console` | Documents bounded runtime and console metrics without runtime authority. |
 | `memory-owner-bridge` | Documents Titan memory derivation and bridge observations without owning memory truth. |
 

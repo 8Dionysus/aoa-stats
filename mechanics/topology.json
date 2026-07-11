@@ -986,7 +986,8 @@
             "read_models"
           ],
           "localized_payload_roots": [
-            "docs"
+            "docs",
+            "tests"
           ],
           "retained_root_routes": []
         },

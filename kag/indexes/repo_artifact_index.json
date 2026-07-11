@@ -1730,7 +1730,7 @@
     },
     {
       "artifact_kind": "document",
-      "content_hash": "e38cb5c696dffbb7387a2436a58f52a04f51b307b8fb4f3535ca423f8da6efe0",
+      "content_hash": "93469d33a97b7069bb926a10c866a2826a37588857a9163e82703f26a1b6cfad",
       "id": "artifact:file:agents.md:a54ff182c7",
       "path": "AGENTS.md",
       "source_record_id": "file:agents.md:a54ff182c7",
@@ -1738,7 +1738,7 @@
     },
     {
       "artifact_kind": "document",
-      "content_hash": "e68ee5511a70ce7b090cb593aca592b1705516c5d6cbcd493579eb0925f74f05",
+      "content_hash": "d8136bc098f60eb239dc7ab10d70364bd35c8dc6cd5abd72043e9dbf3f0d85fd",
       "id": "artifact:file:changelog.md:06572a96a5",
       "path": "CHANGELOG.md",
       "source_record_id": "file:changelog.md:06572a96a5",
@@ -1762,7 +1762,7 @@
     },
     {
       "artifact_kind": "document",
-      "content_hash": "417bcc0b9bb710fae327ae8d3da976dfd735e58706b76269f9a229fa1929e880",
+      "content_hash": "535189c1d52a44e2a796c0ab873fe51c48d8b761f92f34628a60e4f482bd9d5c",
       "id": "artifact:file:design.md:3dc5dd454e",
       "path": "DESIGN.md",
       "source_record_id": "file:design.md:3dc5dd454e",
@@ -1786,7 +1786,7 @@
     },
     {
       "artifact_kind": "document",
-      "content_hash": "d0cd775cec477a07e7895ed809201ee85eee9af732d358de47690ecb94e53a55",
+      "content_hash": "9efa4f6726d2cbe912a5b328475f35815dbc29c5a23878cc84b7f742cedae7ab",
       "id": "artifact:file:roadmap.md:683343bdf9",
       "path": "ROADMAP.md",
       "source_record_id": "file:roadmap.md:683343bdf9",
@@ -1802,7 +1802,7 @@
     },
     {
       "artifact_kind": "document",
-      "content_hash": "ab4598defbc79d4c2489f901039016c7dde229a5bf9cd68a9ff04f6b5d452b7b",
+      "content_hash": "482376014a0c909925d0f78c0078e9f5387056057702607c3b3abc762cda9ec4",
       "id": "artifact:file:docs/architecture.md:ff21b6b9a3",
       "path": "docs/ARCHITECTURE.md",
       "source_record_id": "file:docs/architecture.md:ff21b6b9a3",
@@ -1930,6 +1930,14 @@
     },
     {
       "artifact_kind": "document",
+      "content_hash": "e05fb4df56be15e432829fd5a3c6f2a1a6434e08b2ead6e9d47ea4b5c3f9c50e",
+      "id": "artifact:file:docs/decisions/aost-d-0007-titan-reference-rosters-are-not-observed-swarm-activity.md:a6280ae040",
+      "path": "docs/decisions/AOST-D-0007-titan-reference-rosters-are-not-observed-swarm-activity.md",
+      "source_record_id": "file:docs/decisions/aost-d-0007-titan-reference-rosters-are-not-observed-swarm-activity.md:a6280ae040",
+      "surface_state": "authored_source"
+    },
+    {
+      "artifact_kind": "document",
       "content_hash": "e0e9b61b0afab1087a69ec979caaa790eed6061ce2b9c1cf9644f054d6cf1c36",
       "id": "artifact:file:docs/decisions/readme.md:e5ec0e7030",
       "path": "docs/decisions/README.md",
@@ -1954,7 +1962,7 @@
     },
     {
       "artifact_kind": "generated_readmodel",
-      "content_hash": "d9246b5a6483d6d4bc6bb5fdad2945464e3b37fa88e3de4ad9e8d29d3a64098a",
+      "content_hash": "80e8143bd4fc072680d472bacbd8de19e427c6054c39ad4976d100fd5cc1b183",
       "id": "artifact:file:docs/decisions/indexes/by-date.md:7f76a83a93",
       "path": "docs/decisions/indexes/by-date.md",
       "source_record_id": "file:docs/decisions/indexes/by-date.md:7f76a83a93",
@@ -1962,7 +1970,7 @@
     },
     {
       "artifact_kind": "generated_readmodel",
-      "content_hash": "f3cc6d7375cb8d9c2e5b91ea3073dcb047c29bd08cb7061c07f04217af06ce65",
+      "content_hash": "8b4eab469e98e6fb6a757d39503df88d4da02d5471dd51caa41493b44eab0034",
       "id": "artifact:file:docs/decisions/indexes/by-guard.md:8ae406686a",
       "path": "docs/decisions/indexes/by-guard.md",
       "source_record_id": "file:docs/decisions/indexes/by-guard.md:8ae406686a",
@@ -1970,7 +1978,7 @@
     },
     {
       "artifact_kind": "generated_readmodel",
-      "content_hash": "2bb048eb4192b4d997cca9633601e31bb1c134756ee656983c4819c4d4c6e7ed",
+      "content_hash": "645aa80193e627323ca3ec8063c60460c7b704324e8811561e38a20c6b694879",
       "id": "artifact:file:docs/decisions/indexes/by-number.md:02e6940a39",
       "path": "docs/decisions/indexes/by-number.md",
       "source_record_id": "file:docs/decisions/indexes/by-number.md:02e6940a39",
@@ -1978,7 +1986,7 @@
     },
     {
       "artifact_kind": "generated_readmodel",
-      "content_hash": "bcd192d0bcf1bea7bb0597a3556f62d596a746361c3af9fec9c66aeb0726504e",
+      "content_hash": "f4c89af102f220719c02eb334420463644285baeb3165e0206b03eb56e60357e",
       "id": "artifact:file:docs/decisions/indexes/by-source-lane.md:d12818b811",
       "path": "docs/decisions/indexes/by-source-lane.md",
       "source_record_id": "file:docs/decisions/indexes/by-source-lane.md:d12818b811",
@@ -1986,7 +1994,7 @@
     },
     {
       "artifact_kind": "generated_readmodel",
-      "content_hash": "235452bd023313a5f63fae56181cb5b154811661716e3d8667799fb0d1a49551",
+      "content_hash": "7f62f9f198f9975d855a7028345a045bd9646860dc387ae7ca24df08ec0eb8f8",
       "id": "artifact:file:docs/decisions/indexes/by-stats-surface.md:01abbd2708",
       "path": "docs/decisions/indexes/by-stats-surface.md",
       "source_record_id": "file:docs/decisions/indexes/by-stats-surface.md:01abbd2708",
@@ -1994,7 +2002,7 @@
     },
     {
       "artifact_kind": "generated_readmodel",
-      "content_hash": "4c13c480470dc7e547a5ce757da088d5b4d57db882a93ff5db75d3f2a901a75c",
+      "content_hash": "ce506a90eaca3ba29ea610bbf1675700ecbf1d5750285404452f3781f947d8b6",
       "id": "artifact:file:docs/decisions/indexes/by-surface.md:acd156903f",
       "path": "docs/decisions/indexes/by-surface.md",
       "source_record_id": "file:docs/decisions/indexes/by-surface.md:acd156903f",
@@ -2322,7 +2330,7 @@
     },
     {
       "artifact_kind": "generated_readmodel",
-      "content_hash": "be94f6c5c9a43a4ffa35d0051d6df3e58b526a6b4a7ec523585c2bc1d1129b80",
+      "content_hash": "f59b34114444d8258125e6d257b43238d949993de926a2006ef3bbf7dc53b656",
       "id": "artifact:file:generated/summary_surface_catalog.min.json:5c31a5556b",
       "path": "generated/summary_surface_catalog.min.json",
       "source_record_id": "file:generated/summary_surface_catalog.min.json:5c31a5556b",
@@ -2346,7 +2354,7 @@
     },
     {
       "artifact_kind": "generated_readmodel",
-      "content_hash": "90dae5d619d2e71310c32b1501cefd999b55400555eb1764f5b0d7516d25c2d0",
+      "content_hash": "76fa5174c7a22444009c0317c3a2d79b114081b5120becab4422050b8f6d87e6",
       "id": "artifact:file:generated/titan_incarnation_summary.min.json:cd38db547c",
       "path": "generated/titan_incarnation_summary.min.json",
       "source_record_id": "file:generated/titan_incarnation_summary.min.json:cd38db547c",
@@ -2354,7 +2362,7 @@
     },
     {
       "artifact_kind": "generated_readmodel",
-      "content_hash": "528b75856961071ddec6256ce84727b1ba7a6ab20f2dbcf7baad6dce2f52ab9e",
+      "content_hash": "1297e1f0a556a06458e04ac098c078af477d18fe28832014f4e9bd6465b850f7",
       "id": "artifact:file:generated/titan_summon_summary.min.json:d1a90418dc",
       "path": "generated/titan_summon_summary.min.json",
       "source_record_id": "file:generated/titan_summon_summary.min.json:d1a90418dc",
@@ -6394,7 +6402,7 @@
     },
     {
       "artifact_kind": "document",
-      "content_hash": "f1b047d5cfe0389c2514537d8a9174ca3828dddd8819755be47107d5a967862c",
+      "content_hash": "353a053fdc65f083f6ad7f0c43ff91d55651e5f6642f63bb10baedbf863dde70",
       "id": "artifact:file:mechanics/titan/parts.md:3d536b324c",
       "path": "mechanics/titan/PARTS.md",
       "source_record_id": "file:mechanics/titan/parts.md:3d536b324c",
@@ -6410,7 +6418,7 @@
     },
     {
       "artifact_kind": "document",
-      "content_hash": "798e911054330123b08b3610d216826f5a4dc92602fe00507cdc424fc94bb4da",
+      "content_hash": "7c643cabdbf87789e2681cf99beb0065bd1e9309c825f7b99609e8f1d84d9f66",
       "id": "artifact:file:mechanics/titan/readme.md:53ded8a1fc",
       "path": "mechanics/titan/README.md",
       "source_record_id": "file:mechanics/titan/readme.md:53ded8a1fc",
@@ -6434,7 +6442,7 @@
     },
     {
       "artifact_kind": "document",
-      "content_hash": "a87b94585844374745eabe5e605afff22e0fde5141078d5d9c75688acfa2cf9b",
+      "content_hash": "28ba1150566ad536f95078ba5368610b5749b30792b51802ada42d046ca24273",
       "id": "artifact:file:mechanics/titan/parts/incarnation-summon/contract.md:3687750a6f",
       "path": "mechanics/titan/parts/incarnation-summon/CONTRACT.md",
       "source_record_id": "file:mechanics/titan/parts/incarnation-summon/contract.md:3687750a6f",
@@ -6442,7 +6450,7 @@
     },
     {
       "artifact_kind": "document",
-      "content_hash": "423490593a9229bbecb6f9deb1b180e1a8eb775039d6942d4e609bf39ce04c41",
+      "content_hash": "498d30384d17998700a00949115c4ded9c7b1854d0341f57189efb2b7494297c",
       "id": "artifact:file:mechanics/titan/parts/incarnation-summon/readme.md:39e48f023e",
       "path": "mechanics/titan/parts/incarnation-summon/README.md",
       "source_record_id": "file:mechanics/titan/parts/incarnation-summon/readme.md:39e48f023e",
@@ -6450,7 +6458,7 @@
     },
     {
       "artifact_kind": "document",
-      "content_hash": "045aee7c7d783b6b29b902a7401549c850d272410838cace27b3a25efb441ff3",
+      "content_hash": "d2c566e0ad6c44e6087fa63e396e1fc8fa4c5d7c6fc8d1d02b8d032b2f627ddc",
       "id": "artifact:file:mechanics/titan/parts/incarnation-summon/validation.md:326fb4de66",
       "path": "mechanics/titan/parts/incarnation-summon/VALIDATION.md",
       "source_record_id": "file:mechanics/titan/parts/incarnation-summon/validation.md:326fb4de66",
@@ -6458,7 +6466,7 @@
     },
     {
       "artifact_kind": "document",
-      "content_hash": "bfff2625ea8825d2e78446511bfb23f50c6540131cc66ee9e9e759f6a96cbab9",
+      "content_hash": "0326aef75c66d0e48ac24da121501d308868893e3ab389df943bbfa8ea3d9ec3",
       "id": "artifact:file:mechanics/titan/parts/incarnation-summon/docs/titan_incarnation_metrics.md:a1c682b133",
       "path": "mechanics/titan/parts/incarnation-summon/docs/TITAN_INCARNATION_METRICS.md",
       "source_record_id": "file:mechanics/titan/parts/incarnation-summon/docs/titan_incarnation_metrics.md:a1c682b133",
@@ -6466,10 +6474,18 @@
     },
     {
       "artifact_kind": "document",
-      "content_hash": "f14677506541a49fc8b3275689d9f9a07269660c4fd33bdba9ee930ccbe4e683",
+      "content_hash": "e4eaa354b3202cc6f9ce45724678130b8891baaf00f25d7e1a27db136ce3882e",
       "id": "artifact:file:mechanics/titan/parts/incarnation-summon/docs/titan_summon_metrics.md:fab75b6ba7",
       "path": "mechanics/titan/parts/incarnation-summon/docs/TITAN_SUMMON_METRICS.md",
       "source_record_id": "file:mechanics/titan/parts/incarnation-summon/docs/titan_summon_metrics.md:fab75b6ba7",
+      "surface_state": "authored_source"
+    },
+    {
+      "artifact_kind": "test",
+      "content_hash": "2a8383568710ca3d68f2d2f54adc23676579d3ce29125921e823ddd05e4e1d25",
+      "id": "artifact:file:mechanics/titan/parts/incarnation-summon/tests/test_titan_observation.py:9ab951cabb",
+      "path": "mechanics/titan/parts/incarnation-summon/tests/test_titan_observation.py",
+      "source_record_id": "file:mechanics/titan/parts/incarnation-summon/tests/test_titan_observation.py:9ab951cabb",
       "surface_state": "authored_source"
     },
     {
@@ -6570,7 +6586,7 @@
     },
     {
       "artifact_kind": "config",
-      "content_hash": "71f3c095a379bd7ad6a1e292c32fc117d5e3687cb2494389b08cfe1c6f29fd78",
+      "content_hash": "538adec7fc39b2c6712651268f60e37529d76ad1f995c221a719b3e370d16404",
       "id": "artifact:file:mechanics/topology.json:c2f84a03b1",
       "path": "mechanics/topology.json",
       "source_record_id": "file:mechanics/topology.json:c2f84a03b1",
@@ -6802,7 +6818,7 @@
     },
     {
       "artifact_kind": "schema",
-      "content_hash": "e0a3e3292f9b9024d767a10bef7972636c18180f1c27ad557a23eeba3278054e",
+      "content_hash": "d0935deaa1df91fbd27b029b7a19752f31bff22fc29efc9e9bb3647102c6636d",
       "id": "artifact:file:schemas/titan_incarnation_summary.schema.json:53985f0ab7",
       "path": "schemas/titan_incarnation_summary.schema.json",
       "source_record_id": "file:schemas/titan_incarnation_summary.schema.json:53985f0ab7",
@@ -6810,7 +6826,7 @@
     },
     {
       "artifact_kind": "schema",
-      "content_hash": "ca1e8025bf507facfe40b311d8c575d283b413e007873ac53d23576c66904c89",
+      "content_hash": "876b9974354dbaf7045494b7caff4dea18a91a0bca7357a1b37fb8418decba4d",
       "id": "artifact:file:schemas/titan_summon_summary.schema.json:14372281e2",
       "path": "schemas/titan_summon_summary.schema.json",
       "source_record_id": "file:schemas/titan_summon_summary.schema.json:14372281e2",
@@ -6834,7 +6850,7 @@
     },
     {
       "artifact_kind": "script",
-      "content_hash": "c38418c9306ccf22f1c5fe66caba18fe3bcd4c3fa0d56334e3ad6c42157f200e",
+      "content_hash": "c60e247c2125776480df41b8bde454622e614870b868249494e04b900513fc0f",
       "id": "artifact:file:scripts/build_views.py:b705861394",
       "path": "scripts/build_views.py",
       "source_record_id": "file:scripts/build_views.py:b705861394",
@@ -7170,6 +7186,22 @@
     },
     {
       "artifact_kind": "source_code",
+      "content_hash": "4a3e52760e3b4b0a49aee61eca34760bb2978ca6262862d972168c05613300da",
+      "id": "artifact:file:src/aoa_stats_builder/titan_observation.py:4b0159e113",
+      "path": "src/aoa_stats_builder/titan_observation.py",
+      "source_record_id": "file:src/aoa_stats_builder/titan_observation.py:4b0159e113",
+      "surface_state": "authored_source"
+    },
+    {
+      "artifact_kind": "source_code",
+      "content_hash": "7957dbf84bd44d58e0f439787113452ec84d97f115e93ccb493a2e673a43328e",
+      "id": "artifact:file:src/aoa_stats_builder/titan_observation_sources.py:72762b1efe",
+      "path": "src/aoa_stats_builder/titan_observation_sources.py",
+      "source_record_id": "file:src/aoa_stats_builder/titan_observation_sources.py:72762b1efe",
+      "surface_state": "authored_source"
+    },
+    {
+      "artifact_kind": "source_code",
       "content_hash": "89f13def1e21a721ff75e5b800846ba139f3b6e4d237f903f0ce6efd9fdba819",
       "id": "artifact:file:src/aoa_stats_mcp/__init__.py:582da116f8",
       "path": "src/aoa_stats_mcp/__init__.py",
@@ -7210,7 +7242,7 @@
     },
     {
       "artifact_kind": "document",
-      "content_hash": "88d89680fa3b6b4deca25517142f98bd30dbd89ddc4a1acb95e516f7baf3fab3",
+      "content_hash": "55ecaab643724c266675e8b15c1d79a2a0d0e10444ae5d0eb1b7ecce68d519de",
       "id": "artifact:file:stats/readme.md:6bac6d2ff5",
       "path": "stats/README.md",
       "source_record_id": "file:stats/readme.md:6bac6d2ff5",
@@ -7410,7 +7442,7 @@
     },
     {
       "artifact_kind": "document",
-      "content_hash": "944507bb274121076cfbc74c67933c2664d7b0530c7334528bf5d58741b8d00d",
+      "content_hash": "f3e32d55f35cbc40b2e562c60844b352b2ad0252d2e4630955e77abf97e0f03c",
       "id": "artifact:file:stats/read-models/readme.md:5ba4a92471",
       "path": "stats/read-models/README.md",
       "source_record_id": "file:stats/read-models/readme.md:5ba4a92471",
@@ -7602,7 +7634,7 @@
     },
     {
       "artifact_kind": "config",
-      "content_hash": "0a49d043e3f0ef1578172cb168cd10ac2c389629943965d2f21fc88ba675f82b",
+      "content_hash": "f9f22009a02d700d919bf41b5130ebd28e1f1288fac2bf1814b7b6a470c77efc",
       "id": "artifact:file:stats/read-models/active/titan_incarnation_summary.profile.json:ee0990a81b",
       "path": "stats/read-models/active/titan_incarnation_summary.profile.json",
       "source_record_id": "file:stats/read-models/active/titan_incarnation_summary.profile.json:ee0990a81b",
@@ -7610,7 +7642,7 @@
     },
     {
       "artifact_kind": "config",
-      "content_hash": "9ea9d645c38f00bc0748d7d79011663692bc42cccbf19bfea41814e38dcc4ea5",
+      "content_hash": "61333baf7b1e3e649f845c0ca924817fb36f44479c8ba18e5478de6e7fb3d035",
       "id": "artifact:file:stats/read-models/active/titan_summon_summary.profile.json:d7d79a6cea",
       "path": "stats/read-models/active/titan_summon_summary.profile.json",
       "source_record_id": "file:stats/read-models/active/titan_summon_summary.profile.json:d7d79a6cea",
@@ -7634,7 +7666,7 @@
     },
     {
       "artifact_kind": "config",
-      "content_hash": "c42a3d357b52b15341dbbd0d3c1a27d3eba44d4ab84ab5fd6db29590a96c5e77",
+      "content_hash": "7012bd0db991c6bcb7f34d32ece3fceb5eb89f42da68f19338481a3a8cc9b4fa",
       "id": "artifact:file:stats/source_home.manifest.json:41b237ff45",
       "path": "stats/source_home.manifest.json",
       "source_record_id": "file:stats/source_home.manifest.json:41b237ff45",
@@ -7771,7 +7803,7 @@
   ],
   "index_identity": {
     "artifact_kind": "repository_artifact_index",
-    "content_digest": "41cebc2ce6a736c4a9624c3489b3812de3c4e153ccded7f51bed8dde7df377e6",
+    "content_digest": "257ed481013dbe5ff48adb8ad14f41f94608012d3c2f72b32829226480c1e8f1",
     "index_kind": "artifact",
     "local_id": "index:repo-local:artifacts",
     "schema_ref": "aoa-kag:schemas/repo-local-kag-repository-index.schema.json"
@@ -7795,17 +7827,17 @@
   },
   "schema_version": "aoa-repo-local-kag-repository-index-v1",
   "source_index": {
-    "content_digest": "05992253d5946e42e428d8799fb5a43e6436fb2e04ceab3f887e99880121035d",
+    "content_digest": "fd9b3eec9ca9a7d5c7aef4461b75166dff6175b1174006ee6c0857785c7b8f39",
     "local_id": "index:repo-local:source-surfaces",
     "path": "kag/indexes/source_surface_index.json"
   },
   "summary": {
-    "entry_count": 971,
+    "entry_count": 975,
     "kind_counts": {
       "asset": 50,
       "config": 174,
       "dependency_manifest": 2,
-      "document": 463,
+      "document": 464,
       "generated_readmodel": 42,
       "index": 1,
       "license": 1,
@@ -7817,8 +7849,8 @@
       "script": 23,
       "security": 1,
       "service_unit": 2,
-      "source_code": 32,
-      "test": 49,
+      "source_code": 34,
+      "test": 50,
       "validator": 18
     }
   }

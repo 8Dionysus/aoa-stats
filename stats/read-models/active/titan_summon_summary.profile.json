@@ -5,15 +5,14 @@
   "name": "titan_summon_summary",
   "surface_ref": "generated/titan_summon_summary.min.json",
   "schema_ref": "schemas/titan_summon_summary.schema.json",
-  "primary_question": "What seed-level Titan summon/report/finding/memory-candidate pressure is visible without making stats the owner of swarm ledger truth?",
-  "derivation_rule": "publish the Sixteenth Wave seed summary until owner-local Titan swarm ledgers and closeout receipts provide a live feed",
-  "input_posture": "seed_static_summary",
+  "primary_question": "What does the v1 compatibility surface expose when no owner Titan swarm ledger was observed, without interpreting missing input as observed zero activity?",
+  "derivation_rule": "publish an explicit no-observed-ledger baseline whose zero fields mean that no ledger was projected and infer no activity from roster or helper defaults",
+  "input_posture": "no_observed_ledger_compatibility_baseline",
   "owner_truth_inputs": [
-    "Dionysus sixteenth wave manifest",
-    "aoa-sdk Titan swarm ledger helper",
-    "Titan closeout audit receipts"
+    "aoa-sdk/mechanics/titan/parts/swarm-ledger-closeout-helper-contracts/schemas/titan_swarm_ledger.schema.json",
+    "aoa-sdk/mechanics/titan/parts/swarm-ledger-closeout-helper-contracts/docs/swarm-ledger.md"
   ],
-  "authority_ceiling": "Weaker than Titan swarm ledgers, closeout audits, owner-local reports, and bounded eval verdicts.",
+  "authority_ceiling": "Weaker than any owner-local Titan swarm ledger, closeout audit, report, finding, memory candidate, and bounded eval verdict; this surface is a compatibility baseline only.",
   "consumer_risk": "high",
   "live_state_capable": false,
   "mechanic_routes": [

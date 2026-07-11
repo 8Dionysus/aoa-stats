@@ -26,7 +26,8 @@ The source/mechanics refactor is part of that contour:
   the current split is 11 live-admitted read models across 25 managed active
   outputs, and cleanup covers the full managed set; Route Progression remains
   a committed legacy-numeric reference surface under AOST-D-0005 while Runtime
-  Closeout remains a historical wave-receipt reference under AOST-D-0006
+  Closeout remains a historical wave-receipt reference under AOST-D-0006 and
+  Titan's committed roster/no-ledger split is fixed by AOST-D-0007
 
 ## Active summary families
 
@@ -112,6 +113,12 @@ contract stays separate from active catalog claims.
   `stats/read-models/active/repeated_window_summary.profile.json`,
   `src/aoa_stats_builder/repeated_window.py`, and
   `mechanics/recurrence/parts/repeated-window/`
+- Titan committed-reference and no-ledger boundaries:
+  `stats/read-models/active/titan_incarnation_summary.profile.json`,
+  `stats/read-models/active/titan_summon_summary.profile.json`,
+  `src/aoa_stats_builder/titan_observation.py`,
+  `src/aoa_stats_builder/titan_observation_sources.py`, and
+  `mechanics/titan/parts/incarnation-summon/`
 - public catalog access: `stats/surface-catalog/CODEX_MCP.md`
 
 ## Direction

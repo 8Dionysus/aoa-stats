@@ -15,11 +15,14 @@
       "const": "titan_incarnation_summary/v1"
     },
     "summary_ref": {
-      "type": "string"
+      "const": "generated:titan-incarnation-summary:reference"
     },
     "source_receipt_refs": {
       "type": "array",
-      "minItems": 1,
+      "minItems": 3,
+      "maxItems": 3,
+      "uniqueItems": true,
+      "description": "Compatibility field carrying the exact two aoa-agents roster example paths and one aoa-sdk session-receipt example path.",
       "items": {
         "type": "string",
         "minLength": 1
@@ -27,9 +30,25 @@
     },
     "counts": {
       "type": "object",
-      "additionalProperties": {
-        "type": "integer",
-        "minimum": 0
+      "additionalProperties": false,
+      "required": [
+        "seeded_titans",
+        "default_active",
+        "locked_by_gate"
+      ],
+      "properties": {
+        "seeded_titans": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "default_active": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "locked_by_gate": {
+          "type": "integer",
+          "minimum": 0
+        }
       }
     }
   }

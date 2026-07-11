@@ -14,13 +14,16 @@
       "const": "titan_summon_summary/v1"
     },
     "summary_ref": {
-      "type": "string"
+      "const": "generated:titan-summon-summary:no-observed-ledger"
     },
     "source_ledger_refs": {
       "type": "array",
       "minItems": 1,
+      "maxItems": 1,
+      "uniqueItems": true,
+      "description": "The v1 compatibility sentinel states that no owner ledger was observed; it is not a ledger instance or evidence of zero activity.",
       "items": {
-        "type": "string"
+        "const": "baseline:titan-summon:no-observed-ledger"
       }
     },
     "counts": {
@@ -49,10 +52,7 @@
           "minimum": 0
         }
       },
-      "additionalProperties": {
-        "type": "integer",
-        "minimum": 0
-      }
+      "additionalProperties": false
     }
   },
   "additionalProperties": false

@@ -5,15 +5,15 @@
   "name": "titan_incarnation_summary",
   "surface_ref": "generated/titan_incarnation_summary.min.json",
   "schema_ref": "schemas/titan_incarnation_summary.schema.json",
-  "primary_question": "What bounded Titan incarnation seed posture is visible without making stats the owner of Titan identity or gates?",
-  "derivation_rule": "derive fixed seed counts from the landed Titan XV owner surfaces and keep source receipt refs explicit",
-  "input_posture": "reviewed_example_chain",
+  "primary_question": "What active and gate-locked Titan partition is shared by the exact committed aoa-agents roster examples and aoa-sdk session-receipt example without treating them as current incarnations?",
+  "derivation_rule": "validate identical Titan names, active or locked state, and gate assignments across all three owner examples before deriving the bounded reference counts",
+  "input_posture": "committed_cross_owner_example_chain",
   "owner_truth_inputs": [
-    "Dionysus fifteenth wave manifest",
-    "aoa-agents Titan incarnation identity surface",
-    "aoa-sdk Titan incarnation spine defaults"
+    "aoa-agents/mechanics/titan/parts/incarnation-spine/examples/operator-console-roster.v0.json",
+    "aoa-agents/mechanics/titan/parts/runtime-roster/examples/runtime-roster.v0.json",
+    "aoa-sdk/mechanics/titan/parts/incarnation-identity-runtime-helper-contracts/examples/titan_session_receipt.v2.example.json"
   ],
-  "authority_ceiling": "Weaker than Dionysus seed lineage, aoa-agents role identity, aoa-sdk runtime helpers, and owner review evidence.",
+  "authority_ceiling": "Weaker than current aoa-agents Titan identity and gate state, aoa-sdk runtime state, any owner-local session receipt, and operator review evidence.",
   "consumer_risk": "high",
   "live_state_capable": false,
   "mechanic_routes": [

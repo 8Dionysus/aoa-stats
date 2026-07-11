@@ -145,6 +145,22 @@ the root builder remains the repo-wide fan-out facade. The core reuses the
 receipt object-identity tuple already used by Object Observation; sharing that
 stable value rule does not merge the Recurrence and Audit questions.
 
+Titan Incarnation and Titan Summon form a mechanics-led shared-owner boundary
+with deliberately unequal inputs. The Incarnation reference adapter reads the
+exact checked-in `aoa-agents` operator/runtime roster examples and the
+`aoa-sdk` v2 session-receipt example. A filesystem-free core validates that
+their Titan identities, active/locked partition, and gate assignments agree
+before deriving the 5/3/2 reference counts. Those examples are not current
+incarnations and do not admit the surface to live state.
+
+No committed owner swarm-ledger instance or closeout receipt supports the
+Titan Summon output. Its v1 public shape therefore remains only as an explicit
+`no-observed-ledger` compatibility baseline. The four zero values mean that no
+ledger was projected; they do not mean that zero agents, reports, findings, or
+memory candidates were observed. A future observed projection must start from
+an owner-local ledger instance and choose an honest public-contract evolution
+instead of silently reinterpreting the baseline.
+
 Generated artifacts never become source authority merely because they are
 committed or convenient to query.
 

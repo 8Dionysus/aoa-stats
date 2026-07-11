@@ -130,6 +130,15 @@ from aoa_stats_builder.stress_recovery_sources import (  # noqa: E402
     load_stress_recovery_committed_reference_report,
 )
 from aoa_stats_builder.surface_catalog import build_summary_surface_catalog  # noqa: E402
+from aoa_stats_builder.titan_observation import (  # noqa: E402
+    build_titan_incarnation_summary as build_titan_incarnation_summary_from_inputs,
+    build_titan_summon_no_observed_ledger_baseline,
+)
+from aoa_stats_builder.titan_observation_sources import (  # noqa: E402
+    TitanIncarnationInputBundle,
+    load_titan_incarnation_reference_bundle,
+    titan_incarnation_reference_paths as titan_incarnation_source_paths_from_roots,
+)
 
 DEFAULT_INPUT = (
     REPO_ROOT
@@ -363,6 +372,22 @@ def component_refresh_input_bundle() -> ComponentRefreshInputBundle:
     return load_reviewed_sdk_example_bundle(sdk_root)
 
 
+def titan_incarnation_source_paths() -> tuple[Path, Path, Path]:
+    agents_root = repo_root_from_env("AOA_AGENTS_ROOT", DEFAULT_AOA_AGENTS_ROOT)
+    sdk_root = repo_root_from_env("AOA_SDK_ROOT", DEFAULT_AOA_SDK_ROOT)
+    return titan_incarnation_source_paths_from_roots(
+        agents_root=agents_root, sdk_root=sdk_root
+    )
+
+
+def titan_incarnation_input_bundle() -> TitanIncarnationInputBundle:
+    agents_root = repo_root_from_env("AOA_AGENTS_ROOT", DEFAULT_AOA_AGENTS_ROOT)
+    sdk_root = repo_root_from_env("AOA_SDK_ROOT", DEFAULT_AOA_SDK_ROOT)
+    return load_titan_incarnation_reference_bundle(
+        agents_root=agents_root, sdk_root=sdk_root
+    )
+
+
 def component_refresh_generated_from() -> tuple[dict[str, Any], list[dict[str, Any]], list[dict[str, Any]]]:
     """Preserve the legacy mutable tuple facade for compatibility callers."""
 
@@ -536,30 +561,17 @@ def build_component_refresh_summary() -> dict[str, Any]:
 
 
 def build_titan_incarnation_summary() -> dict[str, Any]:
-    return {
-        "schema_version": "titan_incarnation_summary/v1",
-        "summary_ref": "generated:titan-incarnation-summary:seed",
-        "source_receipt_refs": ["seed:titan-fifteenth-wave"],
-        "counts": {
-            "seeded_titans": 5,
-            "default_active": 3,
-            "locked_by_gate": 2,
-        },
-    }
+    bundle = titan_incarnation_input_bundle()
+    return build_titan_incarnation_summary_from_inputs(
+        bundle.operator_roster,
+        bundle.runtime_roster,
+        bundle.session_receipt,
+        source_refs=bundle.source_refs,
+    )
 
 
 def build_titan_summon_summary() -> dict[str, Any]:
-    return {
-        "schema_version": "titan_summon_summary/v1",
-        "summary_ref": "generated:titan-summon-summary:seed",
-        "source_ledger_refs": ["seed:titan-sixteenth-wave"],
-        "counts": {
-            "agents_invoked": 0,
-            "reports_received": 0,
-            "findings_reported": 0,
-            "memory_candidates_created": 0,
-        },
-    }
+    return build_titan_summon_no_observed_ledger_baseline()
 
 
 def build_all_views(

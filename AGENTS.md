@@ -119,6 +119,16 @@ prefix of `observed_at`; those buckets do not prove change, recurrence, cadence,
 causality, or owner chronology. The root builder remains a thin compatibility
 facade and fan-out route, including its historical object-identity hook.
 
+Titan Incarnation and Titan Summon share one Titan mechanic part but do not
+share one evidence posture. Incarnation is a committed-reference projection of
+the exact checked-in `aoa-agents` operator/runtime rosters and `aoa-sdk`
+session-receipt example; its core must reject cross-owner disagreement before
+deriving counts. Summon v1 is only a compatibility baseline for the case where
+no owner swarm-ledger instance was observed. Its zero counts must be labeled as
+that baseline and must never be described as observed zero activity. Both root
+builders remain thin facades, and both profiles remain outside live state until
+real owner-runtime inputs and refresh observation exist.
+
 Treat `live_state_capable` as an executable profile contract. The live refresh
 mechanic may materialize and advertise only surfaces whose authored profile
 sets it to `true`; it must still remove stale managed runtime files for

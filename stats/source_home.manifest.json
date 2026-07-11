@@ -180,6 +180,8 @@
         "src/aoa_stats_builder/stress_recovery.py",
         "src/aoa_stats_builder/stress_recovery_sources.py",
         "src/aoa_stats_builder/surface_catalog.py",
+        "src/aoa_stats_builder/titan_observation.py",
+        "src/aoa_stats_builder/titan_observation_sources.py",
         "mechanics/recurrence/parts/live-receipt-refresh/scripts/refresh_live_stats.py",
         "scripts/build_views.py"
       ],
@@ -236,6 +238,7 @@
         "mechanics/recurrence/parts/repeated-window/tests/test_repeated_window.py",
         "mechanics/boundary-bridge/parts/memory-owner-handoff/tests/test_memory_movement_summary.py",
         "mechanics/antifragility/parts/stress-recovery-windows/tests/test_stress_recovery_projection.py",
+        "mechanics/titan/parts/incarnation-summon/tests/test_titan_observation.py",
         "tests/test_stats_source_home.py",
         "tests/test_summary_surface_catalog.py"
       ],
