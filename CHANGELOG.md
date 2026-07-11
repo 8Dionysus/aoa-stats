@@ -41,6 +41,9 @@ Tracking starts with the first public release-prep baseline for this repository.
   `aoa-stats` names `.aoa` evidence, local memo-port candidates, MCP dry-run
   access, and `aoa-memo` durable landing limits without becoming memory
   authority.
+- Pinned CI to the `abyss-machine` trust-admission hardening that enforces the
+  required pre-materialization subject-store deny before the verified allow
+  roundtrip.
 
 ## [0.1.3] - 2026-04-23
 

@@ -81,7 +81,7 @@
   },
   "index_identity": {
     "artifact_kind": "source_surface_index",
-    "content_digest": "e6bf5432aaf9f68d021bebdaad190ab76c5518dc50cfdb22839944143b227365",
+    "content_digest": "787df7f2aaec8c22f6ad57d9ddeb325fb12b14f2df3c400aa1bb361681c4d3f4",
     "local_id": "index:repo-local:source-surfaces",
     "schema_ref": "aoa-kag:schemas/repo-local-kag-index.schema.json"
   },
@@ -23875,7 +23875,7 @@
         "state": "current"
       },
       "identity": {
-        "content_hash": "2da097e9004b9fd04abf5e238dc72e2090ed06ab4b22912df093c871d4fb4175",
+        "content_hash": "09e227176c6335b4ffac5f4ca403942b0bf7743b8b3fcdd857dcd3703c6b8e93",
         "git_ref": "git-index-source-tree",
         "id": "file:.github/workflows/validate.yml:a5c0f08bc4",
         "mime": "application/yaml",
@@ -23914,7 +23914,7 @@
       },
       "signs": {
         "attestation_ref": "",
-        "digest": "2da097e9004b9fd04abf5e238dc72e2090ed06ab4b22912df093c871d4fb4175",
+        "digest": "09e227176c6335b4ffac5f4ca403942b0bf7743b8b3fcdd857dcd3703c6b8e93",
         "signature_ref": "",
         "verification_state": "digest-only"
       },
@@ -24237,13 +24237,13 @@
         "state": "current"
       },
       "identity": {
-        "content_hash": "704f480fab818c10e574cf44d61548cd5fe5aeaecdce57d141a175b6406e86a7",
+        "content_hash": "8ec852eb5284f6e10636353bae225f9385a13e49cf274876421b8fef3bd442c5",
         "git_ref": "git-index-source-tree",
         "id": "file:changelog.md:06572a96a5",
         "mime": "text/markdown",
         "path": "CHANGELOG.md",
         "repo": "aoa-stats",
-        "size_bytes": 8595
+        "size_bytes": 8763
       },
       "mechanics_role": "none",
       "observed_form": "file",
@@ -24300,175 +24300,175 @@
           {
             "anchor": "013-2026-04-23",
             "level": 2,
-            "line": 45,
+            "line": 48,
             "ref": "CHANGELOG.md#013-2026-04-23",
             "title": "[0.1.3] - 2026-04-23"
           },
           {
             "anchor": "summary",
             "level": 3,
-            "line": 47,
+            "line": 50,
             "ref": "CHANGELOG.md#summary",
             "title": "Summary"
           },
           {
             "anchor": "added-1",
             "level": 3,
-            "line": 59,
+            "line": 62,
             "ref": "CHANGELOG.md#added-1",
             "title": "Added"
           },
           {
             "anchor": "changed-1",
             "level": 3,
-            "line": 69,
+            "line": 72,
             "ref": "CHANGELOG.md#changed-1",
             "title": "Changed"
           },
           {
             "anchor": "validation",
             "level": 3,
-            "line": 75,
+            "line": 78,
             "ref": "CHANGELOG.md#validation",
             "title": "Validation"
           },
           {
             "anchor": "notes",
             "level": 3,
-            "line": 79,
+            "line": 82,
             "ref": "CHANGELOG.md#notes",
             "title": "Notes"
           },
           {
             "anchor": "012-2026-04-19",
             "level": 2,
-            "line": 84,
+            "line": 87,
             "ref": "CHANGELOG.md#012-2026-04-19",
             "title": "[0.1.2] - 2026-04-19"
           },
           {
             "anchor": "summary-1",
             "level": 3,
-            "line": 86,
+            "line": 89,
             "ref": "CHANGELOG.md#summary-1",
             "title": "Summary"
           },
           {
             "anchor": "added-2",
             "level": 3,
-            "line": 94,
+            "line": 97,
             "ref": "CHANGELOG.md#added-2",
             "title": "Added"
           },
           {
             "anchor": "changed-2",
             "level": 3,
-            "line": 101,
+            "line": 104,
             "ref": "CHANGELOG.md#changed-2",
             "title": "Changed"
           },
           {
             "anchor": "validation-1",
             "level": 3,
-            "line": 106,
+            "line": 109,
             "ref": "CHANGELOG.md#validation-1",
             "title": "Validation"
           },
           {
             "anchor": "notes-1",
             "level": 3,
-            "line": 110,
+            "line": 113,
             "ref": "CHANGELOG.md#notes-1",
             "title": "Notes"
           },
           {
             "anchor": "011-2026-04-12",
             "level": 2,
-            "line": 115,
+            "line": 118,
             "ref": "CHANGELOG.md#011-2026-04-12",
             "title": "[0.1.1] - 2026-04-12"
           },
           {
             "anchor": "summary-2",
             "level": 3,
-            "line": 117,
+            "line": 120,
             "ref": "CHANGELOG.md#summary-2",
             "title": "Summary"
           },
           {
             "anchor": "added-3",
             "level": 3,
-            "line": 125,
+            "line": 128,
             "ref": "CHANGELOG.md#added-3",
             "title": "Added"
           },
           {
             "anchor": "documentation",
             "level": 3,
-            "line": 133,
+            "line": 136,
             "ref": "CHANGELOG.md#documentation",
             "title": "Documentation"
           },
           {
             "anchor": "changed-3",
             "level": 3,
-            "line": 139,
+            "line": 142,
             "ref": "CHANGELOG.md#changed-3",
             "title": "Changed"
           },
           {
             "anchor": "validation-2",
             "level": 3,
-            "line": 146,
+            "line": 149,
             "ref": "CHANGELOG.md#validation-2",
             "title": "Validation"
           },
           {
             "anchor": "notes-2",
             "level": 3,
-            "line": 150,
+            "line": 153,
             "ref": "CHANGELOG.md#notes-2",
             "title": "Notes"
           },
           {
             "anchor": "010-2026-04-10",
             "level": 2,
-            "line": 154,
+            "line": 157,
             "ref": "CHANGELOG.md#010-2026-04-10",
             "title": "[0.1.0] - 2026-04-10"
           },
           {
             "anchor": "summary-3",
             "level": 3,
-            "line": 161,
+            "line": 164,
             "ref": "CHANGELOG.md#summary-3",
             "title": "Summary"
           },
           {
             "anchor": "added-4",
             "level": 3,
-            "line": 172,
+            "line": 175,
             "ref": "CHANGELOG.md#added-4",
             "title": "Added"
           },
           {
             "anchor": "included-in-this-release",
             "level": 3,
-            "line": 185,
+            "line": 188,
             "ref": "CHANGELOG.md#included-in-this-release",
             "title": "Included in this release"
           },
           {
             "anchor": "validation-3",
             "level": 3,
-            "line": 200,
+            "line": 203,
             "ref": "CHANGELOG.md#validation-3",
             "title": "Validation"
           },
           {
             "anchor": "notes-3",
             "level": 3,
-            "line": 206,
+            "line": 209,
             "ref": "CHANGELOG.md#notes-3",
             "title": "Notes"
           }
@@ -24480,7 +24480,7 @@
       },
       "signs": {
         "attestation_ref": "",
-        "digest": "704f480fab818c10e574cf44d61548cd5fe5aeaecdce57d141a175b6406e86a7",
+        "digest": "8ec852eb5284f6e10636353bae225f9385a13e49cf274876421b8fef3bd442c5",
         "signature_ref": "",
         "verification_state": "digest-only"
       },
