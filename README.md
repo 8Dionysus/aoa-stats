@@ -97,6 +97,10 @@ that package payload root is declared in `mechanics/topology.json`.
   `mechanics/recurrence/parts/component-refresh/`, backed by
   `src/aoa_stats_builder/component_refresh.py` and the reviewed-example adapter
   at `src/aoa_stats_builder/component_refresh_sources.py`
+- committed Continuity Window reference projection:
+  `mechanics/recurrence/parts/continuity-window/`, backed by
+  `src/aoa_stats_builder/continuity_window.py` and the explicit owner
+  example/catalog adapter at `src/aoa_stats_builder/continuity_window_sources.py`
 - memory movement and return to owner:
   `mechanics/boundary-bridge/parts/memory-owner-handoff/`
 - micro-friction contracts:
@@ -141,8 +145,12 @@ ignored `state/`; committed public output stays under `generated/`. Local live
 materialization includes only active profiles with `live_state_capable: true`,
 and its catalog lists only outputs actually materialized. Reference-only
 profiles remain in the committed catalog and stale runtime copies are removed.
-See
-[`AOST-D-0003`](docs/decisions/AOST-D-0003-component-refresh-fixtures-are-not-live-state.md).
+The managed inventory remains 25 read models; the current live inventory is 21.
+[`AOST-D-0003`](docs/decisions/AOST-D-0003-component-refresh-fixtures-are-not-live-state.md)
+is the selector and stale-cleanup precedent established for Component Refresh,
+not a Continuity Window decision. Continuity Window is excluded because its
+current owner inputs are a committed example/catalog chain rather than a real
+owner-runtime artifact or receipt.
 
 For read-only MCP use, follow
 [`stats/surface-catalog/CODEX_MCP.md`](stats/surface-catalog/CODEX_MCP.md).

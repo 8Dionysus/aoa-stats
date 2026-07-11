@@ -90,12 +90,6 @@ def test_build_views_produces_expected_surface_counts() -> None:
     assert outputs["rollout_campaign_summary.min.json"]["pending_reviews"] == 1
     assert outputs["drift_review_summary.min.json"]["review_ref"] == "DREV-20260412-codex-cadence-01"
     assert outputs["drift_review_summary.min.json"]["signals_seen"]["hook_drift"] == 1
-    assert outputs["continuity_window_summary.min.json"]["continuity_ref"] == (
-        "CONT-20260412-architect-01"
-    )
-    assert outputs["continuity_window_summary.min.json"]["current_status"] == "active"
-    assert outputs["continuity_window_summary.min.json"]["open_revision_windows"] == 1
-    assert outputs["continuity_window_summary.min.json"]["drift_flags"] == []
     assert outputs["component_refresh_summary.min.json"]["owner_repo_counts"] == {
         "8Dionysus": 1,
         "aoa-agents": 1,
@@ -204,27 +198,6 @@ def test_build_views_produces_expected_surface_counts() -> None:
     ]
     assert catalog["surfaces"][-2]["name"] == "source_coverage_summary"
     assert catalog["surfaces"][-2]["input_posture"] == "registry_backed_coverage_audit"
-
-
-def test_continuity_window_summary_stays_derived_and_non_sovereign() -> None:
-    module = load_build_views_module()
-
-    summary = module.build_continuity_window_summary()
-
-    assert summary["schema_version"] == "aoa_stats_continuity_window_summary_v1"
-    assert summary["generated_from"]["receipt_input_paths"] == [
-        "aoa-agents/mechanics/checkpoint/parts/continuity-lane/examples/self-agency-continuity-window.example.json",
-        "aoa-playbooks/playbooks/continuity/session-growth/self-agency-continuity-cycle/PLAYBOOK.md",
-        "aoa-memo/mechanics/writeback/parts/growth-and-continuity/examples/provenance_thread.self-agency-continuity.example.json",
-        "aoa-evals/generated/eval_catalog.min.json",
-    ]
-    assert summary["current_status"] == "active"
-    assert summary["successful_reanchors"] == 0
-    assert summary["failed_reanchors"] == 0
-    assert summary["last_anchor_artifact_ref"] == (
-        "artifact:verification_result:AOA-VERIFY-20260412-0001"
-    )
-    assert summary["bounded_revision_count"] == 1
 
 
 def test_codex_plane_generated_from_uses_canonical_repo_labels(

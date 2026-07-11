@@ -77,6 +77,12 @@ reference-only surfaces without silently replaying their fixtures as live
 state. Admission is not provenance certification: audit the declared source
 posture of each `true` profile separately.
 
+For a profile-by-profile live-source audit, start at the owning mechanic
+contract. Classify the current source chain as runtime/receipt-backed or
+committed reference, make I/O and reference adaptation explicit, and only then
+change the authored profile and source-home manifest to reflect that proven
+mechanic boundary.
+
 ## Cross-mode law
 
 Grow `stats/` and `mechanics/` together, but alternate which side leads each

@@ -42,7 +42,6 @@ declared source contract resolves:
 - `state/generated/codex_rollout_drift_summary.min.json`
 - `state/generated/rollout_campaign_summary.min.json`
 - `state/generated/drift_review_summary.min.json`
-- `state/generated/continuity_window_summary.min.json`
 - `state/generated/memory_movement_summary.min.json`
 - `state/generated/runtime_closeout_summary.min.json`
 - `state/generated/stress_recovery_window_summary.min.json`
@@ -127,8 +126,10 @@ profiles are the single inventory source:
 - all active profile output names form the stale-file cleanup universe
 - the live catalog lists only outputs actually materialized
 
-The current false-live profiles are:
+The managed inventory contains 25 active read-model outputs. The current live
+inventory contains exactly 21. The four false-live profiles are:
 
+- `continuity_window_summary`
 - `component_refresh_summary`
 - `titan_incarnation_summary`
 - `titan_summon_summary`
@@ -136,13 +137,23 @@ The current false-live profiles are:
 They remain valid committed public reference surfaces, but the live run does
 not recreate them. If an older copy exists under `state/generated/`, cleanup
 removes it. In particular, the Component Refresh adapter may load reviewed
-`aoa-sdk` examples for the committed build only; it is never a live fallback.
+`aoa-sdk` examples for the committed build only, and the Continuity Window
+adapter may load its explicit cross-owner example/catalog chain for the
+committed build only. Neither is a live fallback.
 
 Future Component Refresh live activation requires a canonical owner-runtime
 artifact whose reviewed chain reaches an owner-local
 `component_refresh_receipt`. Owner laws or example packets cannot fill that
 absence. See
 `docs/decisions/AOST-D-0003-component-refresh-fixtures-are-not-live-state.md`.
+That decision supplies the selector and stale-cleanup precedent for
+reference-only profiles; it is not a Continuity Window decision.
+
+Future Continuity Window live activation requires a timestamped owner-runtime
+artifact or receipt with resolvable continuity, revision, reanchor or explicit
+no-drift, and anchor references, plus applicable real eval reports. The current
+aoa-agents example, experimental playbook, aoa-memo example, and aoa-evals
+catalog definitions cannot fill that absence.
 
 The live feed and committed builders keep raw logs append-only, but the
 receipt-backed live summaries read from the active receipt view after local

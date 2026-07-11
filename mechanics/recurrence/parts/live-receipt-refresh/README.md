@@ -20,18 +20,22 @@ the canonical assets from this part.
 ## Live inventory contract
 
 - active profiles under `stats/read-models/active/` define the managed output
-  universe
+  universe: currently 25 read models
 - only profiles with `live_state_capable: true` enter the live build allowlist
+  (currently 21 read models)
 - `state/generated/summary_surface_catalog.min.json` lists only outputs
   actually admitted and materialized by that live run
 - cleanup still covers every managed active output, so an older runtime copy
   of a reference-only surface is removed
-- the Component Refresh reviewed-example adapter is never an implicit live
-  fallback
+- the Component Refresh and Continuity Window reference adapters are never
+  implicit live fallbacks
 
-The Component Refresh committed reference profile is therefore absent from
-live output until an explicit owner-runtime source contract lands. See
-`docs/decisions/AOST-D-0003-component-refresh-fixtures-are-not-live-state.md`.
+The Component Refresh and Continuity Window committed reference profiles are
+therefore absent from live output until explicit owner-runtime source contracts
+land. The selector and stale-cleanup precedent is recorded for Component
+Refresh in
+`docs/decisions/AOST-D-0003-component-refresh-fixtures-are-not-live-state.md`;
+it is not a Continuity Window decision.
 
 ## Payload
 

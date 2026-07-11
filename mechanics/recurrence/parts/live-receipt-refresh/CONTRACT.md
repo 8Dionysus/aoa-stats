@@ -33,14 +33,23 @@ admitted by the `intake_contract` family.
 - a surface with `live_state_capable: false` is not materialized or cataloged
 - cleanup covers the full managed active-profile output set, including
   reference-only outputs, so stale runtime copies do not survive
-- live materialization does not invoke the Component Refresh committed-example
-  adapter or infer its missing owner-law state
+- live materialization does not invoke the Component Refresh or Continuity
+  Window committed-reference adapters or infer their missing owner-runtime
+  state
 - derived views cannot strengthen owner evidence or become owner truth
 
 Component Refresh remains a committed reference surface. Live activation
 requires an explicit owner-runtime artifact carrying the reviewed chain from
 drift hint through decision to owner-local refresh receipt; the live receipt
 registry does not currently provide that chain.
+
+Continuity Window also remains a committed reference surface. Its current
+inputs are an aoa-agents example, an experimental aoa-playbooks contract, an
+aoa-memo example, and draft anchors in the aoa-evals catalog. Live activation
+requires a real timestamped owner-runtime continuity artifact or receipt with
+resolvable continuity, revision, reanchor or explicit no-drift, and anchor
+references plus applicable proof reports. The live receipt registry does not
+currently provide that chain.
 
 This contract does not certify that every other `live_state_capable: true`
 profile is receipt-backed. Their declared source postures require separate,
@@ -52,8 +61,10 @@ This part operates on stats source-family id `intake_contract`. The reciprocal
 route is recorded in `stats/source_home.manifest.json` and
 `mechanics/topology.json`.
 
-The profile/output split is recorded in
+The selector/output split and stale-cleanup precedent is recorded for Component
+Refresh in
 `docs/decisions/AOST-D-0003-component-refresh-fixtures-are-not-live-state.md`.
+That record does not decide Continuity Window posture.
 
 ## Compatibility route
 

@@ -62,6 +62,10 @@ Tracking starts with the first public release-prep baseline for this repository.
   inventory, separated the committed Component Refresh reference adapter from
   its pure projection, and stopped fixture-only component posture from being
   materialized or advertised as live state while retaining stale-file cleanup.
+- Reframed Continuity Window as a committed cross-owner reference projection,
+  separated its source adapter from filesystem-free validation/projection, and
+  removed status-only reanchor success inference while excluding the static
+  example chain from local live state.
 
 ## [0.1.3] - 2026-04-23
 

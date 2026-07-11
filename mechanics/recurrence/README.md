@@ -51,6 +51,12 @@ because a live refresh command can call the same projection core. This rule
 does not certify the source posture of other live-capable profiles. See
 `docs/decisions/AOST-D-0003-component-refresh-fixtures-are-not-live-state.md`.
 
+The Continuity Window route is the next profile-by-profile audit: its
+cross-owner examples, experimental playbook, and eval catalog form a committed
+reference chain, not current runtime evidence. Reanchor counts remain
+evidence-backed, and the reference adapter stays outside live refresh until a
+canonical owner-runtime continuity source exists.
+
 ### Next route
 
 Start with `PARTS.md`, then read the selected part's `README.md`, `CONTRACT.md`,

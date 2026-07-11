@@ -17,6 +17,13 @@ by the local live refresh loop when its inputs resolve. A `false` profile stays
 on its committed/reference route and is omitted from live output and the live
 catalog, although refresh cleanup still removes any stale runtime copy.
 
+The current managed inventory contains 25 active profiles; 21 are admitted to
+live materialization. Continuity Window is one of the four reference-only
+profiles. Its authored question describes the posture represented by the
+committed aoa-agents example, experimental aoa-playbooks contract, aoa-memo
+example, and aoa-evals catalog definitions. Those inputs do not constitute an
+owner-runtime continuity artifact or receipt.
+
 `surface-profile.schema.json` constrains both active and deferred source
 records. Importable implementation stays under `src/aoa_stats_builder/`,
 public schemas stay under `schemas/`, and public derived outputs stay under

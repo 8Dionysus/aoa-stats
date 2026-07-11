@@ -18,7 +18,11 @@ repository.
   `src/aoa_stats_builder/component_refresh.py` projection and the committed
   reviewed-example adapter in
   `src/aoa_stats_builder/component_refresh_sources.py`.
-- `continuity-window` now owns its operation guide and example.
+- `continuity-window` owns its operation guide, example, and focused tests. Its
+  importable implementation is split between filesystem-free validation and
+  projection in `src/aoa_stats_builder/continuity_window.py` and the committed
+  cross-owner reference adapter in
+  `src/aoa_stats_builder/continuity_window_sources.py`.
 - `repeated-window` has no private payload to localize in this slice: its
   schema and generated summary are intentional root public contracts, and the
   deterministic builder is shared by the read-model family.
@@ -37,6 +41,11 @@ as its stale-file cleanup universe. This prevents former fixture replays under
 
 The accepted rationale is
 `docs/decisions/AOST-D-0003-component-refresh-fixtures-are-not-live-state.md`.
+
+Continuity Window applies that selector precedent through its own part contract
+without widening the component-specific decision. Its committed example chain
+is reference-only, `continuity_status` does not prove reanchor occurrence, and
+future live activation requires a separate owner-runtime continuity source.
 
 ## Public compatibility exceptions
 

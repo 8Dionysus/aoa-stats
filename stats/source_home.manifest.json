@@ -160,6 +160,8 @@
         "src/aoa_stats_builder/candidate_lifecycle.py",
         "src/aoa_stats_builder/component_refresh.py",
         "src/aoa_stats_builder/component_refresh_sources.py",
+        "src/aoa_stats_builder/continuity_window.py",
+        "src/aoa_stats_builder/continuity_window_sources.py",
         "src/aoa_stats_builder/growth_cycle.py",
         "src/aoa_stats_builder/read_model_values.py",
         "src/aoa_stats_builder/surface_catalog.py",
@@ -206,6 +208,7 @@
         "mechanics/method-growth/tests/test_candidate_lifecycle.py",
         "mechanics/recurrence/parts/component-refresh/tests/test_component_refresh_summary.py",
         "mechanics/recurrence/parts/component-refresh/tests/test_component_refresh_projection.py",
+        "mechanics/recurrence/parts/continuity-window/tests/test_continuity_window_projection.py",
         "mechanics/recurrence/parts/live-receipt-refresh/tests/test_refresh_live_stats.py",
         "tests/test_stats_source_home.py",
         "tests/test_summary_surface_catalog.py"

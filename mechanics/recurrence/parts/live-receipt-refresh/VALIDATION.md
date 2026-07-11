@@ -24,10 +24,12 @@ The focused refresh tests must also prove:
 
 - the live allowlist is derived from active profiles with
   `live_state_capable: true`
-- the cleanup universe still contains every managed active output
-- reference-only Component Refresh and Titan surfaces are absent from the live
-  output and live catalog
-- stale reference-only runtime files are removed rather than ignored
+- the live read-model inventory is exactly 21 while the cleanup universe still
+  contains all 25 managed active read-model outputs
+- reference-only Continuity Window, Component Refresh, and Titan surfaces are
+  absent from the live output and live catalog
+- stale reference-only runtime files, including a stale Continuity Window copy,
+  are removed rather than ignored
 
 ## CLI smoke
 
