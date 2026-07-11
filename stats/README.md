@@ -83,6 +83,12 @@ publication and implementation districts:
 - the Growth Cycle profile family shares deterministic projection through
   `src/aoa_stats_builder/growth_cycle.py`, with its focused package check under
   `mechanics/growth-cycle/tests/`
+- the Audit core-skill application and surface-detection profiles share the
+  finish-stage projection boundary at
+  `src/aoa_stats_builder/core_skill_observation.py`, while Object Observation
+  keeps its all-event projection separate at
+  `src/aoa_stats_builder/object_observation.py`; focused validation follows the
+  package and part owners declared in `mechanics/topology.json`
 - public and compatibility commands remain under `scripts/`
 - repo-wide and compatibility validation remains under root `scripts/` and
   `tests/`; operation-focused validation follows `mechanics/topology.json`,

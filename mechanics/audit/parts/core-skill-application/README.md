@@ -2,7 +2,19 @@
 
 Publishes the bounded core-skill application read model.
 
-This part owns its operation route and the localized payload roots declared in
-`mechanics/topology.json`. Its stats source family owns the bounded meaning;
-public schemas and generated outputs stay at their declared publication paths
-when consumers depend on those paths.
+This part observes finish-stage core-skill application receipts without
+claiming that a skill, kernel, or owner workflow succeeded.
+
+- source profile:
+  `stats/read-models/active/core_skill_application_summary.profile.json`
+- shared filesystem-free core:
+  `src/aoa_stats_builder/core_skill_observation.py`
+- focused shared test:
+  `mechanics/audit/tests/test_core_skill_observation.py`
+- public schema: `schemas/core-skill-application-summary.schema.json`
+- generated read model: `generated/core_skill_application_summary.min.json`
+- root compatibility facade: `scripts/build_views.py`
+
+The package-level core and test are shared only with
+`surface-strength-detection`. Stable public paths remain at root because the
+stats source manifest and external consumers depend on them.

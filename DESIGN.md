@@ -95,11 +95,15 @@ through an explicit `package_payload_roots` declaration in
 `mechanics/topology.json`. Part-specific payload and validation stay with the
 nearest part.
 
-The current Method Growth and Growth Cycle cores follow this shape: pure
-receipt-to-read-model transformations live in `src/aoa_stats_builder/`, their
-cross-part behavioral tests live with the mechanic package, and
-`scripts/build_views.py` remains the repo-wide input, fan-out, and publication
-facade.
+The current Method Growth, Growth Cycle, and Audit observation cores follow
+this shape: pure receipt-to-read-model transformations live in
+`src/aoa_stats_builder/`, shared cross-part behavior is tested with the mechanic
+package, and `scripts/build_views.py` remains the repo-wide input, fan-out, and
+publication facade. Audit keeps a shared core only for core-skill application
+and surface-strength detection because both use the same finish-stage receipt
+selector. Object observation has a separate core and part-local test boundary
+because it summarizes every admitted event kind. Neither implementation gains
+audit, routing, or proof authority.
 
 Generated artifacts never become source authority merely because they are
 committed or convenient to query.

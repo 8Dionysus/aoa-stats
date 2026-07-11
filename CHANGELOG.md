@@ -81,6 +81,11 @@ Tracking starts with the first public release-prep baseline for this repository.
   filesystem adapters so the Boundary Bridge and Antifragility mechanic owners
   can carry focused invariants while the root builder remains a compatibility
   facade.
+- Moved the shared Audit object, core-skill application, and surface-detection
+  projections plus focused invariant tests out of the root builder/test
+  monoliths into explicit object and shared core-skill observation cores while
+  preserving public outputs, live receipt posture, and root compatibility
+  aliases.
 
 ## [0.1.3] - 2026-04-23
 

@@ -78,6 +78,18 @@ rules, keep that reusable core under `src/aoa_stats_builder/`, declare its
 focused package-level tests in `mechanics/topology.json`, and leave CLI, input
 loading, output fan-out, and check/write policy in the root build facade.
 
+The Audit observation cluster uses two explicit core boundaries. Core-skill
+application and surface-strength detection share finish-stage
+`core_skill_application_receipt` selection and one package-level test home.
+Object observation separately summarizes the full admitted receipt set and
+keeps its focused tests with its part. Both cores stay descriptive and
+filesystem-free; root functions remain compatibility aliases.
+
+The Audit extraction preserves its historical ordered-input behavior and
+compatibility buckets. Do not describe those retained mechanics as canonical
+event chronology or owner activation truth. Changing them is a separate
+behavioral cycle with public-output review, not part of a core extraction.
+
 Treat `live_state_capable` as an executable profile contract. The live refresh
 mechanic may materialize and advertise only surfaces whose authored profile
 sets it to `true`; it must still remove stale managed runtime files for

@@ -7,3 +7,24 @@ Makes coverage, detection, drift, skill-use, and object-observation gaps visible
 
 Start with `PARTS.md`, then use the selected part's `README.md`,
 `CONTRACT.md`, and `VALIDATION.md`.
+
+The live-receipt projections use two deliberately separate cores:
+
+- `src/aoa_stats_builder/core_skill_observation.py` derives both the bounded
+  core-skill application view and the advisory surface-detection view from the
+  same finish-stage receipt family. Its cross-part contract is exercised by
+  `mechanics/audit/tests/test_core_skill_observation.py`.
+- `src/aoa_stats_builder/object_observation.py` derives occurrence and recency
+  observations across the active receipt set. Its operation-specific contract
+  is exercised by
+  `mechanics/audit/parts/object-observation/tests/test_object_observation.py`.
+
+The published profiles, schemas, and generated read models keep their stable
+root routes. `scripts/build_views.py` keeps compatibility aliases and repo-wide
+fan-out, not a third implementation of either core.
+
+Cycle 10 is an extraction-only boundary. It deliberately preserves historical
+ordered-input behavior: Surface Detection keeps its legacy context and count
+coercion buckets, while Object Observation distinguishes input-first,
+temporal-latest, and input-last-within-family fields. See the part contracts
+for the exact semantics and their authority stop-lines.
