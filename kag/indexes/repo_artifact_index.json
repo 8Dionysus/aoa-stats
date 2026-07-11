@@ -1730,7 +1730,7 @@
     },
     {
       "artifact_kind": "document",
-      "content_hash": "e55710678c1d28d380a2a3bce88b26985c706d9da63a6289e0861272dd97bdf4",
+      "content_hash": "e2c61acba4f681fe474a45b119bbbcb4b2ca9625173ed06aac7abaa60034fabd",
       "id": "artifact:file:agents.md:a54ff182c7",
       "path": "AGENTS.md",
       "source_record_id": "file:agents.md:a54ff182c7",
@@ -1738,7 +1738,7 @@
     },
     {
       "artifact_kind": "document",
-      "content_hash": "1959b8a8617b878f294253ae07d22578fa60745cc270400447623f360502b4d0",
+      "content_hash": "feaad1ffa06f6cd35fbdaf33cfecb087a2510344b3b900cce53fdbf2cf075d10",
       "id": "artifact:file:changelog.md:06572a96a5",
       "path": "CHANGELOG.md",
       "source_record_id": "file:changelog.md:06572a96a5",
@@ -1762,7 +1762,7 @@
     },
     {
       "artifact_kind": "document",
-      "content_hash": "7946c146754d0fbea203b533ef179f6a45d9acc4bce5a8527acc6b6d1473c587",
+      "content_hash": "5856b96ca4cd6c51aaa44c76189d9d21cc516b3d50bc0df1848d98f2d7ea697d",
       "id": "artifact:file:design.md:3dc5dd454e",
       "path": "DESIGN.md",
       "source_record_id": "file:design.md:3dc5dd454e",
@@ -3674,7 +3674,7 @@
     },
     {
       "artifact_kind": "document",
-      "content_hash": "f0da0faf19082500f40981c4a5d2cfb8b87d0cfb2db6702184afbc2ede9d7a75",
+      "content_hash": "a086057d05b37436fb101836831bd9ad616bd4c4c89ec2b29a0f233693e4c204",
       "id": "artifact:file:mechanics/audit/parts.md:7f54be3138",
       "path": "mechanics/audit/PARTS.md",
       "source_record_id": "file:mechanics/audit/parts.md:7f54be3138",
@@ -3690,7 +3690,7 @@
     },
     {
       "artifact_kind": "document",
-      "content_hash": "0e33a8e544acefcaaf6b3a1235b85513e2dc54c6cbc1b73c2ec8e8a2da471533",
+      "content_hash": "a1289d8edf2c6955566b464f781d5ad6b496877982c5de3d80337127c9cf2920",
       "id": "artifact:file:mechanics/audit/readme.md:8442d8bba8",
       "path": "mechanics/audit/README.md",
       "source_record_id": "file:mechanics/audit/readme.md:8442d8bba8",
@@ -3818,7 +3818,7 @@
     },
     {
       "artifact_kind": "document",
-      "content_hash": "a87b94585844374745eabe5e605afff22e0fde5141078d5d9c75688acfa2cf9b",
+      "content_hash": "f42c6fa61efdefae7075d54038c59799b89a17659e3150afa240d3e01a535991",
       "id": "artifact:file:mechanics/audit/parts/source-coverage/contract.md:3b164b8f2b",
       "path": "mechanics/audit/parts/source-coverage/CONTRACT.md",
       "source_record_id": "file:mechanics/audit/parts/source-coverage/contract.md:3b164b8f2b",
@@ -3826,7 +3826,7 @@
     },
     {
       "artifact_kind": "document",
-      "content_hash": "e23ea9abc9d4e58a9feac2165edbaab01a5accbc2f87f0a111ae2143229c780c",
+      "content_hash": "976395b722802ebbc10d26b83501433cf2dba2800aace420c087c3f39036bfed",
       "id": "artifact:file:mechanics/audit/parts/source-coverage/readme.md:809b78ee2c",
       "path": "mechanics/audit/parts/source-coverage/README.md",
       "source_record_id": "file:mechanics/audit/parts/source-coverage/readme.md:809b78ee2c",
@@ -3834,7 +3834,7 @@
     },
     {
       "artifact_kind": "document",
-      "content_hash": "045aee7c7d783b6b29b902a7401549c850d272410838cace27b3a25efb441ff3",
+      "content_hash": "c5933c673b293b0935417abfe586875cfb97eb9d0033fc13ef1f4bf1a5d3fdba",
       "id": "artifact:file:mechanics/audit/parts/source-coverage/validation.md:e13861112a",
       "path": "mechanics/audit/parts/source-coverage/VALIDATION.md",
       "source_record_id": "file:mechanics/audit/parts/source-coverage/validation.md:e13861112a",
@@ -3842,7 +3842,7 @@
     },
     {
       "artifact_kind": "document",
-      "content_hash": "0812d4521668aea36baddfc9827faa5705a03f15ca85b82e4aa13721aadd575e",
+      "content_hash": "199ae1a4c928f085eec36192231f19ecbcf952d99702fc03cb8c66b41e99e65a",
       "id": "artifact:file:mechanics/audit/parts/source-coverage/docs/source_coverage_summary.md:3b60baeeb2",
       "path": "mechanics/audit/parts/source-coverage/docs/SOURCE_COVERAGE_SUMMARY.md",
       "source_record_id": "file:mechanics/audit/parts/source-coverage/docs/source_coverage_summary.md:3b60baeeb2",
@@ -3854,6 +3854,14 @@
       "id": "artifact:file:mechanics/audit/parts/source-coverage/examples/source_coverage_summary.example.json:b5a420b4c2",
       "path": "mechanics/audit/parts/source-coverage/examples/source_coverage_summary.example.json",
       "source_record_id": "file:mechanics/audit/parts/source-coverage/examples/source_coverage_summary.example.json:b5a420b4c2",
+      "surface_state": "authored_source"
+    },
+    {
+      "artifact_kind": "test",
+      "content_hash": "316d916e8de620fc0944715ab2c2bc95bd03fcaa50b626afbf7ea295d99dfa40",
+      "id": "artifact:file:mechanics/audit/parts/source-coverage/tests/test_source_coverage.py:d14befcca3",
+      "path": "mechanics/audit/parts/source-coverage/tests/test_source_coverage.py",
+      "source_record_id": "file:mechanics/audit/parts/source-coverage/tests/test_source_coverage.py:d14befcca3",
       "surface_state": "authored_source"
     },
     {
@@ -3938,7 +3946,7 @@
     },
     {
       "artifact_kind": "document",
-      "content_hash": "1513259dd61810d4e3290239172f15d2ecb039405385306405e14c72fb5a3f82",
+      "content_hash": "dd21ea651e76527e8fe065274a2737785a85128eb6857c0187e5f09f8d0676f2",
       "id": "artifact:file:mechanics/boundary-bridge/parts/consumer-regrounding/contract.md:2dcaf014a4",
       "path": "mechanics/boundary-bridge/parts/consumer-regrounding/CONTRACT.md",
       "source_record_id": "file:mechanics/boundary-bridge/parts/consumer-regrounding/contract.md:2dcaf014a4",
@@ -3954,7 +3962,7 @@
     },
     {
       "artifact_kind": "document",
-      "content_hash": "0f6a52c45d216188e4dabc9a756134ffa577ec8f0c6750352f41d68986e86031",
+      "content_hash": "91a19d25de8a8345da667674c697e90d7d80b3b0d067b32b4ea9b2c0879b02b3",
       "id": "artifact:file:mechanics/boundary-bridge/parts/consumer-regrounding/validation.md:7633910c6a",
       "path": "mechanics/boundary-bridge/parts/consumer-regrounding/VALIDATION.md",
       "source_record_id": "file:mechanics/boundary-bridge/parts/consumer-regrounding/validation.md:7633910c6a",
@@ -3962,7 +3970,7 @@
     },
     {
       "artifact_kind": "test",
-      "content_hash": "d3708bf996ae2cc385f95d91c455e291db1cd260d9df5cf79d9e4904149f2e0d",
+      "content_hash": "36c20e10b0c220eae6935ebe2d0527224064892506a5377defd40e93a73da6da",
       "id": "artifact:file:mechanics/boundary-bridge/parts/consumer-regrounding/tests/test_consumer_regrounding_signals.py:d6c0ab422d",
       "path": "mechanics/boundary-bridge/parts/consumer-regrounding/tests/test_consumer_regrounding_signals.py",
       "source_record_id": "file:mechanics/boundary-bridge/parts/consumer-regrounding/tests/test_consumer_regrounding_signals.py:d6c0ab422d",
@@ -6586,7 +6594,7 @@
     },
     {
       "artifact_kind": "config",
-      "content_hash": "538adec7fc39b2c6712651268f60e37529d76ad1f995c221a719b3e370d16404",
+      "content_hash": "c9302acb037158f45ca6d666793473d49f301ce712e37b1dd62583e61cc8a606",
       "id": "artifact:file:mechanics/topology.json:c2f84a03b1",
       "path": "mechanics/topology.json",
       "source_record_id": "file:mechanics/topology.json:c2f84a03b1",
@@ -7242,7 +7250,7 @@
     },
     {
       "artifact_kind": "document",
-      "content_hash": "1a250d3d21fa268d521e211c9385f15b86278157b2e4d377502e61aeb7da79cd",
+      "content_hash": "2b586deccf6f0cd2b9c5ccfa8fe652b12d8040c199dac86bdade80d01dff5085",
       "id": "artifact:file:stats/readme.md:6bac6d2ff5",
       "path": "stats/README.md",
       "source_record_id": "file:stats/readme.md:6bac6d2ff5",
@@ -7442,7 +7450,7 @@
     },
     {
       "artifact_kind": "document",
-      "content_hash": "357c5377c4b8ca18cdb3815376dd08f092286fd4a293e8d031de0d53b3d9e653",
+      "content_hash": "b1f965206aaae90094382a1bdf7458a30b31e5784ba40624fa7934268a911894",
       "id": "artifact:file:stats/read-models/readme.md:5ba4a92471",
       "path": "stats/read-models/README.md",
       "source_record_id": "file:stats/read-models/readme.md:5ba4a92471",
@@ -7666,7 +7674,7 @@
     },
     {
       "artifact_kind": "config",
-      "content_hash": "ea251b99dbb6aeb8487e40003e3acea105c3aeb884379a693d527b2440accff8",
+      "content_hash": "0cb2bf614787147db52d3c62f5498ba70d50fba9b950c6640de9f0bda67105df",
       "id": "artifact:file:stats/source_home.manifest.json:41b237ff45",
       "path": "stats/source_home.manifest.json",
       "source_record_id": "file:stats/source_home.manifest.json:41b237ff45",
@@ -7722,7 +7730,7 @@
     },
     {
       "artifact_kind": "test",
-      "content_hash": "d7902fe96df99a3516eb206b9769babb53b8713df117c1996eead3524d30b11f",
+      "content_hash": "5c8c6cf00d32827fb1d105beb59a8a4a91cd27de7f6803b1f80a4af657e99e44",
       "id": "artifact:file:tests/test_build_views.py:760ef645f6",
       "path": "tests/test_build_views.py",
       "source_record_id": "file:tests/test_build_views.py:760ef645f6",
@@ -7778,7 +7786,7 @@
     },
     {
       "artifact_kind": "test",
-      "content_hash": "9dd894b2b605783c3a3d3f8ad802f4420aacd9c6e58502216b5dac5abb78ff6d",
+      "content_hash": "3cd2c6ec08559644af968fc6c45dc75c434aaaa405737d77ada573806a7cdd7f",
       "id": "artifact:file:tests/test_stats_source_home.py:a642c9216e",
       "path": "tests/test_stats_source_home.py",
       "source_record_id": "file:tests/test_stats_source_home.py:a642c9216e",
@@ -7803,7 +7811,7 @@
   ],
   "index_identity": {
     "artifact_kind": "repository_artifact_index",
-    "content_digest": "89bcd1ad6894a455da9901a9b4cd455bee26e14be1b217a90afbe98d4ec46967",
+    "content_digest": "3cdb0b33ef4a852426cfc0592e751c8ddfeee8ccf8abcdc9081509746327b943",
     "index_kind": "artifact",
     "local_id": "index:repo-local:artifacts",
     "schema_ref": "aoa-kag:schemas/repo-local-kag-repository-index.schema.json"
@@ -7827,12 +7835,12 @@
   },
   "schema_version": "aoa-repo-local-kag-repository-index-v1",
   "source_index": {
-    "content_digest": "27c725ca86eb8c358d7079378ede8beb70751ba96eb0a369a9e622fef371c70f",
+    "content_digest": "9bbe2f423787c4a67fc861748ca7aa7b2d0e1c7d97bd390fd7168f82fc9d3ccc",
     "local_id": "index:repo-local:source-surfaces",
     "path": "kag/indexes/source_surface_index.json"
   },
   "summary": {
-    "entry_count": 975,
+    "entry_count": 976,
     "kind_counts": {
       "asset": 50,
       "config": 174,
@@ -7850,7 +7858,7 @@
       "security": 1,
       "service_unit": 2,
       "source_code": 34,
-      "test": 50,
+      "test": 51,
       "validator": 18
     }
   }

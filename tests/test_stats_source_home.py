@@ -516,3 +516,26 @@ def test_root_contract_and_output_districts_remain_active() -> None:
     assert posture["generated/"] == "active_committed_derived_output_district"
     assert posture["src/aoa_stats_builder/"] == "active_implementation_district"
     assert posture["scripts/"] == "active_public_and_compatibility_entrypoint_district"
+
+
+def test_source_coverage_proof_routes_to_its_audit_owner_part() -> None:
+    manifest = load_json("stats/source_home.manifest.json")
+    read_models = next(
+        family for family in manifest["families"] if family["id"] == "read_models"
+    )
+    topology = load_json("mechanics/topology.json")
+    audit = next(
+        package for package in topology["active_packages"] if package["path"] == "audit"
+    )
+    source_coverage = next(
+        part
+        for part in audit["active_part_routes"]
+        if part["path"] == "source-coverage"
+    )
+    test_ref = (
+        "mechanics/audit/parts/source-coverage/tests/test_source_coverage.py"
+    )
+
+    assert test_ref in read_models["validator_routes"]
+    assert "tests" in source_coverage["localized_payload_roots"]
+    assert (REPO_ROOT / test_ref).is_file()

@@ -78,12 +78,18 @@ rules, keep that reusable core under `src/aoa_stats_builder/`, declare its
 focused package-level tests in `mechanics/topology.json`, and leave CLI, input
 loading, output fan-out, and check/write policy in the root build facade.
 
-The Audit observation cluster uses two explicit core boundaries. Core-skill
+The Audit receipt-observation cluster uses two explicit core boundaries. Core-skill
 application and surface-strength detection share finish-stage
 `core_skill_application_receipt` selection and one package-level test home.
 Object observation separately summarizes the full admitted receipt set and
 keeps its focused tests with its part. Both cores stay descriptive and
 filesystem-free; root functions remain compatibility aliases.
+
+Source Coverage is a third, single-part Audit core. Its registry/feed
+aggregation, ordering, conservation, dominance, and missing-registry proof
+belongs under `mechanics/audit/parts/source-coverage/tests/`. Boundary Bridge
+may test how catalog and coverage signals return consumers to stronger owners,
+but it must not become the test owner for Source Coverage producer behavior.
 
 The Audit extraction preserves its historical ordered-input behavior and
 compatibility buckets. Do not describe those retained mechanics as canonical

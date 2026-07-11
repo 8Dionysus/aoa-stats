@@ -17,7 +17,7 @@
       "security": 1,
       "service_unit": 2,
       "source_code": 34,
-      "test": 50,
+      "test": 51,
       "validator": 18
     },
     "command_role": {
@@ -25,7 +25,7 @@
       "lane_entrypoint": 1,
       "none": 884,
       "script": 12,
-      "test": 50,
+      "test": 51,
       "validator": 18
     },
     "document_role": {
@@ -36,7 +36,7 @@
       "decision": 15,
       "design": 1,
       "mechanics_doc": 182,
-      "none": 502,
+      "none": 503,
       "parts": 12,
       "provenance": 12,
       "readme": 85,
@@ -52,36 +52,36 @@
       "part_doc": 187,
       "part_schema": 58,
       "part_script": 21,
-      "part_test": 36
+      "part_test": 37
     },
     "primary_kind": {
       "artifact": 93,
-      "command": 91,
+      "command": 92,
       "document": 473,
       "surface": 318
     },
     "surface_state": {
-      "authored_source": 906,
+      "authored_source": 907,
       "generated_readmodel": 46,
       "legacy": 23
     }
   },
   "coverage_summary": {
-    "command_count": 91,
+    "command_count": 92,
     "document_count": 473,
     "generated_count": 46,
     "heading_count": 1967,
-    "mechanics_count": 517,
-    "record_count": 975,
+    "mechanics_count": 518,
+    "record_count": 976,
     "schema_count": 92,
     "script_count": 23,
-    "test_count": 50,
+    "test_count": 51,
     "unknown_count": 0,
     "validator_count": 18
   },
   "index_identity": {
     "artifact_kind": "source_surface_index",
-    "content_digest": "27c725ca86eb8c358d7079378ede8beb70751ba96eb0a369a9e622fef371c70f",
+    "content_digest": "9bbe2f423787c4a67fc861748ca7aa7b2d0e1c7d97bd390fd7168f82fc9d3ccc",
     "local_id": "index:repo-local:source-surfaces",
     "schema_ref": "aoa-kag:schemas/repo-local-kag-index.schema.json"
   },
@@ -24063,13 +24063,13 @@
         "state": "current"
       },
       "identity": {
-        "content_hash": "e55710678c1d28d380a2a3bce88b26985c706d9da63a6289e0861272dd97bdf4",
+        "content_hash": "e2c61acba4f681fe474a45b119bbbcb4b2ca9625173ed06aac7abaa60034fabd",
         "git_ref": "git-index-source-tree",
         "id": "file:agents.md:a54ff182c7",
         "mime": "text/markdown",
         "path": "AGENTS.md",
         "repo": "aoa-stats",
-        "size_bytes": 14571
+        "size_bytes": 14959
       },
       "mechanics_role": "none",
       "observed_form": "file",
@@ -24133,63 +24133,63 @@
           {
             "anchor": "cross-mode-law",
             "level": 2,
-            "line": 176,
+            "line": 182,
             "ref": "AGENTS.md#cross-mode-law",
             "title": "Cross-mode law"
           },
           {
             "anchor": "agents-stack-law",
             "level": 2,
-            "line": 200,
+            "line": 206,
             "ref": "AGENTS.md#agents-stack-law",
             "title": "AGENTS stack law"
           },
           {
             "anchor": "memory-route",
             "level": 2,
-            "line": 215,
+            "line": 221,
             "ref": "AGENTS.md#memory-route",
             "title": "Memory route"
           },
           {
             "anchor": "decision-review",
             "level": 2,
-            "line": 223,
+            "line": 229,
             "ref": "AGENTS.md#decision-review",
             "title": "Decision review"
           },
           {
             "anchor": "derived-only-rules",
             "level": 2,
-            "line": 234,
+            "line": 240,
             "ref": "AGENTS.md#derived-only-rules",
             "title": "Derived-only rules"
           },
           {
             "anchor": "github-landing-workflow",
             "level": 2,
-            "line": 244,
+            "line": 250,
             "ref": "AGENTS.md#github-landing-workflow",
             "title": "GitHub landing workflow"
           },
           {
             "anchor": "verify",
             "level": 2,
-            "line": 266,
+            "line": 272,
             "ref": "AGENTS.md#verify",
             "title": "Verify"
           },
           {
             "anchor": "report",
             "level": 2,
-            "line": 295,
+            "line": 301,
             "ref": "AGENTS.md#report",
             "title": "Report"
           },
           {
             "anchor": "full-reference",
             "level": 2,
-            "line": 301,
+            "line": 307,
             "ref": "AGENTS.md#full-reference",
             "title": "Full reference"
           }
@@ -24201,7 +24201,7 @@
       },
       "signs": {
         "attestation_ref": "",
-        "digest": "e55710678c1d28d380a2a3bce88b26985c706d9da63a6289e0861272dd97bdf4",
+        "digest": "e2c61acba4f681fe474a45b119bbbcb4b2ca9625173ed06aac7abaa60034fabd",
         "signature_ref": "",
         "verification_state": "digest-only"
       },
@@ -24249,13 +24249,13 @@
         "state": "current"
       },
       "identity": {
-        "content_hash": "1959b8a8617b878f294253ae07d22578fa60745cc270400447623f360502b4d0",
+        "content_hash": "feaad1ffa06f6cd35fbdaf33cfecb087a2510344b3b900cce53fdbf2cf075d10",
         "git_ref": "git-index-source-tree",
         "id": "file:changelog.md:06572a96a5",
         "mime": "text/markdown",
         "path": "CHANGELOG.md",
         "repo": "aoa-stats",
-        "size_bytes": 14157
+        "size_bytes": 14437
       },
       "mechanics_role": "none",
       "observed_form": "file",
@@ -24312,175 +24312,175 @@
           {
             "anchor": "013-2026-04-23",
             "level": 2,
-            "line": 124,
+            "line": 128,
             "ref": "CHANGELOG.md#013-2026-04-23",
             "title": "[0.1.3] - 2026-04-23"
           },
           {
             "anchor": "summary",
             "level": 3,
-            "line": 126,
+            "line": 130,
             "ref": "CHANGELOG.md#summary",
             "title": "Summary"
           },
           {
             "anchor": "added-1",
             "level": 3,
-            "line": 138,
+            "line": 142,
             "ref": "CHANGELOG.md#added-1",
             "title": "Added"
           },
           {
             "anchor": "changed-1",
             "level": 3,
-            "line": 148,
+            "line": 152,
             "ref": "CHANGELOG.md#changed-1",
             "title": "Changed"
           },
           {
             "anchor": "validation",
             "level": 3,
-            "line": 154,
+            "line": 158,
             "ref": "CHANGELOG.md#validation",
             "title": "Validation"
           },
           {
             "anchor": "notes",
             "level": 3,
-            "line": 158,
+            "line": 162,
             "ref": "CHANGELOG.md#notes",
             "title": "Notes"
           },
           {
             "anchor": "012-2026-04-19",
             "level": 2,
-            "line": 163,
+            "line": 167,
             "ref": "CHANGELOG.md#012-2026-04-19",
             "title": "[0.1.2] - 2026-04-19"
           },
           {
             "anchor": "summary-1",
             "level": 3,
-            "line": 165,
+            "line": 169,
             "ref": "CHANGELOG.md#summary-1",
             "title": "Summary"
           },
           {
             "anchor": "added-2",
             "level": 3,
-            "line": 173,
+            "line": 177,
             "ref": "CHANGELOG.md#added-2",
             "title": "Added"
           },
           {
             "anchor": "changed-2",
             "level": 3,
-            "line": 180,
+            "line": 184,
             "ref": "CHANGELOG.md#changed-2",
             "title": "Changed"
           },
           {
             "anchor": "validation-1",
             "level": 3,
-            "line": 185,
+            "line": 189,
             "ref": "CHANGELOG.md#validation-1",
             "title": "Validation"
           },
           {
             "anchor": "notes-1",
             "level": 3,
-            "line": 189,
+            "line": 193,
             "ref": "CHANGELOG.md#notes-1",
             "title": "Notes"
           },
           {
             "anchor": "011-2026-04-12",
             "level": 2,
-            "line": 194,
+            "line": 198,
             "ref": "CHANGELOG.md#011-2026-04-12",
             "title": "[0.1.1] - 2026-04-12"
           },
           {
             "anchor": "summary-2",
             "level": 3,
-            "line": 196,
+            "line": 200,
             "ref": "CHANGELOG.md#summary-2",
             "title": "Summary"
           },
           {
             "anchor": "added-3",
             "level": 3,
-            "line": 204,
+            "line": 208,
             "ref": "CHANGELOG.md#added-3",
             "title": "Added"
           },
           {
             "anchor": "documentation",
             "level": 3,
-            "line": 212,
+            "line": 216,
             "ref": "CHANGELOG.md#documentation",
             "title": "Documentation"
           },
           {
             "anchor": "changed-3",
             "level": 3,
-            "line": 218,
+            "line": 222,
             "ref": "CHANGELOG.md#changed-3",
             "title": "Changed"
           },
           {
             "anchor": "validation-2",
             "level": 3,
-            "line": 225,
+            "line": 229,
             "ref": "CHANGELOG.md#validation-2",
             "title": "Validation"
           },
           {
             "anchor": "notes-2",
             "level": 3,
-            "line": 229,
+            "line": 233,
             "ref": "CHANGELOG.md#notes-2",
             "title": "Notes"
           },
           {
             "anchor": "010-2026-04-10",
             "level": 2,
-            "line": 233,
+            "line": 237,
             "ref": "CHANGELOG.md#010-2026-04-10",
             "title": "[0.1.0] - 2026-04-10"
           },
           {
             "anchor": "summary-3",
             "level": 3,
-            "line": 240,
+            "line": 244,
             "ref": "CHANGELOG.md#summary-3",
             "title": "Summary"
           },
           {
             "anchor": "added-4",
             "level": 3,
-            "line": 251,
+            "line": 255,
             "ref": "CHANGELOG.md#added-4",
             "title": "Added"
           },
           {
             "anchor": "included-in-this-release",
             "level": 3,
-            "line": 264,
+            "line": 268,
             "ref": "CHANGELOG.md#included-in-this-release",
             "title": "Included in this release"
           },
           {
             "anchor": "validation-3",
             "level": 3,
-            "line": 279,
+            "line": 283,
             "ref": "CHANGELOG.md#validation-3",
             "title": "Validation"
           },
           {
             "anchor": "notes-3",
             "level": 3,
-            "line": 285,
+            "line": 289,
             "ref": "CHANGELOG.md#notes-3",
             "title": "Notes"
           }
@@ -24492,7 +24492,7 @@
       },
       "signs": {
         "attestation_ref": "",
-        "digest": "1959b8a8617b878f294253ae07d22578fa60745cc270400447623f360502b4d0",
+        "digest": "feaad1ffa06f6cd35fbdaf33cfecb087a2510344b3b900cce53fdbf2cf075d10",
         "signature_ref": "",
         "verification_state": "digest-only"
       },
@@ -24772,13 +24772,13 @@
         "state": "current"
       },
       "identity": {
-        "content_hash": "7946c146754d0fbea203b533ef179f6a45d9acc4bce5a8527acc6b6d1473c587",
+        "content_hash": "5856b96ca4cd6c51aaa44c76189d9d21cc516b3d50bc0df1848d98f2d7ea697d",
         "git_ref": "git-index-source-tree",
         "id": "file:design.md:3dc5dd454e",
         "mime": "text/markdown",
         "path": "DESIGN.md",
         "repo": "aoa-stats",
-        "size_bytes": 17226
+        "size_bytes": 17717
       },
       "mechanics_role": "none",
       "observed_form": "file",
@@ -24863,56 +24863,56 @@
           {
             "anchor": "operation",
             "level": 2,
-            "line": 238,
+            "line": 246,
             "ref": "DESIGN.md#operation",
             "title": "Operation"
           },
           {
             "anchor": "authority-model",
             "level": 2,
-            "line": 262,
+            "line": 270,
             "ref": "DESIGN.md#authority-model",
             "title": "Authority model"
           },
           {
             "anchor": "shared-mechanic-vocabulary",
             "level": 2,
-            "line": 276,
+            "line": 284,
             "ref": "DESIGN.md#shared-mechanic-vocabulary",
             "title": "Shared mechanic vocabulary"
           },
           {
             "anchor": "design-principles",
             "level": 2,
-            "line": 287,
+            "line": 295,
             "ref": "DESIGN.md#design-principles",
             "title": "Design principles"
           },
           {
             "anchor": "good-shape",
             "level": 2,
-            "line": 303,
+            "line": 311,
             "ref": "DESIGN.md#good-shape",
             "title": "Good shape"
           },
           {
             "anchor": "bad-shape",
             "level": 2,
-            "line": 312,
+            "line": 320,
             "ref": "DESIGN.md#bad-shape",
             "title": "Bad shape"
           },
           {
             "anchor": "relationship-to-root-guidance",
             "level": 2,
-            "line": 321,
+            "line": 329,
             "ref": "DESIGN.md#relationship-to-root-guidance",
             "title": "Relationship to root guidance"
           },
           {
             "anchor": "use-by-agents",
             "level": 2,
-            "line": 332,
+            "line": 340,
             "ref": "DESIGN.md#use-by-agents",
             "title": "Use by agents"
           }
@@ -24924,7 +24924,7 @@
       },
       "signs": {
         "attestation_ref": "",
-        "digest": "7946c146754d0fbea203b533ef179f6a45d9acc4bce5a8527acc6b6d1473c587",
+        "digest": "5856b96ca4cd6c51aaa44c76189d9d21cc516b3d50bc0df1848d98f2d7ea697d",
         "signature_ref": "",
         "verification_state": "digest-only"
       },
@@ -49540,13 +49540,13 @@
         "state": "current"
       },
       "identity": {
-        "content_hash": "f0da0faf19082500f40981c4a5d2cfb8b87d0cfb2db6702184afbc2ede9d7a75",
+        "content_hash": "a086057d05b37436fb101836831bd9ad616bd4c4c89ec2b29a0f233693e4c204",
         "git_ref": "git-index-source-tree",
         "id": "file:mechanics/audit/parts.md:7f54be3138",
         "mime": "text/markdown",
         "path": "mechanics/audit/PARTS.md",
         "repo": "aoa-stats",
-        "size_bytes": 1165
+        "size_bytes": 1337
       },
       "mechanics_role": "mechanic_package",
       "observed_form": "file",
@@ -49587,7 +49587,7 @@
       },
       "signs": {
         "attestation_ref": "",
-        "digest": "f0da0faf19082500f40981c4a5d2cfb8b87d0cfb2db6702184afbc2ede9d7a75",
+        "digest": "a086057d05b37436fb101836831bd9ad616bd4c4c89ec2b29a0f233693e4c204",
         "signature_ref": "",
         "verification_state": "digest-only"
       },
@@ -49730,13 +49730,13 @@
         "state": "current"
       },
       "identity": {
-        "content_hash": "0e33a8e544acefcaaf6b3a1235b85513e2dc54c6cbc1b73c2ec8e8a2da471533",
+        "content_hash": "a1289d8edf2c6955566b464f781d5ad6b496877982c5de3d80337127c9cf2920",
         "git_ref": "git-index-source-tree",
         "id": "file:mechanics/audit/readme.md:8442d8bba8",
         "mime": "text/markdown",
         "path": "mechanics/audit/README.md",
         "repo": "aoa-stats",
-        "size_bytes": 1509
+        "size_bytes": 1822
       },
       "mechanics_role": "mechanic_package",
       "observed_form": "file",
@@ -49777,7 +49777,7 @@
       },
       "signs": {
         "attestation_ref": "",
-        "digest": "0e33a8e544acefcaaf6b3a1235b85513e2dc54c6cbc1b73c2ec8e8a2da471533",
+        "digest": "a1289d8edf2c6955566b464f781d5ad6b496877982c5de3d80337127c9cf2920",
         "signature_ref": "",
         "verification_state": "digest-only"
       },
@@ -51299,13 +51299,13 @@
         "state": "current"
       },
       "identity": {
-        "content_hash": "a87b94585844374745eabe5e605afff22e0fde5141078d5d9c75688acfa2cf9b",
+        "content_hash": "f42c6fa61efdefae7075d54038c59799b89a17659e3150afa240d3e01a535991",
         "git_ref": "git-index-source-tree",
         "id": "file:mechanics/audit/parts/source-coverage/contract.md:3b164b8f2b",
         "mime": "text/markdown",
         "path": "mechanics/audit/parts/source-coverage/CONTRACT.md",
         "repo": "aoa-stats",
-        "size_bytes": 360
+        "size_bytes": 809
       },
       "mechanics_role": "part_contract",
       "observed_form": "file",
@@ -51346,7 +51346,7 @@
       },
       "signs": {
         "attestation_ref": "",
-        "digest": "a87b94585844374745eabe5e605afff22e0fde5141078d5d9c75688acfa2cf9b",
+        "digest": "f42c6fa61efdefae7075d54038c59799b89a17659e3150afa240d3e01a535991",
         "signature_ref": "",
         "verification_state": "digest-only"
       },
@@ -51394,13 +51394,13 @@
         "state": "current"
       },
       "identity": {
-        "content_hash": "e23ea9abc9d4e58a9feac2165edbaab01a5accbc2f87f0a111ae2143229c780c",
+        "content_hash": "976395b722802ebbc10d26b83501433cf2dba2800aace420c087c3f39036bfed",
         "git_ref": "git-index-source-tree",
         "id": "file:mechanics/audit/parts/source-coverage/readme.md:809b78ee2c",
         "mime": "text/markdown",
         "path": "mechanics/audit/parts/source-coverage/README.md",
         "repo": "aoa-stats",
-        "size_bytes": 353
+        "size_bytes": 579
       },
       "mechanics_role": "part_doc",
       "observed_form": "file",
@@ -51441,7 +51441,7 @@
       },
       "signs": {
         "attestation_ref": "",
-        "digest": "e23ea9abc9d4e58a9feac2165edbaab01a5accbc2f87f0a111ae2143229c780c",
+        "digest": "976395b722802ebbc10d26b83501433cf2dba2800aace420c087c3f39036bfed",
         "signature_ref": "",
         "verification_state": "digest-only"
       },
@@ -51489,13 +51489,13 @@
         "state": "current"
       },
       "identity": {
-        "content_hash": "045aee7c7d783b6b29b902a7401549c850d272410838cace27b3a25efb441ff3",
+        "content_hash": "c5933c673b293b0935417abfe586875cfb97eb9d0033fc13ef1f4bf1a5d3fdba",
         "git_ref": "git-index-source-tree",
         "id": "file:mechanics/audit/parts/source-coverage/validation.md:e13861112a",
         "mime": "text/markdown",
         "path": "mechanics/audit/parts/source-coverage/VALIDATION.md",
         "repo": "aoa-stats",
-        "size_bytes": 443
+        "size_bytes": 614
       },
       "mechanics_role": "part_doc",
       "observed_form": "file",
@@ -51536,7 +51536,7 @@
       },
       "signs": {
         "attestation_ref": "",
-        "digest": "045aee7c7d783b6b29b902a7401549c850d272410838cace27b3a25efb441ff3",
+        "digest": "c5933c673b293b0935417abfe586875cfb97eb9d0033fc13ef1f4bf1a5d3fdba",
         "signature_ref": "",
         "verification_state": "digest-only"
       },
@@ -51584,13 +51584,13 @@
         "state": "current"
       },
       "identity": {
-        "content_hash": "0812d4521668aea36baddfc9827faa5705a03f15ca85b82e4aa13721aadd575e",
+        "content_hash": "199ae1a4c928f085eec36192231f19ecbcf952d99702fc03cb8c66b41e99e65a",
         "git_ref": "git-index-source-tree",
         "id": "file:mechanics/audit/parts/source-coverage/docs/source_coverage_summary.md:3b60baeeb2",
         "mime": "text/markdown",
         "path": "mechanics/audit/parts/source-coverage/docs/SOURCE_COVERAGE_SUMMARY.md",
         "repo": "aoa-stats",
-        "size_bytes": 2139
+        "size_bytes": 2340
       },
       "mechanics_role": "part_doc",
       "observed_form": "file",
@@ -51666,7 +51666,7 @@
       },
       "signs": {
         "attestation_ref": "",
-        "digest": "0812d4521668aea36baddfc9827faa5705a03f15ca85b82e4aa13721aadd575e",
+        "digest": "199ae1a4c928f085eec36192231f19ecbcf952d99702fc03cb8c66b41e99e65a",
         "signature_ref": "",
         "verification_state": "digest-only"
       },
@@ -51766,6 +51766,97 @@
         "owner_commands": [],
         "required_tools": [
           "jq"
+        ]
+      },
+      "validator_route": {
+        "route_kind": "source_fast",
+        "surface": "aoa-kag:scripts/validate_kag.py"
+      }
+    },
+    {
+      "abi": {
+        "abi_epoch": "source",
+        "artifact_class": "test",
+        "compatibility": "stable",
+        "contract_version": "none",
+        "schema_version": "none"
+      },
+      "access": {
+        "scope": "public",
+        "secrets_risk": "none"
+      },
+      "artifact_kind": "test",
+      "classification": {
+        "confidence": "high",
+        "primary_kind": "command"
+      },
+      "code_role": "test",
+      "command_role": "test",
+      "consumer_route": {
+        "route_kind": "resource",
+        "surface": "aoa-kag-mcp"
+      },
+      "document_role": "none",
+      "freshness": {
+        "checked_ref": "git-index-source-tree",
+        "mode": "source_snapshot",
+        "state": "current"
+      },
+      "identity": {
+        "content_hash": "316d916e8de620fc0944715ab2c2bc95bd03fcaa50b626afbf7ea295d99dfa40",
+        "git_ref": "git-index-source-tree",
+        "id": "file:mechanics/audit/parts/source-coverage/tests/test_source_coverage.py:d14befcca3",
+        "mime": "text/x-python",
+        "path": "mechanics/audit/parts/source-coverage/tests/test_source_coverage.py",
+        "repo": "aoa-stats",
+        "size_bytes": 7134
+      },
+      "mechanics_role": "part_test",
+      "observed_form": "command",
+      "owner_return_route": {
+        "route_kind": "test_owner",
+        "surface": "mechanics/audit/parts/source-coverage/tests/test_source_coverage.py"
+      },
+      "provenance": {
+        "generated_by": "",
+        "materials": [],
+        "observed_by": "aoa-kag:scripts/generate_repo_local_kag_index.py",
+        "source_refs": [
+          {
+            "authority": "authored_source",
+            "path": "mechanics/audit/parts/source-coverage/tests/test_source_coverage.py",
+            "repo": "aoa-stats",
+            "role": "primary"
+          }
+        ],
+        "validated_by": [
+          "aoa-kag:scripts/validate_kag.py"
+        ]
+      },
+      "refs": {
+        "heading_refs": [],
+        "line_refs": [
+          "mechanics/audit/parts/source-coverage/tests/test_source_coverage.py:1"
+        ],
+        "path_ref": "mechanics/audit/parts/source-coverage/tests/test_source_coverage.py"
+      },
+      "signs": {
+        "attestation_ref": "",
+        "digest": "316d916e8de620fc0944715ab2c2bc95bd03fcaa50b626afbf7ea295d99dfa40",
+        "signature_ref": "",
+        "verification_state": "digest-only"
+      },
+      "surface_state": "authored_source",
+      "toolchain": {
+        "detected_tools": [
+          "git",
+          "python"
+        ],
+        "owner_commands": [
+          "python -m unittest mechanics/audit/parts/source-coverage/tests/test_source_coverage.py"
+        ],
+        "required_tools": [
+          "python"
         ]
       },
       "validator_route": {
@@ -52889,13 +52980,13 @@
         "state": "current"
       },
       "identity": {
-        "content_hash": "1513259dd61810d4e3290239172f15d2ecb039405385306405e14c72fb5a3f82",
+        "content_hash": "dd21ea651e76527e8fe065274a2737785a85128eb6857c0187e5f09f8d0676f2",
         "git_ref": "git-index-source-tree",
         "id": "file:mechanics/boundary-bridge/parts/consumer-regrounding/contract.md:2dcaf014a4",
         "mime": "text/markdown",
         "path": "mechanics/boundary-bridge/parts/consumer-regrounding/CONTRACT.md",
         "repo": "aoa-stats",
-        "size_bytes": 1404
+        "size_bytes": 1578
       },
       "mechanics_role": "part_contract",
       "observed_form": "file",
@@ -52959,14 +53050,14 @@
           {
             "anchor": "crosswalk",
             "level": 2,
-            "line": 31,
+            "line": 34,
             "ref": "mechanics/boundary-bridge/parts/consumer-regrounding/CONTRACT.md#crosswalk",
             "title": "Crosswalk"
           },
           {
             "anchor": "current-payload-route",
             "level": 2,
-            "line": 37,
+            "line": 40,
             "ref": "mechanics/boundary-bridge/parts/consumer-regrounding/CONTRACT.md#current-payload-route",
             "title": "Current payload route"
           }
@@ -52978,7 +53069,7 @@
       },
       "signs": {
         "attestation_ref": "",
-        "digest": "1513259dd61810d4e3290239172f15d2ecb039405385306405e14c72fb5a3f82",
+        "digest": "dd21ea651e76527e8fe065274a2737785a85128eb6857c0187e5f09f8d0676f2",
         "signature_ref": "",
         "verification_state": "digest-only"
       },
@@ -53128,13 +53219,13 @@
         "state": "current"
       },
       "identity": {
-        "content_hash": "0f6a52c45d216188e4dabc9a756134ffa577ec8f0c6750352f41d68986e86031",
+        "content_hash": "91a19d25de8a8345da667674c697e90d7d80b3b0d067b32b4ea9b2c0879b02b3",
         "git_ref": "git-index-source-tree",
         "id": "file:mechanics/boundary-bridge/parts/consumer-regrounding/validation.md:7633910c6a",
         "mime": "text/markdown",
         "path": "mechanics/boundary-bridge/parts/consumer-regrounding/VALIDATION.md",
         "repo": "aoa-stats",
-        "size_bytes": 585
+        "size_bytes": 719
       },
       "mechanics_role": "part_doc",
       "observed_form": "file",
@@ -53182,7 +53273,7 @@
       },
       "signs": {
         "attestation_ref": "",
-        "digest": "0f6a52c45d216188e4dabc9a756134ffa577ec8f0c6750352f41d68986e86031",
+        "digest": "91a19d25de8a8345da667674c697e90d7d80b3b0d067b32b4ea9b2c0879b02b3",
         "signature_ref": "",
         "verification_state": "digest-only"
       },
@@ -53230,13 +53321,13 @@
         "state": "current"
       },
       "identity": {
-        "content_hash": "d3708bf996ae2cc385f95d91c455e291db1cd260d9df5cf79d9e4904149f2e0d",
+        "content_hash": "36c20e10b0c220eae6935ebe2d0527224064892506a5377defd40e93a73da6da",
         "git_ref": "git-index-source-tree",
         "id": "file:mechanics/boundary-bridge/parts/consumer-regrounding/tests/test_consumer_regrounding_signals.py:d6c0ab422d",
         "mime": "text/x-python",
         "path": "mechanics/boundary-bridge/parts/consumer-regrounding/tests/test_consumer_regrounding_signals.py",
         "repo": "aoa-stats",
-        "size_bytes": 3954
+        "size_bytes": 1972
       },
       "mechanics_role": "part_test",
       "observed_form": "command",
@@ -53269,7 +53360,7 @@
       },
       "signs": {
         "attestation_ref": "",
-        "digest": "d3708bf996ae2cc385f95d91c455e291db1cd260d9df5cf79d9e4904149f2e0d",
+        "digest": "36c20e10b0c220eae6935ebe2d0527224064892506a5377defd40e93a73da6da",
         "signature_ref": "",
         "verification_state": "digest-only"
       },
@@ -86096,13 +86187,13 @@
         "state": "current"
       },
       "identity": {
-        "content_hash": "538adec7fc39b2c6712651268f60e37529d76ad1f995c221a719b3e370d16404",
+        "content_hash": "c9302acb037158f45ca6d666793473d49f301ce712e37b1dd62583e61cc8a606",
         "git_ref": "git-index-source-tree",
         "id": "file:mechanics/topology.json:c2f84a03b1",
         "mime": "application/json",
         "path": "mechanics/topology.json",
         "repo": "aoa-stats",
-        "size_bytes": 39787
+        "size_bytes": 39808
       },
       "mechanics_role": "mechanic_package",
       "observed_form": "file",
@@ -86135,7 +86226,7 @@
       },
       "signs": {
         "attestation_ref": "",
-        "digest": "538adec7fc39b2c6712651268f60e37529d76ad1f995c221a719b3e370d16404",
+        "digest": "c9302acb037158f45ca6d666793473d49f301ce712e37b1dd62583e61cc8a606",
         "signature_ref": "",
         "verification_state": "digest-only"
       },
@@ -93575,13 +93666,13 @@
         "state": "current"
       },
       "identity": {
-        "content_hash": "1a250d3d21fa268d521e211c9385f15b86278157b2e4d377502e61aeb7da79cd",
+        "content_hash": "2b586deccf6f0cd2b9c5ccfa8fe652b12d8040c199dac86bdade80d01dff5085",
         "git_ref": "git-index-source-tree",
         "id": "file:stats/readme.md:6bac6d2ff5",
         "mime": "text/markdown",
         "path": "stats/README.md",
         "repo": "aoa-stats",
-        "size_bytes": 8174
+        "size_bytes": 8274
       },
       "mechanics_role": "none",
       "observed_form": "file",
@@ -93643,7 +93734,7 @@
       },
       "signs": {
         "attestation_ref": "",
-        "digest": "1a250d3d21fa268d521e211c9385f15b86278157b2e4d377502e61aeb7da79cd",
+        "digest": "2b586deccf6f0cd2b9c5ccfa8fe652b12d8040c199dac86bdade80d01dff5085",
         "signature_ref": "",
         "verification_state": "digest-only"
       },
@@ -96024,13 +96115,13 @@
         "state": "current"
       },
       "identity": {
-        "content_hash": "357c5377c4b8ca18cdb3815376dd08f092286fd4a293e8d031de0d53b3d9e653",
+        "content_hash": "b1f965206aaae90094382a1bdf7458a30b31e5784ba40624fa7934268a911894",
         "git_ref": "git-index-source-tree",
         "id": "file:stats/read-models/readme.md:5ba4a92471",
         "mime": "text/markdown",
         "path": "stats/read-models/README.md",
         "repo": "aoa-stats",
-        "size_bytes": 6275
+        "size_bytes": 6429
       },
       "mechanics_role": "none",
       "observed_form": "file",
@@ -96066,7 +96157,7 @@
           {
             "anchor": "lifecycle",
             "level": 2,
-            "line": 97,
+            "line": 99,
             "ref": "stats/read-models/README.md#lifecycle",
             "title": "Lifecycle"
           }
@@ -96078,7 +96169,7 @@
       },
       "signs": {
         "attestation_ref": "",
-        "digest": "357c5377c4b8ca18cdb3815376dd08f092286fd4a293e8d031de0d53b3d9e653",
+        "digest": "b1f965206aaae90094382a1bdf7458a30b31e5784ba40624fa7934268a911894",
         "signature_ref": "",
         "verification_state": "digest-only"
       },
@@ -98529,13 +98620,13 @@
         "state": "current"
       },
       "identity": {
-        "content_hash": "ea251b99dbb6aeb8487e40003e3acea105c3aeb884379a693d527b2440accff8",
+        "content_hash": "0cb2bf614787147db52d3c62f5498ba70d50fba9b950c6640de9f0bda67105df",
         "git_ref": "git-index-source-tree",
         "id": "file:stats/source_home.manifest.json:41b237ff45",
         "mime": "application/json",
         "path": "stats/source_home.manifest.json",
         "repo": "aoa-stats",
-        "size_bytes": 27358
+        "size_bytes": 27437
       },
       "mechanics_role": "none",
       "observed_form": "file",
@@ -98568,7 +98659,7 @@
       },
       "signs": {
         "attestation_ref": "",
-        "digest": "ea251b99dbb6aeb8487e40003e3acea105c3aeb884379a693d527b2440accff8",
+        "digest": "0cb2bf614787147db52d3c62f5498ba70d50fba9b950c6640de9f0bda67105df",
         "signature_ref": "",
         "verification_state": "digest-only"
       },
@@ -99345,13 +99436,13 @@
         "state": "current"
       },
       "identity": {
-        "content_hash": "d7902fe96df99a3516eb206b9769babb53b8713df117c1996eead3524d30b11f",
+        "content_hash": "5c8c6cf00d32827fb1d105beb59a8a4a91cd27de7f6803b1f80a4af657e99e44",
         "git_ref": "git-index-source-tree",
         "id": "file:tests/test_build_views.py:760ef645f6",
         "mime": "text/x-python",
         "path": "tests/test_build_views.py",
         "repo": "aoa-stats",
-        "size_bytes": 29399
+        "size_bytes": 28904
       },
       "mechanics_role": "none",
       "observed_form": "command",
@@ -99384,7 +99475,7 @@
       },
       "signs": {
         "attestation_ref": "",
-        "digest": "d7902fe96df99a3516eb206b9769babb53b8713df117c1996eead3524d30b11f",
+        "digest": "5c8c6cf00d32827fb1d105beb59a8a4a91cd27de7f6803b1f80a4af657e99e44",
         "signature_ref": "",
         "verification_state": "digest-only"
       },
@@ -99982,13 +100073,13 @@
         "state": "current"
       },
       "identity": {
-        "content_hash": "9dd894b2b605783c3a3d3f8ad802f4420aacd9c6e58502216b5dac5abb78ff6d",
+        "content_hash": "3cd2c6ec08559644af968fc6c45dc75c434aaaa405737d77ada573806a7cdd7f",
         "git_ref": "git-index-source-tree",
         "id": "file:tests/test_stats_source_home.py:a642c9216e",
         "mime": "text/x-python",
         "path": "tests/test_stats_source_home.py",
         "repo": "aoa-stats",
-        "size_bytes": 17300
+        "size_bytes": 18119
       },
       "mechanics_role": "none",
       "observed_form": "command",
@@ -100021,7 +100112,7 @@
       },
       "signs": {
         "attestation_ref": "",
-        "digest": "9dd894b2b605783c3a3d3f8ad802f4420aacd9c6e58502216b5dac5abb78ff6d",
+        "digest": "3cd2c6ec08559644af968fc6c45dc75c434aaaa405737d77ada573806a7cdd7f",
         "signature_ref": "",
         "verification_state": "digest-only"
       },

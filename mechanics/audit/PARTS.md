@@ -4,7 +4,7 @@
 | --- | --- |
 | `core-skill-application` | Publishes finish-stage application observations through the shared core-skill observation core. |
 | `object-observation` | Publishes deterministic occurrence and recency observations through its own part-specific core. |
-| `source-coverage` | Audits which owner feeds and event families are represented. |
+| `source-coverage` | Audits represented owner feeds and event families through a separate core and part-local invariant suite. |
 | `surface-strength-detection` | Exposes explicit advisory detection context through the shared core-skill observation core. |
 | `drift-shadow-review` | Projects review posture from committed cadence examples without replacing source review. |
 
@@ -16,3 +16,5 @@ test district because both consume the same finish-stage core-skill receipt
 family. `object-observation` has a separate core and part-local test district
 because it groups the wider active receipt set by object identity. This shared
 code boundary does not extend to `source-coverage` or `drift-shadow-review`.
+Source Coverage instead owns a separate producer test district; consumer-side
+re-grounding proof remains with Boundary Bridge.

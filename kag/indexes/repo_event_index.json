@@ -69,7 +69,7 @@
       "heading_ref": {
         "anchor": "013-2026-04-23",
         "level": 2,
-        "line": 124,
+        "line": 128,
         "ref": "CHANGELOG.md#013-2026-04-23",
         "title": "[0.1.3] - 2026-04-23"
       },
@@ -84,7 +84,7 @@
       "heading_ref": {
         "anchor": "012-2026-04-19",
         "level": 2,
-        "line": 163,
+        "line": 167,
         "ref": "CHANGELOG.md#012-2026-04-19",
         "title": "[0.1.2] - 2026-04-19"
       },
@@ -99,7 +99,7 @@
       "heading_ref": {
         "anchor": "011-2026-04-12",
         "level": 2,
-        "line": 194,
+        "line": 198,
         "ref": "CHANGELOG.md#011-2026-04-12",
         "title": "[0.1.1] - 2026-04-12"
       },
@@ -114,7 +114,7 @@
       "heading_ref": {
         "anchor": "010-2026-04-10",
         "level": 2,
-        "line": 233,
+        "line": 237,
         "ref": "CHANGELOG.md#010-2026-04-10",
         "title": "[0.1.0] - 2026-04-10"
       },
@@ -533,6 +533,15 @@
       "observation_state": "declared",
       "path": "mechanics/audit/parts/object-observation/tests/test_object_observation.py",
       "source_record_id": "file:mechanics/audit/parts/object-observation/tests/test_object_observation.py:768b648354"
+    },
+    {
+      "event_kind": "test_run",
+      "event_role": "producer",
+      "heading_ref": null,
+      "id": "event:repo:92f5d794e78dcfd043f7",
+      "observation_state": "declared",
+      "path": "mechanics/audit/parts/source-coverage/tests/test_source_coverage.py",
+      "source_record_id": "file:mechanics/audit/parts/source-coverage/tests/test_source_coverage.py:d14befcca3"
     },
     {
       "event_kind": "test_run",
@@ -1050,7 +1059,7 @@
   ],
   "index_identity": {
     "artifact_kind": "repository_event_index",
-    "content_digest": "b5b13adbb854ad27d53647edc4082c2f55457149b64666ccf15d04440ce63dbe",
+    "content_digest": "ffc30ac57003883f904d8b4d3374ffc23accb7b28109109801a009097de3a51e",
     "index_kind": "event",
     "local_id": "index:repo-local:events",
     "schema_ref": "aoa-kag:schemas/repo-local-kag-repository-index.schema.json"
@@ -1075,19 +1084,19 @@
   },
   "schema_version": "aoa-repo-local-kag-repository-index-v1",
   "source_index": {
-    "content_digest": "27c725ca86eb8c358d7079378ede8beb70751ba96eb0a369a9e622fef371c70f",
+    "content_digest": "9bbe2f423787c4a67fc861748ca7aa7b2d0e1c7d97bd390fd7168f82fc9d3ccc",
     "local_id": "index:repo-local:source-surfaces",
     "path": "kag/indexes/source_surface_index.json"
   },
   "summary": {
-    "entry_count": 113,
+    "entry_count": 114,
     "kind_counts": {
       "command_run": 12,
       "decision_record": 15,
       "generation_run": 10,
       "release_declaration": 4,
       "release_lane": 1,
-      "test_run": 50,
+      "test_run": 51,
       "validation_lane_run": 1,
       "validation_receipt": 1,
       "validation_run": 18,

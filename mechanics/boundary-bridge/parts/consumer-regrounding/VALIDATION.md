@@ -12,7 +12,9 @@ python -m pytest -q \
 ```
 
 These checks constrain catalog shape, owner-truth references, authority
-ceilings, intake-coverage flags, and committed generated parity.
+ceilings, and the consumer meaning of intake-coverage signals. Producer
+aggregation invariants and committed Source Coverage parity are verified under
+`mechanics/audit/parts/source-coverage/tests/`.
 
 The topology validator additionally proves that the focused test is part-local
 and only declared public/compatibility routes remain at root.

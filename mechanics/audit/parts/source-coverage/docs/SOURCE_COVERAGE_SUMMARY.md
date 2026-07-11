@@ -63,7 +63,10 @@ Use:
 ```bash
 python scripts/build_views.py --check
 python scripts/refresh_live_stats.py
+python -m pytest -q mechanics/audit/parts/source-coverage/tests/test_source_coverage.py
 ```
 
 The committed generated file keeps the deterministic repo posture.
-The live refresh path mirrors it under `state/generated/`.
+The live refresh path mirrors it under `state/generated/`. The part-local suite
+owns producer invariants; consumer re-grounding tests only interpret the
+published signals.

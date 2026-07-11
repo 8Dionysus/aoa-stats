@@ -27,6 +27,9 @@ projection.
 - coverage skew is a descriptive signal, not an owner-health verdict
 - no output approves a route, passes proof, activates workflow, or authorizes a
   mutation
+- producer aggregation rules remain owned and tested by the Source Coverage
+  Audit part; this consumer part tests catalog exposure and return-to-owner
+  interpretation only
 
 ## Crosswalk
 
