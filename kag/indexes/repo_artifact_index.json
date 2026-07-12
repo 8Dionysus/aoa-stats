@@ -1730,7 +1730,7 @@
     },
     {
       "artifact_kind": "document",
-      "content_hash": "624e5133e495ed79660f11182b4a44de7d32640888a1b1e51597e7ebcd2136ae",
+      "content_hash": "359e3c90957af66184b8251ce5ebf95cd6a59a273490f7ad4036e16a55de7cfd",
       "id": "artifact:file:agents.md:a54ff182c7",
       "path": "AGENTS.md",
       "source_record_id": "file:agents.md:a54ff182c7",
@@ -1738,7 +1738,7 @@
     },
     {
       "artifact_kind": "document",
-      "content_hash": "f650f969d412bfc265a9fd22bf603e0d1e0bfcdfea6fb586a0fdc6e277dbafe0",
+      "content_hash": "5d3f6fae74b9abac7603430d82e83d687e7afefd37d8fce5ef198a8cc9b6a629",
       "id": "artifact:file:changelog.md:06572a96a5",
       "path": "CHANGELOG.md",
       "source_record_id": "file:changelog.md:06572a96a5",
@@ -1762,7 +1762,7 @@
     },
     {
       "artifact_kind": "document",
-      "content_hash": "529b59100478f27c4869f9d6a4fa407a7fd834f620f23ae47a23580f0377a20f",
+      "content_hash": "ad5b4e7b6df374d6b6c4cd32595c7f89e9b29c2de65f6cf2f72217b67e0beaa6",
       "id": "artifact:file:design.md:3dc5dd454e",
       "path": "DESIGN.md",
       "source_record_id": "file:design.md:3dc5dd454e",
@@ -3650,7 +3650,7 @@
     },
     {
       "artifact_kind": "document",
-      "content_hash": "9fc3d0c66eaaadfa8ec646ae4ce8f6939f9b513018df6b340e194011e7c214d1",
+      "content_hash": "5e9aef4a355d7c9ea3c3bc991f1264a0e245822a6e57d0e4cd162ed88a9936fd",
       "id": "artifact:file:mechanics/antifragility/parts/via-negativa/contract.md:6ad8f31370",
       "path": "mechanics/antifragility/parts/via-negativa/CONTRACT.md",
       "source_record_id": "file:mechanics/antifragility/parts/via-negativa/contract.md:6ad8f31370",
@@ -3658,7 +3658,7 @@
     },
     {
       "artifact_kind": "document",
-      "content_hash": "2124867636f0d60371f3a1f63021e14e5d2d31c5fabb08d937e1f00d9dea1875",
+      "content_hash": "2a9541569e73b6ac7e22b80eea2a7e24fc8d40745c8a945d61c12ee615d61340",
       "id": "artifact:file:mechanics/antifragility/parts/via-negativa/readme.md:343c5e3981",
       "path": "mechanics/antifragility/parts/via-negativa/README.md",
       "source_record_id": "file:mechanics/antifragility/parts/via-negativa/readme.md:343c5e3981",
@@ -3666,7 +3666,7 @@
     },
     {
       "artifact_kind": "document",
-      "content_hash": "8d47c921683f3b648a495cf915d642d3b81ce8c25314d4b8460525de7fe88fd3",
+      "content_hash": "40330e074984961cd095d0d5aa73fcca6871837fe7af35a899e8c1322024a443",
       "id": "artifact:file:mechanics/antifragility/parts/via-negativa/validation.md:04beafabc7",
       "path": "mechanics/antifragility/parts/via-negativa/VALIDATION.md",
       "source_record_id": "file:mechanics/antifragility/parts/via-negativa/validation.md:04beafabc7",
@@ -3674,10 +3674,18 @@
     },
     {
       "artifact_kind": "document",
-      "content_hash": "b7e5d39c9e3fc502723fefa1ba12559147612b5d28a4b20c3c32171b4c5e4b0d",
+      "content_hash": "56f7b5f0182664530e3996420687c6866ac310bdafbaccd7acb6e5fe8fcbd709",
       "id": "artifact:file:mechanics/antifragility/parts/via-negativa/docs/via_negativa_checklist.md:4d3b661d6b",
       "path": "mechanics/antifragility/parts/via-negativa/docs/VIA_NEGATIVA_CHECKLIST.md",
       "source_record_id": "file:mechanics/antifragility/parts/via-negativa/docs/via_negativa_checklist.md:4d3b661d6b",
+      "surface_state": "authored_source"
+    },
+    {
+      "artifact_kind": "test",
+      "content_hash": "881e0447a2d11a474dd465ee2a9197fa6eabf9253341525bf2d75e201ebf663c",
+      "id": "artifact:file:mechanics/antifragility/parts/via-negativa/tests/test_via_negativa_checklist.py:f2a56d4621",
+      "path": "mechanics/antifragility/parts/via-negativa/tests/test_via_negativa_checklist.py",
+      "source_record_id": "file:mechanics/antifragility/parts/via-negativa/tests/test_via_negativa_checklist.py:f2a56d4621",
       "surface_state": "authored_source"
     },
     {
@@ -6506,7 +6514,7 @@
     },
     {
       "artifact_kind": "config",
-      "content_hash": "ac6420be8d1167aba9cf3ee310de6b1d1ee0f26f3ed13fa8cdbc7d6c4cc24b38",
+      "content_hash": "c6acc705f61841f9778679e00386b40e758e9e894f1674df279f408e269241c1",
       "id": "artifact:file:mechanics/topology.json:c2f84a03b1",
       "path": "mechanics/topology.json",
       "source_record_id": "file:mechanics/topology.json:c2f84a03b1",
@@ -7578,7 +7586,7 @@
     },
     {
       "artifact_kind": "config",
-      "content_hash": "7667232a12937827a4818f8c525e32d2e98c415c6b62162df648e5c23c0b6106",
+      "content_hash": "f8cf4a0608dd5a294db45fe0f9f590e2f23543ccec6c3b71420eaa6b319f689b",
       "id": "artifact:file:stats/source_home.manifest.json:41b237ff45",
       "path": "stats/source_home.manifest.json",
       "source_record_id": "file:stats/source_home.manifest.json:41b237ff45",
@@ -7715,7 +7723,7 @@
   ],
   "index_identity": {
     "artifact_kind": "repository_artifact_index",
-    "content_digest": "f7072e3be5e336159f55c1ebeae04b3616c3f5cb4194a9c7775a4688f41b0691",
+    "content_digest": "18234225a59d6aa769b9bb31822af2ddb1aed3fa20c75ff114f0962aea075ccf",
     "index_kind": "artifact",
     "local_id": "index:repo-local:artifacts",
     "schema_ref": "aoa-kag:schemas/repo-local-kag-repository-index.schema.json"
@@ -7739,12 +7747,12 @@
   },
   "schema_version": "aoa-repo-local-kag-repository-index-v1",
   "source_index": {
-    "content_digest": "a0dba1fd78feb06c26ecc9d69e1fedebd1f9e29bc9685d4cbef0ddd65ad76fd2",
+    "content_digest": "51753cca855b20f030637c0ffa7c8da5fecef3f841a2f0399f74e657f9e66aa2",
     "local_id": "index:repo-local:source-surfaces",
     "path": "kag/indexes/source_surface_index.json"
   },
   "summary": {
-    "entry_count": 964,
+    "entry_count": 965,
     "kind_counts": {
       "asset": 50,
       "config": 173,
@@ -7762,7 +7770,7 @@
       "security": 1,
       "service_unit": 2,
       "source_code": 33,
-      "test": 53,
+      "test": 54,
       "validator": 18
     }
   }

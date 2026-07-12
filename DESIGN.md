@@ -70,6 +70,13 @@ stronger owners. The mechanic part remains the sole owner of schemas,
 examples, scripts, tests, and generated payload. This keeps the crosswalk
 complete without inventing fake surface profiles or a shadow mechanics tree.
 
+Checklist-only operations use the same split without pretending that prose is
+runtime binding. For Via Negativa, `stats/operation-contracts/` authors the
+bounded question and `symbolic_unbound` owner posture, while the Antifragility
+part owns the checklist and its focused structural proof. That proof constrains
+the pruning order, owner review, surviving provenance, and proof-failure route;
+it proves neither that a review occurred nor that stats may mutate a surface.
+
 ### The `mechanics/` operation home
 
 `mechanics/` owns repeatable work around stats sources. Shared AoA mechanic
