@@ -212,6 +212,13 @@ ceiling. Do not add a builder, generated payload, live registration, or MCP
 promotion until every gap closes and those publication contracts are reviewed
 together.
 
+Via Negativa is a checklist-only Antifragility operation. Its part-local proof
+may constrain the pruning order, owner-review stop line, surviving provenance,
+and proof-failure return to `aoa-evals`; it does not prove that a review ran or
+authorize merge, move, suppression, quarantine, deprecation, deletion, or any
+other mutation. Keep its stronger-owner binding `symbolic_unbound` until an
+owner-reviewed execution route and evidence contract actually exist.
+
 For a profile-by-profile live-source audit, start at the owning mechanic
 contract. Classify the current source chain as runtime/receipt-backed or
 committed reference, make I/O and reference adaptation explicit, and only then

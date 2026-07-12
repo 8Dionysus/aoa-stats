@@ -386,6 +386,7 @@
       "validator_routes": [
         "scripts/validate_mechanics_topology.py",
         "scripts/validate_stats_source_home.py",
+        "mechanics/antifragility/parts/via-negativa/tests/test_via_negativa_checklist.py",
         "tests/test_mechanics_topology.py",
         "tests/test_stats_source_home.py"
       ],

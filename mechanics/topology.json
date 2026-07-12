@@ -423,7 +423,8 @@
             "operation_contracts"
           ],
           "localized_payload_roots": [
-            "docs"
+            "docs",
+            "tests"
           ],
           "retained_root_routes": []
         }
