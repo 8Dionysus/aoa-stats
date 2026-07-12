@@ -36,6 +36,10 @@ Tracking starts with the first public release-prep baseline for this repository.
 
 ### Changed
 
+- Slimmed the public root and documentation entrypoints into stable route and
+  architecture surfaces; exact lifecycle state now stays with authored
+  profiles, operation records, mechanic parts, topology, and indexed decisions
+  instead of being replayed as changing counts and named rosters.
 - Reworked the root agent route so structural changes start from `DESIGN.md`,
   then cross-route `stats/` source meaning with `mechanics/` operations while
   preserving active root compatibility surfaces.

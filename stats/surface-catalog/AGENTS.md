@@ -54,6 +54,9 @@ surfaces. Neither part may strengthen a catalog entry's authority.
 - Generated catalog changes come from authored profiles and the deterministic
   builder; do not edit the output or reintroduce an in-code specification
   table as source.
+- Keep `docs/ARCHITECTURE.md` as the stable public derived-view contract. Exact
+  lifecycle state and named surface posture stay in profiles, the generated
+  catalog, and indexed decisions rather than being copied into that document.
 - High-risk or thin-input surfaces must continue to route consumers back to
   stronger owner-local evidence.
 - Keep the MCP read-only and derived-only when catalog access changes.

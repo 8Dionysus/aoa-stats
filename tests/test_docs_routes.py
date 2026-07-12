@@ -80,6 +80,11 @@ def test_root_routes_expose_design_source_home_and_mechanics() -> None:
 
 def test_source_home_entrypoints_route_mutable_status_to_authored_owners() -> None:
     root_agents = read_text("AGENTS.md")
+    root_readme = read_text("README.md")
+    architecture = read_text("docs/ARCHITECTURE.md")
+    docs_readme = read_text("docs/README.md")
+    catalog_agents = read_text("stats/surface-catalog/AGENTS.md")
+    catalog_readme = read_text("stats/surface-catalog/README.md")
     stats_agents = read_text("stats/AGENTS.md")
     stats_readme = read_text("stats/README.md")
     profiles_readme = read_text("stats/read-models/README.md")
@@ -112,9 +117,23 @@ def test_source_home_entrypoints_route_mutable_status_to_authored_owners() -> No
     assert "Do not copy those changing facts into this README" in stats_readme
     assert "Do not copy a mutable stats status roster" in mechanics_agents
     assert "Do not copy named surface state" in profiles_agents
+    assert "must not duplicate changing profile counts" in root_agents
+    assert "The root README does not\nreplay that changing part inventory" in root_readme
+    assert "They are not maintained in this architecture document" in architecture
+    assert "not replayed\nas a second part-by-part map here" in docs_readme
+    assert "Keep `docs/ARCHITECTURE.md` as the stable public" in catalog_agents
+    assert "does not replay the changing\nsurface inventory" in catalog_readme
 
     assert "## Current canonical routes" not in stats_readme
     assert "The current inventory contains" not in profiles_readme
+    for mutable_roster_text in (
+        "22 active authored read-model profiles",
+        "The managed inventory remains",
+        "Current v0 derived views",
+        "Owner Landing is retired",
+    ):
+        assert mutable_roster_text not in root_readme
+        assert mutable_roster_text not in architecture
 
 
 def test_part_local_docs_do_not_keep_migration_redirects() -> None:
@@ -147,9 +166,13 @@ def test_part_local_docs_do_not_keep_migration_redirects() -> None:
     for former_route, owner_route in routes.items():
         assert not (REPO_ROOT / former_route).exists()
         assert (REPO_ROOT / owner_route).is_file()
-        assert owner_route in docs_map
+        assert owner_route not in docs_map
         assert former_route not in allowed_root_docs
         assert former_route not in retained_root_routes
+
+    assert "../mechanics/README.md" in docs_map
+    assert "../mechanics/topology.json" in docs_map
+    assert "/parts/" not in docs_map
 
 
 def test_live_session_docs_match_profile_derived_refresh_inventories() -> None:

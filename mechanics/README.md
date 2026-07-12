@@ -43,6 +43,8 @@ not active here unless the topology names a real local operation.
 - Exact surface lifecycle and live/reference posture stay in authored
   profiles; mechanics docs describe operations and route back instead of
   replaying a changing stats roster.
+- Root and `docs/` entrypoints route here and to `topology.json`; they do not
+  replay the part-by-part operation inventory or part-local documentation map.
 - Part-local guides are the active human routes. Remove migration-era flat
   documentation redirects after current consumers and provenance bridges
   point to the owner part.

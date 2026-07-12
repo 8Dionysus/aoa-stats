@@ -71,8 +71,13 @@ def assert_repo_ref_matches_neighbor(repo_ref: str, env_name: str, repo_name: st
 
 
 def test_stress_recovery_chaos_wave1_docs_are_discoverable_and_bounded() -> None:
-    readme = (REPO_ROOT / "README.md").read_text(encoding="utf-8")
-    docs_readme = (REPO_ROOT / "docs" / "README.md").read_text(encoding="utf-8")
+    profile = json.loads(
+        (
+            REPO_ROOT
+            / "stats/read-models/active/stress_recovery_window_summary.profile.json"
+        ).read_text(encoding="utf-8")
+    )
+    part_readme = (PART_ROOT / "README.md").read_text(encoding="utf-8")
     guide = (PART_ROOT / "docs" / "STRESS_RECOVERY_WINDOW_SUMMARIES.md").read_text(
         encoding="utf-8"
     )
@@ -81,10 +86,13 @@ def test_stress_recovery_chaos_wave1_docs_are_discoverable_and_bounded() -> None
     ).read_text(encoding="utf-8")
     roadmap = (REPO_ROOT / "ROADMAP.md").read_text(encoding="utf-8")
 
-    route = "mechanics/antifragility/parts/stress-recovery-windows/docs/STRESS_RECOVERY_SUMMARIES_CHAOS_WAVE1.md"
-    assert route in readme
-    assert route in docs_readme
-    assert "stress_recovery_window_summary.chaos-wave1.example.json" in readme
+    part_route = "mechanics/antifragility/parts/stress-recovery-windows"
+    chaos_route = f"{part_route}/docs/STRESS_RECOVERY_SUMMARIES_CHAOS_WAVE1.md"
+    assert profile["mechanic_routes"] == [part_route]
+    assert (REPO_ROOT / part_route).resolve() == PART_ROOT.resolve()
+    assert "docs/STRESS_RECOVERY_WINDOW_SUMMARIES.md" in part_readme
+    assert chaos_route in guide
+    assert "stress_recovery_window_summary.chaos-wave1.example.json" in guide
     assert "stress_recovery_window_summary.chaos-wave1.example.json" in roadmap
     assert "bounded chaos-wave example" in guide
 

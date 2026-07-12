@@ -9,6 +9,11 @@ inputs, authority ceiling, consumer risk, and whether a live refresh can
 update the surface. The generated catalog is rebuilt from authored profiles
 under `stats/read-models/` and validated against its root schema.
 
+`docs/ARCHITECTURE.md` owns the stable derived-view layering used as the public
+catalog authority reference. It intentionally does not replay the changing
+surface inventory; inspect the authored profiles and generated catalog for
+exact current state.
+
 ## Active route map
 
 | Concern | Current route |

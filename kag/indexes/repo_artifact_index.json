@@ -1730,7 +1730,7 @@
     },
     {
       "artifact_kind": "document",
-      "content_hash": "eef156c841d57a8eacfca735a68df886a3ef510836808aec9f1b37b573670fd0",
+      "content_hash": "b00629643f3a405d915920a58dfe1c647d774e46925b99e54d3290c69c5b12ed",
       "id": "artifact:file:agents.md:a54ff182c7",
       "path": "AGENTS.md",
       "source_record_id": "file:agents.md:a54ff182c7",
@@ -1738,7 +1738,7 @@
     },
     {
       "artifact_kind": "document",
-      "content_hash": "3de09206111f270c26115e5d1e1616de81984ac10dcab31971334cd1f91c6f63",
+      "content_hash": "442aaac014d861badae07e67b8096c481f8ad5e7ebb8ccd2354ced6bca361258",
       "id": "artifact:file:changelog.md:06572a96a5",
       "path": "CHANGELOG.md",
       "source_record_id": "file:changelog.md:06572a96a5",
@@ -1762,7 +1762,7 @@
     },
     {
       "artifact_kind": "document",
-      "content_hash": "972be851e7f68fe48a6bfb49c5f05785fe78dc2aa43cf0acd287392b2d2c180e",
+      "content_hash": "b83e62b7c54860e177681ef8ec6e3f308644706b9341adef33ef590e7edb2d58",
       "id": "artifact:file:design.md:3dc5dd454e",
       "path": "DESIGN.md",
       "source_record_id": "file:design.md:3dc5dd454e",
@@ -1778,7 +1778,7 @@
     },
     {
       "artifact_kind": "document",
-      "content_hash": "33b6e67aae846523f183315393c7b385a49f8a4bc409d41d71c24100adff0276",
+      "content_hash": "213afcbd46e463b0f698564b68c2584e6e7bf5efbbe5fdda09bc9ecf21ac0ced",
       "id": "artifact:file:readme.md:b335630551",
       "path": "README.md",
       "source_record_id": "file:readme.md:b335630551",
@@ -1802,7 +1802,7 @@
     },
     {
       "artifact_kind": "document",
-      "content_hash": "4dba998153eb0d1cd784caadbc8747db91a5047638534a6d8eb94cc107669819",
+      "content_hash": "c0527fac8f2ce397d5940c56c4ce738270771c2fdc8c2c3cf4555a936a8cf1bc",
       "id": "artifact:file:docs/architecture.md:ff21b6b9a3",
       "path": "docs/ARCHITECTURE.md",
       "source_record_id": "file:docs/architecture.md:ff21b6b9a3",
@@ -1826,7 +1826,7 @@
     },
     {
       "artifact_kind": "document",
-      "content_hash": "9224d0f99c451e3b8d424e63db62dd73ae44fbb4298ba75a3ce265348b248f26",
+      "content_hash": "a5656455b09edd9e5a72cf4fea87b6437f760e4d14e24bbd231d6590aa85273a",
       "id": "artifact:file:docs/readme.md:0b5ca119d2",
       "path": "docs/README.md",
       "source_record_id": "file:docs/readme.md:0b5ca119d2",
@@ -2450,7 +2450,7 @@
     },
     {
       "artifact_kind": "document",
-      "content_hash": "7261a9cc4df4373463e6eb248a8b0d9830224befbff0fe05628831b3ef8553de",
+      "content_hash": "ae1ce75ffa61eac60a3cf350167351dc0180b10285d4c20b2b62d95f03531c6a",
       "id": "artifact:file:mechanics/readme.md:c091f898d3",
       "path": "mechanics/README.md",
       "source_record_id": "file:mechanics/readme.md:c091f898d3",
@@ -3618,7 +3618,7 @@
     },
     {
       "artifact_kind": "test",
-      "content_hash": "541131cc2fc05c6de4809d7846957680fb469f18b14613428c33100d1dc59bec",
+      "content_hash": "0b0744d1bb4689e5937b6204a67b856c241265f7561fb933f9a7c3b99957ae97",
       "id": "artifact:file:mechanics/antifragility/parts/stress-recovery-windows/tests/test_stress_recovery_summary_chaos_wave1.py:bdda6dd9fb",
       "path": "mechanics/antifragility/parts/stress-recovery-windows/tests/test_stress_recovery_summary_chaos_wave1.py",
       "source_record_id": "file:mechanics/antifragility/parts/stress-recovery-windows/tests/test_stress_recovery_summary_chaos_wave1.py:bdda6dd9fb",
@@ -5770,7 +5770,7 @@
     },
     {
       "artifact_kind": "test",
-      "content_hash": "6eac3b301007d55cf4df59f14ab89a29fbc74b3ef191bdc96feede37c6de6aee",
+      "content_hash": "580d623a2643184174e0fab4f8f809b660e47ecb2f6dd3359098def798e33103",
       "id": "artifact:file:mechanics/recurrence/parts/component-refresh/tests/test_component_refresh_summary.py:4bed3e4172",
       "path": "mechanics/recurrence/parts/component-refresh/tests/test_component_refresh_summary.py",
       "source_record_id": "file:mechanics/recurrence/parts/component-refresh/tests/test_component_refresh_summary.py:4bed3e4172",
@@ -7570,7 +7570,7 @@
     },
     {
       "artifact_kind": "document",
-      "content_hash": "2d6509a53400c452de9b503c371c5bc40a3a652fb7d1292109c9e29f01039a06",
+      "content_hash": "61c9c01dbfb739923a86c90cdba3af1f9606af344539fbf62eebef61c2daf723",
       "id": "artifact:file:stats/surface-catalog/agents.md:66821030d3",
       "path": "stats/surface-catalog/AGENTS.md",
       "source_record_id": "file:stats/surface-catalog/agents.md:66821030d3",
@@ -7594,7 +7594,7 @@
     },
     {
       "artifact_kind": "document",
-      "content_hash": "858d0997be37bda0e4695516e76f7f4e2baf98644d5a791a6aa68eb3e0f30598",
+      "content_hash": "caeb192ce0546d8ae152b8a582ea7f9a995e4c062b2b4eedc04b821571455fbc",
       "id": "artifact:file:stats/surface-catalog/readme.md:18417d40a6",
       "path": "stats/surface-catalog/README.md",
       "source_record_id": "file:stats/surface-catalog/readme.md:18417d40a6",
@@ -7634,7 +7634,7 @@
     },
     {
       "artifact_kind": "test",
-      "content_hash": "657932ab807ce086811685c1050c759dfedbeb2d643f848b88e054d10ac606e0",
+      "content_hash": "732f410709dbcee15f27b7008dc8a6486b756963e69b84509d504dcc93e3d332",
       "id": "artifact:file:tests/test_docs_routes.py:2789463ffa",
       "path": "tests/test_docs_routes.py",
       "source_record_id": "file:tests/test_docs_routes.py:2789463ffa",
@@ -7699,7 +7699,7 @@
   ],
   "index_identity": {
     "artifact_kind": "repository_artifact_index",
-    "content_digest": "06fbec0f975f0f9c4f7eb16723f82de757ad936c5035b72346f7425cff1bb811",
+    "content_digest": "8effa9b77b186e184bdf83e7d82701e6223618c76385647430e9a7e32c882a18",
     "index_kind": "artifact",
     "local_id": "index:repo-local:artifacts",
     "schema_ref": "aoa-kag:schemas/repo-local-kag-repository-index.schema.json"
@@ -7723,7 +7723,7 @@
   },
   "schema_version": "aoa-repo-local-kag-repository-index-v1",
   "source_index": {
-    "content_digest": "3f99f5f9c0173e45656f75b36f537f84a4b09c62b33a7dd2824060f2e8507b05",
+    "content_digest": "c2377f0083625e4dfeaf0e375e9029ca0a0c481cef0dcaf587a85848308e43d0",
     "local_id": "index:repo-local:source-surfaces",
     "path": "kag/indexes/source_surface_index.json"
   },
