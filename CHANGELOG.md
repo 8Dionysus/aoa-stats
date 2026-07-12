@@ -36,6 +36,9 @@ Tracking starts with the first public release-prep baseline for this repository.
 
 ### Changed
 
+- Localized derived-signal precedence and anti-loop guidance under the
+  Boundary Bridge consumer-regrounding part, replacing the Wave-4 root document
+  with a mechanic-owned route and focused proof.
 - Slimmed the public root and documentation entrypoints into stable route and
   architecture surfaces; exact lifecycle state now stays with authored
   profiles, operation records, mechanic parts, topology, and indexed decisions

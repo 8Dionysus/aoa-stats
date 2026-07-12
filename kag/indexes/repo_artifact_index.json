@@ -1730,7 +1730,7 @@
     },
     {
       "artifact_kind": "document",
-      "content_hash": "b00629643f3a405d915920a58dfe1c647d774e46925b99e54d3290c69c5b12ed",
+      "content_hash": "31215f8a5a7a146464944679dfaf5f6932886f1441cb829f3ee2f003a20079f3",
       "id": "artifact:file:agents.md:a54ff182c7",
       "path": "AGENTS.md",
       "source_record_id": "file:agents.md:a54ff182c7",
@@ -1738,7 +1738,7 @@
     },
     {
       "artifact_kind": "document",
-      "content_hash": "442aaac014d861badae07e67b8096c481f8ad5e7ebb8ccd2354ced6bca361258",
+      "content_hash": "2f8007337db62ef2647665511eafa4c40e9dfbb0db31846f5d5079ff6cb8cd6a",
       "id": "artifact:file:changelog.md:06572a96a5",
       "path": "CHANGELOG.md",
       "source_record_id": "file:changelog.md:06572a96a5",
@@ -1762,7 +1762,7 @@
     },
     {
       "artifact_kind": "document",
-      "content_hash": "b83e62b7c54860e177681ef8ec6e3f308644706b9341adef33ef590e7edb2d58",
+      "content_hash": "09b7bc4a73ea0502b67bd04b2eccf01ae80d7b3820ef48a5c7b12ec2fc34b102",
       "id": "artifact:file:design.md:3dc5dd454e",
       "path": "DESIGN.md",
       "source_record_id": "file:design.md:3dc5dd454e",
@@ -1802,7 +1802,7 @@
     },
     {
       "artifact_kind": "document",
-      "content_hash": "c0527fac8f2ce397d5940c56c4ce738270771c2fdc8c2c3cf4555a936a8cf1bc",
+      "content_hash": "47b062e5dcd05de6471e8de9cb43bc2a49f842ff22f488cdb1efa6198acaae83",
       "id": "artifact:file:docs/architecture.md:ff21b6b9a3",
       "path": "docs/ARCHITECTURE.md",
       "source_record_id": "file:docs/architecture.md:ff21b6b9a3",
@@ -1818,15 +1818,7 @@
     },
     {
       "artifact_kind": "document",
-      "content_hash": "9075be77ae41b9d417b42f48a0eed85e1451b5eed9fb9911748fafb57705a9a7",
-      "id": "artifact:file:docs/derived_signal_hygiene.md:ad04348f5b",
-      "path": "docs/DERIVED_SIGNAL_HYGIENE.md",
-      "source_record_id": "file:docs/derived_signal_hygiene.md:ad04348f5b",
-      "surface_state": "authored_source"
-    },
-    {
-      "artifact_kind": "document",
-      "content_hash": "a5656455b09edd9e5a72cf4fea87b6437f760e4d14e24bbd231d6590aa85273a",
+      "content_hash": "d33a3225c0349de234389f0cad33b81d5d607029cfe50b5c9606aa756b848cc8",
       "id": "artifact:file:docs/readme.md:0b5ca119d2",
       "path": "docs/README.md",
       "source_record_id": "file:docs/readme.md:0b5ca119d2",
@@ -3914,7 +3906,7 @@
     },
     {
       "artifact_kind": "document",
-      "content_hash": "9873be723367823c82bef9e59a897049b8a0d558203bbf8d1ffd1378d380366c",
+      "content_hash": "c3842b893036bb707fc951e55476a35de7a26e520af7ecbfab9bb2ebd4860dd6",
       "id": "artifact:file:mechanics/boundary-bridge/provenance.md:03ab6d31c2",
       "path": "mechanics/boundary-bridge/PROVENANCE.md",
       "source_record_id": "file:mechanics/boundary-bridge/provenance.md:03ab6d31c2",
@@ -3946,7 +3938,7 @@
     },
     {
       "artifact_kind": "document",
-      "content_hash": "dd21ea651e76527e8fe065274a2737785a85128eb6857c0187e5f09f8d0676f2",
+      "content_hash": "504b793333cfe975e2a279f8b650a485fe0e249c1aeddbf3dccccb5729cf1e81",
       "id": "artifact:file:mechanics/boundary-bridge/parts/consumer-regrounding/contract.md:2dcaf014a4",
       "path": "mechanics/boundary-bridge/parts/consumer-regrounding/CONTRACT.md",
       "source_record_id": "file:mechanics/boundary-bridge/parts/consumer-regrounding/contract.md:2dcaf014a4",
@@ -3954,7 +3946,7 @@
     },
     {
       "artifact_kind": "document",
-      "content_hash": "213a5ba50f5231e1b9314e862b41596220c5d45062719f0e7ad316f01f18e333",
+      "content_hash": "a9aa2aa624cc1ea303bf5f6b7c96a8cb3cc0fcb8e3c092ff53ab624c30064411",
       "id": "artifact:file:mechanics/boundary-bridge/parts/consumer-regrounding/readme.md:2514cc9e48",
       "path": "mechanics/boundary-bridge/parts/consumer-regrounding/README.md",
       "source_record_id": "file:mechanics/boundary-bridge/parts/consumer-regrounding/readme.md:2514cc9e48",
@@ -3962,15 +3954,23 @@
     },
     {
       "artifact_kind": "document",
-      "content_hash": "91a19d25de8a8345da667674c697e90d7d80b3b0d067b32b4ea9b2c0879b02b3",
+      "content_hash": "01a4376c6820ab936942a72275861f8e4157371ec8850eb0de7585e0cc15a3b5",
       "id": "artifact:file:mechanics/boundary-bridge/parts/consumer-regrounding/validation.md:7633910c6a",
       "path": "mechanics/boundary-bridge/parts/consumer-regrounding/VALIDATION.md",
       "source_record_id": "file:mechanics/boundary-bridge/parts/consumer-regrounding/validation.md:7633910c6a",
       "surface_state": "authored_source"
     },
     {
+      "artifact_kind": "document",
+      "content_hash": "fe89c389492a227fa84eb801f54ad965a4be3b4c70f3af8600cbc28f3a56d021",
+      "id": "artifact:file:mechanics/boundary-bridge/parts/consumer-regrounding/docs/derived_signal_hygiene.md:145270e787",
+      "path": "mechanics/boundary-bridge/parts/consumer-regrounding/docs/DERIVED_SIGNAL_HYGIENE.md",
+      "source_record_id": "file:mechanics/boundary-bridge/parts/consumer-regrounding/docs/derived_signal_hygiene.md:145270e787",
+      "surface_state": "authored_source"
+    },
+    {
       "artifact_kind": "test",
-      "content_hash": "36c20e10b0c220eae6935ebe2d0527224064892506a5377defd40e93a73da6da",
+      "content_hash": "1f5b1453a216db2b9d6978172dc569ea659b5092d686d162984cbb67bd52edc4",
       "id": "artifact:file:mechanics/boundary-bridge/parts/consumer-regrounding/tests/test_consumer_regrounding_signals.py:d6c0ab422d",
       "path": "mechanics/boundary-bridge/parts/consumer-regrounding/tests/test_consumer_regrounding_signals.py",
       "source_record_id": "file:mechanics/boundary-bridge/parts/consumer-regrounding/tests/test_consumer_regrounding_signals.py:d6c0ab422d",
@@ -6490,7 +6490,7 @@
     },
     {
       "artifact_kind": "config",
-      "content_hash": "151cbd565c5cd49c163e05515e11e534f88c8714b7a4339805ad20731ed36fde",
+      "content_hash": "2957ff1924d3799f89d8442ebadaa4b5d582c5cfd432418226824b423b8153ae",
       "id": "artifact:file:mechanics/topology.json:c2f84a03b1",
       "path": "mechanics/topology.json",
       "source_record_id": "file:mechanics/topology.json:c2f84a03b1",
@@ -7562,7 +7562,7 @@
     },
     {
       "artifact_kind": "config",
-      "content_hash": "576293876a043b603164e415327837556bb4f1656826918a7891a776d2e471c0",
+      "content_hash": "adca7b5c85f2709aef1214cfd48cd6863369f4bc900f2f08ad4d3122c68a47d8",
       "id": "artifact:file:stats/source_home.manifest.json:41b237ff45",
       "path": "stats/source_home.manifest.json",
       "source_record_id": "file:stats/source_home.manifest.json:41b237ff45",
@@ -7594,7 +7594,7 @@
     },
     {
       "artifact_kind": "document",
-      "content_hash": "caeb192ce0546d8ae152b8a582ea7f9a995e4c062b2b4eedc04b821571455fbc",
+      "content_hash": "15462318367730542d2f82671ddf02a02777fc6f81fbe34cba16dc09f92922c2",
       "id": "artifact:file:stats/surface-catalog/readme.md:18417d40a6",
       "path": "stats/surface-catalog/README.md",
       "source_record_id": "file:stats/surface-catalog/readme.md:18417d40a6",
@@ -7634,7 +7634,7 @@
     },
     {
       "artifact_kind": "test",
-      "content_hash": "732f410709dbcee15f27b7008dc8a6486b756963e69b84509d504dcc93e3d332",
+      "content_hash": "50d549e8da5d420b2d51cf99b6ca9ac80d757d9d17e14ae91544c52b14092309",
       "id": "artifact:file:tests/test_docs_routes.py:2789463ffa",
       "path": "tests/test_docs_routes.py",
       "source_record_id": "file:tests/test_docs_routes.py:2789463ffa",
@@ -7699,7 +7699,7 @@
   ],
   "index_identity": {
     "artifact_kind": "repository_artifact_index",
-    "content_digest": "8effa9b77b186e184bdf83e7d82701e6223618c76385647430e9a7e32c882a18",
+    "content_digest": "0b9d898aa7a967c5465597175f95a7ad79eead751969c0165084527731ce0b7d",
     "index_kind": "artifact",
     "local_id": "index:repo-local:artifacts",
     "schema_ref": "aoa-kag:schemas/repo-local-kag-repository-index.schema.json"
@@ -7723,7 +7723,7 @@
   },
   "schema_version": "aoa-repo-local-kag-repository-index-v1",
   "source_index": {
-    "content_digest": "c2377f0083625e4dfeaf0e375e9029ca0a0c481cef0dcaf587a85848308e43d0",
+    "content_digest": "e3776dfd043436842ebed039a62bf254fe9b7715bf93ce04a583e2a997b61bcf",
     "local_id": "index:repo-local:source-surfaces",
     "path": "kag/indexes/source_surface_index.json"
   },

@@ -511,6 +511,7 @@
       ],
       "validator_routes": [
         "scripts/build_views.py",
+        "mechanics/boundary-bridge/parts/consumer-regrounding/tests/test_consumer_regrounding_signals.py",
         "mechanics/recurrence/parts/component-manifests/scripts/validate_component_manifests.py",
         "mechanics/recurrence/parts/component-manifests/tests/test_component_manifests.py",
         "mechanics/release-support/parts/summary-catalog-artifact-bundle/scripts/validate_abyss_machine_summary_catalog_bundle.py",

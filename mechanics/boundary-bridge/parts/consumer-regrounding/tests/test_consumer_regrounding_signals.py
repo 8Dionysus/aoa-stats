@@ -1,10 +1,12 @@
 from __future__ import annotations
 
 import importlib.util
+import json
 from pathlib import Path
 
 
 REPO_ROOT = Path(__file__).resolve().parents[5]
+PART_ROOT = Path(__file__).resolve().parents[1]
 MODULE_PATH = REPO_ROOT / "scripts" / "build_views.py"
 
 
@@ -51,3 +53,37 @@ def test_catalog_profiles_expose_consumer_regrounding_inputs() -> None:
         in source_coverage["owner_truth_inputs"]
     )
     assert source_coverage["consumer_risk"] == "medium"
+
+
+def test_derived_signal_hygiene_is_part_local_and_preserves_authority_order() -> None:
+    guide = (
+        PART_ROOT / "docs" / "DERIVED_SIGNAL_HYGIENE.md"
+    ).read_text(encoding="utf-8")
+    topology = json.loads(
+        (REPO_ROOT / "mechanics" / "topology.json").read_text(encoding="utf-8")
+    )
+    boundary_bridge = next(
+        package
+        for package in topology["active_packages"]
+        if package["path"] == "boundary-bridge"
+    )
+    part = next(
+        candidate
+        for candidate in boundary_bridge["active_part_routes"]
+        if candidate["path"] == "consumer-regrounding"
+    )
+
+    precedence = (
+        "source-owned receipts and owner-local artifacts",
+        "bounded eval reports",
+        "derived stats summaries",
+        "derived route hints",
+        "memo recall objects",
+    )
+    assert [guide.index(token) for token in precedence] == sorted(
+        guide.index(token) for token in precedence
+    )
+    assert part["localized_payload_roots"] == ["docs", "tests"]
+    assert "no closed citation loop becomes proof" in guide
+    assert "Wave 4" not in guide
+    assert not (REPO_ROOT / "docs" / "DERIVED_SIGNAL_HYGIENE.md").exists()
