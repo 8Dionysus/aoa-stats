@@ -52,7 +52,10 @@ The public v2 catalog currently exposes:
 The authoritative inventory is
 `generated/summary_surface_catalog.min.json`, projected from the authored
 profiles under `stats/read-models/active/`. The deferred Antifragility vector
-contract stays separate from active catalog claims.
+contract stays separate from active catalog claims. Its public deferred entry
+names the current ATM10-Agent runtime stressor boundary, draft aoa-evals
+companions, high consumer risk, and the four gaps that must close before a
+producer or publication review can begin.
 
 ## Maintained contracts
 

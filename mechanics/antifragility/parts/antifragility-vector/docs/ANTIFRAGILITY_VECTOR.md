@@ -2,9 +2,12 @@
 
 ## What this surface is
 
-`aoa-stats` may derive antifragility vectors from source-owned receipts and bounded eval reports.
+`aoa-stats` may eventually derive antifragility vectors from source-owned
+receipts and bounded eval reports.
 
 This is a **derived view**, not a new owner of meaning.
+
+The current surface is contract-only. It has no builder or published vector.
 
 ## Why a vector
 
@@ -40,6 +43,17 @@ The vector should be built from:
 
 The vector should not be inferred from raw log volume alone.
 
+The current grounded chain is intentionally asymmetric:
+
+- ATM10-Agent `scripts/hybrid_query_demo.py` emits
+  `stressor_receipt_v1` for one bounded retrieval-only fallback;
+- ATM10-Agent `adaptation_delta_v1` is schema/example only and is not emitted
+  by that runtime;
+- `aoa-evals/evals/stress/aoa-antifragility-posture/` is a draft
+  docs/example bundle, not an executed current proof chain;
+- no repeated owner/eval window demonstrates improvement for the same stressor
+  family.
+
 ## Output posture
 
 The vector should publish:
@@ -64,11 +78,24 @@ When evidence is too thin, prefer:
 
 A weak but honest vector is healthier than a confident fiction.
 
-## Wave 1 note
+The checked-in example therefore uses
+`suppression.status=insufficient_evidence`, an empty
+`adaptation_delta_refs` list, and null values for every axis. It demonstrates
+the schema boundary; it is not a current ATM10-Agent measurement.
 
-Wave 1 is intentionally small. It is enough to define one schema, one example,
-and the doctrine that keeps the layer out of score-empire drift.
+## Activation gate
 
-For now this family stays contract-only in the summary catalog.
-It does not become a generated live summary until one owner-linked repeated
-stress family and one bounded eval chain exist for the same stressor family.
+All four gaps in
+`stats/read-models/deferred/antifragility_vector.profile.json` must close for
+the same stressor family:
+
+1. register and validate the owner runtime receipt route for stats intake;
+2. emit source-owned adaptation deltas at runtime;
+3. execute the bounded eval over current owner receipts and reports;
+4. establish a repeated owner/eval window that can support movement claims.
+
+Activation is a separate reviewed change. It must introduce the producer,
+active profile and new slot, generated/public output contract, validation,
+consumer review, and any honest live observation route together. Catalog
+visibility of this deferred contract is not activation and does not authorize
+MCP promotion.

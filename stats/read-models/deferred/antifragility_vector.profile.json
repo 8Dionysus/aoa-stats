@@ -5,8 +5,26 @@
   "status": "contract_only",
   "contract_ref": "mechanics/antifragility/parts/antifragility-vector/docs/ANTIFRAGILITY_VECTOR.md",
   "schema_ref": "mechanics/antifragility/parts/antifragility-vector/schemas/antifragility_vector_v1.json",
-  "activation_condition": "Activate only after one owner-linked repeated-window receipt family and bounded eval chain exist for the same stressor family.",
+  "input_posture": "partial_owner_runtime_draft_eval_chain",
+  "owner_truth_inputs": [
+    "ATM10-Agent/scripts/hybrid_query_demo.py",
+    "ATM10-Agent/schemas/stressor_receipt_v1.json",
+    "ATM10-Agent/examples/stressor_receipt.retrieval_only_fallback.example.json",
+    "ATM10-Agent/schemas/adaptation_delta_v1.json",
+    "ATM10-Agent/examples/adaptation_delta.retrieval_only_fallback.example.json",
+    "aoa-evals/evals/stress/aoa-antifragility-posture/EVAL.md",
+    "aoa-evals/evals/stress/aoa-antifragility-posture/reports/summary.schema.json",
+    "aoa-evals/evals/stress/aoa-antifragility-posture/reports/example-report.json"
+  ],
+  "activation_condition": "Activate only after every named activation gap is closed by current owner-linked receipts and bounded eval evidence for one repeated stressor family, with producer, output, live-state, and consumer review in the same change.",
+  "activation_gaps": [
+    "ATM10-Agent runtime stressor receipts are not registered in the aoa-stats live receipt source registry.",
+    "ATM10-Agent adaptation_delta_v1 remains schema-and-example only and has no runtime publisher.",
+    "aoa-evals aoa-antifragility-posture remains draft and has no executed report chain over the current ATM10-Agent runtime receipts.",
+    "No repeated owner/eval window demonstrates movement for the same ATM10-Agent stressor family."
+  ],
   "authority_ceiling": "Even after activation this surface stays weaker than owner-local stressor receipts and bounded eval reports.",
+  "consumer_risk": "high",
   "mechanic_routes": [
     "mechanics/antifragility/parts/antifragility-vector"
   ]

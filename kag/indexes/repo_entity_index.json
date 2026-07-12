@@ -3435,6 +3435,20 @@
         "artifact_kind": "document",
         "code_role": "none",
         "command_role": "none",
+        "document_role": "decision",
+        "mechanics_role": "none",
+        "surface_state": "authored_source"
+      },
+      "entity_kind": "decision",
+      "id": "entity:file:docs/decisions/aost-d-0011-antifragility-vector-remains-an-evidence-gated-incubator.md:0f8d071cc3",
+      "label": "docs/decisions/AOST-D-0011-antifragility-vector-remains-an-evidence-gated-incubator.md",
+      "source_record_id": "file:docs/decisions/aost-d-0011-antifragility-vector-remains-an-evidence-gated-incubator.md:0f8d071cc3"
+    },
+    {
+      "coordinates": {
+        "artifact_kind": "document",
+        "code_role": "none",
+        "command_role": "none",
         "document_role": "readme",
         "mechanics_role": "none",
         "surface_state": "authored_source"
@@ -6215,6 +6229,20 @@
       "id": "entity:file:mechanics/antifragility/parts/antifragility-vector/schemas/antifragility_vector_v1.json:bb7104457d",
       "label": "mechanics/antifragility/parts/antifragility-vector/schemas/antifragility_vector_v1.json",
       "source_record_id": "file:mechanics/antifragility/parts/antifragility-vector/schemas/antifragility_vector_v1.json:bb7104457d"
+    },
+    {
+      "coordinates": {
+        "artifact_kind": "test",
+        "code_role": "test",
+        "command_role": "test",
+        "document_role": "none",
+        "mechanics_role": "part_test",
+        "surface_state": "authored_source"
+      },
+      "entity_kind": "mechanic_part",
+      "id": "entity:file:mechanics/antifragility/parts/antifragility-vector/tests/test_antifragility_vector_contract.py:2c75ab9ed2",
+      "label": "mechanics/antifragility/parts/antifragility-vector/tests/test_antifragility_vector_contract.py",
+      "source_record_id": "file:mechanics/antifragility/parts/antifragility-vector/tests/test_antifragility_vector_contract.py:2c75ab9ed2"
     },
     {
       "coordinates": {
@@ -13471,7 +13499,7 @@
   ],
   "index_identity": {
     "artifact_kind": "repository_entity_index",
-    "content_digest": "9cdec8e60ce2b07b4455e94f041a8c68782068eef95e80d9bacb199b1adcb0af",
+    "content_digest": "fb22a0a208c6af6005a2dc178bd9610210f857923c478e887437937451e287ec",
     "index_kind": "entity",
     "local_id": "index:repo-local:entities",
     "schema_ref": "aoa-kag:schemas/repo-local-kag-repository-index.schema.json"
@@ -13494,23 +13522,23 @@
   },
   "schema_version": "aoa-repo-local-kag-repository-index-v1",
   "source_index": {
-    "content_digest": "605494c0e888e3fac397aa25ab7918e5c8a96477b580ef9570755d3b71bcaa10",
+    "content_digest": "0111f125a4249bc62f253e7027a814f070ecf4ba7aae86dd3f4555373312ed8e",
     "local_id": "index:repo-local:source-surfaces",
     "path": "kag/indexes/source_surface_index.json"
   },
   "summary": {
-    "entry_count": 962,
+    "entry_count": 964,
     "kind_counts": {
       "agent_route": 16,
       "artifact": 148,
       "code": 33,
       "command": 31,
       "contract": 34,
-      "decision": 17,
+      "decision": 18,
       "document": 137,
       "manifest": 1,
       "mechanic_package": 51,
-      "mechanic_part": 454,
+      "mechanic_part": 455,
       "owner_surface": 2,
       "readmodel": 38
     }

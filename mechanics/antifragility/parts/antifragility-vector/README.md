@@ -1,8 +1,13 @@
 # antifragility-vector
 
-Keeps the deferred vector contract explicit until owner-linked repeated-window evidence can activate it.
+Keeps the deferred vector contract explicit while the owner/eval chain is only
+partly real.
 
-This part owns its operation route and the localized payload roots declared in
-`mechanics/topology.json`. Its stats source family owns the bounded meaning;
-public schemas and generated outputs stay at their declared publication paths
-when consumers depend on those paths.
+ATM10-Agent already emits one bounded runtime stressor receipt. It does not yet
+emit adaptation deltas, and the linked aoa-evals bundle remains draft/example
+evidence without a repeated same-family window. The stats profile owns that
+grounding and the activation gaps; this part owns the candidate schema,
+suppressed example, and focused contract tests.
+
+There is intentionally no builder, generated vector, active catalog slot, live
+source registration, or MCP promotion here.
