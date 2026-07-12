@@ -25,7 +25,8 @@ campaign cadence examples.
 - filesystem-free `codex_trusted_rollout.py` owns lifecycle grammar, reference
   coherence, timestamp validation, and deterministic projection
 - `scripts/build_views.py` retains default-owner resolution, the historical
-  mutable tuple functions, zero-argument builders, and repo-wide fan-out only
+  mutable tuple functions, zero-argument builders, the missing-latest-ref
+  fallback, and repo-wide fan-out only
 
 ## Invariants
 
@@ -37,6 +38,8 @@ campaign cadence examples.
 - regeneration campaigns cover exactly the history campaign references
 - rollback windows cover exactly the rollback references named by history
 - `rollout_latest` points to the final history entry and repeats its state
+- the pure core rejects a missing or unresolved latest pointer; only the root
+  compatibility helper may select the last row when the pointer is absent
 - the latest stable reference resolves to a stabilized history entry
 - canonical source references and parseable owner timestamps remain visible
 - the public output schemas and byte shape stay unchanged

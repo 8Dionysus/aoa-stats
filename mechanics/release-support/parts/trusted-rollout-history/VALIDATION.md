@@ -12,5 +12,5 @@ python -m pytest -q tests/test_build_views.py tests/test_summary_surface_catalog
 ```
 
 These checks prove the four-file owner-history chain, filesystem-free core,
-root compatibility facade, stable public outputs, false-live selectors, and
-managed stale cleanup.
+the strict-core versus legacy-facade lookup seam, stable public outputs,
+false-live selectors, and managed stale cleanup.
