@@ -52,6 +52,13 @@ exact current state to profiles, topology, generated discovery, decisions, and
 history instead of replaying surface rosters, live/retired counts, mechanic
 payload lists, or compatibility chronology.
 
+Mechanic contracts and operator guides own stable selection, refresh, cleanup,
+and failure rules. They derive exact profile membership and counts from the
+authored source records at validation or runtime; they do not freeze a complete
+live/reference/retired roster in prose. Keep a named exception only when a
+focused operation boundary needs it, and route its current posture back to the
+profile and indexed decision.
+
 ## Repository contract
 
 `aoa-stats` has two cross-routed active homes:

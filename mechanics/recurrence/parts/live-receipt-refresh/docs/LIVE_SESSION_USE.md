@@ -22,28 +22,18 @@ By default this reads the registry at
 `mechanics/recurrence/parts/live-receipt-refresh/config/live_receipt_sources.json`,
 resolves sibling owner-local sources under the current federation root, writes
 one combined local feed to `state/live_receipts.min.json`, derives its
-allowlist from active profiles with `live_state_capable: true`, and
-admits the following read-model output names. Each is materialized only when its
-declared source contract resolves:
-
-- `state/generated/core_skill_application_summary.min.json`
-- `state/generated/object_summary.min.json`
-- `state/generated/candidate_lineage_summary.min.json`
-- `state/generated/supersession_drop_summary.min.json`
-- `state/generated/repeated_window_summary.min.json`
-- `state/generated/fork_calibration_summary.min.json`
-- `state/generated/session_growth_branch_summary.min.json`
-- `state/generated/automation_pipeline_summary.min.json`
-- `state/generated/automation_followthrough_summary.min.json`
-- `state/generated/source_coverage_summary.min.json`
-- `state/generated/surface_detection_summary.min.json`
-
-It also writes the live-only catalog:
-
-- `state/generated/summary_surface_catalog.min.json`
+allowlist from active profiles with `live_state_capable: true`, and materializes
+each admitted output only when its declared source contract resolves. It also
+writes `state/generated/summary_surface_catalog.min.json` as the live-only
+catalog.
 
 That catalog contains only outputs admitted and materialized by the current
 live run. It does not copy the full committed catalog.
+
+Do not use this guide as an output roster. Read exact authored membership from
+`stats/read-models/active/`, retired cleanup membership from
+`stats/read-models/retired/`, and the result of a specific run from its live
+catalog.
 
 ## What the builder accepts
 
@@ -77,32 +67,10 @@ lockstep with that schema enum.
 
 ## Canonical repo surfaces
 
-The committed builder publishes all 22 active reference and live-capable
-profiles plus the public catalog:
-
-- `generated/core_skill_application_summary.min.json`
-- `generated/object_summary.min.json`
-- `generated/candidate_lineage_summary.min.json`
-- `generated/supersession_drop_summary.min.json`
-- `generated/repeated_window_summary.min.json`
-- `generated/route_progression_summary.min.json`
-- `generated/fork_calibration_summary.min.json`
-- `generated/session_growth_branch_summary.min.json`
-- `generated/automation_pipeline_summary.min.json`
-- `generated/automation_followthrough_summary.min.json`
-- `generated/codex_plane_deployment_summary.min.json`
-- `generated/codex_rollout_operations_summary.min.json`
-- `generated/codex_rollout_drift_summary.min.json`
-- `generated/rollout_campaign_summary.min.json`
-- `generated/drift_review_summary.min.json`
-- `generated/continuity_window_summary.min.json`
-- `generated/component_refresh_summary.min.json`
-- `generated/memory_movement_summary.min.json`
-- `generated/titan_incarnation_summary.min.json`
-- `generated/stress_recovery_window_summary.min.json`
-- `generated/source_coverage_summary.min.json`
-- `generated/surface_detection_summary.min.json`
-- `generated/summary_surface_catalog.min.json`
+The committed builder publishes the outputs authored by active profiles plus
+the public catalog. Exact output routes belong to the profiles and
+`generated/summary_surface_catalog.min.json`; deferred candidates and retired
+tombstones do not become committed public surfaces.
 
 ## Live local surfaces
 
@@ -114,25 +82,10 @@ profiles are the single inventory source:
   cleanup universe
 - the live catalog lists only outputs actually materialized
 
-The managed cleanup inventory contains 25 names: 22 active read-model outputs
-plus three retired-output tombstones. The authored live-admitted allowlist
-contains exactly 11. The 11 reference-only active profiles are:
-
-- `route_progression_summary`
-- `codex_plane_deployment_summary`
-- `codex_rollout_operations_summary`
-- `codex_rollout_drift_summary`
-- `rollout_campaign_summary`
-- `drift_review_summary`
-- `continuity_window_summary`
-- `component_refresh_summary`
-- `memory_movement_summary`
-- `titan_incarnation_summary`
-- `stress_recovery_window_summary`
-
-They remain valid committed public reference surfaces, but the live run does
-not recreate them. If an older copy exists under `state/generated/`, cleanup
-removes it. In particular, the Codex Plane Deployment adapter may load the
+Reference-only active profiles remain valid committed public surfaces, but the
+live run does not recreate them. If an older copy exists under
+`state/generated/`, cleanup removes it. In particular, the Codex Plane
+Deployment adapter may load the
 three 8Dionysus owner examples for the committed build only, the Component
 Refresh adapter may load reviewed `aoa-sdk` examples for the committed build
 only, and the Continuity Window adapter may load its explicit cross-owner
@@ -143,11 +96,11 @@ legacy numeric receipt snapshot; it rejects the current semantic-only
 `aoa-skills` receipt shape instead of inventing scores. None is a live
 fallback.
 
-`owner_landing_summary.min.json`, `runtime_closeout_summary.min.json`, and
-`titan_summon_summary.min.json` are different: they are retired, not
-false-live active surfaces. The builder and catalogs do not publish them.
-Their retired profiles keep all three names in the managed cleanup universe so
-older copies under `state/generated/` are removed deterministically.
+Retired profiles are different from false-live active surfaces. The builder
+and catalogs do not publish them; their tombstones keep former output names in
+the managed cleanup universe so older copies under `state/generated/` are
+removed deterministically. Exact retired membership belongs to
+`stats/read-models/retired/`.
 
 The history and cadence contexts remain distinct. “Latest” inside checked-in
 history is not deploy-local current state, and the cadence examples do not

@@ -2,6 +2,7 @@ from __future__ import annotations
 
 import importlib.util
 import json
+import re
 from pathlib import Path
 from unittest.mock import Mock, patch
 
@@ -9,28 +10,43 @@ from unittest.mock import Mock, patch
 PART_ROOT = Path(__file__).resolve().parents[1]
 REPO_ROOT = Path(__file__).resolve().parents[5]
 MODULE_PATH = REPO_ROOT / "scripts" / "refresh_live_stats.py"
+PROFILE_ROOT = REPO_ROOT / "stats" / "read-models"
+
+
+def load_authored_output_inventory() -> tuple[
+    tuple[str, ...], tuple[str, ...], tuple[str, ...]
+]:
+    active = [
+        json.loads(path.read_text(encoding="utf-8"))
+        for path in (PROFILE_ROOT / "active").glob("*.profile.json")
+    ]
+    active.sort(key=lambda profile: profile["catalog_order"])
+    retired = [
+        json.loads(path.read_text(encoding="utf-8"))
+        for path in (PROFILE_ROOT / "retired").glob("*.profile.json")
+    ]
+    retired.sort(key=lambda profile: profile["name"])
+    active_outputs = tuple(Path(profile["surface_ref"]).name for profile in active)
+    live_outputs = tuple(
+        Path(profile["surface_ref"]).name
+        for profile in active
+        if profile["live_state_capable"] is True
+    )
+    retired_outputs = tuple(
+        Path(profile["retired_surface_ref"]).name for profile in retired
+    )
+    return active_outputs, live_outputs, retired_outputs
+
+
+(
+    ACTIVE_PROFILE_OUTPUT_NAMES,
+    LIVE_PROFILE_OUTPUT_NAMES,
+    RETIRED_PROFILE_OUTPUT_NAMES,
+) = load_authored_output_inventory()
 REFERENCE_ONLY_ACTIVE_OUTPUT_NAMES = frozenset(
-    {
-        "codex_plane_deployment_summary.min.json",
-        "codex_rollout_operations_summary.min.json",
-        "codex_rollout_drift_summary.min.json",
-        "rollout_campaign_summary.min.json",
-        "drift_review_summary.min.json",
-        "continuity_window_summary.min.json",
-        "component_refresh_summary.min.json",
-        "memory_movement_summary.min.json",
-        "route_progression_summary.min.json",
-        "titan_incarnation_summary.min.json",
-        "stress_recovery_window_summary.min.json",
-    }
-)
-RETIRED_OUTPUT_NAMES = frozenset(
-    {
-        "owner_landing_summary.min.json",
-        "runtime_closeout_summary.min.json",
-        "titan_summon_summary.min.json",
-    }
-)
+    ACTIVE_PROFILE_OUTPUT_NAMES
+) - frozenset(LIVE_PROFILE_OUTPUT_NAMES)
+RETIRED_OUTPUT_NAMES = frozenset(RETIRED_PROFILE_OUTPUT_NAMES)
 NON_LIVE_MANAGED_OUTPUT_NAMES = (
     REFERENCE_ONLY_ACTIVE_OUTPUT_NAMES | RETIRED_OUTPUT_NAMES
 )
@@ -66,19 +82,13 @@ def test_live_output_inventory_is_derived_from_authored_profile_posture() -> Non
         *live_profile_outputs,
         module.SUMMARY_SURFACE_CATALOG_OUTPUT_NAME,
     )
-    assert len(all_profile_outputs) == 25
-    assert len(live_profile_outputs) == 11
-    assert retired_profile_outputs == (
-        "owner_landing_summary.min.json",
-        "runtime_closeout_summary.min.json",
-        "titan_summon_summary.min.json",
+    assert all_profile_outputs == (
+        *ACTIVE_PROFILE_OUTPUT_NAMES,
+        *RETIRED_PROFILE_OUTPUT_NAMES,
     )
+    assert live_profile_outputs == LIVE_PROFILE_OUTPUT_NAMES
+    assert retired_profile_outputs == RETIRED_PROFILE_OUTPUT_NAMES
     assert module.RETIRED_PROFILE_SURFACE_OUTPUT_NAMES == retired_profile_outputs
-    assert "owner_landing_summary.min.json" not in live_profile_outputs
-    assert "memory_movement_summary.min.json" not in live_profile_outputs
-    assert "route_progression_summary.min.json" not in live_profile_outputs
-    assert "runtime_closeout_summary.min.json" not in live_profile_outputs
-    assert "stress_recovery_window_summary.min.json" not in live_profile_outputs
     assert (
         set(all_profile_outputs) - set(live_profile_outputs)
         == NON_LIVE_MANAGED_OUTPUT_NAMES
@@ -88,6 +98,35 @@ def test_live_output_inventory_is_derived_from_authored_profile_posture() -> Non
         - set(live_profile_outputs)
         - set(retired_profile_outputs)
         == REFERENCE_ONLY_ACTIVE_OUTPUT_NAMES
+    )
+
+
+def test_part_guidance_routes_inventory_to_authored_profiles() -> None:
+    docs = {
+        relative_path: (PART_ROOT / relative_path).read_text(encoding="utf-8")
+        for relative_path in (
+            "README.md",
+            "CONTRACT.md",
+            "VALIDATION.md",
+            "docs/LIVE_SESSION_USE.md",
+        )
+    }
+    roster_count = re.compile(
+        r"\b(?:\d+|one|two|three|four|five|six|seven|eight|nine|ten|eleven|"
+        r"twelve|thirteen|fourteen)\s+(?:active|retired|reference-only|non-live|"
+        r"managed|admitted)(?:\b|-)",
+        re.IGNORECASE,
+    )
+
+    for relative_path, text in docs.items():
+        assert "stats/read-models/" in text, relative_path
+        assert roster_count.search(text) is None, relative_path
+
+    guide = docs["docs/LIVE_SESSION_USE.md"]
+    assert not re.findall(
+        r"^- `(?:state/)?generated/(?!summary_surface_catalog)[^`]+\.min\.json`$",
+        guide,
+        re.MULTILINE,
     )
 
 

@@ -1,21 +1,10 @@
 from __future__ import annotations
 
-import importlib.util
 import json
-import re
 from pathlib import Path
 
 
 REPO_ROOT = Path(__file__).resolve().parents[1]
-REFRESH_LIVE_STATS_PATH = REPO_ROOT / "scripts" / "refresh_live_stats.py"
-
-
-def load_refresh_live_stats_module():
-    spec = importlib.util.spec_from_file_location("refresh_live_stats", REFRESH_LIVE_STATS_PATH)
-    module = importlib.util.module_from_spec(spec)
-    assert spec is not None and spec.loader is not None
-    spec.loader.exec_module(module)
-    return module
 
 
 def read_text(relative_path: str) -> str:
@@ -177,35 +166,3 @@ def test_part_local_docs_do_not_keep_migration_redirects() -> None:
     assert "../mechanics/README.md" in docs_map
     assert "../mechanics/topology.json" in docs_map
     assert "/parts/" not in docs_map
-
-
-def test_live_session_docs_match_profile_derived_refresh_inventories() -> None:
-    refresh_live_stats = load_refresh_live_stats_module()
-    docs = read_text(
-        "mechanics/recurrence/parts/live-receipt-refresh/docs/LIVE_SESSION_USE.md"
-    )
-
-    live_section = docs.split("## Default live command", 1)[1].split("## What the builder accepts", 1)[0]
-    committed_section = docs.split("## Canonical repo surfaces", 1)[1].split(
-        "## Live local surfaces", 1
-    )[0]
-    documented_live = tuple(
-        re.findall(r"^- `state/generated/([^`]+\.min\.json)`$", live_section, re.MULTILINE)
-    )
-    documented_committed = tuple(
-        re.findall(r"^- `generated/([^`]+\.min\.json)`$", committed_section, re.MULTILINE)
-    )
-    retired = frozenset(refresh_live_stats.RETIRED_PROFILE_SURFACE_OUTPUT_NAMES)
-    expected_committed = (
-        *(
-            name
-            for name in refresh_live_stats.ALL_PROFILE_SURFACE_OUTPUT_NAMES
-            if name not in retired
-        ),
-        refresh_live_stats.SUMMARY_SURFACE_CATALOG_OUTPUT_NAME,
-    )
-
-    assert documented_live == refresh_live_stats.SUMMARY_OUTPUT_NAMES
-    assert documented_committed == expected_committed
-    assert retired.isdisjoint(documented_committed)
-    assert all(name in docs for name in retired)
