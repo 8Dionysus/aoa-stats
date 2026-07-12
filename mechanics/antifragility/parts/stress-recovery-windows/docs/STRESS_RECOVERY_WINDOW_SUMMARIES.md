@@ -36,31 +36,26 @@ exists.
   root
 - return no report when an exact source is absent, malformed, outside the
   owner root, or belongs to another repository
-- keep committed-reference compatibility separate from live resolution
+- use the same exact-resolution rule for committed and live-facing builds
 
-The committed receipt retains the historical ref
-`repo:aoa-evals/bundles/aoa-stress-recovery-window/reports/example-report.json`.
-The explicitly named committed-reference loader may translate only that ref to
-the current example location. `load_stress_recovery_report`, the ordinary exact
-loader, never performs this alias and therefore cannot silently substitute an
-example for missing live evidence.
+The committed receipt names
+`repo:aoa-evals/evals/comparison/longitudinal-window/aoa-stress-recovery-window/reports/example-report.json`.
+The retired bundle path has no translation in the adapter, so a stale ref is
+visible as insufficient evidence instead of silently resolving to an example.
 
-## Why The Projection Exists
+## Bounded Question
 
-Wave 3 created objects that describe how stress moves:
-
-- agent handoffs
-- playbook lanes and re-entry gates
-- projection health and regrounding tickets
-
-Wave 4 needs a bounded way to answer:
+The projection answers how one named recovery window behaved across stronger
+owner evidence and explicit adjacent signals:
 
 - how often did a recovery path stay contained
 - how often did route posture remain disciplined
 - how often did re-entry stay evidence-backed
 - how often did regrounding improve the derived surface without false promotion
 
-`aoa-stats` may answer these as derived windows because it already owns machine-first summaries.
+`aoa-stats` may answer these as derived windows because the profile fixes the
+question and authority ceiling. It does not convert those observations into
+owner proof or a general claim that the system improved.
 
 ## Input Discipline
 
@@ -68,7 +63,8 @@ Preferred inputs:
 
 1. source-owned owner receipts
 2. bounded eval reports for the same family and window
-3. explicit wave-3 objects cited by those reports
+3. explicit adjacent handoff, playbook, projection-health, and regrounding
+   objects cited by those reports
 4. route hints and memo pattern objects only as secondary supporting material
 
 A stats builder should refuse to derive a confident window from route hints or
@@ -77,20 +73,22 @@ memo objects alone. A missing or unreadable report yields
 report yields `low_sample`. Neither state triggers fallback to a committed
 example in the exact live adapter.
 
-## Suggested Split Axes
+## Projection Axes
 
-A first window summary should keep explicit axes such as:
+The public summary maps the report's bounded axes as follows:
 
-- `containment`
-- `route_discipline`
-- `reentry_quality`
-- `regrounding_effectiveness`
-- `evidence_continuity`
-- `adaptation_followthrough`
-- `operator_burden`
-- `trust_calibration`
+- `containment` <- `handoff_fidelity`
+- `route_discipline` <- `route_discipline`
+- `reentry_quality` <- `reentry_quality`
+- `regrounding_effectiveness` <- `regrounding_effectiveness`
+- `evidence_continuity` <- `evidence_continuity`
+- `adaptation_followthrough` <- the mean of `reentry_quality`,
+  `regrounding_effectiveness`, and `operator_burden`
+- `operator_burden` <- `operator_burden`
+- `trust_calibration` <- `trust_calibration`
 
-These are derived summary axes, not proof verdicts and not workflow meaning.
+These are deterministic derived fields, not proof verdicts or workflow
+meaning. Missing source scores remain null; the builder does not invent them.
 
 ## Suppression Posture
 
@@ -119,7 +117,7 @@ and their linked reports. The public schema and committed output remain stable
 publication routes; part-local schemas and examples are supporting payload,
 not stronger authority.
 
-## Future Activation
+## Live Activation Stop Line
 
 The profile may become live-capable only after all of the following exist and
 are tested together:

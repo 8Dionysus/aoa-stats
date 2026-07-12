@@ -7,8 +7,9 @@ python -m pytest -q mechanics/antifragility/parts/stress-recovery-windows/tests/
 ```
 
 That test proves committed-output parity, schema validity, input non-mutation,
-filesystem-free core placement, exact `aoa-evals` ref resolution, explicit-only
-legacy aliasing, and suppression for missing or malformed reports.
+filesystem-free core placement, canonical `aoa-evals` ref resolution, absence
+of retired bundle-path translation, and suppression for missing or malformed
+reports.
 
 Then run the complete part and cross-routed placement checks:
 
@@ -27,6 +28,5 @@ manual build does not prove that the owner source is observed:
 python -m pytest -q mechanics/recurrence/parts/live-receipt-refresh/tests
 ```
 
-Do not replace the exact live adapter with the committed-reference loader to
-make a live test pass. Activation must satisfy the owner-source and observation
-conditions in AOST-D-0004.
+Do not add a committed-example fallback to make a live test pass. Activation
+must satisfy the owner-source and observation conditions in AOST-D-0004.

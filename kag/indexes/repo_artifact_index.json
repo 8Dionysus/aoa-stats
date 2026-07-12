@@ -1714,7 +1714,7 @@
     },
     {
       "artifact_kind": "config",
-      "content_hash": "801dea54dceac07481f38f647391a2a0979c00afeb8eda9a5077e93f5347b090",
+      "content_hash": "04417597e61d7f57ba3cfc6ea3c6015ba2be8417ea0a6345cc6430c236cf4da7",
       "id": "artifact:file:.github/workflows/validate.yml:a5c0f08bc4",
       "path": ".github/workflows/validate.yml",
       "source_record_id": "file:.github/workflows/validate.yml:a5c0f08bc4",
@@ -1730,7 +1730,7 @@
     },
     {
       "artifact_kind": "document",
-      "content_hash": "31215f8a5a7a146464944679dfaf5f6932886f1441cb829f3ee2f003a20079f3",
+      "content_hash": "f763cd178de656f7cfc282a7cf7e6f4267ed32865733a53beb185b5dfc38c28c",
       "id": "artifact:file:agents.md:a54ff182c7",
       "path": "AGENTS.md",
       "source_record_id": "file:agents.md:a54ff182c7",
@@ -1738,7 +1738,7 @@
     },
     {
       "artifact_kind": "document",
-      "content_hash": "2f8007337db62ef2647665511eafa4c40e9dfbb0db31846f5d5079ff6cb8cd6a",
+      "content_hash": "40dc27391731f0855cfbdd4223f83d7515ba8ad07130d4d244d53f6ce0a1cab6",
       "id": "artifact:file:changelog.md:06572a96a5",
       "path": "CHANGELOG.md",
       "source_record_id": "file:changelog.md:06572a96a5",
@@ -1762,7 +1762,7 @@
     },
     {
       "artifact_kind": "document",
-      "content_hash": "09b7bc4a73ea0502b67bd04b2eccf01ae80d7b3820ef48a5c7b12ec2fc34b102",
+      "content_hash": "87908a98da38b2152424a1e5399e59c1bec27360ca93b3be17e0a58a74ad8fc3",
       "id": "artifact:file:design.md:3dc5dd454e",
       "path": "DESIGN.md",
       "source_record_id": "file:design.md:3dc5dd454e",
@@ -1874,7 +1874,7 @@
     },
     {
       "artifact_kind": "document",
-      "content_hash": "dced8f3b7289228b94943c7409506df2a121c33647c8ca8f618ec246902d6b75",
+      "content_hash": "0a70601a5fbac59cbe903d2903b63a2cd665831372a23057498a6b939bedac0c",
       "id": "artifact:file:docs/decisions/aost-d-0004-live-admission-requires-refresh-observation.md:02c9d238aa",
       "path": "docs/decisions/AOST-D-0004-live-admission-requires-refresh-observation.md",
       "source_record_id": "file:docs/decisions/aost-d-0004-live-admission-requires-refresh-observation.md:02c9d238aa",
@@ -2306,7 +2306,7 @@
     },
     {
       "artifact_kind": "generated_readmodel",
-      "content_hash": "c75f44cd77d2d794dd2f84a2cb9ef501b50e28212dd266e99776e0934a21002b",
+      "content_hash": "56aac6f9e809c62baa5134d59e032f3f20d765c1d47c0ffb5b03532070ac7e88",
       "id": "artifact:file:generated/stress_recovery_window_summary.min.json:c3dd799fd6",
       "path": "generated/stress_recovery_window_summary.min.json",
       "source_record_id": "file:generated/stress_recovery_window_summary.min.json:c3dd799fd6",
@@ -2314,7 +2314,7 @@
     },
     {
       "artifact_kind": "generated_readmodel",
-      "content_hash": "874f484fc88effa062ab31667782a2e5ae65a47660c77027d1fe9eb21fd9bb2e",
+      "content_hash": "6451a874e9b1a3dfd2c4ea2109d4eca3d13a36a715691e6ec4c0b54d72a57191",
       "id": "artifact:file:generated/summary_surface_catalog.min.json:5c31a5556b",
       "path": "generated/summary_surface_catalog.min.json",
       "source_record_id": "file:generated/summary_surface_catalog.min.json:5c31a5556b",
@@ -3538,7 +3538,7 @@
     },
     {
       "artifact_kind": "document",
-      "content_hash": "bca2450bd90da281dc3fec7fa3a1fab77ea2512ea2ada5a04cb03ace88111b42",
+      "content_hash": "269efd248b68ca30193a63c180ecbefedca50948abeaa6a0aea43b6d861372ec",
       "id": "artifact:file:mechanics/antifragility/parts/stress-recovery-windows/contract.md:c4b52f9737",
       "path": "mechanics/antifragility/parts/stress-recovery-windows/CONTRACT.md",
       "source_record_id": "file:mechanics/antifragility/parts/stress-recovery-windows/contract.md:c4b52f9737",
@@ -3546,7 +3546,7 @@
     },
     {
       "artifact_kind": "document",
-      "content_hash": "de028d493374ee41ccda40f55fb0e024e63d521f71b24c48b3630a0e61707940",
+      "content_hash": "02b252272a71a2c7bf833cb460c04baf273cf34a326bc28e0e3f131ac71947b1",
       "id": "artifact:file:mechanics/antifragility/parts/stress-recovery-windows/readme.md:4e9d8c63f5",
       "path": "mechanics/antifragility/parts/stress-recovery-windows/README.md",
       "source_record_id": "file:mechanics/antifragility/parts/stress-recovery-windows/readme.md:4e9d8c63f5",
@@ -3554,7 +3554,7 @@
     },
     {
       "artifact_kind": "document",
-      "content_hash": "261bca5e401906ce7d3ac005b8f718d979b4942131338cda91ba3863326f4401",
+      "content_hash": "1ed16e773e23f90de9c8af0b5b712250864387f4070a77d015e009c1afb9a00d",
       "id": "artifact:file:mechanics/antifragility/parts/stress-recovery-windows/validation.md:15a61304a5",
       "path": "mechanics/antifragility/parts/stress-recovery-windows/VALIDATION.md",
       "source_record_id": "file:mechanics/antifragility/parts/stress-recovery-windows/validation.md:15a61304a5",
@@ -3570,7 +3570,7 @@
     },
     {
       "artifact_kind": "document",
-      "content_hash": "b067d43eae46e56a2eaf4f35808f97c66f7e46094668d25c553c769e4245731b",
+      "content_hash": "bc6a09874bc2680e0060b30be91d9b620fe7eaef4f093e97130b64471d87301f",
       "id": "artifact:file:mechanics/antifragility/parts/stress-recovery-windows/docs/stress_recovery_window_summaries.md:0994642bd1",
       "path": "mechanics/antifragility/parts/stress-recovery-windows/docs/STRESS_RECOVERY_WINDOW_SUMMARIES.md",
       "source_record_id": "file:mechanics/antifragility/parts/stress-recovery-windows/docs/stress_recovery_window_summaries.md:0994642bd1",
@@ -3578,7 +3578,7 @@
     },
     {
       "artifact_kind": "config",
-      "content_hash": "83b4327fde20a1dc782f951b9ed73ae734f0b9dd77c9f455400abe733ceb39b6",
+      "content_hash": "94aa50aedb33c1da9f2b6ac68b3053c4e38834cdcf5e336de712f422587d9cdb",
       "id": "artifact:file:mechanics/antifragility/parts/stress-recovery-windows/examples/stress_recovery_window_summary.chaos-wave1.example.json:6c1993ced4",
       "path": "mechanics/antifragility/parts/stress-recovery-windows/examples/stress_recovery_window_summary.chaos-wave1.example.json",
       "source_record_id": "file:mechanics/antifragility/parts/stress-recovery-windows/examples/stress_recovery_window_summary.chaos-wave1.example.json:6c1993ced4",
@@ -3586,7 +3586,7 @@
     },
     {
       "artifact_kind": "config",
-      "content_hash": "8ec8348aa7b566b410221c0ec489fb97f487aa10c4806bf244c69f9e601bd49e",
+      "content_hash": "302bcf7f46ce2c1fbb959e3a0c21329acc77367aafd8dc50ecf0f61dde323d11",
       "id": "artifact:file:mechanics/antifragility/parts/stress-recovery-windows/examples/stress_recovery_window_summary.example.json:4dabf5dd26",
       "path": "mechanics/antifragility/parts/stress-recovery-windows/examples/stress_recovery_window_summary.example.json",
       "source_record_id": "file:mechanics/antifragility/parts/stress-recovery-windows/examples/stress_recovery_window_summary.example.json:4dabf5dd26",
@@ -3602,7 +3602,7 @@
     },
     {
       "artifact_kind": "test",
-      "content_hash": "48256cbd654ac865bdc8c24360966e371485085422fe07f4f1a2d23d3c708ed5",
+      "content_hash": "bf0bebd065a028e4a8cbc243c8d0ac5b164c757dde322ce92e2e4798c701bb69",
       "id": "artifact:file:mechanics/antifragility/parts/stress-recovery-windows/tests/test_stress_recovery_projection.py:4d7ab959ed",
       "path": "mechanics/antifragility/parts/stress-recovery-windows/tests/test_stress_recovery_projection.py",
       "source_record_id": "file:mechanics/antifragility/parts/stress-recovery-windows/tests/test_stress_recovery_projection.py:4d7ab959ed",
@@ -3610,7 +3610,7 @@
     },
     {
       "artifact_kind": "test",
-      "content_hash": "0b0744d1bb4689e5937b6204a67b856c241265f7561fb933f9a7c3b99957ae97",
+      "content_hash": "ffb8fd2155fabd12e6f620f35525981a50def2cb08e178dd4767dc63994fbcd1",
       "id": "artifact:file:mechanics/antifragility/parts/stress-recovery-windows/tests/test_stress_recovery_summary_chaos_wave1.py:bdda6dd9fb",
       "path": "mechanics/antifragility/parts/stress-recovery-windows/tests/test_stress_recovery_summary_chaos_wave1.py",
       "source_record_id": "file:mechanics/antifragility/parts/stress-recovery-windows/tests/test_stress_recovery_summary_chaos_wave1.py:bdda6dd9fb",
@@ -5946,7 +5946,7 @@
     },
     {
       "artifact_kind": "test",
-      "content_hash": "6275ad8871e2bd71bb6f0674708bcaebde63d0ff6f0cbedf9e74ea1cf39a7715",
+      "content_hash": "8cf1ad6b3766bc42d3f5679f0f7cafc5263440e1a2b2bdc208a395611faff545",
       "id": "artifact:file:mechanics/recurrence/parts/live-receipt-refresh/tests/test_refresh_live_stats.py:7cafbd910d",
       "path": "mechanics/recurrence/parts/live-receipt-refresh/tests/test_refresh_live_stats.py",
       "source_record_id": "file:mechanics/recurrence/parts/live-receipt-refresh/tests/test_refresh_live_stats.py:7cafbd910d",
@@ -6754,7 +6754,7 @@
     },
     {
       "artifact_kind": "script",
-      "content_hash": "b688a47832db639c0df039cd61b65dfba3335278591894f38fd6526cd79fa11f",
+      "content_hash": "c363442fb116a65fb567c2425af6516b57c9f2df469b1ed34f2af4b601044553",
       "id": "artifact:file:scripts/build_views.py:b705861394",
       "path": "scripts/build_views.py",
       "source_record_id": "file:scripts/build_views.py:b705861394",
@@ -7066,7 +7066,7 @@
     },
     {
       "artifact_kind": "source_code",
-      "content_hash": "c79e1cf422ec8ed9e1de510716ac5f4076cc56ceac512823ae9fb058d9281688",
+      "content_hash": "0914d81b68b1d4fc3b3a7c55912175282d108ef8fa223efd2c49ff4de2440d98",
       "id": "artifact:file:src/aoa_stats_builder/stress_recovery_sources.py:76945a3ec2",
       "path": "src/aoa_stats_builder/stress_recovery_sources.py",
       "source_record_id": "file:src/aoa_stats_builder/stress_recovery_sources.py:76945a3ec2",
@@ -7178,7 +7178,7 @@
     },
     {
       "artifact_kind": "config",
-      "content_hash": "3776fe99a7a00da34abfa80b476cbca8e59236539541a976e28fc6f31f124f12",
+      "content_hash": "09b20104c78ac1f4182a535e9719013e89b9dd2812381a138239981d9d034ba7",
       "id": "artifact:file:stats/intake-contract/examples/session_harvest_family.receipts.example.json:f1b8402617",
       "path": "stats/intake-contract/examples/session_harvest_family.receipts.example.json",
       "source_record_id": "file:stats/intake-contract/examples/session_harvest_family.receipts.example.json:f1b8402617",
@@ -7490,7 +7490,7 @@
     },
     {
       "artifact_kind": "config",
-      "content_hash": "49cf3af89266b3f65d35fa11a4b2dbea27f52e4bc1f70f4621e425ae2c12bcba",
+      "content_hash": "fd7a45249141705501aaea1d0de76ce46a7c6fa09c75a3543041556a0feeb1dd",
       "id": "artifact:file:stats/read-models/active/stress_recovery_window_summary.profile.json:bb4a003393",
       "path": "stats/read-models/active/stress_recovery_window_summary.profile.json",
       "source_record_id": "file:stats/read-models/active/stress_recovery_window_summary.profile.json:bb4a003393",
@@ -7699,7 +7699,7 @@
   ],
   "index_identity": {
     "artifact_kind": "repository_artifact_index",
-    "content_digest": "0b9d898aa7a967c5465597175f95a7ad79eead751969c0165084527731ce0b7d",
+    "content_digest": "e2e47413599fa074cd325a059a99749000eed40292679745136c31c39078b46e",
     "index_kind": "artifact",
     "local_id": "index:repo-local:artifacts",
     "schema_ref": "aoa-kag:schemas/repo-local-kag-repository-index.schema.json"
@@ -7723,7 +7723,7 @@
   },
   "schema_version": "aoa-repo-local-kag-repository-index-v1",
   "source_index": {
-    "content_digest": "e3776dfd043436842ebed039a62bf254fe9b7715bf93ce04a583e2a997b61bcf",
+    "content_digest": "abaf6b88615c839dd1f908d7659c5adfae21bf383ce80c578d78fc0478eca0b1",
     "local_id": "index:repo-local:source-surfaces",
     "path": "kag/indexes/source_surface_index.json"
   },

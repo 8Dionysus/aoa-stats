@@ -118,7 +118,7 @@ from aoa_stats_builder.stress_recovery import (  # noqa: E402
     latest_stress_recovery_report_ref,
 )
 from aoa_stats_builder.stress_recovery_sources import (  # noqa: E402
-    load_stress_recovery_committed_reference_report,
+    load_stress_recovery_report,
 )
 from aoa_stats_builder.surface_catalog import build_summary_surface_catalog  # noqa: E402
 from aoa_stats_builder.titan_observation import (  # noqa: E402
@@ -342,10 +342,10 @@ def build_stress_recovery_window_summary(
     *,
     evals_root: Path,
 ) -> dict[str, Any]:
-    """Preserve the committed-reference root facade for compatibility callers."""
+    """Preserve the root build facade while resolving the exact owner ref."""
 
     report_ref = latest_stress_recovery_report_ref(receipts)
-    report = load_stress_recovery_committed_reference_report(
+    report = load_stress_recovery_report(
         evals_root,
         report_ref,
     )

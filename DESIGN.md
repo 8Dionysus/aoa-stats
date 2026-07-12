@@ -112,6 +112,11 @@ Shared implementation does not imply shared proof ownership:
 Compatibility applies to evidenced interfaces. A root CLI, builder, or alias
 may remain stable while uncalled helper symbols are removed after current
 caller, external-contract, and owner-part proof searches find none.
+Relocated owner references follow the same rule: current authored inputs point
+to one canonical owner path, and a temporary translation disappears after
+consumer re-grounding. A committed or reference-only surface still resolves
+its exact declared source; its weaker publication posture does not authorize a
+stale path or fallback.
 Migration-era documentation redirects use the same rule: re-ground active
 consumer and provenance routes first, then retire the flat file rather than
 preserving a permanent second entrypoint to an already part-local owner.
