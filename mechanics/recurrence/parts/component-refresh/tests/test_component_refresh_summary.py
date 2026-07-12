@@ -22,13 +22,19 @@ def test_component_refresh_summary_docs_are_discoverable_and_bounded() -> None:
     package_readme = (PART_ROOT.parents[1] / "README.md").read_text(encoding="utf-8")
     parts_index = (PART_ROOT.parents[1] / "PARTS.md").read_text(encoding="utf-8")
     part_readme = (PART_ROOT / "README.md").read_text(encoding="utf-8")
-    architecture = (REPO_ROOT / "docs" / "ARCHITECTURE.md").read_text(encoding="utf-8")
+    profile = load_repo_json(
+        "stats/read-models/active/component_refresh_summary.profile.json"
+    )
     guide = (PART_ROOT / "docs" / "COMPONENT_REFRESH_SUMMARIES.md").read_text(encoding="utf-8")
 
     assert "parts/component-refresh/" in package_readme
     assert "component-refresh" in parts_index
     assert "docs/COMPONENT_REFRESH_SUMMARIES.md" in part_readme
-    assert "component_refresh_summary.min.json" in architecture
+    assert isinstance(profile, dict)
+    assert profile["surface_ref"] == "generated/component_refresh_summary.min.json"
+    assert profile["mechanic_routes"] == [
+        "mechanics/recurrence/parts/component-refresh"
+    ]
 
     for token in (
         "derived-only stats view",

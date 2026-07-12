@@ -70,7 +70,7 @@
     "command_count": 95,
     "document_count": 460,
     "generated_count": 44,
-    "heading_count": 2003,
+    "heading_count": 2007,
     "mechanics_count": 507,
     "record_count": 962,
     "schema_count": 92,
@@ -81,7 +81,7 @@
   },
   "index_identity": {
     "artifact_kind": "source_surface_index",
-    "content_digest": "3f99f5f9c0173e45656f75b36f537f84a4b09c62b33a7dd2824060f2e8507b05",
+    "content_digest": "c2377f0083625e4dfeaf0e375e9029ca0a0c481cef0dcaf587a85848308e43d0",
     "local_id": "index:repo-local:source-surfaces",
     "schema_ref": "aoa-kag:schemas/repo-local-kag-index.schema.json"
   },
@@ -24063,13 +24063,13 @@
         "state": "current"
       },
       "identity": {
-        "content_hash": "eef156c841d57a8eacfca735a68df886a3ef510836808aec9f1b37b573670fd0",
+        "content_hash": "b00629643f3a405d915920a58dfe1c647d774e46925b99e54d3290c69c5b12ed",
         "git_ref": "git-index-source-tree",
         "id": "file:agents.md:a54ff182c7",
         "mime": "text/markdown",
         "path": "AGENTS.md",
         "repo": "aoa-stats",
-        "size_bytes": 8151
+        "size_bytes": 8399
       },
       "mechanics_role": "none",
       "observed_form": "file",
@@ -24126,70 +24126,70 @@
           {
             "anchor": "repository-contract",
             "level": 2,
-            "line": 45,
+            "line": 50,
             "ref": "AGENTS.md#repository-contract",
             "title": "Repository contract"
           },
           {
             "anchor": "cross-mode-law",
             "level": 2,
-            "line": 77,
+            "line": 82,
             "ref": "AGENTS.md#cross-mode-law",
             "title": "Cross-mode law"
           },
           {
             "anchor": "lifecycle-and-authority",
             "level": 2,
-            "line": 93,
+            "line": 98,
             "ref": "AGENTS.md#lifecycle-and-authority",
             "title": "Lifecycle and authority"
           },
           {
             "anchor": "agents-stack-law",
             "level": 2,
-            "line": 114,
+            "line": 119,
             "ref": "AGENTS.md#agents-stack-law",
             "title": "AGENTS stack law"
           },
           {
             "anchor": "memory-and-decision-routes",
             "level": 2,
-            "line": 125,
+            "line": 130,
             "ref": "AGENTS.md#memory-and-decision-routes",
             "title": "Memory and decision routes"
           },
           {
             "anchor": "derived-only-rules",
             "level": 2,
-            "line": 136,
+            "line": 141,
             "ref": "AGENTS.md#derived-only-rules",
             "title": "Derived-only rules"
           },
           {
             "anchor": "github-landing-workflow",
             "level": 2,
-            "line": 144,
+            "line": 149,
             "ref": "AGENTS.md#github-landing-workflow",
             "title": "GitHub landing workflow"
           },
           {
             "anchor": "verify",
             "level": 2,
-            "line": 166,
+            "line": 171,
             "ref": "AGENTS.md#verify",
             "title": "Verify"
           },
           {
             "anchor": "report",
             "level": 2,
-            "line": 186,
+            "line": 191,
             "ref": "AGENTS.md#report",
             "title": "Report"
           },
           {
             "anchor": "historical-reference",
             "level": 2,
-            "line": 192,
+            "line": 197,
             "ref": "AGENTS.md#historical-reference",
             "title": "Historical reference"
           }
@@ -24201,7 +24201,7 @@
       },
       "signs": {
         "attestation_ref": "",
-        "digest": "eef156c841d57a8eacfca735a68df886a3ef510836808aec9f1b37b573670fd0",
+        "digest": "b00629643f3a405d915920a58dfe1c647d774e46925b99e54d3290c69c5b12ed",
         "signature_ref": "",
         "verification_state": "digest-only"
       },
@@ -24249,13 +24249,13 @@
         "state": "current"
       },
       "identity": {
-        "content_hash": "3de09206111f270c26115e5d1e1616de81984ac10dcab31971334cd1f91c6f63",
+        "content_hash": "442aaac014d861badae07e67b8096c481f8ad5e7ebb8ccd2354ced6bca361258",
         "git_ref": "git-index-source-tree",
         "id": "file:changelog.md:06572a96a5",
         "mime": "text/markdown",
         "path": "CHANGELOG.md",
         "repo": "aoa-stats",
-        "size_bytes": 18091
+        "size_bytes": 18385
       },
       "mechanics_role": "none",
       "observed_form": "file",
@@ -24312,175 +24312,175 @@
           {
             "anchor": "013-2026-04-23",
             "level": 2,
-            "line": 182,
+            "line": 186,
             "ref": "CHANGELOG.md#013-2026-04-23",
             "title": "[0.1.3] - 2026-04-23"
           },
           {
             "anchor": "summary",
             "level": 3,
-            "line": 184,
+            "line": 188,
             "ref": "CHANGELOG.md#summary",
             "title": "Summary"
           },
           {
             "anchor": "added-1",
             "level": 3,
-            "line": 196,
+            "line": 200,
             "ref": "CHANGELOG.md#added-1",
             "title": "Added"
           },
           {
             "anchor": "changed-1",
             "level": 3,
-            "line": 206,
+            "line": 210,
             "ref": "CHANGELOG.md#changed-1",
             "title": "Changed"
           },
           {
             "anchor": "validation",
             "level": 3,
-            "line": 212,
+            "line": 216,
             "ref": "CHANGELOG.md#validation",
             "title": "Validation"
           },
           {
             "anchor": "notes",
             "level": 3,
-            "line": 216,
+            "line": 220,
             "ref": "CHANGELOG.md#notes",
             "title": "Notes"
           },
           {
             "anchor": "012-2026-04-19",
             "level": 2,
-            "line": 221,
+            "line": 225,
             "ref": "CHANGELOG.md#012-2026-04-19",
             "title": "[0.1.2] - 2026-04-19"
           },
           {
             "anchor": "summary-1",
             "level": 3,
-            "line": 223,
+            "line": 227,
             "ref": "CHANGELOG.md#summary-1",
             "title": "Summary"
           },
           {
             "anchor": "added-2",
             "level": 3,
-            "line": 231,
+            "line": 235,
             "ref": "CHANGELOG.md#added-2",
             "title": "Added"
           },
           {
             "anchor": "changed-2",
             "level": 3,
-            "line": 238,
+            "line": 242,
             "ref": "CHANGELOG.md#changed-2",
             "title": "Changed"
           },
           {
             "anchor": "validation-1",
             "level": 3,
-            "line": 243,
+            "line": 247,
             "ref": "CHANGELOG.md#validation-1",
             "title": "Validation"
           },
           {
             "anchor": "notes-1",
             "level": 3,
-            "line": 247,
+            "line": 251,
             "ref": "CHANGELOG.md#notes-1",
             "title": "Notes"
           },
           {
             "anchor": "011-2026-04-12",
             "level": 2,
-            "line": 252,
+            "line": 256,
             "ref": "CHANGELOG.md#011-2026-04-12",
             "title": "[0.1.1] - 2026-04-12"
           },
           {
             "anchor": "summary-2",
             "level": 3,
-            "line": 254,
+            "line": 258,
             "ref": "CHANGELOG.md#summary-2",
             "title": "Summary"
           },
           {
             "anchor": "added-3",
             "level": 3,
-            "line": 262,
+            "line": 266,
             "ref": "CHANGELOG.md#added-3",
             "title": "Added"
           },
           {
             "anchor": "documentation",
             "level": 3,
-            "line": 270,
+            "line": 274,
             "ref": "CHANGELOG.md#documentation",
             "title": "Documentation"
           },
           {
             "anchor": "changed-3",
             "level": 3,
-            "line": 276,
+            "line": 280,
             "ref": "CHANGELOG.md#changed-3",
             "title": "Changed"
           },
           {
             "anchor": "validation-2",
             "level": 3,
-            "line": 283,
+            "line": 287,
             "ref": "CHANGELOG.md#validation-2",
             "title": "Validation"
           },
           {
             "anchor": "notes-2",
             "level": 3,
-            "line": 287,
+            "line": 291,
             "ref": "CHANGELOG.md#notes-2",
             "title": "Notes"
           },
           {
             "anchor": "010-2026-04-10",
             "level": 2,
-            "line": 291,
+            "line": 295,
             "ref": "CHANGELOG.md#010-2026-04-10",
             "title": "[0.1.0] - 2026-04-10"
           },
           {
             "anchor": "summary-3",
             "level": 3,
-            "line": 298,
+            "line": 302,
             "ref": "CHANGELOG.md#summary-3",
             "title": "Summary"
           },
           {
             "anchor": "added-4",
             "level": 3,
-            "line": 309,
+            "line": 313,
             "ref": "CHANGELOG.md#added-4",
             "title": "Added"
           },
           {
             "anchor": "included-in-this-release",
             "level": 3,
-            "line": 322,
+            "line": 326,
             "ref": "CHANGELOG.md#included-in-this-release",
             "title": "Included in this release"
           },
           {
             "anchor": "validation-3",
             "level": 3,
-            "line": 337,
+            "line": 341,
             "ref": "CHANGELOG.md#validation-3",
             "title": "Validation"
           },
           {
             "anchor": "notes-3",
             "level": 3,
-            "line": 343,
+            "line": 347,
             "ref": "CHANGELOG.md#notes-3",
             "title": "Notes"
           }
@@ -24492,7 +24492,7 @@
       },
       "signs": {
         "attestation_ref": "",
-        "digest": "3de09206111f270c26115e5d1e1616de81984ac10dcab31971334cd1f91c6f63",
+        "digest": "442aaac014d861badae07e67b8096c481f8ad5e7ebb8ccd2354ced6bca361258",
         "signature_ref": "",
         "verification_state": "digest-only"
       },
@@ -24772,13 +24772,13 @@
         "state": "current"
       },
       "identity": {
-        "content_hash": "972be851e7f68fe48a6bfb49c5f05785fe78dc2aa43cf0acd287392b2d2c180e",
+        "content_hash": "b83e62b7c54860e177681ef8ec6e3f308644706b9341adef33ef590e7edb2d58",
         "git_ref": "git-index-source-tree",
         "id": "file:design.md:3dc5dd454e",
         "mime": "text/markdown",
         "path": "DESIGN.md",
         "repo": "aoa-stats",
-        "size_bytes": 9971
+        "size_bytes": 10152
       },
       "mechanics_role": "none",
       "observed_form": "file",
@@ -24870,77 +24870,77 @@
           {
             "anchor": "core-adapter-and-proof-boundaries",
             "level": 2,
-            "line": 95,
+            "line": 98,
             "ref": "DESIGN.md#core-adapter-and-proof-boundaries",
             "title": "Core, adapter, and proof boundaries"
           },
           {
             "anchor": "read-model-lifecycle",
             "level": 2,
-            "line": 116,
+            "line": 119,
             "ref": "DESIGN.md#read-model-lifecycle",
             "title": "Read-model lifecycle"
           },
           {
             "anchor": "live-materialization",
             "level": 2,
-            "line": 134,
+            "line": 137,
             "ref": "DESIGN.md#live-materialization",
             "title": "Live materialization"
           },
           {
             "anchor": "operation",
             "level": 2,
-            "line": 146,
+            "line": 149,
             "ref": "DESIGN.md#operation",
             "title": "Operation"
           },
           {
             "anchor": "authority-model",
             "level": 2,
-            "line": 169,
+            "line": 172,
             "ref": "DESIGN.md#authority-model",
             "title": "Authority model"
           },
           {
             "anchor": "shared-mechanic-vocabulary",
             "level": 2,
-            "line": 180,
+            "line": 183,
             "ref": "DESIGN.md#shared-mechanic-vocabulary",
             "title": "Shared mechanic vocabulary"
           },
           {
             "anchor": "design-principles",
             "level": 2,
-            "line": 189,
+            "line": 192,
             "ref": "DESIGN.md#design-principles",
             "title": "Design principles"
           },
           {
             "anchor": "good-shape",
             "level": 2,
-            "line": 204,
+            "line": 207,
             "ref": "DESIGN.md#good-shape",
             "title": "Good shape"
           },
           {
             "anchor": "bad-shape",
             "level": 2,
-            "line": 212,
+            "line": 215,
             "ref": "DESIGN.md#bad-shape",
             "title": "Bad shape"
           },
           {
             "anchor": "relationship-to-guidance",
             "level": 2,
-            "line": 221,
+            "line": 224,
             "ref": "DESIGN.md#relationship-to-guidance",
             "title": "Relationship to guidance"
           },
           {
             "anchor": "use-by-agents",
             "level": 2,
-            "line": 231,
+            "line": 234,
             "ref": "DESIGN.md#use-by-agents",
             "title": "Use by agents"
           }
@@ -24952,7 +24952,7 @@
       },
       "signs": {
         "attestation_ref": "",
-        "digest": "972be851e7f68fe48a6bfb49c5f05785fe78dc2aa43cf0acd287392b2d2c180e",
+        "digest": "b83e62b7c54860e177681ef8ec6e3f308644706b9341adef33ef590e7edb2d58",
         "signature_ref": "",
         "verification_state": "digest-only"
       },
@@ -25087,13 +25087,13 @@
         "state": "current"
       },
       "identity": {
-        "content_hash": "33b6e67aae846523f183315393c7b385a49f8a4bc409d41d71c24100adff0276",
+        "content_hash": "213afcbd46e463b0f698564b68c2584e6e7bf5efbbe5fdda09bc9ecf21ac0ced",
         "git_ref": "git-index-source-tree",
         "id": "file:readme.md:b335630551",
         "mime": "text/markdown",
         "path": "README.md",
         "repo": "aoa-stats",
-        "size_bytes": 10026
+        "size_bytes": 5951
       },
       "mechanics_role": "none",
       "observed_form": "file",
@@ -25148,37 +25148,30 @@
             "title": "Current v0 surface"
           },
           {
-            "anchor": "public-root-exceptions",
+            "anchor": "public-root-contracts",
             "level": 3,
-            "line": 60,
-            "ref": "README.md#public-root-exceptions",
-            "title": "Public-root exceptions"
-          },
-          {
-            "anchor": "important-operation-routes",
-            "level": 2,
-            "line": 81,
-            "ref": "README.md#important-operation-routes",
-            "title": "Important operation routes"
+            "line": 49,
+            "ref": "README.md#public-root-contracts",
+            "title": "Public-root contracts"
           },
           {
             "anchor": "build-and-verify",
             "level": 2,
-            "line": 119,
+            "line": 75,
             "ref": "README.md#build-and-verify",
             "title": "Build and verify"
           },
           {
             "anchor": "boundaries",
             "level": 2,
-            "line": 184,
+            "line": 114,
             "ref": "README.md#boundaries",
             "title": "Boundaries"
           },
           {
             "anchor": "contribution-and-release",
             "level": 2,
-            "line": 195,
+            "line": 125,
             "ref": "README.md#contribution-and-release",
             "title": "Contribution and release"
           }
@@ -25190,7 +25183,7 @@
       },
       "signs": {
         "attestation_ref": "",
-        "digest": "33b6e67aae846523f183315393c7b385a49f8a4bc409d41d71c24100adff0276",
+        "digest": "213afcbd46e463b0f698564b68c2584e6e7bf5efbbe5fdda09bc9ecf21ac0ced",
         "signature_ref": "",
         "verification_state": "digest-only"
       },
@@ -25498,13 +25491,13 @@
         "state": "current"
       },
       "identity": {
-        "content_hash": "4dba998153eb0d1cd784caadbc8747db91a5047638534a6d8eb94cc107669819",
+        "content_hash": "c0527fac8f2ce397d5940c56c4ce738270771c2fdc8c2c3cf4555a936a8cf1bc",
         "git_ref": "git-index-source-tree",
         "id": "file:docs/architecture.md:ff21b6b9a3",
         "mime": "text/markdown",
         "path": "docs/ARCHITECTURE.md",
         "repo": "aoa-stats",
-        "size_bytes": 12142
+        "size_bytes": 5585
       },
       "mechanics_role": "none",
       "observed_form": "file",
@@ -25545,30 +25538,37 @@
             "title": "One sentence"
           },
           {
-            "anchor": "five-layers",
+            "anchor": "authority-ladder",
             "level": 2,
             "line": 9,
+            "ref": "docs/ARCHITECTURE.md#authority-ladder",
+            "title": "Authority ladder"
+          },
+          {
+            "anchor": "five-layers",
+            "level": 2,
+            "line": 21,
             "ref": "docs/ARCHITECTURE.md#five-layers",
             "title": "Five layers"
           },
           {
             "anchor": "1-event-facts",
             "level": 3,
-            "line": 11,
+            "line": 23,
             "ref": "docs/ARCHITECTURE.md#1-event-facts",
             "title": "1. Event facts"
           },
           {
             "anchor": "2-evidence-links",
             "level": 3,
-            "line": 35,
+            "line": 33,
             "ref": "docs/ARCHITECTURE.md#2-evidence-links",
             "title": "2. Evidence links"
           },
           {
             "anchor": "3-bounded-evaluations",
             "level": 3,
-            "line": 40,
+            "line": 39,
             "ref": "docs/ARCHITECTURE.md#3-bounded-evaluations",
             "title": "3. Bounded evaluations"
           },
@@ -25580,18 +25580,53 @@
             "title": "4. Progression readings"
           },
           {
-            "anchor": "5-derived-views",
+            "anchor": "5-derived-read-models",
             "level": 3,
             "line": 51,
-            "ref": "docs/ARCHITECTURE.md#5-derived-views",
-            "title": "5. Derived views"
+            "ref": "docs/ARCHITECTURE.md#5-derived-read-models",
+            "title": "5. Derived read models"
           },
           {
-            "anchor": "canonical-split",
+            "anchor": "source-and-operation-split",
             "level": 2,
-            "line": 239,
-            "ref": "docs/ARCHITECTURE.md#canonical-split",
-            "title": "Canonical split"
+            "line": 62,
+            "ref": "docs/ARCHITECTURE.md#source-and-operation-split",
+            "title": "Source and operation split"
+          },
+          {
+            "anchor": "projection-boundary",
+            "level": 2,
+            "line": 73,
+            "ref": "docs/ARCHITECTURE.md#projection-boundary",
+            "title": "Projection boundary"
+          },
+          {
+            "anchor": "catalog-and-lifecycle",
+            "level": 2,
+            "line": 84,
+            "ref": "docs/ARCHITECTURE.md#catalog-and-lifecycle",
+            "title": "Catalog and lifecycle"
+          },
+          {
+            "anchor": "publication-and-access",
+            "level": 2,
+            "line": 105,
+            "ref": "docs/ARCHITECTURE.md#publication-and-access",
+            "title": "Publication and access"
+          },
+          {
+            "anchor": "canonical-questions",
+            "level": 2,
+            "line": 117,
+            "ref": "docs/ARCHITECTURE.md#canonical-questions",
+            "title": "Canonical questions"
+          },
+          {
+            "anchor": "read-next",
+            "level": 2,
+            "line": 128,
+            "ref": "docs/ARCHITECTURE.md#read-next",
+            "title": "Read next"
           }
         ],
         "line_refs": [
@@ -25601,7 +25636,7 @@
       },
       "signs": {
         "attestation_ref": "",
-        "digest": "4dba998153eb0d1cd784caadbc8747db91a5047638534a6d8eb94cc107669819",
+        "digest": "c0527fac8f2ce397d5940c56c4ce738270771c2fdc8c2c3cf4555a936a8cf1bc",
         "signature_ref": "",
         "verification_state": "digest-only"
       },
@@ -25909,13 +25944,13 @@
         "state": "current"
       },
       "identity": {
-        "content_hash": "9224d0f99c451e3b8d424e63db62dd73ae44fbb4298ba75a3ce265348b248f26",
+        "content_hash": "a5656455b09edd9e5a72cf4fea87b6437f760e4d14e24bbd231d6590aa85273a",
         "git_ref": "git-index-source-tree",
         "id": "file:docs/readme.md:0b5ca119d2",
         "mime": "text/markdown",
         "path": "docs/README.md",
         "repo": "aoa-stats",
-        "size_bytes": 3910
+        "size_bytes": 1950
       },
       "mechanics_role": "none",
       "observed_form": "file",
@@ -25951,28 +25986,21 @@
           {
             "anchor": "start-here",
             "level": 2,
-            "line": 7,
+            "line": 8,
             "ref": "docs/README.md#start-here",
             "title": "Start here"
           },
           {
-            "anchor": "operation-documentation",
-            "level": 2,
-            "line": 22,
-            "ref": "docs/README.md#operation-documentation",
-            "title": "Operation documentation"
-          },
-          {
             "anchor": "repository-wide-contracts",
             "level": 2,
-            "line": 47,
+            "line": 28,
             "ref": "docs/README.md#repository-wide-contracts",
             "title": "Repository-wide contracts"
           },
           {
             "anchor": "history",
             "level": 2,
-            "line": 58,
+            "line": 35,
             "ref": "docs/README.md#history",
             "title": "History"
           }
@@ -25984,7 +26012,7 @@
       },
       "signs": {
         "attestation_ref": "",
-        "digest": "9224d0f99c451e3b8d424e63db62dd73ae44fbb4298ba75a3ce265348b248f26",
+        "digest": "a5656455b09edd9e5a72cf4fea87b6437f760e4d14e24bbd231d6590aa85273a",
         "signature_ref": "",
         "verification_state": "digest-only"
       },
@@ -35083,13 +35111,13 @@
         "state": "current"
       },
       "identity": {
-        "content_hash": "7261a9cc4df4373463e6eb248a8b0d9830224befbff0fe05628831b3ef8553de",
+        "content_hash": "ae1ce75ffa61eac60a3cf350167351dc0180b10285d4c20b2b62d95f03531c6a",
         "git_ref": "git-index-source-tree",
         "id": "file:mechanics/readme.md:c091f898d3",
         "mime": "text/markdown",
         "path": "mechanics/README.md",
         "repo": "aoa-stats",
-        "size_bytes": 2711
+        "size_bytes": 2868
       },
       "mechanics_role": "mechanic_package",
       "observed_form": "file",
@@ -35151,7 +35179,7 @@
       },
       "signs": {
         "attestation_ref": "",
-        "digest": "7261a9cc4df4373463e6eb248a8b0d9830224befbff0fe05628831b3ef8553de",
+        "digest": "ae1ce75ffa61eac60a3cf350167351dc0180b10285d4c20b2b62d95f03531c6a",
         "signature_ref": "",
         "verification_state": "digest-only"
       },
@@ -49160,13 +49188,13 @@
         "state": "current"
       },
       "identity": {
-        "content_hash": "541131cc2fc05c6de4809d7846957680fb469f18b14613428c33100d1dc59bec",
+        "content_hash": "0b0744d1bb4689e5937b6204a67b856c241265f7561fb933f9a7c3b99957ae97",
         "git_ref": "git-index-source-tree",
         "id": "file:mechanics/antifragility/parts/stress-recovery-windows/tests/test_stress_recovery_summary_chaos_wave1.py:bdda6dd9fb",
         "mime": "text/x-python",
         "path": "mechanics/antifragility/parts/stress-recovery-windows/tests/test_stress_recovery_summary_chaos_wave1.py",
         "repo": "aoa-stats",
-        "size_bytes": 6738
+        "size_bytes": 7052
       },
       "mechanics_role": "part_test",
       "observed_form": "command",
@@ -49199,7 +49227,7 @@
       },
       "signs": {
         "attestation_ref": "",
-        "digest": "541131cc2fc05c6de4809d7846957680fb469f18b14613428c33100d1dc59bec",
+        "digest": "0b0744d1bb4689e5937b6204a67b856c241265f7561fb933f9a7c3b99957ae97",
         "signature_ref": "",
         "verification_state": "digest-only"
       },
@@ -76096,13 +76124,13 @@
         "state": "current"
       },
       "identity": {
-        "content_hash": "6eac3b301007d55cf4df59f14ab89a29fbc74b3ef191bdc96feede37c6de6aee",
+        "content_hash": "580d623a2643184174e0fab4f8f809b660e47ecb2f6dd3359098def798e33103",
         "git_ref": "git-index-source-tree",
         "id": "file:mechanics/recurrence/parts/component-refresh/tests/test_component_refresh_summary.py:4bed3e4172",
         "mime": "text/x-python",
         "path": "mechanics/recurrence/parts/component-refresh/tests/test_component_refresh_summary.py",
         "repo": "aoa-stats",
-        "size_bytes": 3100
+        "size_bytes": 3283
       },
       "mechanics_role": "part_test",
       "observed_form": "command",
@@ -76135,7 +76163,7 @@
       },
       "signs": {
         "attestation_ref": "",
-        "digest": "6eac3b301007d55cf4df59f14ab89a29fbc74b3ef191bdc96feede37c6de6aee",
+        "digest": "580d623a2643184174e0fab4f8f809b660e47ecb2f6dd3359098def798e33103",
         "signature_ref": "",
         "verification_state": "digest-only"
       },
@@ -97734,13 +97762,13 @@
         "state": "current"
       },
       "identity": {
-        "content_hash": "2d6509a53400c452de9b503c371c5bc40a3a652fb7d1292109c9e29f01039a06",
+        "content_hash": "61c9c01dbfb739923a86c90cdba3af1f9606af344539fbf62eebef61c2daf723",
         "git_ref": "git-index-source-tree",
         "id": "file:stats/surface-catalog/agents.md:66821030d3",
         "mime": "text/markdown",
         "path": "stats/surface-catalog/AGENTS.md",
         "repo": "aoa-stats",
-        "size_bytes": 2524
+        "size_bytes": 2758
       },
       "mechanics_role": "none",
       "observed_form": "file",
@@ -97811,7 +97839,7 @@
           {
             "anchor": "verify",
             "level": 2,
-            "line": 61,
+            "line": 64,
             "ref": "stats/surface-catalog/AGENTS.md#verify",
             "title": "Verify"
           }
@@ -97823,7 +97851,7 @@
       },
       "signs": {
         "attestation_ref": "",
-        "digest": "2d6509a53400c452de9b503c371c5bc40a3a652fb7d1292109c9e29f01039a06",
+        "digest": "61c9c01dbfb739923a86c90cdba3af1f9606af344539fbf62eebef61c2daf723",
         "signature_ref": "",
         "verification_state": "digest-only"
       },
@@ -98138,13 +98166,13 @@
         "state": "current"
       },
       "identity": {
-        "content_hash": "858d0997be37bda0e4695516e76f7f4e2baf98644d5a791a6aa68eb3e0f30598",
+        "content_hash": "caeb192ce0546d8ae152b8a582ea7f9a995e4c062b2b4eedc04b821571455fbc",
         "git_ref": "git-index-source-tree",
         "id": "file:stats/surface-catalog/readme.md:18417d40a6",
         "mime": "text/markdown",
         "path": "stats/surface-catalog/README.md",
         "repo": "aoa-stats",
-        "size_bytes": 1821
+        "size_bytes": 2073
       },
       "mechanics_role": "none",
       "observed_form": "file",
@@ -98180,14 +98208,14 @@
           {
             "anchor": "active-route-map",
             "level": 2,
-            "line": 12,
+            "line": 17,
             "ref": "stats/surface-catalog/README.md#active-route-map",
             "title": "Active route map"
           },
           {
             "anchor": "operation-crosswalk",
             "level": 2,
-            "line": 28,
+            "line": 33,
             "ref": "stats/surface-catalog/README.md#operation-crosswalk",
             "title": "Operation crosswalk"
           }
@@ -98199,7 +98227,7 @@
       },
       "signs": {
         "attestation_ref": "",
-        "digest": "858d0997be37bda0e4695516e76f7f4e2baf98644d5a791a6aa68eb3e0f30598",
+        "digest": "caeb192ce0546d8ae152b8a582ea7f9a995e4c062b2b4eedc04b821571455fbc",
         "signature_ref": "",
         "verification_state": "digest-only"
       },
@@ -98643,13 +98671,13 @@
         "state": "current"
       },
       "identity": {
-        "content_hash": "657932ab807ce086811685c1050c759dfedbeb2d643f848b88e054d10ac606e0",
+        "content_hash": "732f410709dbcee15f27b7008dc8a6486b756963e69b84509d504dcc93e3d332",
         "git_ref": "git-index-source-tree",
         "id": "file:tests/test_docs_routes.py:2789463ffa",
         "mime": "text/x-python",
         "path": "tests/test_docs_routes.py",
         "repo": "aoa-stats",
-        "size_bytes": 6854
+        "size_bytes": 8059
       },
       "mechanics_role": "none",
       "observed_form": "command",
@@ -98682,7 +98710,7 @@
       },
       "signs": {
         "attestation_ref": "",
-        "digest": "657932ab807ce086811685c1050c759dfedbeb2d643f848b88e054d10ac606e0",
+        "digest": "732f410709dbcee15f27b7008dc8a6486b756963e69b84509d504dcc93e3d332",
         "signature_ref": "",
         "verification_state": "digest-only"
       },

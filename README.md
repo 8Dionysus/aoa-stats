@@ -38,35 +38,24 @@ their authored source and named owner inputs.
 
 ## Current v0 surface
 
-The checked source home contains:
-
-- the canonical receipt intake contract and active event-kind registry
-- 22 active authored read-model profiles, one deferred contract profile, and
-  three retired-output cleanup tombstones with reserved former catalog slots
-- 15 authored operation-contract records for active non-catalog parts
-- deterministic projection core under `src/aoa_stats_builder/`, exposed by the
-  repo-wide `scripts/build_views.py` entrypoint
-- stable public schemas and committed summaries under `schemas/` and
-  `generated/`
-- read-only catalog access through `src/aoa_stats_mcp/`
-- mechanics-local payload and validation for Agon, Antifragility, Audit,
-  Boundary Bridge, Experience, Growth Cycle, Method Growth, Recurrence,
-  Release Support, RPG, and Titan
-
-The exact catalog is
+The checked source home carries receipt admission, authored read-model and
+operation contracts, deterministic projection, stable public schemas, and
+read-only catalog access. Exact lifecycle state comes from the profiles under
+[`stats/read-models/`](stats/read-models/); non-catalog maturity comes from
+[`stats/operation-contracts/`](stats/operation-contracts/); the compact public
+projection is
 [`generated/summary_surface_catalog.min.json`](generated/summary_surface_catalog.min.json).
-Its authored inputs live under [`stats/read-models/`](stats/read-models/).
 
-### Public-root exceptions
+### Public-root contracts
 
 The root is intentionally narrow:
 
 - `schemas/` — stable catalog and receipt contracts
-- `generated/` — committed public read models, including eight Agon registries
+- `generated/` — committed public read models
 - `scripts/` — public, compatibility, and repo-wide commands
 - `tests/` — repository and public-contract checks
-- `docs/` — architecture, boundaries, decisions, release guidance, and three
-  explicit compatibility routes
+- `docs/` — repository-wide architecture, boundaries, decisions, release
+  guidance, and history
 - `examples/codex_plane_deployment_summary.example.json` — retained external
   compatibility fixture
 - `manifests/artifact_bundles/` — public summary-catalog bundle
@@ -78,43 +67,10 @@ placement contract. A focused test shared by several parts may live at the
 mechanic-package level only when it constrains one shared importable core and
 that package payload root is declared in `mechanics/topology.json`.
 
-## Important operation routes
-
-- live intake and watchers:
-  `mechanics/recurrence/parts/live-receipt-refresh/`
-- component declarations and derived recurrence:
-  `mechanics/recurrence/parts/component-manifests/`
-- stress recovery:
-  `mechanics/antifragility/parts/stress-recovery-windows/`, including
-  `mechanics/antifragility/parts/stress-recovery-windows/docs/STRESS_RECOVERY_SUMMARIES_CHAOS_WAVE1.md`
-  and
-  `mechanics/antifragility/parts/stress-recovery-windows/examples/stress_recovery_window_summary.chaos-wave1.example.json`
-- candidate lineage and growth funnel:
-  `mechanics/method-growth/parts/candidate-lineage/`
-- route-fork, session-branch, and automation follow-through projections:
-  `mechanics/growth-cycle/`, backed by the shared deterministic core at
-  `src/aoa_stats_builder/growth_cycle.py`
-- committed Component Refresh reference projection:
-  `mechanics/recurrence/parts/component-refresh/`, backed by
-  `src/aoa_stats_builder/component_refresh.py` and the reviewed-example adapter
-  at `src/aoa_stats_builder/component_refresh_sources.py`
-- committed Continuity Window reference projection:
-  `mechanics/recurrence/parts/continuity-window/`, backed by
-  `src/aoa_stats_builder/continuity_window.py` and the explicit owner
-  example/catalog adapter at `src/aoa_stats_builder/continuity_window_sources.py`
-- memory movement and return to owner:
-  `mechanics/boundary-bridge/parts/memory-owner-handoff/`, backed by the pure
-  projection and explicit owner-corpus adapter at
-  `src/aoa_stats_builder/memory_movement.py` and
-  `src/aoa_stats_builder/memory_movement_sources.py`
-- micro-friction contracts:
-  `mechanics/experience/parts/micro-friction-receipts/`
-- deployment and rollout observations:
-  `mechanics/release-support/parts/codex-deployment-rollout/`
-- Agon observability registries: `mechanics/agon/PARTS.md`
-
-The full operation inventory is machine-readable in
-[`mechanics/topology.json`](mechanics/topology.json).
+The operation route starts at [`mechanics/README.md`](mechanics/README.md); its
+machine-readable inventory and source-family crosswalk live in
+[`mechanics/topology.json`](mechanics/topology.json). The root README does not
+replay that changing part inventory.
 
 ## Build and verify
 
@@ -148,35 +104,9 @@ The active registry and watcher templates live in
 ignored `state/`; committed public output stays under `generated/`. Local live
 materialization includes only active profiles with `live_state_capable: true`,
 and its catalog lists only outputs actually materialized. Reference-only
-profiles remain in the committed catalog and stale runtime copies are removed.
-The managed inventory remains 25 read models: 22 active outputs plus three
-retired cleanup tombstones. The authored live-admitted allowlist contains 11.
-Checked-in trusted rollout history, the two committed cadence-example
-projections, Route Progression, Memory Movement, Stress Recovery, Codex Plane
-Deployment, Continuity Window, Component Refresh, and Titan Incarnation make
-up the 11 active reference-only surfaces. Owner Landing, Titan Summon, and
-Runtime Closeout are retired rather than reference-only.
-[`AOST-D-0003`](docs/decisions/AOST-D-0003-component-refresh-fixtures-are-not-live-state.md)
-is the selector and stale-cleanup precedent established for Component Refresh,
-while
-[`AOST-D-0004`](docs/decisions/AOST-D-0004-live-admission-requires-refresh-observation.md)
-requires a current owner source and an observable refresh route for every live
-profile. Continuity Window
-is excluded because its current owner inputs are a committed example/catalog
-chain rather than a real owner-runtime artifact or receipt. Codex Plane
-Deployment is likewise excluded because its current output comes from three
-committed 8Dionysus examples, not the deploy-local rollout artifact trio.
-The rollout-history pair is excluded because checked-in review history is not
-runtime state; the Campaign/Drift pair is excluded because its source is a
-three-example cadence chain rather than an active producer.
-Stress Recovery lacks a real publisher; Memory Movement reads real reviewed
-owner corpus truth, but that corpus has no refresh observation route yet.
-Owner Landing's standalone example aggregate is retired under AOST-D-0009,
-while its receipt kinds remain Supersession Drop inputs. Runtime Closeout is
-retired under AOST-D-0010 because the current `abyss-stack` trial receipt and
-the separate SDK return receipt do not share its historical wave ABI and no
-direct consumer requires the standalone snapshot. AOST-D-0006 still forbids
-treating those receipt contracts as implicit aliases.
+profiles remain in the committed catalog and retired profiles remain explicit
+stale-cleanup inputs. The authored profiles and indexed decisions own the exact
+current admission and lifecycle rationale.
 
 For read-only MCP use, follow
 [`stats/surface-catalog/CODEX_MCP.md`](stats/surface-catalog/CODEX_MCP.md).

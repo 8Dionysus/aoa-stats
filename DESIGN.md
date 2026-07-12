@@ -84,13 +84,16 @@ nearest mechanic part.
 | exact public surface state | target profile under `stats/read-models/` |
 | non-catalog input maturity | target record under `stats/operation-contracts/` |
 | active operation and placement | `mechanics/topology.json` and target part |
+| stable derived-view layering | `docs/ARCHITECTURE.md` |
 | material boundary rationale | source notes under `docs/decisions/` |
 | compact consumer discovery | generated catalog and read models |
 
-Entry README files are route atlases. They stay link-driven and do not carry
-changing profile counts, named live/reference rosters, retirement chronology,
-or mechanic-specific compatibility branches. Those facts remain discoverable
-from their authoritative sources and generated decision indexes.
+Entry README files are route atlases, and the public architecture document is
+a stable derived-view contract. They stay link-driven and do not carry changing
+profile counts, named live/reference rosters, retirement chronology,
+part-by-part operation inventories, or mechanic-specific compatibility
+branches. Those facts remain discoverable from their authoritative sources,
+the topology, and generated decision indexes.
 
 ## Core, adapter, and proof boundaries
 

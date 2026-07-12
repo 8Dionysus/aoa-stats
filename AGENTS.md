@@ -42,6 +42,11 @@ surface state belongs in `stats/read-models/`; non-catalog input maturity
 belongs in `stats/operation-contracts/`; operation detail belongs in the
 owning mechanic part; rationale belongs in `docs/decisions/`.
 
+Apply the same rule to public entrypoints. Root `README.md` and
+`docs/ARCHITECTURE.md` may explain stable routes and derived-view structure,
+but must not duplicate changing profile counts, named lifecycle rosters, or a
+part-by-part operation map.
+
 ## Repository contract
 
 `aoa-stats` has two cross-routed active homes:
