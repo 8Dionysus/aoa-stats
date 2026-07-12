@@ -61,7 +61,7 @@ def test_stress_recovery_chaos_wave1_docs_are_discoverable_and_bounded() -> None
     assert "docs/STRESS_RECOVERY_WINDOW_SUMMARIES.md" in part_readme
     assert chaos_route in guide
     assert "stress_recovery_window_summary.chaos-wave1.example.json" in guide
-    assert "stress_recovery_window_summary.chaos-wave1.example.json" in roadmap
+    assert "stress_recovery_window_summary.chaos-wave1.example.json" not in roadmap
     assert "bounded chaos-wave example" in guide
 
     for token in (
