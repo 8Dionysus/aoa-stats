@@ -101,6 +101,10 @@ Tracking starts with the first public release-prep baseline for this repository.
   AOST-D-0004; exact source resolution no longer carries a migration fallback,
   and repository validation pins the owner revision that carries current
   sibling refs inside the report.
+- Reduced the root roadmap to durable direction, owner routes, and alternating
+  cross-slice priorities. Exact catalog rosters, lifecycle counts, mechanic
+  payload lists, and compatibility chronology now stay with their authored or
+  generated owners, and focused tests reject their return to the roadmap.
 - Moved the shared Audit object, core-skill application, and surface-detection
   projections plus focused invariant tests out of the root builder/test
   monoliths into explicit object and shared core-skill observation cores while

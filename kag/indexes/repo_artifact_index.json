@@ -1730,7 +1730,7 @@
     },
     {
       "artifact_kind": "document",
-      "content_hash": "f763cd178de656f7cfc282a7cf7e6f4267ed32865733a53beb185b5dfc38c28c",
+      "content_hash": "2dab99a59dd4fd2c8e243d048de3fc0140f6ab9bde3257b0e82dbf0adcb3ff17",
       "id": "artifact:file:agents.md:a54ff182c7",
       "path": "AGENTS.md",
       "source_record_id": "file:agents.md:a54ff182c7",
@@ -1738,7 +1738,7 @@
     },
     {
       "artifact_kind": "document",
-      "content_hash": "40dc27391731f0855cfbdd4223f83d7515ba8ad07130d4d244d53f6ce0a1cab6",
+      "content_hash": "a7273c1c5e316fc0eddcea56059a3056ec0a3826d5d4c08fccd73d6d07a1eebe",
       "id": "artifact:file:changelog.md:06572a96a5",
       "path": "CHANGELOG.md",
       "source_record_id": "file:changelog.md:06572a96a5",
@@ -1762,7 +1762,7 @@
     },
     {
       "artifact_kind": "document",
-      "content_hash": "87908a98da38b2152424a1e5399e59c1bec27360ca93b3be17e0a58a74ad8fc3",
+      "content_hash": "e27055f8800f505b0f58c7726862963d1d780dc31947b41d4c6dc6ac498344f3",
       "id": "artifact:file:design.md:3dc5dd454e",
       "path": "DESIGN.md",
       "source_record_id": "file:design.md:3dc5dd454e",
@@ -1786,7 +1786,7 @@
     },
     {
       "artifact_kind": "document",
-      "content_hash": "9a00d5da45f16ccd69a535154243ef0b075dcb2040b3a5d2038d6cabbf468ad9",
+      "content_hash": "c2a13b09bb5e3582d46cf4af43320192604c6a91de88beb1010b1185be7a6ede",
       "id": "artifact:file:roadmap.md:683343bdf9",
       "path": "ROADMAP.md",
       "source_record_id": "file:roadmap.md:683343bdf9",
@@ -3610,7 +3610,7 @@
     },
     {
       "artifact_kind": "test",
-      "content_hash": "ffb8fd2155fabd12e6f620f35525981a50def2cb08e178dd4767dc63994fbcd1",
+      "content_hash": "9a03d4fcae26d861df61097a0702f68fd04154205a659b026a1eb4294d41083a",
       "id": "artifact:file:mechanics/antifragility/parts/stress-recovery-windows/tests/test_stress_recovery_summary_chaos_wave1.py:bdda6dd9fb",
       "path": "mechanics/antifragility/parts/stress-recovery-windows/tests/test_stress_recovery_summary_chaos_wave1.py",
       "source_record_id": "file:mechanics/antifragility/parts/stress-recovery-windows/tests/test_stress_recovery_summary_chaos_wave1.py:bdda6dd9fb",
@@ -7666,7 +7666,7 @@
     },
     {
       "artifact_kind": "test",
-      "content_hash": "6fe4c03e3bda18f20bdf4c7fdbffc09bce0d8d0fd0b75a41f96e7b1b30b36c4c",
+      "content_hash": "175afd71230af629b0f1b8de2893aec257dabb848f35307576dc13c9f7dfc20e",
       "id": "artifact:file:tests/test_roadmap_parity.py:574915dc67",
       "path": "tests/test_roadmap_parity.py",
       "source_record_id": "file:tests/test_roadmap_parity.py:574915dc67",
@@ -7699,7 +7699,7 @@
   ],
   "index_identity": {
     "artifact_kind": "repository_artifact_index",
-    "content_digest": "e2e47413599fa074cd325a059a99749000eed40292679745136c31c39078b46e",
+    "content_digest": "174ff185e254cc8f09767217b5788b7126911c30d3124550b0e0a69c13752b9c",
     "index_kind": "artifact",
     "local_id": "index:repo-local:artifacts",
     "schema_ref": "aoa-kag:schemas/repo-local-kag-repository-index.schema.json"
@@ -7723,7 +7723,7 @@
   },
   "schema_version": "aoa-repo-local-kag-repository-index-v1",
   "source_index": {
-    "content_digest": "abaf6b88615c839dd1f908d7659c5adfae21bf383ce80c578d78fc0478eca0b1",
+    "content_digest": "ee52f49e325b3e0a8c6a100f9ec99dbd2b63865c005045e38c9f6bd560d67a6d",
     "local_id": "index:repo-local:source-surfaces",
     "path": "kag/indexes/source_surface_index.json"
   },

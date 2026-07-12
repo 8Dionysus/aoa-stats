@@ -95,6 +95,11 @@ part-by-part operation inventories, or mechanic-specific compatibility
 branches. Those facts remain discoverable from their authoritative sources,
 the topology, and generated decision indexes.
 
+The root roadmap is a sequencing surface, not another inventory. It may name
+durable priorities and the alternating stats/mechanics rhythm, while exact
+surface state, operation membership, and shipped chronology remain with
+profiles, topology, generated discovery, decisions, and the changelog.
+
 ## Core, adapter, and proof boundaries
 
 Pure receipt-to-read-model rules belong in `src/aoa_stats_builder/`.

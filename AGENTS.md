@@ -47,6 +47,11 @@ Apply the same rule to public entrypoints. Root `README.md` and
 but must not duplicate changing profile counts, named lifecycle rosters, or a
 part-by-part operation map.
 
+`ROADMAP.md` owns direction, priority, and cross-slice sequencing. It routes
+exact current state to profiles, topology, generated discovery, decisions, and
+history instead of replaying surface rosters, live/retired counts, mechanic
+payload lists, or compatibility chronology.
+
 ## Repository contract
 
 `aoa-stats` has two cross-routed active homes:
