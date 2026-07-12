@@ -77,6 +77,45 @@ def test_root_routes_expose_design_source_home_and_mechanics() -> None:
     assert "alternating cross-slices" in design
 
 
+def test_source_home_entrypoints_route_mutable_status_to_authored_owners() -> None:
+    root_agents = read_text("AGENTS.md")
+    stats_agents = read_text("stats/AGENTS.md")
+    stats_readme = read_text("stats/README.md")
+    profiles_readme = read_text("stats/read-models/README.md")
+    profiles_agents = read_text("stats/read-models/AGENTS.md")
+    mechanics_agents = read_text("mechanics/AGENTS.md")
+
+    for route in (
+        "source_home.manifest.json",
+        "intake-contract/README.md",
+        "read-models/README.md",
+        "operation-contracts/README.md",
+        "surface-catalog/README.md",
+    ):
+        assert route in stats_readme
+
+    for route in (
+        "surface-profile.schema.json",
+        "generated/summary_surface_catalog.min.json",
+        "mechanics/topology.json",
+        "docs/decisions/README.md",
+    ):
+        assert route in profiles_readme
+
+    assert (
+        "Do not turn this root card into a profile-by-profile status roster"
+        in root_agents
+    )
+    assert "do not hand-maintain mutable" in stats_agents
+    assert "Do not maintain profile counts" in profiles_readme
+    assert "Do not copy those changing facts into this README" in stats_readme
+    assert "Do not copy a mutable stats status roster" in mechanics_agents
+    assert "Do not copy named surface state" in profiles_agents
+
+    assert "## Current canonical routes" not in stats_readme
+    assert "The current inventory contains" not in profiles_readme
+
+
 def test_live_session_docs_match_profile_derived_refresh_inventories() -> None:
     refresh_live_stats = load_refresh_live_stats_module()
     docs = read_text(

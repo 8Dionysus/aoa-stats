@@ -3,25 +3,22 @@
 ## Role
 
 `aoa-stats` is AoA's derived observability organ. It turns bounded,
-source-owned evidence into deterministic read models that help humans and
-tools see movement without replacing the sources that give that movement
-meaning.
+source-owned evidence into deterministic read models without replacing the
+sources that give that movement meaning.
 
 ## Thesis
 
-Useful observability needs two different kinds of structure:
+Useful observability needs two structures:
 
 - a source home that says what a stats object means
 - mechanics homes that say how repeatable operations produce, refresh,
   validate, and publish that object
 
-Keeping those structures cross-routed prevents two common failures: a flat
-repository where every operation becomes root-level glue, and an operation
-tree that quietly absorbs the source contracts it was meant to serve.
+Keeping them cross-routed prevents both a flat repository where every
+operation becomes root glue and an operation tree that absorbs the source
+contracts it was meant to serve.
 
 ## Appearance
-
-At maturity, the repository should read as:
 
 ```text
 aoa-stats/
@@ -29,14 +26,14 @@ aoa-stats/
 ├── mechanics/      repeatable operation packages and parts
 ├── src/            implementation libraries and access adapters
 ├── generated/      committed derived outputs
-├── schemas/        compatibility and published contract surfaces
+├── schemas/        stable published contract surfaces
 ├── scripts/        public, compatibility, and repo-wide entrypoints
 └── tests/          repository and public-contract validation
 ```
 
-Root publication districts remain legitimate by contract, not by inertia.
-Their authority is determined by authored profiles, topology, and route cards,
-not by path depth alone.
+Root publication districts remain legitimate by contract, not inertia. Their
+authority comes from profiles, topology, route cards, and validators rather
+than path depth.
 
 ## Anatomy
 
@@ -44,366 +41,198 @@ not by path depth alone.
 
 `stats/` owns source-authored semantics:
 
-- the receipt admission registry and bounded fixture used to exercise the
-  shared envelope
-- one profile per active or deferred read model under `stats/read-models/`
-- one authored source record per part-local observation contract that
-  deliberately does not publish a catalog profile under
-  `stats/operation-contracts/`
-- the families of read models this organ can honestly produce
-- the dimensions, windows, freshness states, and authority ceilings those
-  models use
-- the relationship between a family and its implementation, compatibility,
-  generated-output, and mechanics routes
+- receipt-envelope and event-kind admission meaning
+- active, deferred, and retired read-model profiles
+- bounded operation records for parts without a public catalog model
+- catalog posture, authority ceilings, and source-to-operation handoffs
+- the machine-readable source-family crosswalk
 
-The read-model profiles, rather than a Python constant table, are the source
-of the public catalog projection. They name the public schema/output routes,
-stronger-owner inputs, authority ceiling, lifecycle, deterministic order, and
-mechanics handoffs. Runtime code continues to live under `src/`; `stats/` is
-not a second Python package, an output dump, or an archive.
-
-Part-local observation contracts remain visible through
-`stats/operation-contracts/` when they have real mechanics payload but no
-public catalog surface. Each source record owns only the bounded stats
-question, evidence posture, authority ceiling, consumer risk, and return to
-stronger owners. The mechanic part remains the sole owner of schemas,
-examples, scripts, tests, and generated payload. This keeps the crosswalk
-complete without inventing fake surface profiles or a shadow mechanics tree.
-
-Checklist-only operations use the same split without pretending that prose is
-runtime binding. For Via Negativa, `stats/operation-contracts/` authors the
-bounded question and `symbolic_unbound` owner posture, while the Antifragility
-part owns the checklist and its focused structural proof. That proof constrains
-the pruning order, owner review, surviving provenance, and proof-failure route;
-it proves neither that a review occurred nor that stats may mutate a surface.
+Profiles, rather than Python tables or generated catalogs, own public
+read-model meaning. Operation records make non-catalog questions visible
+without copying mechanic payload or inventing a fake surface. Runtime code
+stays under `src/`; `stats/` is not an import package, output dump, receipt
+store, or archive.
 
 ### The `mechanics/` operation home
 
 `mechanics/` owns repeatable work around stats sources. Shared AoA mechanic
-names are reused when the operation has the same durable shape across organs;
-stats-specific work normally becomes a local part under that shared parent.
+names are reused only when the operation has the same durable shape across
+organs; stats-specific work becomes a local part under that parent.
 
-A real mechanic part makes its contract, payload or declared public surface,
-validation, and compatibility posture discoverable. Empty symmetry packages
-are not active mechanics.
+A real part exposes an owner contract, payload or declared public route,
+validation, and compatibility posture. Empty symmetry packages are not active.
+The topology returns every active part to the stats family it serves.
 
-### Implementation and compatibility districts
+### Implementation and publication districts
 
-`src/aoa_stats_builder/` and `src/aoa_stats_mcp/` remain implementation and
-access homes. Root `schemas/` and `generated/` are stable public publication
-districts. Root `scripts/`, `tests/`, `docs/`, `examples/`, and `manifests/`
-contain only repo-wide or explicit compatibility surfaces. Operation-local
-config, docs, examples, manifests, schemas, scripts, systemd templates, and
-focused tests live with the mechanic part that owns them.
+`src/aoa_stats_builder/` owns deterministic logic and source adapters.
+`src/aoa_stats_mcp/` is a read-only access plane. `schemas/` and `generated/`
+keep stable public paths.
 
-Compatibility applies to evidenced interfaces, not every name that once lived
-in a root file. `scripts/build_views.py` keeps the CLI, fan-out, current
-zero-argument builders, and explicitly tested legacy seams. An uncalled helper
-that merely duplicates a mechanic-owned adapter is removed once repo-family
-search finds no consumer or documented ABI.
+Root `scripts/`, `tests/`, `docs/`, `examples/`, and `manifests/` contain only
+repo-wide or explicit compatibility/public surfaces. Operation-owned config,
+docs, examples, schemas, scripts, units, and focused tests live under the
+nearest mechanic part.
 
-When one deterministic importable core serves several parts of the same
-mechanic, its shared focused test may live at the mechanic-package level only
-through an explicit `package_payload_roots` declaration in
-`mechanics/topology.json`. Part-specific payload and validation stay with the
-nearest part.
+## Authority surfaces
 
-The current Method Growth, Growth Cycle, and Audit observation cores keep pure
-receipt-to-read-model transformations in `src/aoa_stats_builder/`, while
-`scripts/build_views.py` remains the repo-wide input, fan-out, and publication
-facade. Shared implementation does not automatically imply shared proof
-ownership. Method Growth keeps common candidate and turnover normalization,
-but Candidate Lineage and Supersession Pruning each own their builder
-invariants in part-local test districts. Growth Cycle and the genuinely shared
-Audit selector retain package-level proof for behavior that crosses several
-parts. Audit keeps a shared core only for core-skill application
-and surface-strength detection because both use the same finish-stage receipt
-selector. Object observation has a separate core and part-local test boundary
-because it summarizes every admitted event kind. Neither implementation gains
-audit, routing, or proof authority.
+| Concern | Authoritative source |
+| --- | --- |
+| repository identity and edit route | root and nearest nested `AGENTS.md` |
+| durable architecture | `DESIGN.md` |
+| source-family map and root posture | `stats/source_home.manifest.json` |
+| exact public surface state | target profile under `stats/read-models/` |
+| non-catalog input maturity | target record under `stats/operation-contracts/` |
+| active operation and placement | `mechanics/topology.json` and target part |
+| material boundary rationale | source notes under `docs/decisions/` |
+| compact consumer discovery | generated catalog and read models |
 
-Source Coverage follows the separate single-part form. Its filesystem-free core
-audits the admitted feed against an optional source-registry baseline, and its
-producer invariants live with `mechanics/audit/parts/source-coverage/`.
-`boundary-bridge/consumer-regrounding` consumes the resulting catalog and thin
-signals but owns only the return-to-owner interpretation. This prevents a
-consumer mechanic or root integration test from becoming the behavioral proof
-home for an Audit producer.
+Entry README files are route atlases. They stay link-driven and do not carry
+changing profile counts, named live/reference rosters, retirement chronology,
+or mechanic-specific compatibility branches. Those facts remain discoverable
+from their authoritative sources and generated decision indexes.
 
-The shared receipt intake core follows the crossing form. Source-authored
-admission meaning and the event-kind registry stay under
-`stats/intake-contract/`; deterministic envelope validation, JSON/JSONL
-loading, latest-event deduplication, and conservative supersedes resolution
-are proved by `mechanics/boundary-bridge/parts/receipt-abi-crossing/`. The root
-builder re-exports that core and proves only build/fan-out integration. This
-keeps a repo-wide compatibility facade from becoming the owner of an operation
-used by every receipt-backed part.
+## Core, adapter, and proof boundaries
 
-Trusted Rollout History follows the compatibility-seam variant. Its pure core
-requires `rollout_latest` to resolve to a history row, while the root build
-facade intentionally retains the older behavior that an absent latest ref
-selects the final row. The exception stays in the facade, but the owning
-Release Support part proves both strict-core rejection and facade fallback.
-Root tests remain for repo-wide fan-out rather than mechanic-specific legacy
-branches.
+Pure receipt-to-read-model rules belong in `src/aoa_stats_builder/`.
+Filesystem loading, workspace discovery, CLI policy, write/check mode, and
+output fan-out stay at adapters and root entrypoints.
 
-Route Progression follows the single-part variant of the same architecture.
-Its stats profile owns the bounded question, reference posture, exact
-stronger-owner chain, and authority ceiling. A filesystem-free RPG core may
-project the committed legacy numeric receipt shape, while the part-local test
-district owns behavioral proof and `scripts/build_views.py` keeps only
-compatibility aliases and repo-wide fan-out. The RPG center retains vocabulary
-and stop-lines, `aoa-agents` retains the agent-layer overlay, `aoa-sdk` retains
-typed transport, and `aoa-skills` retains receipt truth. The current semantic
-`axis_delta_summary` contract is deliberately not converted into numeric
-totals, so Route Progression stays outside live state until a non-invented
-cross-owner projection contract exists.
+Shared implementation does not imply shared proof ownership:
 
-The first consumer return target is the exact current semantic schema and
-example in `aoa-skills`. Compatibility-fixture wording remains in the
-reference derivation posture only; it must not masquerade as stronger current
-owner truth or make a router prefer the legacy numeric shape.
+- one part owns proof of behavior unique to its output
+- package-level tests require a genuinely shared core and an explicit
+  `package_payload_roots` declaration
+- root tests prove repo-wide fan-out, public contracts, and compatibility
+  integration rather than operation-specific branches
 
-Runtime Closeout demonstrates the second half of that lifecycle. The earlier
-mechanics-led slice isolated its historical wave-receipt projection and proved
-that current `abyss-stack` trial receipts and `aoa-sdk` return receipts are
-different contracts. The following stats-led necessity audit found no current
-wave publisher and no direct consumer beyond a generated routing hint. The
-standalone builder, catalog output, and last repo-local Checkpoint part are
-therefore retired. The wave event kind and fixture remain generic evidence for
-Object, Repeated Window, and Source Coverage, while slot 22 and the former
-output name remain cleanup provenance. Removing the projection does not
-authorize an implicit kind conversion; a future closeout surface starts from
-a new owner-approved ABI, reviewed profile, and catalog slot.
+Compatibility applies to evidenced interfaces. A root CLI, builder, or alias
+may remain stable while uncalled helper symbols are removed after current
+caller, external-contract, and owner-part proof searches find none.
 
-Repeated Window follows a stats-led Recurrence boundary. The profile owns the
-bounded question: which admitted receipt activity was observed in each
-`observed_at` calendar-date bucket. A filesystem-free core may conserve and
-count those receipts, event kinds, object identities, and evidence refs, but a
-date bucket does not by itself establish change, repetition, cadence, or
-causality. Focused invariant proof belongs with the Repeated Window part while
-the root builder remains the repo-wide fan-out facade. The core reuses the
-receipt object-identity tuple already used by Object Observation; sharing that
-stable value rule does not merge the Recurrence and Audit questions.
+## Read-model lifecycle
 
-Titan Incarnation remains the active half of a shared-owner boundary. Its
-reference adapter reads the
-exact checked-in `aoa-agents` operator/runtime roster examples and the
-`aoa-sdk` v2 session-receipt example. A filesystem-free core validates that
-their Titan identities, active/locked partition, and gate assignments agree
-before deriving the 5/3/2 reference counts. Those examples are not current
-incarnations and do not admit the surface to live state.
+Lifecycle is source-owned and asymmetric:
 
-No committed owner swarm-ledger instance or closeout receipt supports the
-Titan Summon output. After the mechanics-led boundary correction made that
-absence explicit, the following stats-led slice retires the no-ledger baseline
-instead of carrying a content-free active surface. The former schema remains a
-stable contract-history route, while a source-home tombstone keeps the former
-output name in managed stale cleanup. No builder, committed payload, catalog
-entry, or root fan-out remains. A future observed projection must start from an
-owner-local ledger instance and a new reviewed active profile.
+- `active/` records author public catalog surfaces and build fan-out
+- `deferred/` records author evidence-gated candidates with explicit owner
+  inputs, risk, and activation gaps
+- `retired/` records are minimal cleanup/provenance tombstones with no builder,
+  payload, catalog entry, or active mechanic claim
 
-The same lifecycle test applies to Owner Landing without discarding its useful
-receipt vocabulary. The two landing event kinds remain admitted inputs to the
-active Supersession Drop projection, but their standalone aggregate has no
-current owner publisher or direct consumer beyond generated routing hints. The
-example-only builder, payload, and dedicated mechanic part are therefore
-retired; Method Growth retains only the shared normalization that an active
-turnover read model actually consumes.
+Catalog slots are stable identities, not dense positions. Retirement reserves
+the former slot and does not keep an empty operation package alive.
+Reintroduction is a new reviewed active-surface decision with current evidence,
+a producer, a new reviewed slot, and validation.
 
-Read-model lifecycle is source-owned and asymmetric by design:
+Generated outputs remain weaker projections of this lifecycle. A generated
+catalog is never the edit source merely because it is convenient to query.
 
-- `active/` records author public catalog surfaces and deterministic build
-  fan-out;
-- `deferred/` records author contract-only candidates, exact stronger-owner
-  inputs, evidence posture, consumer risk, and explicit activation gaps;
-- `retired/` records are minimal tombstones that preserve cleanup and decision
-  provenance but authorize no publication. Each one also reserves its former
-  catalog slot.
+## Live materialization
 
-Deferred is a governed incubation state, not a waiting-room label.
-Antifragility Vector is grounded in the ATM10-Agent runtime stressor publisher
-and the aoa-evals bounded posture contract, but its adaptation publisher,
-executed eval chain, stats intake registration, and repeated-window proof are
-still absent. The profile therefore publishes that partial chain and all four
-gaps without acquiring a builder, output, active slot, live admission, or MCP
-claim. Its mechanic-local schema example stays suppressed and numeric-null
-until evidence can justify values.
+`live_state_capable` is authored source meaning, not an implementation
+default. Live refresh derives its allowlist from active profiles and its stale
+cleanup universe from active plus retired records.
 
-Generated outputs and catalogs are weaker projections of that lifecycle. Live
-refresh derives its materialization allowlist from active profiles and its
-stale-file cleanup universe from active plus retired records. This lets an
-output leave the active repository without becoming an undeletable deployed
-ghost or forcing historical payload back into source authority.
-
-Catalog order is stable identity rather than dense ordinal position. Retiring
-a surface leaves a reserved gap and does not renumber later profiles. Active
-and retired profiles must not share a slot; a newly introduced surface uses a
-new reviewed slot unless a separate migration explicitly changes public
-identity. A retired former mechanic route records provenance in Git and does
-not force an empty operation package to survive.
-
-Generated artifacts never become source authority merely because they are
-committed or convenient to query.
-
-Local live state is an authored-profile projection, not a second hardcoded
-output inventory. The live refresh mechanic materializes only active profiles
-with `live_state_capable: true`, publishes a catalog for the surfaces actually
-materialized, and cleans stale files across the full managed profile set.
-For Component Refresh specifically, the reviewed-example adapter may build the
-committed public snapshot but is excluded from live mode until a real
-owner-runtime source exists. The selector admits a profile; it does not by
-itself certify the provenance declared by other `true` profiles.
-
-Continuity Window is a separate audited reference boundary. Its committed
-adapter may read the committed cross-owner example chain, but a filesystem-free
-core must validate continuity, revision, reanchor, anchor, playbook, memo, and
-eval coherence before projection. A status such as `reanchored` cannot
-manufacture a successful-reanchor count; only explicit timeline evidence can.
-Until an owner-runtime continuity artifact or receipt exists, the surface stays
-absent from local live materialization.
-
-Codex Plane Deployment is the stats-led counterpart. Its committed snapshot
-may derive from owner-authored rollout examples, but those examples are not
-current deployment evidence. The projection core must be filesystem-free, and
-the source adapter must expose separate `reference` and `live` entry paths.
-Live mode reads only the three deploy-local trust, regeneration, and rollout
-artifacts from an explicit workspace root, never falls back to examples, and
-omits or cleans the optional surface when that runtime chain is absent. The
-authored profile remains non-live until the real producer, artifacts, and
-refresh trigger are proven together.
-
-Trusted Rollout History is a separate mechanics-led release-support boundary.
-It consumes exactly the four checked-in owner-history surfaces under
-`8Dionysus/generated/codex/rollout/`, validates their lifecycle and reference
-coherence in a filesystem-free core, and projects the operations and drift
-companions without treating a reviewed historical latest record as current
-workspace state. Its source adapter is committed-history only; it has no live
-fallback and no deployment-trio responsibility.
-
-Rollout Cadence is a third, deliberately separate source context. The campaign,
-drift-review, and rollback-followthrough examples form one immutable
-owner-example bundle, but the resulting operations keep their mechanic
-owners: campaign projection belongs to release support and drift review belongs
-to audit. Shared validation may be reused across those projections without
-merging their operation ownership or promoting examples into checked-in
-history. Both cadence profiles remain reference-only until a real cadence
-producer and refresh route exist.
-
-Live admission is an atomic source-and-observation boundary. A source may be
-authentic owner truth and still be unsuitable for continuously advertised
-local state when no refresh trigger observes it. Memory Movement therefore
-keeps its reviewed `aoa-memo` corpus adapter and committed snapshot, while its
-live selector stays closed until catalog, object, reviewed-intake, and landing
-movement can trigger refresh through an explicit contract. Owner Landing stays
-outside active publication because its event kinds have no real publisher or
-direct consumer, while Stress Recovery stays reference-only while its eval is
-draft and its only resolvable report is an example. The Owner Landing schema
-and receipt ABI remain contract history and shared turnover input; Stress
-Recovery's committed summary remains a bounded reference snapshot.
+Live admission requires both a current owner source and an observation route
+that refreshes when the source changes. A resolvable adapter, committed
+example, or static report is not enough for continuously advertised state.
+Missing live input omits or cleans a surface; it never authorizes fallback to
+an example or retired default.
 
 ## Operation
 
 The refactor advances in alternating cross-slices:
 
 ```text
-mechanic route/part
-        ↕ explicit crosswalk
 stats source family
+        ↕ explicit crosswalk
+mechanic route/part
         ↕
 implementation + compatibility + generated output
 ```
 
 One slice has one lead:
 
-1. A mechanics-led slice names or localizes one repeatable operation and
-   updates only the necessary source-family crosswalk.
-2. A stats-led slice strengthens one source-family contract and updates only
+1. A stats-led slice strengthens one source-family contract and updates only
    the mechanics routes needed to keep it operable.
+2. A mechanics-led slice names or localizes one evidenced operation and
+   updates only the required source-family crosswalk.
 3. The next slice changes the lead.
 
-This alternating rhythm is part of the architecture. It keeps mechanics from
-becoming a taxonomy without sources, and keeps `stats/` from becoming a design
-map without executable operations.
+This rhythm keeps mechanics from becoming taxonomy without sources and keeps
+`stats/` from becoming a design map without executable operations.
 
 ## Authority model
 
-Stats facts are projections, not promotions of authority.
+Stats facts are projections, not promotions:
 
-- Source repositories own their receipts, verdicts, route state, memories,
-  quests, runtime evidence, and domain meaning.
-- `aoa-stats` owns the deterministic transformation and the exact shape of its
-  derived read models.
-- A summary may preserve an upstream authority or confidence label, but cannot
-  strengthen it.
-- Missing, stale, rejected, or unregistered evidence remains observable as
-  such; it is not silently converted into zero, success, or absence.
-- Evidence references are preferred over copies of owner artifacts.
+- source repositories own receipts, verdicts, route state, memory, quests,
+  runtime evidence, and domain meaning
+- `aoa-stats` owns deterministic transformation and exact derived shape
+- summaries may preserve upstream labels but cannot strengthen them
+- missing, stale, rejected, or unregistered evidence remains visible
+- evidence references are preferred over copied owner artifacts
 
 ## Shared mechanic vocabulary
 
-AoA organs repeat a common mechanic vocabulary. `aoa-stats` should reuse only
-the subset supported by current operations and payloads. A local operation is
-a part of a shared parent unless it has a distinct repeatable lifecycle,
-owner boundary, stop-lines, and focused validation of its own.
+Reuse only common AoA mechanics supported by current operations and payload.
+A local operation is a part of a shared parent unless it proves a distinct
+lifecycle, owner boundary, stop lines, and focused validation.
 
-The topology manifest is the authoritative inventory of active packages and
-parts. Documentation may explain that inventory but must not invent additional
-active routes.
+`mechanics/topology.json` is the active inventory. Documentation explains it
+but cannot invent another package or part.
 
 ## Design principles
 
 1. **Owner evidence before projection.** No read model outranks its source.
 2. **Source meaning before operation convenience.** Mechanics serve stats
    contracts; they do not swallow them.
-3. **One active home per payload.** Compatibility is explicit, not duplicated
-   canon.
-4. **Shared parent, local part.** Reuse AoA mechanic language where the
-   lifecycle is genuinely shared.
-5. **Cross-routed growth.** Every active stats family can find its mechanic,
-   and every mechanic part can find the stats family it serves.
-6. **Determinism and visible freshness.** The same registered evidence yields
-   the same projection, with staleness and absence preserved.
-7. **Thin access planes.** CLI, systemd, and MCP surfaces call bounded core
-   behavior without becoming owner truth.
+3. **One active home per payload.** Compatibility is explicit, not duplicated.
+4. **Shared parent, local part.** Reuse common language only for a genuinely
+   shared lifecycle.
+5. **Cross-routed growth.** Every family can find its mechanic and every part
+   can find its stats family.
+6. **Determinism and visible freshness.** Staleness and absence stay visible.
+7. **Thin access planes.** CLI, systemd, and MCP do not become owner truth.
+8. **Thin entrypoints.** Route docs point to owners instead of replaying
+   changing status.
 
 ## Good shape
 
-- a source family names its semantics and authority ceiling
-- its manifest entry points to implementation, output, and mechanic routes
+- a source family names semantics and an authority ceiling
+- its manifest points to implementation, output, and mechanic routes
 - a mechanic part owns one coherent repeatable operation
-- root entrypoints are either canonical by declaration or thin compatibility
-  surfaces
-- validators check the crosswalk in both directions
+- root entrypoints are canonical by declaration or thin compatibility
+- validators check both directions of the crosswalk
 
 ## Bad shape
 
-- creating every sibling mechanic package only for visual symmetry
-- treating every stats summary name as a new top-level mechanic
-- moving source schemas or authored meaning under mechanics because a builder
-  uses them
-- keeping two active copies of a payload during migration
-- allowing generated counts to make claims the owner evidence does not support
+- creating packages only for visual symmetry
+- treating every summary name as a top-level mechanic
+- moving authored meaning under mechanics because a builder uses it
+- keeping two active payload copies during migration
+- allowing generated counts to exceed owner evidence
+- copying a changing surface roster into root or family guidance
 
-## Relationship to root guidance
+## Relationship to guidance
 
 `AGENTS.md` is the operating route card. This document defines the durable
-shape and tradeoffs behind that route. Nested route cards narrow the law for a
-source family, mechanic package, part, implementation, or compatibility
-district.
+shape behind it. Nested cards narrow the law for a family, mechanic,
+implementation, or compatibility district.
 
-`ROADMAP.md` decides sequencing and remaining work. `docs/decisions/` records
-durable choices only when the rationale cannot be recovered adequately from
-the design and topology surfaces themselves.
+`ROADMAP.md` owns sequencing. `docs/decisions/` owns durable rationale when it
+cannot be recovered from design and owner contracts. Generated indexes support
+lookup but do not own decisions.
 
 ## Use by agents
 
 Before changing structure, identify:
 
 1. the source-owned fact being observed
-2. the `stats/` family that owns the derived meaning
-3. the shared mechanic parent and local part that own the operation
-4. the current canonical payload and any compatibility consumers
+2. the `stats/` family that owns derived meaning
+3. the mechanic parent and part that own the operation
+4. the current payload and compatibility consumers
 5. the focused validator that proves the cross-contract
 
-If one of these is unknown, make the route explicit before moving payloads.
+If one is unknown, make the route explicit before moving payload.

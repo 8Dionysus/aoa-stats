@@ -171,6 +171,10 @@ Tracking starts with the first public release-prep baseline for this repository.
   proof-failure stop lines with the common center while keeping the operation
   checklist-only, `symbolic_unbound`, non-mutating, and outside MCP/runtime
   activation.
+- Slimmed root and stats source-home guidance into owner-routing atlases:
+  exact surface state remains in authored profiles and operation records,
+  mechanic behavior remains part-local, and durable rationale remains in
+  indexed decisions instead of being replayed as a drifting status roster.
 
 ## [0.1.3] - 2026-04-23
 

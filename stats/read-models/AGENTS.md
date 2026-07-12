@@ -43,11 +43,6 @@ or the upstream facts summarized by a profile.
   reference route and out of the live catalog.
 - Do not add Python, generated catalogs, live receipts, or copied owner
   payloads here.
-- For Antifragility Vector, keep ATM10-Agent stressor emission distinct from
-  the still-proposed adaptation delta and draft aoa-evals reports. The profile
-  remains deferred until stats intake registration, runtime adaptation
-  emission, an executed bounded eval chain, and a repeated same-family
-  owner/eval window all exist. Closing only one gap is not activation.
 - Change the authored profile first, then rebuild and check the generated
   catalog.
 - Reintroducing a retired question requires a newly reviewed active profile,
@@ -56,14 +51,9 @@ or the upstream facts summarized by a profile.
 - A retired `former_mechanic_routes` entry is provenance, not an active
   topology backlink. Do not keep an empty mechanic part alive only to satisfy
   a retired record.
-- For Repeated Window, a window is only the calendar-date prefix carried by
-  admitted `observed_at` values. Counts must not be described as proof of
-  change, repetition, cadence, causality, or owner chronology.
-- For Route Progression, return progression-reading vocabulary to the RPG
-  center, receipt payloads to `aoa-skills`, the agent-layer overlay to
-  `aoa-agents`, and typed transport to `aoa-sdk`. The committed legacy numeric
-  snapshot stays non-live while the current owner receipt is semantic and
-  non-score-shaped; the profile must not manufacture a numeric mapping.
+- Keep profile-specific status and invariants in the target profile, its
+  mechanic contract and focused tests, and an indexed decision when rationale
+  must survive. Do not copy named surface state into this family route card.
 
 ## Verification
 

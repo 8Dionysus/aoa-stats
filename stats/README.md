@@ -2,11 +2,23 @@
 
 `stats/` is the source-authored home for the meaning and authority ceilings of
 `aoa-stats` families. It tells a reader what the repository may derive and
-routes that meaning to the root contracts, implementation, outputs,
-validators, and mechanics that currently realize it.
+routes that meaning to current contracts, implementation, outputs, validators,
+and mechanics.
 
 It is not an importable Python package, generated-output directory, receipt
-store, or second copy of root contracts.
+store, runtime state home, or second copy of root contracts.
+
+## Operating card
+
+| Field | Route |
+| --- | --- |
+| role | source home for stats-authored meaning and lifecycle |
+| source map | `source_home.manifest.json` |
+| local law | `AGENTS.md`, then the selected family `AGENTS.md` |
+| operation map | `../mechanics/topology.json` |
+| generated discovery | `../generated/summary_surface_catalog.min.json` |
+| rationale | `../docs/decisions/README.md` and generated indexes |
+| validation | `python scripts/validate_stats_source_home.py` |
 
 ## Shape
 
@@ -16,146 +28,71 @@ stats/
 ├── README.md
 ├── source_home.manifest.json
 ├── intake-contract/
-│   ├── AGENTS.md
-│   ├── README.md
-│   ├── RECEIPT_ABI.md
-│   ├── event-kind-registry.json
-│   └── examples/
 ├── read-models/
-│   ├── AGENTS.md
-│   ├── README.md
-│   ├── surface-profile.schema.json
 │   ├── active/
 │   ├── deferred/
 │   └── retired/
 ├── operation-contracts/
-│   ├── AGENTS.md
-│   ├── README.md
-│   ├── operation-contract.schema.json
-│   └── active/
 └── surface-catalog/
-    ├── AGENTS.md
-    ├── README.md
-    ├── CODEX_MCP.md
-    └── CONSUMER_REGROUNDING.md
 ```
 
-## Families
+## Family map
 
-| Family | Authored meaning | Mechanics crosswalk |
+| Family | Owns | Start here |
 | --- | --- | --- |
-| `intake-contract` | Shared stats envelope and event-family admission law, without taking payload meaning from source owners. | `recurrence/live-receipt-refresh`, `boundary-bridge/receipt-abi-crossing` |
-| `read-models` | Active and deferred surface profiles plus minimal retired-output cleanup tombstones, including public routes, authority ceiling, stable catalog slots, lifecycle, and operation handoffs where applicable. | Profile-local mechanic routes under the shared mechanic parents. |
-| `operation-contracts` | One authored question, input posture, authority ceiling, consumer risk, and owner-return route per active non-catalog observation. | Exact reciprocal records for Agon registries, Experience contracts, via-negativa, and Titan memory/runtime parts. |
-| `surface-catalog` | Compact catalog profile and per-surface authority ceilings, without promoting summaries into owner truth. | `recurrence/component-manifests`, `boundary-bridge/consumer-regrounding` |
+| intake contract | shared envelope and event-kind admission, below payload owners | `intake-contract/README.md` |
+| read models | authored public, deferred, and retired surface lifecycle | `read-models/README.md` |
+| operation contracts | bounded non-catalog questions and owner-return posture | `operation-contracts/README.md` |
+| surface catalog | compact discovery and consumer caution posture | `surface-catalog/README.md` |
 
-The full mechanics paths, current root routes, and validators are recorded in
-`source_home.manifest.json`.
+The exact root, implementation, validator, generated, access, and mechanic
+routes are declared in `source_home.manifest.json`. Family README files are
+human atlases; their nearest `AGENTS.md` and authored records own local law.
 
-## Current canonical routes
+## Authority chain
 
-The source home now owns its authored records while preserving public
-publication and implementation districts:
+Use the smallest source that owns the question:
 
-- canonical receipt and catalog schemas remain under `schemas/`
-- the active event-kind registry and bounded build fixture live under
-  `stats/intake-contract/`
-- read-model source profiles live under `stats/read-models/`
-- non-catalog part-local operations cross back through one authored record in
-  `stats/operation-contracts/active/`
-- owner-local live-source registration belongs to the recurrence mechanic
-- committed derived surfaces remain under `generated/`
-- builders and readers remain under `src/`
-- the Component Refresh reference profile uses the filesystem-free projection
-  at `src/aoa_stats_builder/component_refresh.py` and the committed
-  reviewed-example adapter at
-  `src/aoa_stats_builder/component_refresh_sources.py`; it is not admitted to
-  local live state
-- the Continuity Window reference profile uses the filesystem-free projection
-  at `src/aoa_stats_builder/continuity_window.py` and the explicit
-  example/catalog adapter at `src/aoa_stats_builder/continuity_window_sources.py`;
-  its represented posture is committed reference state, not current runtime
-  continuity
-- the Codex Plane Deployment reference profile uses the filesystem-free
-  projection at `src/aoa_stats_builder/codex_plane_deployment.py` and the
-  owner-example adapter at
-  `src/aoa_stats_builder/codex_plane_deployment_sources.py`; its committed
-  8Dionysus example chain is not deploy-local rollout state
-- the Growth Cycle profile family shares deterministic projection through
-  `src/aoa_stats_builder/growth_cycle.py`, with its focused package check under
-  `mechanics/growth-cycle/tests/`
-- the Audit core-skill application and surface-detection profiles share the
-  finish-stage projection boundary at
-  `src/aoa_stats_builder/core_skill_observation.py`, while Object Observation
-  keeps its all-event projection separate at
-  `src/aoa_stats_builder/object_observation.py` and Source Coverage keeps its
-  registry/feed audit at `src/aoa_stats_builder/source_coverage.py`; focused
-  validation follows the package and part owners declared in
-  `mechanics/topology.json`
-- the Route Progression profile names the RPG center and stronger receipt,
-  agent-overlay, and SDK contract owners before handing its committed legacy
-  numeric snapshot to `src/aoa_stats_builder/route_progression.py`; current
-  semantic owner receipts are not scored, and focused proof belongs to
-  `mechanics/rpg/parts/route-progression/tests/`
-- the Runtime Closeout profile and repo-local Checkpoint package are retired;
-  the historical wave event kind remains generic intake evidence, its schema
-  remains contract history, and current trial or return receipts are not
-  silently treated as historical wave receipts
-- the Repeated Window profile owns the observed-activity question while
-  `src/aoa_stats_builder/repeated_window.py` conserves admitted receipt counts;
-  focused invariant proof belongs to
-  `mechanics/recurrence/parts/repeated-window/tests/`, and date buckets do not
-  become claims of change or recurrence
-- the active Titan Incarnation profile uses
-  `src/aoa_stats_builder/titan_observation_sources.py` to load the exact
-  committed example chain for validation by
-  `src/aoa_stats_builder/titan_observation.py`; Titan Summon's former no-ledger
-  baseline is retired, with only its public schema history and cleanup
-  tombstone retained; focused proof belongs to
-  `mechanics/titan/parts/incarnation-summon/tests/`
-- the standalone Owner Landing aggregate is retired because no current
-  publisher or direct consumer requires its example-only payload; its schema
-  remains contract history, its former output remains managed cleanup, and
-  its admitted receipt kinds continue to feed Supersession Drop under
-  `mechanics/method-growth/parts/supersession-pruning/`
-- public and compatibility commands remain under `scripts/`
-- repo-wide and compatibility validation remains under root `scripts/` and
-  `tests/`; operation-focused validation follows `mechanics/topology.json`,
-  normally at the nearest part and at package level only for declared shared
-  core
-- the current MCP remains a read-only derived access route to the root
-  boundaries, part-local live-source registry, catalog, and catalog-listed
-  surfaces
+| Question | Source |
+| --- | --- |
+| What does this public summary mean now? | its file under `read-models/active/` |
+| Why is a candidate not active? | its deferred profile and linked decision |
+| Why is a former output absent? | its retired tombstone and `decision_ref` |
+| What may a non-catalog part observe? | its record under `operation-contracts/active/` |
+| Where does operation payload live? | reciprocal part in `mechanics/topology.json` |
+| What is currently generated? | generated catalog/read model, checked against its source |
+| Why was a material boundary chosen? | source decision under `docs/decisions/` |
 
-`live_state_capable` in each active read-model profile is the executable live
-materialization selector. The committed catalog may include reference-only
-profiles; the local live catalog contains only admitted, materialized outputs.
-Cleanup covers every active output plus every retired-output tombstone.
-Component Refresh,
-Continuity Window, Codex Plane Deployment, trusted rollout-history, and both
-cadence projections are currently reference-only alongside Route Progression,
-Memory Movement, Stress Recovery Window, and Titan Incarnation. Stress
-Recovery still lacks a real publisher; Memory Movement has a
-real reviewed owner corpus but no refresh observation route. The
-selector and stale-cleanup precedent is recorded for Component Refresh in
-`docs/decisions/AOST-D-0003-component-refresh-fixtures-are-not-live-state.md`;
-the current-source plus observation requirement is recorded in
-`docs/decisions/AOST-D-0004-live-admission-requires-refresh-observation.md`.
-The semantic-versus-numeric Route Progression boundary is recorded in
-`docs/decisions/AOST-D-0005-route-progression-semantic-receipts-are-not-numeric-live-state.md`.
-The historical-wave versus current-owner Runtime Closeout ABI boundary is
-recorded in
-`docs/decisions/AOST-D-0006-runtime-closeout-wave-receipts-are-not-current-trial-live-state.md`;
-its later standalone-surface retirement is recorded in
-`docs/decisions/AOST-D-0010-runtime-closeout-wave-snapshot-is-contract-history-not-active-observability.md`.
-The committed-roster versus observed-swarm Titan boundary is recorded in
-`docs/decisions/AOST-D-0007-titan-reference-rosters-are-not-observed-swarm-activity.md`.
-Titan Summon's removal from active stats and its cleanup-only lifecycle are
-recorded in
-`docs/decisions/AOST-D-0008-retired-outputs-remain-cleanup-tombstones-not-active-stats.md`.
-Owner Landing's retirement, retained turnover inputs, and stable catalog-slot
-law are recorded in
-`docs/decisions/AOST-D-0009-retirement-reserves-catalog-slots-without-preserving-empty-mechanics.md`.
-The selector does not independently certify any profile's source posture.
+Do not copy those changing facts into this README. A current roster belongs in
+authored records or generated lookup, not in an entrypoint snapshot.
 
-Follow the family route card before changing any of those paths.
+## Root districts
+
+Canonical public schemas remain under `schemas/`; committed derived outputs
+remain under `generated/`; implementation remains under `src/`; public and
+compatibility commands remain under `scripts/`; focused operation payload and
+proof remain under `mechanics/`.
+
+The repo-local MCP reads derived surfaces only. It does not own profile state,
+source facts, proof, routing, workflow, memory, or runtime truth.
+
+## Stop lines
+
+- Do not add Python, generated payload, runtime state, or owner-local feeds
+  under `stats/`.
+- Do not hand-edit a generated catalog as source.
+- Do not let a profile or operation record outrank stronger-owner inputs.
+- Do not infer live state from a committed example or resolvable adapter.
+- Do not keep a named surface-status roster in this entrypoint.
+
+## Validation
+
+```bash
+python -m json.tool stats/source_home.manifest.json >/dev/null
+python scripts/validate_stats_source_home.py
+python scripts/validate_mechanics_topology.py
+python scripts/build_views.py --check
+```
+
+Run the focused validator and tests named by the family or mechanic part you
+change, then close through `python scripts/release_check.py`.

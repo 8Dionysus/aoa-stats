@@ -40,6 +40,9 @@ not active here unless the topology names a real local operation.
   `package_payload_roots` declaration in `topology.json`.
 - Stable catalog schemas and committed generated read models stay at their
   root public paths and are owned through `stats/read-models/` profiles.
+- Exact surface lifecycle and live/reference posture stay in authored
+  profiles; mechanics docs describe operations and route back instead of
+  replaying a changing stats roster.
 - Root commands survive only as public, compatibility, or repo-wide
   entrypoints.
 - Historical receipts live under package-local `legacy/`; they never become
