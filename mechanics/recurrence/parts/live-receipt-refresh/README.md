@@ -17,30 +17,23 @@ The source registry, watcher templates, operator guide, and focused tests are
 part-local. Public compatibility commands remain at root `scripts/` and load
 the canonical assets from this part.
 
-## Live inventory contract
+## Profile-derived live inventory contract
 
 - active profiles plus retired tombstones under `stats/read-models/` define the
-  managed output universe: currently 22 active and three retired names
+  managed stale-cleanup universe
 - only profiles with `live_state_capable: true` enter the live build allowlist
-  (currently 11 authored profiles)
 - `state/generated/summary_surface_catalog.min.json` lists only outputs
   actually admitted and materialized by that live run
 - cleanup still covers every managed active output, so an older runtime copy
   of a reference-only surface is removed
-- the Component Refresh, Continuity Window, Codex Plane Deployment, Memory
-  Movement, Route Progression, Stress Recovery, trusted rollout-history, and
-  cadence-example adapters are never implicit live fallbacks
+- an active reference-only adapter and a retired builder are never implicit
+  live fallbacks
 
-All 14 non-live managed names are therefore absent from live output: 11 active
-committed/reference profiles require both a current owner source and an
-observation route, while three retired names exist only for cleanup. Stress
-Recovery still lacks its named owner publisher. Owner Landing and Runtime
-Closeout are retired; their still-useful receipt kinds remain inputs to active
-generic or turnover summaries without standalone builders. Memory Movement
-reads a real reviewed `aoa-memo` corpus,
-but the watcher does not observe changes to its catalog, object, reviewed
-intake, or landing-receipt roots; the memo writeback receipt log is not a
-substitute for that missing corpus trigger.
+Exact membership and counts are read from `stats/read-models/active/` and
+`stats/read-models/retired/`; this part does not maintain a second roster.
+Part-local tests load those source records independently and prove the live,
+reference-only cleanup, and retired cleanup partitions against the refresh
+implementation.
 
 The active registry excludes the historical runtime-wave log. Current
 `abyss-stack` trial receipts and SDK return receipts have distinct contracts;

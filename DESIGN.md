@@ -159,6 +159,13 @@ example, or static report is not enough for continuously advertised state.
 Missing live input omits or cleans a surface; it never authorizes fallback to
 an example or retired default.
 
+The live-refresh mechanic owns the set algebra and failure behavior, not a
+second inventory: admission is derived from active profiles, cleanup from
+active profiles plus retired tombstones, and catalog membership from outputs
+actually materialized. Exact members and cardinalities are read from the
+authored profiles by runtime code and part-local proof instead of being copied
+into mechanic documentation or root documentation tests.
+
 ## Operation
 
 The refactor advances in alternating cross-slices:

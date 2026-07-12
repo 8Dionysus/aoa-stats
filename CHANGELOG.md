@@ -36,6 +36,11 @@ Tracking starts with the first public release-prep baseline for this repository.
 
 ### Changed
 
+- Returned live-refresh inventory truth to authored read-model profiles:
+  mechanic contracts and operator guidance now describe profile-derived set
+  rules without copied counts or complete rosters, while part-local proof loads
+  active and retired records directly and the root docs suite no longer owns
+  operation-specific inventory parity.
 - Localized derived-signal precedence and anti-loop guidance under the
   Boundary Bridge consumer-regrounding part, replacing the Wave-4 root document
   with a mechanic-owned route and focused proof.

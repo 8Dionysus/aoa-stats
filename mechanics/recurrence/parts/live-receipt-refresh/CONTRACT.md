@@ -35,9 +35,12 @@ admitted by the `intake_contract` family.
 - unknown event kinds fail before a summary is built
 - missing or invalid required publishers remain visible as errors
 - a surface with `live_state_capable: false` is not materialized or cataloged
-- the current 22-active plus three-retired managed universe yields exactly 11
-  admitted live outputs, 11 reference-only active cleanup targets, and three
-  retired cleanup targets
+- admitted outputs equal the active authored profiles whose
+  `live_state_capable` selector is true
+- non-admitted active outputs equal the active authored profiles whose selector
+  is false, and remain cleanup targets rather than live fallbacks
+- retired cleanup targets equal the authored retired tombstones; the managed
+  cleanup universe is the union of active outputs and retired targets
 - resolving a current owner path on demand does not replace a refresh
   observation route
 - cleanup covers the full active-output plus retired-tombstone set, so stale
@@ -114,7 +117,8 @@ profile-by-profile audits.
 
 This part operates on stats source-family id `intake_contract`. The reciprocal
 route is recorded in `stats/source_home.manifest.json` and
-`mechanics/topology.json`.
+`mechanics/topology.json`. Exact live and cleanup membership comes from
+`stats/read-models/active/` and `stats/read-models/retired/`, not this contract.
 
 The selector/output split and stale-cleanup precedent is recorded for Component
 Refresh in

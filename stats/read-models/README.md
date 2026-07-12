@@ -43,6 +43,11 @@ requires a current owner source plus an observation route that notices source
 movement. Missing live input never authorizes fallback to examples or retired
 defaults.
 
+Live-refresh runtime code and part-local proof derive exact allowlist and
+cleanup membership directly from the active and retired profile records. Their
+mechanic guidance must describe the selection rule without copying profile
+counts or a complete lifecycle roster.
+
 ## Current-state lookup
 
 Do not maintain profile counts, named live/reference rosters, retirement

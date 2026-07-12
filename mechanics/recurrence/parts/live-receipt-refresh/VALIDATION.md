@@ -22,19 +22,16 @@ by fixture tests.
 
 The focused refresh tests must also prove:
 
-- the live allowlist is derived from active profiles with
+- the expected inventory is loaded independently from
+  `stats/read-models/active/` and `stats/read-models/retired/`, without a copied
+  fixture roster
+- the live allowlist equals the active profiles with
   `live_state_capable: true`
-- the authored live-admitted allowlist is exactly 11 while the cleanup universe
-  still contains all 22 active outputs plus the retired Owner Landing, Runtime
-  Closeout, and Titan Summon output names
-- the 11 reference-only active profiles, including Route Progression, Memory
-  Movement, Stress Recovery, trusted rollout-history,
-  and both cadence projections, are absent from the live output and live catalog
-- the retired Owner Landing, Runtime Closeout, and Titan Summon builders and
-  catalog entries stay absent while their tombstones remove stale runtime copies
-- stale reference-only runtime files, including all three newly closed
-  selectors and all four audited rollout and cadence companions, are removed
-  on non-empty and empty receipt paths
+- the managed cleanup universe equals active outputs plus retired tombstones
+- every reference-only active and retired output is absent from the live output
+  and live catalog and is removed on non-empty and empty receipt paths
+- retired standalone builders cannot re-enter fan-out through their cleanup
+  tombstones
 - a real current owner source without a refresh observation route, as with the
   reviewed memory corpus, remains insufficient for live admission
 - live refresh passes an explicit Codex Plane `live` source mode and workspace
