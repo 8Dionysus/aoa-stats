@@ -1730,7 +1730,7 @@
     },
     {
       "artifact_kind": "document",
-      "content_hash": "3da68c1ca79edcb7aa327555fcba5a3e19cef6afd1c6ca116addb524ac9bce4a",
+      "content_hash": "eef156c841d57a8eacfca735a68df886a3ef510836808aec9f1b37b573670fd0",
       "id": "artifact:file:agents.md:a54ff182c7",
       "path": "AGENTS.md",
       "source_record_id": "file:agents.md:a54ff182c7",
@@ -1738,7 +1738,7 @@
     },
     {
       "artifact_kind": "document",
-      "content_hash": "af735f9881af969560d12a758e88dab7ae8c5d21c884fa7aca10a84c2e411bbb",
+      "content_hash": "3de09206111f270c26115e5d1e1616de81984ac10dcab31971334cd1f91c6f63",
       "id": "artifact:file:changelog.md:06572a96a5",
       "path": "CHANGELOG.md",
       "source_record_id": "file:changelog.md:06572a96a5",
@@ -1762,7 +1762,7 @@
     },
     {
       "artifact_kind": "document",
-      "content_hash": "02882a71849601ba673efae3ed7db5e9894960072066ebb32d78d02c6d0068f6",
+      "content_hash": "972be851e7f68fe48a6bfb49c5f05785fe78dc2aa43cf0acd287392b2d2c180e",
       "id": "artifact:file:design.md:3dc5dd454e",
       "path": "DESIGN.md",
       "source_record_id": "file:design.md:3dc5dd454e",
@@ -1818,14 +1818,6 @@
     },
     {
       "artifact_kind": "document",
-      "content_hash": "edb5224e8010d27bab5625265fbfd310ec848f9a7f12754abe09bf94abca821c",
-      "id": "artifact:file:docs/component_refresh_summaries.md:8f694cc641",
-      "path": "docs/COMPONENT_REFRESH_SUMMARIES.md",
-      "source_record_id": "file:docs/component_refresh_summaries.md:8f694cc641",
-      "surface_state": "authored_source"
-    },
-    {
-      "artifact_kind": "document",
       "content_hash": "9075be77ae41b9d417b42f48a0eed85e1451b5eed9fb9911748fafb57705a9a7",
       "id": "artifact:file:docs/derived_signal_hygiene.md:ad04348f5b",
       "path": "docs/DERIVED_SIGNAL_HYGIENE.md",
@@ -1834,26 +1826,10 @@
     },
     {
       "artifact_kind": "document",
-      "content_hash": "a560fb85946f2dcaa75e18e7d8e7d5193d2f3af20223eabde90950f9d5fbde59",
-      "id": "artifact:file:docs/growth_funnel_summary.md:069884f418",
-      "path": "docs/GROWTH_FUNNEL_SUMMARY.md",
-      "source_record_id": "file:docs/growth_funnel_summary.md:069884f418",
-      "surface_state": "authored_source"
-    },
-    {
-      "artifact_kind": "document",
       "content_hash": "9224d0f99c451e3b8d424e63db62dd73ae44fbb4298ba75a3ce265348b248f26",
       "id": "artifact:file:docs/readme.md:0b5ca119d2",
       "path": "docs/README.md",
       "source_record_id": "file:docs/readme.md:0b5ca119d2",
-      "surface_state": "authored_source"
-    },
-    {
-      "artifact_kind": "document",
-      "content_hash": "9f2da3af6ef6d09a08b8d071dc8da6429aee1cac7c8a18cb4f4e2717627fdd60",
-      "id": "artifact:file:docs/recurrence_derived_summaries.md:d44351f4b3",
-      "path": "docs/RECURRENCE_DERIVED_SUMMARIES.md",
-      "source_record_id": "file:docs/recurrence_derived_summaries.md:d44351f4b3",
       "surface_state": "authored_source"
     },
     {
@@ -2474,7 +2450,7 @@
     },
     {
       "artifact_kind": "document",
-      "content_hash": "8c696de4109666ea1f9534eb2daf8ff3200cb81e0a60dc410420ec87c9818ddf",
+      "content_hash": "7261a9cc4df4373463e6eb248a8b0d9830224befbff0fe05628831b3ef8553de",
       "id": "artifact:file:mechanics/readme.md:c091f898d3",
       "path": "mechanics/README.md",
       "source_record_id": "file:mechanics/readme.md:c091f898d3",
@@ -6514,7 +6490,7 @@
     },
     {
       "artifact_kind": "config",
-      "content_hash": "c6acc705f61841f9778679e00386b40e758e9e894f1674df279f408e269241c1",
+      "content_hash": "151cbd565c5cd49c163e05515e11e534f88c8714b7a4339805ad20731ed36fde",
       "id": "artifact:file:mechanics/topology.json:c2f84a03b1",
       "path": "mechanics/topology.json",
       "source_record_id": "file:mechanics/topology.json:c2f84a03b1",
@@ -6874,7 +6850,7 @@
     },
     {
       "artifact_kind": "validator",
-      "content_hash": "f24dd4788cd1ad332a1de83fa1b69b79de0402c1f3ea6eaacc71caad2d7a1880",
+      "content_hash": "e5608e715b3150972329bec09ac25c0b83d3fa294c01177ad441b062a26cfba6",
       "id": "artifact:file:scripts/validate_repo.py:1c4be8b173",
       "path": "scripts/validate_repo.py",
       "source_record_id": "file:scripts/validate_repo.py:1c4be8b173",
@@ -7586,7 +7562,7 @@
     },
     {
       "artifact_kind": "config",
-      "content_hash": "034b4cbb758dcf4a0a2a366aa3c2f016be83b10e422c4d68c8139f1857bf28da",
+      "content_hash": "576293876a043b603164e415327837556bb4f1656826918a7891a776d2e471c0",
       "id": "artifact:file:stats/source_home.manifest.json:41b237ff45",
       "path": "stats/source_home.manifest.json",
       "source_record_id": "file:stats/source_home.manifest.json:41b237ff45",
@@ -7658,7 +7634,7 @@
     },
     {
       "artifact_kind": "test",
-      "content_hash": "724e7944afd7219ca6dac5a015f6e9a9f28170e6b3f5253064e7b98c4dc6b8a0",
+      "content_hash": "657932ab807ce086811685c1050c759dfedbeb2d643f848b88e054d10ac606e0",
       "id": "artifact:file:tests/test_docs_routes.py:2789463ffa",
       "path": "tests/test_docs_routes.py",
       "source_record_id": "file:tests/test_docs_routes.py:2789463ffa",
@@ -7723,7 +7699,7 @@
   ],
   "index_identity": {
     "artifact_kind": "repository_artifact_index",
-    "content_digest": "6c9e97bff9057dddd06491d4ea85cfe2c0ab1be6164b00df9f2c2d9c80d013fc",
+    "content_digest": "06fbec0f975f0f9c4f7eb16723f82de757ad936c5035b72346f7425cff1bb811",
     "index_kind": "artifact",
     "local_id": "index:repo-local:artifacts",
     "schema_ref": "aoa-kag:schemas/repo-local-kag-repository-index.schema.json"
@@ -7747,17 +7723,17 @@
   },
   "schema_version": "aoa-repo-local-kag-repository-index-v1",
   "source_index": {
-    "content_digest": "18af961222f682ed1bf739a7a40980e944036f95dbfafa93a90a808c56487cfe",
+    "content_digest": "3f99f5f9c0173e45656f75b36f537f84a4b09c62b33a7dd2824060f2e8507b05",
     "local_id": "index:repo-local:source-surfaces",
     "path": "kag/indexes/source_surface_index.json"
   },
   "summary": {
-    "entry_count": 965,
+    "entry_count": 962,
     "kind_counts": {
       "asset": 50,
       "config": 173,
       "dependency_manifest": 2,
-      "document": 455,
+      "document": 452,
       "generated_readmodel": 39,
       "index": 1,
       "license": 1,

@@ -1,6 +1,7 @@
 from __future__ import annotations
 
 import importlib.util
+import json
 import re
 from pathlib import Path
 
@@ -114,6 +115,41 @@ def test_source_home_entrypoints_route_mutable_status_to_authored_owners() -> No
 
     assert "## Current canonical routes" not in stats_readme
     assert "The current inventory contains" not in profiles_readme
+
+
+def test_part_local_docs_do_not_keep_migration_redirects() -> None:
+    docs_map = read_text("docs/README.md")
+    topology = json.loads(read_text("mechanics/topology.json"))
+    allowed_root_docs = set(
+        topology["root_payload_contract"]["allowed_exact"]["docs"]
+    )
+    retained_root_routes = {
+        route
+        for package in topology["active_packages"]
+        for part in package["active_part_routes"]
+        for route in part["retained_root_routes"]
+    }
+    routes = {
+        "docs/GROWTH_FUNNEL_SUMMARY.md": (
+            "mechanics/method-growth/parts/candidate-lineage/docs/"
+            "GROWTH_FUNNEL_SUMMARY.md"
+        ),
+        "docs/RECURRENCE_DERIVED_SUMMARIES.md": (
+            "mechanics/recurrence/parts/component-manifests/docs/"
+            "RECURRENCE_DERIVED_SUMMARIES.md"
+        ),
+        "docs/COMPONENT_REFRESH_SUMMARIES.md": (
+            "mechanics/recurrence/parts/component-refresh/docs/"
+            "COMPONENT_REFRESH_SUMMARIES.md"
+        ),
+    }
+
+    for former_route, owner_route in routes.items():
+        assert not (REPO_ROOT / former_route).exists()
+        assert (REPO_ROOT / owner_route).is_file()
+        assert owner_route in docs_map
+        assert former_route not in allowed_root_docs
+        assert former_route not in retained_root_routes
 
 
 def test_live_session_docs_match_profile_derived_refresh_inventories() -> None:

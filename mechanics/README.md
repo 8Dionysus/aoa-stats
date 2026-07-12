@@ -43,6 +43,9 @@ not active here unless the topology names a real local operation.
 - Exact surface lifecycle and live/reference posture stay in authored
   profiles; mechanics docs describe operations and route back instead of
   replaying a changing stats roster.
+- Part-local guides are the active human routes. Remove migration-era flat
+  documentation redirects after current consumers and provenance bridges
+  point to the owner part.
 - Root commands survive only as public, compatibility, or repo-wide
   entrypoints.
 - Historical receipts live under package-local `legacy/`; they never become
