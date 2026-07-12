@@ -9,6 +9,9 @@ Read the repository root `AGENTS.md` and `DESIGN.md` first. Then use
 ## Edit law
 
 - Keep source meaning and authority ceilings in `stats/`.
+- Read exact surface lifecycle and input posture from the reciprocal authored
+  profile or operation record. Do not copy a mutable stats status roster into
+  mechanics root or package guidance.
 - Keep repeatable operation payload under the nearest mechanic part.
 - Keep `src/` importable code separate from operation routing.
 - Retain a root schema, generated output, command, doc, or fixture only when

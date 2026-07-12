@@ -37,6 +37,10 @@ or source-owner facts. Those remain in the active routes named by
   it; it must not duplicate it.
 - Treat `source_home.manifest.json` as the machine-readable crosswalk. The
   branch READMEs explain it but do not override it.
+- Keep this source-home README and branch README files as route atlases. Exact
+  profile state belongs in the profile, operation maturity in its operation
+  record, and rationale in indexed decisions; do not hand-maintain mutable
+  surface counts or named live/reference rosters in entrypoint prose.
 - Treat each active profile's `live_state_capable` value as the source-owned
   live-materialization selector. Mechanics may clean stale runtime copies of a
   non-live surface, but they must not publish that surface into live state or a

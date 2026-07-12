@@ -13,7 +13,8 @@
     "Repeatable operation payloads and validation remain under mechanics/.",
     "Part-local observation contracts without public catalog surfaces have one authored meaning record under stats/operation-contracts/ and cross back to their mechanic owner.",
     "The repo-local MCP remains a read-only derived access route.",
-    "No generated catalog or owner payload is copied under stats/."
+    "No generated catalog or owner payload is copied under stats/.",
+    "Source-home README files route to authored records and do not duplicate mutable profile or operation status."
   ],
   "branches": [
     {
