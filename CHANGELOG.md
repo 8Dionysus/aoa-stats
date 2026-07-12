@@ -175,6 +175,9 @@ Tracking starts with the first public release-prep baseline for this repository.
   exact surface state remains in authored profiles and operation records,
   mechanic behavior remains part-local, and durable rationale remains in
   indexed decisions instead of being replayed as a drifting status roster.
+- Removed the three migration-era root documentation redirects for Candidate
+  Lineage, Component Manifests, and Component Refresh after active repository
+  and central provenance routes were re-grounded on their part-local owners.
 
 ## [0.1.3] - 2026-04-23
 

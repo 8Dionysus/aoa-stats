@@ -4,7 +4,7 @@
       "asset": 50,
       "config": 173,
       "dependency_manifest": 2,
-      "document": 455,
+      "document": 452,
       "generated_readmodel": 39,
       "index": 1,
       "license": 1,
@@ -23,7 +23,7 @@
     "command_role": {
       "builder": 10,
       "lane_entrypoint": 1,
-      "none": 870,
+      "none": 867,
       "script": 12,
       "test": 54,
       "validator": 18
@@ -41,13 +41,13 @@
       "provenance": 11,
       "readme": 81,
       "roadmap": 1,
-      "unknown_document": 116
+      "unknown_document": 113
     },
     "mechanics_role": {
       "legacy": 23,
       "mechanic_package": 51,
       "mechanic_part": 92,
-      "none": 458,
+      "none": 455,
       "part_contract": 41,
       "part_doc": 180,
       "part_schema": 58,
@@ -57,22 +57,22 @@
     "primary_kind": {
       "artifact": 91,
       "command": 95,
-      "document": 463,
+      "document": 460,
       "surface": 316
     },
     "surface_state": {
-      "authored_source": 898,
+      "authored_source": 895,
       "generated_readmodel": 44,
       "legacy": 23
     }
   },
   "coverage_summary": {
     "command_count": 95,
-    "document_count": 463,
+    "document_count": 460,
     "generated_count": 44,
-    "heading_count": 2006,
+    "heading_count": 2003,
     "mechanics_count": 507,
-    "record_count": 965,
+    "record_count": 962,
     "schema_count": 92,
     "script_count": 23,
     "test_count": 54,
@@ -81,7 +81,7 @@
   },
   "index_identity": {
     "artifact_kind": "source_surface_index",
-    "content_digest": "18af961222f682ed1bf739a7a40980e944036f95dbfafa93a90a808c56487cfe",
+    "content_digest": "3f99f5f9c0173e45656f75b36f537f84a4b09c62b33a7dd2824060f2e8507b05",
     "local_id": "index:repo-local:source-surfaces",
     "schema_ref": "aoa-kag:schemas/repo-local-kag-index.schema.json"
   },
@@ -24063,13 +24063,13 @@
         "state": "current"
       },
       "identity": {
-        "content_hash": "3da68c1ca79edcb7aa327555fcba5a3e19cef6afd1c6ca116addb524ac9bce4a",
+        "content_hash": "eef156c841d57a8eacfca735a68df886a3ef510836808aec9f1b37b573670fd0",
         "git_ref": "git-index-source-tree",
         "id": "file:agents.md:a54ff182c7",
         "mime": "text/markdown",
         "path": "AGENTS.md",
         "repo": "aoa-stats",
-        "size_bytes": 7850
+        "size_bytes": 8151
       },
       "mechanics_role": "none",
       "observed_form": "file",
@@ -24133,63 +24133,63 @@
           {
             "anchor": "cross-mode-law",
             "level": 2,
-            "line": 72,
+            "line": 77,
             "ref": "AGENTS.md#cross-mode-law",
             "title": "Cross-mode law"
           },
           {
             "anchor": "lifecycle-and-authority",
             "level": 2,
-            "line": 88,
+            "line": 93,
             "ref": "AGENTS.md#lifecycle-and-authority",
             "title": "Lifecycle and authority"
           },
           {
             "anchor": "agents-stack-law",
             "level": 2,
-            "line": 109,
+            "line": 114,
             "ref": "AGENTS.md#agents-stack-law",
             "title": "AGENTS stack law"
           },
           {
             "anchor": "memory-and-decision-routes",
             "level": 2,
-            "line": 120,
+            "line": 125,
             "ref": "AGENTS.md#memory-and-decision-routes",
             "title": "Memory and decision routes"
           },
           {
             "anchor": "derived-only-rules",
             "level": 2,
-            "line": 131,
+            "line": 136,
             "ref": "AGENTS.md#derived-only-rules",
             "title": "Derived-only rules"
           },
           {
             "anchor": "github-landing-workflow",
             "level": 2,
-            "line": 139,
+            "line": 144,
             "ref": "AGENTS.md#github-landing-workflow",
             "title": "GitHub landing workflow"
           },
           {
             "anchor": "verify",
             "level": 2,
-            "line": 161,
+            "line": 166,
             "ref": "AGENTS.md#verify",
             "title": "Verify"
           },
           {
             "anchor": "report",
             "level": 2,
-            "line": 181,
+            "line": 186,
             "ref": "AGENTS.md#report",
             "title": "Report"
           },
           {
             "anchor": "historical-reference",
             "level": 2,
-            "line": 187,
+            "line": 192,
             "ref": "AGENTS.md#historical-reference",
             "title": "Historical reference"
           }
@@ -24201,7 +24201,7 @@
       },
       "signs": {
         "attestation_ref": "",
-        "digest": "3da68c1ca79edcb7aa327555fcba5a3e19cef6afd1c6ca116addb524ac9bce4a",
+        "digest": "eef156c841d57a8eacfca735a68df886a3ef510836808aec9f1b37b573670fd0",
         "signature_ref": "",
         "verification_state": "digest-only"
       },
@@ -24249,13 +24249,13 @@
         "state": "current"
       },
       "identity": {
-        "content_hash": "af735f9881af969560d12a758e88dab7ae8c5d21c884fa7aca10a84c2e411bbb",
+        "content_hash": "3de09206111f270c26115e5d1e1616de81984ac10dcab31971334cd1f91c6f63",
         "git_ref": "git-index-source-tree",
         "id": "file:changelog.md:06572a96a5",
         "mime": "text/markdown",
         "path": "CHANGELOG.md",
         "repo": "aoa-stats",
-        "size_bytes": 17859
+        "size_bytes": 18091
       },
       "mechanics_role": "none",
       "observed_form": "file",
@@ -24312,175 +24312,175 @@
           {
             "anchor": "013-2026-04-23",
             "level": 2,
-            "line": 179,
+            "line": 182,
             "ref": "CHANGELOG.md#013-2026-04-23",
             "title": "[0.1.3] - 2026-04-23"
           },
           {
             "anchor": "summary",
             "level": 3,
-            "line": 181,
+            "line": 184,
             "ref": "CHANGELOG.md#summary",
             "title": "Summary"
           },
           {
             "anchor": "added-1",
             "level": 3,
-            "line": 193,
+            "line": 196,
             "ref": "CHANGELOG.md#added-1",
             "title": "Added"
           },
           {
             "anchor": "changed-1",
             "level": 3,
-            "line": 203,
+            "line": 206,
             "ref": "CHANGELOG.md#changed-1",
             "title": "Changed"
           },
           {
             "anchor": "validation",
             "level": 3,
-            "line": 209,
+            "line": 212,
             "ref": "CHANGELOG.md#validation",
             "title": "Validation"
           },
           {
             "anchor": "notes",
             "level": 3,
-            "line": 213,
+            "line": 216,
             "ref": "CHANGELOG.md#notes",
             "title": "Notes"
           },
           {
             "anchor": "012-2026-04-19",
             "level": 2,
-            "line": 218,
+            "line": 221,
             "ref": "CHANGELOG.md#012-2026-04-19",
             "title": "[0.1.2] - 2026-04-19"
           },
           {
             "anchor": "summary-1",
             "level": 3,
-            "line": 220,
+            "line": 223,
             "ref": "CHANGELOG.md#summary-1",
             "title": "Summary"
           },
           {
             "anchor": "added-2",
             "level": 3,
-            "line": 228,
+            "line": 231,
             "ref": "CHANGELOG.md#added-2",
             "title": "Added"
           },
           {
             "anchor": "changed-2",
             "level": 3,
-            "line": 235,
+            "line": 238,
             "ref": "CHANGELOG.md#changed-2",
             "title": "Changed"
           },
           {
             "anchor": "validation-1",
             "level": 3,
-            "line": 240,
+            "line": 243,
             "ref": "CHANGELOG.md#validation-1",
             "title": "Validation"
           },
           {
             "anchor": "notes-1",
             "level": 3,
-            "line": 244,
+            "line": 247,
             "ref": "CHANGELOG.md#notes-1",
             "title": "Notes"
           },
           {
             "anchor": "011-2026-04-12",
             "level": 2,
-            "line": 249,
+            "line": 252,
             "ref": "CHANGELOG.md#011-2026-04-12",
             "title": "[0.1.1] - 2026-04-12"
           },
           {
             "anchor": "summary-2",
             "level": 3,
-            "line": 251,
+            "line": 254,
             "ref": "CHANGELOG.md#summary-2",
             "title": "Summary"
           },
           {
             "anchor": "added-3",
             "level": 3,
-            "line": 259,
+            "line": 262,
             "ref": "CHANGELOG.md#added-3",
             "title": "Added"
           },
           {
             "anchor": "documentation",
             "level": 3,
-            "line": 267,
+            "line": 270,
             "ref": "CHANGELOG.md#documentation",
             "title": "Documentation"
           },
           {
             "anchor": "changed-3",
             "level": 3,
-            "line": 273,
+            "line": 276,
             "ref": "CHANGELOG.md#changed-3",
             "title": "Changed"
           },
           {
             "anchor": "validation-2",
             "level": 3,
-            "line": 280,
+            "line": 283,
             "ref": "CHANGELOG.md#validation-2",
             "title": "Validation"
           },
           {
             "anchor": "notes-2",
             "level": 3,
-            "line": 284,
+            "line": 287,
             "ref": "CHANGELOG.md#notes-2",
             "title": "Notes"
           },
           {
             "anchor": "010-2026-04-10",
             "level": 2,
-            "line": 288,
+            "line": 291,
             "ref": "CHANGELOG.md#010-2026-04-10",
             "title": "[0.1.0] - 2026-04-10"
           },
           {
             "anchor": "summary-3",
             "level": 3,
-            "line": 295,
+            "line": 298,
             "ref": "CHANGELOG.md#summary-3",
             "title": "Summary"
           },
           {
             "anchor": "added-4",
             "level": 3,
-            "line": 306,
+            "line": 309,
             "ref": "CHANGELOG.md#added-4",
             "title": "Added"
           },
           {
             "anchor": "included-in-this-release",
             "level": 3,
-            "line": 319,
+            "line": 322,
             "ref": "CHANGELOG.md#included-in-this-release",
             "title": "Included in this release"
           },
           {
             "anchor": "validation-3",
             "level": 3,
-            "line": 334,
+            "line": 337,
             "ref": "CHANGELOG.md#validation-3",
             "title": "Validation"
           },
           {
             "anchor": "notes-3",
             "level": 3,
-            "line": 340,
+            "line": 343,
             "ref": "CHANGELOG.md#notes-3",
             "title": "Notes"
           }
@@ -24492,7 +24492,7 @@
       },
       "signs": {
         "attestation_ref": "",
-        "digest": "af735f9881af969560d12a758e88dab7ae8c5d21c884fa7aca10a84c2e411bbb",
+        "digest": "3de09206111f270c26115e5d1e1616de81984ac10dcab31971334cd1f91c6f63",
         "signature_ref": "",
         "verification_state": "digest-only"
       },
@@ -24772,13 +24772,13 @@
         "state": "current"
       },
       "identity": {
-        "content_hash": "02882a71849601ba673efae3ed7db5e9894960072066ebb32d78d02c6d0068f6",
+        "content_hash": "972be851e7f68fe48a6bfb49c5f05785fe78dc2aa43cf0acd287392b2d2c180e",
         "git_ref": "git-index-source-tree",
         "id": "file:design.md:3dc5dd454e",
         "mime": "text/markdown",
         "path": "DESIGN.md",
         "repo": "aoa-stats",
-        "size_bytes": 9748
+        "size_bytes": 9971
       },
       "mechanics_role": "none",
       "observed_form": "file",
@@ -24877,70 +24877,70 @@
           {
             "anchor": "read-model-lifecycle",
             "level": 2,
-            "line": 113,
+            "line": 116,
             "ref": "DESIGN.md#read-model-lifecycle",
             "title": "Read-model lifecycle"
           },
           {
             "anchor": "live-materialization",
             "level": 2,
-            "line": 131,
+            "line": 134,
             "ref": "DESIGN.md#live-materialization",
             "title": "Live materialization"
           },
           {
             "anchor": "operation",
             "level": 2,
-            "line": 143,
+            "line": 146,
             "ref": "DESIGN.md#operation",
             "title": "Operation"
           },
           {
             "anchor": "authority-model",
             "level": 2,
-            "line": 166,
+            "line": 169,
             "ref": "DESIGN.md#authority-model",
             "title": "Authority model"
           },
           {
             "anchor": "shared-mechanic-vocabulary",
             "level": 2,
-            "line": 177,
+            "line": 180,
             "ref": "DESIGN.md#shared-mechanic-vocabulary",
             "title": "Shared mechanic vocabulary"
           },
           {
             "anchor": "design-principles",
             "level": 2,
-            "line": 186,
+            "line": 189,
             "ref": "DESIGN.md#design-principles",
             "title": "Design principles"
           },
           {
             "anchor": "good-shape",
             "level": 2,
-            "line": 201,
+            "line": 204,
             "ref": "DESIGN.md#good-shape",
             "title": "Good shape"
           },
           {
             "anchor": "bad-shape",
             "level": 2,
-            "line": 209,
+            "line": 212,
             "ref": "DESIGN.md#bad-shape",
             "title": "Bad shape"
           },
           {
             "anchor": "relationship-to-guidance",
             "level": 2,
-            "line": 218,
+            "line": 221,
             "ref": "DESIGN.md#relationship-to-guidance",
             "title": "Relationship to guidance"
           },
           {
             "anchor": "use-by-agents",
             "level": 2,
-            "line": 228,
+            "line": 231,
             "ref": "DESIGN.md#use-by-agents",
             "title": "Use by agents"
           }
@@ -24952,7 +24952,7 @@
       },
       "signs": {
         "attestation_ref": "",
-        "digest": "02882a71849601ba673efae3ed7db5e9894960072066ebb32d78d02c6d0068f6",
+        "digest": "972be851e7f68fe48a6bfb49c5f05785fe78dc2aa43cf0acd287392b2d2c180e",
         "signature_ref": "",
         "verification_state": "digest-only"
       },
@@ -25772,101 +25772,6 @@
         "state": "current"
       },
       "identity": {
-        "content_hash": "edb5224e8010d27bab5625265fbfd310ec848f9a7f12754abe09bf94abca821c",
-        "git_ref": "git-index-source-tree",
-        "id": "file:docs/component_refresh_summaries.md:8f694cc641",
-        "mime": "text/markdown",
-        "path": "docs/COMPONENT_REFRESH_SUMMARIES.md",
-        "repo": "aoa-stats",
-        "size_bytes": 388
-      },
-      "mechanics_role": "none",
-      "observed_form": "file",
-      "owner_return_route": {
-        "route_kind": "document_owner",
-        "surface": "docs/COMPONENT_REFRESH_SUMMARIES.md"
-      },
-      "provenance": {
-        "generated_by": "",
-        "materials": [],
-        "observed_by": "aoa-kag:scripts/generate_repo_local_kag_index.py",
-        "source_refs": [
-          {
-            "authority": "authored_source",
-            "path": "docs/COMPONENT_REFRESH_SUMMARIES.md",
-            "repo": "aoa-stats",
-            "role": "primary"
-          }
-        ],
-        "validated_by": [
-          "aoa-kag:scripts/validate_kag.py"
-        ]
-      },
-      "refs": {
-        "heading_refs": [
-          {
-            "anchor": "component-refresh-summary-compatibility-route",
-            "level": 1,
-            "line": 1,
-            "ref": "docs/COMPONENT_REFRESH_SUMMARIES.md#component-refresh-summary-compatibility-route",
-            "title": "Component refresh summary compatibility route"
-          }
-        ],
-        "line_refs": [
-          "docs/COMPONENT_REFRESH_SUMMARIES.md:1"
-        ],
-        "path_ref": "docs/COMPONENT_REFRESH_SUMMARIES.md"
-      },
-      "signs": {
-        "attestation_ref": "",
-        "digest": "edb5224e8010d27bab5625265fbfd310ec848f9a7f12754abe09bf94abca821c",
-        "signature_ref": "",
-        "verification_state": "digest-only"
-      },
-      "surface_state": "authored_source",
-      "toolchain": {
-        "detected_tools": [
-          "git",
-          "python"
-        ],
-        "owner_commands": [],
-        "required_tools": []
-      },
-      "validator_route": {
-        "route_kind": "source_fast",
-        "surface": "aoa-kag:scripts/validate_kag.py"
-      }
-    },
-    {
-      "abi": {
-        "abi_epoch": "source",
-        "artifact_class": "document",
-        "compatibility": "stable",
-        "contract_version": "none",
-        "schema_version": "none"
-      },
-      "access": {
-        "scope": "public",
-        "secrets_risk": "none"
-      },
-      "artifact_kind": "document",
-      "classification": {
-        "confidence": "high",
-        "primary_kind": "document"
-      },
-      "code_role": "none",
-      "command_role": "none",
-      "consumer_route": {
-        "route_kind": "resource",
-        "surface": "aoa-kag-mcp"
-      },
-      "document_role": "unknown_document",
-      "freshness": {
-        "checked_ref": "git-index-source-tree",
-        "mode": "source_snapshot",
-        "state": "current"
-      },
-      "identity": {
         "content_hash": "9075be77ae41b9d417b42f48a0eed85e1451b5eed9fb9911748fafb57705a9a7",
         "git_ref": "git-index-source-tree",
         "id": "file:docs/derived_signal_hygiene.md:ad04348f5b",
@@ -25997,101 +25902,6 @@
         "route_kind": "resource",
         "surface": "aoa-kag-mcp"
       },
-      "document_role": "unknown_document",
-      "freshness": {
-        "checked_ref": "git-index-source-tree",
-        "mode": "source_snapshot",
-        "state": "current"
-      },
-      "identity": {
-        "content_hash": "a560fb85946f2dcaa75e18e7d8e7d5193d2f3af20223eabde90950f9d5fbde59",
-        "git_ref": "git-index-source-tree",
-        "id": "file:docs/growth_funnel_summary.md:069884f418",
-        "mime": "text/markdown",
-        "path": "docs/GROWTH_FUNNEL_SUMMARY.md",
-        "repo": "aoa-stats",
-        "size_bytes": 378
-      },
-      "mechanics_role": "none",
-      "observed_form": "file",
-      "owner_return_route": {
-        "route_kind": "document_owner",
-        "surface": "docs/GROWTH_FUNNEL_SUMMARY.md"
-      },
-      "provenance": {
-        "generated_by": "",
-        "materials": [],
-        "observed_by": "aoa-kag:scripts/generate_repo_local_kag_index.py",
-        "source_refs": [
-          {
-            "authority": "authored_source",
-            "path": "docs/GROWTH_FUNNEL_SUMMARY.md",
-            "repo": "aoa-stats",
-            "role": "primary"
-          }
-        ],
-        "validated_by": [
-          "aoa-kag:scripts/validate_kag.py"
-        ]
-      },
-      "refs": {
-        "heading_refs": [
-          {
-            "anchor": "growth-funnel-summary-compatibility-route",
-            "level": 1,
-            "line": 1,
-            "ref": "docs/GROWTH_FUNNEL_SUMMARY.md#growth-funnel-summary-compatibility-route",
-            "title": "Growth funnel summary compatibility route"
-          }
-        ],
-        "line_refs": [
-          "docs/GROWTH_FUNNEL_SUMMARY.md:1"
-        ],
-        "path_ref": "docs/GROWTH_FUNNEL_SUMMARY.md"
-      },
-      "signs": {
-        "attestation_ref": "",
-        "digest": "a560fb85946f2dcaa75e18e7d8e7d5193d2f3af20223eabde90950f9d5fbde59",
-        "signature_ref": "",
-        "verification_state": "digest-only"
-      },
-      "surface_state": "authored_source",
-      "toolchain": {
-        "detected_tools": [
-          "git",
-          "python"
-        ],
-        "owner_commands": [],
-        "required_tools": []
-      },
-      "validator_route": {
-        "route_kind": "source_fast",
-        "surface": "aoa-kag:scripts/validate_kag.py"
-      }
-    },
-    {
-      "abi": {
-        "abi_epoch": "source",
-        "artifact_class": "document",
-        "compatibility": "stable",
-        "contract_version": "none",
-        "schema_version": "none"
-      },
-      "access": {
-        "scope": "public",
-        "secrets_risk": "none"
-      },
-      "artifact_kind": "document",
-      "classification": {
-        "confidence": "high",
-        "primary_kind": "document"
-      },
-      "code_role": "none",
-      "command_role": "none",
-      "consumer_route": {
-        "route_kind": "resource",
-        "surface": "aoa-kag-mcp"
-      },
       "document_role": "readme",
       "freshness": {
         "checked_ref": "git-index-source-tree",
@@ -26175,101 +25985,6 @@
       "signs": {
         "attestation_ref": "",
         "digest": "9224d0f99c451e3b8d424e63db62dd73ae44fbb4298ba75a3ce265348b248f26",
-        "signature_ref": "",
-        "verification_state": "digest-only"
-      },
-      "surface_state": "authored_source",
-      "toolchain": {
-        "detected_tools": [
-          "git",
-          "python"
-        ],
-        "owner_commands": [],
-        "required_tools": []
-      },
-      "validator_route": {
-        "route_kind": "source_fast",
-        "surface": "aoa-kag:scripts/validate_kag.py"
-      }
-    },
-    {
-      "abi": {
-        "abi_epoch": "source",
-        "artifact_class": "document",
-        "compatibility": "stable",
-        "contract_version": "none",
-        "schema_version": "none"
-      },
-      "access": {
-        "scope": "public",
-        "secrets_risk": "none"
-      },
-      "artifact_kind": "document",
-      "classification": {
-        "confidence": "high",
-        "primary_kind": "document"
-      },
-      "code_role": "none",
-      "command_role": "none",
-      "consumer_route": {
-        "route_kind": "resource",
-        "surface": "aoa-kag-mcp"
-      },
-      "document_role": "unknown_document",
-      "freshness": {
-        "checked_ref": "git-index-source-tree",
-        "mode": "source_snapshot",
-        "state": "current"
-      },
-      "identity": {
-        "content_hash": "9f2da3af6ef6d09a08b8d071dc8da6429aee1cac7c8a18cb4f4e2717627fdd60",
-        "git_ref": "git-index-source-tree",
-        "id": "file:docs/recurrence_derived_summaries.md:d44351f4b3",
-        "mime": "text/markdown",
-        "path": "docs/RECURRENCE_DERIVED_SUMMARIES.md",
-        "repo": "aoa-stats",
-        "size_bytes": 397
-      },
-      "mechanics_role": "none",
-      "observed_form": "file",
-      "owner_return_route": {
-        "route_kind": "document_owner",
-        "surface": "docs/RECURRENCE_DERIVED_SUMMARIES.md"
-      },
-      "provenance": {
-        "generated_by": "",
-        "materials": [],
-        "observed_by": "aoa-kag:scripts/generate_repo_local_kag_index.py",
-        "source_refs": [
-          {
-            "authority": "authored_source",
-            "path": "docs/RECURRENCE_DERIVED_SUMMARIES.md",
-            "repo": "aoa-stats",
-            "role": "primary"
-          }
-        ],
-        "validated_by": [
-          "aoa-kag:scripts/validate_kag.py"
-        ]
-      },
-      "refs": {
-        "heading_refs": [
-          {
-            "anchor": "recurrence-derived-summaries-compatibility-route",
-            "level": 1,
-            "line": 1,
-            "ref": "docs/RECURRENCE_DERIVED_SUMMARIES.md#recurrence-derived-summaries-compatibility-route",
-            "title": "Recurrence derived summaries compatibility route"
-          }
-        ],
-        "line_refs": [
-          "docs/RECURRENCE_DERIVED_SUMMARIES.md:1"
-        ],
-        "path_ref": "docs/RECURRENCE_DERIVED_SUMMARIES.md"
-      },
-      "signs": {
-        "attestation_ref": "",
-        "digest": "9f2da3af6ef6d09a08b8d071dc8da6429aee1cac7c8a18cb4f4e2717627fdd60",
         "signature_ref": "",
         "verification_state": "digest-only"
       },
@@ -35368,13 +35083,13 @@
         "state": "current"
       },
       "identity": {
-        "content_hash": "8c696de4109666ea1f9534eb2daf8ff3200cb81e0a60dc410420ec87c9818ddf",
+        "content_hash": "7261a9cc4df4373463e6eb248a8b0d9830224befbff0fe05628831b3ef8553de",
         "git_ref": "git-index-source-tree",
         "id": "file:mechanics/readme.md:c091f898d3",
         "mime": "text/markdown",
         "path": "mechanics/README.md",
         "repo": "aoa-stats",
-        "size_bytes": 2536
+        "size_bytes": 2711
       },
       "mechanics_role": "mechanic_package",
       "observed_form": "file",
@@ -35436,7 +35151,7 @@
       },
       "signs": {
         "attestation_ref": "",
-        "digest": "8c696de4109666ea1f9534eb2daf8ff3200cb81e0a60dc410420ec87c9818ddf",
+        "digest": "7261a9cc4df4373463e6eb248a8b0d9830224befbff0fe05628831b3ef8553de",
         "signature_ref": "",
         "verification_state": "digest-only"
       },
@@ -85509,13 +85224,13 @@
         "state": "current"
       },
       "identity": {
-        "content_hash": "c6acc705f61841f9778679e00386b40e758e9e894f1674df279f408e269241c1",
+        "content_hash": "151cbd565c5cd49c163e05515e11e534f88c8714b7a4339805ad20731ed36fde",
         "git_ref": "git-index-source-tree",
         "id": "file:mechanics/topology.json:c2f84a03b1",
         "mime": "application/json",
         "path": "mechanics/topology.json",
         "repo": "aoa-stats",
-        "size_bytes": 38422
+        "size_bytes": 38108
       },
       "mechanics_role": "mechanic_package",
       "observed_form": "file",
@@ -85548,7 +85263,7 @@
       },
       "signs": {
         "attestation_ref": "",
-        "digest": "c6acc705f61841f9778679e00386b40e758e9e894f1674df279f408e269241c1",
+        "digest": "151cbd565c5cd49c163e05515e11e534f88c8714b7a4339805ad20731ed36fde",
         "signature_ref": "",
         "verification_state": "digest-only"
       },
@@ -89602,13 +89317,13 @@
         "state": "current"
       },
       "identity": {
-        "content_hash": "f24dd4788cd1ad332a1de83fa1b69b79de0402c1f3ea6eaacc71caad2d7a1880",
+        "content_hash": "e5608e715b3150972329bec09ac25c0b83d3fa294c01177ad441b062a26cfba6",
         "git_ref": "git-index-source-tree",
         "id": "file:scripts/validate_repo.py:1c4be8b173",
         "mime": "text/x-python",
         "path": "scripts/validate_repo.py",
         "repo": "aoa-stats",
-        "size_bytes": 8137
+        "size_bytes": 8013
       },
       "mechanics_role": "none",
       "observed_form": "command",
@@ -89641,7 +89356,7 @@
       },
       "signs": {
         "attestation_ref": "",
-        "digest": "f24dd4788cd1ad332a1de83fa1b69b79de0402c1f3ea6eaacc71caad2d7a1880",
+        "digest": "e5608e715b3150972329bec09ac25c0b83d3fa294c01177ad441b062a26cfba6",
         "signature_ref": "",
         "verification_state": "digest-only"
       },
@@ -97930,13 +97645,13 @@
         "state": "current"
       },
       "identity": {
-        "content_hash": "034b4cbb758dcf4a0a2a366aa3c2f016be83b10e422c4d68c8139f1857bf28da",
+        "content_hash": "576293876a043b603164e415327837556bb4f1656826918a7891a776d2e471c0",
         "git_ref": "git-index-source-tree",
         "id": "file:stats/source_home.manifest.json:41b237ff45",
         "mime": "application/json",
         "path": "stats/source_home.manifest.json",
         "repo": "aoa-stats",
-        "size_bytes": 27410
+        "size_bytes": 27580
       },
       "mechanics_role": "none",
       "observed_form": "file",
@@ -97969,7 +97684,7 @@
       },
       "signs": {
         "attestation_ref": "",
-        "digest": "034b4cbb758dcf4a0a2a366aa3c2f016be83b10e422c4d68c8139f1857bf28da",
+        "digest": "576293876a043b603164e415327837556bb4f1656826918a7891a776d2e471c0",
         "signature_ref": "",
         "verification_state": "digest-only"
       },
@@ -98928,13 +98643,13 @@
         "state": "current"
       },
       "identity": {
-        "content_hash": "724e7944afd7219ca6dac5a015f6e9a9f28170e6b3f5253064e7b98c4dc6b8a0",
+        "content_hash": "657932ab807ce086811685c1050c759dfedbeb2d643f848b88e054d10ac606e0",
         "git_ref": "git-index-source-tree",
         "id": "file:tests/test_docs_routes.py:2789463ffa",
         "mime": "text/x-python",
         "path": "tests/test_docs_routes.py",
         "repo": "aoa-stats",
-        "size_bytes": 5529
+        "size_bytes": 6854
       },
       "mechanics_role": "none",
       "observed_form": "command",
@@ -98967,7 +98682,7 @@
       },
       "signs": {
         "attestation_ref": "",
-        "digest": "724e7944afd7219ca6dac5a015f6e9a9f28170e6b3f5253064e7b98c4dc6b8a0",
+        "digest": "657932ab807ce086811685c1050c759dfedbeb2d643f848b88e054d10ac606e0",
         "signature_ref": "",
         "verification_state": "digest-only"
       },

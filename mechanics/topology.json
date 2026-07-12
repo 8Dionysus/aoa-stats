@@ -31,11 +31,8 @@
       "docs": [
         "docs/ARCHITECTURE.md",
         "docs/BOUNDARIES.md",
-        "docs/COMPONENT_REFRESH_SUMMARIES.md",
         "docs/DERIVED_SIGNAL_HYGIENE.md",
-        "docs/GROWTH_FUNNEL_SUMMARY.md",
         "docs/README.md",
-        "docs/RECURRENCE_DERIVED_SUMMARIES.md",
         "docs/RELEASING.md",
         "docs/SURFACE_STRENGTH_MODEL.md"
       ],
@@ -714,9 +711,7 @@
             "examples",
             "tests"
           ],
-          "retained_root_routes": [
-            "docs/GROWTH_FUNNEL_SUMMARY.md"
-          ]
+          "retained_root_routes": []
         },
         {
           "path": "supersession-pruning",
@@ -759,9 +754,7 @@
             "scripts",
             "tests"
           ],
-          "retained_root_routes": [
-            "docs/RECURRENCE_DERIVED_SUMMARIES.md"
-          ]
+          "retained_root_routes": []
         },
         {
           "path": "component-refresh",
@@ -776,9 +769,7 @@
             "examples",
             "tests"
           ],
-          "retained_root_routes": [
-            "docs/COMPONENT_REFRESH_SUMMARIES.md"
-          ]
+          "retained_root_routes": []
         },
         {
           "path": "continuity-window",

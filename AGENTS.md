@@ -69,6 +69,11 @@ policy at the edge. Part-specific behavior is proved by its part, while a
 package-level test district requires a genuinely shared core and an explicit
 `package_payload_roots` declaration.
 
+A root documentation redirect follows the same evidence test. Retain it only
+for a current public consumer or explicit external contract. Once active
+readers point to the part-local owner, remove the redirect from topology and
+validation; Git history and provenance bridges preserve the former path.
+
 ## Cross-mode law
 
 Grow `stats/` and `mechanics/` together, alternating which side leads each

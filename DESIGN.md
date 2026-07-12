@@ -109,6 +109,9 @@ Shared implementation does not imply shared proof ownership:
 Compatibility applies to evidenced interfaces. A root CLI, builder, or alias
 may remain stable while uncalled helper symbols are removed after current
 caller, external-contract, and owner-part proof searches find none.
+Migration-era documentation redirects use the same rule: re-ground active
+consumer and provenance routes first, then retire the flat file rather than
+preserving a permanent second entrypoint to an already part-local owner.
 
 ## Read-model lifecycle
 
