@@ -74,6 +74,13 @@ policy at the edge. Part-specific behavior is proved by its part, while a
 package-level test district requires a genuinely shared core and an explicit
 `package_payload_roots` declaration.
 
+Apply the same evidence test to relocated owner references. Re-ground current
+authored consumers and fixtures on the canonical owner path before removing a
+translation alias; once no current consumer requires it, the exact source
+adapter must not preserve a hidden fallback merely because the surface remains
+reference-only. Reference posture limits publication authority, not source-ref
+precision.
+
 A root documentation redirect follows the same evidence test. Retain it only
 for a current public consumer or explicit external contract. Once active
 readers point to the part-local owner, remove the redirect from topology and

@@ -8,14 +8,6 @@ from .read_model_values import is_nonempty_string
 
 
 AOA_EVALS_REPORT_REF_PREFIX = "repo:aoa-evals/"
-COMMITTED_REFERENCE_LEGACY_REPORT_REF = (
-    "repo:aoa-evals/bundles/aoa-stress-recovery-window/reports/"
-    "example-report.json"
-)
-COMMITTED_REFERENCE_CURRENT_REPORT_PATH = Path(
-    "evals/comparison/longitudinal-window/aoa-stress-recovery-window/"
-    "reports/example-report.json"
-)
 
 
 def _owner_path(evals_root: Path, relative_path: Path) -> Path | None:
@@ -47,15 +39,6 @@ def resolve_aoa_evals_report_path(
     return _owner_path(evals_root, Path(*parts))
 
 
-def resolve_committed_reference_legacy_report_path(
-    evals_root: Path,
-    report_ref: Any,
-) -> Path | None:
-    if report_ref != COMMITTED_REFERENCE_LEGACY_REPORT_REF:
-        return None
-    return _owner_path(evals_root, COMMITTED_REFERENCE_CURRENT_REPORT_PATH)
-
-
 def _load_optional_json_object(path: Path | None) -> dict[str, Any] | None:
     if path is None or not path.is_file():
         return None
@@ -76,18 +59,4 @@ def load_stress_recovery_report(
 
     return _load_optional_json_object(
         resolve_aoa_evals_report_path(evals_root, report_ref)
-    )
-
-
-def load_stress_recovery_committed_reference_report(
-    evals_root: Path,
-    report_ref: Any,
-) -> dict[str, Any] | None:
-    """Load an exact ref, then the one explicit committed-reference relocation."""
-
-    report = load_stress_recovery_report(evals_root, report_ref)
-    if report is not None:
-        return report
-    return _load_optional_json_object(
-        resolve_committed_reference_legacy_report_path(evals_root, report_ref)
     )

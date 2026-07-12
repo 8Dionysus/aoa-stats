@@ -24,11 +24,19 @@ if str(SRC_ROOT) not in sys.path:
 from aoa_stats_builder import stress_recovery  # noqa: E402
 from aoa_stats_builder.receipt_abi import generated_from, load_receipts  # noqa: E402
 from aoa_stats_builder.stress_recovery_sources import (  # noqa: E402
-    COMMITTED_REFERENCE_CURRENT_REPORT_PATH,
-    COMMITTED_REFERENCE_LEGACY_REPORT_REF,
-    load_stress_recovery_committed_reference_report,
     load_stress_recovery_report,
     resolve_aoa_evals_report_path,
+)
+
+
+CURRENT_REPORT_REF = (
+    "repo:aoa-evals/evals/comparison/longitudinal-window/"
+    "aoa-stress-recovery-window/reports/example-report.json"
+)
+CURRENT_REPORT_PATH = Path(CURRENT_REPORT_REF.removeprefix("repo:aoa-evals/"))
+RETIRED_BUNDLE_REPORT_REF = (
+    "repo:aoa-evals/bundles/aoa-stress-recovery-window/"
+    "reports/example-report.json"
 )
 
 
@@ -40,7 +48,7 @@ def resolve_evals_root() -> Path:
         "/srv/AbyssOS/aoa-evals",
     )
     for candidate in candidates:
-        if candidate and (Path(candidate) / COMMITTED_REFERENCE_CURRENT_REPORT_PATH).is_file():
+        if candidate and (Path(candidate) / CURRENT_REPORT_PATH).is_file():
             return Path(candidate).expanduser().resolve()
     raise RuntimeError("could not resolve the aoa-evals committed reference root")
 
@@ -77,14 +85,12 @@ def stable_json(payload: dict[str, Any]) -> str:
     return json.dumps(payload, indent=2, sort_keys=False) + "\n"
 
 
-def test_core_and_explicit_reference_adapter_preserve_committed_output() -> None:
+def test_core_and_exact_reference_adapter_preserve_committed_output() -> None:
     receipts, source = load_checked_receipts()
     original_receipts = deepcopy(receipts)
     original_source = deepcopy(source)
     report_ref = stress_recovery.latest_stress_recovery_report_ref(receipts)
-    report = load_stress_recovery_committed_reference_report(
-        resolve_evals_root(), report_ref
-    )
+    report = load_stress_recovery_report(resolve_evals_root(), report_ref)
     original_report = deepcopy(report)
 
     projected = stress_recovery.build_stress_recovery_window_summary(
@@ -212,34 +218,24 @@ def test_exact_adapter_resolves_only_safe_aoa_evals_repo_refs(tmp_path: Path) ->
         assert load_stress_recovery_report(evals_root, invalid_ref) is None
 
 
-def test_committed_reference_legacy_alias_is_explicit(tmp_path: Path) -> None:
+def test_retired_bundle_path_is_not_translated(tmp_path: Path) -> None:
     evals_root = tmp_path / "aoa-evals"
-    current_path = evals_root / COMMITTED_REFERENCE_CURRENT_REPORT_PATH
+    current_path = evals_root / CURRENT_REPORT_PATH
     current_path.parent.mkdir(parents=True)
     current_path.write_text('{"report_id": "current-example"}\n', encoding="utf-8")
 
-    assert (
-        load_stress_recovery_report(
-            evals_root,
-            COMMITTED_REFERENCE_LEGACY_REPORT_REF,
-        )
-        is None
-    )
-    assert load_stress_recovery_committed_reference_report(
-        evals_root,
-        COMMITTED_REFERENCE_LEGACY_REPORT_REF,
-    ) == {"report_id": "current-example"}
+    assert load_stress_recovery_report(evals_root, CURRENT_REPORT_REF) == {
+        "report_id": "current-example"
+    }
+    assert load_stress_recovery_report(evals_root, RETIRED_BUNDLE_REPORT_REF) is None
+    assert resolve_aoa_evals_report_path(
+        evals_root, RETIRED_BUNDLE_REPORT_REF
+    ) != current_path.resolve()
 
     unrelated_legacy_ref = (
         "repo:aoa-evals/bundles/another-window/reports/example-report.json"
     )
-    assert (
-        load_stress_recovery_committed_reference_report(
-            evals_root,
-            unrelated_legacy_ref,
-        )
-        is None
-    )
+    assert load_stress_recovery_report(evals_root, unrelated_legacy_ref) is None
 
 
 @pytest.mark.parametrize("malformed", (False, True))

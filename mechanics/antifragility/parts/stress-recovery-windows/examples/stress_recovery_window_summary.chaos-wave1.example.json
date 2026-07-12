@@ -23,18 +23,18 @@
     "receipt_refs": [
       "abyss-stack:service_degradation_receipt_v1#runtime:degrade:route-api:2026-04-13T12:10:00Z:timeout-chaos",
       "abyss-stack:service_degradation_receipt_v1#runtime:degrade:route-api:2026-04-13T12:55:00Z:retrieval-outage-honesty",
-      "repo:aoa-kag/examples/projection_health_receipt.retrieval-outage-honesty.example.json"
+      "repo:aoa-kag/mechanics/antifragility/parts/projection-health/examples/projection_health_receipt.retrieval-outage-honesty.example.json"
     ],
     "eval_report_refs": [
-      "repo:aoa-evals/bundles/aoa-stress-recovery-window/reports/example-report.json",
-      "repo:aoa-evals/examples/runtime_evidence_selection.return-anchor-integrity.example.json"
+      "repo:aoa-evals/evals/comparison/longitudinal-window/aoa-stress-recovery-window/reports/example-report.json",
+      "repo:aoa-evals/mechanics/audit/parts/selected-evidence-packets/examples/runtime_evidence_selection.return-anchor-integrity.example.json"
     ],
     "route_hint_refs": [
       "repo:aoa-routing/mechanics/antifragility/parts/degraded-route-hints/examples/stress_navigation_hint.timeout-chaos.example.json",
       "repo:aoa-routing/mechanics/antifragility/parts/composite-stress-routing/examples/composite_stress_route_hint.retrieval-outage-honesty.example.json"
     ],
     "memo_context_refs": [
-      "repo:aoa-memo/examples/pattern.antifragility-stress-recovery-window.example.json"
+      "repo:aoa-memo/mechanics/antifragility/parts/recovery-pattern-memory/examples/pattern.antifragility-stress-recovery-window.example.json"
     ]
   },
   "counts": {

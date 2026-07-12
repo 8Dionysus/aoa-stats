@@ -670,12 +670,12 @@
     "evidence_refs": [
       {
         "kind": "bundle_report",
-        "ref": "repo:aoa-evals/bundles/aoa-stress-recovery-window/reports/example-report.json",
+        "ref": "repo:aoa-evals/evals/comparison/longitudinal-window/aoa-stress-recovery-window/reports/example-report.json",
         "role": "primary"
       },
       {
         "kind": "bundle_contract",
-        "ref": "repo:aoa-evals/bundles/aoa-stress-recovery-window/EVAL.md",
+        "ref": "repo:aoa-evals/evals/comparison/longitudinal-window/aoa-stress-recovery-window/EVAL.md",
         "role": "verdict-meaning"
       }
     ],
@@ -685,8 +685,8 @@
       "report_format": "comparative-summary",
       "verdict": "mixed",
       "claim_scope": "window_scoped",
-      "bundle_ref": "repo:aoa-evals/bundles/aoa-stress-recovery-window/EVAL.md",
-      "report_ref": "repo:aoa-evals/bundles/aoa-stress-recovery-window/reports/example-report.json",
+      "bundle_ref": "repo:aoa-evals/evals/comparison/longitudinal-window/aoa-stress-recovery-window/EVAL.md",
+      "report_ref": "repo:aoa-evals/evals/comparison/longitudinal-window/aoa-stress-recovery-window/reports/example-report.json",
       "case_count": 1,
       "score": null,
       "interpretation_bound": "Repeated-window stress recovery claim only on one named stressor family."

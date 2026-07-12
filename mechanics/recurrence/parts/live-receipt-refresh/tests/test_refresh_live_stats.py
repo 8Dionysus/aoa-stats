@@ -572,7 +572,9 @@ def test_refresh_live_state_does_not_admit_stress_report_without_live_profile(
     report_path = (
         federation_root
         / "aoa-evals"
-        / "bundles"
+        / "evals"
+        / "comparison"
+        / "longitudinal-window"
         / "aoa-stress-recovery-window"
         / "reports"
         / "example-report.json"
@@ -645,12 +647,12 @@ def test_refresh_live_state_does_not_admit_stress_report_without_live_profile(
                 "evidence_refs": [
                     {
                         "kind": "bundle_report",
-                        "ref": "repo:aoa-evals/bundles/aoa-stress-recovery-window/reports/example-report.json",
+                        "ref": "repo:aoa-evals/evals/comparison/longitudinal-window/aoa-stress-recovery-window/reports/example-report.json",
                     }
                 ],
                 "payload": {
                     "eval_name": "aoa-stress-recovery-window",
-                    "report_ref": "repo:aoa-evals/bundles/aoa-stress-recovery-window/reports/example-report.json",
+                    "report_ref": "repo:aoa-evals/evals/comparison/longitudinal-window/aoa-stress-recovery-window/reports/example-report.json",
                 },
             }
         )
@@ -711,7 +713,9 @@ def test_refresh_live_state_does_not_admit_vendored_stress_report_without_live_p
     vendored_report_path = (
         vendored_repo_root
         / "aoa-evals"
-        / "bundles"
+        / "evals"
+        / "comparison"
+        / "longitudinal-window"
         / "aoa-stress-recovery-window"
         / "reports"
         / "vendored-report.json"
@@ -784,12 +788,12 @@ def test_refresh_live_state_does_not_admit_vendored_stress_report_without_live_p
                 "evidence_refs": [
                     {
                         "kind": "bundle_report",
-                        "ref": "repo:aoa-evals/bundles/aoa-stress-recovery-window/reports/vendored-report.json",
+                        "ref": "repo:aoa-evals/evals/comparison/longitudinal-window/aoa-stress-recovery-window/reports/vendored-report.json",
                     }
                 ],
                 "payload": {
                     "eval_name": "aoa-stress-recovery-window",
-                    "report_ref": "repo:aoa-evals/bundles/aoa-stress-recovery-window/reports/vendored-report.json",
+                    "report_ref": "repo:aoa-evals/evals/comparison/longitudinal-window/aoa-stress-recovery-window/reports/vendored-report.json",
                 },
             }
         )

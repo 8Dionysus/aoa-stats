@@ -18,12 +18,10 @@
 - `src/aoa_stats_builder/stress_recovery_sources.py` is the source adapter. Its
   ordinary loader resolves only a safe, exact `repo:aoa-evals/...` reference
   beneath the configured `aoa-evals` root.
-- The committed fixture still names the historical report ref
-  `repo:aoa-evals/bundles/aoa-stress-recovery-window/reports/example-report.json`.
-  Only `load_stress_recovery_committed_reference_report` may map that exact ref
-  to the current committed example path. No other ref receives an alias.
-- The ordinary exact loader is the live-facing boundary and must not apply the
-  committed-reference alias when a report is missing or malformed.
+- The committed fixture names the canonical report ref
+  `repo:aoa-evals/evals/comparison/longitudinal-window/aoa-stress-recovery-window/reports/example-report.json`.
+  Committed and live-facing builds use the same exact loader; no retired
+  bundle-path alias or missing-source fallback is part of the adapter contract.
 - Missing, malformed, or structurally incomplete reports produce an explicit
   `insufficient_evidence` projection; they do not authorize example fallback
   or a stronger claim.
@@ -34,6 +32,6 @@ The committed summary is a draft/example read model and
 `live_state_capable: false`. It remains weaker than owner receipts and eval
 reports and never becomes proof, routing, gate, identity, or workflow truth.
 
-Future live activation requires all conditions named by AOST-D-0004: an
+Live activation requires all conditions named by AOST-D-0004: an
 activated owner eval producer, a current report contract, and a refresh-observed
 receipt/report chain. A readable committed example alone is not sufficient.

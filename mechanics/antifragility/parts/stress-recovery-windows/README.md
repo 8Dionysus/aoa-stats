@@ -12,11 +12,11 @@ The implementation is split between:
 - focused projection and adapter tests under this part's `tests/` district
 
 The current profile is an active public contract but a false-live committed
-draft/example surface. The adapter's legacy report relocation is available
-only through the explicitly named committed-reference loader; the exact live
-loader never falls back to that example.
+draft/example surface. Its committed receipt names the current mechanic-owned
+`aoa-evals` report path, and the source adapter resolves that exact ref without
+translation or fallback.
 
 Read `CONTRACT.md` for the local stop-lines,
 `docs/STRESS_RECOVERY_WINDOW_SUMMARIES.md` for the detailed source posture, and
-`VALIDATION.md` for executable checks. Future live activation is governed by
+`VALIDATION.md` for executable checks. Live activation is governed by
 `docs/decisions/AOST-D-0004-live-admission-requires-refresh-observation.md`.

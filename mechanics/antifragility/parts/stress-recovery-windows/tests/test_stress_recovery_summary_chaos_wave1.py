@@ -35,39 +35,7 @@ def assert_repo_ref_matches_neighbor(repo_ref: str, env_name: str, repo_name: st
     if repo_root is None:
         return
     relative_path = repo_ref.removeprefix(prefix)
-    if (repo_root / relative_path).is_file():
-        return
-    topology_fallbacks = {
-        (
-            "aoa-memo",
-            "examples/pattern.antifragility-stress-recovery-window.example.json",
-        ): [
-            "mechanics/antifragility/examples/pattern.antifragility-stress-recovery-window.example.json",
-            "mechanics/antifragility/parts/recovery-pattern-memory/examples/pattern.antifragility-stress-recovery-window.example.json",
-        ],
-        (
-            "aoa-evals",
-            "bundles/aoa-stress-recovery-window/reports/example-report.json",
-        ): [
-            "evals/comparison/longitudinal-window/aoa-stress-recovery-window/reports/example-report.json"
-        ],
-        (
-            "aoa-evals",
-            "examples/runtime_evidence_selection.return-anchor-integrity.example.json",
-        ): [
-            "mechanics/audit/parts/selected-evidence-packets/examples/runtime_evidence_selection.return-anchor-integrity.example.json"
-        ],
-        (
-            "aoa-kag",
-            "examples/projection_health_receipt.retrieval-outage-honesty.example.json",
-        ): [
-            "mechanics/antifragility/parts/projection-health/examples/projection_health_receipt.retrieval-outage-honesty.example.json"
-        ],
-    }
-    for fallback in topology_fallbacks.get((repo_name, relative_path), []):
-        if (repo_root / fallback).is_file():
-            return
-    raise AssertionError(repo_ref)
+    assert (repo_root / relative_path).is_file(), repo_ref
 
 
 def test_stress_recovery_chaos_wave1_docs_are_discoverable_and_bounded() -> None:
@@ -118,17 +86,17 @@ def test_stress_recovery_chaos_wave1_example_refs_existing_neighbor_surfaces() -
     payload = load_json("examples/stress_recovery_window_summary.chaos-wave1.example.json")
     assert isinstance(payload, dict)
     assert_repo_ref_matches_neighbor(
-        "repo:aoa-kag/examples/projection_health_receipt.retrieval-outage-honesty.example.json",
+        "repo:aoa-kag/mechanics/antifragility/parts/projection-health/examples/projection_health_receipt.retrieval-outage-honesty.example.json",
         "AOA_KAG_ROOT",
         "aoa-kag",
     )
     assert_repo_ref_matches_neighbor(
-        "repo:aoa-evals/bundles/aoa-stress-recovery-window/reports/example-report.json",
+        "repo:aoa-evals/evals/comparison/longitudinal-window/aoa-stress-recovery-window/reports/example-report.json",
         "AOA_EVALS_ROOT",
         "aoa-evals",
     )
     assert_repo_ref_matches_neighbor(
-        "repo:aoa-evals/examples/runtime_evidence_selection.return-anchor-integrity.example.json",
+        "repo:aoa-evals/mechanics/audit/parts/selected-evidence-packets/examples/runtime_evidence_selection.return-anchor-integrity.example.json",
         "AOA_EVALS_ROOT",
         "aoa-evals",
     )
@@ -143,16 +111,25 @@ def test_stress_recovery_chaos_wave1_example_refs_existing_neighbor_surfaces() -
         "aoa-routing",
     )
     assert_repo_ref_matches_neighbor(
-        "repo:aoa-memo/examples/pattern.antifragility-stress-recovery-window.example.json",
+        "repo:aoa-memo/mechanics/antifragility/parts/recovery-pattern-memory/examples/pattern.antifragility-stress-recovery-window.example.json",
         "AOA_MEMO_ROOT",
         "aoa-memo",
     )
 
     inputs = payload["inputs"]
     assert isinstance(inputs, dict)
-    assert "repo:aoa-kag/examples/projection_health_receipt.retrieval-outage-honesty.example.json" in inputs["receipt_refs"]
-    assert "repo:aoa-evals/bundles/aoa-stress-recovery-window/reports/example-report.json" in inputs["eval_report_refs"]
-    assert "repo:aoa-evals/examples/runtime_evidence_selection.return-anchor-integrity.example.json" in inputs["eval_report_refs"]
+    assert (
+        "repo:aoa-kag/mechanics/antifragility/parts/projection-health/"
+        "examples/projection_health_receipt.retrieval-outage-honesty.example.json"
+    ) in inputs["receipt_refs"]
+    assert (
+        "repo:aoa-evals/evals/comparison/longitudinal-window/"
+        "aoa-stress-recovery-window/reports/example-report.json"
+    ) in inputs["eval_report_refs"]
+    assert (
+        "repo:aoa-evals/mechanics/audit/parts/selected-evidence-packets/"
+        "examples/runtime_evidence_selection.return-anchor-integrity.example.json"
+    ) in inputs["eval_report_refs"]
     assert (
         "repo:aoa-routing/mechanics/antifragility/parts/degraded-route-hints/"
         "examples/stress_navigation_hint.timeout-chaos.example.json"
@@ -161,7 +138,10 @@ def test_stress_recovery_chaos_wave1_example_refs_existing_neighbor_surfaces() -
         "repo:aoa-routing/mechanics/antifragility/parts/composite-stress-routing/"
         "examples/composite_stress_route_hint.retrieval-outage-honesty.example.json"
     ) in inputs["route_hint_refs"]
-    assert "repo:aoa-memo/examples/pattern.antifragility-stress-recovery-window.example.json" in inputs["memo_context_refs"]
+    assert (
+        "repo:aoa-memo/mechanics/antifragility/parts/recovery-pattern-memory/"
+        "examples/pattern.antifragility-stress-recovery-window.example.json"
+    ) in inputs["memo_context_refs"]
 
     assert payload["scope"]["owner_surface"] == "runtime-chaos-recovery"
     assert payload["summary"]["trust_calibration"] == 0.9

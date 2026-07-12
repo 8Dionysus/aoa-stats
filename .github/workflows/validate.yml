@@ -56,7 +56,7 @@ jobs:
         uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd
         with:
           repository: 8Dionysus/aoa-evals
-          ref: 0bed981d9fc2974d6ba2af235d33836322d3c98e
+          ref: f8e9a263f6890202a24da0ed4abf313e65e0d919
           path: .deps/aoa-evals
 
       - name: Checkout abyss-machine

@@ -64,8 +64,21 @@ mutating or pretending to own those sources.
 Owner Landing activation needs a real owner publisher and current receipts for
 the named event kinds. Stress Recovery activation needs an activated owner eval
 producer, a current report contract, and a refresh-observed receipt chain. Its
-legacy report-ref mapping is allowed only in the explicit committed-reference
-adapter; it is not a live fallback.
+temporary report-ref relocation was a committed-reference compatibility
+allowance, never a live fallback. Once authored consumers carry the canonical
+owner ref, the exact adapter must not keep that relocation alive.
+
+## Implementation Update - 2026-07-12
+
+The `aoa-memo` recovery pattern and `aoa-routing` authored composite-stress
+examples now cite the current mechanic-owned Stress Recovery eval path. The
+`aoa-stats` intake fixture does the same, so the explicit retired bundle-path
+translation has been removed from `stress_recovery_sources.py`.
+
+This does not activate the surface. The eval remains a committed draft example,
+and no refresh-observed owner receipt/report producer has landed. Stress
+Recovery therefore remains active as a public reference contract with
+`live_state_capable: false` under this decision.
 
 ## Options Considered
 
@@ -104,7 +117,9 @@ shapes without inventing publishers or proof events.
 - A live refresh admits 13 profiles, omits these three from its live catalog,
   and removes stale runtime copies if present.
 - Memory Movement and Stress Recovery use explicit source adapters plus
-  filesystem-free cores; root build functions remain compatibility facades.
+  filesystem-free cores; the Stress Recovery adapter now resolves only the
+  exact current owner ref, while root build functions remain compatibility
+  facades.
 - The memo writeback receipt log is not treated as proof that reviewed corpus
   movement is observed atomically.
 - A future trigger or publisher must land with focused validation before any of

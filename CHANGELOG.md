@@ -94,6 +94,13 @@ Tracking starts with the first public release-prep baseline for this repository.
   filesystem adapters so the Boundary Bridge and Antifragility mechanic owners
   can carry focused invariants while the root builder remains a compatibility
   facade.
+- Re-grounded the Stress Recovery committed receipt, profile, mechanic
+  examples, and generated read model on the current mechanic-owned `aoa-evals`
+  path, then removed the retired bundle-path translation from the source
+  adapter. The surface remains a false-live draft/reference projection under
+  AOST-D-0004; exact source resolution no longer carries a migration fallback,
+  and repository validation pins the owner revision that carries current
+  sibling refs inside the report.
 - Moved the shared Audit object, core-skill application, and surface-detection
   projections plus focused invariant tests out of the root builder/test
   monoliths into explicit object and shared core-skill observation cores while

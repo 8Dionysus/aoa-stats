@@ -24,7 +24,7 @@
       "ATM10-Agent/examples/stressor_receipt.retrieval_only_fallback.example.json"
     ],
     "eval_report_refs": [
-      "aoa-evals/bundles/aoa-stress-recovery-window/reports/example-report.json"
+      "aoa-evals/evals/comparison/longitudinal-window/aoa-stress-recovery-window/reports/example-report.json"
     ],
     "route_hint_refs": [
       "aoa-routing/mechanics/antifragility/parts/composite-stress-routing/examples/composite_stress_route_hint.example.json"
