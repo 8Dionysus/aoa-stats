@@ -145,6 +145,10 @@ Tracking starts with the first public release-prep baseline for this repository.
   Repeated Window, and Source Coverage evidence, reserved catalog slot 22 for
   cleanup, preserved the public schema as contract history, and removed the
   now-empty repo-local Checkpoint mechanic package.
+- Returned Receipt ABI loading, deduplication, admission, and conservative
+  supersedes-resolution proof from the root build suite to the Boundary Bridge
+  crossing part while retaining the root build facade and public envelope
+  paths unchanged.
 
 ## [0.1.3] - 2026-04-23
 

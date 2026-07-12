@@ -1730,7 +1730,7 @@
     },
     {
       "artifact_kind": "document",
-      "content_hash": "79f6d0e9444fa8fe02f965b19736ebb94387ab9ec4370aff13348a27469a3c2f",
+      "content_hash": "cbae3e578a42c179d977f7b73d3689b617e31342851bc7aec8ba67f8f445d44c",
       "id": "artifact:file:agents.md:a54ff182c7",
       "path": "AGENTS.md",
       "source_record_id": "file:agents.md:a54ff182c7",
@@ -1738,7 +1738,7 @@
     },
     {
       "artifact_kind": "document",
-      "content_hash": "62ce3794d9c65fa39bb554b8f37ae089945fdf481a9e4b8b22c3151eecd66834",
+      "content_hash": "b1181932fb68ae22d028729e5a7dad84d07d9bfdcab0aa2cbf9e865c39b5d6f8",
       "id": "artifact:file:changelog.md:06572a96a5",
       "path": "CHANGELOG.md",
       "source_record_id": "file:changelog.md:06572a96a5",
@@ -1762,7 +1762,7 @@
     },
     {
       "artifact_kind": "document",
-      "content_hash": "10501011cf1f3a320f48bd6e20f13f7308154bc2544dc04b1ddae011ca36fc12",
+      "content_hash": "dd4deee209e6a5225a52a68c42e3e85280bf8371937957df39029b5dd5918d06",
       "id": "artifact:file:design.md:3dc5dd454e",
       "path": "DESIGN.md",
       "source_record_id": "file:design.md:3dc5dd454e",
@@ -3914,7 +3914,7 @@
     },
     {
       "artifact_kind": "document",
-      "content_hash": "e83c12c14d819f4de98e313070ae6f22508be09198d776a10eaf3e1ea704a641",
+      "content_hash": "9873be723367823c82bef9e59a897049b8a0d558203bbf8d1ffd1378d380366c",
       "id": "artifact:file:mechanics/boundary-bridge/provenance.md:03ab6d31c2",
       "path": "mechanics/boundary-bridge/PROVENANCE.md",
       "source_record_id": "file:mechanics/boundary-bridge/provenance.md:03ab6d31c2",
@@ -4026,7 +4026,7 @@
     },
     {
       "artifact_kind": "document",
-      "content_hash": "3fb7544369d093571f8e8332023e18141603508c753a88b6567e610e21515eb6",
+      "content_hash": "34c85c214e699c3202996f4b12a4dbe2b3da5ba2128f797e781602fdb2b70ea7",
       "id": "artifact:file:mechanics/boundary-bridge/parts/receipt-abi-crossing/contract.md:76017a80d6",
       "path": "mechanics/boundary-bridge/parts/receipt-abi-crossing/CONTRACT.md",
       "source_record_id": "file:mechanics/boundary-bridge/parts/receipt-abi-crossing/contract.md:76017a80d6",
@@ -4034,7 +4034,7 @@
     },
     {
       "artifact_kind": "document",
-      "content_hash": "6950a17042096038f17f4d90d23257cace2732299c3042402300564f1915b3e0",
+      "content_hash": "48505e17a29badd1d5254e66646be30a83a585bdd02a52934d68153e6e67a869",
       "id": "artifact:file:mechanics/boundary-bridge/parts/receipt-abi-crossing/readme.md:026cc1b7e6",
       "path": "mechanics/boundary-bridge/parts/receipt-abi-crossing/README.md",
       "source_record_id": "file:mechanics/boundary-bridge/parts/receipt-abi-crossing/readme.md:026cc1b7e6",
@@ -4042,7 +4042,7 @@
     },
     {
       "artifact_kind": "document",
-      "content_hash": "74e2784cf9d03456901a2346f1cd66e704f96ba8bdd7682b680794d8e94d3272",
+      "content_hash": "8268684a2db789cba67239a685450dad9f1efca306a182be911755a4d2358510",
       "id": "artifact:file:mechanics/boundary-bridge/parts/receipt-abi-crossing/validation.md:60b46fcd3f",
       "path": "mechanics/boundary-bridge/parts/receipt-abi-crossing/VALIDATION.md",
       "source_record_id": "file:mechanics/boundary-bridge/parts/receipt-abi-crossing/validation.md:60b46fcd3f",
@@ -4054,6 +4054,14 @@
       "id": "artifact:file:mechanics/boundary-bridge/parts/receipt-abi-crossing/tests/test_receipt_abi_governance.py:68b3a3493b",
       "path": "mechanics/boundary-bridge/parts/receipt-abi-crossing/tests/test_receipt_abi_governance.py",
       "source_record_id": "file:mechanics/boundary-bridge/parts/receipt-abi-crossing/tests/test_receipt_abi_governance.py:68b3a3493b",
+      "surface_state": "authored_source"
+    },
+    {
+      "artifact_kind": "test",
+      "content_hash": "e4f12f3eb7b93d70d6724b2d3c87d84d7b909db36fdb372d6b3953cb8e8e84b1",
+      "id": "artifact:file:mechanics/boundary-bridge/parts/receipt-abi-crossing/tests/test_receipt_feed_resolution.py:6a218797f9",
+      "path": "mechanics/boundary-bridge/parts/receipt-abi-crossing/tests/test_receipt_feed_resolution.py",
+      "source_record_id": "file:mechanics/boundary-bridge/parts/receipt-abi-crossing/tests/test_receipt_feed_resolution.py:6a218797f9",
       "surface_state": "authored_source"
     },
     {
@@ -7138,7 +7146,7 @@
     },
     {
       "artifact_kind": "document",
-      "content_hash": "341e4f06d8fd4e518cf114fac7716574669620ea98b15246471411b6ce55399d",
+      "content_hash": "ef199e14ff7fa83b91ffcfad657c3dee0d5006029b91ba1d1827a21079ab90fa",
       "id": "artifact:file:stats/intake-contract/agents.md:e066b66611",
       "path": "stats/intake-contract/AGENTS.md",
       "source_record_id": "file:stats/intake-contract/agents.md:e066b66611",
@@ -7146,7 +7154,7 @@
     },
     {
       "artifact_kind": "document",
-      "content_hash": "a0ac3967a10c1e970b7f4b00306b46a20e7d556716adfb8dce841cff2abe3ca8",
+      "content_hash": "b408217f908b0cb69104098dc1577bc19326c2db9e74ef161566dd6526c9f072",
       "id": "artifact:file:stats/intake-contract/readme.md:a24681cdf3",
       "path": "stats/intake-contract/README.md",
       "source_record_id": "file:stats/intake-contract/readme.md:a24681cdf3",
@@ -7154,7 +7162,7 @@
     },
     {
       "artifact_kind": "document",
-      "content_hash": "2d2bafbdaeacbd8d66cd61aaee746fa51b4f9304756af237053eabc9307d7940",
+      "content_hash": "8a31ac43318ce7c3cd530ce17b7cd9f0125be70df5f278ba01ad992bbb71e7a8",
       "id": "artifact:file:stats/intake-contract/receipt_abi.md:98674910d8",
       "path": "stats/intake-contract/RECEIPT_ABI.md",
       "source_record_id": "file:stats/intake-contract/receipt_abi.md:98674910d8",
@@ -7554,7 +7562,7 @@
     },
     {
       "artifact_kind": "config",
-      "content_hash": "d9b55cdfe842f1760833e55cae8625a68c2f2177f132df2bc2938e1d068ab6f3",
+      "content_hash": "5514008c2b2f026a58095bd5806fca824747fbae184ec54f37cc9c96957a4abd",
       "id": "artifact:file:stats/source_home.manifest.json:41b237ff45",
       "path": "stats/source_home.manifest.json",
       "source_record_id": "file:stats/source_home.manifest.json:41b237ff45",
@@ -7594,7 +7602,7 @@
     },
     {
       "artifact_kind": "document",
-      "content_hash": "163dcfad664e94be361e4fcf8a2ea38c3229304ebe1c5fb513f1ccc2823db27e",
+      "content_hash": "98b729a132d509b27c86a5ba6fd9616cc0b8f17ef7155989c5f83e444bed8e24",
       "id": "artifact:file:tests/agents.md:712d5f0348",
       "path": "tests/AGENTS.md",
       "source_record_id": "file:tests/agents.md:712d5f0348",
@@ -7610,7 +7618,7 @@
     },
     {
       "artifact_kind": "test",
-      "content_hash": "6064728d7d99ba9d230577134a38aa839ebca3b9c70c581aa1e843b44d2b539e",
+      "content_hash": "e1ede5961d6c19be591e17a5ac412ff4815eb886dd676952fc58bbbc4db3a696",
       "id": "artifact:file:tests/test_build_views.py:760ef645f6",
       "path": "tests/test_build_views.py",
       "source_record_id": "file:tests/test_build_views.py:760ef645f6",
@@ -7691,7 +7699,7 @@
   ],
   "index_identity": {
     "artifact_kind": "repository_artifact_index",
-    "content_digest": "efbccfc867e567156b2701ab0422d0635a0c87896630e8260ba21cb2bf792801",
+    "content_digest": "1083f428b37eb702d54599d46f508f7b55a5e6fc7c2092768520ff060d481d82",
     "index_kind": "artifact",
     "local_id": "index:repo-local:artifacts",
     "schema_ref": "aoa-kag:schemas/repo-local-kag-repository-index.schema.json"
@@ -7715,12 +7723,12 @@
   },
   "schema_version": "aoa-repo-local-kag-repository-index-v1",
   "source_index": {
-    "content_digest": "08ccfeb8b320462c73269423fb079c88821fc5085b185b72a110a90cde4637c0",
+    "content_digest": "605494c0e888e3fac397aa25ab7918e5c8a96477b580ef9570755d3b71bcaa10",
     "local_id": "index:repo-local:source-surfaces",
     "path": "kag/indexes/source_surface_index.json"
   },
   "summary": {
-    "entry_count": 961,
+    "entry_count": 962,
     "kind_counts": {
       "asset": 50,
       "config": 173,
@@ -7738,7 +7746,7 @@
       "security": 1,
       "service_unit": 2,
       "source_code": 33,
-      "test": 51,
+      "test": 52,
       "validator": 18
     }
   }

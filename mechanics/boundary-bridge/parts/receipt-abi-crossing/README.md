@@ -11,7 +11,8 @@ the shared stats receipt envelope without transferring payload ownership.
 - active contract: `CONTRACT.md`
 - validation route: `VALIDATION.md`
 
-The focused governance test lives in this part. The published envelope and
-public validation command remain at the root paths declared in
-`mechanics/topology.json`; the authored registry lives in
-`stats/intake-contract/`.
+Focused governance and feed-resolution tests live in this part. They constrain
+the canonical crossing plus deterministic JSON/JSONL loading, latest-event
+deduplication, and conservative supersedes handling. The published envelope,
+root build facade, and public validation command remain at their declared
+compatibility paths; the authored registry lives in `stats/intake-contract/`.

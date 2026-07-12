@@ -48,6 +48,18 @@ source registry observes it. Runtime-wave closeout is intentionally
 envelope-admissible for the committed historical fixture while absent from the
 current live-source registry.
 
+## Feed resolution law
+
+The crossing operation may load bounded JSON and JSONL feeds, validate their
+envelopes, and deduplicate equal `event_id` values by the latest
+`(observed_at, event_id)` observation. It may also resolve an explicit valid
+`supersedes` family to its latest descendant before projection.
+
+That normalization is deliberately conservative. A missing supersedes target
+or a cycle remains visible in the active set; intake must not erase ambiguous
+evidence merely to produce a cleaner count. Resolution does not mutate source
+receipts and does not claim that a newer observation has stronger owner truth.
+
 ## Mirror law
 
 When a sibling repo keeps a local mirror of the shared envelope schema, that
@@ -85,10 +97,13 @@ Run:
 
 ```bash
 python scripts/validate_receipt_abi.py
+python -m pytest -q mechanics/boundary-bridge/parts/receipt-abi-crossing/tests
 ```
 
-That command checks:
+Those checks cover:
 
 - canonical schema structure
 - active registry parity with the canonical enum
 - mirror parity against `aoa-evals` when the sibling repo is present
+- JSON/JSONL loading, latest-event deduplication, and conservative supersedes
+  resolution

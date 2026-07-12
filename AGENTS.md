@@ -101,6 +101,13 @@ belongs under `mechanics/audit/parts/source-coverage/tests/`. Boundary Bridge
 may test how catalog and coverage signals return consumers to stronger owners,
 but it must not become the test owner for Source Coverage producer behavior.
 
+Receipt ABI Crossing owns the deterministic intake seam shared by every
+receipt-backed projection. Envelope admission, JSON/JSONL loading, latest-event
+deduplication, and conservative supersedes-family resolution are implemented
+under `src/aoa_stats_builder/receipt_abi.py` and proved under the Boundary
+Bridge part. The root build facade keeps compatibility aliases and tests only
+their repo-wide fan-out effect; it is not the behavioral proof home for intake.
+
 The Audit extraction preserves its historical ordered-input behavior and
 compatibility buckets. Do not describe those retained mechanics as canonical
 event chronology or owner activation truth. Changing them is a separate

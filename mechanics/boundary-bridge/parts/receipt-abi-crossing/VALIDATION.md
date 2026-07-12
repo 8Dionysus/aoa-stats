@@ -6,11 +6,13 @@ Run from the repository root:
 
 ```bash
 python scripts/validate_receipt_abi.py
-python -m pytest -q mechanics/boundary-bridge/parts/receipt-abi-crossing/tests/test_receipt_abi_governance.py
+python -m pytest -q mechanics/boundary-bridge/parts/receipt-abi-crossing/tests
 ```
 
-The command checks canonical envelope structure, active registry parity, and
-the declared downstream mirror when its sibling repository is available.
+The checks cover canonical envelope structure, active registry parity, the
+declared downstream mirror when available, root-facade alias parity,
+JSON/JSONL loading, latest-event deduplication, and conservative supersedes
+resolution.
 
-The canonical public envelope remains at root; the focused governance test is
-owned here with the crossing operation.
+The canonical public envelope and repo-wide build facade remain at root;
+focused crossing behavior is owned here.

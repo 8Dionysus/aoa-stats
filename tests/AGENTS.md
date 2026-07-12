@@ -8,6 +8,10 @@ boundary integrity.
 Tests should prove that generated outputs, schemas, and live receipt handling
 remain source-linked, derived-only, and weaker than owner-local meaning.
 
+Keep repo-wide build fan-out, public-contract integration, and root topology
+checks here. Move producer- or operation-specific invariants to the nearest
+mechanic part even when the root facade keeps a compatibility alias.
+
 ## Editing posture
 Prefer fixtures that expose boundary drift: ambiguous evidence refs, unknown
 event kinds, stale generated output, and attempts to infer authority from counts.

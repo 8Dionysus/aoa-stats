@@ -69,7 +69,7 @@
       "heading_ref": {
         "anchor": "013-2026-04-23",
         "level": 2,
-        "line": 149,
+        "line": 153,
         "ref": "CHANGELOG.md#013-2026-04-23",
         "title": "[0.1.3] - 2026-04-23"
       },
@@ -84,7 +84,7 @@
       "heading_ref": {
         "anchor": "012-2026-04-19",
         "level": 2,
-        "line": 188,
+        "line": 192,
         "ref": "CHANGELOG.md#012-2026-04-19",
         "title": "[0.1.2] - 2026-04-19"
       },
@@ -99,7 +99,7 @@
       "heading_ref": {
         "anchor": "011-2026-04-12",
         "level": 2,
-        "line": 219,
+        "line": 223,
         "ref": "CHANGELOG.md#011-2026-04-12",
         "title": "[0.1.1] - 2026-04-12"
       },
@@ -114,7 +114,7 @@
       "heading_ref": {
         "anchor": "010-2026-04-10",
         "level": 2,
-        "line": 258,
+        "line": 262,
         "ref": "CHANGELOG.md#010-2026-04-10",
         "title": "[0.1.0] - 2026-04-10"
       },
@@ -610,6 +610,15 @@
       "event_kind": "test_run",
       "event_role": "producer",
       "heading_ref": null,
+      "id": "event:repo:65a9553359f4eb553a45",
+      "observation_state": "declared",
+      "path": "mechanics/boundary-bridge/parts/receipt-abi-crossing/tests/test_receipt_feed_resolution.py",
+      "source_record_id": "file:mechanics/boundary-bridge/parts/receipt-abi-crossing/tests/test_receipt_feed_resolution.py:6a218797f9"
+    },
+    {
+      "event_kind": "test_run",
+      "event_role": "producer",
+      "heading_ref": null,
       "id": "event:repo:b10f3eaa63c7579da230",
       "observation_state": "declared",
       "path": "mechanics/experience/parts/adoption-federation-harvest/tests/test_experience_wave3_seed_contracts.py",
@@ -1077,7 +1086,7 @@
   ],
   "index_identity": {
     "artifact_kind": "repository_event_index",
-    "content_digest": "e5f91fd08771989508dc2d9a65dab968fcfa83328030786a5ea061fda3952782",
+    "content_digest": "238691b8c988ec845ff587e05b0bd2a221171203a88ac7885c79a8ebf4e8573a",
     "index_kind": "event",
     "local_id": "index:repo-local:events",
     "schema_ref": "aoa-kag:schemas/repo-local-kag-repository-index.schema.json"
@@ -1102,19 +1111,19 @@
   },
   "schema_version": "aoa-repo-local-kag-repository-index-v1",
   "source_index": {
-    "content_digest": "08ccfeb8b320462c73269423fb079c88821fc5085b185b72a110a90cde4637c0",
+    "content_digest": "605494c0e888e3fac397aa25ab7918e5c8a96477b580ef9570755d3b71bcaa10",
     "local_id": "index:repo-local:source-surfaces",
     "path": "kag/indexes/source_surface_index.json"
   },
   "summary": {
-    "entry_count": 116,
+    "entry_count": 117,
     "kind_counts": {
       "command_run": 12,
       "decision_record": 17,
       "generation_run": 10,
       "release_declaration": 4,
       "release_lane": 1,
-      "test_run": 51,
+      "test_run": 52,
       "validation_lane_run": 1,
       "validation_receipt": 1,
       "validation_run": 18,
