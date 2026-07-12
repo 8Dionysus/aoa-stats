@@ -64,7 +64,7 @@ def test_summary_surface_catalog_contract_is_exact() -> None:
         "owner_repo": "aoa-stats",
         "authority_ref": "docs/ARCHITECTURE.md",
         "producer": "scripts/build_views.py via aoa_stats_builder.surface_catalog from source-owned receipts and bounded examples",
-        "consumer_expectation": "consumers verify schema_version, generated_from, validation_refs, surface strength refs, owner truth inputs, and build_views --check before using catalog entries as observability hints",
+        "consumer_expectation": "consumers verify schema_version, generated_from, validation_refs, surface strength refs, owner truth inputs, deferred activation gaps, and build_views --check before using catalog entries as observability hints",
         "privacy_boundary": "public derived summary refs only; no raw private receipts, session captures, owner payload bodies, or runtime-local evidence",
         "content_identity": "generated/summary_surface_catalog.min.json rebuilt from the active receipt feed and compared by build_views --check",
         "abi_epoch": "aoa_stats_summary_surface_catalog_v2",

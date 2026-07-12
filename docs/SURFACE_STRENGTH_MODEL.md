@@ -52,6 +52,9 @@ Use these classes as the compact posture vocabulary:
   proof family
 - `registry_backed_coverage_audit`: receipt counts checked against the live
   source registry
+- `partial_owner_runtime_draft_eval_chain`: one current owner runtime
+  publisher exists, but companion adaptation, eval execution, intake
+  registration, or repeated-window evidence remains incomplete
 
 This is a small vocabulary on purpose.
 
@@ -72,10 +75,17 @@ If a family is still waiting for an honest input chain, keep it in
 
 - `status=contract_only`
 - the contract refs
+- the current `input_posture`
+- exact `owner_truth_inputs` for the real part of the chain
 - an activation condition
+- non-empty, unique `activation_gaps`
 - an explicit authority ceiling
+- a `consumer_risk` rating
 
-Today `antifragility_vector` stays in that deferred posture.
+Today `antifragility_vector` stays in that deferred posture. Its ATM10-Agent
+stressor publisher is real, but adaptation emission, stats intake
+registration, executed eval evidence, and a repeated same-family window are
+not. Publicly naming those facts is caution metadata, not activation.
 
 ## Boundary rule
 

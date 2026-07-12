@@ -14,8 +14,9 @@ SUMMARY_SURFACE_CATALOG_ARTIFACT_IDENTITY = {
     "producer": "scripts/build_views.py via aoa_stats_builder.surface_catalog from source-owned receipts and bounded examples",
     "consumer_expectation": (
         "consumers verify schema_version, generated_from, validation_refs, "
-        "surface strength refs, owner truth inputs, and build_views --check "
-        "before using catalog entries as observability hints"
+        "surface strength refs, owner truth inputs, deferred activation gaps, "
+        "and build_views --check before using catalog entries as observability "
+        "hints"
     ),
     "privacy_boundary": (
         "public derived summary refs only; no raw private receipts, session "
@@ -57,8 +58,12 @@ PUBLIC_DEFERRED_FIELDS = (
     "status",
     "contract_ref",
     "schema_ref",
+    "input_posture",
+    "owner_truth_inputs",
     "activation_condition",
+    "activation_gaps",
     "authority_ceiling",
+    "consumer_risk",
 )
 ACTIVE_SOURCE_FIELDS = frozenset(
     (
@@ -161,6 +166,29 @@ def _validate_profile(profile: dict[str, Any], *, path: Path, lifecycle: str) ->
         if not isinstance(order, int) or isinstance(order, bool) or order < 1:
             raise SurfaceProfileError(
                 f"{path}: catalog_order must be a positive integer"
+            )
+    if lifecycle == "deferred":
+        for field in ("input_posture", "activation_condition", "authority_ceiling"):
+            value = profile.get(field)
+            if not isinstance(value, str) or not value.strip():
+                raise SurfaceProfileError(f"{path}: {field} must be non-empty")
+        for field in ("owner_truth_inputs", "activation_gaps"):
+            values = profile.get(field)
+            if (
+                not isinstance(values, list)
+                or not values
+                or not all(
+                    isinstance(value, str) and bool(value.strip())
+                    for value in values
+                )
+                or len(values) != len(set(values))
+            ):
+                raise SurfaceProfileError(
+                    f"{path}: {field} must be a non-empty unique string list"
+                )
+        if profile.get("consumer_risk") not in {"low", "medium", "high"}:
+            raise SurfaceProfileError(
+                f"{path}: consumer_risk must be low, medium, or high"
             )
     if lifecycle == "retired":
         former_order = profile.get("former_catalog_order")
@@ -298,7 +326,7 @@ def load_surface_profiles(
 def public_surface_profiles(
     profile_root: Path = PROFILE_ROOT,
 ) -> tuple[list[dict[str, Any]], list[dict[str, Any]]]:
-    """Project authored profiles into the unchanged public catalog entry shapes."""
+    """Project authored profiles into their public catalog entry shapes."""
 
     active, deferred, _ = load_surface_profiles(profile_root)
     public_active = [

@@ -5,7 +5,6 @@ import json
 from pathlib import Path
 
 import pytest
-from jsonschema import Draft202012Validator
 
 
 REPO_ROOT = Path(__file__).resolve().parents[1]
@@ -223,40 +222,6 @@ def test_build_all_views_skips_missing_optional_sibling_surfaces(
     assert "generated/codex_plane_deployment_summary.min.json" not in catalog_surface_refs
     assert "generated/continuity_window_summary.min.json" not in catalog_surface_refs
     assert "generated/component_refresh_summary.min.json" not in catalog_surface_refs
-
-
-
-def test_antifragility_vector_schema_requires_nonempty_source_refs() -> None:
-    schema = json.loads(
-        (
-            REPO_ROOT
-            / "mechanics"
-            / "antifragility"
-            / "parts"
-            / "antifragility-vector"
-            / "schemas"
-            / "antifragility_vector_v1.json"
-        ).read_text(encoding="utf-8")
-    )
-    payload = json.loads(
-        (
-            REPO_ROOT
-            / "mechanics"
-            / "antifragility"
-            / "parts"
-            / "antifragility-vector"
-            / "examples"
-            / "antifragility_vector.example.json"
-        ).read_text(encoding="utf-8")
-    )
-    payload["inputs"]["receipt_refs"] = []
-    payload["inputs"]["eval_report_refs"] = []
-
-    errors = list(Draft202012Validator(schema).iter_errors(payload))
-
-    assert any(list(error.absolute_path) == ["inputs", "receipt_refs"] for error in errors)
-    assert any(list(error.absolute_path) == ["inputs", "eval_report_refs"] for error in errors)
-
 
 def test_build_all_views_uses_active_receipt_count_after_supersedes() -> None:
     module = load_build_views_module()

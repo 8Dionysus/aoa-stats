@@ -24,6 +24,11 @@ or the upstream facts summarized by a profile.
 - One active public catalog surface has one authored profile under `active/`.
 - Contract-only candidates live under `deferred/` until their activation
   condition and evidence chain are real.
+- A deferred profile must expose `input_posture`, exact
+  `owner_truth_inputs`, non-empty unique `activation_gaps`,
+  `consumer_risk`, and its authority ceiling in the generated deferred
+  catalog entry. Deferred does not hide what is already real or what is still
+  missing.
 - Removed public outputs leave only a minimal tombstone under `retired/` when
   stale committed, live, catalog, or consumer copies still need deterministic
   cleanup. A retired profile has no builder, catalog entry, or payload archive.
@@ -38,6 +43,11 @@ or the upstream facts summarized by a profile.
   reference route and out of the live catalog.
 - Do not add Python, generated catalogs, live receipts, or copied owner
   payloads here.
+- For Antifragility Vector, keep ATM10-Agent stressor emission distinct from
+  the still-proposed adaptation delta and draft aoa-evals reports. The profile
+  remains deferred until stats intake registration, runtime adaptation
+  emission, an executed bounded eval chain, and a repeated same-family
+  owner/eval window all exist. Closing only one gap is not activation.
 - Change the authored profile first, then rebuild and check the generated
   catalog.
 - Reintroducing a retired question requires a newly reviewed active profile,

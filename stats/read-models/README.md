@@ -12,6 +12,10 @@ posture, stable catalog slot, and mechanics handoffs. The generated
 catalog projects the public fields from these records. It is not an editable
 copy of them.
 
+Deferred profiles carry the same grounding vocabulary where it is already
+known, plus explicit `activation_gaps`. They do not carry an active catalog
+slot, output route, or live-state selector.
+
 `live_state_capable` is an executable selector, not a statement that every
 committed surface is current. A `true` profile may be materialized and listed
 by the local live refresh loop when its inputs resolve. A `false` profile stays
@@ -30,6 +34,14 @@ cross-owner example/catalog chain. Codex Plane Deployment describes the posture
 represented by the committed 8Dionysus trust-state, regeneration-report, and
 rollout-receipt examples. Neither example chain constitutes owner-runtime or
 deploy-local state.
+
+The additional deferred profile is Antifragility Vector. ATM10-Agent emits a
+real `stressor_receipt_v1` for the bounded retrieval-only fallback, but its
+`adaptation_delta_v1` remains contract/example only. The linked
+`aoa-antifragility-posture` eval is still draft/example only, neither chain
+is registered as a stats live source, and no repeated same-family window
+demonstrates movement. The deferred catalog publishes those stronger-owner
+routes and gaps; it does not publish a vector surface.
 
 Codex Rollout Operations and Codex Rollout Drift describe the exact checked-in
 trusted-history bundle; “latest” is bounded to that history. Rollout Campaign
@@ -115,8 +127,9 @@ public schemas stay under `schemas/`, and public derived outputs stay under
 
 - `active/`: exactly the profiles emitted in
   `generated/summary_surface_catalog.min.json`.
-- `deferred/`: bounded contract candidates that are not emitted as active
-  surfaces.
+- `deferred/`: bounded contract candidates whose partial owner chain,
+  consumer risk, and activation gaps are emitted as caution metadata, never as
+  active surfaces.
 - `retired/`: cleanup/provenance tombstones for removed outputs; they carry no
   builder, generated payload, catalog entry, or active mechanic handoff. Their
   `former_catalog_order` values reserve stable slots that active profiles may

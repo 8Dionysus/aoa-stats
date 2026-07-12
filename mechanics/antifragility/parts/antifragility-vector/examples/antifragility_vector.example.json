@@ -8,29 +8,30 @@
   },
   "inputs": {
     "receipt_refs": [
-      "atm10:hybrid-query:2026-04-07T14:12:33Z:retrieval-only-fallback"
+      "ATM10-Agent/examples/stressor_receipt.retrieval_only_fallback.example.json"
     ],
+    "adaptation_delta_refs": [],
     "eval_report_refs": [
-      "aoa-evals:atm10-hybrid-query:2026-W15"
+      "aoa-evals/evals/stress/aoa-antifragility-posture/reports/example-report.json"
     ]
   },
   "sample_size": {
     "receipt_count": 1,
-    "adaptation_count": 1,
+    "adaptation_count": 0,
     "eval_count": 1
   },
   "suppression": {
-    "status": "low_sample",
-    "reason": "Single stressor family observation in window"
+    "status": "insufficient_evidence",
+    "reason": "The owner stressor example and draft eval example do not close the runtime adaptation and repeated-window gaps."
   },
   "vector": {
-    "containment": 0.93,
-    "reversibility": 0.7,
-    "fallback_fidelity": 0.88,
-    "recovery_latency": 0.62,
-    "evidence_density": 0.85,
+    "containment": null,
+    "reversibility": null,
+    "fallback_fidelity": null,
+    "recovery_latency": null,
+    "evidence_density": null,
     "adaptation_gain": null,
-    "operator_burden": 0.68,
-    "trust_calibration": 0.9
+    "operator_burden": null,
+    "trust_calibration": null
   }
 }

@@ -194,11 +194,20 @@ Read-model lifecycle is source-owned and asymmetric by design:
 
 - `active/` records author public catalog surfaces and deterministic build
   fan-out;
-- `deferred/` records author contract-only candidates and activation
-  conditions;
+- `deferred/` records author contract-only candidates, exact stronger-owner
+  inputs, evidence posture, consumer risk, and explicit activation gaps;
 - `retired/` records are minimal tombstones that preserve cleanup and decision
   provenance but authorize no publication. Each one also reserves its former
   catalog slot.
+
+Deferred is a governed incubation state, not a waiting-room label.
+Antifragility Vector is grounded in the ATM10-Agent runtime stressor publisher
+and the aoa-evals bounded posture contract, but its adaptation publisher,
+executed eval chain, stats intake registration, and repeated-window proof are
+still absent. The profile therefore publishes that partial chain and all four
+gaps without acquiring a builder, output, active slot, live admission, or MCP
+claim. Its mechanic-local schema example stays suppressed and numeric-null
+until evidence can justify values.
 
 Generated outputs and catalogs are weaker projections of that lifecycle. Live
 refresh derives its materialization allowlist from active profiles and its

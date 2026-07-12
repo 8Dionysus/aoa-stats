@@ -26,6 +26,7 @@
 ## aoa-evals
 
 - [AOST-D-0001 - Stats Strength And Intake Governance](../AOST-D-0001-stats-strength-and-intake-governance.md) (`docs/decisions/AOST-D-0001-stats-strength-and-intake-governance.md`)
+- [AOST-D-0011 - Antifragility Vector Remains An Evidence-Gated Incubator](../AOST-D-0011-antifragility-vector-remains-an-evidence-gated-incubator.md) (`docs/decisions/AOST-D-0011-antifragility-vector-remains-an-evidence-gated-incubator.md`)
 
 ## aoa-evals stress-recovery receipts and reports
 
@@ -81,11 +82,16 @@
 
 - [AOST-D-0001 - Stats Strength And Intake Governance](../AOST-D-0001-stats-strength-and-intake-governance.md) (`docs/decisions/AOST-D-0001-stats-strength-and-intake-governance.md`)
 - [AOST-D-0002 - Canonical Decision Lane](../AOST-D-0002-canonical-decision-lane.md) (`docs/decisions/AOST-D-0002-canonical-decision-lane.md`)
+- [AOST-D-0011 - Antifragility Vector Remains An Evidence-Gated Incubator](../AOST-D-0011-antifragility-vector-remains-an-evidence-gated-incubator.md) (`docs/decisions/AOST-D-0011-antifragility-vector-remains-an-evidence-gated-incubator.md`)
 
 ## aoa-stats authored profiles
 
 - [AOST-D-0008 - Retired Outputs Remain Cleanup Tombstones, Not Active Stats](../AOST-D-0008-retired-outputs-remain-cleanup-tombstones-not-active-stats.md) (`docs/decisions/AOST-D-0008-retired-outputs-remain-cleanup-tombstones-not-active-stats.md`)
 - [AOST-D-0009 - Retirement Reserves Catalog Slots Without Preserving Empty Mechanics](../AOST-D-0009-retirement-reserves-catalog-slots-without-preserving-empty-mechanics.md) (`docs/decisions/AOST-D-0009-retirement-reserves-catalog-slots-without-preserving-empty-mechanics.md`)
+
+## ATM10-Agent
+
+- [AOST-D-0011 - Antifragility Vector Remains An Evidence-Gated Incubator](../AOST-D-0011-antifragility-vector-remains-an-evidence-gated-incubator.md) (`docs/decisions/AOST-D-0011-antifragility-vector-remains-an-evidence-gated-incubator.md`)
 
 ## Dionysus seed landing traces
 

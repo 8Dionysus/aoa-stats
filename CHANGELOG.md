@@ -149,6 +149,13 @@ Tracking starts with the first public release-prep baseline for this repository.
   supersedes-resolution proof from the root build suite to the Boundary Bridge
   crossing part while retaining the root build facade and public envelope
   paths unchanged.
+- Grounded the deferred Antifragility Vector in the exact ATM10-Agent stressor
+  publisher/contracts and draft aoa-evals posture surfaces, projected its
+  input posture, stronger-owner inputs, consumer risk, and four activation
+  gaps into the public catalog, and moved its schema/example proof from the
+  root suite into the mechanic part. The candidate remains non-active, with a
+  suppressed null-vector example and no builder, output, live registration, or
+  MCP promotion.
 
 ## [0.1.3] - 2026-04-23
 

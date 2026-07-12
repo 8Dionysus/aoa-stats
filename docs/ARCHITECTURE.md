@@ -133,13 +133,28 @@ Each entry in `surfaces` stays compact and low-context:
 - `consumer_risk`
 - `live_state_capable`
 
+Each entry in `deferred_contract_surfaces` keeps the same caution vocabulary
+without pretending to be active:
+
+- `name`
+- `status=contract_only`
+- `contract_ref`
+- `schema_ref`
+- `input_posture`
+- `owner_truth_inputs`
+- `activation_condition`
+- `activation_gaps`
+- `authority_ceiling`
+- `consumer_risk`
+
 The committed catalog contains every active public profile, including bounded
 reference-only surfaces. Local live refresh treats `live_state_capable` as an
 executable admission contract: it materializes only `true` profiles, writes a
 live catalog only for outputs actually present, and cleans stale files across
 the active outputs plus retired-output tombstones. The active read-model
 inventory is 22, the retired cleanup inventory is three, and the authored
-live-admitted inventory is 11. Component Refresh, Continuity
+live-admitted inventory is 11. One additional Antifragility Vector profile is
+deferred and has no output or catalog slot. Component Refresh, Continuity
 Window, Codex Plane Deployment, trusted rollout-history, cadence examples,
 Route Progression, Memory Movement, Stress Recovery, and Titan Incarnation are
 active but excluded from live mode. Owner Landing, Titan Summon, and Runtime
@@ -151,6 +166,16 @@ which decides the Component Refresh case only. The cross-profile requirement
 that live state have both a current owner source and an observable refresh
 route is
 `docs/decisions/AOST-D-0004-live-admission-requires-refresh-observation.md`.
+
+Antifragility Vector remains an evidence-gated incubator. ATM10-Agent has a
+real runtime publisher for one bounded `stressor_receipt_v1`, while its
+`adaptation_delta_v1` is still schema/example only. The linked
+`aoa-antifragility-posture` eval and report are draft/example surfaces, and
+no repeated same-family window exists. The deferred profile projects these
+exact owner refs, the partial input posture, high consumer risk, and all four
+activation gaps. Its mechanic-local example is suppressed with null axes; no
+builder, generated vector, live source registration, or MCP promotion follows
+from catalog visibility. AOST-D-0011 records this incubation boundary.
 
 Profile `catalog_order` values are stable slots rather than a dense ordinal.
 Retired profiles reserve their former slots, active profiles may leave gaps,

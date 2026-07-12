@@ -236,6 +236,7 @@
         "mechanics/recurrence/parts/live-receipt-refresh/tests/test_refresh_live_stats.py",
         "mechanics/recurrence/parts/repeated-window/tests/test_repeated_window.py",
         "mechanics/boundary-bridge/parts/memory-owner-handoff/tests/test_memory_movement_summary.py",
+        "mechanics/antifragility/parts/antifragility-vector/tests/test_antifragility_vector_contract.py",
         "mechanics/antifragility/parts/stress-recovery-windows/tests/test_stress_recovery_projection.py",
         "mechanics/titan/parts/incarnation-summon/tests/test_titan_observation.py",
         "tests/test_stats_source_home.py",

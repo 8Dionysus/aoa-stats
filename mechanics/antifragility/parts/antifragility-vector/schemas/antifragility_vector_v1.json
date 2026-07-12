@@ -10,6 +10,7 @@
     "scope",
     "inputs",
     "sample_size",
+    "suppression",
     "vector"
   ],
   "properties": {
@@ -49,12 +50,22 @@
       "additionalProperties": false,
       "required": [
         "receipt_refs",
+        "adaptation_delta_refs",
         "eval_report_refs"
       ],
       "properties": {
         "receipt_refs": {
           "type": "array",
           "minItems": 1,
+          "uniqueItems": true,
+          "items": {
+            "type": "string",
+            "minLength": 1
+          }
+        },
+        "adaptation_delta_refs": {
+          "type": "array",
+          "uniqueItems": true,
           "items": {
             "type": "string",
             "minLength": 1
@@ -63,6 +74,7 @@
         "eval_report_refs": {
           "type": "array",
           "minItems": 1,
+          "uniqueItems": true,
           "items": {
             "type": "string",
             "minLength": 1
@@ -81,7 +93,7 @@
       "properties": {
         "receipt_count": {
           "type": "integer",
-          "minimum": 0
+          "minimum": 1
         },
         "adaptation_count": {
           "type": "integer",
@@ -89,7 +101,7 @@
         },
         "eval_count": {
           "type": "integer",
-          "minimum": 0
+          "minimum": 1
         }
       }
     },
@@ -97,7 +109,8 @@
       "type": "object",
       "additionalProperties": false,
       "required": [
-        "status"
+        "status",
+        "reason"
       ],
       "properties": {
         "status": {
@@ -111,7 +124,8 @@
           "type": [
             "string",
             "null"
-          ]
+          ],
+          "minLength": 1
         }
       }
     },

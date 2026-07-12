@@ -53,8 +53,10 @@ It does not own:
     for committed cadence-example posture
 14. `mechanics/boundary-bridge/parts/memory-owner-handoff/docs/MEMORY_MOVEMENT_SUMMARY.md`
     for reviewed corpus movement posture
-15. the nearest nested `AGENTS.md` for every path you touch
-16. `docs/history/AGENTS_ROOT_REFERENCE.md` only when historical pre-refactor
+15. `mechanics/antifragility/parts/antifragility-vector/docs/ANTIFRAGILITY_VECTOR.md`
+    for the only deferred read-model candidate and its activation gaps
+16. the nearest nested `AGENTS.md` for every path you touch
+17. `docs/history/AGENTS_ROOT_REFERENCE.md` only when historical pre-refactor
     guidance is needed as provenance
 
 ## Repository shape
@@ -191,6 +193,18 @@ reviewed profile and real owner publisher.
 Route Progression remains out of live state while its committed numeric
 projection and the current owner-authored semantic receipt contract do not
 share a non-invented projection ABI.
+
+Antifragility Vector is the sole deferred read-model candidate. ATM10-Agent
+already owns a real runtime publisher for one bounded stressor receipt, so the
+candidate is not empty symmetry. It remains non-active because that receipt is
+not registered for stats intake, adaptation deltas are schema/example only,
+the bounded eval is draft/example only, and no repeated owner/eval window
+demonstrates movement for the same stressor family. Its authored profile and
+public deferred catalog entry must expose the exact `input_posture`,
+`owner_truth_inputs`, `activation_gaps`, `consumer_risk`, and authority
+ceiling. Do not add a builder, generated payload, live registration, or MCP
+promotion until every gap closes and those publication contracts are reviewed
+together.
 
 For a profile-by-profile live-source audit, start at the owning mechanic
 contract. Classify the current source chain as runtime/receipt-backed or

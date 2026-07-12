@@ -4,7 +4,7 @@
       "asset": 50,
       "config": 173,
       "dependency_manifest": 2,
-      "document": 454,
+      "document": 455,
       "generated_readmodel": 39,
       "index": 1,
       "license": 1,
@@ -17,15 +17,15 @@
       "security": 1,
       "service_unit": 2,
       "source_code": 33,
-      "test": 52,
+      "test": 53,
       "validator": 18
     },
     "command_role": {
       "builder": 10,
       "lane_entrypoint": 1,
-      "none": 869,
+      "none": 870,
       "script": 12,
-      "test": 52,
+      "test": 53,
       "validator": 18
     },
     "document_role": {
@@ -33,10 +33,10 @@
       "audit": 3,
       "boundary": 1,
       "changelog": 1,
-      "decision": 17,
+      "decision": 18,
       "design": 1,
       "mechanics_doc": 177,
-      "none": 500,
+      "none": 501,
       "parts": 11,
       "provenance": 11,
       "readme": 81,
@@ -47,41 +47,41 @@
       "legacy": 23,
       "mechanic_package": 51,
       "mechanic_part": 92,
-      "none": 457,
+      "none": 458,
       "part_contract": 41,
       "part_doc": 180,
       "part_schema": 58,
       "part_script": 21,
-      "part_test": 39
+      "part_test": 40
     },
     "primary_kind": {
       "artifact": 91,
-      "command": 93,
-      "document": 462,
+      "command": 94,
+      "document": 463,
       "surface": 316
     },
     "surface_state": {
-      "authored_source": 895,
+      "authored_source": 897,
       "generated_readmodel": 44,
       "legacy": 23
     }
   },
   "coverage_summary": {
-    "command_count": 93,
-    "document_count": 462,
+    "command_count": 94,
+    "document_count": 463,
     "generated_count": 44,
-    "heading_count": 1970,
-    "mechanics_count": 505,
-    "record_count": 962,
+    "heading_count": 1990,
+    "mechanics_count": 506,
+    "record_count": 964,
     "schema_count": 92,
     "script_count": 23,
-    "test_count": 52,
+    "test_count": 53,
     "unknown_count": 0,
     "validator_count": 18
   },
   "index_identity": {
     "artifact_kind": "source_surface_index",
-    "content_digest": "605494c0e888e3fac397aa25ab7918e5c8a96477b580ef9570755d3b71bcaa10",
+    "content_digest": "0111f125a4249bc62f253e7027a814f070ecf4ba7aae86dd3f4555373312ed8e",
     "local_id": "index:repo-local:source-surfaces",
     "schema_ref": "aoa-kag:schemas/repo-local-kag-index.schema.json"
   },
@@ -24063,13 +24063,13 @@
         "state": "current"
       },
       "identity": {
-        "content_hash": "cbae3e578a42c179d977f7b73d3689b617e31342851bc7aec8ba67f8f445d44c",
+        "content_hash": "8d64de56a25ce19db3951a8bd16d110b8888eb2bfa956fa6e4b808b15e22e794",
         "git_ref": "git-index-source-tree",
         "id": "file:agents.md:a54ff182c7",
         "mime": "text/markdown",
         "path": "AGENTS.md",
         "repo": "aoa-stats",
-        "size_bytes": 17093
+        "size_bytes": 18017
       },
       "mechanics_role": "none",
       "observed_form": "file",
@@ -24126,70 +24126,70 @@
           {
             "anchor": "repository-shape",
             "level": 2,
-            "line": 60,
+            "line": 62,
             "ref": "AGENTS.md#repository-shape",
             "title": "Repository shape"
           },
           {
             "anchor": "cross-mode-law",
             "level": 2,
-            "line": 214,
+            "line": 228,
             "ref": "AGENTS.md#cross-mode-law",
             "title": "Cross-mode law"
           },
           {
             "anchor": "agents-stack-law",
             "level": 2,
-            "line": 238,
+            "line": 252,
             "ref": "AGENTS.md#agents-stack-law",
             "title": "AGENTS stack law"
           },
           {
             "anchor": "memory-route",
             "level": 2,
-            "line": 253,
+            "line": 267,
             "ref": "AGENTS.md#memory-route",
             "title": "Memory route"
           },
           {
             "anchor": "decision-review",
             "level": 2,
-            "line": 261,
+            "line": 275,
             "ref": "AGENTS.md#decision-review",
             "title": "Decision review"
           },
           {
             "anchor": "derived-only-rules",
             "level": 2,
-            "line": 272,
+            "line": 286,
             "ref": "AGENTS.md#derived-only-rules",
             "title": "Derived-only rules"
           },
           {
             "anchor": "github-landing-workflow",
             "level": 2,
-            "line": 282,
+            "line": 296,
             "ref": "AGENTS.md#github-landing-workflow",
             "title": "GitHub landing workflow"
           },
           {
             "anchor": "verify",
             "level": 2,
-            "line": 304,
+            "line": 318,
             "ref": "AGENTS.md#verify",
             "title": "Verify"
           },
           {
             "anchor": "report",
             "level": 2,
-            "line": 333,
+            "line": 347,
             "ref": "AGENTS.md#report",
             "title": "Report"
           },
           {
             "anchor": "full-reference",
             "level": 2,
-            "line": 339,
+            "line": 353,
             "ref": "AGENTS.md#full-reference",
             "title": "Full reference"
           }
@@ -24201,7 +24201,7 @@
       },
       "signs": {
         "attestation_ref": "",
-        "digest": "cbae3e578a42c179d977f7b73d3689b617e31342851bc7aec8ba67f8f445d44c",
+        "digest": "8d64de56a25ce19db3951a8bd16d110b8888eb2bfa956fa6e4b808b15e22e794",
         "signature_ref": "",
         "verification_state": "digest-only"
       },
@@ -24249,13 +24249,13 @@
         "state": "current"
       },
       "identity": {
-        "content_hash": "b1181932fb68ae22d028729e5a7dad84d07d9bfdcab0aa2cbf9e865c39b5d6f8",
+        "content_hash": "69e7193fcd5b8f9ba9e69cab221ffbe9ed90fab2cb931b56a42ac043663040cc",
         "git_ref": "git-index-source-tree",
         "id": "file:changelog.md:06572a96a5",
         "mime": "text/markdown",
         "path": "CHANGELOG.md",
         "repo": "aoa-stats",
-        "size_bytes": 16133
+        "size_bytes": 16611
       },
       "mechanics_role": "none",
       "observed_form": "file",
@@ -24312,175 +24312,175 @@
           {
             "anchor": "013-2026-04-23",
             "level": 2,
-            "line": 153,
+            "line": 160,
             "ref": "CHANGELOG.md#013-2026-04-23",
             "title": "[0.1.3] - 2026-04-23"
           },
           {
             "anchor": "summary",
             "level": 3,
-            "line": 155,
+            "line": 162,
             "ref": "CHANGELOG.md#summary",
             "title": "Summary"
           },
           {
             "anchor": "added-1",
             "level": 3,
-            "line": 167,
+            "line": 174,
             "ref": "CHANGELOG.md#added-1",
             "title": "Added"
           },
           {
             "anchor": "changed-1",
             "level": 3,
-            "line": 177,
+            "line": 184,
             "ref": "CHANGELOG.md#changed-1",
             "title": "Changed"
           },
           {
             "anchor": "validation",
             "level": 3,
-            "line": 183,
+            "line": 190,
             "ref": "CHANGELOG.md#validation",
             "title": "Validation"
           },
           {
             "anchor": "notes",
             "level": 3,
-            "line": 187,
+            "line": 194,
             "ref": "CHANGELOG.md#notes",
             "title": "Notes"
           },
           {
             "anchor": "012-2026-04-19",
             "level": 2,
-            "line": 192,
+            "line": 199,
             "ref": "CHANGELOG.md#012-2026-04-19",
             "title": "[0.1.2] - 2026-04-19"
           },
           {
             "anchor": "summary-1",
             "level": 3,
-            "line": 194,
+            "line": 201,
             "ref": "CHANGELOG.md#summary-1",
             "title": "Summary"
           },
           {
             "anchor": "added-2",
             "level": 3,
-            "line": 202,
+            "line": 209,
             "ref": "CHANGELOG.md#added-2",
             "title": "Added"
           },
           {
             "anchor": "changed-2",
             "level": 3,
-            "line": 209,
+            "line": 216,
             "ref": "CHANGELOG.md#changed-2",
             "title": "Changed"
           },
           {
             "anchor": "validation-1",
             "level": 3,
-            "line": 214,
+            "line": 221,
             "ref": "CHANGELOG.md#validation-1",
             "title": "Validation"
           },
           {
             "anchor": "notes-1",
             "level": 3,
-            "line": 218,
+            "line": 225,
             "ref": "CHANGELOG.md#notes-1",
             "title": "Notes"
           },
           {
             "anchor": "011-2026-04-12",
             "level": 2,
-            "line": 223,
+            "line": 230,
             "ref": "CHANGELOG.md#011-2026-04-12",
             "title": "[0.1.1] - 2026-04-12"
           },
           {
             "anchor": "summary-2",
             "level": 3,
-            "line": 225,
+            "line": 232,
             "ref": "CHANGELOG.md#summary-2",
             "title": "Summary"
           },
           {
             "anchor": "added-3",
             "level": 3,
-            "line": 233,
+            "line": 240,
             "ref": "CHANGELOG.md#added-3",
             "title": "Added"
           },
           {
             "anchor": "documentation",
             "level": 3,
-            "line": 241,
+            "line": 248,
             "ref": "CHANGELOG.md#documentation",
             "title": "Documentation"
           },
           {
             "anchor": "changed-3",
             "level": 3,
-            "line": 247,
+            "line": 254,
             "ref": "CHANGELOG.md#changed-3",
             "title": "Changed"
           },
           {
             "anchor": "validation-2",
             "level": 3,
-            "line": 254,
+            "line": 261,
             "ref": "CHANGELOG.md#validation-2",
             "title": "Validation"
           },
           {
             "anchor": "notes-2",
             "level": 3,
-            "line": 258,
+            "line": 265,
             "ref": "CHANGELOG.md#notes-2",
             "title": "Notes"
           },
           {
             "anchor": "010-2026-04-10",
             "level": 2,
-            "line": 262,
+            "line": 269,
             "ref": "CHANGELOG.md#010-2026-04-10",
             "title": "[0.1.0] - 2026-04-10"
           },
           {
             "anchor": "summary-3",
             "level": 3,
-            "line": 269,
+            "line": 276,
             "ref": "CHANGELOG.md#summary-3",
             "title": "Summary"
           },
           {
             "anchor": "added-4",
             "level": 3,
-            "line": 280,
+            "line": 287,
             "ref": "CHANGELOG.md#added-4",
             "title": "Added"
           },
           {
             "anchor": "included-in-this-release",
             "level": 3,
-            "line": 293,
+            "line": 300,
             "ref": "CHANGELOG.md#included-in-this-release",
             "title": "Included in this release"
           },
           {
             "anchor": "validation-3",
             "level": 3,
-            "line": 308,
+            "line": 315,
             "ref": "CHANGELOG.md#validation-3",
             "title": "Validation"
           },
           {
             "anchor": "notes-3",
             "level": 3,
-            "line": 314,
+            "line": 321,
             "ref": "CHANGELOG.md#notes-3",
             "title": "Notes"
           }
@@ -24492,7 +24492,7 @@
       },
       "signs": {
         "attestation_ref": "",
-        "digest": "b1181932fb68ae22d028729e5a7dad84d07d9bfdcab0aa2cbf9e865c39b5d6f8",
+        "digest": "69e7193fcd5b8f9ba9e69cab221ffbe9ed90fab2cb931b56a42ac043663040cc",
         "signature_ref": "",
         "verification_state": "digest-only"
       },
@@ -24772,13 +24772,13 @@
         "state": "current"
       },
       "identity": {
-        "content_hash": "dd4deee209e6a5225a52a68c42e3e85280bf8371937957df39029b5dd5918d06",
+        "content_hash": "052bd27ce30471a6f62b4f1a4d9196c8155feaf59f9c7f13c5c358846d5d59a4",
         "git_ref": "git-index-source-tree",
         "id": "file:design.md:3dc5dd454e",
         "mime": "text/markdown",
         "path": "DESIGN.md",
         "repo": "aoa-stats",
-        "size_bytes": 19567
+        "size_bytes": 20198
       },
       "mechanics_role": "none",
       "observed_form": "file",
@@ -24863,56 +24863,56 @@
           {
             "anchor": "operation",
             "level": 2,
-            "line": 275,
+            "line": 284,
             "ref": "DESIGN.md#operation",
             "title": "Operation"
           },
           {
             "anchor": "authority-model",
             "level": 2,
-            "line": 299,
+            "line": 308,
             "ref": "DESIGN.md#authority-model",
             "title": "Authority model"
           },
           {
             "anchor": "shared-mechanic-vocabulary",
             "level": 2,
-            "line": 313,
+            "line": 322,
             "ref": "DESIGN.md#shared-mechanic-vocabulary",
             "title": "Shared mechanic vocabulary"
           },
           {
             "anchor": "design-principles",
             "level": 2,
-            "line": 324,
+            "line": 333,
             "ref": "DESIGN.md#design-principles",
             "title": "Design principles"
           },
           {
             "anchor": "good-shape",
             "level": 2,
-            "line": 340,
+            "line": 349,
             "ref": "DESIGN.md#good-shape",
             "title": "Good shape"
           },
           {
             "anchor": "bad-shape",
             "level": 2,
-            "line": 349,
+            "line": 358,
             "ref": "DESIGN.md#bad-shape",
             "title": "Bad shape"
           },
           {
             "anchor": "relationship-to-root-guidance",
             "level": 2,
-            "line": 358,
+            "line": 367,
             "ref": "DESIGN.md#relationship-to-root-guidance",
             "title": "Relationship to root guidance"
           },
           {
             "anchor": "use-by-agents",
             "level": 2,
-            "line": 369,
+            "line": 378,
             "ref": "DESIGN.md#use-by-agents",
             "title": "Use by agents"
           }
@@ -24924,7 +24924,7 @@
       },
       "signs": {
         "attestation_ref": "",
-        "digest": "dd4deee209e6a5225a52a68c42e3e85280bf8371937957df39029b5dd5918d06",
+        "digest": "052bd27ce30471a6f62b4f1a4d9196c8155feaf59f9c7f13c5c358846d5d59a4",
         "signature_ref": "",
         "verification_state": "digest-only"
       },
@@ -25210,13 +25210,13 @@
         "state": "current"
       },
       "identity": {
-        "content_hash": "a41460356ec193cc8f1477c627675850c3db081b1b722ce1f5a282640d94255d",
+        "content_hash": "9a00d5da45f16ccd69a535154243ef0b075dcb2040b3a5d2038d6cabbf468ad9",
         "git_ref": "git-index-source-tree",
         "id": "file:roadmap.md:683343bdf9",
         "mime": "text/markdown",
         "path": "ROADMAP.md",
         "repo": "aoa-stats",
-        "size_bytes": 8893
+        "size_bytes": 9109
       },
       "mechanics_role": "none",
       "observed_form": "file",
@@ -25266,28 +25266,28 @@
           {
             "anchor": "maintained-contracts",
             "level": 2,
-            "line": 57,
+            "line": 60,
             "ref": "ROADMAP.md#maintained-contracts",
             "title": "Maintained contracts"
           },
           {
             "anchor": "direction",
             "level": 2,
-            "line": 136,
+            "line": 139,
             "ref": "ROADMAP.md#direction",
             "title": "Direction"
           },
           {
             "anchor": "non-goals",
             "level": 2,
-            "line": 154,
+            "line": 157,
             "ref": "ROADMAP.md#non-goals",
             "title": "Non-goals"
           },
           {
             "anchor": "release-gate",
             "level": 2,
-            "line": 162,
+            "line": 165,
             "ref": "ROADMAP.md#release-gate",
             "title": "Release gate"
           }
@@ -25299,7 +25299,7 @@
       },
       "signs": {
         "attestation_ref": "",
-        "digest": "a41460356ec193cc8f1477c627675850c3db081b1b722ce1f5a282640d94255d",
+        "digest": "9a00d5da45f16ccd69a535154243ef0b075dcb2040b3a5d2038d6cabbf468ad9",
         "signature_ref": "",
         "verification_state": "digest-only"
       },
@@ -25470,13 +25470,13 @@
         "state": "current"
       },
       "identity": {
-        "content_hash": "b8fdbe080e672292c88a669b141b63270c0f9f8afde92e1208a43a3dfc1f2688",
+        "content_hash": "4dba998153eb0d1cd784caadbc8747db91a5047638534a6d8eb94cc107669819",
         "git_ref": "git-index-source-tree",
         "id": "file:docs/architecture.md:ff21b6b9a3",
         "mime": "text/markdown",
         "path": "docs/ARCHITECTURE.md",
         "repo": "aoa-stats",
-        "size_bytes": 11080
+        "size_bytes": 12142
       },
       "mechanics_role": "none",
       "observed_form": "file",
@@ -25561,7 +25561,7 @@
           {
             "anchor": "canonical-split",
             "level": 2,
-            "line": 214,
+            "line": 239,
             "ref": "docs/ARCHITECTURE.md#canonical-split",
             "title": "Canonical split"
           }
@@ -25573,7 +25573,7 @@
       },
       "signs": {
         "attestation_ref": "",
-        "digest": "b8fdbe080e672292c88a669b141b63270c0f9f8afde92e1208a43a3dfc1f2688",
+        "digest": "4dba998153eb0d1cd784caadbc8747db91a5047638534a6d8eb94cc107669819",
         "signature_ref": "",
         "verification_state": "digest-only"
       },
@@ -26440,13 +26440,13 @@
         "state": "current"
       },
       "identity": {
-        "content_hash": "5dde0bd1ff609ce401a59e34af448e074a06c4caaabbff45e66de2d12f97c94c",
+        "content_hash": "565fdb629956c0f2d42418efff50b00ab168a241d6ba8afa660565a842d8607c",
         "git_ref": "git-index-source-tree",
         "id": "file:docs/surface_strength_model.md:bdc1ce47cd",
         "mime": "text/markdown",
         "path": "docs/SURFACE_STRENGTH_MODEL.md",
         "repo": "aoa-stats",
-        "size_bytes": 3385
+        "size_bytes": 3970
       },
       "mechanics_role": "none",
       "observed_form": "file",
@@ -26503,21 +26503,21 @@
           {
             "anchor": "consumer-risk",
             "level": 2,
-            "line": 58,
+            "line": 61,
             "ref": "docs/SURFACE_STRENGTH_MODEL.md#consumer-risk",
             "title": "Consumer risk"
           },
           {
             "anchor": "deferred-contract-only-surfaces",
             "level": 2,
-            "line": 65,
+            "line": 68,
             "ref": "docs/SURFACE_STRENGTH_MODEL.md#deferred-contract-only-surfaces",
             "title": "Deferred contract-only surfaces"
           },
           {
             "anchor": "boundary-rule",
             "level": 2,
-            "line": 80,
+            "line": 90,
             "ref": "docs/SURFACE_STRENGTH_MODEL.md#boundary-rule",
             "title": "Boundary rule"
           }
@@ -26529,7 +26529,7 @@
       },
       "signs": {
         "attestation_ref": "",
-        "digest": "5dde0bd1ff609ce401a59e34af448e074a06c4caaabbff45e66de2d12f97c94c",
+        "digest": "565fdb629956c0f2d42418efff50b00ab168a241d6ba8afa660565a842d8607c",
         "signature_ref": "",
         "verification_state": "digest-only"
       },
@@ -28259,6 +28259,164 @@
         "route_kind": "resource",
         "surface": "aoa-kag-mcp"
       },
+      "document_role": "decision",
+      "freshness": {
+        "checked_ref": "git-index-source-tree",
+        "mode": "source_snapshot",
+        "state": "current"
+      },
+      "identity": {
+        "content_hash": "1f845c75628e68804629093c985fe1baf248c48e844c0947940b0f78a4858245",
+        "git_ref": "git-index-source-tree",
+        "id": "file:docs/decisions/aost-d-0011-antifragility-vector-remains-an-evidence-gated-incubator.md:0f8d071cc3",
+        "mime": "text/markdown",
+        "path": "docs/decisions/AOST-D-0011-antifragility-vector-remains-an-evidence-gated-incubator.md",
+        "repo": "aoa-stats",
+        "size_bytes": 7846
+      },
+      "mechanics_role": "none",
+      "observed_form": "file",
+      "owner_return_route": {
+        "route_kind": "document_owner",
+        "surface": "docs/decisions/AOST-D-0011-antifragility-vector-remains-an-evidence-gated-incubator.md"
+      },
+      "provenance": {
+        "generated_by": "",
+        "materials": [],
+        "observed_by": "aoa-kag:scripts/generate_repo_local_kag_index.py",
+        "source_refs": [
+          {
+            "authority": "authored_source",
+            "path": "docs/decisions/AOST-D-0011-antifragility-vector-remains-an-evidence-gated-incubator.md",
+            "repo": "aoa-stats",
+            "role": "primary"
+          }
+        ],
+        "validated_by": [
+          "aoa-kag:scripts/validate_kag.py"
+        ]
+      },
+      "refs": {
+        "heading_refs": [
+          {
+            "anchor": "aost-d-0011-antifragility-vector-remains-an-evidence-gated-incubator",
+            "level": 1,
+            "line": 1,
+            "ref": "docs/decisions/AOST-D-0011-antifragility-vector-remains-an-evidence-gated-incubator.md#aost-d-0011-antifragility-vector-remains-an-evidence-gated-incubator",
+            "title": "AOST-D-0011 Antifragility Vector Remains An Evidence-Gated Incubator"
+          },
+          {
+            "anchor": "index-metadata",
+            "level": 2,
+            "line": 3,
+            "ref": "docs/decisions/AOST-D-0011-antifragility-vector-remains-an-evidence-gated-incubator.md#index-metadata",
+            "title": "Index Metadata"
+          },
+          {
+            "anchor": "status",
+            "level": 2,
+            "line": 13,
+            "ref": "docs/decisions/AOST-D-0011-antifragility-vector-remains-an-evidence-gated-incubator.md#status",
+            "title": "Status"
+          },
+          {
+            "anchor": "context",
+            "level": 2,
+            "line": 17,
+            "ref": "docs/decisions/AOST-D-0011-antifragility-vector-remains-an-evidence-gated-incubator.md#context",
+            "title": "Context"
+          },
+          {
+            "anchor": "decision",
+            "level": 2,
+            "line": 45,
+            "ref": "docs/decisions/AOST-D-0011-antifragility-vector-remains-an-evidence-gated-incubator.md#decision",
+            "title": "Decision"
+          },
+          {
+            "anchor": "options-considered",
+            "level": 2,
+            "line": 85,
+            "ref": "docs/decisions/AOST-D-0011-antifragility-vector-remains-an-evidence-gated-incubator.md#options-considered",
+            "title": "Options Considered"
+          },
+          {
+            "anchor": "rationale",
+            "level": 2,
+            "line": 100,
+            "ref": "docs/decisions/AOST-D-0011-antifragility-vector-remains-an-evidence-gated-incubator.md#rationale",
+            "title": "Rationale"
+          },
+          {
+            "anchor": "consequences",
+            "level": 2,
+            "line": 117,
+            "ref": "docs/decisions/AOST-D-0011-antifragility-vector-remains-an-evidence-gated-incubator.md#consequences",
+            "title": "Consequences"
+          },
+          {
+            "anchor": "source-surfaces",
+            "level": 2,
+            "line": 136,
+            "ref": "docs/decisions/AOST-D-0011-antifragility-vector-remains-an-evidence-gated-incubator.md#source-surfaces",
+            "title": "Source Surfaces"
+          },
+          {
+            "anchor": "validation",
+            "level": 2,
+            "line": 155,
+            "ref": "docs/decisions/AOST-D-0011-antifragility-vector-remains-an-evidence-gated-incubator.md#validation",
+            "title": "Validation"
+          }
+        ],
+        "line_refs": [
+          "docs/decisions/AOST-D-0011-antifragility-vector-remains-an-evidence-gated-incubator.md:1"
+        ],
+        "path_ref": "docs/decisions/AOST-D-0011-antifragility-vector-remains-an-evidence-gated-incubator.md"
+      },
+      "signs": {
+        "attestation_ref": "",
+        "digest": "1f845c75628e68804629093c985fe1baf248c48e844c0947940b0f78a4858245",
+        "signature_ref": "",
+        "verification_state": "digest-only"
+      },
+      "surface_state": "authored_source",
+      "toolchain": {
+        "detected_tools": [
+          "git",
+          "python"
+        ],
+        "owner_commands": [],
+        "required_tools": []
+      },
+      "validator_route": {
+        "route_kind": "source_fast",
+        "surface": "aoa-kag:scripts/validate_kag.py"
+      }
+    },
+    {
+      "abi": {
+        "abi_epoch": "source",
+        "artifact_class": "document",
+        "compatibility": "stable",
+        "contract_version": "none",
+        "schema_version": "none"
+      },
+      "access": {
+        "scope": "public",
+        "secrets_risk": "none"
+      },
+      "artifact_kind": "document",
+      "classification": {
+        "confidence": "high",
+        "primary_kind": "document"
+      },
+      "code_role": "none",
+      "command_role": "none",
+      "consumer_route": {
+        "route_kind": "resource",
+        "surface": "aoa-kag-mcp"
+      },
       "document_role": "readme",
       "freshness": {
         "checked_ref": "git-index-source-tree",
@@ -28663,13 +28821,13 @@
         "state": "current"
       },
       "identity": {
-        "content_hash": "231b74d7e7963a9f7f6bcca3d2062c3c1e3c2f1104ac709cf8514460b79d4b5f",
+        "content_hash": "476644aa8dc9ae02d25af8312bc627e1c3354193d4216cddfae06ee76562d75a",
         "git_ref": "git-index-source-tree",
         "id": "file:docs/decisions/indexes/by-date.md:7f76a83a93",
         "mime": "text/markdown",
         "path": "docs/decisions/indexes/by-date.md",
         "repo": "aoa-stats",
-        "size_bytes": 2476
+        "size_bytes": 2718
       },
       "mechanics_role": "none",
       "observed_form": "generated_output",
@@ -28731,7 +28889,7 @@
       },
       "signs": {
         "attestation_ref": "",
-        "digest": "231b74d7e7963a9f7f6bcca3d2062c3c1e3c2f1104ac709cf8514460b79d4b5f",
+        "digest": "476644aa8dc9ae02d25af8312bc627e1c3354193d4216cddfae06ee76562d75a",
         "signature_ref": "",
         "verification_state": "digest-only"
       },
@@ -28779,13 +28937,13 @@
         "state": "current"
       },
       "identity": {
-        "content_hash": "61c2190999588f44e83fdaa60471f42406e8c52a0b5117b996f49cfafe655a69",
+        "content_hash": "8b565c31280e11cda455f2c3566e8359b8297a3409f1b4a12da225f03ee463c4",
         "git_ref": "git-index-source-tree",
         "id": "file:docs/decisions/indexes/by-guard.md:8ae406686a",
         "mime": "text/markdown",
         "path": "docs/decisions/indexes/by-guard.md",
         "repo": "aoa-stats",
-        "size_bytes": 14252
+        "size_bytes": 15810
       },
       "mechanics_role": "none",
       "observed_form": "generated_output",
@@ -28819,163 +28977,198 @@
             "title": "Decisions By Validation Or Guard Family"
           },
           {
-            "anchor": "catalog-output-parity",
+            "anchor": "activation-gaps",
             "level": 2,
             "line": 5,
+            "ref": "docs/decisions/indexes/by-guard.md#activation-gaps",
+            "title": "activation gaps"
+          },
+          {
+            "anchor": "catalog-output-parity",
+            "level": 2,
+            "line": 9,
             "ref": "docs/decisions/indexes/by-guard.md#catalog-output-parity",
             "title": "catalog-output parity"
           },
           {
             "anchor": "consumer-handoff",
             "level": 2,
-            "line": 11,
+            "line": 15,
             "ref": "docs/decisions/indexes/by-guard.md#consumer-handoff",
             "title": "consumer handoff"
           },
           {
             "anchor": "consumer-regrounding",
             "level": 2,
-            "line": 17,
+            "line": 21,
             "ref": "docs/decisions/indexes/by-guard.md#consumer-regrounding",
             "title": "consumer regrounding"
           },
           {
+            "anchor": "consumer-safety",
+            "level": 2,
+            "line": 25,
+            "ref": "docs/decisions/indexes/by-guard.md#consumer-safety",
+            "title": "consumer safety"
+          },
+          {
             "anchor": "cross-owner-coherence",
             "level": 2,
-            "line": 21,
+            "line": 29,
             "ref": "docs/decisions/indexes/by-guard.md#cross-owner-coherence",
             "title": "cross-owner coherence"
           },
           {
+            "anchor": "deferred-lifecycle",
+            "level": 2,
+            "line": 33,
+            "ref": "docs/decisions/indexes/by-guard.md#deferred-lifecycle",
+            "title": "deferred lifecycle"
+          },
+          {
             "anchor": "derived-only-authority",
             "level": 2,
-            "line": 25,
+            "line": 37,
             "ref": "docs/decisions/indexes/by-guard.md#derived-only-authority",
             "title": "derived-only authority"
           },
           {
             "anchor": "downstream-canaries",
             "level": 2,
-            "line": 38,
+            "line": 51,
             "ref": "docs/decisions/indexes/by-guard.md#downstream-canaries",
             "title": "downstream canaries"
           },
           {
             "anchor": "generated-index-parity",
             "level": 2,
-            "line": 42,
+            "line": 55,
             "ref": "docs/decisions/indexes/by-guard.md#generated-index-parity",
             "title": "generated-index parity"
           },
           {
             "anchor": "intake-governance",
             "level": 2,
-            "line": 46,
+            "line": 59,
             "ref": "docs/decisions/indexes/by-guard.md#intake-governance",
             "title": "intake governance"
           },
           {
+            "anchor": "live-admission",
+            "level": 2,
+            "line": 63,
+            "ref": "docs/decisions/indexes/by-guard.md#live-admission",
+            "title": "live admission"
+          },
+          {
             "anchor": "live-source-admission",
             "level": 2,
-            "line": 50,
+            "line": 67,
             "ref": "docs/decisions/indexes/by-guard.md#live-source-admission",
             "title": "live-source admission"
           },
           {
             "anchor": "mechanic-topology",
             "level": 2,
-            "line": 58,
+            "line": 75,
             "ref": "docs/decisions/indexes/by-guard.md#mechanic-topology",
             "title": "mechanic topology"
           },
           {
             "anchor": "missing-evidence-visibility",
             "level": 2,
-            "line": 63,
+            "line": 80,
             "ref": "docs/decisions/indexes/by-guard.md#missing-evidence-visibility",
             "title": "missing-evidence visibility"
           },
           {
+            "anchor": "owner-evidence",
+            "level": 2,
+            "line": 85,
+            "ref": "docs/decisions/indexes/by-guard.md#owner-evidence",
+            "title": "owner evidence"
+          },
+          {
             "anchor": "owner-contract-compatibility",
             "level": 2,
-            "line": 68,
+            "line": 89,
             "ref": "docs/decisions/indexes/by-guard.md#owner-contract-compatibility",
             "title": "owner-contract compatibility"
           },
           {
             "anchor": "profile-output-parity",
             "level": 2,
-            "line": 74,
+            "line": 95,
             "ref": "docs/decisions/indexes/by-guard.md#profile-output-parity",
             "title": "profile-output parity"
           },
           {
             "anchor": "reference-source-posture",
             "level": 2,
-            "line": 79,
+            "line": 100,
             "ref": "docs/decisions/indexes/by-guard.md#reference-source-posture",
             "title": "reference-source posture"
           },
           {
             "anchor": "refresh-observation",
             "level": 2,
-            "line": 83,
+            "line": 104,
             "ref": "docs/decisions/indexes/by-guard.md#refresh-observation",
             "title": "refresh observation"
           },
           {
             "anchor": "retired-output-cleanup",
             "level": 2,
-            "line": 88,
+            "line": 109,
             "ref": "docs/decisions/indexes/by-guard.md#retired-output-cleanup",
             "title": "retired-output cleanup"
           },
           {
             "anchor": "retired-slot-reservation",
             "level": 2,
-            "line": 94,
+            "line": 115,
             "ref": "docs/decisions/indexes/by-guard.md#retired-slot-reservation",
             "title": "retired-slot reservation"
           },
           {
             "anchor": "route-law-validation",
             "level": 2,
-            "line": 99,
+            "line": 120,
             "ref": "docs/decisions/indexes/by-guard.md#route-law-validation",
             "title": "route-law validation"
           },
           {
             "anchor": "schema-output-parity",
             "level": 2,
-            "line": 103,
+            "line": 124,
             "ref": "docs/decisions/indexes/by-guard.md#schema-output-parity",
             "title": "schema-output parity"
           },
           {
             "anchor": "source-coverage",
             "level": 2,
-            "line": 108,
+            "line": 129,
             "ref": "docs/decisions/indexes/by-guard.md#source-coverage",
             "title": "source coverage"
           },
           {
             "anchor": "source-of-truth-lifecycle",
             "level": 2,
-            "line": 112,
+            "line": 133,
             "ref": "docs/decisions/indexes/by-guard.md#source-of-truth-lifecycle",
             "title": "source-of-truth lifecycle"
           },
           {
             "anchor": "stale-output-cleanup",
             "level": 2,
-            "line": 118,
+            "line": 139,
             "ref": "docs/decisions/indexes/by-guard.md#stale-output-cleanup",
             "title": "stale-output cleanup"
           },
           {
             "anchor": "zero-baseline-interpretation",
             "level": 2,
-            "line": 125,
+            "line": 146,
             "ref": "docs/decisions/indexes/by-guard.md#zero-baseline-interpretation",
             "title": "zero-baseline interpretation"
           }
@@ -28987,7 +29180,7 @@
       },
       "signs": {
         "attestation_ref": "",
-        "digest": "61c2190999588f44e83fdaa60471f42406e8c52a0b5117b996f49cfafe655a69",
+        "digest": "8b565c31280e11cda455f2c3566e8359b8297a3409f1b4a12da225f03ee463c4",
         "signature_ref": "",
         "verification_state": "digest-only"
       },
@@ -29035,13 +29228,13 @@
         "state": "current"
       },
       "identity": {
-        "content_hash": "01f55fd4d8f499e03368b01840c423c77fc756942a94b9e8da10fef263069e0c",
+        "content_hash": "4f513e68a6f906e19b0b43a204173bf09083169354b4e3df3f24e9428c4b791b",
         "git_ref": "git-index-source-tree",
         "id": "file:docs/decisions/indexes/by-number.md:02e6940a39",
         "mime": "text/markdown",
         "path": "docs/decisions/indexes/by-number.md",
         "repo": "aoa-stats",
-        "size_bytes": 7080
+        "size_bytes": 7686
       },
       "mechanics_role": "none",
       "observed_form": "generated_output",
@@ -29082,7 +29275,7 @@
       },
       "signs": {
         "attestation_ref": "",
-        "digest": "01f55fd4d8f499e03368b01840c423c77fc756942a94b9e8da10fef263069e0c",
+        "digest": "4f513e68a6f906e19b0b43a204173bf09083169354b4e3df3f24e9428c4b791b",
         "signature_ref": "",
         "verification_state": "digest-only"
       },
@@ -29130,13 +29323,13 @@
         "state": "current"
       },
       "identity": {
-        "content_hash": "90d14a9bccfdeae11c00d44ebae4659956176b22ac20df2b520dae276914a683",
+        "content_hash": "40b0d7cdeb4198d8199effc6512398093a980af9aa910c0572a0f3511fd38771",
         "git_ref": "git-index-source-tree",
         "id": "file:docs/decisions/indexes/by-source-lane.md:d12818b811",
         "mime": "text/markdown",
         "path": "docs/decisions/indexes/by-source-lane.md",
         "repo": "aoa-stats",
-        "size_bytes": 8293
+        "size_bytes": 9036
       },
       "mechanics_role": "none",
       "observed_form": "generated_output",
@@ -29214,133 +29407,140 @@
           {
             "anchor": "aoa-evals-stress-recovery-receipts-and-reports",
             "level": 2,
-            "line": 30,
+            "line": 31,
             "ref": "docs/decisions/indexes/by-source-lane.md#aoa-evals-stress-recovery-receipts-and-reports",
             "title": "aoa-evals stress-recovery receipts and reports"
           },
           {
             "anchor": "aoa-memo-reviewed-corpus",
             "level": 2,
-            "line": 34,
+            "line": 35,
             "ref": "docs/decisions/indexes/by-source-lane.md#aoa-memo-reviewed-corpus",
             "title": "aoa-memo reviewed corpus"
           },
           {
             "anchor": "aoa-routing-consumer-re-grounding",
             "level": 2,
-            "line": 38,
+            "line": 39,
             "ref": "docs/decisions/indexes/by-source-lane.md#aoa-routing-consumer-re-grounding",
             "title": "aoa-routing consumer re-grounding"
           },
           {
             "anchor": "aoa-sdk-incarnation-receipt-examples",
             "level": 2,
-            "line": 44,
+            "line": 45,
             "ref": "docs/decisions/indexes/by-source-lane.md#aoa-sdk-incarnation-receipt-examples",
             "title": "aoa-sdk incarnation receipt examples"
           },
           {
             "anchor": "aoa-sdk-reviewed-closeout-transport",
             "level": 2,
-            "line": 48,
+            "line": 49,
             "ref": "docs/decisions/indexes/by-source-lane.md#aoa-sdk-reviewed-closeout-transport",
             "title": "aoa-sdk reviewed closeout transport"
           },
           {
             "anchor": "aoa-sdk-reviewed-component-refresh-examples",
             "level": 2,
-            "line": 52,
+            "line": 53,
             "ref": "docs/decisions/indexes/by-source-lane.md#aoa-sdk-reviewed-component-refresh-examples",
             "title": "aoa-sdk reviewed component refresh examples"
           },
           {
             "anchor": "aoa-sdk-runtime-return-transport",
             "level": 2,
-            "line": 56,
+            "line": 57,
             "ref": "docs/decisions/indexes/by-source-lane.md#aoa-sdk-runtime-return-transport",
             "title": "aoa-sdk runtime return transport"
           },
           {
             "anchor": "aoa-sdk-stats-contracts",
             "level": 2,
-            "line": 60,
+            "line": 61,
             "ref": "docs/decisions/indexes/by-source-lane.md#aoa-sdk-stats-contracts",
             "title": "aoa-sdk stats contracts"
           },
           {
             "anchor": "aoa-sdk-swarm-ledger-contract",
             "level": 2,
-            "line": 64,
+            "line": 65,
             "ref": "docs/decisions/indexes/by-source-lane.md#aoa-sdk-swarm-ledger-contract",
             "title": "aoa-sdk swarm-ledger contract"
           },
           {
             "anchor": "aoa-sdk-titan-swarm-ledger-contract",
             "level": 2,
-            "line": 68,
+            "line": 69,
             "ref": "docs/decisions/indexes/by-source-lane.md#aoa-sdk-titan-swarm-ledger-contract",
             "title": "aoa-sdk Titan swarm-ledger contract"
           },
           {
             "anchor": "aoa-skills-progression-receipts",
             "level": 2,
-            "line": 72,
+            "line": 73,
             "ref": "docs/decisions/indexes/by-source-lane.md#aoa-skills-progression-receipts",
             "title": "aoa-skills progression receipts"
           },
           {
             "anchor": "aoa-skills-reviewed-landing-bundles",
             "level": 2,
-            "line": 76,
+            "line": 77,
             "ref": "docs/decisions/indexes/by-source-lane.md#aoa-skills-reviewed-landing-bundles",
             "title": "aoa-skills reviewed landing bundles"
           },
           {
             "anchor": "aoa-stats",
             "level": 2,
-            "line": 80,
+            "line": 81,
             "ref": "docs/decisions/indexes/by-source-lane.md#aoa-stats",
             "title": "aoa-stats"
           },
           {
             "anchor": "aoa-stats-authored-profiles",
             "level": 2,
-            "line": 85,
+            "line": 87,
             "ref": "docs/decisions/indexes/by-source-lane.md#aoa-stats-authored-profiles",
             "title": "aoa-stats authored profiles"
           },
           {
+            "anchor": "atm10-agent",
+            "level": 2,
+            "line": 92,
+            "ref": "docs/decisions/indexes/by-source-lane.md#atm10-agent",
+            "title": "ATM10-Agent"
+          },
+          {
             "anchor": "dionysus-seed-landing-traces",
             "level": 2,
-            "line": 90,
+            "line": 96,
             "ref": "docs/decisions/indexes/by-source-lane.md#dionysus-seed-landing-traces",
             "title": "Dionysus seed landing traces"
           },
           {
             "anchor": "historical-abyss-stack-wave-receipts",
             "level": 2,
-            "line": 94,
+            "line": 100,
             "ref": "docs/decisions/indexes/by-source-lane.md#historical-abyss-stack-wave-receipts",
             "title": "historical abyss-stack wave receipts"
           },
           {
             "anchor": "owner-local-component-refresh-receipts",
             "level": 2,
-            "line": 98,
+            "line": 104,
             "ref": "docs/decisions/indexes/by-source-lane.md#owner-local-component-refresh-receipts",
             "title": "owner-local component refresh receipts"
           },
           {
             "anchor": "owner-local-landing-receipts",
             "level": 2,
-            "line": 102,
+            "line": 108,
             "ref": "docs/decisions/indexes/by-source-lane.md#owner-local-landing-receipts",
             "title": "owner-local landing receipts"
           },
           {
             "anchor": "sibling-decision-lane-pattern",
             "level": 2,
-            "line": 106,
+            "line": 112,
             "ref": "docs/decisions/indexes/by-source-lane.md#sibling-decision-lane-pattern",
             "title": "sibling decision-lane pattern"
           }
@@ -29352,7 +29552,7 @@
       },
       "signs": {
         "attestation_ref": "",
-        "digest": "90d14a9bccfdeae11c00d44ebae4659956176b22ac20df2b520dae276914a683",
+        "digest": "40b0d7cdeb4198d8199effc6512398093a980af9aa910c0572a0f3511fd38771",
         "signature_ref": "",
         "verification_state": "digest-only"
       },
@@ -29400,13 +29600,13 @@
         "state": "current"
       },
       "identity": {
-        "content_hash": "14790c9674ce0b3f321b287f08fe7272b93cbbacdcaf8fe9b21759c507d98643",
+        "content_hash": "4c72eaa9195f04a4376fd65d07f752c380f7af84189c690c738f535447e15591",
         "git_ref": "git-index-source-tree",
         "id": "file:docs/decisions/indexes/by-stats-surface.md:01abbd2708",
         "mime": "text/markdown",
         "path": "docs/decisions/indexes/by-stats-surface.md",
         "repo": "aoa-stats",
-        "size_bytes": 9377
+        "size_bytes": 10424
       },
       "mechanics_role": "none",
       "observed_form": "generated_output",
@@ -29440,177 +29640,198 @@
             "title": "Decisions By Stats Surface"
           },
           {
-            "anchor": "component-refresh-summary",
+            "anchor": "activation-gaps",
             "level": 2,
             "line": 5,
+            "ref": "docs/decisions/indexes/by-stats-surface.md#activation-gaps",
+            "title": "activation gaps"
+          },
+          {
+            "anchor": "antifragility-vector",
+            "level": 2,
+            "line": 9,
+            "ref": "docs/decisions/indexes/by-stats-surface.md#antifragility-vector",
+            "title": "Antifragility Vector"
+          },
+          {
+            "anchor": "component-refresh-summary",
+            "level": 2,
+            "line": 13,
             "ref": "docs/decisions/indexes/by-stats-surface.md#component-refresh-summary",
             "title": "component refresh summary"
           },
           {
             "anchor": "decision-lane",
             "level": 2,
-            "line": 9,
+            "line": 17,
             "ref": "docs/decisions/indexes/by-stats-surface.md#decision-lane",
             "title": "decision lane"
           },
           {
+            "anchor": "deferred-contract-surfaces",
+            "level": 2,
+            "line": 21,
+            "ref": "docs/decisions/indexes/by-stats-surface.md#deferred-contract-surfaces",
+            "title": "deferred contract surfaces"
+          },
+          {
             "anchor": "derived-only-boundary",
             "level": 2,
-            "line": 13,
+            "line": 25,
             "ref": "docs/decisions/indexes/by-stats-surface.md#derived-only-boundary",
             "title": "derived-only boundary"
           },
           {
             "anchor": "downstream-canaries",
             "level": 2,
-            "line": 17,
+            "line": 29,
             "ref": "docs/decisions/indexes/by-stats-surface.md#downstream-canaries",
             "title": "downstream canaries"
           },
           {
             "anchor": "event-kind-registry",
             "level": 2,
-            "line": 21,
+            "line": 33,
             "ref": "docs/decisions/indexes/by-stats-surface.md#event-kind-registry",
             "title": "event-kind registry"
           },
           {
             "anchor": "generated-lookup-indexes",
             "level": 2,
-            "line": 25,
+            "line": 37,
             "ref": "docs/decisions/indexes/by-stats-surface.md#generated-lookup-indexes",
             "title": "generated lookup indexes"
           },
           {
             "anchor": "live-receipt-source-registry",
             "level": 2,
-            "line": 29,
+            "line": 41,
             "ref": "docs/decisions/indexes/by-stats-surface.md#live-receipt-source-registry",
             "title": "live receipt source registry"
           },
           {
             "anchor": "live-stale-cleanup",
             "level": 2,
-            "line": 33,
+            "line": 45,
             "ref": "docs/decisions/indexes/by-stats-surface.md#live-stale-cleanup",
             "title": "live stale cleanup"
           },
           {
             "anchor": "live-summary-catalog",
             "level": 2,
-            "line": 39,
+            "line": 51,
             "ref": "docs/decisions/indexes/by-stats-surface.md#live-summary-catalog",
             "title": "live summary catalog"
           },
           {
             "anchor": "local-live-output-inventory",
             "level": 2,
-            "line": 46,
+            "line": 58,
             "ref": "docs/decisions/indexes/by-stats-surface.md#local-live-output-inventory",
             "title": "local live output inventory"
           },
           {
             "anchor": "memory-movement",
             "level": 2,
-            "line": 50,
+            "line": 62,
             "ref": "docs/decisions/indexes/by-stats-surface.md#memory-movement",
             "title": "Memory Movement"
           },
           {
             "anchor": "owner-landing",
             "level": 2,
-            "line": 54,
+            "line": 66,
             "ref": "docs/decisions/indexes/by-stats-surface.md#owner-landing",
             "title": "Owner Landing"
           },
           {
             "anchor": "read-model-lifecycle",
             "level": 2,
-            "line": 59,
+            "line": 71,
             "ref": "docs/decisions/indexes/by-stats-surface.md#read-model-lifecycle",
             "title": "read-model lifecycle"
           },
           {
             "anchor": "receipt-abi",
             "level": 2,
-            "line": 65,
+            "line": 77,
             "ref": "docs/decisions/indexes/by-stats-surface.md#receipt-abi",
             "title": "receipt ABI"
           },
           {
             "anchor": "route-progression",
             "level": 2,
-            "line": 69,
+            "line": 81,
             "ref": "docs/decisions/indexes/by-stats-surface.md#route-progression",
             "title": "Route Progression"
           },
           {
             "anchor": "runtime-closeout",
             "level": 2,
-            "line": 73,
+            "line": 85,
             "ref": "docs/decisions/indexes/by-stats-surface.md#runtime-closeout",
             "title": "Runtime Closeout"
           },
           {
             "anchor": "source-coverage",
             "level": 2,
-            "line": 78,
+            "line": 90,
             "ref": "docs/decisions/indexes/by-stats-surface.md#source-coverage",
             "title": "source coverage"
           },
           {
             "anchor": "source-coverage-1",
             "level": 2,
-            "line": 82,
+            "line": 94,
             "ref": "docs/decisions/indexes/by-stats-surface.md#source-coverage-1",
             "title": "Source Coverage"
           },
           {
             "anchor": "stable-catalog-slots",
             "level": 2,
-            "line": 86,
+            "line": 98,
             "ref": "docs/decisions/indexes/by-stats-surface.md#stable-catalog-slots",
             "title": "stable catalog slots"
           },
           {
             "anchor": "stress-recovery-window",
             "level": 2,
-            "line": 91,
+            "line": 103,
             "ref": "docs/decisions/indexes/by-stats-surface.md#stress-recovery-window",
             "title": "Stress Recovery Window"
           },
           {
             "anchor": "summary-surface-catalog",
             "level": 2,
-            "line": 95,
+            "line": 107,
             "ref": "docs/decisions/indexes/by-stats-surface.md#summary-surface-catalog",
             "title": "summary surface catalog"
           },
           {
             "anchor": "supersession-drop",
             "level": 2,
-            "line": 100,
+            "line": 112,
             "ref": "docs/decisions/indexes/by-stats-surface.md#supersession-drop",
             "title": "Supersession Drop"
           },
           {
             "anchor": "surface-strength",
             "level": 2,
-            "line": 104,
+            "line": 116,
             "ref": "docs/decisions/indexes/by-stats-surface.md#surface-strength",
             "title": "surface strength"
           },
           {
             "anchor": "titan-incarnation",
             "level": 2,
-            "line": 108,
+            "line": 121,
             "ref": "docs/decisions/indexes/by-stats-surface.md#titan-incarnation",
             "title": "Titan Incarnation"
           },
           {
             "anchor": "titan-summon",
             "level": 2,
-            "line": 112,
+            "line": 125,
             "ref": "docs/decisions/indexes/by-stats-surface.md#titan-summon",
             "title": "Titan Summon"
           }
@@ -29622,7 +29843,7 @@
       },
       "signs": {
         "attestation_ref": "",
-        "digest": "14790c9674ce0b3f321b287f08fe7272b93cbbacdcaf8fe9b21759c507d98643",
+        "digest": "4c72eaa9195f04a4376fd65d07f752c380f7af84189c690c738f535447e15591",
         "signature_ref": "",
         "verification_state": "digest-only"
       },
@@ -29670,13 +29891,13 @@
         "state": "current"
       },
       "identity": {
-        "content_hash": "bf06a95a14adffa491e8838e2e141c2319b6766d37c9245f162c8b5570a385cf",
+        "content_hash": "36ed8a3f7036ad1e0d07a6da10b48e94f0849b94e1bfedaf6dc7cb40e7fd940e",
         "git_ref": "git-index-source-tree",
         "id": "file:docs/decisions/indexes/by-surface.md:acd156903f",
         "mime": "text/markdown",
         "path": "docs/decisions/indexes/by-surface.md",
         "repo": "aoa-stats",
-        "size_bytes": 13543
+        "size_bytes": 14542
       },
       "mechanics_role": "none",
       "observed_form": "generated_output",
@@ -29754,119 +29975,126 @@
           {
             "anchor": "generatedread-models",
             "level": 2,
-            "line": 30,
+            "line": 31,
             "ref": "docs/decisions/indexes/by-surface.md#generatedread-models",
             "title": "generated/read-models"
           },
           {
             "anchor": "mcpcatalog",
             "level": 2,
-            "line": 37,
+            "line": 38,
             "ref": "docs/decisions/indexes/by-surface.md#mcpcatalog",
             "title": "MCP/catalog"
           },
           {
             "anchor": "mechanicsantifragility",
             "level": 2,
-            "line": 42,
+            "line": 43,
             "ref": "docs/decisions/indexes/by-surface.md#mechanicsantifragility",
             "title": "mechanics/antifragility"
           },
           {
             "anchor": "mechanicsboundary-bridge",
             "level": 2,
-            "line": 46,
+            "line": 48,
             "ref": "docs/decisions/indexes/by-surface.md#mechanicsboundary-bridge",
             "title": "mechanics/boundary-bridge"
           },
           {
             "anchor": "mechanicscheckpoint",
             "level": 2,
-            "line": 50,
+            "line": 52,
             "ref": "docs/decisions/indexes/by-surface.md#mechanicscheckpoint",
             "title": "mechanics/checkpoint"
           },
           {
             "anchor": "mechanicsmethod-growth",
             "level": 2,
-            "line": 55,
+            "line": 57,
             "ref": "docs/decisions/indexes/by-surface.md#mechanicsmethod-growth",
             "title": "mechanics/method-growth"
           },
           {
             "anchor": "mechanicsrecurrence",
             "level": 2,
-            "line": 60,
+            "line": 62,
             "ref": "docs/decisions/indexes/by-surface.md#mechanicsrecurrence",
             "title": "mechanics/recurrence"
           },
           {
             "anchor": "mechanicsrpg",
             "level": 2,
-            "line": 69,
+            "line": 71,
             "ref": "docs/decisions/indexes/by-surface.md#mechanicsrpg",
             "title": "mechanics/rpg"
           },
           {
             "anchor": "mechanicstitan",
             "level": 2,
-            "line": 73,
+            "line": 75,
             "ref": "docs/decisions/indexes/by-surface.md#mechanicstitan",
             "title": "mechanics/titan"
           },
           {
+            "anchor": "schemasdeferred-contract",
+            "level": 2,
+            "line": 80,
+            "ref": "docs/decisions/indexes/by-surface.md#schemasdeferred-contract",
+            "title": "schemas/deferred-contract"
+          },
+          {
             "anchor": "schemasreceipt-abi",
             "level": 2,
-            "line": 78,
+            "line": 84,
             "ref": "docs/decisions/indexes/by-surface.md#schemasreceipt-abi",
             "title": "schemas/receipt-abi"
           },
           {
             "anchor": "scriptsvalidators",
             "level": 2,
-            "line": 82,
+            "line": 88,
             "ref": "docs/decisions/indexes/by-surface.md#scriptsvalidators",
             "title": "scripts/validators"
           },
           {
             "anchor": "srcadapters",
             "level": 2,
-            "line": 87,
+            "line": 93,
             "ref": "docs/decisions/indexes/by-surface.md#srcadapters",
             "title": "src/adapters"
           },
           {
             "anchor": "srccatalog",
             "level": 2,
-            "line": 92,
+            "line": 98,
             "ref": "docs/decisions/indexes/by-surface.md#srccatalog",
             "title": "src/catalog"
           },
           {
             "anchor": "srcprojection",
             "level": 2,
-            "line": 97,
+            "line": 103,
             "ref": "docs/decisions/indexes/by-surface.md#srcprojection",
             "title": "src/projection"
           },
           {
             "anchor": "stategenerated",
             "level": 2,
-            "line": 104,
+            "line": 110,
             "ref": "docs/decisions/indexes/by-surface.md#stategenerated",
             "title": "state/generated"
           },
           {
             "anchor": "statsread-models",
             "level": 2,
-            "line": 114,
+            "line": 120,
             "ref": "docs/decisions/indexes/by-surface.md#statsread-models",
             "title": "stats/read-models"
           },
           {
             "anchor": "testsrelease-checks",
             "level": 2,
-            "line": 125,
+            "line": 132,
             "ref": "docs/decisions/indexes/by-surface.md#testsrelease-checks",
             "title": "tests/release-checks"
           }
@@ -29878,7 +30106,7 @@
       },
       "signs": {
         "attestation_ref": "",
-        "digest": "bf06a95a14adffa491e8838e2e141c2319b6766d37c9245f162c8b5570a385cf",
+        "digest": "36ed8a3f7036ad1e0d07a6da10b48e94f0849b94e1bfedaf6dc7cb40e7fd940e",
         "signature_ref": "",
         "verification_state": "digest-only"
       },
@@ -33580,13 +33808,13 @@
         "state": "current"
       },
       "identity": {
-        "content_hash": "e0b8a0088e359f153ca06eb1880f5b643493548f814fc85fe63e558ddb0cfb00",
+        "content_hash": "874f484fc88effa062ab31667782a2e5ae65a47660c77027d1fe9eb21fd9bb2e",
         "git_ref": "git-index-source-tree",
         "id": "file:generated/summary_surface_catalog.min.json:5c31a5556b",
         "mime": "application/json",
         "path": "generated/summary_surface_catalog.min.json",
         "repo": "aoa-stats",
-        "size_bytes": 25025
+        "size_bytes": 26364
       },
       "mechanics_role": "none",
       "observed_form": "generated_output",
@@ -33619,7 +33847,7 @@
       },
       "signs": {
         "attestation_ref": "",
-        "digest": "e0b8a0088e359f153ca06eb1880f5b643493548f814fc85fe63e558ddb0cfb00",
+        "digest": "874f484fc88effa062ab31667782a2e5ae65a47660c77027d1fe9eb21fd9bb2e",
         "signature_ref": "",
         "verification_state": "digest-only"
       },
@@ -47560,13 +47788,13 @@
         "state": "current"
       },
       "identity": {
-        "content_hash": "a87b94585844374745eabe5e605afff22e0fde5141078d5d9c75688acfa2cf9b",
+        "content_hash": "0ae308985557d3aa4ddd9cc5b31cec78138685cde5bf5fa2a57124acc4d40fbd",
         "git_ref": "git-index-source-tree",
         "id": "file:mechanics/antifragility/parts/antifragility-vector/contract.md:b167510aa6",
         "mime": "text/markdown",
         "path": "mechanics/antifragility/parts/antifragility-vector/CONTRACT.md",
         "repo": "aoa-stats",
-        "size_bytes": 360
+        "size_bytes": 944
       },
       "mechanics_role": "part_contract",
       "observed_form": "file",
@@ -47607,7 +47835,7 @@
       },
       "signs": {
         "attestation_ref": "",
-        "digest": "a87b94585844374745eabe5e605afff22e0fde5141078d5d9c75688acfa2cf9b",
+        "digest": "0ae308985557d3aa4ddd9cc5b31cec78138685cde5bf5fa2a57124acc4d40fbd",
         "signature_ref": "",
         "verification_state": "digest-only"
       },
@@ -47655,13 +47883,13 @@
         "state": "current"
       },
       "identity": {
-        "content_hash": "85512dca9462fa247b3653e9b91aa09404ceb5bb2546c038e078e831585cf653",
+        "content_hash": "2d805fae918f0197925b54b01f74596198b32a9b69fcd5a187981b0775d7da6d",
         "git_ref": "git-index-source-tree",
         "id": "file:mechanics/antifragility/parts/antifragility-vector/readme.md:1dadb28a94",
         "mime": "text/markdown",
         "path": "mechanics/antifragility/parts/antifragility-vector/README.md",
         "repo": "aoa-stats",
-        "size_bytes": 402
+        "size_bytes": 595
       },
       "mechanics_role": "part_doc",
       "observed_form": "file",
@@ -47702,7 +47930,7 @@
       },
       "signs": {
         "attestation_ref": "",
-        "digest": "85512dca9462fa247b3653e9b91aa09404ceb5bb2546c038e078e831585cf653",
+        "digest": "2d805fae918f0197925b54b01f74596198b32a9b69fcd5a187981b0775d7da6d",
         "signature_ref": "",
         "verification_state": "digest-only"
       },
@@ -47750,13 +47978,13 @@
         "state": "current"
       },
       "identity": {
-        "content_hash": "045aee7c7d783b6b29b902a7401549c850d272410838cace27b3a25efb441ff3",
+        "content_hash": "9d64c9e57dea6f1ba6e5ba2ffdacc7a3adec6b1b18acb6c9c3d24e55f624062e",
         "git_ref": "git-index-source-tree",
         "id": "file:mechanics/antifragility/parts/antifragility-vector/validation.md:8d56d317a4",
         "mime": "text/markdown",
         "path": "mechanics/antifragility/parts/antifragility-vector/VALIDATION.md",
         "repo": "aoa-stats",
-        "size_bytes": 443
+        "size_bytes": 627
       },
       "mechanics_role": "part_doc",
       "observed_form": "file",
@@ -47797,7 +48025,7 @@
       },
       "signs": {
         "attestation_ref": "",
-        "digest": "045aee7c7d783b6b29b902a7401549c850d272410838cace27b3a25efb441ff3",
+        "digest": "9d64c9e57dea6f1ba6e5ba2ffdacc7a3adec6b1b18acb6c9c3d24e55f624062e",
         "signature_ref": "",
         "verification_state": "digest-only"
       },
@@ -47845,13 +48073,13 @@
         "state": "current"
       },
       "identity": {
-        "content_hash": "f8867e18bd276593049b484000736346ad90c3befc486f32f140344712dddb06",
+        "content_hash": "1a83d1696c16dc653fa85d5da791c699832ab365ec54bf6ea05a66d3465f1c13",
         "git_ref": "git-index-source-tree",
         "id": "file:mechanics/antifragility/parts/antifragility-vector/docs/antifragility_vector.md:efaf4a8847",
         "mime": "text/markdown",
         "path": "mechanics/antifragility/parts/antifragility-vector/docs/ANTIFRAGILITY_VECTOR.md",
         "repo": "aoa-stats",
-        "size_bytes": 1960
+        "size_bytes": 3121
       },
       "mechanics_role": "part_doc",
       "observed_form": "file",
@@ -47894,44 +48122,44 @@
           {
             "anchor": "why-a-vector",
             "level": 2,
-            "line": 9,
+            "line": 12,
             "ref": "mechanics/antifragility/parts/antifragility-vector/docs/ANTIFRAGILITY_VECTOR.md#why-a-vector",
             "title": "Why a vector"
           },
           {
             "anchor": "suggested-axes",
             "level": 2,
-            "line": 20,
+            "line": 23,
             "ref": "mechanics/antifragility/parts/antifragility-vector/docs/ANTIFRAGILITY_VECTOR.md#suggested-axes",
             "title": "Suggested axes"
           },
           {
             "anchor": "input-discipline",
             "level": 2,
-            "line": 33,
+            "line": 36,
             "ref": "mechanics/antifragility/parts/antifragility-vector/docs/ANTIFRAGILITY_VECTOR.md#input-discipline",
             "title": "Input discipline"
           },
           {
             "anchor": "output-posture",
             "level": 2,
-            "line": 43,
+            "line": 57,
             "ref": "mechanics/antifragility/parts/antifragility-vector/docs/ANTIFRAGILITY_VECTOR.md#output-posture",
             "title": "Output posture"
           },
           {
             "anchor": "suppression-guidance",
             "level": 2,
-            "line": 58,
+            "line": 72,
             "ref": "mechanics/antifragility/parts/antifragility-vector/docs/ANTIFRAGILITY_VECTOR.md#suppression-guidance",
             "title": "Suppression guidance"
           },
           {
-            "anchor": "wave-1-note",
+            "anchor": "activation-gate",
             "level": 2,
-            "line": 67,
-            "ref": "mechanics/antifragility/parts/antifragility-vector/docs/ANTIFRAGILITY_VECTOR.md#wave-1-note",
-            "title": "Wave 1 note"
+            "line": 86,
+            "ref": "mechanics/antifragility/parts/antifragility-vector/docs/ANTIFRAGILITY_VECTOR.md#activation-gate",
+            "title": "Activation gate"
           }
         ],
         "line_refs": [
@@ -47941,7 +48169,7 @@
       },
       "signs": {
         "attestation_ref": "",
-        "digest": "f8867e18bd276593049b484000736346ad90c3befc486f32f140344712dddb06",
+        "digest": "1a83d1696c16dc653fa85d5da791c699832ab365ec54bf6ea05a66d3465f1c13",
         "signature_ref": "",
         "verification_state": "digest-only"
       },
@@ -47989,13 +48217,13 @@
         "state": "current"
       },
       "identity": {
-        "content_hash": "ac5424d7a128a856457f1cdb6d7ca97eec056425cba8f4b465b097caf701b04a",
+        "content_hash": "8d4f20ef84211b705fde35cab05e8d677d0dc2409f8d1059f7a478ac51dcf0dd",
         "git_ref": "git-index-source-tree",
         "id": "file:mechanics/antifragility/parts/antifragility-vector/examples/antifragility_vector.example.json:4c5e95364e",
         "mime": "application/json",
         "path": "mechanics/antifragility/parts/antifragility-vector/examples/antifragility_vector.example.json",
         "repo": "aoa-stats",
-        "size_bytes": 857
+        "size_bytes": 1020
       },
       "mechanics_role": "mechanic_part",
       "observed_form": "file",
@@ -48028,7 +48256,7 @@
       },
       "signs": {
         "attestation_ref": "",
-        "digest": "ac5424d7a128a856457f1cdb6d7ca97eec056425cba8f4b465b097caf701b04a",
+        "digest": "8d4f20ef84211b705fde35cab05e8d677d0dc2409f8d1059f7a478ac51dcf0dd",
         "signature_ref": "",
         "verification_state": "digest-only"
       },
@@ -48078,13 +48306,13 @@
         "state": "current"
       },
       "identity": {
-        "content_hash": "7c97cc272aac36c252e8308b18ccc5220cba3bda24eea53dbe6df28214bd7394",
+        "content_hash": "0b2489809955361b83204a5330f827417f73e7b30e75354232024116dcde828c",
         "git_ref": "git-index-source-tree",
         "id": "file:mechanics/antifragility/parts/antifragility-vector/schemas/antifragility_vector_v1.json:bb7104457d",
         "mime": "application/json",
         "path": "mechanics/antifragility/parts/antifragility-vector/schemas/antifragility_vector_v1.json",
         "repo": "aoa-stats",
-        "size_bytes": 4098
+        "size_bytes": 4450
       },
       "mechanics_role": "part_schema",
       "observed_form": "file",
@@ -48117,7 +48345,7 @@
       },
       "signs": {
         "attestation_ref": "",
-        "digest": "7c97cc272aac36c252e8308b18ccc5220cba3bda24eea53dbe6df28214bd7394",
+        "digest": "0b2489809955361b83204a5330f827417f73e7b30e75354232024116dcde828c",
         "signature_ref": "",
         "verification_state": "digest-only"
       },
@@ -48130,6 +48358,97 @@
         "owner_commands": [],
         "required_tools": [
           "jq"
+        ]
+      },
+      "validator_route": {
+        "route_kind": "source_fast",
+        "surface": "aoa-kag:scripts/validate_kag.py"
+      }
+    },
+    {
+      "abi": {
+        "abi_epoch": "source",
+        "artifact_class": "test",
+        "compatibility": "stable",
+        "contract_version": "none",
+        "schema_version": "none"
+      },
+      "access": {
+        "scope": "public",
+        "secrets_risk": "none"
+      },
+      "artifact_kind": "test",
+      "classification": {
+        "confidence": "high",
+        "primary_kind": "command"
+      },
+      "code_role": "test",
+      "command_role": "test",
+      "consumer_route": {
+        "route_kind": "resource",
+        "surface": "aoa-kag-mcp"
+      },
+      "document_role": "none",
+      "freshness": {
+        "checked_ref": "git-index-source-tree",
+        "mode": "source_snapshot",
+        "state": "current"
+      },
+      "identity": {
+        "content_hash": "a15b21ca614852fcf88c5fc88e27db156538d84650116fcf1276141fb9174797",
+        "git_ref": "git-index-source-tree",
+        "id": "file:mechanics/antifragility/parts/antifragility-vector/tests/test_antifragility_vector_contract.py:2c75ab9ed2",
+        "mime": "text/x-python",
+        "path": "mechanics/antifragility/parts/antifragility-vector/tests/test_antifragility_vector_contract.py",
+        "repo": "aoa-stats",
+        "size_bytes": 5452
+      },
+      "mechanics_role": "part_test",
+      "observed_form": "command",
+      "owner_return_route": {
+        "route_kind": "test_owner",
+        "surface": "mechanics/antifragility/parts/antifragility-vector/tests/test_antifragility_vector_contract.py"
+      },
+      "provenance": {
+        "generated_by": "",
+        "materials": [],
+        "observed_by": "aoa-kag:scripts/generate_repo_local_kag_index.py",
+        "source_refs": [
+          {
+            "authority": "authored_source",
+            "path": "mechanics/antifragility/parts/antifragility-vector/tests/test_antifragility_vector_contract.py",
+            "repo": "aoa-stats",
+            "role": "primary"
+          }
+        ],
+        "validated_by": [
+          "aoa-kag:scripts/validate_kag.py"
+        ]
+      },
+      "refs": {
+        "heading_refs": [],
+        "line_refs": [
+          "mechanics/antifragility/parts/antifragility-vector/tests/test_antifragility_vector_contract.py:1"
+        ],
+        "path_ref": "mechanics/antifragility/parts/antifragility-vector/tests/test_antifragility_vector_contract.py"
+      },
+      "signs": {
+        "attestation_ref": "",
+        "digest": "a15b21ca614852fcf88c5fc88e27db156538d84650116fcf1276141fb9174797",
+        "signature_ref": "",
+        "verification_state": "digest-only"
+      },
+      "surface_state": "authored_source",
+      "toolchain": {
+        "detected_tools": [
+          "git",
+          "python"
+        ],
+        "owner_commands": [
+          "python -m unittest mechanics/antifragility/parts/antifragility-vector/tests/test_antifragility_vector_contract.py"
+        ],
+        "required_tools": [
+          "python"
         ]
       },
       "validator_route": {
@@ -85057,13 +85376,13 @@
         "state": "current"
       },
       "identity": {
-        "content_hash": "c77d9fbdec4261321f15a6034bf8c235c12f007bcc2befa8b2333f6df316fed2",
+        "content_hash": "ac6420be8d1167aba9cf3ee310de6b1d1ee0f26f3ed13fa8cdbc7d6c4cc24b38",
         "git_ref": "git-index-source-tree",
         "id": "file:mechanics/topology.json:c2f84a03b1",
         "mime": "application/json",
         "path": "mechanics/topology.json",
         "repo": "aoa-stats",
-        "size_bytes": 38380
+        "size_bytes": 38401
       },
       "mechanics_role": "mechanic_package",
       "observed_form": "file",
@@ -85096,7 +85415,7 @@
       },
       "signs": {
         "attestation_ref": "",
-        "digest": "c77d9fbdec4261321f15a6034bf8c235c12f007bcc2befa8b2333f6df316fed2",
+        "digest": "ac6420be8d1167aba9cf3ee310de6b1d1ee0f26f3ed13fa8cdbc7d6c4cc24b38",
         "signature_ref": "",
         "verification_state": "digest-only"
       },
@@ -87401,13 +87720,13 @@
         "state": "current"
       },
       "identity": {
-        "content_hash": "292c9218d1ddfd8b6275f030cb5002fb71ec1658a4c7bea59cf116e8c253ed99",
+        "content_hash": "ec0afd0840568acedb0b847ba9a1f623dd05192f2dad9c1d16768d08e6419a9d",
         "git_ref": "git-index-source-tree",
         "id": "file:schemas/summary-surface-catalog.schema.json:ebc72aad0b",
         "mime": "application/json",
         "path": "schemas/summary-surface-catalog.schema.json",
         "repo": "aoa-stats",
-        "size_bytes": 6670
+        "size_bytes": 7523
       },
       "mechanics_role": "none",
       "observed_form": "file",
@@ -87440,7 +87759,7 @@
       },
       "signs": {
         "attestation_ref": "",
-        "digest": "292c9218d1ddfd8b6275f030cb5002fb71ec1658a4c7bea59cf116e8c253ed99",
+        "digest": "ec0afd0840568acedb0b847ba9a1f623dd05192f2dad9c1d16768d08e6419a9d",
         "signature_ref": "",
         "verification_state": "digest-only"
       },
@@ -91680,13 +91999,13 @@
         "state": "current"
       },
       "identity": {
-        "content_hash": "9691f3fcf799f755203f43def2c3c166fc52c34a6a3abf0c34f78913bad0da4e",
+        "content_hash": "25934f6e75d7528239bfd68f90001293136e3afd0ffc25add5a773ab05d89f28",
         "git_ref": "git-index-source-tree",
         "id": "file:src/aoa_stats_builder/surface_catalog.py:42888f91da",
         "mime": "text/x-python",
         "path": "src/aoa_stats_builder/surface_catalog.py",
         "repo": "aoa-stats",
-        "size_bytes": 13788
+        "size_bytes": 14959
       },
       "mechanics_role": "none",
       "observed_form": "file",
@@ -91719,7 +92038,7 @@
       },
       "signs": {
         "attestation_ref": "",
-        "digest": "9691f3fcf799f755203f43def2c3c166fc52c34a6a3abf0c34f78913bad0da4e",
+        "digest": "25934f6e75d7528239bfd68f90001293136e3afd0ffc25add5a773ab05d89f28",
         "signature_ref": "",
         "verification_state": "digest-only"
       },
@@ -94780,13 +95099,13 @@
         "state": "current"
       },
       "identity": {
-        "content_hash": "50514ee6176b8d7c4182bc1dc6d9da59d3be0298d9b7361590e0c752759a46cc",
+        "content_hash": "407668863bc923c0f9d47179597614c482a6adc6df10a0d4a98a920cffe8f9d1",
         "git_ref": "git-index-source-tree",
         "id": "file:stats/read-models/agents.md:ebf32cdc74",
         "mime": "text/markdown",
         "path": "stats/read-models/AGENTS.md",
         "repo": "aoa-stats",
-        "size_bytes": 3005
+        "size_bytes": 3650
       },
       "mechanics_role": "none",
       "observed_form": "file",
@@ -94843,7 +95162,7 @@
           {
             "anchor": "verification",
             "level": 2,
-            "line": 58,
+            "line": 68,
             "ref": "stats/read-models/AGENTS.md#verification",
             "title": "Verification"
           }
@@ -94855,7 +95174,7 @@
       },
       "signs": {
         "attestation_ref": "",
-        "digest": "50514ee6176b8d7c4182bc1dc6d9da59d3be0298d9b7361590e0c752759a46cc",
+        "digest": "407668863bc923c0f9d47179597614c482a6adc6df10a0d4a98a920cffe8f9d1",
         "signature_ref": "",
         "verification_state": "digest-only"
       },
@@ -94903,13 +95222,13 @@
         "state": "current"
       },
       "identity": {
-        "content_hash": "8b301cb1c384558fd608972519b06d84180135eeff97ac193439c768e5d74f4c",
+        "content_hash": "2874b0f87435a5f3f8ca7d9d8b1768ec55dba5024e892a5188ea4af4e74b6e7d",
         "git_ref": "git-index-source-tree",
         "id": "file:stats/read-models/readme.md:5ba4a92471",
         "mime": "text/markdown",
         "path": "stats/read-models/README.md",
         "repo": "aoa-stats",
-        "size_bytes": 7373
+        "size_bytes": 8147
       },
       "mechanics_role": "none",
       "observed_form": "file",
@@ -94945,7 +95264,7 @@
           {
             "anchor": "lifecycle",
             "level": 2,
-            "line": 114,
+            "line": 126,
             "ref": "stats/read-models/README.md#lifecycle",
             "title": "Lifecycle"
           }
@@ -94957,7 +95276,7 @@
       },
       "signs": {
         "attestation_ref": "",
-        "digest": "8b301cb1c384558fd608972519b06d84180135eeff97ac193439c768e5d74f4c",
+        "digest": "2874b0f87435a5f3f8ca7d9d8b1768ec55dba5024e892a5188ea4af4e74b6e7d",
         "signature_ref": "",
         "verification_state": "digest-only"
       },
@@ -96963,13 +97282,13 @@
         "state": "current"
       },
       "identity": {
-        "content_hash": "466d0555d97e94b75a99b5408f6d6a12b25468da88b86066c98ea811ea34ef94",
+        "content_hash": "126c5a36e5d7dba33ca86542533b12fdccb9156cccdbdc406c745b939ba052c5",
         "git_ref": "git-index-source-tree",
         "id": "file:stats/read-models/deferred/antifragility_vector.profile.json:b675b4b101",
         "mime": "application/json",
         "path": "stats/read-models/deferred/antifragility_vector.profile.json",
         "repo": "aoa-stats",
-        "size_bytes": 736
+        "size_bytes": 1977
       },
       "mechanics_role": "none",
       "observed_form": "file",
@@ -97002,7 +97321,7 @@
       },
       "signs": {
         "attestation_ref": "",
-        "digest": "466d0555d97e94b75a99b5408f6d6a12b25468da88b86066c98ea811ea34ef94",
+        "digest": "126c5a36e5d7dba33ca86542533b12fdccb9156cccdbdc406c745b939ba052c5",
         "signature_ref": "",
         "verification_state": "digest-only"
       },
@@ -97319,13 +97638,13 @@
         "state": "current"
       },
       "identity": {
-        "content_hash": "171738b82b3edacd147c255bb3e72b09ad289f3fb31bb3c4355d296a13490f39",
+        "content_hash": "f1f97992dd9b472c4b981c27a7984f9392045a636b174407a0886f45448f4700",
         "git_ref": "git-index-source-tree",
         "id": "file:stats/read-models/surface-profile.schema.json:f9c44f851d",
         "mime": "application/json",
         "path": "stats/read-models/surface-profile.schema.json",
         "repo": "aoa-stats",
-        "size_bytes": 6218
+        "size_bytes": 6975
       },
       "mechanics_role": "none",
       "observed_form": "file",
@@ -97358,7 +97677,7 @@
       },
       "signs": {
         "attestation_ref": "",
-        "digest": "171738b82b3edacd147c255bb3e72b09ad289f3fb31bb3c4355d296a13490f39",
+        "digest": "f1f97992dd9b472c4b981c27a7984f9392045a636b174407a0886f45448f4700",
         "signature_ref": "",
         "verification_state": "digest-only"
       },
@@ -97408,13 +97727,13 @@
         "state": "current"
       },
       "identity": {
-        "content_hash": "5514008c2b2f026a58095bd5806fca824747fbae184ec54f37cc9c96957a4abd",
+        "content_hash": "7667232a12937827a4818f8c525e32d2e98c415c6b62162df648e5c23c0b6106",
         "git_ref": "git-index-source-tree",
         "id": "file:stats/source_home.manifest.json:41b237ff45",
         "mime": "application/json",
         "path": "stats/source_home.manifest.json",
         "repo": "aoa-stats",
-        "size_bytes": 27097
+        "size_bytes": 27203
       },
       "mechanics_role": "none",
       "observed_form": "file",
@@ -97447,7 +97766,7 @@
       },
       "signs": {
         "attestation_ref": "",
-        "digest": "5514008c2b2f026a58095bd5806fca824747fbae184ec54f37cc9c96957a4abd",
+        "digest": "7667232a12937827a4818f8c525e32d2e98c415c6b62162df648e5c23c0b6106",
         "signature_ref": "",
         "verification_state": "digest-only"
       },
@@ -98224,13 +98543,13 @@
         "state": "current"
       },
       "identity": {
-        "content_hash": "e1ede5961d6c19be591e17a5ac412ff4815eb886dd676952fc58bbbc4db3a696",
+        "content_hash": "b42502efb832c7af01a5765b3659da4f59bf9fc99e6d7a3e5d09cf6b8f46bdc2",
         "git_ref": "git-index-source-tree",
         "id": "file:tests/test_build_views.py:760ef645f6",
         "mime": "text/x-python",
         "path": "tests/test_build_views.py",
         "repo": "aoa-stats",
-        "size_bytes": 13462
+        "size_bytes": 12410
       },
       "mechanics_role": "none",
       "observed_form": "command",
@@ -98263,7 +98582,7 @@
       },
       "signs": {
         "attestation_ref": "",
-        "digest": "e1ede5961d6c19be591e17a5ac412ff4815eb886dd676952fc58bbbc4db3a696",
+        "digest": "b42502efb832c7af01a5765b3659da4f59bf9fc99e6d7a3e5d09cf6b8f46bdc2",
         "signature_ref": "",
         "verification_state": "digest-only"
       },
@@ -98952,13 +99271,13 @@
         "state": "current"
       },
       "identity": {
-        "content_hash": "707883172ccb02174bfed3ca4e7904d0662513043b8b9e705a9bf53d2384dd8c",
+        "content_hash": "12ec21c846cf9ed3e9bd53631b9c52341c094f7d9070affca34733ea81b9e68e",
         "git_ref": "git-index-source-tree",
         "id": "file:tests/test_summary_surface_catalog.py:ebdd6f47a0",
         "mime": "text/x-python",
         "path": "tests/test_summary_surface_catalog.py",
         "repo": "aoa-stats",
-        "size_bytes": 7150
+        "size_bytes": 7176
       },
       "mechanics_role": "none",
       "observed_form": "command",
@@ -98991,7 +99310,7 @@
       },
       "signs": {
         "attestation_ref": "",
-        "digest": "707883172ccb02174bfed3ca4e7904d0662513043b8b9e705a9bf53d2384dd8c",
+        "digest": "12ec21c846cf9ed3e9bd53631b9c52341c094f7d9070affca34733ea81b9e68e",
         "signature_ref": "",
         "verification_state": "digest-only"
       },
