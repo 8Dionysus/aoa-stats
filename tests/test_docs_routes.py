@@ -161,6 +161,10 @@ def test_part_local_docs_do_not_keep_migration_redirects() -> None:
             "mechanics/recurrence/parts/component-refresh/docs/"
             "COMPONENT_REFRESH_SUMMARIES.md"
         ),
+        "docs/DERIVED_SIGNAL_HYGIENE.md": (
+            "mechanics/boundary-bridge/parts/consumer-regrounding/docs/"
+            "DERIVED_SIGNAL_HYGIENE.md"
+        ),
     }
 
     for former_route, owner_route in routes.items():

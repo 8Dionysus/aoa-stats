@@ -31,7 +31,6 @@
       "docs": [
         "docs/ARCHITECTURE.md",
         "docs/BOUNDARIES.md",
-        "docs/DERIVED_SIGNAL_HYGIENE.md",
         "docs/README.md",
         "docs/RELEASING.md",
         "docs/SURFACE_STRENGTH_MODEL.md"
@@ -521,6 +520,7 @@
             "surface_catalog"
           ],
           "localized_payload_roots": [
+            "docs",
             "tests"
           ],
           "retained_root_routes": [

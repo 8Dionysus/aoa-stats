@@ -14,8 +14,10 @@ and focused governance plus feed-resolution tests listed through the stats
 source crosswalk. The root build suite retains only repo-wide fan-out proof.
 
 `consumer-regrounding` is evidenced by the retained public surface catalog,
-schema, and compatibility validator plus the focused tests localized in its
-part.
+schema, and compatibility validator plus the derived-signal precedence guide
+and focused tests localized in its part. The former flat
+`docs/DERIVED_SIGNAL_HYGIENE.md` route belongs to Git history, not active
+compatibility.
 
 `memory-owner-handoff` owns its focused contract, guide, and tests locally.
 Its filesystem-free projection core lives at

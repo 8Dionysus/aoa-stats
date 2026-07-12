@@ -131,5 +131,4 @@ state, or owner health.
 - source families and exact lifecycle state: `stats/README.md`
 - operation ownership: `mechanics/README.md`
 - consumer caution vocabulary: `docs/SURFACE_STRENGTH_MODEL.md`
-- derived-signal precedence: `docs/DERIVED_SIGNAL_HYGIENE.md`
 - durable rationale: `docs/decisions/README.md`

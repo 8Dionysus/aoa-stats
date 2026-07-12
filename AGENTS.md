@@ -79,6 +79,11 @@ for a current public consumer or explicit external contract. Once active
 readers point to the part-local owner, remove the redirect from topology and
 validation; Git history and provenance bridges preserve the former path.
 
+Cross-owner caution and precedence guidance is operation payload when one
+mechanic applies it. Keep that guidance with the mechanic part that returns
+consumers to stronger owners; do not retain a root doc merely because its rule
+mentions several organs.
+
 ## Cross-mode law
 
 Grow `stats/` and `mechanics/` together, alternating which side leads each

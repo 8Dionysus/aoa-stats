@@ -37,6 +37,10 @@ exact current state.
 - consumer return to stronger owner surfaces:
   `mechanics/boundary-bridge/parts/consumer-regrounding`
 
+That part owns the derived-signal precedence guide and its anti-loop consumer
+proof. The catalog family supplies authored ceilings and owner refs without
+duplicating the operation guide under `stats/` or root `docs/`.
+
 The current MCP reads the generated catalog and catalog-listed surfaces. It is
 an access route only; source meaning stays in this family and the root routes
 listed above.

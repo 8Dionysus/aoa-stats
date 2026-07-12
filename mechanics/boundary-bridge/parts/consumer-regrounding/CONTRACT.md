@@ -25,6 +25,8 @@ projection.
 - an authority ceiling stays weaker than the named owner truth
 - missing registry context remains visible rather than inventing coverage
 - coverage skew is a descriptive signal, not an owner-health verdict
+- derived stats, routing, and memory signals cannot cite one another into
+  authority or close a loop that outranks source-owned facts and bounded proof
 - no output approves a route, passes proof, activates workflow, or authorizes a
   mutation
 - producer aggregation rules remain owned and tested by the Source Coverage
@@ -39,6 +41,6 @@ route is recorded in `stats/source_home.manifest.json` and
 
 ## Current payload route
 
-Focused consumer-regrounding tests are part-local. The stable public catalog
-schema/output and compatibility validator remain at the root routes enumerated
-in the topology.
+The derived-signal precedence guide and focused consumer-regrounding tests are
+part-local. The stable public catalog schema/output and compatibility validator
+remain at the root routes enumerated in the topology.
