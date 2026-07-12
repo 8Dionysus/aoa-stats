@@ -89,7 +89,8 @@ surface. It is projected from authored profiles and validated by
 
 The stable catalog vocabulary covers identity, derivation, input posture,
 stronger owner inputs, authority ceiling, consumer risk, validation, and live
-capability. `docs/SURFACE_STRENGTH_MODEL.md` explains that vocabulary.
+capability. `stats/surface-catalog/SURFACE_STRENGTH_MODEL.md` explains that
+vocabulary.
 
 Lifecycle is intentionally asymmetric:
 
@@ -130,5 +131,5 @@ state, or owner health.
 - authority stop-lines: `docs/BOUNDARIES.md`
 - source families and exact lifecycle state: `stats/README.md`
 - operation ownership: `mechanics/README.md`
-- consumer caution vocabulary: `docs/SURFACE_STRENGTH_MODEL.md`
+- consumer caution vocabulary: `stats/surface-catalog/SURFACE_STRENGTH_MODEL.md`
 - durable rationale: `docs/decisions/README.md`

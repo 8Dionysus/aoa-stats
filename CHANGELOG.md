@@ -36,6 +36,10 @@ Tracking starts with the first public release-prep baseline for this repository.
 
 ### Changed
 
+- Localized the surface-strength vocabulary under its `stats/surface-catalog`
+  source owner, removed changing Antifragility Vector posture from the shared
+  model, and made catalog proof reject vocabulary drift from active and deferred
+  authored profiles while updating the public catalog reference atomically.
 - Returned live-refresh inventory truth to authored read-model profiles:
   mechanic contracts and operator guidance now describe profile-derived set
   rules without copied counts or complete rosters, while part-local proof loads

@@ -71,7 +71,7 @@ def test_roadmap_routes_exact_state_to_authoritative_surfaces() -> None:
         "generated/summary_surface_catalog.min.json",
         "docs/BOUNDARIES.md",
         "docs/ARCHITECTURE.md",
-        "docs/SURFACE_STRENGTH_MODEL.md",
+        "stats/surface-catalog/SURFACE_STRENGTH_MODEL.md",
         "docs/decisions/README.md",
     )
     for route in current_routes:

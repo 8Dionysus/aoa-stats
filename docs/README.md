@@ -27,7 +27,6 @@ retained once active consumers and provenance point to the part-local owner.
 
 ## Repository-wide contracts
 
-- surface strength: [`SURFACE_STRENGTH_MODEL.md`](SURFACE_STRENGTH_MODEL.md)
 - read-only MCP access: [`../stats/surface-catalog/CODEX_MCP.md`](../stats/surface-catalog/CODEX_MCP.md)
 - consumer regrounding: [`../stats/surface-catalog/CONSUMER_REGROUNDING.md`](../stats/surface-catalog/CONSUMER_REGROUNDING.md)
 

@@ -5,7 +5,7 @@ import json
 from pathlib import Path
 from typing import Any
 
-SURFACE_STRENGTH_MODEL_REF = "docs/SURFACE_STRENGTH_MODEL.md"
+SURFACE_STRENGTH_MODEL_REF = "stats/surface-catalog/SURFACE_STRENGTH_MODEL.md"
 SUMMARY_SURFACE_CATALOG_ARTIFACT_IDENTITY = {
     "artifact_class": "derived_observability_readmodel_catalog",
     "surface_state": "public_generated_summary_surface_catalog",

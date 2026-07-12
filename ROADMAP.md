@@ -52,7 +52,7 @@ needs, and leaves the next slice to reverse the lead.
 | public derived discovery | `generated/summary_surface_catalog.min.json`, checked against authored profiles |
 | receipt admission | `stats/intake-contract/` |
 | live materialization and cleanup | active profile selectors plus the live-refresh mechanic named by topology |
-| stable authority and strength vocabulary | `docs/BOUNDARIES.md`, `docs/ARCHITECTURE.md`, and `docs/SURFACE_STRENGTH_MODEL.md` |
+| stable authority and strength vocabulary | `docs/BOUNDARIES.md`, `docs/ARCHITECTURE.md`, and `stats/surface-catalog/SURFACE_STRENGTH_MODEL.md` |
 | durable rationale | `docs/decisions/README.md` and its generated indexes |
 | shipped chronology | `CHANGELOG.md` and Git history |
 

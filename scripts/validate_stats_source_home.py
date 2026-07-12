@@ -64,6 +64,7 @@ EXPECTED_BRANCH_ENTRIES = {
         "README.md",
         "CODEX_MCP.md",
         "CONSUMER_REGROUNDING.md",
+        "SURFACE_STRENGTH_MODEL.md",
     },
 }
 REQUIRED_ROOT_FILES = {"AGENTS.md", "README.md", "source_home.manifest.json"}

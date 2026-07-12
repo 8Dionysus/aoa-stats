@@ -103,6 +103,11 @@ mechanic applies it. Keep that guidance with the mechanic part that returns
 consumers to stronger owners; do not retain a root doc merely because its rule
 mentions several organs.
 
+Stats-authored vocabulary that constrains profile meaning belongs to the
+matching family under `stats/`. Root `docs/` may explain repository-wide
+architecture and boundaries, but it must route to the source owner instead of
+retaining a second vocabulary entrypoint or current profile status.
+
 ## Cross-mode law
 
 Grow `stats/` and `mechanics/` together, alternating which side leads each

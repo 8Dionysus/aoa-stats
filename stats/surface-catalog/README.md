@@ -19,7 +19,7 @@ exact current state.
 | Concern | Current route |
 | --- | --- |
 | Derived-view architecture | `docs/ARCHITECTURE.md` |
-| Surface strength vocabulary | `docs/SURFACE_STRENGTH_MODEL.md` |
+| Surface strength vocabulary | `stats/surface-catalog/SURFACE_STRENGTH_MODEL.md` |
 | Consumer return-to-owner signals | `stats/surface-catalog/CONSUMER_REGROUNDING.md` |
 | Catalog schema | `schemas/summary-surface-catalog.schema.json` |
 | Authored surface profiles | `stats/read-models/active/`, `stats/read-models/deferred/` |

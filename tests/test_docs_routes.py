@@ -154,6 +154,9 @@ def test_part_local_docs_do_not_keep_migration_redirects() -> None:
             "mechanics/boundary-bridge/parts/consumer-regrounding/docs/"
             "DERIVED_SIGNAL_HYGIENE.md"
         ),
+        "docs/SURFACE_STRENGTH_MODEL.md": (
+            "stats/surface-catalog/SURFACE_STRENGTH_MODEL.md"
+        ),
     }
 
     for former_route, owner_route in routes.items():

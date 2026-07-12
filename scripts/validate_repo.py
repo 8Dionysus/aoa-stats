@@ -47,7 +47,7 @@ REQUIRED_TEXT_FILES = (
     "stats/surface-catalog/CODEX_MCP.md",
     "mechanics/recurrence/parts/live-receipt-refresh/docs/LIVE_SESSION_USE.md",
     "stats/intake-contract/RECEIPT_ABI.md",
-    "docs/SURFACE_STRENGTH_MODEL.md",
+    "stats/surface-catalog/SURFACE_STRENGTH_MODEL.md",
     "mechanics/audit/parts/source-coverage/docs/SOURCE_COVERAGE_SUMMARY.md",
     "stats/surface-catalog/CONSUMER_REGROUNDING.md",
 )
