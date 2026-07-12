@@ -92,6 +92,7 @@
       "validator_routes": [
         "scripts/validate_receipt_abi.py",
         "mechanics/boundary-bridge/parts/receipt-abi-crossing/tests/test_receipt_abi_governance.py",
+        "mechanics/boundary-bridge/parts/receipt-abi-crossing/tests/test_receipt_feed_resolution.py",
         "mechanics/recurrence/parts/live-receipt-refresh/tests/test_refresh_live_stats.py",
         "mechanics/recurrence/parts/live-receipt-refresh/tests/test_check_live_publishers.py"
       ],

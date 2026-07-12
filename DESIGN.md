@@ -117,6 +117,15 @@ signals but owns only the return-to-owner interpretation. This prevents a
 consumer mechanic or root integration test from becoming the behavioral proof
 home for an Audit producer.
 
+The shared receipt intake core follows the crossing form. Source-authored
+admission meaning and the event-kind registry stay under
+`stats/intake-contract/`; deterministic envelope validation, JSON/JSONL
+loading, latest-event deduplication, and conservative supersedes resolution
+are proved by `mechanics/boundary-bridge/parts/receipt-abi-crossing/`. The root
+builder re-exports that core and proves only build/fan-out integration. This
+keeps a repo-wide compatibility facade from becoming the owner of an operation
+used by every receipt-backed part.
+
 Route Progression follows the single-part variant of the same architecture.
 Its stats profile owns the bounded question, reference posture, exact
 stronger-owner chain, and authority ceiling. A filesystem-free RPG core may

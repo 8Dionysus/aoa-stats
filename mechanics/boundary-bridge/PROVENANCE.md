@@ -10,7 +10,8 @@ implementations, generated outputs, and tests.
 
 `receipt-abi-crossing` is evidenced by the canonical envelope schema, active
 event-kind registry, governance doc, ABI validation implementation and command,
-and focused governance tests listed in `mechanics/topology.json`.
+and focused governance plus feed-resolution tests listed through the stats
+source crosswalk. The root build suite retains only repo-wide fan-out proof.
 
 `consumer-regrounding` is evidenced by the retained public surface catalog,
 schema, and compatibility validator plus the focused tests localized in its

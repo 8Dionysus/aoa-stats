@@ -33,6 +33,7 @@ registration belongs to the recurrence mechanic.
   `scripts/check_live_publishers.py`
 - validation: `scripts/validate_receipt_abi.py`,
   `mechanics/boundary-bridge/parts/receipt-abi-crossing/tests/test_receipt_abi_governance.py`,
+  `mechanics/boundary-bridge/parts/receipt-abi-crossing/tests/test_receipt_feed_resolution.py`,
   `mechanics/recurrence/parts/live-receipt-refresh/tests/test_refresh_live_stats.py`,
   and `mechanics/recurrence/parts/live-receipt-refresh/tests/test_check_live_publishers.py`
 - current read-only access: `src/aoa_stats_mcp/repo_state.py` and
@@ -59,5 +60,5 @@ absorb the envelope's source meaning or a source owner's payload authority.
 
 ```bash
 python scripts/validate_receipt_abi.py
-python -m pytest -q mechanics/boundary-bridge/parts/receipt-abi-crossing/tests/test_receipt_abi_governance.py mechanics/recurrence/parts/live-receipt-refresh/tests/test_refresh_live_stats.py mechanics/recurrence/parts/live-receipt-refresh/tests/test_check_live_publishers.py
+python -m pytest -q mechanics/boundary-bridge/parts/receipt-abi-crossing/tests mechanics/recurrence/parts/live-receipt-refresh/tests/test_refresh_live_stats.py mechanics/recurrence/parts/live-receipt-refresh/tests/test_check_live_publishers.py
 ```
