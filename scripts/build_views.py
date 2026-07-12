@@ -32,7 +32,6 @@ from aoa_stats_builder.component_refresh import (  # noqa: E402
 from aoa_stats_builder.component_refresh_sources import (  # noqa: E402
     ComponentRefreshInputBundle,
     load_reviewed_sdk_example_bundle,
-    reviewed_sdk_example_paths,
 )
 from aoa_stats_builder.codex_plane_deployment import (  # noqa: E402
     TRUST_POSTURES as TRUST_POSTURES,
@@ -52,7 +51,6 @@ from aoa_stats_builder.codex_trusted_rollout import (  # noqa: E402
 )
 from aoa_stats_builder.codex_trusted_rollout_sources import (  # noqa: E402
     CodexTrustedRolloutInputBundle,
-    codex_trusted_rollout_paths as codex_trusted_rollout_source_paths,
     load_codex_trusted_rollout_bundle,
 )
 from aoa_stats_builder.continuity_window import (  # noqa: E402
@@ -85,7 +83,6 @@ from aoa_stats_builder.memory_movement import (  # noqa: E402
 from aoa_stats_builder.memory_movement_sources import (  # noqa: E402
     MemoryMovementInputBundle,
     load_memory_movement_bundle,
-    memory_movement_source_paths as memory_movement_source_paths_from_root,
 )
 from aoa_stats_builder.object_observation import (  # noqa: E402
     build_object_summary,
@@ -109,7 +106,6 @@ from aoa_stats_builder.rollout_cadence import (  # noqa: E402
 from aoa_stats_builder.rollout_cadence_sources import (  # noqa: E402
     RolloutCadenceInputBundle,
     load_rollout_cadence_reference_bundle,
-    rollout_cadence_reference_paths,
 )
 from aoa_stats_builder.route_progression import (  # noqa: E402
     AXES as AXES,
@@ -131,7 +127,6 @@ from aoa_stats_builder.titan_observation import (  # noqa: E402
 from aoa_stats_builder.titan_observation_sources import (  # noqa: E402
     TitanIncarnationInputBundle,
     load_titan_incarnation_reference_bundle,
-    titan_incarnation_reference_paths as titan_incarnation_source_paths_from_roots,
 )
 
 DEFAULT_INPUT = (
@@ -214,16 +209,6 @@ def display_input_path(path: Path) -> str:
     return str(path)
 
 
-def display_repo_input_path(path: Path, *, repo_roots: tuple[tuple[str, Path], ...]) -> str:
-    for repo_name, repo_root in repo_roots:
-        try:
-            relative_path = path.relative_to(repo_root)
-        except ValueError:
-            continue
-        return f"{repo_name}/{relative_path.as_posix()}"
-    return display_input_path(path)
-
-
 def load_json_object(path: Path, *, label: str) -> dict[str, Any]:
     try:
         payload = json.loads(path.read_text(encoding="utf-8"))
@@ -277,11 +262,6 @@ def codex_plane_generated_from() -> tuple[
     return codex_plane_input_bundle().mutable_parts()
 
 
-def codex_trusted_rollout_paths() -> tuple[Path, Path, Path, Path]:
-    public_profile_root = repo_root_from_env("AOA_8DIONYSUS_ROOT", DEFAULT_PUBLIC_PROFILE_ROOT)
-    return codex_trusted_rollout_source_paths(public_profile_root)
-
-
 def codex_trusted_rollout_input_bundle() -> CodexTrustedRolloutInputBundle:
     public_profile_root = repo_root_from_env(
         "AOA_8DIONYSUS_ROOT", DEFAULT_PUBLIC_PROFILE_ROOT
@@ -289,30 +269,11 @@ def codex_trusted_rollout_input_bundle() -> CodexTrustedRolloutInputBundle:
     return load_codex_trusted_rollout_bundle(public_profile_root)
 
 
-def codex_trusted_rollout_generated_from() -> tuple[
-    dict[str, Any], list[dict[str, Any]], dict[str, Any], dict[str, Any], dict[str, Any]
-]:
-    """Preserve the historical mutable five-part facade for callers."""
-
-    return codex_trusted_rollout_input_bundle().mutable_parts()
-
-
-def codex_rollout_campaign_paths() -> tuple[Path, Path, Path]:
-    public_profile_root = repo_root_from_env("AOA_8DIONYSUS_ROOT", DEFAULT_PUBLIC_PROFILE_ROOT)
-    return rollout_cadence_reference_paths(public_profile_root)
-
-
 def rollout_cadence_input_bundle() -> RolloutCadenceInputBundle:
     public_profile_root = repo_root_from_env(
         "AOA_8DIONYSUS_ROOT", DEFAULT_PUBLIC_PROFILE_ROOT
     )
     return load_rollout_cadence_reference_bundle(public_profile_root)
-
-
-def codex_rollout_campaign_generated_from() -> tuple[dict[str, Any], dict[str, Any], dict[str, Any], dict[str, Any]]:
-    """Preserve the historical mutable four-part facade for callers."""
-
-    return rollout_cadence_input_bundle().mutable_parts()
 
 
 def latest_rollout_history_row(
@@ -356,22 +317,9 @@ def continuity_window_generated_from() -> tuple[dict[str, Any], dict[str, Any], 
     return continuity_window_input_bundle().mutable_parts()
 
 
-def component_refresh_source_paths() -> tuple[Path, Path]:
-    sdk_root = repo_root_from_env("AOA_SDK_ROOT", DEFAULT_AOA_SDK_ROOT)
-    return reviewed_sdk_example_paths(sdk_root)
-
-
 def component_refresh_input_bundle() -> ComponentRefreshInputBundle:
     sdk_root = repo_root_from_env("AOA_SDK_ROOT", DEFAULT_AOA_SDK_ROOT)
     return load_reviewed_sdk_example_bundle(sdk_root)
-
-
-def titan_incarnation_source_paths() -> tuple[Path, Path, Path]:
-    agents_root = repo_root_from_env("AOA_AGENTS_ROOT", DEFAULT_AOA_AGENTS_ROOT)
-    sdk_root = repo_root_from_env("AOA_SDK_ROOT", DEFAULT_AOA_SDK_ROOT)
-    return titan_incarnation_source_paths_from_roots(
-        agents_root=agents_root, sdk_root=sdk_root
-    )
 
 
 def titan_incarnation_input_bundle() -> TitanIncarnationInputBundle:
@@ -486,11 +434,6 @@ def build_continuity_window_summary() -> dict[str, Any]:
         bundle.continuity_window,
         bundle.memo_thread,
     )
-
-
-def memory_movement_source_paths() -> tuple[Path, Path, Path, Path]:
-    memo_root = repo_root_from_env("AOA_MEMO_ROOT", DEFAULT_AOA_MEMO_ROOT)
-    return memory_movement_source_paths_from_root(memo_root)
 
 
 def memory_movement_input_bundle() -> MemoryMovementInputBundle:
