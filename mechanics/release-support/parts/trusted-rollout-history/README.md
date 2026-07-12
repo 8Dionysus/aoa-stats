@@ -18,5 +18,9 @@ nor the cadence-example route.
 - root compatibility facade: `scripts/build_views.py`
 - focused proof: `tests/test_codex_trusted_rollout_projection.py`
 
+Focused proof includes the deliberate seam between strict core lookup and the
+root helper's retained missing-latest-ref fallback. Keeping the helper at root
+does not make the root test suite its behavioral owner.
+
 The two localized examples mirror the stable public output shape. They are
 examples of derived history projections, not runtime evidence.

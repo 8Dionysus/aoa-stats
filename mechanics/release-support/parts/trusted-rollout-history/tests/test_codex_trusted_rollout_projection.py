@@ -1,5 +1,6 @@
 from __future__ import annotations
 
+import importlib.util
 import json
 import os
 import sys
@@ -14,6 +15,7 @@ from jsonschema import Draft202012Validator
 
 REPO_ROOT = Path(__file__).resolve().parents[5]
 SRC_ROOT = REPO_ROOT / "src"
+BUILD_VIEWS_PATH = REPO_ROOT / "scripts/build_views.py"
 if str(SRC_ROOT) not in sys.path:
     sys.path.insert(0, str(SRC_ROOT))
 
@@ -66,6 +68,33 @@ def build_from_bundle(
         codex_trusted_rollout.build_codex_rollout_operations_summary(*args),
         codex_trusted_rollout.build_codex_rollout_drift_summary(*args),
     )
+
+
+def load_build_views_module():
+    spec = importlib.util.spec_from_file_location("build_views", BUILD_VIEWS_PATH)
+    module = importlib.util.module_from_spec(spec)
+    assert spec is not None and spec.loader is not None
+    spec.loader.exec_module(module)
+    return module
+
+
+def test_root_facade_preserves_legacy_missing_latest_ref_fallback() -> None:
+    facade = load_build_views_module()
+    history = [
+        {"rollout_campaign_ref": "ROLL-20260411-first-01"},
+        {"rollout_campaign_ref": "ROLL-20260412-second-02"},
+    ]
+
+    with pytest.raises(
+        codex_trusted_rollout.ReceiptValidationError,
+        match="latest rollout campaign ref does not resolve inside deploy history",
+    ):
+        codex_trusted_rollout.latest_rollout_history_row(history, {})
+
+    selected = facade.latest_rollout_history_row(history, {})
+
+    assert selected == history[-1]
+    assert selected is not history[-1]
 
 
 def test_owner_bundle_preserves_all_four_public_output_bytes_and_schemas() -> None:

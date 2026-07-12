@@ -18,17 +18,6 @@ def load_build_views_module():
     spec.loader.exec_module(module)
     return module
 
-
-def test_latest_rollout_history_row_preserves_legacy_missing_ref_fallback() -> None:
-    module = load_build_views_module()
-    history = [
-        {"rollout_campaign_ref": "ROLL-20260411-first-01"},
-        {"rollout_campaign_ref": "ROLL-20260412-second-02"},
-    ]
-
-    assert module.latest_rollout_history_row(history, {}) == history[-1]
-
-
 def test_build_views_produces_expected_surface_counts() -> None:
     module = load_build_views_module()
     receipts = module.load_receipts(

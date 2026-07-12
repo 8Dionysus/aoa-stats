@@ -47,6 +47,9 @@ Codex Rollout Operations and Codex Rollout Drift describe the exact checked-in
 trusted-history bundle; “latest” is bounded to that history. Rollout Campaign
 and Drift Review describe a separate three-example cadence chain. Checked-in
 history is not runtime state, and examples are not active cadence.
+The strict trusted-history core requires an owner latest pointer; the root
+build helper's missing-pointer fallback is retained compatibility behavior and
+is proved by the owning Release Support part, not by the root test suite.
 
 Stress Recovery Window currently describes only committed report examples and
 has no real active owner publisher. Memory Movement reads a real reviewed

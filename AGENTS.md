@@ -225,6 +225,13 @@ cadence projections read the separate three-example chain. Neither committed
 context is live state, and neither may fall back to or impersonate the
 deploy-local trio.
 
+Trusted Rollout History also owns proof of its retained root compatibility
+helper. The pure core requires the latest pointer to resolve inside history;
+`scripts/build_views.py` alone preserves the older missing-pointer fallback
+to the last row. Keep that exception explicit and part-tested beside the strict
+core. It is not a source rule, and its focused test does not belong in the
+repo-wide root suite.
+
 ## Cross-mode law
 
 Grow `stats/` and `mechanics/` together, but alternate which side leads each

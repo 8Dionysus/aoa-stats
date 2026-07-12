@@ -126,6 +126,14 @@ builder re-exports that core and proves only build/fan-out integration. This
 keeps a repo-wide compatibility facade from becoming the owner of an operation
 used by every receipt-backed part.
 
+Trusted Rollout History follows the compatibility-seam variant. Its pure core
+requires `rollout_latest` to resolve to a history row, while the root build
+facade intentionally retains the older behavior that an absent latest ref
+selects the final row. The exception stays in the facade, but the owning
+Release Support part proves both strict-core rejection and facade fallback.
+Root tests remain for repo-wide fan-out rather than mechanic-specific legacy
+branches.
+
 Route Progression follows the single-part variant of the same architecture.
 Its stats profile owns the bounded question, reference posture, exact
 stronger-owner chain, and authority ceiling. A filesystem-free RPG core may

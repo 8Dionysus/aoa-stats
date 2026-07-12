@@ -24,6 +24,17 @@ The drift projection resolves the history entry named by the latest pointer and
 exposes its drift state, explicit repair-attempt flag, first drift reference,
 and descriptive rollback requirement.
 
+## Compatibility seam
+
+The filesystem-free core treats a missing or unresolved latest pointer as
+invalid owner-history input. The root `scripts/build_views.py` helper retains
+one older caller contract: when the latest pointer is absent, it returns a
+detached copy of the final history row.
+
+That fallback is compatibility behavior, not owner-history meaning. Its proof
+lives with this mechanic beside the strict core; the root suite retains only
+repo-wide build and fan-out assertions.
+
 ## Source and freshness boundary
 
 “Latest” means latest inside the checked-in owner-history bundle. It does not
