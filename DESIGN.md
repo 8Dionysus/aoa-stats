@@ -89,6 +89,12 @@ contain only repo-wide or explicit compatibility surfaces. Operation-local
 config, docs, examples, manifests, schemas, scripts, systemd templates, and
 focused tests live with the mechanic part that owns them.
 
+Compatibility applies to evidenced interfaces, not every name that once lived
+in a root file. `scripts/build_views.py` keeps the CLI, fan-out, current
+zero-argument builders, and explicitly tested legacy seams. An uncalled helper
+that merely duplicates a mechanic-owned adapter is removed once repo-family
+search finds no consumer or documented ABI.
+
 When one deterministic importable core serves several parts of the same
 mechanic, its shared focused test may live at the mechanic-package level only
 through an explicit `package_payload_roots` declaration in

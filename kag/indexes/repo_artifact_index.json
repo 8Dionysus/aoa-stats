@@ -1730,7 +1730,7 @@
     },
     {
       "artifact_kind": "document",
-      "content_hash": "5aae874f4d99fff26506949dee8dc2cbb74581c5d6c84ec126cb0399d09487a5",
+      "content_hash": "624e5133e495ed79660f11182b4a44de7d32640888a1b1e51597e7ebcd2136ae",
       "id": "artifact:file:agents.md:a54ff182c7",
       "path": "AGENTS.md",
       "source_record_id": "file:agents.md:a54ff182c7",
@@ -1738,7 +1738,7 @@
     },
     {
       "artifact_kind": "document",
-      "content_hash": "d27669a7393d8ef8c76040e481be5c2efbf6b36ce09679fbcf2e42aa29b4ddb6",
+      "content_hash": "f650f969d412bfc265a9fd22bf603e0d1e0bfcdfea6fb586a0fdc6e277dbafe0",
       "id": "artifact:file:changelog.md:06572a96a5",
       "path": "CHANGELOG.md",
       "source_record_id": "file:changelog.md:06572a96a5",
@@ -1762,7 +1762,7 @@
     },
     {
       "artifact_kind": "document",
-      "content_hash": "5df841253bc1b9a89429f05fe6a3d0f51b1ae1491a9d36199d6d42d90fca7d82",
+      "content_hash": "529b59100478f27c4869f9d6a4fa407a7fd834f620f23ae47a23580f0377a20f",
       "id": "artifact:file:design.md:3dc5dd454e",
       "path": "DESIGN.md",
       "source_record_id": "file:design.md:3dc5dd454e",
@@ -6178,7 +6178,7 @@
     },
     {
       "artifact_kind": "document",
-      "content_hash": "ebd52631780682ca62232c4a4164884475cbb554202a9f242a1da27dde18a721",
+      "content_hash": "ca6d739a883b321963986eb5dd9abb5a7a4314dcb4b90bd2661199ed993f335d",
       "id": "artifact:file:mechanics/release-support/parts/trusted-rollout-history/contract.md:db59758858",
       "path": "mechanics/release-support/parts/trusted-rollout-history/CONTRACT.md",
       "source_record_id": "file:mechanics/release-support/parts/trusted-rollout-history/contract.md:db59758858",
@@ -6754,7 +6754,7 @@
     },
     {
       "artifact_kind": "document",
-      "content_hash": "984c59792d3a798dcaf5c299d0681ed23f8138a7fba53afd35c517dd08a5a791",
+      "content_hash": "2f81b5f687d7eec8ea9b3a2a98e6c4367273558a7b34b66b1786a235558d3438",
       "id": "artifact:file:scripts/agents.md:cb91064dc5",
       "path": "scripts/AGENTS.md",
       "source_record_id": "file:scripts/agents.md:cb91064dc5",
@@ -6770,7 +6770,7 @@
     },
     {
       "artifact_kind": "script",
-      "content_hash": "03836052742e47bfe11f5d473f856bdd6641aaf5f593fb6f573121f310a1437f",
+      "content_hash": "b688a47832db639c0df039cd61b65dfba3335278591894f38fd6526cd79fa11f",
       "id": "artifact:file:scripts/build_views.py:b705861394",
       "path": "scripts/build_views.py",
       "source_record_id": "file:scripts/build_views.py:b705861394",
@@ -7354,7 +7354,7 @@
     },
     {
       "artifact_kind": "document",
-      "content_hash": "0edf13a1efc9fcec293cb9ad5c64bcd2b9d4c85772f20b70d5cac4d3bf189c38",
+      "content_hash": "4255217738ede56489d843220941fe2a1ab72b98b3a98d375daa008213bf53cd",
       "id": "artifact:file:stats/read-models/readme.md:5ba4a92471",
       "path": "stats/read-models/README.md",
       "source_record_id": "file:stats/read-models/readme.md:5ba4a92471",
@@ -7715,7 +7715,7 @@
   ],
   "index_identity": {
     "artifact_kind": "repository_artifact_index",
-    "content_digest": "93c52f4be3bb267c25d522acbf40de8352ad74190fe31ca22b253f8488522a20",
+    "content_digest": "f7072e3be5e336159f55c1ebeae04b3616c3f5cb4194a9c7775a4688f41b0691",
     "index_kind": "artifact",
     "local_id": "index:repo-local:artifacts",
     "schema_ref": "aoa-kag:schemas/repo-local-kag-repository-index.schema.json"
@@ -7739,7 +7739,7 @@
   },
   "schema_version": "aoa-repo-local-kag-repository-index-v1",
   "source_index": {
-    "content_digest": "b5059941efa74f747bcf75cb86aac417ced389a1a8064420eb302066374f1d2a",
+    "content_digest": "a0dba1fd78feb06c26ecc9d69e1fedebd1f9e29bc9685d4cbef0ddd65ad76fd2",
     "local_id": "index:repo-local:source-surfaces",
     "path": "kag/indexes/source_surface_index.json"
   },

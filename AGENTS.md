@@ -75,6 +75,12 @@ Operation payload lives below the nearest mechanic part. Root `schemas/` and
 explicit compatibility routes. The exact exception set is enforced by
 `mechanics/topology.json` and `scripts/validate_mechanics_topology.py`.
 
+A root script path may be stable without making every historical helper name a
+permanent ABI. Keep a symbol-level compatibility export only when it has a
+current caller, an explicit external contract, or focused owner-part proof.
+After an adapter/core extraction, remove unreferenced path and mutable-tuple
+helpers instead of preserving dead overcode inside `build_views.py`.
+
 When several parts of one mechanic share deterministic receipt-to-read-model
 rules, keep that reusable core under `src/aoa_stats_builder/`, declare its
 focused package-level tests in `mechanics/topology.json`, and leave CLI, input

@@ -24,9 +24,8 @@ campaign cadence examples.
   immutable input bundles, and checked-in source provenance
 - filesystem-free `codex_trusted_rollout.py` owns lifecycle grammar, reference
   coherence, timestamp validation, and deterministic projection
-- `scripts/build_views.py` retains default-owner resolution, the historical
-  mutable tuple functions, zero-argument builders, the missing-latest-ref
-  fallback, and repo-wide fan-out only
+- `scripts/build_views.py` retains default-owner resolution, zero-argument
+  builders, the missing-latest-ref fallback, and repo-wide fan-out only
 
 ## Invariants
 

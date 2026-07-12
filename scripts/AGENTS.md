@@ -16,6 +16,11 @@ source discovery must use a deterministic, testable precedence and keep
 explicit environment overrides first. When live refresh behavior changes,
 keep dry-run or explicit operator intent visible.
 
+Treat compatibility at symbol granularity. A root helper must have a current
+repo-wide caller, a documented external contract, or focused owner-part proof.
+Do not keep unused path or mutable-tuple helpers after their canonical adapter
+has moved under `src/aoa_stats_builder/`.
+
 ## Hard no
 Do not let a script infer owner truth from volume. Do not make refresh behavior
 silently mutate source repos.

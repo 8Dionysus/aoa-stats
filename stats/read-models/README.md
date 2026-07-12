@@ -50,6 +50,9 @@ history is not runtime state, and examples are not active cadence.
 The strict trusted-history core requires an owner latest pointer; the root
 build helper's missing-pointer fallback is retained compatibility behavior and
 is proved by the owning Release Support part, not by the root test suite.
+Source profiles bind the canonical adapters and mechanic routes, not
+unreferenced convenience helpers that happened to exist in the root build
+module. Removing such helpers does not change profile meaning or publication.
 
 Stress Recovery Window currently describes only committed report examples and
 has no real active owner publisher. Memory Movement reads a real reviewed
