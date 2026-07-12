@@ -129,6 +129,11 @@ Cross-owner derived-signal precedence belongs to the Boundary Bridge operation
 that applies the return-to-owner rule, while repository-wide architecture keeps
 only the stable authority ladder.
 
+Profile vocabulary is source meaning. Its human contract lives with the
+owning stats family and is checked against authored profiles; root architecture
+may link it but does not own a duplicate document or named current-surface
+posture.
+
 ## Read-model lifecycle
 
 Lifecycle is source-owned and asymmetric:

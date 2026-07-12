@@ -138,7 +138,9 @@ def test_build_views_produces_expected_surface_counts() -> None:
         "abi_contract_signature",
         "w3c_prov_lineage",
     ]
-    assert catalog["surface_strength_model_ref"] == "docs/SURFACE_STRENGTH_MODEL.md"
+    assert catalog["surface_strength_model_ref"] == (
+        "stats/surface-catalog/SURFACE_STRENGTH_MODEL.md"
+    )
     assert catalog["validation_refs"] == [
         "scripts/build_views.py",
         "scripts/validate_repo.py",

@@ -2,6 +2,7 @@ from __future__ import annotations
 
 import importlib.util
 import json
+import re
 from pathlib import Path
 import sys
 
@@ -77,7 +78,10 @@ def test_summary_surface_catalog_contract_is_exact() -> None:
         ],
         "action": "ADD_CONSUMER_EXPECTATION",
     }
-    assert payload["surface_strength_model_ref"] == "docs/SURFACE_STRENGTH_MODEL.md"
+    assert payload["surface_strength_model_ref"] == (
+        "stats/surface-catalog/SURFACE_STRENGTH_MODEL.md"
+    )
+    assert (REPO_ROOT / payload["surface_strength_model_ref"]).is_file()
     assert payload["validation_refs"] == [
         "scripts/build_views.py",
         "scripts/validate_repo.py",
@@ -104,6 +108,26 @@ def test_summary_surface_catalog_contract_is_exact() -> None:
     assert all("path" not in entry for entry in payload["surfaces"])
     assert all("catalog_order" not in entry for entry in payload["surfaces"])
     assert all("mechanic_routes" not in entry for entry in payload["surfaces"])
+
+
+def test_surface_strength_vocabulary_matches_authored_profile_postures() -> None:
+    model = (
+        REPO_ROOT / "stats/surface-catalog/SURFACE_STRENGTH_MODEL.md"
+    ).read_text(encoding="utf-8")
+    posture_section = model.split("## Input posture classes", 1)[1].split(
+        "## Consumer risk", 1
+    )[0]
+    documented_postures = set(
+        re.findall(r"^- `([^`]+)`:", posture_section, re.MULTILINE)
+    )
+    active, deferred = public_surface_profiles(REPO_ROOT / "stats" / "read-models")
+    authored_postures = {
+        profile["input_posture"] for profile in [*active, *deferred]
+    }
+
+    assert documented_postures == authored_postures
+    assert "antifragility_vector" not in model
+    assert "Today" not in model
 
 
 def test_consumer_regrounding_inputs_prefer_real_owner_surfaces() -> None:

@@ -15,7 +15,7 @@ complete or current.
 ## Current source and public routes
 
 - `docs/ARCHITECTURE.md`
-- `docs/SURFACE_STRENGTH_MODEL.md`
+- `stats/surface-catalog/SURFACE_STRENGTH_MODEL.md`
 - `stats/read-models/active/`
 - `stats/read-models/deferred/`
 - `stats/read-models/surface-profile.schema.json`
@@ -51,6 +51,9 @@ surfaces. Neither part may strengthen a catalog entry's authority.
 
 - Every catalog entry keeps a source ref, schema ref, input posture,
   owner-truth inputs, authority ceiling, consumer risk, and live-state posture.
+- `SURFACE_STRENGTH_MODEL.md` owns the closed human vocabulary used by active
+  and deferred profiles. Add or remove a posture class there with profile and
+  catalog proof; do not preserve unused classes or named current-surface state.
 - Generated catalog changes come from authored profiles and the deterministic
   builder; do not edit the output or reintroduce an in-code specification
   table as source.

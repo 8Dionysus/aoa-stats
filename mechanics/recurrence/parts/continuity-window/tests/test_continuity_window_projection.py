@@ -258,9 +258,9 @@ def test_part_example_and_profile_keep_committed_reference_contract() -> None:
             encoding="utf-8"
         )
     )
-    strength_model = (REPO_ROOT / "docs/SURFACE_STRENGTH_MODEL.md").read_text(
-        encoding="utf-8"
-    )
+    strength_model = (
+        REPO_ROOT / "stats/surface-catalog/SURFACE_STRENGTH_MODEL.md"
+    ).read_text(encoding="utf-8")
 
     assert profile["input_posture"] == (
         "committed_reference_example_catalog_chain"

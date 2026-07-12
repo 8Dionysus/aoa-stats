@@ -3211,20 +3211,6 @@
         "artifact_kind": "document",
         "code_role": "none",
         "command_role": "none",
-        "document_role": "unknown_document",
-        "mechanics_role": "none",
-        "surface_state": "authored_source"
-      },
-      "entity_kind": "document",
-      "id": "entity:file:docs/surface_strength_model.md:bdc1ce47cd",
-      "label": "docs/SURFACE_STRENGTH_MODEL.md",
-      "source_record_id": "file:docs/surface_strength_model.md:bdc1ce47cd"
-    },
-    {
-      "coordinates": {
-        "artifact_kind": "document",
-        "code_role": "none",
-        "command_role": "none",
         "document_role": "agents",
         "mechanics_role": "none",
         "surface_state": "authored_source"
@@ -13305,6 +13291,20 @@
         "artifact_kind": "document",
         "code_role": "none",
         "command_role": "none",
+        "document_role": "unknown_document",
+        "mechanics_role": "none",
+        "surface_state": "authored_source"
+      },
+      "entity_kind": "document",
+      "id": "entity:file:stats/surface-catalog/surface_strength_model.md:7cc36763e5",
+      "label": "stats/surface-catalog/SURFACE_STRENGTH_MODEL.md",
+      "source_record_id": "file:stats/surface-catalog/surface_strength_model.md:7cc36763e5"
+    },
+    {
+      "coordinates": {
+        "artifact_kind": "document",
+        "code_role": "none",
+        "command_role": "none",
         "document_role": "agents",
         "mechanics_role": "none",
         "surface_state": "authored_source"
@@ -13471,7 +13471,7 @@
   ],
   "index_identity": {
     "artifact_kind": "repository_entity_index",
-    "content_digest": "7ee96fec6e97811084aa0216cf2296f73e898a074ab224eb8f1819021907815a",
+    "content_digest": "73cd572923bd53aef76710b3bc1cb5135cdcb4ed7761a9769e074f3f55f20d54",
     "index_kind": "entity",
     "local_id": "index:repo-local:entities",
     "schema_ref": "aoa-kag:schemas/repo-local-kag-repository-index.schema.json"
@@ -13494,7 +13494,7 @@
   },
   "schema_version": "aoa-repo-local-kag-repository-index-v1",
   "source_index": {
-    "content_digest": "22bc15373535ee3efd1a54e3922e432ce08381a9c9a80505e2e1f4a80d53300f",
+    "content_digest": "f07895e13e8163a29d1c743638572607b5294519f234ca6fbbba47f8b5ebf33f",
     "local_id": "index:repo-local:source-surfaces",
     "path": "kag/indexes/source_surface_index.json"
   },
