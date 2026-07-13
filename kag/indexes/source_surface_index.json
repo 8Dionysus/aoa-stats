@@ -2,9 +2,9 @@
   "classification_summary": {
     "artifact_kind": {
       "asset": 50,
-      "config": 173,
+      "config": 174,
       "dependency_manifest": 2,
-      "document": 452,
+      "document": 460,
       "generated_readmodel": 39,
       "index": 1,
       "license": 1,
@@ -12,34 +12,34 @@
       "owner_metadata": 2,
       "projection": 1,
       "receipt": 1,
-      "schema": 92,
+      "schema": 96,
       "script": 23,
       "security": 1,
       "service_unit": 2,
-      "source_code": 33,
-      "test": 54,
-      "validator": 18
+      "source_code": 34,
+      "test": 56,
+      "validator": 19
     },
     "command_role": {
       "builder": 10,
       "lane_entrypoint": 1,
-      "none": 867,
+      "none": 881,
       "script": 12,
-      "test": 54,
-      "validator": 18
+      "test": 56,
+      "validator": 19
     },
     "document_role": {
-      "agents": 42,
+      "agents": 44,
       "audit": 3,
       "boundary": 1,
       "changelog": 1,
-      "decision": 18,
+      "decision": 19,
       "design": 1,
-      "mechanics_doc": 178,
-      "none": 502,
+      "mechanics_doc": 180,
+      "none": 511,
       "parts": 11,
       "provenance": 11,
-      "readme": 81,
+      "readme": 84,
       "roadmap": 1,
       "unknown_document": 112
     },
@@ -47,41 +47,41 @@
       "legacy": 23,
       "mechanic_package": 51,
       "mechanic_part": 92,
-      "none": 454,
-      "part_contract": 41,
-      "part_doc": 181,
+      "none": 467,
+      "part_contract": 42,
+      "part_doc": 183,
       "part_schema": 58,
       "part_script": 21,
-      "part_test": 41
+      "part_test": 42
     },
     "primary_kind": {
       "artifact": 91,
-      "command": 95,
-      "document": 460,
-      "surface": 316
+      "command": 98,
+      "document": 468,
+      "surface": 322
     },
     "surface_state": {
-      "authored_source": 895,
+      "authored_source": 912,
       "generated_readmodel": 44,
       "legacy": 23
     }
   },
   "coverage_summary": {
-    "command_count": 95,
-    "document_count": 460,
+    "command_count": 98,
+    "document_count": 468,
     "generated_count": 44,
-    "heading_count": 2009,
-    "mechanics_count": 508,
-    "record_count": 962,
-    "schema_count": 92,
+    "heading_count": 2066,
+    "mechanics_count": 512,
+    "record_count": 979,
+    "schema_count": 96,
     "script_count": 23,
-    "test_count": 54,
+    "test_count": 56,
     "unknown_count": 0,
-    "validator_count": 18
+    "validator_count": 19
   },
   "index_identity": {
     "artifact_kind": "source_surface_index",
-    "content_digest": "1eb3d7d2d6f9a843d511fd727a28fc6f5006affd493f5716c8841c0665854963",
+    "content_digest": "2e9d284e1597af84c91b87947e43dd038d866e85bc89cd5555a52f149d45d7ae",
     "local_id": "index:repo-local:source-surfaces",
     "schema_ref": "aoa-kag:schemas/repo-local-kag-index.schema.json"
   },
@@ -24063,13 +24063,13 @@
         "state": "current"
       },
       "identity": {
-        "content_hash": "555965f425443b2fdb96d5e2fed9f38fa982f089265798996edb2728598b8a6b",
+        "content_hash": "0233fa5a4a4c18332a25855526e026f5917d4b17bcbbd739a79a6d7ab2db6e3d",
         "git_ref": "git-index-source-tree",
         "id": "file:agents.md:a54ff182c7",
         "mime": "text/markdown",
         "path": "AGENTS.md",
         "repo": "aoa-stats",
-        "size_bytes": 11244
+        "size_bytes": 12274
       },
       "mechanics_role": "none",
       "observed_form": "file",
@@ -24112,84 +24112,84 @@
           {
             "anchor": "owner-lane",
             "level": 2,
-            "line": 13,
+            "line": 14,
             "ref": "AGENTS.md#owner-lane",
             "title": "Owner lane"
           },
           {
             "anchor": "start-here",
             "level": 2,
-            "line": 27,
+            "line": 34,
             "ref": "AGENTS.md#start-here",
             "title": "Start here"
           },
           {
             "anchor": "repository-contract",
             "level": 2,
-            "line": 62,
+            "line": 69,
             "ref": "AGENTS.md#repository-contract",
             "title": "Repository contract"
           },
           {
             "anchor": "cross-mode-law",
             "level": 2,
-            "line": 126,
+            "line": 138,
             "ref": "AGENTS.md#cross-mode-law",
             "title": "Cross-mode law"
           },
           {
             "anchor": "lifecycle-and-authority",
             "level": 2,
-            "line": 142,
+            "line": 154,
             "ref": "AGENTS.md#lifecycle-and-authority",
             "title": "Lifecycle and authority"
           },
           {
             "anchor": "agents-stack-law",
             "level": 2,
-            "line": 170,
+            "line": 185,
             "ref": "AGENTS.md#agents-stack-law",
             "title": "AGENTS stack law"
           },
           {
             "anchor": "memory-and-decision-routes",
             "level": 2,
-            "line": 181,
+            "line": 196,
             "ref": "AGENTS.md#memory-and-decision-routes",
             "title": "Memory and decision routes"
           },
           {
             "anchor": "derived-only-rules",
             "level": 2,
-            "line": 192,
+            "line": 207,
             "ref": "AGENTS.md#derived-only-rules",
             "title": "Derived-only rules"
           },
           {
             "anchor": "github-landing-workflow",
             "level": 2,
-            "line": 200,
+            "line": 215,
             "ref": "AGENTS.md#github-landing-workflow",
             "title": "GitHub landing workflow"
           },
           {
             "anchor": "verify",
             "level": 2,
-            "line": 222,
+            "line": 237,
             "ref": "AGENTS.md#verify",
             "title": "Verify"
           },
           {
             "anchor": "report",
             "level": 2,
-            "line": 242,
+            "line": 258,
             "ref": "AGENTS.md#report",
             "title": "Report"
           },
           {
             "anchor": "historical-reference",
             "level": 2,
-            "line": 248,
+            "line": 264,
             "ref": "AGENTS.md#historical-reference",
             "title": "Historical reference"
           }
@@ -24201,7 +24201,7 @@
       },
       "signs": {
         "attestation_ref": "",
-        "digest": "555965f425443b2fdb96d5e2fed9f38fa982f089265798996edb2728598b8a6b",
+        "digest": "0233fa5a4a4c18332a25855526e026f5917d4b17bcbbd739a79a6d7ab2db6e3d",
         "signature_ref": "",
         "verification_state": "digest-only"
       },
@@ -24249,13 +24249,13 @@
         "state": "current"
       },
       "identity": {
-        "content_hash": "e60dd40698504a487314b38c22de002c9fd9e17d64518c41a7b95805fdaa3a2e",
+        "content_hash": "0ed1c382bf90bf10433e9c3289a20b24c07c9437142a2e9ceffba521c9c135f7",
         "git_ref": "git-index-source-tree",
         "id": "file:changelog.md:06572a96a5",
         "mime": "text/markdown",
         "path": "CHANGELOG.md",
         "repo": "aoa-stats",
-        "size_bytes": 22653
+        "size_bytes": 23790
       },
       "mechanics_role": "none",
       "observed_form": "file",
@@ -24305,182 +24305,182 @@
           {
             "anchor": "changed",
             "level": 3,
-            "line": 37,
+            "line": 47,
             "ref": "CHANGELOG.md#changed",
             "title": "Changed"
           },
           {
             "anchor": "013-2026-04-23",
             "level": 2,
-            "line": 247,
+            "line": 264,
             "ref": "CHANGELOG.md#013-2026-04-23",
             "title": "[0.1.3] - 2026-04-23"
           },
           {
             "anchor": "summary",
             "level": 3,
-            "line": 249,
+            "line": 266,
             "ref": "CHANGELOG.md#summary",
             "title": "Summary"
           },
           {
             "anchor": "added-1",
             "level": 3,
-            "line": 261,
+            "line": 278,
             "ref": "CHANGELOG.md#added-1",
             "title": "Added"
           },
           {
             "anchor": "changed-1",
             "level": 3,
-            "line": 271,
+            "line": 288,
             "ref": "CHANGELOG.md#changed-1",
             "title": "Changed"
           },
           {
             "anchor": "validation",
             "level": 3,
-            "line": 277,
+            "line": 294,
             "ref": "CHANGELOG.md#validation",
             "title": "Validation"
           },
           {
             "anchor": "notes",
             "level": 3,
-            "line": 281,
+            "line": 298,
             "ref": "CHANGELOG.md#notes",
             "title": "Notes"
           },
           {
             "anchor": "012-2026-04-19",
             "level": 2,
-            "line": 286,
+            "line": 303,
             "ref": "CHANGELOG.md#012-2026-04-19",
             "title": "[0.1.2] - 2026-04-19"
           },
           {
             "anchor": "summary-1",
             "level": 3,
-            "line": 288,
+            "line": 305,
             "ref": "CHANGELOG.md#summary-1",
             "title": "Summary"
           },
           {
             "anchor": "added-2",
             "level": 3,
-            "line": 296,
+            "line": 313,
             "ref": "CHANGELOG.md#added-2",
             "title": "Added"
           },
           {
             "anchor": "changed-2",
             "level": 3,
-            "line": 303,
+            "line": 320,
             "ref": "CHANGELOG.md#changed-2",
             "title": "Changed"
           },
           {
             "anchor": "validation-1",
             "level": 3,
-            "line": 308,
+            "line": 325,
             "ref": "CHANGELOG.md#validation-1",
             "title": "Validation"
           },
           {
             "anchor": "notes-1",
             "level": 3,
-            "line": 312,
+            "line": 329,
             "ref": "CHANGELOG.md#notes-1",
             "title": "Notes"
           },
           {
             "anchor": "011-2026-04-12",
             "level": 2,
-            "line": 317,
+            "line": 334,
             "ref": "CHANGELOG.md#011-2026-04-12",
             "title": "[0.1.1] - 2026-04-12"
           },
           {
             "anchor": "summary-2",
             "level": 3,
-            "line": 319,
+            "line": 336,
             "ref": "CHANGELOG.md#summary-2",
             "title": "Summary"
           },
           {
             "anchor": "added-3",
             "level": 3,
-            "line": 327,
+            "line": 344,
             "ref": "CHANGELOG.md#added-3",
             "title": "Added"
           },
           {
             "anchor": "documentation",
             "level": 3,
-            "line": 335,
+            "line": 352,
             "ref": "CHANGELOG.md#documentation",
             "title": "Documentation"
           },
           {
             "anchor": "changed-3",
             "level": 3,
-            "line": 341,
+            "line": 358,
             "ref": "CHANGELOG.md#changed-3",
             "title": "Changed"
           },
           {
             "anchor": "validation-2",
             "level": 3,
-            "line": 348,
+            "line": 365,
             "ref": "CHANGELOG.md#validation-2",
             "title": "Validation"
           },
           {
             "anchor": "notes-2",
             "level": 3,
-            "line": 352,
+            "line": 369,
             "ref": "CHANGELOG.md#notes-2",
             "title": "Notes"
           },
           {
             "anchor": "010-2026-04-10",
             "level": 2,
-            "line": 356,
+            "line": 373,
             "ref": "CHANGELOG.md#010-2026-04-10",
             "title": "[0.1.0] - 2026-04-10"
           },
           {
             "anchor": "summary-3",
             "level": 3,
-            "line": 363,
+            "line": 380,
             "ref": "CHANGELOG.md#summary-3",
             "title": "Summary"
           },
           {
             "anchor": "added-4",
             "level": 3,
-            "line": 374,
+            "line": 391,
             "ref": "CHANGELOG.md#added-4",
             "title": "Added"
           },
           {
             "anchor": "included-in-this-release",
             "level": 3,
-            "line": 387,
+            "line": 404,
             "ref": "CHANGELOG.md#included-in-this-release",
             "title": "Included in this release"
           },
           {
             "anchor": "validation-3",
             "level": 3,
-            "line": 402,
+            "line": 419,
             "ref": "CHANGELOG.md#validation-3",
             "title": "Validation"
           },
           {
             "anchor": "notes-3",
             "level": 3,
-            "line": 407,
+            "line": 424,
             "ref": "CHANGELOG.md#notes-3",
             "title": "Notes"
           }
@@ -24492,7 +24492,7 @@
       },
       "signs": {
         "attestation_ref": "",
-        "digest": "e60dd40698504a487314b38c22de002c9fd9e17d64518c41a7b95805fdaa3a2e",
+        "digest": "0ed1c382bf90bf10433e9c3289a20b24c07c9437142a2e9ceffba521c9c135f7",
         "signature_ref": "",
         "verification_state": "digest-only"
       },
@@ -24649,13 +24649,13 @@
         "state": "current"
       },
       "identity": {
-        "content_hash": "faa21eaf494945d5e26c93aa1c267dc5e64f361e38eef6687daeed6766aceff5",
+        "content_hash": "ff1ceb8d9f07af1577d81c7f9a5f587223705b32648f0de211d43a2591810339",
         "git_ref": "git-index-source-tree",
         "id": "file:contributing.md:eca12c0a30",
         "mime": "text/markdown",
         "path": "CONTRIBUTING.md",
         "repo": "aoa-stats",
-        "size_bytes": 2594
+        "size_bytes": 2905
       },
       "mechanics_role": "none",
       "observed_form": "file",
@@ -24698,21 +24698,21 @@
           {
             "anchor": "before-opening-a-pr",
             "level": 2,
-            "line": 27,
+            "line": 29,
             "ref": "CONTRIBUTING.md#before-opening-a-pr",
             "title": "Before opening a PR"
           },
           {
             "anchor": "local-development-setup",
             "level": 2,
-            "line": 47,
+            "line": 52,
             "ref": "CONTRIBUTING.md#local-development-setup",
             "title": "Local development setup"
           },
           {
             "anchor": "preferred-pr-scope",
             "level": 2,
-            "line": 62,
+            "line": 64,
             "ref": "CONTRIBUTING.md#preferred-pr-scope",
             "title": "Preferred PR scope"
           }
@@ -24724,7 +24724,7 @@
       },
       "signs": {
         "attestation_ref": "",
-        "digest": "faa21eaf494945d5e26c93aa1c267dc5e64f361e38eef6687daeed6766aceff5",
+        "digest": "ff1ceb8d9f07af1577d81c7f9a5f587223705b32648f0de211d43a2591810339",
         "signature_ref": "",
         "verification_state": "digest-only"
       },
@@ -24772,13 +24772,13 @@
         "state": "current"
       },
       "identity": {
-        "content_hash": "57c19f263a25eceb5b275b8103c2a4541af182359590040c4ff438cfa80331b4",
+        "content_hash": "66fdc7724dac52195186ca7fecae00372a25684b9616b5e6bf9a37dfd64c2896",
         "git_ref": "git-index-source-tree",
         "id": "file:design.md:3dc5dd454e",
         "mime": "text/markdown",
         "path": "DESIGN.md",
         "repo": "aoa-stats",
-        "size_bytes": 13403
+        "size_bytes": 18088
       },
       "mechanics_role": "none",
       "observed_form": "file",
@@ -24821,126 +24821,147 @@
           {
             "anchor": "thesis",
             "level": 2,
-            "line": 9,
+            "line": 10,
             "ref": "DESIGN.md#thesis",
             "title": "Thesis"
           },
           {
             "anchor": "appearance",
             "level": 2,
-            "line": 21,
+            "line": 22,
             "ref": "DESIGN.md#appearance",
             "title": "Appearance"
           },
           {
             "anchor": "anatomy",
             "level": 2,
-            "line": 38,
+            "line": 39,
             "ref": "DESIGN.md#anatomy",
             "title": "Anatomy"
           },
           {
             "anchor": "the-stats-source-home",
             "level": 3,
-            "line": 40,
+            "line": 41,
             "ref": "DESIGN.md#the-stats-source-home",
             "title": "The `stats/` source home"
           },
           {
+            "anchor": "statistical-model",
+            "level": 3,
+            "line": 59,
+            "ref": "DESIGN.md#statistical-model",
+            "title": "Statistical model"
+          },
+          {
+            "anchor": "federation",
+            "level": 3,
+            "line": 81,
+            "ref": "DESIGN.md#federation",
+            "title": "Federation"
+          },
+          {
             "anchor": "the-mechanics-operation-home",
             "level": 3,
-            "line": 56,
+            "line": 94,
             "ref": "DESIGN.md#the-mechanics-operation-home",
             "title": "The `mechanics/` operation home"
           },
           {
             "anchor": "implementation-and-publication-districts",
             "level": 3,
-            "line": 66,
+            "line": 104,
             "ref": "DESIGN.md#implementation-and-publication-districts",
             "title": "Implementation and publication districts"
           },
           {
+            "anchor": "existing-surface-classification",
+            "level": 3,
+            "line": 118,
+            "ref": "DESIGN.md#existing-surface-classification",
+            "title": "Existing-surface classification"
+          },
+          {
             "anchor": "authority-surfaces",
             "level": 2,
-            "line": 77,
+            "line": 144,
             "ref": "DESIGN.md#authority-surfaces",
             "title": "Authority surfaces"
           },
           {
             "anchor": "core-adapter-and-proof-boundaries",
             "level": 2,
-            "line": 112,
+            "line": 181,
             "ref": "DESIGN.md#core-adapter-and-proof-boundaries",
             "title": "Core, adapter, and proof boundaries"
           },
           {
             "anchor": "read-model-lifecycle",
             "level": 2,
-            "line": 158,
+            "line": 235,
             "ref": "DESIGN.md#read-model-lifecycle",
             "title": "Read-model lifecycle"
           },
           {
             "anchor": "live-materialization",
             "level": 2,
-            "line": 186,
+            "line": 263,
             "ref": "DESIGN.md#live-materialization",
             "title": "Live materialization"
           },
           {
             "anchor": "operation",
             "level": 2,
-            "line": 205,
+            "line": 282,
             "ref": "DESIGN.md#operation",
             "title": "Operation"
           },
           {
             "anchor": "authority-model",
             "level": 2,
-            "line": 228,
+            "line": 305,
             "ref": "DESIGN.md#authority-model",
             "title": "Authority model"
           },
           {
             "anchor": "shared-mechanic-vocabulary",
             "level": 2,
-            "line": 239,
+            "line": 320,
             "ref": "DESIGN.md#shared-mechanic-vocabulary",
             "title": "Shared mechanic vocabulary"
           },
           {
             "anchor": "design-principles",
             "level": 2,
-            "line": 248,
+            "line": 329,
             "ref": "DESIGN.md#design-principles",
             "title": "Design principles"
           },
           {
             "anchor": "good-shape",
             "level": 2,
-            "line": 263,
+            "line": 348,
             "ref": "DESIGN.md#good-shape",
             "title": "Good shape"
           },
           {
             "anchor": "bad-shape",
             "level": 2,
-            "line": 271,
+            "line": 356,
             "ref": "DESIGN.md#bad-shape",
             "title": "Bad shape"
           },
           {
             "anchor": "relationship-to-guidance",
             "level": 2,
-            "line": 280,
+            "line": 365,
             "ref": "DESIGN.md#relationship-to-guidance",
             "title": "Relationship to guidance"
           },
           {
             "anchor": "use-by-agents",
             "level": 2,
-            "line": 290,
+            "line": 375,
             "ref": "DESIGN.md#use-by-agents",
             "title": "Use by agents"
           }
@@ -24952,7 +24973,7 @@
       },
       "signs": {
         "attestation_ref": "",
-        "digest": "57c19f263a25eceb5b275b8103c2a4541af182359590040c4ff438cfa80331b4",
+        "digest": "66fdc7724dac52195186ca7fecae00372a25684b9616b5e6bf9a37dfd64c2896",
         "signature_ref": "",
         "verification_state": "digest-only"
       },
@@ -25087,13 +25108,13 @@
         "state": "current"
       },
       "identity": {
-        "content_hash": "2c070061624898d73d1f0e4d0dc80236360c2b56beec9675ddcb1022d08aecb8",
+        "content_hash": "38e9bb9359bf7b6b238aaa000e9cdb8d954472c0ce8d6586944d1e798402dfd6",
         "git_ref": "git-index-source-tree",
         "id": "file:readme.md:b335630551",
         "mime": "text/markdown",
         "path": "README.md",
         "repo": "aoa-stats",
-        "size_bytes": 5912
+        "size_bytes": 6875
       },
       "mechanics_role": "none",
       "observed_form": "file",
@@ -25129,49 +25150,49 @@
           {
             "anchor": "start-here",
             "level": 2,
-            "line": 10,
+            "line": 11,
             "ref": "README.md#start-here",
             "title": "Start here"
           },
           {
             "anchor": "authority-map",
             "level": 2,
-            "line": 22,
+            "line": 23,
             "ref": "README.md#authority-map",
             "title": "Authority map"
           },
           {
             "anchor": "current-v0-surface",
             "level": 2,
-            "line": 39,
+            "line": 44,
             "ref": "README.md#current-v0-surface",
             "title": "Current v0 surface"
           },
           {
             "anchor": "public-root-contracts",
             "level": 3,
-            "line": 49,
+            "line": 55,
             "ref": "README.md#public-root-contracts",
             "title": "Public-root contracts"
           },
           {
             "anchor": "build-live-use-and-verification",
             "level": 2,
-            "line": 75,
+            "line": 81,
             "ref": "README.md#build-live-use-and-verification",
             "title": "Build, live use, and verification"
           },
           {
             "anchor": "boundaries",
             "level": 2,
-            "line": 99,
+            "line": 108,
             "ref": "README.md#boundaries",
             "title": "Boundaries"
           },
           {
             "anchor": "contribution-and-release",
             "level": 2,
-            "line": 110,
+            "line": 119,
             "ref": "README.md#contribution-and-release",
             "title": "Contribution and release"
           }
@@ -25183,7 +25204,7 @@
       },
       "signs": {
         "attestation_ref": "",
-        "digest": "2c070061624898d73d1f0e4d0dc80236360c2b56beec9675ddcb1022d08aecb8",
+        "digest": "38e9bb9359bf7b6b238aaa000e9cdb8d954472c0ce8d6586944d1e798402dfd6",
         "signature_ref": "",
         "verification_state": "digest-only"
       },
@@ -25231,13 +25252,13 @@
         "state": "current"
       },
       "identity": {
-        "content_hash": "a213f5bce8f8628d6bd9ea05e6ac323bc0fb432b45cfb50c735a9e7718728005",
+        "content_hash": "882665e55e72093f28aec54b29d1891eff97401593a7654f5e58f4a30d489ae2",
         "git_ref": "git-index-source-tree",
         "id": "file:roadmap.md:683343bdf9",
         "mime": "text/markdown",
         "path": "ROADMAP.md",
         "repo": "aoa-stats",
-        "size_bytes": 4449
+        "size_bytes": 5079
       },
       "mechanics_role": "none",
       "observed_form": "file",
@@ -25280,35 +25301,35 @@
           {
             "anchor": "priority-sequence",
             "level": 2,
-            "line": 20,
+            "line": 21,
             "ref": "ROADMAP.md#priority-sequence",
             "title": "Priority sequence"
           },
           {
             "anchor": "authority-routes",
             "level": 2,
-            "line": 43,
+            "line": 50,
             "ref": "ROADMAP.md#authority-routes",
             "title": "Authority routes"
           },
           {
             "anchor": "slice-completion",
             "level": 2,
-            "line": 63,
+            "line": 72,
             "ref": "ROADMAP.md#slice-completion",
             "title": "Slice completion"
           },
           {
             "anchor": "non-goals",
             "level": 2,
-            "line": 77,
+            "line": 86,
             "ref": "ROADMAP.md#non-goals",
             "title": "Non-goals"
           },
           {
             "anchor": "release-gate",
             "level": 2,
-            "line": 84,
+            "line": 93,
             "ref": "ROADMAP.md#release-gate",
             "title": "Release gate"
           }
@@ -25320,7 +25341,7 @@
       },
       "signs": {
         "attestation_ref": "",
-        "digest": "a213f5bce8f8628d6bd9ea05e6ac323bc0fb432b45cfb50c735a9e7718728005",
+        "digest": "882665e55e72093f28aec54b29d1891eff97401593a7654f5e58f4a30d489ae2",
         "signature_ref": "",
         "verification_state": "digest-only"
       },
@@ -25491,13 +25512,13 @@
         "state": "current"
       },
       "identity": {
-        "content_hash": "6be9df7c44e7b8e2b9a469646a5aa0b812f7d6aa50186367ac01eb20bb045c24",
+        "content_hash": "1c56e51e97d4e94f3b0c1cb8caf914d6e344c7b5baea4eee29fe1b577ab12913",
         "git_ref": "git-index-source-tree",
         "id": "file:docs/architecture.md:ff21b6b9a3",
         "mime": "text/markdown",
         "path": "docs/ARCHITECTURE.md",
         "repo": "aoa-stats",
-        "size_bytes": 5557
+        "size_bytes": 6486
       },
       "mechanics_role": "none",
       "observed_form": "file",
@@ -25545,86 +25566,93 @@
             "title": "Authority ladder"
           },
           {
-            "anchor": "five-layers",
+            "anchor": "measurement-and-projection-layers",
             "level": 2,
-            "line": 21,
-            "ref": "docs/ARCHITECTURE.md#five-layers",
-            "title": "Five layers"
+            "line": 23,
+            "ref": "docs/ARCHITECTURE.md#measurement-and-projection-layers",
+            "title": "Measurement and projection layers"
+          },
+          {
+            "anchor": "measurement-contracts-and-local-ports",
+            "level": 3,
+            "line": 25,
+            "ref": "docs/ARCHITECTURE.md#measurement-contracts-and-local-ports",
+            "title": "Measurement contracts and local ports"
           },
           {
             "anchor": "1-event-facts",
             "level": 3,
-            "line": 23,
+            "line": 36,
             "ref": "docs/ARCHITECTURE.md#1-event-facts",
             "title": "1. Event facts"
           },
           {
             "anchor": "2-evidence-links",
             "level": 3,
-            "line": 33,
+            "line": 46,
             "ref": "docs/ARCHITECTURE.md#2-evidence-links",
             "title": "2. Evidence links"
           },
           {
             "anchor": "3-bounded-evaluations",
             "level": 3,
-            "line": 39,
+            "line": 52,
             "ref": "docs/ARCHITECTURE.md#3-bounded-evaluations",
             "title": "3. Bounded evaluations"
           },
           {
             "anchor": "4-progression-readings",
             "level": 3,
-            "line": 45,
+            "line": 58,
             "ref": "docs/ARCHITECTURE.md#4-progression-readings",
             "title": "4. Progression readings"
           },
           {
             "anchor": "5-derived-read-models",
             "level": 3,
-            "line": 51,
+            "line": 64,
             "ref": "docs/ARCHITECTURE.md#5-derived-read-models",
             "title": "5. Derived read models"
           },
           {
             "anchor": "source-and-operation-split",
             "level": 2,
-            "line": 62,
+            "line": 75,
             "ref": "docs/ARCHITECTURE.md#source-and-operation-split",
             "title": "Source and operation split"
           },
           {
             "anchor": "projection-boundary",
             "level": 2,
-            "line": 73,
+            "line": 86,
             "ref": "docs/ARCHITECTURE.md#projection-boundary",
             "title": "Projection boundary"
           },
           {
             "anchor": "catalog-and-lifecycle",
             "level": 2,
-            "line": 84,
+            "line": 98,
             "ref": "docs/ARCHITECTURE.md#catalog-and-lifecycle",
             "title": "Catalog and lifecycle"
           },
           {
             "anchor": "publication-and-access",
             "level": 2,
-            "line": 106,
+            "line": 120,
             "ref": "docs/ARCHITECTURE.md#publication-and-access",
             "title": "Publication and access"
           },
           {
             "anchor": "canonical-questions",
             "level": 2,
-            "line": 118,
+            "line": 133,
             "ref": "docs/ARCHITECTURE.md#canonical-questions",
             "title": "Canonical questions"
           },
           {
             "anchor": "read-next",
             "level": 2,
-            "line": 129,
+            "line": 144,
             "ref": "docs/ARCHITECTURE.md#read-next",
             "title": "Read next"
           }
@@ -25636,7 +25664,7 @@
       },
       "signs": {
         "attestation_ref": "",
-        "digest": "6be9df7c44e7b8e2b9a469646a5aa0b812f7d6aa50186367ac01eb20bb045c24",
+        "digest": "1c56e51e97d4e94f3b0c1cb8caf914d6e344c7b5baea4eee29fe1b577ab12913",
         "signature_ref": "",
         "verification_state": "digest-only"
       },
@@ -25684,13 +25712,13 @@
         "state": "current"
       },
       "identity": {
-        "content_hash": "7c131bba1aaeb730929fa106c181113e4c53e1658958091c57901c5e3d64d1d9",
+        "content_hash": "2e5f55727fe14a3cc09fc2c9bcd36a1b7b791d519f13a1adf2b48ffcb3769be8",
         "git_ref": "git-index-source-tree",
         "id": "file:docs/boundaries.md:679427f04a",
         "mime": "text/markdown",
         "path": "docs/BOUNDARIES.md",
         "repo": "aoa-stats",
-        "size_bytes": 1945
+        "size_bytes": 2657
       },
       "mechanics_role": "none",
       "observed_form": "file",
@@ -25747,7 +25775,7 @@
           {
             "anchor": "anti-collapse-rules",
             "level": 2,
-            "line": 58,
+            "line": 67,
             "ref": "docs/BOUNDARIES.md#anti-collapse-rules",
             "title": "Anti-collapse rules"
           }
@@ -25759,7 +25787,7 @@
       },
       "signs": {
         "attestation_ref": "",
-        "digest": "7c131bba1aaeb730929fa106c181113e4c53e1658958091c57901c5e3d64d1d9",
+        "digest": "2e5f55727fe14a3cc09fc2c9bcd36a1b7b791d519f13a1adf2b48ffcb3769be8",
         "signature_ref": "",
         "verification_state": "digest-only"
       },
@@ -25807,13 +25835,13 @@
         "state": "current"
       },
       "identity": {
-        "content_hash": "da72c85b4151cf00cc1b365a22ea805a60ea67a6757d78c8b80c75acf7977429",
+        "content_hash": "6ed3885911d3d946002d009f7553a39f164348a15fee0ab707fc0f23367fc21c",
         "git_ref": "git-index-source-tree",
         "id": "file:docs/readme.md:0b5ca119d2",
         "mime": "text/markdown",
         "path": "docs/README.md",
         "repo": "aoa-stats",
-        "size_bytes": 1787
+        "size_bytes": 2040
       },
       "mechanics_role": "none",
       "observed_form": "file",
@@ -25856,14 +25884,14 @@
           {
             "anchor": "repository-wide-contracts",
             "level": 2,
-            "line": 28,
+            "line": 33,
             "ref": "docs/README.md#repository-wide-contracts",
             "title": "Repository-wide contracts"
           },
           {
             "anchor": "history",
             "level": 2,
-            "line": 33,
+            "line": 38,
             "ref": "docs/README.md#history",
             "title": "History"
           }
@@ -25875,7 +25903,7 @@
       },
       "signs": {
         "attestation_ref": "",
-        "digest": "da72c85b4151cf00cc1b365a22ea805a60ea67a6757d78c8b80c75acf7977429",
+        "digest": "6ed3885911d3d946002d009f7553a39f164348a15fee0ab707fc0f23367fc21c",
         "signature_ref": "",
         "verification_state": "digest-only"
       },
@@ -26074,13 +26102,13 @@
         "state": "current"
       },
       "identity": {
-        "content_hash": "f0c19ffef25260e9139c93acd402ac096e05e6d472f62d1c0c48b7c3fd2299d8",
+        "content_hash": "24010ee9a43112d21ec70bd9c302b4c463ee2661b5dfa1f043eab8bfe2bf63f5",
         "git_ref": "git-index-source-tree",
         "id": "file:docs/decisions/agents.md:1a4fdefcef",
         "mime": "text/markdown",
         "path": "docs/decisions/AGENTS.md",
         "repo": "aoa-stats",
-        "size_bytes": 3371
+        "size_bytes": 3346
       },
       "mechanics_role": "none",
       "observed_form": "file",
@@ -26123,28 +26151,28 @@
           {
             "anchor": "record-law",
             "level": 2,
-            "line": 18,
+            "line": 17,
             "ref": "docs/decisions/AGENTS.md#record-law",
             "title": "Record Law"
           },
           {
             "anchor": "boundary",
             "level": 2,
-            "line": 35,
+            "line": 34,
             "ref": "docs/decisions/AGENTS.md#boundary",
             "title": "Boundary"
           },
           {
             "anchor": "when-to-add-a-decision",
             "level": 2,
-            "line": 52,
+            "line": 51,
             "ref": "docs/decisions/AGENTS.md#when-to-add-a-decision",
             "title": "When To Add A Decision"
           },
           {
             "anchor": "verify",
             "level": 2,
-            "line": 67,
+            "line": 66,
             "ref": "docs/decisions/AGENTS.md#verify",
             "title": "Verify"
           }
@@ -26156,7 +26184,7 @@
       },
       "signs": {
         "attestation_ref": "",
-        "digest": "f0c19ffef25260e9139c93acd402ac096e05e6d472f62d1c0c48b7c3fd2299d8",
+        "digest": "24010ee9a43112d21ec70bd9c302b4c463ee2661b5dfa1f043eab8bfe2bf63f5",
         "signature_ref": "",
         "verification_state": "digest-only"
       },
@@ -27921,6 +27949,164 @@
         "route_kind": "resource",
         "surface": "aoa-kag-mcp"
       },
+      "document_role": "decision",
+      "freshness": {
+        "checked_ref": "git-index-source-tree",
+        "mode": "source_snapshot",
+        "state": "current"
+      },
+      "identity": {
+        "content_hash": "16c3e122ff667cc816bfd3bd180adec87103f66aae087e6bde5b9de45732df2d",
+        "git_ref": "git-index-source-tree",
+        "id": "file:docs/decisions/aost-d-0012-federated-measurement-ownership-and-thin-access.md:56ab243b37",
+        "mime": "text/markdown",
+        "path": "docs/decisions/AOST-D-0012-federated-measurement-ownership-and-thin-access.md",
+        "repo": "aoa-stats",
+        "size_bytes": 5413
+      },
+      "mechanics_role": "none",
+      "observed_form": "file",
+      "owner_return_route": {
+        "route_kind": "document_owner",
+        "surface": "docs/decisions/AOST-D-0012-federated-measurement-ownership-and-thin-access.md"
+      },
+      "provenance": {
+        "generated_by": "",
+        "materials": [],
+        "observed_by": "aoa-kag:scripts/generate_repo_local_kag_index.py",
+        "source_refs": [
+          {
+            "authority": "authored_source",
+            "path": "docs/decisions/AOST-D-0012-federated-measurement-ownership-and-thin-access.md",
+            "repo": "aoa-stats",
+            "role": "primary"
+          }
+        ],
+        "validated_by": [
+          "aoa-kag:scripts/validate_kag.py"
+        ]
+      },
+      "refs": {
+        "heading_refs": [
+          {
+            "anchor": "aost-d-0012-federated-measurement-ownership-and-thin-access",
+            "level": 1,
+            "line": 1,
+            "ref": "docs/decisions/AOST-D-0012-federated-measurement-ownership-and-thin-access.md#aost-d-0012-federated-measurement-ownership-and-thin-access",
+            "title": "AOST-D-0012 Federated Measurement Ownership and Thin Access"
+          },
+          {
+            "anchor": "index-metadata",
+            "level": 2,
+            "line": 3,
+            "ref": "docs/decisions/AOST-D-0012-federated-measurement-ownership-and-thin-access.md#index-metadata",
+            "title": "Index Metadata"
+          },
+          {
+            "anchor": "status",
+            "level": 2,
+            "line": 13,
+            "ref": "docs/decisions/AOST-D-0012-federated-measurement-ownership-and-thin-access.md#status",
+            "title": "Status"
+          },
+          {
+            "anchor": "context",
+            "level": 2,
+            "line": 17,
+            "ref": "docs/decisions/AOST-D-0012-federated-measurement-ownership-and-thin-access.md#context",
+            "title": "Context"
+          },
+          {
+            "anchor": "decision",
+            "level": 2,
+            "line": 32,
+            "ref": "docs/decisions/AOST-D-0012-federated-measurement-ownership-and-thin-access.md#decision",
+            "title": "Decision"
+          },
+          {
+            "anchor": "options-considered",
+            "level": 2,
+            "line": 50,
+            "ref": "docs/decisions/AOST-D-0012-federated-measurement-ownership-and-thin-access.md#options-considered",
+            "title": "Options Considered"
+          },
+          {
+            "anchor": "rationale",
+            "level": 2,
+            "line": 64,
+            "ref": "docs/decisions/AOST-D-0012-federated-measurement-ownership-and-thin-access.md#rationale",
+            "title": "Rationale"
+          },
+          {
+            "anchor": "consequences",
+            "level": 2,
+            "line": 78,
+            "ref": "docs/decisions/AOST-D-0012-federated-measurement-ownership-and-thin-access.md#consequences",
+            "title": "Consequences"
+          },
+          {
+            "anchor": "source-surfaces",
+            "level": 2,
+            "line": 94,
+            "ref": "docs/decisions/AOST-D-0012-federated-measurement-ownership-and-thin-access.md#source-surfaces",
+            "title": "Source Surfaces"
+          },
+          {
+            "anchor": "validation",
+            "level": 2,
+            "line": 108,
+            "ref": "docs/decisions/AOST-D-0012-federated-measurement-ownership-and-thin-access.md#validation",
+            "title": "Validation"
+          }
+        ],
+        "line_refs": [
+          "docs/decisions/AOST-D-0012-federated-measurement-ownership-and-thin-access.md:1"
+        ],
+        "path_ref": "docs/decisions/AOST-D-0012-federated-measurement-ownership-and-thin-access.md"
+      },
+      "signs": {
+        "attestation_ref": "",
+        "digest": "16c3e122ff667cc816bfd3bd180adec87103f66aae087e6bde5b9de45732df2d",
+        "signature_ref": "",
+        "verification_state": "digest-only"
+      },
+      "surface_state": "authored_source",
+      "toolchain": {
+        "detected_tools": [
+          "git",
+          "python"
+        ],
+        "owner_commands": [],
+        "required_tools": []
+      },
+      "validator_route": {
+        "route_kind": "source_fast",
+        "surface": "aoa-kag:scripts/validate_kag.py"
+      }
+    },
+    {
+      "abi": {
+        "abi_epoch": "source",
+        "artifact_class": "document",
+        "compatibility": "stable",
+        "contract_version": "none",
+        "schema_version": "none"
+      },
+      "access": {
+        "scope": "public",
+        "secrets_risk": "none"
+      },
+      "artifact_kind": "document",
+      "classification": {
+        "confidence": "high",
+        "primary_kind": "document"
+      },
+      "code_role": "none",
+      "command_role": "none",
+      "consumer_route": {
+        "route_kind": "resource",
+        "surface": "aoa-kag-mcp"
+      },
       "document_role": "readme",
       "freshness": {
         "checked_ref": "git-index-source-tree",
@@ -27928,13 +28114,13 @@
         "state": "current"
       },
       "identity": {
-        "content_hash": "262bb6841a8ef533d6cfd7afb314a05131d05fc876e813ba54df2eb8a7f7eca9",
+        "content_hash": "0ccafcc0430fa505e5462d12fe2360e9154bec681967ba6ce712af2f980b5822",
         "git_ref": "git-index-source-tree",
         "id": "file:docs/decisions/readme.md:e5ec0e7030",
         "mime": "text/markdown",
         "path": "docs/decisions/README.md",
         "repo": "aoa-stats",
-        "size_bytes": 4510
+        "size_bytes": 4485
       },
       "mechanics_role": "none",
       "observed_form": "file",
@@ -27970,49 +28156,49 @@
           {
             "anchor": "operating-card",
             "level": 2,
-            "line": 14,
+            "line": 13,
             "ref": "docs/decisions/README.md#operating-card",
             "title": "Operating Card"
           },
           {
             "anchor": "authority",
             "level": 2,
-            "line": 25,
+            "line": 24,
             "ref": "docs/decisions/README.md#authority",
             "title": "Authority"
           },
           {
             "anchor": "index-shape",
             "level": 2,
-            "line": 46,
+            "line": 45,
             "ref": "docs/decisions/README.md#index-shape",
             "title": "Index Shape"
           },
           {
             "anchor": "lookup-route",
             "level": 2,
-            "line": 67,
+            "line": 66,
             "ref": "docs/decisions/README.md#lookup-route",
             "title": "Lookup Route"
           },
           {
             "anchor": "addressing",
             "level": 2,
-            "line": 82,
+            "line": 81,
             "ref": "docs/decisions/README.md#addressing",
             "title": "Addressing"
           },
           {
             "anchor": "naming",
             "level": 2,
-            "line": 93,
+            "line": 92,
             "ref": "docs/decisions/README.md#naming",
             "title": "Naming"
           },
           {
             "anchor": "template",
             "level": 2,
-            "line": 101,
+            "line": 100,
             "ref": "docs/decisions/README.md#template",
             "title": "Template"
           }
@@ -28024,7 +28210,7 @@
       },
       "signs": {
         "attestation_ref": "",
-        "digest": "262bb6841a8ef533d6cfd7afb314a05131d05fc876e813ba54df2eb8a7f7eca9",
+        "digest": "0ccafcc0430fa505e5462d12fe2360e9154bec681967ba6ce712af2f980b5822",
         "signature_ref": "",
         "verification_state": "digest-only"
       },
@@ -28325,13 +28511,13 @@
         "state": "current"
       },
       "identity": {
-        "content_hash": "476644aa8dc9ae02d25af8312bc627e1c3354193d4216cddfae06ee76562d75a",
+        "content_hash": "4c54db3926e7101fc023095fca88a13d5016777a282bad0ef04b46467f914ed8",
         "git_ref": "git-index-source-tree",
         "id": "file:docs/decisions/indexes/by-date.md:7f76a83a93",
         "mime": "text/markdown",
         "path": "docs/decisions/indexes/by-date.md",
         "repo": "aoa-stats",
-        "size_bytes": 2718
+        "size_bytes": 2949
       },
       "mechanics_role": "none",
       "observed_form": "generated_output",
@@ -28384,6 +28570,13 @@
             "line": 13,
             "ref": "docs/decisions/indexes/by-date.md#2026-07-11",
             "title": "2026-07-11"
+          },
+          {
+            "anchor": "2026-07-12",
+            "level": 2,
+            "line": 25,
+            "ref": "docs/decisions/indexes/by-date.md#2026-07-12",
+            "title": "2026-07-12"
           }
         ],
         "line_refs": [
@@ -28393,7 +28586,7 @@
       },
       "signs": {
         "attestation_ref": "",
-        "digest": "476644aa8dc9ae02d25af8312bc627e1c3354193d4216cddfae06ee76562d75a",
+        "digest": "4c54db3926e7101fc023095fca88a13d5016777a282bad0ef04b46467f914ed8",
         "signature_ref": "",
         "verification_state": "digest-only"
       },
@@ -28441,13 +28634,13 @@
         "state": "current"
       },
       "identity": {
-        "content_hash": "8b565c31280e11cda455f2c3566e8359b8297a3409f1b4a12da225f03ee463c4",
+        "content_hash": "d1a0def700d54ef244a07fadb66b8a2fe8cb682d5cc8510b7d8ab83d0d8c3629",
         "git_ref": "git-index-source-tree",
         "id": "file:docs/decisions/indexes/by-guard.md:8ae406686a",
         "mime": "text/markdown",
         "path": "docs/decisions/indexes/by-guard.md",
         "repo": "aoa-stats",
-        "size_bytes": 15810
+        "size_bytes": 16995
       },
       "mechanics_role": "none",
       "observed_form": "generated_output",
@@ -28481,198 +28674,226 @@
             "title": "Decisions By Validation Or Guard Family"
           },
           {
-            "anchor": "activation-gaps",
+            "anchor": "access-plane-separation",
             "level": 2,
             "line": 5,
+            "ref": "docs/decisions/indexes/by-guard.md#access-plane-separation",
+            "title": "access-plane separation"
+          },
+          {
+            "anchor": "activation-gaps",
+            "level": 2,
+            "line": 9,
             "ref": "docs/decisions/indexes/by-guard.md#activation-gaps",
             "title": "activation gaps"
           },
           {
             "anchor": "catalog-output-parity",
             "level": 2,
-            "line": 9,
+            "line": 13,
             "ref": "docs/decisions/indexes/by-guard.md#catalog-output-parity",
             "title": "catalog-output parity"
           },
           {
             "anchor": "consumer-handoff",
             "level": 2,
-            "line": 15,
+            "line": 19,
             "ref": "docs/decisions/indexes/by-guard.md#consumer-handoff",
             "title": "consumer handoff"
           },
           {
             "anchor": "consumer-regrounding",
             "level": 2,
-            "line": 21,
+            "line": 25,
             "ref": "docs/decisions/indexes/by-guard.md#consumer-regrounding",
             "title": "consumer regrounding"
           },
           {
             "anchor": "consumer-safety",
             "level": 2,
-            "line": 25,
+            "line": 29,
             "ref": "docs/decisions/indexes/by-guard.md#consumer-safety",
             "title": "consumer safety"
           },
           {
             "anchor": "cross-owner-coherence",
             "level": 2,
-            "line": 29,
+            "line": 33,
             "ref": "docs/decisions/indexes/by-guard.md#cross-owner-coherence",
             "title": "cross-owner coherence"
           },
           {
             "anchor": "deferred-lifecycle",
             "level": 2,
-            "line": 33,
+            "line": 37,
             "ref": "docs/decisions/indexes/by-guard.md#deferred-lifecycle",
             "title": "deferred lifecycle"
           },
           {
             "anchor": "derived-only-authority",
             "level": 2,
-            "line": 37,
+            "line": 41,
             "ref": "docs/decisions/indexes/by-guard.md#derived-only-authority",
             "title": "derived-only authority"
           },
           {
             "anchor": "downstream-canaries",
             "level": 2,
-            "line": 51,
+            "line": 56,
             "ref": "docs/decisions/indexes/by-guard.md#downstream-canaries",
             "title": "downstream canaries"
           },
           {
             "anchor": "generated-index-parity",
             "level": 2,
-            "line": 55,
+            "line": 60,
             "ref": "docs/decisions/indexes/by-guard.md#generated-index-parity",
             "title": "generated-index parity"
           },
           {
             "anchor": "intake-governance",
             "level": 2,
-            "line": 59,
+            "line": 64,
             "ref": "docs/decisions/indexes/by-guard.md#intake-governance",
             "title": "intake governance"
           },
           {
             "anchor": "live-admission",
             "level": 2,
-            "line": 63,
+            "line": 68,
             "ref": "docs/decisions/indexes/by-guard.md#live-admission",
             "title": "live admission"
           },
           {
             "anchor": "live-source-admission",
             "level": 2,
-            "line": 67,
+            "line": 72,
             "ref": "docs/decisions/indexes/by-guard.md#live-source-admission",
             "title": "live-source admission"
           },
           {
             "anchor": "mechanic-topology",
             "level": 2,
-            "line": 75,
+            "line": 80,
             "ref": "docs/decisions/indexes/by-guard.md#mechanic-topology",
             "title": "mechanic topology"
           },
           {
             "anchor": "missing-evidence-visibility",
             "level": 2,
-            "line": 80,
+            "line": 85,
             "ref": "docs/decisions/indexes/by-guard.md#missing-evidence-visibility",
             "title": "missing-evidence visibility"
           },
           {
             "anchor": "owner-evidence",
             "level": 2,
-            "line": 85,
+            "line": 90,
             "ref": "docs/decisions/indexes/by-guard.md#owner-evidence",
             "title": "owner evidence"
           },
           {
             "anchor": "owner-contract-compatibility",
             "level": 2,
-            "line": 89,
+            "line": 94,
             "ref": "docs/decisions/indexes/by-guard.md#owner-contract-compatibility",
             "title": "owner-contract compatibility"
           },
           {
+            "anchor": "privacy-boundary",
+            "level": 2,
+            "line": 100,
+            "ref": "docs/decisions/indexes/by-guard.md#privacy-boundary",
+            "title": "privacy boundary"
+          },
+          {
             "anchor": "profile-output-parity",
             "level": 2,
-            "line": 95,
+            "line": 104,
             "ref": "docs/decisions/indexes/by-guard.md#profile-output-parity",
             "title": "profile-output parity"
           },
           {
             "anchor": "reference-source-posture",
             "level": 2,
-            "line": 100,
+            "line": 109,
             "ref": "docs/decisions/indexes/by-guard.md#reference-source-posture",
             "title": "reference-source posture"
           },
           {
             "anchor": "refresh-observation",
             "level": 2,
-            "line": 104,
+            "line": 113,
             "ref": "docs/decisions/indexes/by-guard.md#refresh-observation",
             "title": "refresh observation"
           },
           {
             "anchor": "retired-output-cleanup",
             "level": 2,
-            "line": 109,
+            "line": 118,
             "ref": "docs/decisions/indexes/by-guard.md#retired-output-cleanup",
             "title": "retired-output cleanup"
           },
           {
             "anchor": "retired-slot-reservation",
             "level": 2,
-            "line": 115,
+            "line": 124,
             "ref": "docs/decisions/indexes/by-guard.md#retired-slot-reservation",
             "title": "retired-slot reservation"
           },
           {
             "anchor": "route-law-validation",
             "level": 2,
-            "line": 120,
+            "line": 129,
             "ref": "docs/decisions/indexes/by-guard.md#route-law-validation",
             "title": "route-law validation"
           },
           {
             "anchor": "schema-output-parity",
             "level": 2,
-            "line": 124,
+            "line": 133,
             "ref": "docs/decisions/indexes/by-guard.md#schema-output-parity",
             "title": "schema-output parity"
           },
           {
+            "anchor": "single-writer-identity",
+            "level": 2,
+            "line": 138,
+            "ref": "docs/decisions/indexes/by-guard.md#single-writer-identity",
+            "title": "single-writer identity"
+          },
+          {
             "anchor": "source-coverage",
             "level": 2,
-            "line": 129,
+            "line": 142,
             "ref": "docs/decisions/indexes/by-guard.md#source-coverage",
             "title": "source coverage"
           },
           {
             "anchor": "source-of-truth-lifecycle",
             "level": 2,
-            "line": 133,
+            "line": 146,
             "ref": "docs/decisions/indexes/by-guard.md#source-of-truth-lifecycle",
             "title": "source-of-truth lifecycle"
           },
           {
             "anchor": "stale-output-cleanup",
             "level": 2,
-            "line": 139,
+            "line": 152,
             "ref": "docs/decisions/indexes/by-guard.md#stale-output-cleanup",
             "title": "stale-output cleanup"
           },
           {
+            "anchor": "statistical-compatibility",
+            "level": 2,
+            "line": 159,
+            "ref": "docs/decisions/indexes/by-guard.md#statistical-compatibility",
+            "title": "statistical compatibility"
+          },
+          {
             "anchor": "zero-baseline-interpretation",
             "level": 2,
-            "line": 146,
+            "line": 163,
             "ref": "docs/decisions/indexes/by-guard.md#zero-baseline-interpretation",
             "title": "zero-baseline interpretation"
           }
@@ -28684,7 +28905,7 @@
       },
       "signs": {
         "attestation_ref": "",
-        "digest": "8b565c31280e11cda455f2c3566e8359b8297a3409f1b4a12da225f03ee463c4",
+        "digest": "d1a0def700d54ef244a07fadb66b8a2fe8cb682d5cc8510b7d8ab83d0d8c3629",
         "signature_ref": "",
         "verification_state": "digest-only"
       },
@@ -28732,13 +28953,13 @@
         "state": "current"
       },
       "identity": {
-        "content_hash": "4f513e68a6f906e19b0b43a204173bf09083169354b4e3df3f24e9428c4b791b",
+        "content_hash": "301636f9c2554c232b7e43a8c905a6eb733c21a376c8e57bef3f875ab0368f2c",
         "git_ref": "git-index-source-tree",
         "id": "file:docs/decisions/indexes/by-number.md:02e6940a39",
         "mime": "text/markdown",
         "path": "docs/decisions/indexes/by-number.md",
         "repo": "aoa-stats",
-        "size_bytes": 7686
+        "size_bytes": 8342
       },
       "mechanics_role": "none",
       "observed_form": "generated_output",
@@ -28779,7 +29000,7 @@
       },
       "signs": {
         "attestation_ref": "",
-        "digest": "4f513e68a6f906e19b0b43a204173bf09083169354b4e3df3f24e9428c4b791b",
+        "digest": "301636f9c2554c232b7e43a8c905a6eb733c21a376c8e57bef3f875ab0368f2c",
         "signature_ref": "",
         "verification_state": "digest-only"
       },
@@ -28827,13 +29048,13 @@
         "state": "current"
       },
       "identity": {
-        "content_hash": "40b0d7cdeb4198d8199effc6512398093a980af9aa910c0572a0f3511fd38771",
+        "content_hash": "9ca1153c1b59bedecc0b0061ec95eb44589d7fdb55e9fc43da0c19654a5a420a",
         "git_ref": "git-index-source-tree",
         "id": "file:docs/decisions/indexes/by-source-lane.md:d12818b811",
         "mime": "text/markdown",
         "path": "docs/decisions/indexes/by-source-lane.md",
         "repo": "aoa-stats",
-        "size_bytes": 9036
+        "size_bytes": 9777
       },
       "mechanics_role": "none",
       "observed_form": "generated_output",
@@ -28867,184 +29088,205 @@
             "title": "Decisions By Source Lane"
           },
           {
-            "anchor": "abyss-stack-runtime-trial-closeouts",
+            "anchor": "abyss-stack-mcp-services",
             "level": 2,
             "line": 5,
+            "ref": "docs/decisions/indexes/by-source-lane.md#abyss-stack-mcp-services",
+            "title": "abyss-stack MCP services"
+          },
+          {
+            "anchor": "abyss-stack-runtime-trial-closeouts",
+            "level": 2,
+            "line": 9,
             "ref": "docs/decisions/indexes/by-source-lane.md#abyss-stack-runtime-trial-closeouts",
             "title": "abyss-stack runtime trial closeouts"
           },
           {
+            "anchor": "active-os-abyss-owner-repositories",
+            "level": 2,
+            "line": 14,
+            "ref": "docs/decisions/indexes/by-source-lane.md#active-os-abyss-owner-repositories",
+            "title": "active OS Abyss owner repositories"
+          },
+          {
             "anchor": "agents-of-abyss-checkpoint-center",
             "level": 2,
-            "line": 10,
+            "line": 18,
             "ref": "docs/decisions/indexes/by-source-lane.md#agents-of-abyss-checkpoint-center",
             "title": "Agents-of-Abyss checkpoint center"
           },
           {
             "anchor": "agents-of-abyss-rpg-center",
             "level": 2,
-            "line": 14,
+            "line": 22,
             "ref": "docs/decisions/indexes/by-source-lane.md#agents-of-abyss-rpg-center",
             "title": "Agents-of-Abyss RPG center"
           },
           {
             "anchor": "aoa-agents-agent-progression",
             "level": 2,
-            "line": 18,
+            "line": 26,
             "ref": "docs/decisions/indexes/by-source-lane.md#aoa-agents-agent-progression",
             "title": "aoa-agents agent progression"
           },
           {
             "anchor": "aoa-agents-titan-rosters",
             "level": 2,
-            "line": 22,
+            "line": 30,
             "ref": "docs/decisions/indexes/by-source-lane.md#aoa-agents-titan-rosters",
             "title": "aoa-agents Titan rosters"
           },
           {
             "anchor": "aoa-evals",
             "level": 2,
-            "line": 26,
+            "line": 34,
             "ref": "docs/decisions/indexes/by-source-lane.md#aoa-evals",
             "title": "aoa-evals"
           },
           {
             "anchor": "aoa-evals-stress-recovery-receipts-and-reports",
             "level": 2,
-            "line": 31,
+            "line": 39,
             "ref": "docs/decisions/indexes/by-source-lane.md#aoa-evals-stress-recovery-receipts-and-reports",
             "title": "aoa-evals stress-recovery receipts and reports"
           },
           {
             "anchor": "aoa-memo-reviewed-corpus",
             "level": 2,
-            "line": 35,
+            "line": 43,
             "ref": "docs/decisions/indexes/by-source-lane.md#aoa-memo-reviewed-corpus",
             "title": "aoa-memo reviewed corpus"
           },
           {
             "anchor": "aoa-routing-consumer-re-grounding",
             "level": 2,
-            "line": 39,
+            "line": 47,
             "ref": "docs/decisions/indexes/by-source-lane.md#aoa-routing-consumer-re-grounding",
             "title": "aoa-routing consumer re-grounding"
           },
           {
             "anchor": "aoa-sdk-incarnation-receipt-examples",
             "level": 2,
-            "line": 45,
+            "line": 53,
             "ref": "docs/decisions/indexes/by-source-lane.md#aoa-sdk-incarnation-receipt-examples",
             "title": "aoa-sdk incarnation receipt examples"
           },
           {
             "anchor": "aoa-sdk-reviewed-closeout-transport",
             "level": 2,
-            "line": 49,
+            "line": 57,
             "ref": "docs/decisions/indexes/by-source-lane.md#aoa-sdk-reviewed-closeout-transport",
             "title": "aoa-sdk reviewed closeout transport"
           },
           {
             "anchor": "aoa-sdk-reviewed-component-refresh-examples",
             "level": 2,
-            "line": 53,
+            "line": 61,
             "ref": "docs/decisions/indexes/by-source-lane.md#aoa-sdk-reviewed-component-refresh-examples",
             "title": "aoa-sdk reviewed component refresh examples"
           },
           {
             "anchor": "aoa-sdk-runtime-return-transport",
             "level": 2,
-            "line": 57,
+            "line": 65,
             "ref": "docs/decisions/indexes/by-source-lane.md#aoa-sdk-runtime-return-transport",
             "title": "aoa-sdk runtime return transport"
           },
           {
             "anchor": "aoa-sdk-stats-contracts",
             "level": 2,
-            "line": 61,
+            "line": 69,
             "ref": "docs/decisions/indexes/by-source-lane.md#aoa-sdk-stats-contracts",
             "title": "aoa-sdk stats contracts"
           },
           {
             "anchor": "aoa-sdk-swarm-ledger-contract",
             "level": 2,
-            "line": 65,
+            "line": 73,
             "ref": "docs/decisions/indexes/by-source-lane.md#aoa-sdk-swarm-ledger-contract",
             "title": "aoa-sdk swarm-ledger contract"
           },
           {
             "anchor": "aoa-sdk-titan-swarm-ledger-contract",
             "level": 2,
-            "line": 69,
+            "line": 77,
             "ref": "docs/decisions/indexes/by-source-lane.md#aoa-sdk-titan-swarm-ledger-contract",
             "title": "aoa-sdk Titan swarm-ledger contract"
           },
           {
             "anchor": "aoa-skills-progression-receipts",
             "level": 2,
-            "line": 73,
+            "line": 81,
             "ref": "docs/decisions/indexes/by-source-lane.md#aoa-skills-progression-receipts",
             "title": "aoa-skills progression receipts"
           },
           {
             "anchor": "aoa-skills-reviewed-landing-bundles",
             "level": 2,
-            "line": 77,
+            "line": 85,
             "ref": "docs/decisions/indexes/by-source-lane.md#aoa-skills-reviewed-landing-bundles",
             "title": "aoa-skills reviewed landing bundles"
           },
           {
             "anchor": "aoa-stats",
             "level": 2,
-            "line": 81,
+            "line": 89,
             "ref": "docs/decisions/indexes/by-source-lane.md#aoa-stats",
             "title": "aoa-stats"
           },
           {
             "anchor": "aoa-stats-authored-profiles",
             "level": 2,
-            "line": 87,
+            "line": 95,
             "ref": "docs/decisions/indexes/by-source-lane.md#aoa-stats-authored-profiles",
             "title": "aoa-stats authored profiles"
           },
           {
             "anchor": "atm10-agent",
             "level": 2,
-            "line": 92,
+            "line": 100,
             "ref": "docs/decisions/indexes/by-source-lane.md#atm10-agent",
             "title": "ATM10-Agent"
           },
           {
             "anchor": "dionysus-seed-landing-traces",
             "level": 2,
-            "line": 96,
+            "line": 104,
             "ref": "docs/decisions/indexes/by-source-lane.md#dionysus-seed-landing-traces",
             "title": "Dionysus seed landing traces"
           },
           {
             "anchor": "historical-abyss-stack-wave-receipts",
             "level": 2,
-            "line": 100,
+            "line": 108,
             "ref": "docs/decisions/indexes/by-source-lane.md#historical-abyss-stack-wave-receipts",
             "title": "historical abyss-stack wave receipts"
           },
           {
             "anchor": "owner-local-component-refresh-receipts",
             "level": 2,
-            "line": 104,
+            "line": 112,
             "ref": "docs/decisions/indexes/by-source-lane.md#owner-local-component-refresh-receipts",
             "title": "owner-local component refresh receipts"
           },
           {
+            "anchor": "owner-local-evidence",
+            "level": 2,
+            "line": 116,
+            "ref": "docs/decisions/indexes/by-source-lane.md#owner-local-evidence",
+            "title": "owner-local evidence"
+          },
+          {
             "anchor": "owner-local-landing-receipts",
             "level": 2,
-            "line": 108,
+            "line": 120,
             "ref": "docs/decisions/indexes/by-source-lane.md#owner-local-landing-receipts",
             "title": "owner-local landing receipts"
           },
           {
             "anchor": "sibling-decision-lane-pattern",
             "level": 2,
-            "line": 112,
+            "line": 124,
             "ref": "docs/decisions/indexes/by-source-lane.md#sibling-decision-lane-pattern",
             "title": "sibling decision-lane pattern"
           }
@@ -29056,7 +29298,7 @@
       },
       "signs": {
         "attestation_ref": "",
-        "digest": "40b0d7cdeb4198d8199effc6512398093a980af9aa910c0572a0f3511fd38771",
+        "digest": "9ca1153c1b59bedecc0b0061ec95eb44589d7fdb55e9fc43da0c19654a5a420a",
         "signature_ref": "",
         "verification_state": "digest-only"
       },
@@ -29104,13 +29346,13 @@
         "state": "current"
       },
       "identity": {
-        "content_hash": "4c72eaa9195f04a4376fd65d07f752c380f7af84189c690c738f535447e15591",
+        "content_hash": "854c61bfef9d3fb4ba480dea9adbbde00858fcff4a862230ec13404022d67a75",
         "git_ref": "git-index-source-tree",
         "id": "file:docs/decisions/indexes/by-stats-surface.md:01abbd2708",
         "mime": "text/markdown",
         "path": "docs/decisions/indexes/by-stats-surface.md",
         "repo": "aoa-stats",
-        "size_bytes": 10424
+        "size_bytes": 11619
       },
       "mechanics_role": "none",
       "observed_form": "generated_output",
@@ -29179,163 +29421,198 @@
             "title": "deferred contract surfaces"
           },
           {
-            "anchor": "derived-only-boundary",
+            "anchor": "derived-read-contract",
             "level": 2,
             "line": 25,
+            "ref": "docs/decisions/indexes/by-stats-surface.md#derived-read-contract",
+            "title": "derived read contract"
+          },
+          {
+            "anchor": "derived-only-boundary",
+            "level": 2,
+            "line": 29,
             "ref": "docs/decisions/indexes/by-stats-surface.md#derived-only-boundary",
             "title": "derived-only boundary"
           },
           {
             "anchor": "downstream-canaries",
             "level": 2,
-            "line": 29,
+            "line": 33,
             "ref": "docs/decisions/indexes/by-stats-surface.md#downstream-canaries",
             "title": "downstream canaries"
           },
           {
             "anchor": "event-kind-registry",
             "level": 2,
-            "line": 33,
+            "line": 37,
             "ref": "docs/decisions/indexes/by-stats-surface.md#event-kind-registry",
             "title": "event-kind registry"
           },
           {
             "anchor": "generated-lookup-indexes",
             "level": 2,
-            "line": 37,
+            "line": 41,
             "ref": "docs/decisions/indexes/by-stats-surface.md#generated-lookup-indexes",
             "title": "generated lookup indexes"
           },
           {
             "anchor": "live-receipt-source-registry",
             "level": 2,
-            "line": 41,
+            "line": 45,
             "ref": "docs/decisions/indexes/by-stats-surface.md#live-receipt-source-registry",
             "title": "live receipt source registry"
           },
           {
             "anchor": "live-stale-cleanup",
             "level": 2,
-            "line": 45,
+            "line": 49,
             "ref": "docs/decisions/indexes/by-stats-surface.md#live-stale-cleanup",
             "title": "live stale cleanup"
           },
           {
             "anchor": "live-summary-catalog",
             "level": 2,
-            "line": 51,
+            "line": 55,
             "ref": "docs/decisions/indexes/by-stats-surface.md#live-summary-catalog",
             "title": "live summary catalog"
           },
           {
             "anchor": "local-live-output-inventory",
             "level": 2,
-            "line": 58,
+            "line": 62,
             "ref": "docs/decisions/indexes/by-stats-surface.md#local-live-output-inventory",
             "title": "local live output inventory"
           },
           {
+            "anchor": "local-stats-port",
+            "level": 2,
+            "line": 66,
+            "ref": "docs/decisions/indexes/by-stats-surface.md#local-stats-port",
+            "title": "local stats port"
+          },
+          {
+            "anchor": "measurement-contract",
+            "level": 2,
+            "line": 70,
+            "ref": "docs/decisions/indexes/by-stats-surface.md#measurement-contract",
+            "title": "measurement contract"
+          },
+          {
+            "anchor": "measurement-packet",
+            "level": 2,
+            "line": 74,
+            "ref": "docs/decisions/indexes/by-stats-surface.md#measurement-packet",
+            "title": "measurement packet"
+          },
+          {
             "anchor": "memory-movement",
             "level": 2,
-            "line": 62,
+            "line": 78,
             "ref": "docs/decisions/indexes/by-stats-surface.md#memory-movement",
             "title": "Memory Movement"
           },
           {
+            "anchor": "owner-inventory",
+            "level": 2,
+            "line": 82,
+            "ref": "docs/decisions/indexes/by-stats-surface.md#owner-inventory",
+            "title": "owner inventory"
+          },
+          {
             "anchor": "owner-landing",
             "level": 2,
-            "line": 66,
+            "line": 86,
             "ref": "docs/decisions/indexes/by-stats-surface.md#owner-landing",
             "title": "Owner Landing"
           },
           {
             "anchor": "read-model-lifecycle",
             "level": 2,
-            "line": 71,
+            "line": 91,
             "ref": "docs/decisions/indexes/by-stats-surface.md#read-model-lifecycle",
             "title": "read-model lifecycle"
           },
           {
             "anchor": "receipt-abi",
             "level": 2,
-            "line": 77,
+            "line": 97,
             "ref": "docs/decisions/indexes/by-stats-surface.md#receipt-abi",
             "title": "receipt ABI"
           },
           {
             "anchor": "route-progression",
             "level": 2,
-            "line": 81,
+            "line": 101,
             "ref": "docs/decisions/indexes/by-stats-surface.md#route-progression",
             "title": "Route Progression"
           },
           {
             "anchor": "runtime-closeout",
             "level": 2,
-            "line": 85,
+            "line": 105,
             "ref": "docs/decisions/indexes/by-stats-surface.md#runtime-closeout",
             "title": "Runtime Closeout"
           },
           {
             "anchor": "source-coverage",
             "level": 2,
-            "line": 90,
+            "line": 110,
             "ref": "docs/decisions/indexes/by-stats-surface.md#source-coverage",
             "title": "source coverage"
           },
           {
             "anchor": "source-coverage-1",
             "level": 2,
-            "line": 94,
+            "line": 114,
             "ref": "docs/decisions/indexes/by-stats-surface.md#source-coverage-1",
             "title": "Source Coverage"
           },
           {
             "anchor": "stable-catalog-slots",
             "level": 2,
-            "line": 98,
+            "line": 118,
             "ref": "docs/decisions/indexes/by-stats-surface.md#stable-catalog-slots",
             "title": "stable catalog slots"
           },
           {
             "anchor": "stress-recovery-window",
             "level": 2,
-            "line": 103,
+            "line": 123,
             "ref": "docs/decisions/indexes/by-stats-surface.md#stress-recovery-window",
             "title": "Stress Recovery Window"
           },
           {
             "anchor": "summary-surface-catalog",
             "level": 2,
-            "line": 107,
+            "line": 127,
             "ref": "docs/decisions/indexes/by-stats-surface.md#summary-surface-catalog",
             "title": "summary surface catalog"
           },
           {
             "anchor": "supersession-drop",
             "level": 2,
-            "line": 112,
+            "line": 132,
             "ref": "docs/decisions/indexes/by-stats-surface.md#supersession-drop",
             "title": "Supersession Drop"
           },
           {
             "anchor": "surface-strength",
             "level": 2,
-            "line": 116,
+            "line": 136,
             "ref": "docs/decisions/indexes/by-stats-surface.md#surface-strength",
             "title": "surface strength"
           },
           {
             "anchor": "titan-incarnation",
             "level": 2,
-            "line": 121,
+            "line": 141,
             "ref": "docs/decisions/indexes/by-stats-surface.md#titan-incarnation",
             "title": "Titan Incarnation"
           },
           {
             "anchor": "titan-summon",
             "level": 2,
-            "line": 125,
+            "line": 145,
             "ref": "docs/decisions/indexes/by-stats-surface.md#titan-summon",
             "title": "Titan Summon"
           }
@@ -29347,7 +29624,7 @@
       },
       "signs": {
         "attestation_ref": "",
-        "digest": "4c72eaa9195f04a4376fd65d07f752c380f7af84189c690c738f535447e15591",
+        "digest": "854c61bfef9d3fb4ba480dea9adbbde00858fcff4a862230ec13404022d67a75",
         "signature_ref": "",
         "verification_state": "digest-only"
       },
@@ -29395,13 +29672,13 @@
         "state": "current"
       },
       "identity": {
-        "content_hash": "36ed8a3f7036ad1e0d07a6da10b48e94f0849b94e1bfedaf6dc7cb40e7fd940e",
+        "content_hash": "b8606a89cc61a5a5e66fd21abf17ac972ad71379457c429db70ab45b92175ee5",
         "git_ref": "git-index-source-tree",
         "id": "file:docs/decisions/indexes/by-surface.md:acd156903f",
         "mime": "text/markdown",
         "path": "docs/decisions/indexes/by-surface.md",
         "repo": "aoa-stats",
-        "size_bytes": 14542
+        "size_bytes": 15701
       },
       "mechanics_role": "none",
       "observed_form": "generated_output",
@@ -29484,121 +29761,149 @@
             "title": "generated/read-models"
           },
           {
-            "anchor": "mcpcatalog",
+            "anchor": "mcpaccess",
             "level": 2,
             "line": 38,
+            "ref": "docs/decisions/indexes/by-surface.md#mcpaccess",
+            "title": "MCP/access"
+          },
+          {
+            "anchor": "mcpcatalog",
+            "level": 2,
+            "line": 42,
             "ref": "docs/decisions/indexes/by-surface.md#mcpcatalog",
             "title": "MCP/catalog"
           },
           {
             "anchor": "mechanicsantifragility",
             "level": 2,
-            "line": 43,
+            "line": 47,
             "ref": "docs/decisions/indexes/by-surface.md#mechanicsantifragility",
             "title": "mechanics/antifragility"
           },
           {
             "anchor": "mechanicsboundary-bridge",
             "level": 2,
-            "line": 48,
+            "line": 52,
             "ref": "docs/decisions/indexes/by-surface.md#mechanicsboundary-bridge",
             "title": "mechanics/boundary-bridge"
           },
           {
             "anchor": "mechanicscheckpoint",
             "level": 2,
-            "line": 52,
+            "line": 57,
             "ref": "docs/decisions/indexes/by-surface.md#mechanicscheckpoint",
             "title": "mechanics/checkpoint"
           },
           {
             "anchor": "mechanicsmethod-growth",
             "level": 2,
-            "line": 57,
+            "line": 62,
             "ref": "docs/decisions/indexes/by-surface.md#mechanicsmethod-growth",
             "title": "mechanics/method-growth"
           },
           {
             "anchor": "mechanicsrecurrence",
             "level": 2,
-            "line": 62,
+            "line": 67,
             "ref": "docs/decisions/indexes/by-surface.md#mechanicsrecurrence",
             "title": "mechanics/recurrence"
           },
           {
             "anchor": "mechanicsrpg",
             "level": 2,
-            "line": 71,
+            "line": 76,
             "ref": "docs/decisions/indexes/by-surface.md#mechanicsrpg",
             "title": "mechanics/rpg"
           },
           {
             "anchor": "mechanicstitan",
             "level": 2,
-            "line": 75,
+            "line": 80,
             "ref": "docs/decisions/indexes/by-surface.md#mechanicstitan",
             "title": "mechanics/titan"
           },
           {
             "anchor": "schemasdeferred-contract",
             "level": 2,
-            "line": 80,
+            "line": 85,
             "ref": "docs/decisions/indexes/by-surface.md#schemasdeferred-contract",
             "title": "schemas/deferred-contract"
           },
           {
             "anchor": "schemasreceipt-abi",
             "level": 2,
-            "line": 84,
+            "line": 89,
             "ref": "docs/decisions/indexes/by-surface.md#schemasreceipt-abi",
             "title": "schemas/receipt-abi"
           },
           {
             "anchor": "scriptsvalidators",
             "level": 2,
-            "line": 88,
+            "line": 93,
             "ref": "docs/decisions/indexes/by-surface.md#scriptsvalidators",
             "title": "scripts/validators"
           },
           {
             "anchor": "srcadapters",
             "level": 2,
-            "line": 93,
+            "line": 98,
             "ref": "docs/decisions/indexes/by-surface.md#srcadapters",
             "title": "src/adapters"
           },
           {
             "anchor": "srccatalog",
             "level": 2,
-            "line": 98,
+            "line": 103,
             "ref": "docs/decisions/indexes/by-surface.md#srccatalog",
             "title": "src/catalog"
           },
           {
+            "anchor": "srccore",
+            "level": 2,
+            "line": 108,
+            "ref": "docs/decisions/indexes/by-surface.md#srccore",
+            "title": "src/core"
+          },
+          {
             "anchor": "srcprojection",
             "level": 2,
-            "line": 103,
+            "line": 112,
             "ref": "docs/decisions/indexes/by-surface.md#srcprojection",
             "title": "src/projection"
           },
           {
             "anchor": "stategenerated",
             "level": 2,
-            "line": 110,
+            "line": 119,
             "ref": "docs/decisions/indexes/by-surface.md#stategenerated",
             "title": "state/generated"
           },
           {
+            "anchor": "statsfederation",
+            "level": 2,
+            "line": 129,
+            "ref": "docs/decisions/indexes/by-surface.md#statsfederation",
+            "title": "stats/federation"
+          },
+          {
+            "anchor": "statsmeasurement-contract",
+            "level": 2,
+            "line": 133,
+            "ref": "docs/decisions/indexes/by-surface.md#statsmeasurement-contract",
+            "title": "stats/measurement-contract"
+          },
+          {
             "anchor": "statsread-models",
             "level": 2,
-            "line": 120,
+            "line": 137,
             "ref": "docs/decisions/indexes/by-surface.md#statsread-models",
             "title": "stats/read-models"
           },
           {
             "anchor": "testsrelease-checks",
             "level": 2,
-            "line": 132,
+            "line": 149,
             "ref": "docs/decisions/indexes/by-surface.md#testsrelease-checks",
             "title": "tests/release-checks"
           }
@@ -29610,7 +29915,7 @@
       },
       "signs": {
         "attestation_ref": "",
-        "digest": "36ed8a3f7036ad1e0d07a6da10b48e94f0849b94e1bfedaf6dc7cb40e7fd940e",
+        "digest": "b8606a89cc61a5a5e66fd21abf17ac972ad71379457c429db70ab45b92175ee5",
         "signature_ref": "",
         "verification_state": "digest-only"
       },
@@ -52406,13 +52711,13 @@
         "state": "current"
       },
       "identity": {
-        "content_hash": "3b2b5dbda0371eeadf4d91b8a32f6a78b08db363eb958a56505073ac64779516",
+        "content_hash": "2d86677756602c785700633de0b40fb5d2d4546730de99db74a6ffbcee8ed895",
         "git_ref": "git-index-source-tree",
         "id": "file:mechanics/boundary-bridge/agents.md:1fcf12b882",
         "mime": "text/markdown",
         "path": "mechanics/boundary-bridge/AGENTS.md",
         "repo": "aoa-stats",
-        "size_bytes": 1401
+        "size_bytes": 1660
       },
       "mechanics_role": "mechanic_package",
       "observed_form": "file",
@@ -52469,7 +52774,7 @@
           {
             "anchor": "edit-law",
             "level": 2,
-            "line": 25,
+            "line": 27,
             "ref": "mechanics/boundary-bridge/AGENTS.md#edit-law",
             "title": "Edit law"
           }
@@ -52481,7 +52786,7 @@
       },
       "signs": {
         "attestation_ref": "",
-        "digest": "3b2b5dbda0371eeadf4d91b8a32f6a78b08db363eb958a56505073ac64779516",
+        "digest": "2d86677756602c785700633de0b40fb5d2d4546730de99db74a6ffbcee8ed895",
         "signature_ref": "",
         "verification_state": "digest-only"
       },
@@ -52529,13 +52834,13 @@
         "state": "current"
       },
       "identity": {
-        "content_hash": "4e1bc99e76ba4e9ad5c03841703be76617b683091877227c4eb69e29c7d28b78",
+        "content_hash": "b45408467e16d4b7acb52ca58d9d410a304efc0515ca7d85428d38e0d32572bd",
         "git_ref": "git-index-source-tree",
         "id": "file:mechanics/boundary-bridge/parts.md:fe08f92726",
         "mime": "text/markdown",
         "path": "mechanics/boundary-bridge/PARTS.md",
         "repo": "aoa-stats",
-        "size_bytes": 728
+        "size_bytes": 899
       },
       "mechanics_role": "mechanic_package",
       "observed_form": "file",
@@ -52583,7 +52888,7 @@
       },
       "signs": {
         "attestation_ref": "",
-        "digest": "4e1bc99e76ba4e9ad5c03841703be76617b683091877227c4eb69e29c7d28b78",
+        "digest": "b45408467e16d4b7acb52ca58d9d410a304efc0515ca7d85428d38e0d32572bd",
         "signature_ref": "",
         "verification_state": "digest-only"
       },
@@ -52631,13 +52936,13 @@
         "state": "current"
       },
       "identity": {
-        "content_hash": "c3842b893036bb707fc951e55476a35de7a26e520af7ecbfab9bb2ebd4860dd6",
+        "content_hash": "9436151ff3285fa50646eabeea5ad84a477f552f88c24ddd3cdcb0772260e43b",
         "git_ref": "git-index-source-tree",
         "id": "file:mechanics/boundary-bridge/provenance.md:03ab6d31c2",
         "mime": "text/markdown",
         "path": "mechanics/boundary-bridge/PROVENANCE.md",
         "repo": "aoa-stats",
-        "size_bytes": 1878
+        "size_bytes": 2242
       },
       "mechanics_role": "mechanic_package",
       "observed_form": "file",
@@ -52687,7 +52992,7 @@
           {
             "anchor": "source-family-crosswalk",
             "level": 2,
-            "line": 35,
+            "line": 40,
             "ref": "mechanics/boundary-bridge/PROVENANCE.md#source-family-crosswalk",
             "title": "Source-family crosswalk"
           }
@@ -52699,7 +53004,7 @@
       },
       "signs": {
         "attestation_ref": "",
-        "digest": "c3842b893036bb707fc951e55476a35de7a26e520af7ecbfab9bb2ebd4860dd6",
+        "digest": "9436151ff3285fa50646eabeea5ad84a477f552f88c24ddd3cdcb0772260e43b",
         "signature_ref": "",
         "verification_state": "digest-only"
       },
@@ -52747,13 +53052,13 @@
         "state": "current"
       },
       "identity": {
-        "content_hash": "27c8d1f66cae804ad9265c3c5145b9162e19a8d10a139ac591235c52d5db0d14",
+        "content_hash": "717b761450ae5a7ee344ffacd838f132426e85c4d40841caf87e1c50b733965b",
         "git_ref": "git-index-source-tree",
         "id": "file:mechanics/boundary-bridge/readme.md:ed4ace301e",
         "mime": "text/markdown",
         "path": "mechanics/boundary-bridge/README.md",
         "repo": "aoa-stats",
-        "size_bytes": 1625
+        "size_bytes": 1732
       },
       "mechanics_role": "mechanic_package",
       "observed_form": "file",
@@ -52850,7 +53155,7 @@
       },
       "signs": {
         "attestation_ref": "",
-        "digest": "27c8d1f66cae804ad9265c3c5145b9162e19a8d10a139ac591235c52d5db0d14",
+        "digest": "717b761450ae5a7ee344ffacd838f132426e85c4d40841caf87e1c50b733965b",
         "signature_ref": "",
         "verification_state": "digest-only"
       },
@@ -53715,6 +54020,424 @@
         ],
         "owner_commands": [
           "python -m unittest mechanics/boundary-bridge/parts/consumer-regrounding/tests/test_downstream_canaries.py"
+        ],
+        "required_tools": [
+          "python"
+        ]
+      },
+      "validator_route": {
+        "route_kind": "source_fast",
+        "surface": "aoa-kag:scripts/validate_kag.py"
+      }
+    },
+    {
+      "abi": {
+        "abi_epoch": "source",
+        "artifact_class": "document",
+        "compatibility": "stable",
+        "contract_version": "none",
+        "schema_version": "none"
+      },
+      "access": {
+        "scope": "public",
+        "secrets_risk": "none"
+      },
+      "artifact_kind": "document",
+      "classification": {
+        "confidence": "high",
+        "primary_kind": "document"
+      },
+      "code_role": "none",
+      "command_role": "none",
+      "consumer_route": {
+        "route_kind": "resource",
+        "surface": "aoa-kag-mcp"
+      },
+      "document_role": "mechanics_doc",
+      "freshness": {
+        "checked_ref": "git-index-source-tree",
+        "mode": "source_snapshot",
+        "state": "current"
+      },
+      "identity": {
+        "content_hash": "d75719c417815ae4b5cff1fcee5f7a2bca2f7a4458d065d2716770c43a79d902",
+        "git_ref": "git-index-source-tree",
+        "id": "file:mechanics/boundary-bridge/parts/measurement-packet-crossing/contract.md:f84a00e420",
+        "mime": "text/markdown",
+        "path": "mechanics/boundary-bridge/parts/measurement-packet-crossing/CONTRACT.md",
+        "repo": "aoa-stats",
+        "size_bytes": 2074
+      },
+      "mechanics_role": "part_contract",
+      "observed_form": "file",
+      "owner_return_route": {
+        "route_kind": "document_owner",
+        "surface": "mechanics/boundary-bridge/parts/measurement-packet-crossing/CONTRACT.md"
+      },
+      "provenance": {
+        "generated_by": "",
+        "materials": [],
+        "observed_by": "aoa-kag:scripts/generate_repo_local_kag_index.py",
+        "source_refs": [
+          {
+            "authority": "authored_source",
+            "path": "mechanics/boundary-bridge/parts/measurement-packet-crossing/CONTRACT.md",
+            "repo": "aoa-stats",
+            "role": "primary"
+          }
+        ],
+        "validated_by": [
+          "aoa-kag:scripts/validate_kag.py"
+        ]
+      },
+      "refs": {
+        "heading_refs": [
+          {
+            "anchor": "measurement-packet-crossing-contract",
+            "level": 1,
+            "line": 1,
+            "ref": "mechanics/boundary-bridge/parts/measurement-packet-crossing/CONTRACT.md#measurement-packet-crossing-contract",
+            "title": "Measurement packet crossing contract"
+          },
+          {
+            "anchor": "purpose",
+            "level": 2,
+            "line": 3,
+            "ref": "mechanics/boundary-bridge/parts/measurement-packet-crossing/CONTRACT.md#purpose",
+            "title": "Purpose"
+          },
+          {
+            "anchor": "inputs",
+            "level": 2,
+            "line": 9,
+            "ref": "mechanics/boundary-bridge/parts/measurement-packet-crossing/CONTRACT.md#inputs",
+            "title": "Inputs"
+          },
+          {
+            "anchor": "outputs",
+            "level": 2,
+            "line": 15,
+            "ref": "mechanics/boundary-bridge/parts/measurement-packet-crossing/CONTRACT.md#outputs",
+            "title": "Outputs"
+          },
+          {
+            "anchor": "invariants",
+            "level": 2,
+            "line": 24,
+            "ref": "mechanics/boundary-bridge/parts/measurement-packet-crossing/CONTRACT.md#invariants",
+            "title": "Invariants"
+          },
+          {
+            "anchor": "ownership",
+            "level": 2,
+            "line": 42,
+            "ref": "mechanics/boundary-bridge/parts/measurement-packet-crossing/CONTRACT.md#ownership",
+            "title": "Ownership"
+          },
+          {
+            "anchor": "crosswalk",
+            "level": 2,
+            "line": 50,
+            "ref": "mechanics/boundary-bridge/parts/measurement-packet-crossing/CONTRACT.md#crosswalk",
+            "title": "Crosswalk"
+          }
+        ],
+        "line_refs": [
+          "mechanics/boundary-bridge/parts/measurement-packet-crossing/CONTRACT.md:1"
+        ],
+        "path_ref": "mechanics/boundary-bridge/parts/measurement-packet-crossing/CONTRACT.md"
+      },
+      "signs": {
+        "attestation_ref": "",
+        "digest": "d75719c417815ae4b5cff1fcee5f7a2bca2f7a4458d065d2716770c43a79d902",
+        "signature_ref": "",
+        "verification_state": "digest-only"
+      },
+      "surface_state": "authored_source",
+      "toolchain": {
+        "detected_tools": [
+          "git",
+          "python"
+        ],
+        "owner_commands": [],
+        "required_tools": []
+      },
+      "validator_route": {
+        "route_kind": "source_fast",
+        "surface": "aoa-kag:scripts/validate_kag.py"
+      }
+    },
+    {
+      "abi": {
+        "abi_epoch": "source",
+        "artifact_class": "document",
+        "compatibility": "stable",
+        "contract_version": "none",
+        "schema_version": "none"
+      },
+      "access": {
+        "scope": "public",
+        "secrets_risk": "none"
+      },
+      "artifact_kind": "document",
+      "classification": {
+        "confidence": "high",
+        "primary_kind": "document"
+      },
+      "code_role": "none",
+      "command_role": "none",
+      "consumer_route": {
+        "route_kind": "resource",
+        "surface": "aoa-kag-mcp"
+      },
+      "document_role": "readme",
+      "freshness": {
+        "checked_ref": "git-index-source-tree",
+        "mode": "source_snapshot",
+        "state": "current"
+      },
+      "identity": {
+        "content_hash": "f9fc6016ba7043d61a51d86196f9365e71f332801b8788f45b94a6cd88d78f89",
+        "git_ref": "git-index-source-tree",
+        "id": "file:mechanics/boundary-bridge/parts/measurement-packet-crossing/readme.md:757e273d82",
+        "mime": "text/markdown",
+        "path": "mechanics/boundary-bridge/parts/measurement-packet-crossing/README.md",
+        "repo": "aoa-stats",
+        "size_bytes": 589
+      },
+      "mechanics_role": "part_doc",
+      "observed_form": "file",
+      "owner_return_route": {
+        "route_kind": "document_owner",
+        "surface": "mechanics/boundary-bridge/parts/measurement-packet-crossing/README.md"
+      },
+      "provenance": {
+        "generated_by": "",
+        "materials": [],
+        "observed_by": "aoa-kag:scripts/generate_repo_local_kag_index.py",
+        "source_refs": [
+          {
+            "authority": "authored_source",
+            "path": "mechanics/boundary-bridge/parts/measurement-packet-crossing/README.md",
+            "repo": "aoa-stats",
+            "role": "primary"
+          }
+        ],
+        "validated_by": [
+          "aoa-kag:scripts/validate_kag.py"
+        ]
+      },
+      "refs": {
+        "heading_refs": [
+          {
+            "anchor": "measurement-packet-crossing",
+            "level": 1,
+            "line": 1,
+            "ref": "mechanics/boundary-bridge/parts/measurement-packet-crossing/README.md#measurement-packet-crossing",
+            "title": "Measurement packet crossing"
+          }
+        ],
+        "line_refs": [
+          "mechanics/boundary-bridge/parts/measurement-packet-crossing/README.md:1"
+        ],
+        "path_ref": "mechanics/boundary-bridge/parts/measurement-packet-crossing/README.md"
+      },
+      "signs": {
+        "attestation_ref": "",
+        "digest": "f9fc6016ba7043d61a51d86196f9365e71f332801b8788f45b94a6cd88d78f89",
+        "signature_ref": "",
+        "verification_state": "digest-only"
+      },
+      "surface_state": "authored_source",
+      "toolchain": {
+        "detected_tools": [
+          "git",
+          "python"
+        ],
+        "owner_commands": [],
+        "required_tools": []
+      },
+      "validator_route": {
+        "route_kind": "source_fast",
+        "surface": "aoa-kag:scripts/validate_kag.py"
+      }
+    },
+    {
+      "abi": {
+        "abi_epoch": "source",
+        "artifact_class": "document",
+        "compatibility": "stable",
+        "contract_version": "none",
+        "schema_version": "none"
+      },
+      "access": {
+        "scope": "public",
+        "secrets_risk": "none"
+      },
+      "artifact_kind": "document",
+      "classification": {
+        "confidence": "high",
+        "primary_kind": "document"
+      },
+      "code_role": "none",
+      "command_role": "none",
+      "consumer_route": {
+        "route_kind": "resource",
+        "surface": "aoa-kag-mcp"
+      },
+      "document_role": "mechanics_doc",
+      "freshness": {
+        "checked_ref": "git-index-source-tree",
+        "mode": "source_snapshot",
+        "state": "current"
+      },
+      "identity": {
+        "content_hash": "871556480ad1fb8b7a2d5343b60b5f299c829c27aa20ddf102099a1abf2e7074",
+        "git_ref": "git-index-source-tree",
+        "id": "file:mechanics/boundary-bridge/parts/measurement-packet-crossing/validation.md:f5151ed809",
+        "mime": "text/markdown",
+        "path": "mechanics/boundary-bridge/parts/measurement-packet-crossing/VALIDATION.md",
+        "repo": "aoa-stats",
+        "size_bytes": 425
+      },
+      "mechanics_role": "part_doc",
+      "observed_form": "file",
+      "owner_return_route": {
+        "route_kind": "document_owner",
+        "surface": "mechanics/boundary-bridge/parts/measurement-packet-crossing/VALIDATION.md"
+      },
+      "provenance": {
+        "generated_by": "",
+        "materials": [],
+        "observed_by": "aoa-kag:scripts/generate_repo_local_kag_index.py",
+        "source_refs": [
+          {
+            "authority": "authored_source",
+            "path": "mechanics/boundary-bridge/parts/measurement-packet-crossing/VALIDATION.md",
+            "repo": "aoa-stats",
+            "role": "primary"
+          }
+        ],
+        "validated_by": [
+          "aoa-kag:scripts/validate_kag.py"
+        ]
+      },
+      "refs": {
+        "heading_refs": [
+          {
+            "anchor": "measurement-packet-crossing-validation",
+            "level": 1,
+            "line": 1,
+            "ref": "mechanics/boundary-bridge/parts/measurement-packet-crossing/VALIDATION.md#measurement-packet-crossing-validation",
+            "title": "Measurement packet crossing validation"
+          }
+        ],
+        "line_refs": [
+          "mechanics/boundary-bridge/parts/measurement-packet-crossing/VALIDATION.md:1"
+        ],
+        "path_ref": "mechanics/boundary-bridge/parts/measurement-packet-crossing/VALIDATION.md"
+      },
+      "signs": {
+        "attestation_ref": "",
+        "digest": "871556480ad1fb8b7a2d5343b60b5f299c829c27aa20ddf102099a1abf2e7074",
+        "signature_ref": "",
+        "verification_state": "digest-only"
+      },
+      "surface_state": "authored_source",
+      "toolchain": {
+        "detected_tools": [
+          "git",
+          "python"
+        ],
+        "owner_commands": [],
+        "required_tools": []
+      },
+      "validator_route": {
+        "route_kind": "source_fast",
+        "surface": "aoa-kag:scripts/validate_kag.py"
+      }
+    },
+    {
+      "abi": {
+        "abi_epoch": "source",
+        "artifact_class": "test",
+        "compatibility": "stable",
+        "contract_version": "none",
+        "schema_version": "none"
+      },
+      "access": {
+        "scope": "public",
+        "secrets_risk": "none"
+      },
+      "artifact_kind": "test",
+      "classification": {
+        "confidence": "high",
+        "primary_kind": "command"
+      },
+      "code_role": "test",
+      "command_role": "test",
+      "consumer_route": {
+        "route_kind": "resource",
+        "surface": "aoa-kag-mcp"
+      },
+      "document_role": "none",
+      "freshness": {
+        "checked_ref": "git-index-source-tree",
+        "mode": "source_snapshot",
+        "state": "current"
+      },
+      "identity": {
+        "content_hash": "9d75f0e629597125181c227df685ae723e5f3a9bd66103fa6409c9c494bdd4aa",
+        "git_ref": "git-index-source-tree",
+        "id": "file:mechanics/boundary-bridge/parts/measurement-packet-crossing/tests/test_measurement_packet_crossing.py:a5bf3023e8",
+        "mime": "text/x-python",
+        "path": "mechanics/boundary-bridge/parts/measurement-packet-crossing/tests/test_measurement_packet_crossing.py",
+        "repo": "aoa-stats",
+        "size_bytes": 11809
+      },
+      "mechanics_role": "part_test",
+      "observed_form": "command",
+      "owner_return_route": {
+        "route_kind": "test_owner",
+        "surface": "mechanics/boundary-bridge/parts/measurement-packet-crossing/tests/test_measurement_packet_crossing.py"
+      },
+      "provenance": {
+        "generated_by": "",
+        "materials": [],
+        "observed_by": "aoa-kag:scripts/generate_repo_local_kag_index.py",
+        "source_refs": [
+          {
+            "authority": "authored_source",
+            "path": "mechanics/boundary-bridge/parts/measurement-packet-crossing/tests/test_measurement_packet_crossing.py",
+            "repo": "aoa-stats",
+            "role": "primary"
+          }
+        ],
+        "validated_by": [
+          "aoa-kag:scripts/validate_kag.py"
+        ]
+      },
+      "refs": {
+        "heading_refs": [],
+        "line_refs": [
+          "mechanics/boundary-bridge/parts/measurement-packet-crossing/tests/test_measurement_packet_crossing.py:1"
+        ],
+        "path_ref": "mechanics/boundary-bridge/parts/measurement-packet-crossing/tests/test_measurement_packet_crossing.py"
+      },
+      "signs": {
+        "attestation_ref": "",
+        "digest": "9d75f0e629597125181c227df685ae723e5f3a9bd66103fa6409c9c494bdd4aa",
+        "signature_ref": "",
+        "verification_state": "digest-only"
+      },
+      "surface_state": "authored_source",
+      "toolchain": {
+        "detected_tools": [
+          "git",
+          "python"
+        ],
+        "owner_commands": [
+          "python -m unittest mechanics/boundary-bridge/parts/measurement-packet-crossing/tests/test_measurement_packet_crossing.py"
         ],
         "required_tools": [
           "python"
@@ -85122,13 +85845,13 @@
         "state": "current"
       },
       "identity": {
-        "content_hash": "eac9490e180aed848301ec6c5cbbe2ea3728269779657aa1abd3d828dff0ebce",
+        "content_hash": "b3fa65a3499d361d6a36273d7dc6e773bed24c2b60f80444c1be0610869b7e3f",
         "git_ref": "git-index-source-tree",
         "id": "file:mechanics/topology.json:c2f84a03b1",
         "mime": "application/json",
         "path": "mechanics/topology.json",
         "repo": "aoa-stats",
-        "size_bytes": 38044
+        "size_bytes": 39340
       },
       "mechanics_role": "mechanic_package",
       "observed_form": "file",
@@ -85161,7 +85884,7 @@
       },
       "signs": {
         "attestation_ref": "",
-        "digest": "eac9490e180aed848301ec6c5cbbe2ea3728269779657aa1abd3d828dff0ebce",
+        "digest": "b3fa65a3499d361d6a36273d7dc6e773bed24c2b60f80444c1be0610869b7e3f",
         "signature_ref": "",
         "verification_state": "digest-only"
       },
@@ -89033,13 +89756,13 @@
         "state": "current"
       },
       "identity": {
-        "content_hash": "554d9b3e2981eaf5e21a8a8b8f6fc6c27107942069287098dc565857c26436e4",
+        "content_hash": "b68b15be6caf28408f70758d865e3424db7219367dc37d0620cc02021e76f067",
         "git_ref": "git-index-source-tree",
         "id": "file:scripts/validate_nested_agents.py:5befe5bd63",
         "mime": "text/x-python",
         "path": "scripts/validate_nested_agents.py",
         "repo": "aoa-stats",
-        "size_bytes": 9135
+        "size_bytes": 9361
       },
       "mechanics_role": "none",
       "observed_form": "command",
@@ -89072,7 +89795,7 @@
       },
       "signs": {
         "attestation_ref": "",
-        "digest": "554d9b3e2981eaf5e21a8a8b8f6fc6c27107942069287098dc565857c26436e4",
+        "digest": "b68b15be6caf28408f70758d865e3424db7219367dc37d0620cc02021e76f067",
         "signature_ref": "",
         "verification_state": "digest-only"
       },
@@ -89215,13 +89938,13 @@
         "state": "current"
       },
       "identity": {
-        "content_hash": "069dc88a389c58c53a4b1929471dd583d2d4002875eaf79a049464df167a3d8a",
+        "content_hash": "4eac8b6f8d28548c16ba87b39fb26ee7af6289a9c49492c7e728214a5b1d8984",
         "git_ref": "git-index-source-tree",
         "id": "file:scripts/validate_repo.py:1c4be8b173",
         "mime": "text/x-python",
         "path": "scripts/validate_repo.py",
         "repo": "aoa-stats",
-        "size_bytes": 6859
+        "size_bytes": 6987
       },
       "mechanics_role": "none",
       "observed_form": "command",
@@ -89254,7 +89977,7 @@
       },
       "signs": {
         "attestation_ref": "",
-        "digest": "069dc88a389c58c53a4b1929471dd583d2d4002875eaf79a049464df167a3d8a",
+        "digest": "4eac8b6f8d28548c16ba87b39fb26ee7af6289a9c49492c7e728214a5b1d8984",
         "signature_ref": "",
         "verification_state": "digest-only"
       },
@@ -89306,13 +90029,104 @@
         "state": "current"
       },
       "identity": {
-        "content_hash": "65c88c8091b9451eb37c6725e2d385be35940114b16db4dbb1e989e31512b128",
+        "content_hash": "98181ea70a70acb8a1a51a25b61259e1cbee0e9a2f7681e1c0f58931dfb9c45c",
+        "git_ref": "git-index-source-tree",
+        "id": "file:scripts/validate_stats_protocol.py:b585d0ad81",
+        "mime": "text/x-python",
+        "path": "scripts/validate_stats_protocol.py",
+        "repo": "aoa-stats",
+        "size_bytes": 15330
+      },
+      "mechanics_role": "none",
+      "observed_form": "command",
+      "owner_return_route": {
+        "route_kind": "validator_owner",
+        "surface": "scripts/validate_stats_protocol.py"
+      },
+      "provenance": {
+        "generated_by": "",
+        "materials": [],
+        "observed_by": "aoa-kag:scripts/generate_repo_local_kag_index.py",
+        "source_refs": [
+          {
+            "authority": "authored_source",
+            "path": "scripts/validate_stats_protocol.py",
+            "repo": "aoa-stats",
+            "role": "primary"
+          }
+        ],
+        "validated_by": [
+          "aoa-kag:scripts/validate_kag.py"
+        ]
+      },
+      "refs": {
+        "heading_refs": [],
+        "line_refs": [
+          "scripts/validate_stats_protocol.py:1"
+        ],
+        "path_ref": "scripts/validate_stats_protocol.py"
+      },
+      "signs": {
+        "attestation_ref": "",
+        "digest": "98181ea70a70acb8a1a51a25b61259e1cbee0e9a2f7681e1c0f58931dfb9c45c",
+        "signature_ref": "",
+        "verification_state": "digest-only"
+      },
+      "surface_state": "authored_source",
+      "toolchain": {
+        "detected_tools": [
+          "git",
+          "python"
+        ],
+        "owner_commands": [
+          "python scripts/validate_stats_protocol.py"
+        ],
+        "required_tools": [
+          "python"
+        ]
+      },
+      "validator_route": {
+        "route_kind": "source_fast",
+        "surface": "aoa-kag:scripts/validate_kag.py"
+      }
+    },
+    {
+      "abi": {
+        "abi_epoch": "source",
+        "artifact_class": "validator",
+        "compatibility": "stable",
+        "contract_version": "none",
+        "schema_version": "none"
+      },
+      "access": {
+        "scope": "public",
+        "secrets_risk": "none"
+      },
+      "artifact_kind": "validator",
+      "classification": {
+        "confidence": "high",
+        "primary_kind": "command"
+      },
+      "code_role": "validator",
+      "command_role": "validator",
+      "consumer_route": {
+        "route_kind": "resource",
+        "surface": "aoa-kag-mcp"
+      },
+      "document_role": "none",
+      "freshness": {
+        "checked_ref": "git-index-source-tree",
+        "mode": "source_snapshot",
+        "state": "current"
+      },
+      "identity": {
+        "content_hash": "9c28001700466613df18bb77359b248d026d4896da445eacb0a511cef8ec98d0",
         "git_ref": "git-index-source-tree",
         "id": "file:scripts/validate_stats_source_home.py:6be6e8ef8c",
         "mime": "text/x-python",
         "path": "scripts/validate_stats_source_home.py",
         "repo": "aoa-stats",
-        "size_bytes": 44090
+        "size_bytes": 44869
       },
       "mechanics_role": "none",
       "observed_form": "command",
@@ -89345,7 +90159,7 @@
       },
       "signs": {
         "attestation_ref": "",
-        "digest": "65c88c8091b9451eb37c6725e2d385be35940114b16db4dbb1e989e31512b128",
+        "digest": "9c28001700466613df18bb77359b248d026d4896da445eacb0a511cef8ec98d0",
         "signature_ref": "",
         "verification_state": "digest-only"
       },
@@ -89397,13 +90211,13 @@
         "state": "current"
       },
       "identity": {
-        "content_hash": "b8d95c1867a0d01eb6b463d5aacd9b8e1f2343215a749f2f8eaac471026edc60",
+        "content_hash": "0cbf15dfd09f8ecb8614a860fe3a9d1f1a9d5f940bf36f6685f9b2b3c2dc81bc",
         "git_ref": "git-index-source-tree",
         "id": "file:src/agents.md:3362030dfe",
         "mime": "text/markdown",
         "path": "src/AGENTS.md",
         "repo": "aoa-stats",
-        "size_bytes": 1271
+        "size_bytes": 1484
       },
       "mechanics_role": "none",
       "observed_form": "file",
@@ -89439,28 +90253,28 @@
           {
             "anchor": "local-role",
             "level": 2,
-            "line": 8,
+            "line": 10,
             "ref": "src/AGENTS.md#local-role",
             "title": "Local role"
           },
           {
             "anchor": "editing-posture",
             "level": 2,
-            "line": 15,
+            "line": 19,
             "ref": "src/AGENTS.md#editing-posture",
             "title": "Editing posture"
           },
           {
             "anchor": "hard-no",
             "level": 2,
-            "line": 21,
+            "line": 25,
             "ref": "src/AGENTS.md#hard-no",
             "title": "Hard no"
           },
           {
             "anchor": "validation",
             "level": 2,
-            "line": 25,
+            "line": 29,
             "ref": "src/AGENTS.md#validation",
             "title": "Validation"
           }
@@ -89472,7 +90286,7 @@
       },
       "signs": {
         "attestation_ref": "",
-        "digest": "b8d95c1867a0d01eb6b463d5aacd9b8e1f2343215a749f2f8eaac471026edc60",
+        "digest": "0cbf15dfd09f8ecb8614a860fe3a9d1f1a9d5f940bf36f6685f9b2b3c2dc81bc",
         "signature_ref": "",
         "verification_state": "digest-only"
       },
@@ -90628,6 +91442,95 @@
       "signs": {
         "attestation_ref": "",
         "digest": "2ba08ebe87f03679c74a0c18e91ba3e06bcf8fd7ff255c7e83f854530f7a7bd6",
+        "signature_ref": "",
+        "verification_state": "digest-only"
+      },
+      "surface_state": "authored_source",
+      "toolchain": {
+        "detected_tools": [
+          "git",
+          "python"
+        ],
+        "owner_commands": [],
+        "required_tools": [
+          "python"
+        ]
+      },
+      "validator_route": {
+        "route_kind": "source_fast",
+        "surface": "aoa-kag:scripts/validate_kag.py"
+      }
+    },
+    {
+      "abi": {
+        "abi_epoch": "source",
+        "artifact_class": "source_code",
+        "compatibility": "stable",
+        "contract_version": "none",
+        "schema_version": "none"
+      },
+      "access": {
+        "scope": "public",
+        "secrets_risk": "none"
+      },
+      "artifact_kind": "source_code",
+      "classification": {
+        "confidence": "high",
+        "primary_kind": "surface"
+      },
+      "code_role": "source_module",
+      "command_role": "none",
+      "consumer_route": {
+        "route_kind": "resource",
+        "surface": "aoa-kag-mcp"
+      },
+      "document_role": "none",
+      "freshness": {
+        "checked_ref": "git-index-source-tree",
+        "mode": "source_snapshot",
+        "state": "current"
+      },
+      "identity": {
+        "content_hash": "2cc476719777c36f2a8ec2f958bb1abf769b5eaf29a5f0428ec6b5c1a393e013",
+        "git_ref": "git-index-source-tree",
+        "id": "file:src/aoa_stats_builder/measurement.py:616f15ad30",
+        "mime": "text/x-python",
+        "path": "src/aoa_stats_builder/measurement.py",
+        "repo": "aoa-stats",
+        "size_bytes": 32837
+      },
+      "mechanics_role": "none",
+      "observed_form": "file",
+      "owner_return_route": {
+        "route_kind": "source_owner",
+        "surface": "src/aoa_stats_builder/measurement.py"
+      },
+      "provenance": {
+        "generated_by": "",
+        "materials": [],
+        "observed_by": "aoa-kag:scripts/generate_repo_local_kag_index.py",
+        "source_refs": [
+          {
+            "authority": "authored_source",
+            "path": "src/aoa_stats_builder/measurement.py",
+            "repo": "aoa-stats",
+            "role": "primary"
+          }
+        ],
+        "validated_by": [
+          "aoa-kag:scripts/validate_kag.py"
+        ]
+      },
+      "refs": {
+        "heading_refs": [],
+        "line_refs": [
+          "src/aoa_stats_builder/measurement.py:1"
+        ],
+        "path_ref": "src/aoa_stats_builder/measurement.py"
+      },
+      "signs": {
+        "attestation_ref": "",
+        "digest": "2cc476719777c36f2a8ec2f958bb1abf769b5eaf29a5f0428ec6b5c1a393e013",
         "signature_ref": "",
         "verification_state": "digest-only"
       },
@@ -92368,13 +93271,13 @@
         "state": "current"
       },
       "identity": {
-        "content_hash": "b63d4622bb7cd396e2139a62529462453e585e88bf8e94aa1dd795c8262b69d3",
+        "content_hash": "04ae777f58e9ed82119e49ba02090b62a980968061d90d2924fce8b096606b15",
         "git_ref": "git-index-source-tree",
         "id": "file:stats/agents.md:3f9a778b41",
         "mime": "text/markdown",
         "path": "stats/AGENTS.md",
         "repo": "aoa-stats",
-        "size_bytes": 4407
+        "size_bytes": 4812
       },
       "mechanics_role": "none",
       "observed_form": "file",
@@ -92431,28 +93334,28 @@
           {
             "anchor": "branch-routes",
             "level": 2,
-            "line": 55,
+            "line": 57,
             "ref": "stats/AGENTS.md#branch-routes",
             "title": "Branch routes"
           },
           {
             "anchor": "cross-route-law",
             "level": 2,
-            "line": 68,
+            "line": 73,
             "ref": "stats/AGENTS.md#cross-route-law",
             "title": "Cross-route law"
           },
           {
             "anchor": "current-root-posture",
             "level": 2,
-            "line": 82,
+            "line": 87,
             "ref": "stats/AGENTS.md#current-root-posture",
             "title": "Current root posture"
           },
           {
             "anchor": "verify",
             "level": 2,
-            "line": 89,
+            "line": 94,
             "ref": "stats/AGENTS.md#verify",
             "title": "Verify"
           }
@@ -92464,7 +93367,7 @@
       },
       "signs": {
         "attestation_ref": "",
-        "digest": "b63d4622bb7cd396e2139a62529462453e585e88bf8e94aa1dd795c8262b69d3",
+        "digest": "04ae777f58e9ed82119e49ba02090b62a980968061d90d2924fce8b096606b15",
         "signature_ref": "",
         "verification_state": "digest-only"
       },
@@ -92512,13 +93415,13 @@
         "state": "current"
       },
       "identity": {
-        "content_hash": "9566e031ecdd1a17c55a1c2544ae5b4fe088e77c903e9be701810240440dd3cd",
+        "content_hash": "8118ca1dd710a446b8695109fa5675d19ba686a7e90466975e6647af204d9465",
         "git_ref": "git-index-source-tree",
         "id": "file:stats/readme.md:6bac6d2ff5",
         "mime": "text/markdown",
         "path": "stats/README.md",
         "repo": "aoa-stats",
-        "size_bytes": 3789
+        "size_bytes": 4582
       },
       "mechanics_role": "none",
       "observed_form": "file",
@@ -92554,49 +93457,49 @@
           {
             "anchor": "operating-card",
             "level": 2,
-            "line": 11,
+            "line": 12,
             "ref": "stats/README.md#operating-card",
             "title": "Operating card"
           },
           {
             "anchor": "shape",
             "level": 2,
-            "line": 23,
+            "line": 24,
             "ref": "stats/README.md#shape",
             "title": "Shape"
           },
           {
             "anchor": "family-map",
             "level": 2,
-            "line": 39,
+            "line": 42,
             "ref": "stats/README.md#family-map",
             "title": "Family map"
           },
           {
             "anchor": "authority-chain",
             "level": 2,
-            "line": 52,
+            "line": 57,
             "ref": "stats/README.md#authority-chain",
             "title": "Authority chain"
           },
           {
             "anchor": "root-districts",
             "level": 2,
-            "line": 69,
+            "line": 77,
             "ref": "stats/README.md#root-districts",
             "title": "Root districts"
           },
           {
             "anchor": "stop-lines",
             "level": 2,
-            "line": 79,
+            "line": 87,
             "ref": "stats/README.md#stop-lines",
             "title": "Stop lines"
           },
           {
             "anchor": "validation",
             "level": 2,
-            "line": 88,
+            "line": 98,
             "ref": "stats/README.md#validation",
             "title": "Validation"
           }
@@ -92608,7 +93511,7 @@
       },
       "signs": {
         "attestation_ref": "",
-        "digest": "9566e031ecdd1a17c55a1c2544ae5b4fe088e77c903e9be701810240440dd3cd",
+        "digest": "8118ca1dd710a446b8695109fa5675d19ba686a7e90466975e6647af204d9465",
         "signature_ref": "",
         "verification_state": "digest-only"
       },
@@ -92620,6 +93523,505 @@
         ],
         "owner_commands": [],
         "required_tools": []
+      },
+      "validator_route": {
+        "route_kind": "source_fast",
+        "surface": "aoa-kag:scripts/validate_kag.py"
+      }
+    },
+    {
+      "abi": {
+        "abi_epoch": "source",
+        "artifact_class": "document",
+        "compatibility": "stable",
+        "contract_version": "none",
+        "schema_version": "none"
+      },
+      "access": {
+        "scope": "public",
+        "secrets_risk": "none"
+      },
+      "artifact_kind": "document",
+      "classification": {
+        "confidence": "high",
+        "primary_kind": "document"
+      },
+      "code_role": "none",
+      "command_role": "none",
+      "consumer_route": {
+        "route_kind": "resource",
+        "surface": "aoa-kag-mcp"
+      },
+      "document_role": "agents",
+      "freshness": {
+        "checked_ref": "git-index-source-tree",
+        "mode": "source_snapshot",
+        "state": "current"
+      },
+      "identity": {
+        "content_hash": "257518ab1d1484f534a2df867fe459a3a2bf021d0ff0a5c1256a02cdf0e0bb1f",
+        "git_ref": "git-index-source-tree",
+        "id": "file:stats/federation/agents.md:c826356e08",
+        "mime": "text/markdown",
+        "path": "stats/federation/AGENTS.md",
+        "repo": "aoa-stats",
+        "size_bytes": 1273
+      },
+      "mechanics_role": "none",
+      "observed_form": "file",
+      "owner_return_route": {
+        "route_kind": "document_owner",
+        "surface": "stats/federation/AGENTS.md"
+      },
+      "provenance": {
+        "generated_by": "",
+        "materials": [],
+        "observed_by": "aoa-kag:scripts/generate_repo_local_kag_index.py",
+        "source_refs": [
+          {
+            "authority": "authored_source",
+            "path": "stats/federation/AGENTS.md",
+            "repo": "aoa-stats",
+            "role": "primary"
+          }
+        ],
+        "validated_by": [
+          "aoa-kag:scripts/validate_kag.py"
+        ]
+      },
+      "refs": {
+        "heading_refs": [
+          {
+            "anchor": "agentsmd",
+            "level": 1,
+            "line": 1,
+            "ref": "stats/federation/AGENTS.md#agentsmd",
+            "title": "AGENTS.md"
+          },
+          {
+            "anchor": "scope",
+            "level": 2,
+            "line": 5,
+            "ref": "stats/federation/AGENTS.md#scope",
+            "title": "Scope"
+          },
+          {
+            "anchor": "owner-law",
+            "level": 2,
+            "line": 15,
+            "ref": "stats/federation/AGENTS.md#owner-law",
+            "title": "Owner law"
+          },
+          {
+            "anchor": "stop-lines",
+            "level": 2,
+            "line": 25,
+            "ref": "stats/federation/AGENTS.md#stop-lines",
+            "title": "Stop lines"
+          },
+          {
+            "anchor": "verification",
+            "level": 2,
+            "line": 31,
+            "ref": "stats/federation/AGENTS.md#verification",
+            "title": "Verification"
+          }
+        ],
+        "line_refs": [
+          "stats/federation/AGENTS.md:1"
+        ],
+        "path_ref": "stats/federation/AGENTS.md"
+      },
+      "signs": {
+        "attestation_ref": "",
+        "digest": "257518ab1d1484f534a2df867fe459a3a2bf021d0ff0a5c1256a02cdf0e0bb1f",
+        "signature_ref": "",
+        "verification_state": "digest-only"
+      },
+      "surface_state": "authored_source",
+      "toolchain": {
+        "detected_tools": [
+          "git",
+          "python"
+        ],
+        "owner_commands": [],
+        "required_tools": []
+      },
+      "validator_route": {
+        "route_kind": "source_fast",
+        "surface": "aoa-kag:scripts/validate_kag.py"
+      }
+    },
+    {
+      "abi": {
+        "abi_epoch": "source",
+        "artifact_class": "document",
+        "compatibility": "stable",
+        "contract_version": "none",
+        "schema_version": "none"
+      },
+      "access": {
+        "scope": "public",
+        "secrets_risk": "none"
+      },
+      "artifact_kind": "document",
+      "classification": {
+        "confidence": "high",
+        "primary_kind": "document"
+      },
+      "code_role": "none",
+      "command_role": "none",
+      "consumer_route": {
+        "route_kind": "resource",
+        "surface": "aoa-kag-mcp"
+      },
+      "document_role": "readme",
+      "freshness": {
+        "checked_ref": "git-index-source-tree",
+        "mode": "source_snapshot",
+        "state": "current"
+      },
+      "identity": {
+        "content_hash": "c1bb6f50a1bd11d3f22817f323c1195229e21d8807c5944e2c41e76e54229632",
+        "git_ref": "git-index-source-tree",
+        "id": "file:stats/federation/readme.md:6171f4e5b7",
+        "mime": "text/markdown",
+        "path": "stats/federation/README.md",
+        "repo": "aoa-stats",
+        "size_bytes": 1300
+      },
+      "mechanics_role": "none",
+      "observed_form": "file",
+      "owner_return_route": {
+        "route_kind": "document_owner",
+        "surface": "stats/federation/README.md"
+      },
+      "provenance": {
+        "generated_by": "",
+        "materials": [],
+        "observed_by": "aoa-kag:scripts/generate_repo_local_kag_index.py",
+        "source_refs": [
+          {
+            "authority": "authored_source",
+            "path": "stats/federation/README.md",
+            "repo": "aoa-stats",
+            "role": "primary"
+          }
+        ],
+        "validated_by": [
+          "aoa-kag:scripts/validate_kag.py"
+        ]
+      },
+      "refs": {
+        "heading_refs": [
+          {
+            "anchor": "stats-federation",
+            "level": 1,
+            "line": 1,
+            "ref": "stats/federation/README.md#stats-federation",
+            "title": "Stats federation"
+          },
+          {
+            "anchor": "local-port",
+            "level": 2,
+            "line": 8,
+            "ref": "stats/federation/README.md#local-port",
+            "title": "Local port"
+          },
+          {
+            "anchor": "inventory",
+            "level": 2,
+            "line": 19,
+            "ref": "stats/federation/README.md#inventory",
+            "title": "Inventory"
+          }
+        ],
+        "line_refs": [
+          "stats/federation/README.md:1"
+        ],
+        "path_ref": "stats/federation/README.md"
+      },
+      "signs": {
+        "attestation_ref": "",
+        "digest": "c1bb6f50a1bd11d3f22817f323c1195229e21d8807c5944e2c41e76e54229632",
+        "signature_ref": "",
+        "verification_state": "digest-only"
+      },
+      "surface_state": "authored_source",
+      "toolchain": {
+        "detected_tools": [
+          "git",
+          "python"
+        ],
+        "owner_commands": [],
+        "required_tools": []
+      },
+      "validator_route": {
+        "route_kind": "source_fast",
+        "surface": "aoa-kag:scripts/validate_kag.py"
+      }
+    },
+    {
+      "abi": {
+        "abi_epoch": "source",
+        "artifact_class": "schema",
+        "compatibility": "stable",
+        "contract_version": "https://aoa-stats/stats/federation/local-port.schema.json",
+        "schema_version": "https://json-schema.org/draft/2020-12/schema"
+      },
+      "access": {
+        "scope": "public",
+        "secrets_risk": "none"
+      },
+      "artifact_kind": "schema",
+      "classification": {
+        "confidence": "high",
+        "primary_kind": "surface"
+      },
+      "code_role": "none",
+      "command_role": "none",
+      "consumer_route": {
+        "route_kind": "resource",
+        "surface": "aoa-kag-mcp"
+      },
+      "document_role": "none",
+      "freshness": {
+        "checked_ref": "git-index-source-tree",
+        "mode": "source_snapshot",
+        "state": "current"
+      },
+      "identity": {
+        "content_hash": "78a46202a17452ca42c4dd9349d3a3131bcbecc07ab000ba08ab18b44c70f280",
+        "git_ref": "git-index-source-tree",
+        "id": "file:stats/federation/local-port.schema.json:1a1496095d",
+        "mime": "application/json",
+        "path": "stats/federation/local-port.schema.json",
+        "repo": "aoa-stats",
+        "size_bytes": 3680
+      },
+      "mechanics_role": "none",
+      "observed_form": "file",
+      "owner_return_route": {
+        "route_kind": "schema_owner",
+        "surface": "stats/federation/local-port.schema.json"
+      },
+      "provenance": {
+        "generated_by": "",
+        "materials": [],
+        "observed_by": "aoa-kag:scripts/generate_repo_local_kag_index.py",
+        "source_refs": [
+          {
+            "authority": "authored_source",
+            "path": "stats/federation/local-port.schema.json",
+            "repo": "aoa-stats",
+            "role": "primary"
+          }
+        ],
+        "validated_by": [
+          "aoa-kag:scripts/validate_kag.py"
+        ]
+      },
+      "refs": {
+        "heading_refs": [],
+        "line_refs": [
+          "stats/federation/local-port.schema.json:1"
+        ],
+        "path_ref": "stats/federation/local-port.schema.json"
+      },
+      "signs": {
+        "attestation_ref": "",
+        "digest": "78a46202a17452ca42c4dd9349d3a3131bcbecc07ab000ba08ab18b44c70f280",
+        "signature_ref": "",
+        "verification_state": "digest-only"
+      },
+      "surface_state": "authored_source",
+      "toolchain": {
+        "detected_tools": [
+          "git",
+          "python"
+        ],
+        "owner_commands": [],
+        "required_tools": [
+          "jq"
+        ]
+      },
+      "validator_route": {
+        "route_kind": "source_fast",
+        "surface": "aoa-kag:scripts/validate_kag.py"
+      }
+    },
+    {
+      "abi": {
+        "abi_epoch": "source",
+        "artifact_class": "config",
+        "compatibility": "stable",
+        "contract_version": "1.0.0",
+        "schema_version": "aoa_stats_owner_inventory_v1"
+      },
+      "access": {
+        "scope": "public",
+        "secrets_risk": "none"
+      },
+      "artifact_kind": "config",
+      "classification": {
+        "confidence": "high",
+        "primary_kind": "surface"
+      },
+      "code_role": "none",
+      "command_role": "none",
+      "consumer_route": {
+        "route_kind": "resource",
+        "surface": "aoa-kag-mcp"
+      },
+      "document_role": "none",
+      "freshness": {
+        "checked_ref": "git-index-source-tree",
+        "mode": "source_snapshot",
+        "state": "current"
+      },
+      "identity": {
+        "content_hash": "c81126f261cd69f42eeaf438f5f59ddb4dce7ceebecfaa9344eb15fffe464468",
+        "git_ref": "git-index-source-tree",
+        "id": "file:stats/federation/owner-inventory.json:2ce6967fb0",
+        "mime": "application/json",
+        "path": "stats/federation/owner-inventory.json",
+        "repo": "aoa-stats",
+        "size_bytes": 6915
+      },
+      "mechanics_role": "none",
+      "observed_form": "file",
+      "owner_return_route": {
+        "route_kind": "source_owner",
+        "surface": "stats/federation/owner-inventory.json"
+      },
+      "provenance": {
+        "generated_by": "",
+        "materials": [],
+        "observed_by": "aoa-kag:scripts/generate_repo_local_kag_index.py",
+        "source_refs": [
+          {
+            "authority": "authored_source",
+            "path": "stats/federation/owner-inventory.json",
+            "repo": "aoa-stats",
+            "role": "primary"
+          }
+        ],
+        "validated_by": [
+          "aoa-kag:scripts/validate_kag.py"
+        ]
+      },
+      "refs": {
+        "heading_refs": [],
+        "line_refs": [
+          "stats/federation/owner-inventory.json:1"
+        ],
+        "path_ref": "stats/federation/owner-inventory.json"
+      },
+      "signs": {
+        "attestation_ref": "",
+        "digest": "c81126f261cd69f42eeaf438f5f59ddb4dce7ceebecfaa9344eb15fffe464468",
+        "signature_ref": "",
+        "verification_state": "digest-only"
+      },
+      "surface_state": "authored_source",
+      "toolchain": {
+        "detected_tools": [
+          "git",
+          "python"
+        ],
+        "owner_commands": [],
+        "required_tools": [
+          "jq"
+        ]
+      },
+      "validator_route": {
+        "route_kind": "source_fast",
+        "surface": "aoa-kag:scripts/validate_kag.py"
+      }
+    },
+    {
+      "abi": {
+        "abi_epoch": "source",
+        "artifact_class": "schema",
+        "compatibility": "stable",
+        "contract_version": "https://aoa-stats/stats/federation/owner-inventory.schema.json",
+        "schema_version": "https://json-schema.org/draft/2020-12/schema"
+      },
+      "access": {
+        "scope": "public",
+        "secrets_risk": "none"
+      },
+      "artifact_kind": "schema",
+      "classification": {
+        "confidence": "high",
+        "primary_kind": "surface"
+      },
+      "code_role": "none",
+      "command_role": "none",
+      "consumer_route": {
+        "route_kind": "resource",
+        "surface": "aoa-kag-mcp"
+      },
+      "document_role": "none",
+      "freshness": {
+        "checked_ref": "git-index-source-tree",
+        "mode": "source_snapshot",
+        "state": "current"
+      },
+      "identity": {
+        "content_hash": "935aa42a459b8eb6ae80dadb45b16cc5e0e7877a51a496188316b94c3ed362dd",
+        "git_ref": "git-index-source-tree",
+        "id": "file:stats/federation/owner-inventory.schema.json:b04849ee04",
+        "mime": "application/json",
+        "path": "stats/federation/owner-inventory.schema.json",
+        "repo": "aoa-stats",
+        "size_bytes": 2450
+      },
+      "mechanics_role": "none",
+      "observed_form": "file",
+      "owner_return_route": {
+        "route_kind": "schema_owner",
+        "surface": "stats/federation/owner-inventory.schema.json"
+      },
+      "provenance": {
+        "generated_by": "",
+        "materials": [],
+        "observed_by": "aoa-kag:scripts/generate_repo_local_kag_index.py",
+        "source_refs": [
+          {
+            "authority": "authored_source",
+            "path": "stats/federation/owner-inventory.schema.json",
+            "repo": "aoa-stats",
+            "role": "primary"
+          }
+        ],
+        "validated_by": [
+          "aoa-kag:scripts/validate_kag.py"
+        ]
+      },
+      "refs": {
+        "heading_refs": [],
+        "line_refs": [
+          "stats/federation/owner-inventory.schema.json:1"
+        ],
+        "path_ref": "stats/federation/owner-inventory.schema.json"
+      },
+      "signs": {
+        "attestation_ref": "",
+        "digest": "935aa42a459b8eb6ae80dadb45b16cc5e0e7877a51a496188316b94c3ed362dd",
+        "signature_ref": "",
+        "verification_state": "digest-only"
+      },
+      "surface_state": "authored_source",
+      "toolchain": {
+        "detected_tools": [
+          "git",
+          "python"
+        ],
+        "owner_commands": [],
+        "required_tools": [
+          "jq"
+        ]
       },
       "validator_route": {
         "route_kind": "source_fast",
@@ -93182,6 +94584,423 @@
       "signs": {
         "attestation_ref": "",
         "digest": "09b20104c78ac1f4182a535e9719013e89b9dd2812381a138239981d9d034ba7",
+        "signature_ref": "",
+        "verification_state": "digest-only"
+      },
+      "surface_state": "authored_source",
+      "toolchain": {
+        "detected_tools": [
+          "git",
+          "python"
+        ],
+        "owner_commands": [],
+        "required_tools": [
+          "jq"
+        ]
+      },
+      "validator_route": {
+        "route_kind": "source_fast",
+        "surface": "aoa-kag:scripts/validate_kag.py"
+      }
+    },
+    {
+      "abi": {
+        "abi_epoch": "source",
+        "artifact_class": "document",
+        "compatibility": "stable",
+        "contract_version": "none",
+        "schema_version": "none"
+      },
+      "access": {
+        "scope": "public",
+        "secrets_risk": "none"
+      },
+      "artifact_kind": "document",
+      "classification": {
+        "confidence": "high",
+        "primary_kind": "document"
+      },
+      "code_role": "none",
+      "command_role": "none",
+      "consumer_route": {
+        "route_kind": "resource",
+        "surface": "aoa-kag-mcp"
+      },
+      "document_role": "agents",
+      "freshness": {
+        "checked_ref": "git-index-source-tree",
+        "mode": "source_snapshot",
+        "state": "current"
+      },
+      "identity": {
+        "content_hash": "515638718f21915621174961aad0cefaebca3f0021be9a189b32e252fdf7809b",
+        "git_ref": "git-index-source-tree",
+        "id": "file:stats/measurement-contract/agents.md:ef146fe605",
+        "mime": "text/markdown",
+        "path": "stats/measurement-contract/AGENTS.md",
+        "repo": "aoa-stats",
+        "size_bytes": 1411
+      },
+      "mechanics_role": "none",
+      "observed_form": "file",
+      "owner_return_route": {
+        "route_kind": "document_owner",
+        "surface": "stats/measurement-contract/AGENTS.md"
+      },
+      "provenance": {
+        "generated_by": "",
+        "materials": [],
+        "observed_by": "aoa-kag:scripts/generate_repo_local_kag_index.py",
+        "source_refs": [
+          {
+            "authority": "authored_source",
+            "path": "stats/measurement-contract/AGENTS.md",
+            "repo": "aoa-stats",
+            "role": "primary"
+          }
+        ],
+        "validated_by": [
+          "aoa-kag:scripts/validate_kag.py"
+        ]
+      },
+      "refs": {
+        "heading_refs": [
+          {
+            "anchor": "agentsmd",
+            "level": 1,
+            "line": 1,
+            "ref": "stats/measurement-contract/AGENTS.md#agentsmd",
+            "title": "AGENTS.md"
+          },
+          {
+            "anchor": "scope",
+            "level": 2,
+            "line": 5,
+            "ref": "stats/measurement-contract/AGENTS.md#scope",
+            "title": "Scope"
+          },
+          {
+            "anchor": "owner-law",
+            "level": 2,
+            "line": 14,
+            "ref": "stats/measurement-contract/AGENTS.md#owner-law",
+            "title": "Owner law"
+          },
+          {
+            "anchor": "stop-lines",
+            "level": 2,
+            "line": 27,
+            "ref": "stats/measurement-contract/AGENTS.md#stop-lines",
+            "title": "Stop lines"
+          },
+          {
+            "anchor": "verification",
+            "level": 2,
+            "line": 33,
+            "ref": "stats/measurement-contract/AGENTS.md#verification",
+            "title": "Verification"
+          }
+        ],
+        "line_refs": [
+          "stats/measurement-contract/AGENTS.md:1"
+        ],
+        "path_ref": "stats/measurement-contract/AGENTS.md"
+      },
+      "signs": {
+        "attestation_ref": "",
+        "digest": "515638718f21915621174961aad0cefaebca3f0021be9a189b32e252fdf7809b",
+        "signature_ref": "",
+        "verification_state": "digest-only"
+      },
+      "surface_state": "authored_source",
+      "toolchain": {
+        "detected_tools": [
+          "git",
+          "python"
+        ],
+        "owner_commands": [],
+        "required_tools": []
+      },
+      "validator_route": {
+        "route_kind": "source_fast",
+        "surface": "aoa-kag:scripts/validate_kag.py"
+      }
+    },
+    {
+      "abi": {
+        "abi_epoch": "source",
+        "artifact_class": "document",
+        "compatibility": "stable",
+        "contract_version": "none",
+        "schema_version": "none"
+      },
+      "access": {
+        "scope": "public",
+        "secrets_risk": "none"
+      },
+      "artifact_kind": "document",
+      "classification": {
+        "confidence": "high",
+        "primary_kind": "document"
+      },
+      "code_role": "none",
+      "command_role": "none",
+      "consumer_route": {
+        "route_kind": "resource",
+        "surface": "aoa-kag-mcp"
+      },
+      "document_role": "readme",
+      "freshness": {
+        "checked_ref": "git-index-source-tree",
+        "mode": "source_snapshot",
+        "state": "current"
+      },
+      "identity": {
+        "content_hash": "c6254e854ae35a0ede74b1dc96abe55e869a16666d187031f23c1e5fc8262701",
+        "git_ref": "git-index-source-tree",
+        "id": "file:stats/measurement-contract/readme.md:ba77b0a944",
+        "mime": "text/markdown",
+        "path": "stats/measurement-contract/README.md",
+        "repo": "aoa-stats",
+        "size_bytes": 1835
+      },
+      "mechanics_role": "none",
+      "observed_form": "file",
+      "owner_return_route": {
+        "route_kind": "document_owner",
+        "surface": "stats/measurement-contract/README.md"
+      },
+      "provenance": {
+        "generated_by": "",
+        "materials": [],
+        "observed_by": "aoa-kag:scripts/generate_repo_local_kag_index.py",
+        "source_refs": [
+          {
+            "authority": "authored_source",
+            "path": "stats/measurement-contract/README.md",
+            "repo": "aoa-stats",
+            "role": "primary"
+          }
+        ],
+        "validated_by": [
+          "aoa-kag:scripts/validate_kag.py"
+        ]
+      },
+      "refs": {
+        "heading_refs": [
+          {
+            "anchor": "measurement-contract",
+            "level": 1,
+            "line": 1,
+            "ref": "stats/measurement-contract/README.md#measurement-contract",
+            "title": "Measurement contract"
+          },
+          {
+            "anchor": "two-source-objects",
+            "level": 2,
+            "line": 7,
+            "ref": "stats/measurement-contract/README.md#two-source-objects",
+            "title": "Two source objects"
+          },
+          {
+            "anchor": "vocabulary",
+            "level": 2,
+            "line": 19,
+            "ref": "stats/measurement-contract/README.md#vocabulary",
+            "title": "Vocabulary"
+          },
+          {
+            "anchor": "ownership",
+            "level": 2,
+            "line": 32,
+            "ref": "stats/measurement-contract/README.md#ownership",
+            "title": "Ownership"
+          }
+        ],
+        "line_refs": [
+          "stats/measurement-contract/README.md:1"
+        ],
+        "path_ref": "stats/measurement-contract/README.md"
+      },
+      "signs": {
+        "attestation_ref": "",
+        "digest": "c6254e854ae35a0ede74b1dc96abe55e869a16666d187031f23c1e5fc8262701",
+        "signature_ref": "",
+        "verification_state": "digest-only"
+      },
+      "surface_state": "authored_source",
+      "toolchain": {
+        "detected_tools": [
+          "git",
+          "python"
+        ],
+        "owner_commands": [],
+        "required_tools": []
+      },
+      "validator_route": {
+        "route_kind": "source_fast",
+        "surface": "aoa-kag:scripts/validate_kag.py"
+      }
+    },
+    {
+      "abi": {
+        "abi_epoch": "source",
+        "artifact_class": "schema",
+        "compatibility": "stable",
+        "contract_version": "https://aoa-stats/stats/measurement-contract/measurement-contract.schema.json",
+        "schema_version": "https://json-schema.org/draft/2020-12/schema"
+      },
+      "access": {
+        "scope": "public",
+        "secrets_risk": "none"
+      },
+      "artifact_kind": "schema",
+      "classification": {
+        "confidence": "high",
+        "primary_kind": "surface"
+      },
+      "code_role": "none",
+      "command_role": "none",
+      "consumer_route": {
+        "route_kind": "resource",
+        "surface": "aoa-kag-mcp"
+      },
+      "document_role": "none",
+      "freshness": {
+        "checked_ref": "git-index-source-tree",
+        "mode": "source_snapshot",
+        "state": "current"
+      },
+      "identity": {
+        "content_hash": "553abdf23826442407461261abcc5ed800c3a9bab1be03f79e5f08cf531c0e42",
+        "git_ref": "git-index-source-tree",
+        "id": "file:stats/measurement-contract/measurement-contract.schema.json:8578d71b29",
+        "mime": "application/json",
+        "path": "stats/measurement-contract/measurement-contract.schema.json",
+        "repo": "aoa-stats",
+        "size_bytes": 7878
+      },
+      "mechanics_role": "none",
+      "observed_form": "file",
+      "owner_return_route": {
+        "route_kind": "schema_owner",
+        "surface": "stats/measurement-contract/measurement-contract.schema.json"
+      },
+      "provenance": {
+        "generated_by": "",
+        "materials": [],
+        "observed_by": "aoa-kag:scripts/generate_repo_local_kag_index.py",
+        "source_refs": [
+          {
+            "authority": "authored_source",
+            "path": "stats/measurement-contract/measurement-contract.schema.json",
+            "repo": "aoa-stats",
+            "role": "primary"
+          }
+        ],
+        "validated_by": [
+          "aoa-kag:scripts/validate_kag.py"
+        ]
+      },
+      "refs": {
+        "heading_refs": [],
+        "line_refs": [
+          "stats/measurement-contract/measurement-contract.schema.json:1"
+        ],
+        "path_ref": "stats/measurement-contract/measurement-contract.schema.json"
+      },
+      "signs": {
+        "attestation_ref": "",
+        "digest": "553abdf23826442407461261abcc5ed800c3a9bab1be03f79e5f08cf531c0e42",
+        "signature_ref": "",
+        "verification_state": "digest-only"
+      },
+      "surface_state": "authored_source",
+      "toolchain": {
+        "detected_tools": [
+          "git",
+          "python"
+        ],
+        "owner_commands": [],
+        "required_tools": [
+          "jq"
+        ]
+      },
+      "validator_route": {
+        "route_kind": "source_fast",
+        "surface": "aoa-kag:scripts/validate_kag.py"
+      }
+    },
+    {
+      "abi": {
+        "abi_epoch": "source",
+        "artifact_class": "schema",
+        "compatibility": "stable",
+        "contract_version": "https://aoa-stats/stats/measurement-contract/measurement-packet.schema.json",
+        "schema_version": "https://json-schema.org/draft/2020-12/schema"
+      },
+      "access": {
+        "scope": "public",
+        "secrets_risk": "none"
+      },
+      "artifact_kind": "schema",
+      "classification": {
+        "confidence": "high",
+        "primary_kind": "surface"
+      },
+      "code_role": "none",
+      "command_role": "none",
+      "consumer_route": {
+        "route_kind": "resource",
+        "surface": "aoa-kag-mcp"
+      },
+      "document_role": "none",
+      "freshness": {
+        "checked_ref": "git-index-source-tree",
+        "mode": "source_snapshot",
+        "state": "current"
+      },
+      "identity": {
+        "content_hash": "7fd29eccaba716858a6346c7e7011a475b46dae493e1378be60c50b04215d1bc",
+        "git_ref": "git-index-source-tree",
+        "id": "file:stats/measurement-contract/measurement-packet.schema.json:420b77df97",
+        "mime": "application/json",
+        "path": "stats/measurement-contract/measurement-packet.schema.json",
+        "repo": "aoa-stats",
+        "size_bytes": 9724
+      },
+      "mechanics_role": "none",
+      "observed_form": "file",
+      "owner_return_route": {
+        "route_kind": "schema_owner",
+        "surface": "stats/measurement-contract/measurement-packet.schema.json"
+      },
+      "provenance": {
+        "generated_by": "",
+        "materials": [],
+        "observed_by": "aoa-kag:scripts/generate_repo_local_kag_index.py",
+        "source_refs": [
+          {
+            "authority": "authored_source",
+            "path": "stats/measurement-contract/measurement-packet.schema.json",
+            "repo": "aoa-stats",
+            "role": "primary"
+          }
+        ],
+        "validated_by": [
+          "aoa-kag:scripts/validate_kag.py"
+        ]
+      },
+      "refs": {
+        "heading_refs": [],
+        "line_refs": [
+          "stats/measurement-contract/measurement-packet.schema.json:1"
+        ],
+        "path_ref": "stats/measurement-contract/measurement-packet.schema.json"
+      },
+      "signs": {
+        "attestation_ref": "",
+        "digest": "7fd29eccaba716858a6346c7e7011a475b46dae493e1378be60c50b04215d1bc",
         "signature_ref": "",
         "verification_state": "digest-only"
       },
@@ -97519,7 +99338,7 @@
         "artifact_class": "config",
         "compatibility": "stable",
         "contract_version": "none",
-        "schema_version": "aoa_stats_source_home_v2"
+        "schema_version": "aoa_stats_source_home_v3"
       },
       "access": {
         "scope": "public",
@@ -97543,13 +99362,13 @@
         "state": "current"
       },
       "identity": {
-        "content_hash": "5dd0d23ef29fd220d10a1d01241a17294d5c520bdc8620171911da40ea6cada3",
+        "content_hash": "847435d200328bb6f69357dcc9de4545d1a0ab132eed36636fec84aabbc6fdbe",
         "git_ref": "git-index-source-tree",
         "id": "file:stats/source_home.manifest.json:41b237ff45",
         "mime": "application/json",
         "path": "stats/source_home.manifest.json",
         "repo": "aoa-stats",
-        "size_bytes": 27704
+        "size_bytes": 32961
       },
       "mechanics_role": "none",
       "observed_form": "file",
@@ -97582,7 +99401,7 @@
       },
       "signs": {
         "attestation_ref": "",
-        "digest": "5dd0d23ef29fd220d10a1d01241a17294d5c520bdc8620171911da40ea6cada3",
+        "digest": "847435d200328bb6f69357dcc9de4545d1a0ab132eed36636fec84aabbc6fdbe",
         "signature_ref": "",
         "verification_state": "digest-only"
       },
@@ -98685,13 +100504,13 @@
         "state": "current"
       },
       "identity": {
-        "content_hash": "afef98259e8cef2487d3921f931a26e35597f0ee59b672fde32e46767c46bdd6",
+        "content_hash": "2fa412409bd6fd211646ebaf1d737765ece5bc4abaa579e19abc742024348cb4",
         "git_ref": "git-index-source-tree",
         "id": "file:tests/test_docs_routes.py:2789463ffa",
         "mime": "text/x-python",
         "path": "tests/test_docs_routes.py",
         "repo": "aoa-stats",
-        "size_bytes": 9839
+        "size_bytes": 9913
       },
       "mechanics_role": "none",
       "observed_form": "command",
@@ -98724,7 +100543,7 @@
       },
       "signs": {
         "attestation_ref": "",
-        "digest": "afef98259e8cef2487d3921f931a26e35597f0ee59b672fde32e46767c46bdd6",
+        "digest": "2fa412409bd6fd211646ebaf1d737765ece5bc4abaa579e19abc742024348cb4",
         "signature_ref": "",
         "verification_state": "digest-only"
       },
@@ -99049,13 +100868,13 @@
         "state": "current"
       },
       "identity": {
-        "content_hash": "be00e157196e7be689234c27739045a3b999e82f60c11f2777da42a7f748757b",
+        "content_hash": "62025bcd0e14d770ef4b216d4c8177f256a26ec7f328f88e95602da2ce696fae",
         "git_ref": "git-index-source-tree",
         "id": "file:tests/test_roadmap_parity.py:574915dc67",
         "mime": "text/x-python",
         "path": "tests/test_roadmap_parity.py",
         "repo": "aoa-stats",
-        "size_bytes": 2819
+        "size_bytes": 2891
       },
       "mechanics_role": "none",
       "observed_form": "command",
@@ -99088,7 +100907,7 @@
       },
       "signs": {
         "attestation_ref": "",
-        "digest": "be00e157196e7be689234c27739045a3b999e82f60c11f2777da42a7f748757b",
+        "digest": "62025bcd0e14d770ef4b216d4c8177f256a26ec7f328f88e95602da2ce696fae",
         "signature_ref": "",
         "verification_state": "digest-only"
       },
@@ -99140,13 +100959,104 @@
         "state": "current"
       },
       "identity": {
-        "content_hash": "319ba8deda9b32d3a607cb4e5ff3e6e7fa5a12d7b10de9527dd4db08b2368074",
+        "content_hash": "6231e8c75f0ce0d347f7845de1ee0a64e5d25f90d474856742503691585a10f8",
+        "git_ref": "git-index-source-tree",
+        "id": "file:tests/test_stats_protocol.py:30490e0692",
+        "mime": "text/x-python",
+        "path": "tests/test_stats_protocol.py",
+        "repo": "aoa-stats",
+        "size_bytes": 5754
+      },
+      "mechanics_role": "none",
+      "observed_form": "command",
+      "owner_return_route": {
+        "route_kind": "test_owner",
+        "surface": "tests/test_stats_protocol.py"
+      },
+      "provenance": {
+        "generated_by": "",
+        "materials": [],
+        "observed_by": "aoa-kag:scripts/generate_repo_local_kag_index.py",
+        "source_refs": [
+          {
+            "authority": "authored_source",
+            "path": "tests/test_stats_protocol.py",
+            "repo": "aoa-stats",
+            "role": "primary"
+          }
+        ],
+        "validated_by": [
+          "aoa-kag:scripts/validate_kag.py"
+        ]
+      },
+      "refs": {
+        "heading_refs": [],
+        "line_refs": [
+          "tests/test_stats_protocol.py:1"
+        ],
+        "path_ref": "tests/test_stats_protocol.py"
+      },
+      "signs": {
+        "attestation_ref": "",
+        "digest": "6231e8c75f0ce0d347f7845de1ee0a64e5d25f90d474856742503691585a10f8",
+        "signature_ref": "",
+        "verification_state": "digest-only"
+      },
+      "surface_state": "authored_source",
+      "toolchain": {
+        "detected_tools": [
+          "git",
+          "python"
+        ],
+        "owner_commands": [
+          "python -m unittest tests/test_stats_protocol.py"
+        ],
+        "required_tools": [
+          "python"
+        ]
+      },
+      "validator_route": {
+        "route_kind": "source_fast",
+        "surface": "aoa-kag:scripts/validate_kag.py"
+      }
+    },
+    {
+      "abi": {
+        "abi_epoch": "source",
+        "artifact_class": "test",
+        "compatibility": "stable",
+        "contract_version": "none",
+        "schema_version": "none"
+      },
+      "access": {
+        "scope": "public",
+        "secrets_risk": "none"
+      },
+      "artifact_kind": "test",
+      "classification": {
+        "confidence": "high",
+        "primary_kind": "command"
+      },
+      "code_role": "test",
+      "command_role": "test",
+      "consumer_route": {
+        "route_kind": "resource",
+        "surface": "aoa-kag-mcp"
+      },
+      "document_role": "none",
+      "freshness": {
+        "checked_ref": "git-index-source-tree",
+        "mode": "source_snapshot",
+        "state": "current"
+      },
+      "identity": {
+        "content_hash": "1b321ddbfbf2952fe7fc915165386be8ee863f68e618f92746bb62e67f49d445",
         "git_ref": "git-index-source-tree",
         "id": "file:tests/test_stats_source_home.py:a642c9216e",
         "mime": "text/x-python",
         "path": "tests/test_stats_source_home.py",
         "repo": "aoa-stats",
-        "size_bytes": 24228
+        "size_bytes": 24602
       },
       "mechanics_role": "none",
       "observed_form": "command",
@@ -99179,7 +101089,7 @@
       },
       "signs": {
         "attestation_ref": "",
-        "digest": "319ba8deda9b32d3a607cb4e5ff3e6e7fa5a12d7b10de9527dd4db08b2368074",
+        "digest": "1b321ddbfbf2952fe7fc915165386be8ee863f68e618f92746bb62e67f49d445",
         "signature_ref": "",
         "verification_state": "digest-only"
       },
@@ -99322,13 +101232,13 @@
         "state": "current"
       },
       "identity": {
-        "content_hash": "0cedda238296ef18181a30010208de3eec33ed8558d4da1f3040564739777bee",
+        "content_hash": "bf99088c166ce3b9f5cb0bdde7e84e916e2eb6e84756df0f6bbd4871ef38392f",
         "git_ref": "git-index-source-tree",
         "id": "file:tests/test_validate_nested_agents.py:46cd12457c",
         "mime": "text/x-python",
         "path": "tests/test_validate_nested_agents.py",
         "repo": "aoa-stats",
-        "size_bytes": 5576
+        "size_bytes": 5654
       },
       "mechanics_role": "none",
       "observed_form": "command",
@@ -99361,7 +101271,7 @@
       },
       "signs": {
         "attestation_ref": "",
-        "digest": "0cedda238296ef18181a30010208de3eec33ed8558d4da1f3040564739777bee",
+        "digest": "bf99088c166ce3b9f5cb0bdde7e84e916e2eb6e84756df0f6bbd4871ef38392f",
         "signature_ref": "",
         "verification_state": "digest-only"
       },

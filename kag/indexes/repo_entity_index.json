@@ -3379,6 +3379,20 @@
         "artifact_kind": "document",
         "code_role": "none",
         "command_role": "none",
+        "document_role": "decision",
+        "mechanics_role": "none",
+        "surface_state": "authored_source"
+      },
+      "entity_kind": "decision",
+      "id": "entity:file:docs/decisions/aost-d-0012-federated-measurement-ownership-and-thin-access.md:56ab243b37",
+      "label": "docs/decisions/AOST-D-0012-federated-measurement-ownership-and-thin-access.md",
+      "source_record_id": "file:docs/decisions/aost-d-0012-federated-measurement-ownership-and-thin-access.md:56ab243b37"
+    },
+    {
+      "coordinates": {
+        "artifact_kind": "document",
+        "code_role": "none",
+        "command_role": "none",
         "document_role": "readme",
         "mechanics_role": "none",
         "surface_state": "authored_source"
@@ -6957,6 +6971,62 @@
       "id": "entity:file:mechanics/boundary-bridge/parts/consumer-regrounding/tests/test_downstream_canaries.py:17afae652a",
       "label": "mechanics/boundary-bridge/parts/consumer-regrounding/tests/test_downstream_canaries.py",
       "source_record_id": "file:mechanics/boundary-bridge/parts/consumer-regrounding/tests/test_downstream_canaries.py:17afae652a"
+    },
+    {
+      "coordinates": {
+        "artifact_kind": "document",
+        "code_role": "none",
+        "command_role": "none",
+        "document_role": "mechanics_doc",
+        "mechanics_role": "part_contract",
+        "surface_state": "authored_source"
+      },
+      "entity_kind": "mechanic_part",
+      "id": "entity:file:mechanics/boundary-bridge/parts/measurement-packet-crossing/contract.md:f84a00e420",
+      "label": "mechanics/boundary-bridge/parts/measurement-packet-crossing/CONTRACT.md",
+      "source_record_id": "file:mechanics/boundary-bridge/parts/measurement-packet-crossing/contract.md:f84a00e420"
+    },
+    {
+      "coordinates": {
+        "artifact_kind": "document",
+        "code_role": "none",
+        "command_role": "none",
+        "document_role": "readme",
+        "mechanics_role": "part_doc",
+        "surface_state": "authored_source"
+      },
+      "entity_kind": "mechanic_part",
+      "id": "entity:file:mechanics/boundary-bridge/parts/measurement-packet-crossing/readme.md:757e273d82",
+      "label": "mechanics/boundary-bridge/parts/measurement-packet-crossing/README.md",
+      "source_record_id": "file:mechanics/boundary-bridge/parts/measurement-packet-crossing/readme.md:757e273d82"
+    },
+    {
+      "coordinates": {
+        "artifact_kind": "document",
+        "code_role": "none",
+        "command_role": "none",
+        "document_role": "mechanics_doc",
+        "mechanics_role": "part_doc",
+        "surface_state": "authored_source"
+      },
+      "entity_kind": "mechanic_part",
+      "id": "entity:file:mechanics/boundary-bridge/parts/measurement-packet-crossing/validation.md:f5151ed809",
+      "label": "mechanics/boundary-bridge/parts/measurement-packet-crossing/VALIDATION.md",
+      "source_record_id": "file:mechanics/boundary-bridge/parts/measurement-packet-crossing/validation.md:f5151ed809"
+    },
+    {
+      "coordinates": {
+        "artifact_kind": "test",
+        "code_role": "test",
+        "command_role": "test",
+        "document_role": "none",
+        "mechanics_role": "part_test",
+        "surface_state": "authored_source"
+      },
+      "entity_kind": "mechanic_part",
+      "id": "entity:file:mechanics/boundary-bridge/parts/measurement-packet-crossing/tests/test_measurement_packet_crossing.py:a5bf3023e8",
+      "label": "mechanics/boundary-bridge/parts/measurement-packet-crossing/tests/test_measurement_packet_crossing.py",
+      "source_record_id": "file:mechanics/boundary-bridge/parts/measurement-packet-crossing/tests/test_measurement_packet_crossing.py:a5bf3023e8"
     },
     {
       "coordinates": {
@@ -11994,6 +12064,20 @@
         "surface_state": "authored_source"
       },
       "entity_kind": "command",
+      "id": "entity:file:scripts/validate_stats_protocol.py:b585d0ad81",
+      "label": "scripts/validate_stats_protocol.py",
+      "source_record_id": "file:scripts/validate_stats_protocol.py:b585d0ad81"
+    },
+    {
+      "coordinates": {
+        "artifact_kind": "validator",
+        "code_role": "validator",
+        "command_role": "validator",
+        "document_role": "none",
+        "mechanics_role": "none",
+        "surface_state": "authored_source"
+      },
+      "entity_kind": "command",
       "id": "entity:file:scripts/validate_stats_source_home.py:6be6e8ef8c",
       "label": "scripts/validate_stats_source_home.py",
       "source_record_id": "file:scripts/validate_stats_source_home.py:6be6e8ef8c"
@@ -12193,6 +12277,20 @@
       "id": "entity:file:src/aoa_stats_builder/growth_cycle.py:ced5e4de55",
       "label": "src/aoa_stats_builder/growth_cycle.py",
       "source_record_id": "file:src/aoa_stats_builder/growth_cycle.py:ced5e4de55"
+    },
+    {
+      "coordinates": {
+        "artifact_kind": "source_code",
+        "code_role": "source_module",
+        "command_role": "none",
+        "document_role": "none",
+        "mechanics_role": "none",
+        "surface_state": "authored_source"
+      },
+      "entity_kind": "code",
+      "id": "entity:file:src/aoa_stats_builder/measurement.py:616f15ad30",
+      "label": "src/aoa_stats_builder/measurement.py",
+      "source_record_id": "file:src/aoa_stats_builder/measurement.py:616f15ad30"
     },
     {
       "coordinates": {
@@ -12498,6 +12596,76 @@
         "surface_state": "authored_source"
       },
       "entity_kind": "agent_route",
+      "id": "entity:file:stats/federation/agents.md:c826356e08",
+      "label": "stats/federation/AGENTS.md",
+      "source_record_id": "file:stats/federation/agents.md:c826356e08"
+    },
+    {
+      "coordinates": {
+        "artifact_kind": "document",
+        "code_role": "none",
+        "command_role": "none",
+        "document_role": "readme",
+        "mechanics_role": "none",
+        "surface_state": "authored_source"
+      },
+      "entity_kind": "document",
+      "id": "entity:file:stats/federation/readme.md:6171f4e5b7",
+      "label": "stats/federation/README.md",
+      "source_record_id": "file:stats/federation/readme.md:6171f4e5b7"
+    },
+    {
+      "coordinates": {
+        "artifact_kind": "schema",
+        "code_role": "none",
+        "command_role": "none",
+        "document_role": "none",
+        "mechanics_role": "none",
+        "surface_state": "authored_source"
+      },
+      "entity_kind": "contract",
+      "id": "entity:file:stats/federation/local-port.schema.json:1a1496095d",
+      "label": "stats/federation/local-port.schema.json",
+      "source_record_id": "file:stats/federation/local-port.schema.json:1a1496095d"
+    },
+    {
+      "coordinates": {
+        "artifact_kind": "config",
+        "code_role": "none",
+        "command_role": "none",
+        "document_role": "none",
+        "mechanics_role": "none",
+        "surface_state": "authored_source"
+      },
+      "entity_kind": "artifact",
+      "id": "entity:file:stats/federation/owner-inventory.json:2ce6967fb0",
+      "label": "stats/federation/owner-inventory.json",
+      "source_record_id": "file:stats/federation/owner-inventory.json:2ce6967fb0"
+    },
+    {
+      "coordinates": {
+        "artifact_kind": "schema",
+        "code_role": "none",
+        "command_role": "none",
+        "document_role": "none",
+        "mechanics_role": "none",
+        "surface_state": "authored_source"
+      },
+      "entity_kind": "contract",
+      "id": "entity:file:stats/federation/owner-inventory.schema.json:b04849ee04",
+      "label": "stats/federation/owner-inventory.schema.json",
+      "source_record_id": "file:stats/federation/owner-inventory.schema.json:b04849ee04"
+    },
+    {
+      "coordinates": {
+        "artifact_kind": "document",
+        "code_role": "none",
+        "command_role": "none",
+        "document_role": "agents",
+        "mechanics_role": "none",
+        "surface_state": "authored_source"
+      },
+      "entity_kind": "agent_route",
       "id": "entity:file:stats/intake-contract/agents.md:e066b66611",
       "label": "stats/intake-contract/AGENTS.md",
       "source_record_id": "file:stats/intake-contract/agents.md:e066b66611"
@@ -12557,6 +12725,62 @@
       "id": "entity:file:stats/intake-contract/examples/session_harvest_family.receipts.example.json:f1b8402617",
       "label": "stats/intake-contract/examples/session_harvest_family.receipts.example.json",
       "source_record_id": "file:stats/intake-contract/examples/session_harvest_family.receipts.example.json:f1b8402617"
+    },
+    {
+      "coordinates": {
+        "artifact_kind": "document",
+        "code_role": "none",
+        "command_role": "none",
+        "document_role": "agents",
+        "mechanics_role": "none",
+        "surface_state": "authored_source"
+      },
+      "entity_kind": "agent_route",
+      "id": "entity:file:stats/measurement-contract/agents.md:ef146fe605",
+      "label": "stats/measurement-contract/AGENTS.md",
+      "source_record_id": "file:stats/measurement-contract/agents.md:ef146fe605"
+    },
+    {
+      "coordinates": {
+        "artifact_kind": "document",
+        "code_role": "none",
+        "command_role": "none",
+        "document_role": "readme",
+        "mechanics_role": "none",
+        "surface_state": "authored_source"
+      },
+      "entity_kind": "document",
+      "id": "entity:file:stats/measurement-contract/readme.md:ba77b0a944",
+      "label": "stats/measurement-contract/README.md",
+      "source_record_id": "file:stats/measurement-contract/readme.md:ba77b0a944"
+    },
+    {
+      "coordinates": {
+        "artifact_kind": "schema",
+        "code_role": "none",
+        "command_role": "none",
+        "document_role": "none",
+        "mechanics_role": "none",
+        "surface_state": "authored_source"
+      },
+      "entity_kind": "contract",
+      "id": "entity:file:stats/measurement-contract/measurement-contract.schema.json:8578d71b29",
+      "label": "stats/measurement-contract/measurement-contract.schema.json",
+      "source_record_id": "file:stats/measurement-contract/measurement-contract.schema.json:8578d71b29"
+    },
+    {
+      "coordinates": {
+        "artifact_kind": "schema",
+        "code_role": "none",
+        "command_role": "none",
+        "document_role": "none",
+        "mechanics_role": "none",
+        "surface_state": "authored_source"
+      },
+      "entity_kind": "contract",
+      "id": "entity:file:stats/measurement-contract/measurement-packet.schema.json:420b77df97",
+      "label": "stats/measurement-contract/measurement-packet.schema.json",
+      "source_record_id": "file:stats/measurement-contract/measurement-packet.schema.json:420b77df97"
     },
     {
       "coordinates": {
@@ -13436,6 +13660,20 @@
         "surface_state": "authored_source"
       },
       "entity_kind": "command",
+      "id": "entity:file:tests/test_stats_protocol.py:30490e0692",
+      "label": "tests/test_stats_protocol.py",
+      "source_record_id": "file:tests/test_stats_protocol.py:30490e0692"
+    },
+    {
+      "coordinates": {
+        "artifact_kind": "test",
+        "code_role": "test",
+        "command_role": "test",
+        "document_role": "none",
+        "mechanics_role": "none",
+        "surface_state": "authored_source"
+      },
+      "entity_kind": "command",
       "id": "entity:file:tests/test_stats_source_home.py:a642c9216e",
       "label": "tests/test_stats_source_home.py",
       "source_record_id": "file:tests/test_stats_source_home.py:a642c9216e"
@@ -13471,7 +13709,7 @@
   ],
   "index_identity": {
     "artifact_kind": "repository_entity_index",
-    "content_digest": "ebb534e96ba8e285e8f04e47437e1a29db8efefbdbc727e6d8160e579d58d452",
+    "content_digest": "1965436e72b3fc196eaffec712e721a5d9df8a7f5752d1779b3902cb3de2a02d",
     "index_kind": "entity",
     "local_id": "index:repo-local:entities",
     "schema_ref": "aoa-kag:schemas/repo-local-kag-repository-index.schema.json"
@@ -13494,23 +13732,23 @@
   },
   "schema_version": "aoa-repo-local-kag-repository-index-v1",
   "source_index": {
-    "content_digest": "1eb3d7d2d6f9a843d511fd727a28fc6f5006affd493f5716c8841c0665854963",
+    "content_digest": "2e9d284e1597af84c91b87947e43dd038d866e85bc89cd5555a52f149d45d7ae",
     "local_id": "index:repo-local:source-surfaces",
     "path": "kag/indexes/source_surface_index.json"
   },
   "summary": {
-    "entry_count": 962,
+    "entry_count": 979,
     "kind_counts": {
-      "agent_route": 16,
-      "artifact": 148,
-      "code": 33,
-      "command": 31,
-      "contract": 34,
-      "decision": 18,
-      "document": 133,
+      "agent_route": 18,
+      "artifact": 149,
+      "code": 34,
+      "command": 33,
+      "contract": 38,
+      "decision": 19,
+      "document": 135,
       "manifest": 1,
       "mechanic_package": 51,
-      "mechanic_part": 457,
+      "mechanic_part": 461,
       "owner_surface": 2,
       "readmodel": 38
     }
