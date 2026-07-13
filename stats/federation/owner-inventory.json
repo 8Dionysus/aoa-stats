@@ -125,7 +125,7 @@
       "repo_id": "aoa-session-memory",
       "workspace_route": "workspace:bundles/aoa-session-memory",
       "owner_boundary_ref": "aoa-session-memory:AGENTS.md",
-      "classification": "requires_port",
+      "classification": "implemented",
       "port_ref": "aoa-session-memory:stats/port.manifest.json"
     },
     {
