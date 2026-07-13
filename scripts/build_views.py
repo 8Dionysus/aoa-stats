@@ -18,16 +18,7 @@ from aoa_stats_builder.candidate_lifecycle import (  # noqa: E402
     build_supersession_drop_summary,
 )
 from aoa_stats_builder.component_refresh import (  # noqa: E402
-    COMPONENT_REFRESH_COMPONENT_DRIFT_CLASSES as COMPONENT_REFRESH_COMPONENT_DRIFT_CLASSES,
-    COMPONENT_REFRESH_CURRENT_STATUSES as COMPONENT_REFRESH_CURRENT_STATUSES,
-    COMPONENT_REFRESH_DECISION_STATUSES as COMPONENT_REFRESH_DECISION_STATUSES,
-    COMPONENT_REFRESH_ROUTE_CLASSES as COMPONENT_REFRESH_ROUTE_CLASSES,
-    COMPONENT_REFRESH_SIGNAL_DRIFT_CLASSES as COMPONENT_REFRESH_SIGNAL_DRIFT_CLASSES,
     build_component_refresh_summary as build_component_refresh_summary_from_inputs,
-    component_refresh_drift_classes as component_refresh_drift_classes,
-    component_refresh_route_class as component_refresh_route_class,
-    component_refresh_status as component_refresh_status,
-    latest_component_hints_by_component as latest_component_hints_by_component,
 )
 from aoa_stats_builder.component_refresh_sources import (  # noqa: E402
     ComponentRefreshInputBundle,
