@@ -12,6 +12,10 @@ Keep repo-wide build fan-out, public-contract integration, and root topology
 checks here. Move producer- or operation-specific invariants to the nearest
 mechanic part even when the root facade keeps a compatibility alias.
 
+Root fan-out proof derives expected public output names from authored profiles
+and compares complete outputs with their committed bytes. It must not replay
+part-owned field values, counts, or example semantics as a second test suite.
+
 ## Editing posture
 Prefer fixtures that expose boundary drift: ambiguous evidence refs, unknown
 event kinds, stale generated output, and attempts to infer authority from counts.

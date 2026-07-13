@@ -36,6 +36,10 @@ Tracking starts with the first public release-prep baseline for this repository.
 
 ### Changed
 
+- Reduced the root build-view proof to profile-derived fan-out and complete
+  committed-byte parity, removing the second hand-maintained suite of
+  mechanic-owned field assertions while retaining part-local semantic and
+  invariant coverage.
 - Localized the surface-strength vocabulary under its `stats/surface-catalog`
   source owner, removed changing Antifragility Vector posture from the shared
   model, and made catalog proof reject vocabulary drift from active and deferred
