@@ -49,15 +49,15 @@ Before opening a PR, run local validation for:
 Recommended local setup:
 
 - `python -m pip install -r requirements-dev.txt`
-- `python scripts/build_views.py --check`
-- `python scripts/validate_repo.py`
-- `python -m pytest -q tests`
+
+Run the repository gate from [`AGENTS.md#verify`](AGENTS.md#verify), then the
+nearest changed family's `AGENTS.md` and mechanic part's `VALIDATION.md`.
 
 If your change touches live receipt source registration, watcher behavior, or
-owner-local intake, also run:
-
-- `python scripts/check_live_publishers.py`
-- `python scripts/refresh_live_stats.py`
+owner-local intake, also follow the
+[`live-receipt-refresh` operator guide](mechanics/recurrence/parts/live-receipt-refresh/docs/LIVE_SESSION_USE.md)
+and its adjacent
+[`VALIDATION.md`](mechanics/recurrence/parts/live-receipt-refresh/VALIDATION.md).
 
 ## Preferred PR scope
 

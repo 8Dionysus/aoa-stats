@@ -82,8 +82,5 @@ Use:
 
 ## Validation
 
-```bash
-python scripts/validate_stats_source_home.py
-python scripts/build_views.py --check
-python -m pytest -q tests/test_stats_source_home.py tests/test_summary_surface_catalog.py
-```
+Use [`AGENTS.md#verification`](AGENTS.md#verification), then the
+`VALIDATION.md` owned by every affected mechanic part.

@@ -141,15 +141,7 @@ checkable without publishing retired entries in the public catalog.
 
 ## Validation
 
-Run:
-
-```bash
-python scripts/generate_decision_indexes.py
-python scripts/generate_decision_indexes.py --check
-python scripts/validate_decision_records.py
-python scripts/validate_stats_source_home.py
-python scripts/validate_mechanics_topology.py
-python scripts/build_views.py --check
-python -m pytest -q tests/test_stats_source_home.py tests/test_summary_surface_catalog.py tests/test_build_views.py mechanics/method-growth/parts/candidate-lineage/tests mechanics/method-growth/parts/supersession-pruning/tests mechanics/recurrence/parts/live-receipt-refresh/tests
-python scripts/release_check.py
-```
+Decision-lane checks are owned by [`AGENTS.md#verify`](AGENTS.md#verify).
+Affected source-home and mechanic checks route through their owning
+`AGENTS.md` or `VALIDATION.md`, then the root
+[`AGENTS.md#verify`](../../AGENTS.md#verify) gate and the release runbook.

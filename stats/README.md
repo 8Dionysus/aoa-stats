@@ -18,7 +18,7 @@ store, runtime state home, or second copy of root contracts.
 | operation map | `../mechanics/topology.json` |
 | generated discovery | `../generated/summary_surface_catalog.min.json` |
 | rationale | `../docs/decisions/README.md` and generated indexes |
-| validation | `python scripts/validate_stats_source_home.py` |
+| validation | `AGENTS.md#verify`, then the selected family or mechanic part owner |
 
 ## Shape
 
@@ -87,12 +87,6 @@ source facts, proof, routing, workflow, memory, or runtime truth.
 
 ## Validation
 
-```bash
-python -m json.tool stats/source_home.manifest.json >/dev/null
-python scripts/validate_stats_source_home.py
-python scripts/validate_mechanics_topology.py
-python scripts/build_views.py --check
-```
-
-Run the focused validator and tests named by the family or mechanic part you
-change, then close through `python scripts/release_check.py`.
+Use [`AGENTS.md#verify`](AGENTS.md#verify), then the focused validator and tests
+owned by the family or mechanic part you change. Release closeout stays in
+[`../docs/RELEASING.md`](../docs/RELEASING.md).

@@ -71,10 +71,11 @@ later slice once owner receipts can prove recovery honestly.
 ## Live-state posture
 
 The authored profile sets `live_state_capable: false`. Therefore
-`python scripts/refresh_live_stats.py` does not materialize or advertise this
-surface under `state/generated/`, and it does not silently fall back to the
-reviewed examples. The live refresh cleanup universe still includes the
-managed output name so an older runtime copy is removed as stale.
+the [live-refresh operation](../../live-receipt-refresh/docs/LIVE_SESSION_USE.md)
+does not materialize or advertise this surface under `state/generated/`, and
+it does not silently fall back to the reviewed examples. The live refresh
+cleanup universe still includes the managed output name so an older runtime
+copy is removed as stale.
 
 The committed catalog continues to expose the public reference profile. The
 local live catalog contains only surfaces actually admitted and materialized

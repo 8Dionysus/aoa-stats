@@ -13,9 +13,8 @@ Current bundle:
   `generated/summary_surface_catalog.min.json` as a
   `derived_observability_readmodel_catalog`.
 
-```bash
-python scripts/validate_abyss_machine_summary_catalog_bundle.py
-```
+Validation is owned by the Summary Catalog Artifact Bundle
+[`VALIDATION.md`](../../mechanics/release-support/parts/summary-catalog-artifact-bundle/VALIDATION.md).
 
 The validator also rehearses registry latest selection, consumer trust-gate
 admission, isolated subject-store materialization, corrupted ABI/SBOM rejection,

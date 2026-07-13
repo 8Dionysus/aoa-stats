@@ -1738,7 +1738,7 @@
     },
     {
       "artifact_kind": "document",
-      "content_hash": "d53f44ae3c5608e59a84268c629b4abd5b0b0e6498c8cf72d4b26cafeece8f36",
+      "content_hash": "e60dd40698504a487314b38c22de002c9fd9e17d64518c41a7b95805fdaa3a2e",
       "id": "artifact:file:changelog.md:06572a96a5",
       "path": "CHANGELOG.md",
       "source_record_id": "file:changelog.md:06572a96a5",
@@ -1754,7 +1754,7 @@
     },
     {
       "artifact_kind": "document",
-      "content_hash": "6e10a49c6533d469ef5cf66294b3f42b446fcebef426b3d1f049d6e51323d961",
+      "content_hash": "faa21eaf494945d5e26c93aa1c267dc5e64f361e38eef6687daeed6766aceff5",
       "id": "artifact:file:contributing.md:eca12c0a30",
       "path": "CONTRIBUTING.md",
       "source_record_id": "file:contributing.md:eca12c0a30",
@@ -1778,7 +1778,7 @@
     },
     {
       "artifact_kind": "document",
-      "content_hash": "213afcbd46e463b0f698564b68c2584e6e7bf5efbbe5fdda09bc9ecf21ac0ced",
+      "content_hash": "2c070061624898d73d1f0e4d0dc80236360c2b56beec9675ddcb1022d08aecb8",
       "id": "artifact:file:readme.md:b335630551",
       "path": "README.md",
       "source_record_id": "file:readme.md:b335630551",
@@ -1786,7 +1786,7 @@
     },
     {
       "artifact_kind": "document",
-      "content_hash": "c306454a6346fab2e94a469de5d567584fdc361c0c5da5deea83f850724b4e04",
+      "content_hash": "a213f5bce8f8628d6bd9ea05e6ac323bc0fb432b45cfb50c735a9e7718728005",
       "id": "artifact:file:roadmap.md:683343bdf9",
       "path": "ROADMAP.md",
       "source_record_id": "file:roadmap.md:683343bdf9",
@@ -1842,7 +1842,7 @@
     },
     {
       "artifact_kind": "document",
-      "content_hash": "72116f413b30ebee79ca558f3c88ccdaa575f980df00599ac43f47b1d7be250c",
+      "content_hash": "67babfb40127f7fa97fc7cb1efc807db5bf6962df9601d4e5399916e3dc8b2cd",
       "id": "artifact:file:docs/decisions/aost-d-0001-stats-strength-and-intake-governance.md:fd35bd06c7",
       "path": "docs/decisions/AOST-D-0001-stats-strength-and-intake-governance.md",
       "source_record_id": "file:docs/decisions/aost-d-0001-stats-strength-and-intake-governance.md:fd35bd06c7",
@@ -1850,7 +1850,7 @@
     },
     {
       "artifact_kind": "document",
-      "content_hash": "3203720a572cab20c055e2596dab7102fc2067262bf8a6044b8b890f6fadf758",
+      "content_hash": "88dd342909904c8fab9c68b757e9f9c098707c918f59b03f4de4cdd237839238",
       "id": "artifact:file:docs/decisions/aost-d-0002-canonical-decision-lane.md:ceebad829c",
       "path": "docs/decisions/AOST-D-0002-canonical-decision-lane.md",
       "source_record_id": "file:docs/decisions/aost-d-0002-canonical-decision-lane.md:ceebad829c",
@@ -1858,7 +1858,7 @@
     },
     {
       "artifact_kind": "document",
-      "content_hash": "d4c357b5710c127cb88b546343424883c99dcb9471278fa67f8a35164a9ebb3c",
+      "content_hash": "2f44ee21dc9b94afd816853ed53df7f171ae766ff337240f38ef447d36d9ec83",
       "id": "artifact:file:docs/decisions/aost-d-0003-component-refresh-fixtures-are-not-live-state.md:20961813b7",
       "path": "docs/decisions/AOST-D-0003-component-refresh-fixtures-are-not-live-state.md",
       "source_record_id": "file:docs/decisions/aost-d-0003-component-refresh-fixtures-are-not-live-state.md:20961813b7",
@@ -1866,7 +1866,7 @@
     },
     {
       "artifact_kind": "document",
-      "content_hash": "0a70601a5fbac59cbe903d2903b63a2cd665831372a23057498a6b939bedac0c",
+      "content_hash": "1d7c0fd1b79ac80707c1ec3ed487c67f9f8336dce50beacd9fb0c8be2abeff16",
       "id": "artifact:file:docs/decisions/aost-d-0004-live-admission-requires-refresh-observation.md:02c9d238aa",
       "path": "docs/decisions/AOST-D-0004-live-admission-requires-refresh-observation.md",
       "source_record_id": "file:docs/decisions/aost-d-0004-live-admission-requires-refresh-observation.md:02c9d238aa",
@@ -1874,7 +1874,7 @@
     },
     {
       "artifact_kind": "document",
-      "content_hash": "bd155357b9682bb17e2bf94ee390a9bea8ab8ab28fd5c1dd9fb93bfc02e30beb",
+      "content_hash": "80082dbd9b41d5301606e442674b664d54285fcf9851e5e9f2ce88217e58c79a",
       "id": "artifact:file:docs/decisions/aost-d-0005-route-progression-semantic-receipts-are-not-numeric-live-state.md:2c87e51553",
       "path": "docs/decisions/AOST-D-0005-route-progression-semantic-receipts-are-not-numeric-live-state.md",
       "source_record_id": "file:docs/decisions/aost-d-0005-route-progression-semantic-receipts-are-not-numeric-live-state.md:2c87e51553",
@@ -1882,7 +1882,7 @@
     },
     {
       "artifact_kind": "document",
-      "content_hash": "d93247110164a12a8a5a72d94ddce56bb848457205855288ca25c854bc794111",
+      "content_hash": "8ff47a0881a77d9e5701e47f03e41de3328ec9532bf5da4a395d1cbc1c30d2bf",
       "id": "artifact:file:docs/decisions/aost-d-0006-runtime-closeout-wave-receipts-are-not-current-trial-live-state.md:6b404d83d8",
       "path": "docs/decisions/AOST-D-0006-runtime-closeout-wave-receipts-are-not-current-trial-live-state.md",
       "source_record_id": "file:docs/decisions/aost-d-0006-runtime-closeout-wave-receipts-are-not-current-trial-live-state.md:6b404d83d8",
@@ -1890,7 +1890,7 @@
     },
     {
       "artifact_kind": "document",
-      "content_hash": "e05fb4df56be15e432829fd5a3c6f2a1a6434e08b2ead6e9d47ea4b5c3f9c50e",
+      "content_hash": "48650484e7f7bb5e9c6ca78f6ae832505268751d5eb3f64d8612cdd45d110d41",
       "id": "artifact:file:docs/decisions/aost-d-0007-titan-reference-rosters-are-not-observed-swarm-activity.md:a6280ae040",
       "path": "docs/decisions/AOST-D-0007-titan-reference-rosters-are-not-observed-swarm-activity.md",
       "source_record_id": "file:docs/decisions/aost-d-0007-titan-reference-rosters-are-not-observed-swarm-activity.md:a6280ae040",
@@ -1898,7 +1898,7 @@
     },
     {
       "artifact_kind": "document",
-      "content_hash": "3a8604b9c5bc0a8080d502606b251d22f454cde97d1eb02f6fc5cb8d094b7f56",
+      "content_hash": "a257cc3fd94e86ad25327b7cb22f58239d440b35c8b8a37d332612fb187c3037",
       "id": "artifact:file:docs/decisions/aost-d-0008-retired-outputs-remain-cleanup-tombstones-not-active-stats.md:5e3665792f",
       "path": "docs/decisions/AOST-D-0008-retired-outputs-remain-cleanup-tombstones-not-active-stats.md",
       "source_record_id": "file:docs/decisions/aost-d-0008-retired-outputs-remain-cleanup-tombstones-not-active-stats.md:5e3665792f",
@@ -1906,7 +1906,7 @@
     },
     {
       "artifact_kind": "document",
-      "content_hash": "fa8194b51a3ca68dd156b3edb223a280e46c5e162db3a31ce73cbd2da69821b4",
+      "content_hash": "5f5746f770f968f1dbe928fb7a64e3355ca467d088ff26d9a4f80dae14b1079f",
       "id": "artifact:file:docs/decisions/aost-d-0009-retirement-reserves-catalog-slots-without-preserving-empty-mechanics.md:e21892670c",
       "path": "docs/decisions/AOST-D-0009-retirement-reserves-catalog-slots-without-preserving-empty-mechanics.md",
       "source_record_id": "file:docs/decisions/aost-d-0009-retirement-reserves-catalog-slots-without-preserving-empty-mechanics.md:e21892670c",
@@ -1914,7 +1914,7 @@
     },
     {
       "artifact_kind": "document",
-      "content_hash": "f07bc7f019cc30bc32e90a06c9bef697a51977bd4545448e2fde1abdce403b27",
+      "content_hash": "70a7509e0ef7fd757e5f77597a1ced6e1820d46c659f9daa8d62a5c814865874",
       "id": "artifact:file:docs/decisions/aost-d-0010-runtime-closeout-wave-snapshot-is-contract-history-not-active-observability.md:b9e3ca3c29",
       "path": "docs/decisions/AOST-D-0010-runtime-closeout-wave-snapshot-is-contract-history-not-active-observability.md",
       "source_record_id": "file:docs/decisions/aost-d-0010-runtime-closeout-wave-snapshot-is-contract-history-not-active-observability.md:b9e3ca3c29",
@@ -1922,7 +1922,7 @@
     },
     {
       "artifact_kind": "document",
-      "content_hash": "1f845c75628e68804629093c985fe1baf248c48e844c0947940b0f78a4858245",
+      "content_hash": "1c574dfa94e4db8fea588b6a68bd60494c34d6a6ce5accc7a58aa896b6741384",
       "id": "artifact:file:docs/decisions/aost-d-0011-antifragility-vector-remains-an-evidence-gated-incubator.md:0f8d071cc3",
       "path": "docs/decisions/AOST-D-0011-antifragility-vector-remains-an-evidence-gated-incubator.md",
       "source_record_id": "file:docs/decisions/aost-d-0011-antifragility-vector-remains-an-evidence-gated-incubator.md:0f8d071cc3",
@@ -1930,7 +1930,7 @@
     },
     {
       "artifact_kind": "document",
-      "content_hash": "e0e9b61b0afab1087a69ec979caaa790eed6061ce2b9c1cf9644f054d6cf1c36",
+      "content_hash": "262bb6841a8ef533d6cfd7afb314a05131d05fc876e813ba54df2eb8a7f7eca9",
       "id": "artifact:file:docs/decisions/readme.md:e5ec0e7030",
       "path": "docs/decisions/README.md",
       "source_record_id": "file:docs/decisions/readme.md:e5ec0e7030",
@@ -1938,7 +1938,7 @@
     },
     {
       "artifact_kind": "document",
-      "content_hash": "5acfcc9483c7a18f2d8d416957f11d58838d5da776e2354eccf19d14f4893aed",
+      "content_hash": "fba6003b59a496977832c5aa569049211b7e91a8cad6319a53da6129197bc505",
       "id": "artifact:file:docs/decisions/template.md:874770b824",
       "path": "docs/decisions/TEMPLATE.md",
       "source_record_id": "file:docs/decisions/template.md:874770b824",
@@ -2410,7 +2410,7 @@
     },
     {
       "artifact_kind": "document",
-      "content_hash": "f7a81c1a859852cbbe50cc3cdb084bad21ab0e8013e8d1059a797987b48746bb",
+      "content_hash": "a2418854dd50d598cc9b6dd17873cfe34a42fe0d905bae4034cb9a6647ddfe08",
       "id": "artifact:file:manifests/artifact_bundles/readme.md:96c90b3a70",
       "path": "manifests/artifact_bundles/README.md",
       "source_record_id": "file:manifests/artifact_bundles/readme.md:96c90b3a70",
@@ -3826,7 +3826,7 @@
     },
     {
       "artifact_kind": "document",
-      "content_hash": "4d7b0082ba3205ae85b92222971bf5062b36b961593523cda8133fcef5ec521d",
+      "content_hash": "e3ec4c9531a9e349b37bf6f13e93d313d1d9b02f7ad10e6ceff52d5320c0e9dd",
       "id": "artifact:file:mechanics/audit/parts/source-coverage/docs/source_coverage_summary.md:3b60baeeb2",
       "path": "mechanics/audit/parts/source-coverage/docs/SOURCE_COVERAGE_SUMMARY.md",
       "source_record_id": "file:mechanics/audit/parts/source-coverage/docs/source_coverage_summary.md:3b60baeeb2",
@@ -4002,7 +4002,7 @@
     },
     {
       "artifact_kind": "document",
-      "content_hash": "5fe5ce87d83823d075c3f018b8742ca076a7a9a041aef0d83d335b3771085998",
+      "content_hash": "9b92fd5b1b329733bf0a8302c234965e2feb3871244241e50299c64fe7932217",
       "id": "artifact:file:mechanics/boundary-bridge/parts/memory-owner-handoff/docs/memory_movement_summary.md:be6b11f42a",
       "path": "mechanics/boundary-bridge/parts/memory-owner-handoff/docs/MEMORY_MOVEMENT_SUMMARY.md",
       "source_record_id": "file:mechanics/boundary-bridge/parts/memory-owner-handoff/docs/memory_movement_summary.md:be6b11f42a",
@@ -4066,7 +4066,7 @@
     },
     {
       "artifact_kind": "document",
-      "content_hash": "c7ed135cf8c5a668eb69a198c7cc950de565b26efeba9d34f9bb213a2c43c7fc",
+      "content_hash": "2a9780799f798973ed12c4bfce375d477bc1bc508aed54ddfb26dbcc5a68ab0f",
       "id": "artifact:file:mechanics/experience/parts.md:66fbb26dd9",
       "path": "mechanics/experience/PARTS.md",
       "source_record_id": "file:mechanics/experience/parts.md:66fbb26dd9",
@@ -5730,7 +5730,7 @@
     },
     {
       "artifact_kind": "document",
-      "content_hash": "3384f1d2803b366f5696a42ee1857f488112f4cfb3575bce1a0c2f7db84e11ed",
+      "content_hash": "cc2e482ac1c62f6c21feb975e776fa6303a02f507686fd8f70cd74dc78077208",
       "id": "artifact:file:mechanics/recurrence/parts/component-refresh/docs/component_refresh_summaries.md:8d8af69fac",
       "path": "mechanics/recurrence/parts/component-refresh/docs/COMPONENT_REFRESH_SUMMARIES.md",
       "source_record_id": "file:mechanics/recurrence/parts/component-refresh/docs/component_refresh_summaries.md:8d8af69fac",
@@ -7130,7 +7130,7 @@
     },
     {
       "artifact_kind": "document",
-      "content_hash": "dae3ec5fc1d327efb9666e3ff88bced25da28d33ffb696ddcf0e542f7a6a135a",
+      "content_hash": "9566e031ecdd1a17c55a1c2544ae5b4fe088e77c903e9be701810240440dd3cd",
       "id": "artifact:file:stats/readme.md:6bac6d2ff5",
       "path": "stats/README.md",
       "source_record_id": "file:stats/readme.md:6bac6d2ff5",
@@ -7154,7 +7154,7 @@
     },
     {
       "artifact_kind": "document",
-      "content_hash": "8a31ac43318ce7c3cd530ce17b7cd9f0125be70df5f278ba01ad992bbb71e7a8",
+      "content_hash": "b3b46a64249a7394734c8f18dd1871cd84d836bc89c777533226fd788a8bc1c0",
       "id": "artifact:file:stats/intake-contract/receipt_abi.md:98674910d8",
       "path": "stats/intake-contract/RECEIPT_ABI.md",
       "source_record_id": "file:stats/intake-contract/receipt_abi.md:98674910d8",
@@ -7330,7 +7330,7 @@
     },
     {
       "artifact_kind": "document",
-      "content_hash": "18160b1cdfb05ef9111c319ab393b24e2c89317c2ae3303a9914b19f9ad32dca",
+      "content_hash": "c2f72e3731743682f8fbe87533f1573e8870595f890dde1fc2adfe710c5dde7f",
       "id": "artifact:file:stats/read-models/readme.md:5ba4a92471",
       "path": "stats/read-models/README.md",
       "source_record_id": "file:stats/read-models/readme.md:5ba4a92471",
@@ -7634,7 +7634,7 @@
     },
     {
       "artifact_kind": "test",
-      "content_hash": "239d70b99e728ec66f895214fe19aae8a8489bd3ba7d9d39843740dfddab5ca4",
+      "content_hash": "afef98259e8cef2487d3921f931a26e35597f0ee59b672fde32e46767c46bdd6",
       "id": "artifact:file:tests/test_docs_routes.py:2789463ffa",
       "path": "tests/test_docs_routes.py",
       "source_record_id": "file:tests/test_docs_routes.py:2789463ffa",
@@ -7666,7 +7666,7 @@
     },
     {
       "artifact_kind": "test",
-      "content_hash": "a5fd3ed29a953bc0869b1f950ed5568b58f94d709eacdbd7b381970f7274eeb2",
+      "content_hash": "be00e157196e7be689234c27739045a3b999e82f60c11f2777da42a7f748757b",
       "id": "artifact:file:tests/test_roadmap_parity.py:574915dc67",
       "path": "tests/test_roadmap_parity.py",
       "source_record_id": "file:tests/test_roadmap_parity.py:574915dc67",
@@ -7699,7 +7699,7 @@
   ],
   "index_identity": {
     "artifact_kind": "repository_artifact_index",
-    "content_digest": "9124d2de596925b5e770e6282dd5d0846173162a014f9a08366eb6619074beaf",
+    "content_digest": "4d88ee074172cd0906152d626065396d9c77d36affc2fa4b10d790be0f3ec02c",
     "index_kind": "artifact",
     "local_id": "index:repo-local:artifacts",
     "schema_ref": "aoa-kag:schemas/repo-local-kag-repository-index.schema.json"
@@ -7723,7 +7723,7 @@
   },
   "schema_version": "aoa-repo-local-kag-repository-index-v1",
   "source_index": {
-    "content_digest": "7ad08a7f16dc65409ffb1c4bd26ed1c08f8221997df23181e8418ce9ec5e8439",
+    "content_digest": "1eb3d7d2d6f9a843d511fd727a28fc6f5006affd493f5716c8841c0665854963",
     "local_id": "index:repo-local:source-surfaces",
     "path": "kag/indexes/source_surface_index.json"
   },

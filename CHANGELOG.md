@@ -36,6 +36,10 @@ Tracking starts with the first public release-prep baseline for this repository.
 
 ### Changed
 
+- Centralized active validation and test commands in owner `AGENTS.md`, part
+  `VALIDATION.md`, and the primary release, live-use, and MCP guides. Other
+  active Markdown now routes to those owners, with a repo-wide docs guard
+  preventing command blocks from drifting back into weaker surfaces.
 - Replaced named Source Coverage and Method Growth proof-route assertions with
   one topology-derived read-model rule: every part that declares a localized
   test district must contain focused tests and expose at least one of them
@@ -272,7 +276,7 @@ Tracking starts with the first public release-prep baseline for this repository.
 
 ### Validation
 
-- `python scripts/release_check.py`
+- The repository release gate passed for this release.
 
 ### Notes
 
@@ -303,7 +307,7 @@ Tracking starts with the first public release-prep baseline for this repository.
 
 ### Validation
 
-- `python scripts/release_check.py`
+- The repository release gate passed for this release.
 
 ### Notes
 
@@ -343,7 +347,7 @@ Tracking starts with the first public release-prep baseline for this repository.
 
 ### Validation
 
-- `python scripts/release_check.py`
+- The repository release gate passed for this release.
 
 ### Notes
 
@@ -397,9 +401,8 @@ This changelog entry uses the release-prep merge date.
 
 ### Validation
 
-- `python scripts/build_views.py --check`
-- `python scripts/validate_repo.py`
-- `python -m pytest -q tests`
+- Generated parity, repository validation, and the repository test suite passed
+  for this release.
 
 ### Notes
 

@@ -20,7 +20,7 @@ planning thoughts route to their owning surfaces instead.
 | output | canonical decision note, generated lookup indexes, and route back to the owning stats surface or upstream source owner |
 | owner | `docs/decisions/AGENTS.md` for lane law; decision notes for rationale; generated indexes for lookup only |
 | next route | owning generated/schema/config/example/script/test surface first, then nearest route card, `README.md`, `ROADMAP.md`, `docs/BOUNDARIES.md`, `docs/ARCHITECTURE.md`, generated lookup indexes, or the affected source owner |
-| validation | `python scripts/generate_decision_indexes.py --check` and `python scripts/validate_decision_records.py`, plus the owning validator for the changed surface |
+| validation | [`AGENTS.md#verify`](AGENTS.md#verify), plus the owning `AGENTS.md` or `VALIDATION.md` for the changed surface |
 
 ## Authority
 
@@ -62,17 +62,7 @@ metadata:
 - [Decisions by source lane](indexes/by-source-lane.md)
 - [Decisions by validation or guard family](indexes/by-guard.md)
 
-Regenerate the read models after decision metadata changes:
-
-```bash
-python scripts/generate_decision_indexes.py
-```
-
-Check generated parity before closeout:
-
-```bash
-python scripts/generate_decision_indexes.py --check
-```
+Generation and parity commands stay in [`AGENTS.md#verify`](AGENTS.md#verify).
 
 ## Lookup Route
 
@@ -112,4 +102,5 @@ Prefer short titles that name the stats route, not the whole debate.
 
 Start from [TEMPLATE.md](TEMPLATE.md) for new decisions. Keep notes concise, but
 include enough context, options, rationale, consequences, source surfaces, and
-validation for a future agent to avoid repeating the same route question.
+validation routes for a future agent to avoid repeating the same route
+question.
