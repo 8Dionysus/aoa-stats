@@ -62,7 +62,7 @@
       "repo_id": "aoa-agents",
       "workspace_route": "workspace:aoa-agents",
       "owner_boundary_ref": "aoa-agents:AGENTS.md",
-      "classification": "requires_port",
+      "classification": "implemented",
       "port_ref": "aoa-agents:stats/port.manifest.json"
     },
     {
