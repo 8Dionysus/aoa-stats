@@ -2340,7 +2340,7 @@
   ],
   "index_identity": {
     "artifact_kind": "repository_assertion_index",
-    "content_digest": "d99d02cb06d01217dbc3f1af947d5f6c2933ac144dcd0584551e8940c0f2d8b9",
+    "content_digest": "6ff9232d4469205a52ffec01bcca07d47c603fbf487f3c90f9ba24f5054db699",
     "index_kind": "assertion",
     "local_id": "index:repo-local:assertions",
     "schema_ref": "aoa-kag:schemas/repo-local-kag-repository-index.schema.json"
@@ -2430,7 +2430,7 @@
   },
   "schema_version": "aoa-repo-local-kag-repository-index-v2",
   "source_index": {
-    "content_digest": "4b033ccb46e73b288c52e955fdf2b14d9b22cd80077fd757d5d38dc48b057add",
+    "content_digest": "529131865ee200611631a66a1d968b4fa6c10b3a0f0dce5b31eb23b64a83f960",
     "local_id": "index:repo-local:source-surfaces",
     "path": "kag/indexes/source_surface_index.json"
   },
