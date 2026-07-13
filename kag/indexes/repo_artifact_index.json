@@ -1738,7 +1738,7 @@
     },
     {
       "artifact_kind": "document",
-      "content_hash": "12c1c516fafe754adf221a7cdc90832ef05d2ca09b25875ce1feed6249d65108",
+      "content_hash": "8797bc92030bf8e00e34de205b383e539878cf9a17965fc30ad914d06ab23a3e",
       "id": "artifact:file:changelog.md:06572a96a5",
       "path": "CHANGELOG.md",
       "source_record_id": "file:changelog.md:06572a96a5",
@@ -1762,7 +1762,7 @@
     },
     {
       "artifact_kind": "document",
-      "content_hash": "239a425cf58c6f8471ca4bc9bb881c4ce698bb722adfbb8f986521646046a137",
+      "content_hash": "b323bf4f8aad51958743f8531ae75740ed227dd77130710ab68dd6f7600c9f11",
       "id": "artifact:file:design.md:3dc5dd454e",
       "path": "DESIGN.md",
       "source_record_id": "file:design.md:3dc5dd454e",
@@ -7602,7 +7602,7 @@
     },
     {
       "artifact_kind": "document",
-      "content_hash": "98b729a132d509b27c86a5ba6fd9616cc0b8f17ef7155989c5f83e444bed8e24",
+      "content_hash": "fa9f6232942b45833a726b0c03940bc29fd5e98fcbff789d598d18912bd4636c",
       "id": "artifact:file:tests/agents.md:712d5f0348",
       "path": "tests/AGENTS.md",
       "source_record_id": "file:tests/agents.md:712d5f0348",
@@ -7618,7 +7618,7 @@
     },
     {
       "artifact_kind": "test",
-      "content_hash": "0cf7ff8ea6ba720d1732abca8ab9a6e864f7eff111e119174659ff8967bac483",
+      "content_hash": "5c315a3c235a327df57b6e0dc51dee564a78142e07ec504182b661150e21985b",
       "id": "artifact:file:tests/test_build_views.py:760ef645f6",
       "path": "tests/test_build_views.py",
       "source_record_id": "file:tests/test_build_views.py:760ef645f6",
@@ -7699,7 +7699,7 @@
   ],
   "index_identity": {
     "artifact_kind": "repository_artifact_index",
-    "content_digest": "890c63544b0f36201bd004c67fa36bf5e6dd3a2a35e313ffd309ed2642fa714b",
+    "content_digest": "baa4e0ddafcd01044e4bde31a77174b098bbd4d738351f691132eefcae5105bb",
     "index_kind": "artifact",
     "local_id": "index:repo-local:artifacts",
     "schema_ref": "aoa-kag:schemas/repo-local-kag-repository-index.schema.json"
@@ -7723,7 +7723,7 @@
   },
   "schema_version": "aoa-repo-local-kag-repository-index-v1",
   "source_index": {
-    "content_digest": "f07895e13e8163a29d1c743638572607b5294519f234ca6fbbba47f8b5ebf33f",
+    "content_digest": "1bda61597106c2de88cb530504914639551e97e48f1e384bd8e55111415ac105",
     "local_id": "index:repo-local:source-surfaces",
     "path": "kag/indexes/source_surface_index.json"
   },

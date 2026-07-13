@@ -114,6 +114,10 @@ Shared implementation does not imply shared proof ownership:
 - root tests prove repo-wide fan-out, public contracts, and compatibility
   integration rather than operation-specific branches
 
+The root build integration derives its expected output set from active profiles
+and checks complete committed-byte parity. Field-level meaning, example values,
+and projection invariants stay with the mechanic that owns each output.
+
 Compatibility applies to evidenced interfaces. A root CLI, builder, or alias
 may remain stable while uncalled helper symbols are removed after current
 caller, external-contract, and owner-part proof searches find none.
