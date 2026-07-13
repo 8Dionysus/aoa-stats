@@ -21,6 +21,7 @@ if str(SRC_ROOT) not in sys.path:
 from aoa_stats_builder.measurement import (  # noqa: E402
     validate_contract_semantics,
     validate_packet_semantics,
+    validate_packet_set,
 )
 
 MEASUREMENT_SCHEMA_PATH = Path(
@@ -295,6 +296,121 @@ def validate_port_payload(
     return issues
 
 
+def _owner_root_for_port(port_path: Path) -> Path:
+    if port_path.name == "port.manifest.json" and port_path.parent.name == "stats":
+        return port_path.parent.parent.resolve()
+    return port_path.parent.resolve()
+
+
+def _resolve_owner_packet_ref(
+    port_path: Path,
+    packet_ref: str,
+    *,
+    label: str,
+) -> tuple[Path | None, str | None]:
+    owner_root = _owner_root_for_port(port_path)
+    candidate = (owner_root / packet_ref).resolve()
+    try:
+        candidate.relative_to(owner_root)
+    except ValueError:
+        return None, f"{label}: packet_ref {packet_ref!r} escapes owner root"
+    return candidate, None
+
+
+def _validate_port_packets(
+    port_path: Path,
+    port: Mapping[str, Any],
+    *,
+    packet_schema: Mapping[str, Any],
+    registry: Registry[Any],
+) -> list[str]:
+    label = str(port_path)
+    issues: list[str] = []
+    owner_root = _owner_root_for_port(port_path)
+    try:
+        port_ref = port_path.relative_to(owner_root).as_posix()
+    except ValueError:
+        port_ref = port_path.name
+
+    measurements = port.get("measurements")
+    measurement_by_id: dict[str, tuple[int, Mapping[str, Any]]] = {}
+    if isinstance(measurements, list):
+        for index, measurement in enumerate(measurements):
+            if not isinstance(measurement, Mapping):
+                continue
+            measurement_id = measurement.get("measurement_id")
+            if isinstance(measurement_id, str):
+                measurement_by_id[measurement_id] = (index, measurement)
+
+    exports = port.get("exports")
+    if not isinstance(exports, list):
+        return issues
+    for export_index, export in enumerate(exports):
+        if not isinstance(export, Mapping):
+            continue
+        posture = export.get("posture")
+        if posture not in {"reference", "live"}:
+            continue
+        measurement_entry = measurement_by_id.get(export.get("measurement_id"))
+        if measurement_entry is None:
+            continue
+        measurement_index, contract = measurement_entry
+        expected_contract_ref = f"{port_ref}#/measurements/{measurement_index}"
+        expected_contract_refs = {expected_contract_ref}
+        owner_repo = port.get("owner_repo")
+        if isinstance(owner_repo, str) and owner_repo:
+            expected_contract_refs.add(f"{owner_repo}:{expected_contract_ref}")
+        packets: list[Mapping[str, Any]] = []
+        for packet_ref in export.get("packet_refs", []):
+            if not isinstance(packet_ref, str) or not _portable_ref(packet_ref):
+                continue
+            packet_path, resolve_error = _resolve_owner_packet_ref(
+                port_path,
+                packet_ref,
+                label=f"{label}:exports[{export_index}]",
+            )
+            if resolve_error:
+                issues.append(resolve_error)
+                continue
+            assert packet_path is not None
+            packet, packet_error = _load_object(packet_path)
+            if packet_error:
+                issues.append(packet_error)
+                continue
+            assert packet is not None
+            issues.extend(
+                _schema_issues(
+                    packet_schema,
+                    packet,
+                    label=str(packet_path),
+                    registry=registry,
+                )
+            )
+            if packet.get("contract_ref") not in expected_contract_refs:
+                expected_values = ", ".join(
+                    repr(value) for value in sorted(expected_contract_refs)
+                )
+                issues.append(
+                    f"{packet_path}: contract_ref must equal one of {expected_values}"
+                )
+            packet_posture = packet.get("posture")
+            packet_live_state = (
+                packet_posture.get("live_state")
+                if isinstance(packet_posture, Mapping)
+                else None
+            )
+            if packet_live_state != posture:
+                issues.append(
+                    f"{packet_path}: posture.live_state must match export posture {posture!r}"
+                )
+            packets.append(packet)
+        issues.extend(
+            f"{label}:exports[{export_index}]: {issue}"
+            for issue in validate_packet_set(contract, packets)
+        )
+    return issues
+
+
 def validate(
     repo_root: Path = REPO_ROOT,
     *,
@@ -327,6 +443,14 @@ def validate(
                 port,
                 label=str(path),
                 port_schema=schemas[PORT_SCHEMA_PATH.as_posix()],
+                registry=registry,
+            )
+        )
+        issues.extend(
+            _validate_port_packets(
+                path,
+                port,
+                packet_schema=schemas[PACKET_SCHEMA_PATH.as_posix()],
                 registry=registry,
             )
         )

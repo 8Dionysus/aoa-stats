@@ -16,6 +16,13 @@ A declaration-only measurement is honest when no producer exists. It is not a
 live statistic. Reference and live exports must point to owner evidence and
 retain missingness, freshness, privacy, and authority ceilings.
 
+Port validation follows each repository-relative packet ref from the local
+manifest, checks that the path stays inside the owner root, validates packet
+shape and semantics against the embedded measurement contract, and requires
+the packet's contract pointer and live/reference posture to match its export.
+The local manifest therefore remains the single contract source; owners do not
+need duplicate standalone contract files.
+
 ## Inventory
 
 `owner-inventory.json` is the canonical repo-level coverage map and validates
