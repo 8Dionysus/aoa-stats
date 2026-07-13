@@ -93,12 +93,8 @@ The shared schema enum only carries active kinds.
 
 ## Verification
 
-Run:
-
-```bash
-python scripts/validate_receipt_abi.py
-python -m pytest -q mechanics/boundary-bridge/parts/receipt-abi-crossing/tests
-```
+Use [`AGENTS.md#verify`](AGENTS.md#verify) and the receipt crossing's
+[`VALIDATION.md`](../../mechanics/boundary-bridge/parts/receipt-abi-crossing/VALIDATION.md).
 
 Those checks cover:
 

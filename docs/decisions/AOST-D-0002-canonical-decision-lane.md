@@ -83,13 +83,6 @@ actually mean.
 
 ## Validation
 
-Run:
-
-```bash
-python scripts/generate_decision_indexes.py
-python scripts/generate_decision_indexes.py --check
-python scripts/validate_decision_records.py
-python scripts/validate_nested_agents.py
-python scripts/validate_repo.py
-python -m pytest -q tests
-```
+Decision-lane checks are owned by [`AGENTS.md#verify`](AGENTS.md#verify).
+Repository checks route through the root
+[`AGENTS.md#verify`](../../AGENTS.md#verify) gate.

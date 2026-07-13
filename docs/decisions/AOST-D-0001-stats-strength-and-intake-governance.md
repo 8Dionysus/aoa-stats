@@ -52,7 +52,7 @@ stress family exists.
 
 ## Verification
 
-- `python scripts/validate_receipt_abi.py`
-- `python scripts/validate_downstream_canaries.py`
-- `python scripts/validate_repo.py`
-- `python -m pytest -q tests`
+Decision-lane checks are owned by [`AGENTS.md#verify`](AGENTS.md#verify).
+Affected receipt, canary, and repository checks route through their owning
+`AGENTS.md` or `VALIDATION.md`, then the root
+[`AGENTS.md#verify`](../../AGENTS.md#verify) gate.

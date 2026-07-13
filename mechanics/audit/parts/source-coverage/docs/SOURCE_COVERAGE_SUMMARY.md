@@ -58,13 +58,7 @@ standalone Runtime Closeout projection are absent from live admission.
 
 ## Verification
 
-Use:
-
-```bash
-python scripts/build_views.py --check
-python scripts/refresh_live_stats.py
-python -m pytest -q mechanics/audit/parts/source-coverage/tests/test_source_coverage.py
-```
+Use the part-owned [`VALIDATION.md`](../VALIDATION.md).
 
 The committed generated file keeps the deterministic repo posture.
 The live refresh path mirrors it under `state/generated/`. The part-local suite

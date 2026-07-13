@@ -73,10 +73,11 @@ def test_roadmap_routes_exact_state_to_authoritative_surfaces() -> None:
         "docs/ARCHITECTURE.md",
         "stats/surface-catalog/SURFACE_STRENGTH_MODEL.md",
         "docs/decisions/README.md",
+        "docs/RELEASING.md",
     )
     for route in current_routes:
         assert (REPO_ROOT / route).exists(), route
         assert route in roadmap
 
     assert "exact current state" in roadmap
-    assert "python scripts/release_check.py" in roadmap
+    assert "AGENTS.md#verify" in roadmap

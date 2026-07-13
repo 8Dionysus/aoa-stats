@@ -48,12 +48,7 @@ contributors must not infer from this decision.
 
 ## Validation
 
-Run:
-
-```bash
-python scripts/generate_decision_indexes.py
-python scripts/generate_decision_indexes.py --check
-python scripts/validate_decision_records.py
-```
-
-Also run the validator for the owning surface the decision describes.
+Link [`AGENTS.md#verify`](AGENTS.md#verify) and the owning `AGENTS.md` or
+`VALIDATION.md` for every surface the decision describes. Record the result in
+the change or release evidence instead of copying command blocks into the
+decision note.

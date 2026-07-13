@@ -2,10 +2,30 @@ from __future__ import annotations
 
 import ast
 import json
+import re
+import subprocess
 from pathlib import Path
 
 
 REPO_ROOT = Path(__file__).resolve().parents[1]
+
+PRIMARY_COMMAND_DOCS = {
+    "docs/RELEASING.md",
+    (
+        "mechanics/recurrence/parts/live-receipt-refresh/docs/"
+        "LIVE_SESSION_USE.md"
+    ),
+    "stats/surface-catalog/CODEX_MCP.md",
+}
+SHELL_FENCE_PATTERN = re.compile(
+    r"^ {0,3}```(?:bash|console|sh|shell)(?:\s+.*)?$", re.IGNORECASE | re.MULTILINE
+)
+REPO_COMMAND_PATTERN = re.compile(
+    r"^[ \t]*(?:[-*][ \t]+)?`?(?:"
+    r"python[ \t]+(?:-m[ \t]+(?:json\.tool|pytest|unittest)\b|(?:mechanics|scripts)/)"
+    r"|pytest\b|uv[ \t]+run[ \t]+pytest\b)",
+    re.IGNORECASE | re.MULTILINE,
+)
 
 
 def read_text(relative_path: str) -> str:
@@ -23,6 +43,55 @@ def assigned_literal(relative_path: str, name: str) -> object:
         ):
             return ast.literal_eval(node.value)
     raise AssertionError(f"{relative_path}: assignment {name} is missing")
+
+
+def tracked_markdown_paths() -> list[Path]:
+    result = subprocess.run(
+        ["git", "ls-files", "--", "*.md"],
+        cwd=REPO_ROOT,
+        check=True,
+        capture_output=True,
+        text=True,
+    )
+    return [Path(line) for line in result.stdout.splitlines() if line]
+
+
+def is_active_command_owner(relative_path: Path) -> bool:
+    route = relative_path.as_posix()
+    if relative_path.name in {"AGENTS.md", "VALIDATION.md"}:
+        return True
+    return route in PRIMARY_COMMAND_DOCS
+
+
+def is_active_repo_doc(relative_path: Path) -> bool:
+    route = relative_path.as_posix()
+    return (
+        not route.startswith(".agents/skills/")
+        and not route.startswith("docs/history/")
+        and "legacy" not in relative_path.parts
+    )
+
+
+def test_active_command_blocks_stay_with_working_or_validation_owners() -> None:
+    violations: list[str] = []
+
+    for relative_path in tracked_markdown_paths():
+        if not is_active_repo_doc(relative_path) or is_active_command_owner(
+            relative_path
+        ):
+            continue
+        content = read_text(relative_path.as_posix())
+        if SHELL_FENCE_PATTERN.search(content):
+            violations.append(f"{relative_path}: shell command block")
+        for match in REPO_COMMAND_PATTERN.finditer(content):
+            line = content.count("\n", 0, match.start()) + 1
+            violations.append(f"{relative_path}:{line}: repo command")
+
+    assert not violations, (
+        "active Markdown must route runnable repository commands to AGENTS.md, "
+        "VALIDATION.md, or the primary release/live/MCP guide:\n"
+        + "\n".join(violations)
+    )
 
 
 def test_readme_and_docs_map_route_current_direction_through_roadmap() -> None:

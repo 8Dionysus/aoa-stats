@@ -83,6 +83,5 @@ remain weaker than source-owned rollout history and rollback decisions.
 
 ## Release gate
 
-```bash
-python scripts/release_check.py
-```
+Release commands stay in [`docs/RELEASING.md`](docs/RELEASING.md); the normal
+repository gate stays in [`AGENTS.md#verify`](AGENTS.md#verify).

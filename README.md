@@ -72,32 +72,17 @@ machine-readable inventory and source-family crosswalk live in
 [`mechanics/topology.json`](mechanics/topology.json). The root README does not
 replay that changing part inventory.
 
-## Build and verify
+## Build, live use, and verification
 
-Install development dependencies, then run:
+Use the working gate in [`AGENTS.md#verify`](AGENTS.md#verify), then follow the
+nearest changed family's `AGENTS.md` and mechanic part's `VALIDATION.md`.
+Script-specific working guidance stays in
+[`scripts/AGENTS.md`](scripts/AGENTS.md).
 
-```bash
-python scripts/build_views.py --check
-python scripts/validate_stats_source_home.py
-python scripts/validate_mechanics_topology.py
-python scripts/validate_repo.py
-python -m pytest -q tests mechanics
-```
-
-To build from the checked receipt fixture:
-
-```bash
-python scripts/build_views.py \
-  --input stats/intake-contract/examples/session_harvest_family.receipts.example.json \
-  --output-dir /tmp/aoa-stats-generated
-```
-
-To inspect or refresh registered owner-local feeds:
-
-```bash
-python scripts/check_live_publishers.py
-python scripts/refresh_live_stats.py
-```
+For registered owner-local feeds and watcher use, follow the
+[`live-receipt-refresh` operator guide](mechanics/recurrence/parts/live-receipt-refresh/docs/LIVE_SESSION_USE.md)
+and its adjacent
+[`VALIDATION.md`](mechanics/recurrence/parts/live-receipt-refresh/VALIDATION.md).
 
 The active registry and watcher templates live in
 `mechanics/recurrence/parts/live-receipt-refresh/`. Local refresh writes under
@@ -126,8 +111,5 @@ For read-only MCP use, follow
 
 Use [`CONTRIBUTING.md`](CONTRIBUTING.md),
 [`docs/RELEASING.md`](docs/RELEASING.md), and
-[`CHANGELOG.md`](CHANGELOG.md). The complete release gate is:
-
-```bash
-python scripts/release_check.py
-```
+[`CHANGELOG.md`](CHANGELOG.md). Release commands stay in the release guide;
+the normal repository gate stays in [`AGENTS.md#verify`](AGENTS.md#verify).

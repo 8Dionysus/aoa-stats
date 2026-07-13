@@ -145,14 +145,7 @@ shapes without inventing publishers or proof events.
 
 ## Validation
 
-Run:
-
-```bash
-python scripts/generate_decision_indexes.py
-python scripts/generate_decision_indexes.py --check
-python scripts/validate_decision_records.py
-python scripts/validate_stats_source_home.py
-python scripts/validate_mechanics_topology.py
-python scripts/build_views.py --check
-python -m pytest -q mechanics/method-growth/parts/candidate-lineage/tests mechanics/method-growth/parts/supersession-pruning/tests mechanics/boundary-bridge/parts/memory-owner-handoff/tests mechanics/antifragility/parts/stress-recovery-windows/tests mechanics/recurrence/parts/live-receipt-refresh/tests tests/test_summary_surface_catalog.py
-```
+Decision-lane checks are owned by [`AGENTS.md#verify`](AGENTS.md#verify).
+Affected source-home and mechanic checks route through their owning
+`AGENTS.md` or `VALIDATION.md`, then the root
+[`AGENTS.md#verify`](../../AGENTS.md#verify) gate.
