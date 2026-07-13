@@ -153,7 +153,7 @@
       "repo_id": "aoa-techniques",
       "workspace_route": "workspace:aoa-techniques",
       "owner_boundary_ref": "aoa-techniques:AGENTS.md",
-      "classification": "requires_port",
+      "classification": "implemented",
       "port_ref": "aoa-techniques:stats/port.manifest.json"
     },
     {
