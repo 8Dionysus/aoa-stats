@@ -46,6 +46,9 @@ Tracking starts with the first public release-prep baseline for this repository.
 
 ### Changed
 
+- Marked the `aoa-evals`, `aoa-kag`, and `aoa-memo` owner-local stats ports as
+  implemented after their landings and clarified the shared-validator
+  dependency modes proven by those pilots.
 - Make local-port validation resolve reference and live packet exports from the
   owner root, validate them against the embedded measurement contract, and
   reject missing or escaping paths, false contract pointers, and export-posture
