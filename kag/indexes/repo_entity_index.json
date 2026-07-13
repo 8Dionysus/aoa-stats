@@ -620,7 +620,7 @@
     {"anchor_ids":["aoa:aoa-stats:anchor:fd802da95bae9d5514ff400d"],"entity_kind":"directory","id":"aoa:aoa-stats:entity:ecf888d1347d956c605f3ba7","label":"manifests","provenance_ref":"deterministic","semantic_key":"directory:manifests","source_digest":"7766a92dc25842e0cfba9c4809abb906d03865116a2d640e7c2f4b976f6919b3","source_record_ids":["aoa:aoa-stats:artifact:96c90b3a70f98388902bcd7c"],"temporal_ref":"current","trust_ref":"deterministic"},
     {"anchor_ids":["aoa:aoa-stats:anchor:8422333627ccad2e78bcff43"],"entity_kind":"directory","id":"aoa:aoa-stats:entity:edb289c33318ce7642969fde","label":"aoa-core-logic-boundary","provenance_ref":"deterministic","semantic_key":"directory:.agents/skills/aoa-core-logic-boundary","source_digest":"75ff753a0adf97c4d05d25d641b3b8d01e1cca87359ac939a28bc1aca8360b93","source_record_ids":["aoa:aoa-stats:artifact:71414f1d567fc825afd0a25c"],"temporal_ref":"current","trust_ref":"deterministic"},
     {"anchor_ids":["aoa:aoa-stats:anchor:bf14a94351f2db5665cab65a"],"entity_kind":"directory","id":"aoa:aoa-stats:entity:ee31b14a9260b757a7f0773e","label":"examples","provenance_ref":"deterministic","semantic_key":"directory:.agents/skills/aoa-session-self-repair/examples","source_digest":"9de8bfa1bbc184664b5ac56ae0e3ec33b9e43f3b084a15915d0e105e6338acfc","source_record_ids":["aoa:aoa-stats:artifact:171636e3fbbedaa25f5eb4ab"],"temporal_ref":"current","trust_ref":"deterministic"},
-    {"anchor_ids":["aoa:aoa-stats:anchor:4f05a14ed22fa808d9ca31c5"],"entity_kind":"directory","id":"aoa:aoa-stats:entity:f019620edd42955bd2ad859f","label":"workflows","provenance_ref":"deterministic","semantic_key":"directory:.github/workflows","source_digest":"b1c921cb0eeda22caad52ee2c6196efa2222f9e1abf15e69310d85bd66b96c09","source_record_ids":["aoa:aoa-stats:artifact:a5c0f08bc43f53a0451cad4a"],"temporal_ref":"current","trust_ref":"deterministic"},
+    {"anchor_ids":["aoa:aoa-stats:anchor:4f05a14ed22fa808d9ca31c5"],"entity_kind":"directory","id":"aoa:aoa-stats:entity:f019620edd42955bd2ad859f","label":"workflows","provenance_ref":"deterministic","semantic_key":"directory:.github/workflows","source_digest":"5b6572b381de3da22be5c5700d3c096ee2745104183e45b400cb3aeacca00fd4","source_record_ids":["aoa:aoa-stats:artifact:a5c0f08bc43f53a0451cad4a"],"temporal_ref":"current","trust_ref":"deterministic"},
     {"anchor_ids":["aoa:aoa-stats:anchor:c4b3d3166616043801192422"],"entity_kind":"directory","id":"aoa:aoa-stats:entity:f05a9bbe3abc8b03e961aec2","label":"docs","provenance_ref":"deterministic","semantic_key":"directory:mechanics/recurrence/parts/live-receipt-refresh/docs","source_digest":"6b2520e0d31007538c475ef93f25b39aa333cc6af2495d3e68ea4ef18015563e","source_record_ids":["aoa:aoa-stats:artifact:49e97d0c8838ee3109ac10a4"],"temporal_ref":"current","trust_ref":"deterministic"},
     {"anchor_ids":["aoa:aoa-stats:anchor:ec7bb997b4766d3046557f7d"],"entity_kind":"directory","id":"aoa:aoa-stats:entity:f153453f6ddc123a054fdbc7","label":"docs","provenance_ref":"deterministic","semantic_key":"directory:mechanics/recurrence/parts/component-refresh/docs","source_digest":"3c62c123795331b02488070926382ef33fdd500ca44af2dbc24489aa286375e1","source_record_ids":["aoa:aoa-stats:artifact:8d8af69facc63b47753efffc"],"temporal_ref":"current","trust_ref":"deterministic"},
     {"anchor_ids":["aoa:aoa-stats:anchor:386f7f64dbb806423eb4b37e"],"entity_kind":"directory","id":"aoa:aoa-stats:entity:f2afd2ff037caa398b0e0665","label":"references","provenance_ref":"deterministic","semantic_key":"directory:.agents/skills/aoa-session-donor-harvest/references","source_digest":"09c4261828ff28297ea0a364e67de4de635df7b4339f7ee72d8299b4185bb34c","source_record_ids":["aoa:aoa-stats:artifact:18e4d7b9ab04bf529f3f4af7"],"temporal_ref":"current","trust_ref":"deterministic"},
@@ -2433,7 +2433,7 @@
   ],
   "index_identity": {
     "artifact_kind": "repository_entity_index",
-    "content_digest": "a12ff0692cc656eddf7d95f401dda0fe12db6c07c417447d632577ac0614f539",
+    "content_digest": "8e87ff8956f75fd25410deb047b987655106d5a37f1197fd17cec62583eeb866",
     "index_kind": "entity",
     "local_id": "index:repo-local:entities",
     "schema_ref": "aoa-kag:schemas/repo-local-kag-repository-index.schema.json"
@@ -2518,7 +2518,7 @@
   },
   "schema_version": "aoa-repo-local-kag-repository-index-v2",
   "source_index": {
-    "content_digest": "16c8ebd5324a8a46d29d77296b62627d096213c94679145cc75506413210e0b3",
+    "content_digest": "7904dd7aaf9662c29b8c1314a6a0a4c2a81d4aabcc83fd549246a06bb7b80aac",
     "local_id": "index:repo-local:source-surfaces",
     "path": "kag/indexes/source_surface_index.json"
   },
