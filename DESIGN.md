@@ -100,6 +100,10 @@ the source manifest, mechanics topology, and focused part proof. A hand-picked
 list of family or part documents inside a root validator is another mutable
 inventory and is not authoritative.
 
+Mechanic package activation follows the same single-source rule. The topology
+owns the machine-readable package set, the root directory materializes it, and
+tests prove parity without freezing current package names in another constant.
+
 The root roadmap is a sequencing surface, not another inventory. It may name
 durable priorities and the alternating stats/mechanics rhythm, while exact
 surface state, operation membership, and shipped chronology remain with

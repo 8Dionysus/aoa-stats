@@ -77,6 +77,11 @@ text inventory. Stats-family membership comes from the source manifest and
 mechanic membership from topology and part validation; do not copy selected
 family or part docs into a root validator constant.
 
+Apply the same rule to mechanic package membership. The topology activation
+map, active package records, and materialized root directories must agree;
+tests and route docs do not carry a second fixed package roster as machine
+truth.
+
 Operation payload lives under the nearest mechanic part. Root `schemas/` and
 `generated/` remain stable public districts. Root `scripts/` and `tests/`
 keep only public, compatibility, or repo-wide surfaces. Other root districts

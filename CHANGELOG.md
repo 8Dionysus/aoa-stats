@@ -36,6 +36,10 @@ Tracking starts with the first public release-prep baseline for this repository.
 
 ### Changed
 
+- Removed the hand-maintained mechanic package roster from topology tests.
+  Package activation now proves non-empty parity between the canonical
+  topology activation map, active package records, and materialized root
+  directories while the mechanics README remains a human route atlas.
 - Removed fixed non-catalog operation counts from source-home and mechanics
   topology proof while preserving non-empty inventory, unique record binding,
   schema validation, and exact record/manifest/part reciprocity. A functional

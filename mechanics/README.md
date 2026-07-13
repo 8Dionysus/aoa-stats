@@ -14,6 +14,10 @@ find which operation owns its payload, validation, and compatibility posture.
 
 ## Active packages
 
+This table is a human route atlas. Exact active membership is owned by
+`topology.json` and checked against the materialized package directories; do
+not use this overview as a second machine registry.
+
 | Package | Local responsibility |
 | --- | --- |
 | `agon` | Agon prebinding and bounded observability registries |

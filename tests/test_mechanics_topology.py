@@ -15,21 +15,6 @@ assert SPEC.loader is not None
 sys.modules[SPEC.name] = validator
 SPEC.loader.exec_module(validator)
 
-EXPECTED_PACKAGES = {
-    "agon",
-    "antifragility",
-    "audit",
-    "boundary-bridge",
-    "experience",
-    "growth-cycle",
-    "method-growth",
-    "recurrence",
-    "release-support",
-    "rpg",
-    "titan",
-}
-
-
 def load_json(relative_path: str) -> dict:
     payload = json.loads((REPO_ROOT / relative_path).read_text(encoding="utf-8"))
     assert isinstance(payload, dict)
@@ -63,17 +48,20 @@ def test_live_mechanics_topology_passes() -> None:
     assert validator.validate(REPO_ROOT) == []
 
 
-def test_only_payload_backed_packages_are_active() -> None:
+def test_package_activation_matches_topology_and_root_materialization() -> None:
     topology = load_json("mechanics/topology.json")
     activation = topology["package_activation"]
-    assert set(activation["active_package_paths"]) == EXPECTED_PACKAGES
+    activation_paths = set(activation["active_package_paths"])
+    package_paths = {package["path"] for package in topology["active_packages"]}
+    materialized_paths = {
+        path.name
+        for path in (REPO_ROOT / "mechanics").iterdir()
+        if path.is_dir()
+    }
+
+    assert activation_paths
+    assert activation_paths == package_paths == materialized_paths
     assert activation["unlisted_package_status"] == "inactive_not_mapped"
-    assert {package["path"] for package in topology["active_packages"]} == EXPECTED_PACKAGES
-    assert "codex-projection" not in EXPECTED_PACKAGES
-    assert "checkpoint" not in EXPECTED_PACKAGES
-    assert "runtime-seam" not in EXPECTED_PACKAGES
-    assert "questbook" not in EXPECTED_PACKAGES
-    assert not (REPO_ROOT / "mechanics/checkpoint").exists()
 
 
 def test_titan_routes_to_its_real_shared_owner_not_a_nonexistent_center_package() -> None:
