@@ -7,8 +7,7 @@ Run from the repository root:
 ```bash
 python scripts/build_views.py --check
 python -m pytest -q \
-  mechanics/boundary-bridge/parts/consumer-regrounding/tests/test_consumer_regrounding_signals.py \
-  tests/test_summary_surface_catalog.py
+  mechanics/boundary-bridge/parts/consumer-regrounding/tests/test_consumer_regrounding_signals.py
 ```
 
 These checks constrain catalog shape, owner-truth references, authority
