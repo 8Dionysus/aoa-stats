@@ -132,7 +132,7 @@
       "repo_id": "aoa-skills",
       "workspace_route": "workspace:aoa-skills",
       "owner_boundary_ref": "aoa-skills:AGENTS.md",
-      "classification": "requires_port",
+      "classification": "implemented",
       "port_ref": "aoa-skills:stats/port.manifest.json"
     },
     {

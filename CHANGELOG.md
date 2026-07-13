@@ -50,6 +50,8 @@ Tracking starts with the first public release-prep baseline for this repository.
   landing.
 - Marked the `aoa-techniques` owner-local stats port as implemented after its
   landing.
+- Marked the `aoa-skills` owner-local stats port as implemented after its
+  landing.
 - Marked the `aoa-playbooks` owner-local stats port as implemented after its
   landing.
 - Marked the `aoa-sdk` owner-local stats port as implemented after its
