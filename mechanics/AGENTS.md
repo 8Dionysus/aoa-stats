@@ -21,6 +21,9 @@ Read the repository root `AGENTS.md` and `DESIGN.md` first. Then use
   index; raw history is never active law.
 - Do not add a package or part for visual symmetry alone. It needs a real
   payload or declared public surface and focused validation.
+- Treat `topology.json` as the machine owner of active package membership.
+  Tests derive the package set from topology and root materialization instead
+  of preserving a second fixed roster.
 
 ## Cross-contract
 
