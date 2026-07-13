@@ -36,6 +36,10 @@ Tracking starts with the first public release-prep baseline for this repository.
 
 ### Changed
 
+- Replaced named Source Coverage and Method Growth proof-route assertions with
+  one topology-derived read-model rule: every part that declares a localized
+  test district must contain focused tests and expose at least one of them
+  through the source-family validator routes.
 - Removed the hand-maintained mechanic package roster from topology tests.
   Package activation now proves non-empty parity between the canonical
   topology activation map, active package records, and materialized root

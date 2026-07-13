@@ -123,6 +123,11 @@ Shared implementation does not imply shared proof ownership:
 - root tests prove repo-wide fan-out, public contracts, and compatibility
   integration rather than operation-specific branches
 
+Family-level proof discovery derives focused test owners from topology and
+part-local test districts. It checks that each declared district is reachable
+from the source family without maintaining a second map of current part names
+and filenames.
+
 The root build integration derives its expected output set from active profiles
 and checks complete committed-byte parity. Field-level meaning, example values,
 and projection invariants stay with the mechanic that owns each output.

@@ -1730,7 +1730,7 @@
     },
     {
       "artifact_kind": "document",
-      "content_hash": "235072a8b78fbbf0dedc2dbf8202a987eb4013c338448184ee994e523d9122de",
+      "content_hash": "555965f425443b2fdb96d5e2fed9f38fa982f089265798996edb2728598b8a6b",
       "id": "artifact:file:agents.md:a54ff182c7",
       "path": "AGENTS.md",
       "source_record_id": "file:agents.md:a54ff182c7",
@@ -1738,7 +1738,7 @@
     },
     {
       "artifact_kind": "document",
-      "content_hash": "b8f9947fbacab2e4494782b5e23c73dfb05a4236c7ab82f116f7a4c5aac4fa0a",
+      "content_hash": "d53f44ae3c5608e59a84268c629b4abd5b0b0e6498c8cf72d4b26cafeece8f36",
       "id": "artifact:file:changelog.md:06572a96a5",
       "path": "CHANGELOG.md",
       "source_record_id": "file:changelog.md:06572a96a5",
@@ -1762,7 +1762,7 @@
     },
     {
       "artifact_kind": "document",
-      "content_hash": "28b6eba6240bc484a15b9a5ba4e8b7318418f8365848bf7c445cdfdb3bba37b0",
+      "content_hash": "57c19f263a25eceb5b275b8103c2a4541af182359590040c4ff438cfa80331b4",
       "id": "artifact:file:design.md:3dc5dd454e",
       "path": "DESIGN.md",
       "source_record_id": "file:design.md:3dc5dd454e",
@@ -7322,7 +7322,7 @@
     },
     {
       "artifact_kind": "document",
-      "content_hash": "39cff88a82657a10123197c564012840d89321724d64f25ccc36590185e02002",
+      "content_hash": "104ddc88a6ae6e1fd797df844bd040d90cba2937dc30c23378fb4d6c356c9192",
       "id": "artifact:file:stats/read-models/agents.md:ebf32cdc74",
       "path": "stats/read-models/AGENTS.md",
       "source_record_id": "file:stats/read-models/agents.md:ebf32cdc74",
@@ -7674,7 +7674,7 @@
     },
     {
       "artifact_kind": "test",
-      "content_hash": "1c87b02c66c12a6bfe0a04769eae2684ff89463448562bc8cf926546f0ac508d",
+      "content_hash": "319ba8deda9b32d3a607cb4e5ff3e6e7fa5a12d7b10de9527dd4db08b2368074",
       "id": "artifact:file:tests/test_stats_source_home.py:a642c9216e",
       "path": "tests/test_stats_source_home.py",
       "source_record_id": "file:tests/test_stats_source_home.py:a642c9216e",
@@ -7699,7 +7699,7 @@
   ],
   "index_identity": {
     "artifact_kind": "repository_artifact_index",
-    "content_digest": "8815a59e0fe6e4232cba58ac6e68da792ee094f783f09f5bd9775d0070a3d8c3",
+    "content_digest": "9124d2de596925b5e770e6282dd5d0846173162a014f9a08366eb6619074beaf",
     "index_kind": "artifact",
     "local_id": "index:repo-local:artifacts",
     "schema_ref": "aoa-kag:schemas/repo-local-kag-repository-index.schema.json"
@@ -7723,7 +7723,7 @@
   },
   "schema_version": "aoa-repo-local-kag-repository-index-v1",
   "source_index": {
-    "content_digest": "f29f8dbd9c4eff062374b75fdb90df12983e31569eda78ae0a8a5fc4e3296f5b",
+    "content_digest": "7ad08a7f16dc65409ffb1c4bd26ed1c08f8221997df23181e8418ce9ec5e8439",
     "local_id": "index:repo-local:source-surfaces",
     "path": "kag/indexes/source_surface_index.json"
   },

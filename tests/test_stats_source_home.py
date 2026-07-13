@@ -684,55 +684,37 @@ def test_root_contract_and_output_districts_remain_active() -> None:
     assert posture["scripts/"] == "active_public_and_compatibility_entrypoint_district"
 
 
-def test_source_coverage_proof_routes_to_its_audit_owner_part() -> None:
+def test_read_model_validator_routes_reach_each_part_local_proof_owner() -> None:
     manifest = load_json("stats/source_home.manifest.json")
     read_models = next(
         family for family in manifest["families"] if family["id"] == "read_models"
     )
     topology = load_json("mechanics/topology.json")
-    audit = next(
-        package for package in topology["active_packages"] if package["path"] == "audit"
-    )
-    source_coverage = next(
-        part
-        for part in audit["active_part_routes"]
-        if part["path"] == "source-coverage"
-    )
-    test_ref = (
-        "mechanics/audit/parts/source-coverage/tests/test_source_coverage.py"
-    )
+    validator_routes = set(read_models["validator_routes"])
+    focused_part_count = 0
 
-    assert test_ref in read_models["validator_routes"]
-    assert "tests" in source_coverage["localized_payload_roots"]
-    assert (REPO_ROOT / test_ref).is_file()
+    for package in topology["active_packages"]:
+        for part in package["active_part_routes"]:
+            if (
+                "read_models" not in part["stats_source_family_refs"]
+                or "tests" not in part["localized_payload_roots"]
+            ):
+                continue
+            focused_part_count += 1
+            part_root = (
+                REPO_ROOT
+                / "mechanics"
+                / package["path"]
+                / "parts"
+                / part["path"]
+            )
+            test_refs = {
+                path.relative_to(REPO_ROOT).as_posix()
+                for path in (part_root / "tests").glob("test_*.py")
+            }
+            route = part_root.relative_to(REPO_ROOT).as_posix()
 
+            assert test_refs, route
+            assert test_refs & validator_routes, route
 
-def test_method_growth_producer_proof_routes_to_each_active_part() -> None:
-    manifest = load_json("stats/source_home.manifest.json")
-    read_models = next(
-        family for family in manifest["families"] if family["id"] == "read_models"
-    )
-    topology = load_json("mechanics/topology.json")
-    method_growth = next(
-        package
-        for package in topology["active_packages"]
-        if package["path"] == "method-growth"
-    )
-    expected_tests = {
-        "candidate-lineage": (
-            "mechanics/method-growth/parts/candidate-lineage/tests/"
-            "test_candidate_lineage.py"
-        ),
-        "supersession-pruning": (
-            "mechanics/method-growth/parts/supersession-pruning/tests/"
-            "test_supersession_pruning.py"
-        ),
-    }
-
-    assert method_growth["package_payload_roots"] == []
-    assert not (REPO_ROOT / "mechanics/method-growth/tests").exists()
-    for part in method_growth["active_part_routes"]:
-        test_ref = expected_tests[part["path"]]
-        assert "tests" in part["localized_payload_roots"]
-        assert test_ref in read_models["validator_routes"]
-        assert (REPO_ROOT / test_ref).is_file()
+    assert focused_part_count
