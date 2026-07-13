@@ -111,7 +111,7 @@
       "repo_id": "aoa-routing",
       "workspace_route": "workspace:aoa-routing",
       "owner_boundary_ref": "aoa-routing:AGENTS.md",
-      "classification": "requires_port",
+      "classification": "implemented",
       "port_ref": "aoa-routing:stats/port.manifest.json"
     },
     {
