@@ -96,6 +96,11 @@ policy at the edge. Part-specific behavior is proved by its part, while a
 package-level test district requires a genuinely shared core and an explicit
 `package_payload_roots` declaration.
 
+Source-family proof routing follows topology rather than a named part roster.
+When a part declares a localized `tests/` payload, family-level validation
+checks that the district contains focused proof and routes at least one current
+test without copying current part names into root proof.
+
 Apply the same evidence test to relocated owner references. Re-ground current
 authored consumers and fixtures on the canonical owner path before removing a
 translation alias; once no current consumer requires it, the exact source
