@@ -26,9 +26,12 @@ validated by `schemas/component-refresh-summary.schema.json`.
 - `component_refresh_sources.py` owns filesystem discovery, JSON loading, and
   construction of the immutable reviewed-example bundle.
 - filesystem-free `component_refresh.py` owns reference packet validation and
-  deterministic projection; its projection receives the validated bundle.
-- `scripts/build_views.py` preserves the zero-argument compatibility facade for
-  the committed build.
+  deterministic projection; its projection receives the validated bundle and
+  is the only import surface for Component Refresh vocabulary and pure helper
+  functions.
+- `scripts/build_views.py` preserves the evidenced zero-argument adapter and
+  builder compatibility facade for the committed build; it does not re-export
+  the core's vocabulary or pure helper API.
 - live refresh supplies no Component Refresh bundle and must not fall back to
   examples, owner laws, or inferred owner state.
 
