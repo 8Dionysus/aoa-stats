@@ -1,5 +1,6 @@
 from __future__ import annotations
 
+import ast
 import json
 from pathlib import Path
 
@@ -9,6 +10,19 @@ REPO_ROOT = Path(__file__).resolve().parents[1]
 
 def read_text(relative_path: str) -> str:
     return (REPO_ROOT / relative_path).read_text(encoding="utf-8")
+
+
+def assigned_literal(relative_path: str, name: str) -> object:
+    tree = ast.parse(read_text(relative_path))
+    for node in tree.body:
+        if not isinstance(node, ast.Assign):
+            continue
+        if any(
+            isinstance(target, ast.Name) and target.id == name
+            for target in node.targets
+        ):
+            return ast.literal_eval(node.value)
+    raise AssertionError(f"{relative_path}: assignment {name} is missing")
 
 
 def test_readme_and_docs_map_route_current_direction_through_roadmap() -> None:
@@ -65,6 +79,21 @@ def test_root_routes_expose_design_source_home_and_mechanics() -> None:
     assert "The `stats/` source home" in design
     assert "The `mechanics/` operation home" in design
     assert "alternating cross-slices" in design
+
+
+def test_repo_validator_does_not_copy_source_or_part_inventory() -> None:
+    routes = assigned_literal(
+        "scripts/validate_repo.py", "REPO_WIDE_TEXT_SURFACES"
+    )
+    assert isinstance(routes, tuple)
+
+    assert all("/parts/" not in route for route in routes)
+    assert {route for route in routes if route.startswith("stats/")} == {
+        "stats/README.md"
+    }
+    assert {route for route in routes if route.startswith("mechanics/")} == {
+        "mechanics/README.md"
+    }
 
 
 def test_source_home_entrypoints_route_mutable_status_to_authored_owners() -> None:

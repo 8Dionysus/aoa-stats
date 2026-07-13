@@ -36,6 +36,10 @@ Tracking starts with the first public release-prep baseline for this repository.
 
 ### Changed
 
+- Reduced the root repository validator's direct text inventory to stable
+  repo-wide entrypoints; stats-family and mechanic document membership now stay
+  exclusively with the source-home, topology, and part validators already run
+  by that command.
 - Moved exact catalog consumer-return and artifact trust-lifecycle assertions
   from the root catalog test to their Boundary Bridge and Release Support
   owners, preserving the checks while leaving root proof focused on the shared
