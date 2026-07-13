@@ -25,6 +25,9 @@ named mechanic part.
 - Every routed mechanic part has exactly one record under `active/`. The
   record's `mechanic_route` and the topology part's
   `stats_operation_contract_ref` must point to one another.
+- Derive active inventory from authored records and reciprocal manifest and
+  topology links. Require a non-empty family, but do not freeze the current
+  operation count in validation or tests.
 - Keep `payload_class`, `mechanic_contract_ref`, and `validation_ref` identical
   to the named topology part.
 - Give every `owner_truth_inputs.owner_repo` an exact `owner_return_routes`

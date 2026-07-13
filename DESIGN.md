@@ -166,6 +166,11 @@ and compare their public projections with the catalog. They may enforce a
 non-empty active family and exact slot uniqueness, but do not freeze current
 active, deferred, or retired cardinalities as validator constants.
 
+The same growth rule applies to non-catalog operations. Their active inventory
+is the non-empty set of authored operation records with exact reciprocal links
+through the source manifest and mechanics topology; the current number of
+parts is not a repository ABI.
+
 Generated outputs remain weaker projections of this lifecycle. A generated
 catalog is never the edit source merely because it is convenient to query.
 

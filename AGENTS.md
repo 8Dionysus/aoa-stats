@@ -151,9 +151,11 @@ contract, focused validation card, and indexed decision rationale. Do not copy
 its changing status back into this root card.
 
 Source validators derive lifecycle membership from authored directories and
-catalog projection rather than fixed profile counts. Stable catalog slots and
-retired reservations remain intentional public identity guards; cardinality is
-not an ABI by itself.
+catalog projection rather than fixed profile counts. They derive non-catalog
+operation membership from authored records and the reciprocal mechanics
+crosswalk rather than a fixed part count. Stable catalog slots and retired
+reservations remain intentional public identity guards; cardinality is not an
+ABI by itself.
 
 ## AGENTS stack law
 
