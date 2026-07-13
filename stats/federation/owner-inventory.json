@@ -118,7 +118,7 @@
       "repo_id": "aoa-sdk",
       "workspace_route": "workspace:aoa-sdk",
       "owner_boundary_ref": "aoa-sdk:AGENTS.md",
-      "classification": "requires_port",
+      "classification": "implemented",
       "port_ref": "aoa-sdk:stats/port.manifest.json"
     },
     {
