@@ -23,7 +23,7 @@ EXTRA_SCHEMA_ROUTES = (
     "schemas/stats-event-envelope.schema.json",
     "stats/read-models/surface-profile.schema.json",
 )
-REQUIRED_TEXT_FILES = (
+REPO_WIDE_TEXT_SURFACES = (
     "README.md",
     "AGENTS.md",
     "DESIGN.md",
@@ -35,21 +35,6 @@ REQUIRED_TEXT_FILES = (
     "docs/decisions/README.md",
     "docs/decisions/AGENTS.md",
     "docs/decisions/TEMPLATE.md",
-    "mechanics/growth-cycle/parts/session-growth-branch/docs/SESSION_GROWTH_BRANCH_SUMMARY.md",
-    "mechanics/growth-cycle/parts/automation-followthrough/docs/AUTOMATION_FOLLOWTHROUGH_SUMMARY.md",
-    "mechanics/release-support/parts/codex-deployment-rollout/docs/CODEX_PLANE_DEPLOYMENT_SUMMARIES.md",
-    "mechanics/release-support/parts/rollout-campaign/docs/ROLLOUT_CAMPAIGN_SUMMARY.md",
-    "mechanics/audit/parts/drift-shadow-review/docs/DRIFT_REVIEW_SUMMARY.md",
-    "mechanics/recurrence/parts/continuity-window/docs/CONTINUITY_WINDOW_SUMMARY.md",
-    "mechanics/recurrence/parts/component-refresh/docs/COMPONENT_REFRESH_SUMMARIES.md",
-    "mechanics/boundary-bridge/parts/memory-owner-handoff/docs/MEMORY_MOVEMENT_SUMMARY.md",
-    "mechanics/method-growth/parts/supersession-pruning/docs/SUPERSESSION_DROP_SUMMARY.md",
-    "stats/surface-catalog/CODEX_MCP.md",
-    "mechanics/recurrence/parts/live-receipt-refresh/docs/LIVE_SESSION_USE.md",
-    "stats/intake-contract/RECEIPT_ABI.md",
-    "stats/surface-catalog/SURFACE_STRENGTH_MODEL.md",
-    "mechanics/audit/parts/source-coverage/docs/SOURCE_COVERAGE_SUMMARY.md",
-    "stats/surface-catalog/CONSUMER_REGROUNDING.md",
 )
 
 
@@ -87,7 +72,7 @@ def main() -> int:
         generated_schemas = {}
         schema_routes = set(EXTRA_SCHEMA_ROUTES)
 
-    for relative_path in REQUIRED_TEXT_FILES:
+    for relative_path in REPO_WIDE_TEXT_SURFACES:
         path = REPO_ROOT / relative_path
         if not path.exists():
             errors.append(f"missing required text surface: {relative_path}")

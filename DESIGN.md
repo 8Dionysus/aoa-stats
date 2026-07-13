@@ -95,6 +95,11 @@ part-by-part operation inventories, or mechanic-specific compatibility
 branches. Those facts remain discoverable from their authoritative sources,
 the topology, and generated decision indexes.
 
+Repo-wide validation owns stable entrypoints and delegates membership checks to
+the source manifest, mechanics topology, and focused part proof. A hand-picked
+list of family or part documents inside a root validator is another mutable
+inventory and is not authoritative.
+
 The root roadmap is a sequencing surface, not another inventory. It may name
 durable priorities and the alternating stats/mechanics rhythm, while exact
 surface state, operation membership, and shipped chronology remain with

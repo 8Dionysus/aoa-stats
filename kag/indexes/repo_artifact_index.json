@@ -1730,7 +1730,7 @@
     },
     {
       "artifact_kind": "document",
-      "content_hash": "a63e54d7ae05898719c5731077dc83b6d9b5cea30c37fe56b5e142cb1f2bbadc",
+      "content_hash": "4186b1b970b8e49146c6c44d4c1551afcf88df1d5dcd0f9c17a2c6b8c1626978",
       "id": "artifact:file:agents.md:a54ff182c7",
       "path": "AGENTS.md",
       "source_record_id": "file:agents.md:a54ff182c7",
@@ -1738,7 +1738,7 @@
     },
     {
       "artifact_kind": "document",
-      "content_hash": "8818794cc4bfc331dc5eb5f940a0358546faae782855ae1901afcbb4d49e242b",
+      "content_hash": "a137b455f86c25baf56c92b436f4dd07aba8b1d0015f9f058f515bbe0aa8e820",
       "id": "artifact:file:changelog.md:06572a96a5",
       "path": "CHANGELOG.md",
       "source_record_id": "file:changelog.md:06572a96a5",
@@ -1762,7 +1762,7 @@
     },
     {
       "artifact_kind": "document",
-      "content_hash": "afd64bf674b4c2604fe8d7b11c91dbb42c45dbc6e66ef7e35ac8ec6b20eb84eb",
+      "content_hash": "3b4fdd2282351a4355daa7a981d0d09114cae101c08022896956aae39b2d6b06",
       "id": "artifact:file:design.md:3dc5dd454e",
       "path": "DESIGN.md",
       "source_record_id": "file:design.md:3dc5dd454e",
@@ -6730,7 +6730,7 @@
     },
     {
       "artifact_kind": "document",
-      "content_hash": "2f81b5f687d7eec8ea9b3a2a98e6c4367273558a7b34b66b1786a235558d3438",
+      "content_hash": "45dcbadfcda64b91762688fd7d831de487a606107673c98be9df687eeccd9a9d",
       "id": "artifact:file:scripts/agents.md:cb91064dc5",
       "path": "scripts/AGENTS.md",
       "source_record_id": "file:scripts/agents.md:cb91064dc5",
@@ -6842,7 +6842,7 @@
     },
     {
       "artifact_kind": "validator",
-      "content_hash": "70c2a41036d33534e14914d7ce377a179f5272b3e179c9a2488e49625cc0d2ee",
+      "content_hash": "069dc88a389c58c53a4b1929471dd583d2d4002875eaf79a049464df167a3d8a",
       "id": "artifact:file:scripts/validate_repo.py:1c4be8b173",
       "path": "scripts/validate_repo.py",
       "source_record_id": "file:scripts/validate_repo.py:1c4be8b173",
@@ -7634,7 +7634,7 @@
     },
     {
       "artifact_kind": "test",
-      "content_hash": "e96a0be0dc0c135efe5b2ffc93eaec61e302dd42ed383c520bab5d9d4834b50e",
+      "content_hash": "239d70b99e728ec66f895214fe19aae8a8489bd3ba7d9d39843740dfddab5ca4",
       "id": "artifact:file:tests/test_docs_routes.py:2789463ffa",
       "path": "tests/test_docs_routes.py",
       "source_record_id": "file:tests/test_docs_routes.py:2789463ffa",
@@ -7699,7 +7699,7 @@
   ],
   "index_identity": {
     "artifact_kind": "repository_artifact_index",
-    "content_digest": "5c15fa153c28d0056afdcc11032288bb1b82e1cc97c636fed912aa3fc1a70ef8",
+    "content_digest": "d41fcd7ca94a38a909e647d47f7ca7ec38e5c8f03a21ecd1237281aa8eba83a5",
     "index_kind": "artifact",
     "local_id": "index:repo-local:artifacts",
     "schema_ref": "aoa-kag:schemas/repo-local-kag-repository-index.schema.json"
@@ -7723,7 +7723,7 @@
   },
   "schema_version": "aoa-repo-local-kag-repository-index-v1",
   "source_index": {
-    "content_digest": "fb13a2c5f3cc55310e527410c2e2b5adc4df3b7b0a73127375df72c58864094a",
+    "content_digest": "32d4292e230a2cc3b4175db52f2deb751a7d394a2e9dc99a6480cd14643b4a20",
     "local_id": "index:repo-local:source-surfaces",
     "path": "kag/indexes/source_surface_index.json"
   },

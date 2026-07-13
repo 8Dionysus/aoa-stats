@@ -21,6 +21,10 @@ repo-wide caller, a documented external contract, or focused owner-part proof.
 Do not keep unused path or mutable-tuple helpers after their canonical adapter
 has moved under `src/aoa_stats_builder/`.
 
+Root validators may list stable repository entrypoints directly. Derive
+stats-family and mechanic membership through their canonical validators rather
+than copying selected part docs or source payload into a second constant.
+
 ## Hard no
 Do not let a script infer owner truth from volume. Do not make refresh behavior
 silently mutate source repos.

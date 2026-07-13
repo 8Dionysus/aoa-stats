@@ -72,6 +72,11 @@ profile and indexed decision.
 crosswalk. `mechanics/topology.json` is the machine-readable operation and
 placement map. Human route docs explain those maps; they do not override them.
 
+Repo-wide validators keep only stable repository entrypoints as their direct
+text inventory. Stats-family membership comes from the source manifest and
+mechanic membership from topology and part validation; do not copy selected
+family or part docs into a root validator constant.
+
 Operation payload lives under the nearest mechanic part. Root `schemas/` and
 `generated/` remain stable public districts. Root `scripts/` and `tests/`
 keep only public, compatibility, or repo-wide surfaces. Other root districts
