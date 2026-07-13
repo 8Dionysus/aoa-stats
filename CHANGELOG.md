@@ -46,6 +46,10 @@ Tracking starts with the first public release-prep baseline for this repository.
 
 ### Changed
 
+- Make local-port validation resolve reference and live packet exports from the
+  owner root, validate them against the embedded measurement contract, and
+  reject missing or escaping paths, false contract pointers, and export-posture
+  mismatches without requiring duplicate standalone contract files.
 - Reframed `aoa-stats` from an observability-summary collection into the
   derived, non-sovereign statistical measurability organ while preserving the
   existing source-home/mechanics ownership split and current read-model
