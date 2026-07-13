@@ -83,21 +83,21 @@
       "repo_id": "aoa-evals",
       "workspace_route": "workspace:aoa-evals",
       "owner_boundary_ref": "aoa-evals:AGENTS.md",
-      "classification": "requires_port",
+      "classification": "implemented",
       "port_ref": "aoa-evals:stats/port.manifest.json"
     },
     {
       "repo_id": "aoa-kag",
       "workspace_route": "workspace:aoa-kag",
       "owner_boundary_ref": "aoa-kag:AGENTS.md",
-      "classification": "requires_port",
+      "classification": "implemented",
       "port_ref": "aoa-kag:stats/port.manifest.json"
     },
     {
       "repo_id": "aoa-memo",
       "workspace_route": "workspace:aoa-memo",
       "owner_boundary_ref": "aoa-memo:AGENTS.md",
-      "classification": "requires_port",
+      "classification": "implemented",
       "port_ref": "aoa-memo:stats/port.manifest.json"
     },
     {

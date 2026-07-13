@@ -23,6 +23,15 @@ the packet's contract pointer and live/reference posture to match its export.
 The local manifest therefore remains the single contract source; owners do not
 need duplicate standalone contract files.
 
+## Integration
+
+Owner validation delegates local port and packet checks to the central
+validator through an explicit `aoa-stats` dependency root; it does not copy the
+shared grammar. A missing central validator is a hard failure, never a silent
+skip. Reproducible release lanes pin the central revision they validate
+against. An intentionally labelled latest-sibling canary may instead track the
+latest central revision so compatibility drift is detected early.
+
 ## Inventory
 
 `owner-inventory.json` is the canonical repo-level coverage map and validates
