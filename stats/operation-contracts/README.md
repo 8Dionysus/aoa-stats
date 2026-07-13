@@ -9,7 +9,9 @@ or action returns.
 Active inventory is the set of records under `active/` checked against
 `stats/source_home.manifest.json` and `mechanics/topology.json`. Payload stays
 part-local; records do not copy metric lists, schemas, examples, scripts,
-tests, or generated registries.
+tests, or generated registries. The family must remain non-empty, but its
+current cardinality is derived from that reciprocal crosswalk rather than
+treated as a stable contract.
 
 The four honest input postures are:
 

@@ -1730,7 +1730,7 @@
     },
     {
       "artifact_kind": "document",
-      "content_hash": "4186b1b970b8e49146c6c44d4c1551afcf88df1d5dcd0f9c17a2c6b8c1626978",
+      "content_hash": "69dd3ac58e68beae215cf2ccafdfdd654f446be5eaf0318ae62eace45a9b5f6c",
       "id": "artifact:file:agents.md:a54ff182c7",
       "path": "AGENTS.md",
       "source_record_id": "file:agents.md:a54ff182c7",
@@ -1738,7 +1738,7 @@
     },
     {
       "artifact_kind": "document",
-      "content_hash": "828d2227a9ac127429d4d9cb9ab22ded1c1a389803294824f4b6996c3a1c63a3",
+      "content_hash": "58c1d3909fcb7c772d1343a38e704d6f1170bb25c3528e9c2d796e8a0811285f",
       "id": "artifact:file:changelog.md:06572a96a5",
       "path": "CHANGELOG.md",
       "source_record_id": "file:changelog.md:06572a96a5",
@@ -1762,7 +1762,7 @@
     },
     {
       "artifact_kind": "document",
-      "content_hash": "3b4fdd2282351a4355daa7a981d0d09114cae101c08022896956aae39b2d6b06",
+      "content_hash": "4c27d8ee8abefc439e8570c07668f1764572ee09017252f62aa85e1f4096f917",
       "id": "artifact:file:design.md:3dc5dd454e",
       "path": "DESIGN.md",
       "source_record_id": "file:design.md:3dc5dd454e",
@@ -7178,7 +7178,7 @@
     },
     {
       "artifact_kind": "document",
-      "content_hash": "5c44312065363d4d3eef6cc1d43bd6e3406102a76a88012d279f10b851001252",
+      "content_hash": "bd77fac768a71c113773b8cfaf66d0ae25f0f1fa1316f84d31e3651bb47aa6dd",
       "id": "artifact:file:stats/operation-contracts/agents.md:59daffdcbc",
       "path": "stats/operation-contracts/AGENTS.md",
       "source_record_id": "file:stats/operation-contracts/agents.md:59daffdcbc",
@@ -7186,7 +7186,7 @@
     },
     {
       "artifact_kind": "document",
-      "content_hash": "6f72c863166e5fa87e0ec25e0263a393c8aaf6e2b20089bd8a37afb631f6ef26",
+      "content_hash": "3bc222121ddfac54c06c6f0e4e3efc173d70531e1f004d7dbf24b1958e36deba",
       "id": "artifact:file:stats/operation-contracts/readme.md:a87ef0f29a",
       "path": "stats/operation-contracts/README.md",
       "source_record_id": "file:stats/operation-contracts/readme.md:a87ef0f29a",
@@ -7650,7 +7650,7 @@
     },
     {
       "artifact_kind": "test",
-      "content_hash": "12ad921924b2aa3858a398eea04ce63836851a2ffe1c7b548d13628d1e612c66",
+      "content_hash": "95f1e54fc2dc472363c4f8a9292b8110b39563206e612ae1616f6fb0e705994c",
       "id": "artifact:file:tests/test_mechanics_topology.py:915b0d0cb3",
       "path": "tests/test_mechanics_topology.py",
       "source_record_id": "file:tests/test_mechanics_topology.py:915b0d0cb3",
@@ -7674,7 +7674,7 @@
     },
     {
       "artifact_kind": "test",
-      "content_hash": "910809768ec0cd3bcab3bc006a5743ebe9df6eb7e878957122409f1d18e52341",
+      "content_hash": "1c87b02c66c12a6bfe0a04769eae2684ff89463448562bc8cf926546f0ac508d",
       "id": "artifact:file:tests/test_stats_source_home.py:a642c9216e",
       "path": "tests/test_stats_source_home.py",
       "source_record_id": "file:tests/test_stats_source_home.py:a642c9216e",
@@ -7699,7 +7699,7 @@
   ],
   "index_identity": {
     "artifact_kind": "repository_artifact_index",
-    "content_digest": "ea55f99bad9522028c75f7798b293a362e5394aa4fd1dcbcd5aea17e18f6fc7c",
+    "content_digest": "78c3541c9229d512265fd8ad1bcd82ae5410c925512e9c62d3ebdbb18f4651af",
     "index_kind": "artifact",
     "local_id": "index:repo-local:artifacts",
     "schema_ref": "aoa-kag:schemas/repo-local-kag-repository-index.schema.json"
@@ -7723,7 +7723,7 @@
   },
   "schema_version": "aoa-repo-local-kag-repository-index-v1",
   "source_index": {
-    "content_digest": "add339102b64fc2ee7f6c15dd279896e664566367a77d02bf605529c4482d50d",
+    "content_digest": "3905eb4d580eadab74678833af50b36df3bd4b53798cc7d93a6f2d783b48e683",
     "local_id": "index:repo-local:source-surfaces",
     "path": "kag/indexes/source_surface_index.json"
   },

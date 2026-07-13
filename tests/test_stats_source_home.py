@@ -116,6 +116,82 @@ def test_source_validator_requires_a_nonempty_active_family(tmp_path: Path) -> N
     )
 
 
+def test_source_validator_derives_operation_cardinality_from_reciprocal_state(
+    tmp_path: Path,
+) -> None:
+    repo_root = copy_repo(tmp_path)
+    operation_id = "agon.inventory-growth-probe"
+    part_name = "inventory-growth-probe"
+    mechanic_route = f"mechanics/agon/parts/{part_name}"
+    record_ref = (
+        "stats/operation-contracts/active/"
+        f"{operation_id}.operation.json"
+    )
+
+    record = load_repo_json(
+        repo_root,
+        "stats/operation-contracts/active/"
+        "agon.epistemic-observability.operation.json",
+    )
+    record.update(
+        {
+            "operation_id": operation_id,
+            "mechanic_route": mechanic_route,
+            "payload_class": "inventory-growth-probe-stats-operation",
+            "mechanic_contract_ref": f"{mechanic_route}/CONTRACT.md",
+            "validation_ref": f"{mechanic_route}/VALIDATION.md",
+        }
+    )
+    write_repo_json(repo_root, record_ref, record)
+
+    part_root = repo_root / mechanic_route
+    part_root.mkdir()
+    (part_root / "CONTRACT.md").write_text(
+        "# Inventory growth probe\n\n"
+        f"Authored source: `{record_ref}`.\n",
+        encoding="utf-8",
+    )
+    (part_root / "VALIDATION.md").write_text(
+        "# Inventory growth probe validation\n",
+        encoding="utf-8",
+    )
+
+    manifest = load_repo_json(repo_root, "stats/source_home.manifest.json")
+    operation_family = next(
+        family
+        for family in manifest["families"]
+        if family["id"] == "operation_contracts"
+    )
+    operation_family["mechanic_routes"].append(
+        {"package": "agon", "part": part_name, "path": mechanic_route}
+    )
+    write_repo_json(repo_root, "stats/source_home.manifest.json", manifest)
+
+    topology = load_repo_json(repo_root, "mechanics/topology.json")
+    agon_package = next(
+        package for package in topology["active_packages"] if package["path"] == "agon"
+    )
+    agon_package["active_part_routes"].append(
+        {
+            "path": part_name,
+            "stats_operation_contract_ref": record_ref,
+            "owner_surface": f"{mechanic_route}/CONTRACT.md",
+            "validation_surface": f"{mechanic_route}/VALIDATION.md",
+            "payload_class": "inventory-growth-probe-stats-operation",
+            "stats_source_family_refs": ["operation_contracts"],
+        }
+    )
+    operation_crosswalk = next(
+        entry
+        for entry in topology["source_family_crosswalks"]
+        if entry["stats_source_family_ref"] == "operation_contracts"
+    )
+    operation_crosswalk["mechanic_part_refs"].append(mechanic_route)
+    write_repo_json(repo_root, "mechanics/topology.json", topology)
+
+    assert validator.validate(repo_root) == []
+
+
 def test_source_home_contains_only_declared_source_records() -> None:
     stats_root = REPO_ROOT / "stats"
     operation_contracts = sorted(
@@ -206,7 +282,7 @@ def test_operation_contract_records_are_complete_non_catalog_sources() -> None:
         if "operation_contracts" in part.get("stats_source_family_refs", [])
     }
 
-    assert len(operation_paths) == 15
+    assert operation_paths
     assert {
         path.name.removesuffix(".operation.json") for path in operation_paths
     } == {

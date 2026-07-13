@@ -36,6 +36,11 @@ Tracking starts with the first public release-prep baseline for this repository.
 
 ### Changed
 
+- Removed fixed non-catalog operation counts from source-home and mechanics
+  topology proof while preserving non-empty inventory, unique record binding,
+  schema validation, and exact record/manifest/part reciprocity. A functional
+  growth probe now proves the operation family can expand without editing a
+  cardinality assertion.
 - Reduced the root repository validator's direct text inventory to stable
   repo-wide entrypoints; stats-family and mechanic document membership now stay
   exclusively with the source-home, topology, and part validators already run
