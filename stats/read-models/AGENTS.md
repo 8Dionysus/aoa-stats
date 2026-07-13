@@ -54,6 +54,9 @@ or the upstream facts summarized by a profile.
 - Keep profile-specific status and invariants in the target profile, its
   mechanic contract and focused tests, and an indexed decision when rationale
   must survive. Do not copy named surface state into this family route card.
+- Derive lifecycle membership from the profile directories and generated
+  catalog projection. Do not encode current profile counts in validators;
+  preserve stable active and retired catalog-slot identities instead.
 
 ## Verification
 

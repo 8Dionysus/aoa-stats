@@ -153,6 +153,11 @@ the former slot and does not keep an empty operation package alive.
 Reintroduction is a new reviewed active-surface decision with current evidence,
 a producer, a new reviewed slot, and validation.
 
+Validators derive lifecycle membership from the authored profile directories
+and compare their public projections with the catalog. They may enforce a
+non-empty active family and exact slot uniqueness, but do not freeze current
+active, deferred, or retired cardinalities as validator constants.
+
 Generated outputs remain weaker projections of this lifecycle. A generated
 catalog is never the edit source merely because it is convenient to query.
 
