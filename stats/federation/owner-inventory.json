@@ -104,7 +104,7 @@
       "repo_id": "aoa-playbooks",
       "workspace_route": "workspace:aoa-playbooks",
       "owner_boundary_ref": "aoa-playbooks:AGENTS.md",
-      "classification": "requires_port",
+      "classification": "implemented",
       "port_ref": "aoa-playbooks:stats/port.manifest.json"
     },
     {
