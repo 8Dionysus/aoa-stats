@@ -145,6 +145,11 @@ For any specific surface, follow its profile or operation record, mechanic
 contract, focused validation card, and indexed decision rationale. Do not copy
 its changing status back into this root card.
 
+Source validators derive lifecycle membership from authored directories and
+catalog projection rather than fixed profile counts. Stable catalog slots and
+retired reservations remain intentional public identity guards; cardinality is
+not an ABI by itself.
+
 ## AGENTS stack law
 
 - Root guidance owns repository identity, route choice, owner boundaries, and

@@ -36,6 +36,11 @@ Tracking starts with the first public release-prep baseline for this repository.
 
 ### Changed
 
+- Removed fixed active/deferred/retired profile counts from source-home
+  validation while preserving non-empty active publication, stable slot, retired
+  reservation, schema, route, and generated-catalog parity checks. A functional
+  growth probe now proves valid lifecycle inventory can expand without editing
+  validator code.
 - Reduced the root build-view proof to profile-derived fan-out and complete
   committed-byte parity, removing the second hand-maintained suite of
   mechanic-owned field assertions while retaining part-local semantic and

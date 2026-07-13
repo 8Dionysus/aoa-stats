@@ -1730,7 +1730,7 @@
     },
     {
       "artifact_kind": "document",
-      "content_hash": "6ef9334810fe80e2fa38615a392090ffabf2feb8b5e33264c0c5171e68373366",
+      "content_hash": "a63e54d7ae05898719c5731077dc83b6d9b5cea30c37fe56b5e142cb1f2bbadc",
       "id": "artifact:file:agents.md:a54ff182c7",
       "path": "AGENTS.md",
       "source_record_id": "file:agents.md:a54ff182c7",
@@ -1738,7 +1738,7 @@
     },
     {
       "artifact_kind": "document",
-      "content_hash": "8797bc92030bf8e00e34de205b383e539878cf9a17965fc30ad914d06ab23a3e",
+      "content_hash": "b88843d25a107d3b17759704da8ef218dfba533aea96caf8a4628db54f9dedd5",
       "id": "artifact:file:changelog.md:06572a96a5",
       "path": "CHANGELOG.md",
       "source_record_id": "file:changelog.md:06572a96a5",
@@ -1762,7 +1762,7 @@
     },
     {
       "artifact_kind": "document",
-      "content_hash": "b323bf4f8aad51958743f8531ae75740ed227dd77130710ab68dd6f7600c9f11",
+      "content_hash": "937363efe5b1840000a0000c1454df5ceefe1da0e0a132e14c48ffeed13627a5",
       "id": "artifact:file:design.md:3dc5dd454e",
       "path": "DESIGN.md",
       "source_record_id": "file:design.md:3dc5dd454e",
@@ -6850,7 +6850,7 @@
     },
     {
       "artifact_kind": "validator",
-      "content_hash": "b118b12a9fb8409dca88ad6efdd37959f8320434d76fea635935512b4d262cd3",
+      "content_hash": "65c88c8091b9451eb37c6725e2d385be35940114b16db4dbb1e989e31512b128",
       "id": "artifact:file:scripts/validate_stats_source_home.py:6be6e8ef8c",
       "path": "scripts/validate_stats_source_home.py",
       "source_record_id": "file:scripts/validate_stats_source_home.py:6be6e8ef8c",
@@ -7322,7 +7322,7 @@
     },
     {
       "artifact_kind": "document",
-      "content_hash": "d2a5631eec31b03116f06e0222f55dd6e73e7c923ec5a279583547130de2a589",
+      "content_hash": "39cff88a82657a10123197c564012840d89321724d64f25ccc36590185e02002",
       "id": "artifact:file:stats/read-models/agents.md:ebf32cdc74",
       "path": "stats/read-models/AGENTS.md",
       "source_record_id": "file:stats/read-models/agents.md:ebf32cdc74",
@@ -7674,7 +7674,7 @@
     },
     {
       "artifact_kind": "test",
-      "content_hash": "584bbde7ea8e7d112585c192833b9cf0c6cad39092f21c4a00afdc6c7aa5edf4",
+      "content_hash": "910809768ec0cd3bcab3bc006a5743ebe9df6eb7e878957122409f1d18e52341",
       "id": "artifact:file:tests/test_stats_source_home.py:a642c9216e",
       "path": "tests/test_stats_source_home.py",
       "source_record_id": "file:tests/test_stats_source_home.py:a642c9216e",
@@ -7699,7 +7699,7 @@
   ],
   "index_identity": {
     "artifact_kind": "repository_artifact_index",
-    "content_digest": "baa4e0ddafcd01044e4bde31a77174b098bbd4d738351f691132eefcae5105bb",
+    "content_digest": "6a54cc466281a52873e6a6faceeff62fa74b9745db48e28a630a99df5e3eb069",
     "index_kind": "artifact",
     "local_id": "index:repo-local:artifacts",
     "schema_ref": "aoa-kag:schemas/repo-local-kag-repository-index.schema.json"
@@ -7723,7 +7723,7 @@
   },
   "schema_version": "aoa-repo-local-kag-repository-index-v1",
   "source_index": {
-    "content_digest": "1bda61597106c2de88cb530504914639551e97e48f1e384bd8e55111415ac105",
+    "content_digest": "72497d249f0843822743a22976275a09f4b5009f53d4b243502761587d69336a",
     "local_id": "index:repo-local:source-surfaces",
     "path": "kag/indexes/source_surface_index.json"
   },

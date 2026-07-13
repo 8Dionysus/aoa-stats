@@ -75,9 +75,6 @@ REQUIRED_ROUTE_FIELDS = (
     "validator_routes",
 )
 OPTIONAL_ROUTE_FIELDS = ("generated_routes", "read_only_access_routes")
-EXPECTED_ACTIVE_PROFILE_COUNT = 22
-EXPECTED_DEFERRED_PROFILE_COUNT = 1
-EXPECTED_RETIRED_PROFILE_COUNT = 3
 INTAKE_FIXTURE = Path(
     "stats/intake-contract/examples/session_harvest_family.receipts.example.json"
 )
@@ -357,20 +354,9 @@ def _validate_profiles(
         issues,
     )
 
-    if len(active_paths) != EXPECTED_ACTIVE_PROFILE_COUNT:
+    if not active_paths:
         issues.append(
-            "stats/read-models/active: expected "
-            f"{EXPECTED_ACTIVE_PROFILE_COUNT} profiles, found {len(active_paths)}"
-        )
-    if len(deferred_paths) != EXPECTED_DEFERRED_PROFILE_COUNT:
-        issues.append(
-            "stats/read-models/deferred: expected "
-            f"{EXPECTED_DEFERRED_PROFILE_COUNT} profile, found {len(deferred_paths)}"
-        )
-    if len(retired_paths) != EXPECTED_RETIRED_PROFILE_COUNT:
-        issues.append(
-            "stats/read-models/retired: expected "
-            f"{EXPECTED_RETIRED_PROFILE_COUNT} profile, found {len(retired_paths)}"
+            "stats/read-models/active: at least one authored public profile is required"
         )
 
     try:

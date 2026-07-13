@@ -67,6 +67,55 @@ def test_live_stats_source_home_passes_before_mechanics_integration() -> None:
     assert validator.validate(REPO_ROOT, require_mechanics=False) == []
 
 
+def test_source_validator_derives_profile_cardinality_from_authored_state(
+    tmp_path: Path,
+) -> None:
+    repo_root = copy_repo(tmp_path)
+    candidate = load_repo_json(
+        repo_root,
+        "stats/read-models/deferred/antifragility_vector.profile.json",
+    )
+    candidate["name"] = "inventory_growth_probe"
+    candidate["activation_condition"] = (
+        "Remain a validation-only growth probe until a separately reviewed "
+        "owner contract exists."
+    )
+    write_repo_json(
+        repo_root,
+        "stats/read-models/deferred/inventory_growth_probe.profile.json",
+        candidate,
+    )
+    catalog = load_repo_json(
+        repo_root, "generated/summary_surface_catalog.min.json"
+    )
+    _, public_deferred = public_surface_profiles(
+        repo_root / "stats" / "read-models"
+    )
+    catalog["deferred_contract_surfaces"] = public_deferred
+    write_repo_json(
+        repo_root,
+        "generated/summary_surface_catalog.min.json",
+        catalog,
+    )
+
+    assert validator.validate(repo_root, require_mechanics=False) == []
+
+
+def test_source_validator_requires_a_nonempty_active_family(tmp_path: Path) -> None:
+    repo_root = copy_repo(tmp_path)
+    for profile_path in (repo_root / "stats/read-models/active").glob(
+        "*.profile.json"
+    ):
+        profile_path.unlink()
+
+    issues = validator.validate(repo_root, require_mechanics=False)
+
+    assert (
+        "stats/read-models/active: at least one authored public profile is required"
+        in issues
+    )
+
+
 def test_source_home_contains_only_declared_source_records() -> None:
     stats_root = REPO_ROOT / "stats"
     operation_contracts = sorted(
@@ -442,9 +491,6 @@ def test_authored_profiles_are_the_public_catalog_source() -> None:
     )
     catalog = load_json("generated/summary_surface_catalog.min.json")
 
-    assert len(active) == 22
-    assert len(deferred) == 1
-    assert len(retired) == 3
     assert [profile["catalog_order"] for profile in active] == [
         *range(1, 4),
         *range(5, 21),
