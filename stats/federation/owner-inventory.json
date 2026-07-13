@@ -1,0 +1,190 @@
+{
+  "schema_version": "aoa_stats_owner_inventory_v1",
+  "contract_version": "1.0.0",
+  "owners": [
+    {
+      "repo_id": "8Dionysus",
+      "workspace_route": "workspace:8Dionysus",
+      "owner_boundary_ref": "8Dionysus:AGENTS.md",
+      "classification": "requires_port",
+      "port_ref": "8Dionysus:stats/port.manifest.json"
+    },
+    {
+      "repo_id": "ATM10-Agent",
+      "workspace_route": "workspace:ATM10-Agent",
+      "owner_boundary_ref": "ATM10-Agent:AGENTS.md",
+      "classification": "requires_port",
+      "port_ref": "ATM10-Agent:stats/port.manifest.json"
+    },
+    {
+      "repo_id": "Agents-of-Abyss",
+      "workspace_route": "workspace:Agents-of-Abyss",
+      "owner_boundary_ref": "Agents-of-Abyss:AGENTS.md",
+      "classification": "requires_port",
+      "port_ref": "Agents-of-Abyss:stats/port.manifest.json"
+    },
+    {
+      "repo_id": "Dionysus",
+      "workspace_route": "workspace:Dionysus",
+      "owner_boundary_ref": "Dionysus:AGENTS.md",
+      "classification": "requires_port",
+      "port_ref": "Dionysus:stats/port.manifest.json"
+    },
+    {
+      "repo_id": "Tree-of-Sophia",
+      "workspace_route": "workspace:Tree-of-Sophia",
+      "owner_boundary_ref": "Tree-of-Sophia:AGENTS.md",
+      "classification": "requires_port",
+      "port_ref": "Tree-of-Sophia:stats/port.manifest.json"
+    },
+    {
+      "repo_id": "abyss-machine",
+      "workspace_route": "source:abyss-machine",
+      "owner_boundary_ref": "abyss-machine:AGENTS.md",
+      "classification": "requires_port",
+      "port_ref": "abyss-machine:stats/port.manifest.json"
+    },
+    {
+      "repo_id": "abyss-stack",
+      "workspace_route": "source:abyss-stack",
+      "owner_boundary_ref": "abyss-stack:AGENTS.md",
+      "classification": "requires_port",
+      "port_ref": "abyss-stack:stats/port.manifest.json"
+    },
+    {
+      "repo_id": "aoa-4pda-connector",
+      "workspace_route": "workspace:connectors/aoa-4pda-connector",
+      "owner_boundary_ref": "aoa-4pda-connector:AGENTS.md",
+      "classification": "requires_port",
+      "port_ref": "aoa-4pda-connector:stats/port.manifest.json"
+    },
+    {
+      "repo_id": "aoa-agents",
+      "workspace_route": "workspace:aoa-agents",
+      "owner_boundary_ref": "aoa-agents:AGENTS.md",
+      "classification": "requires_port",
+      "port_ref": "aoa-agents:stats/port.manifest.json"
+    },
+    {
+      "repo_id": "aoa-course-connector",
+      "workspace_route": "workspace:connectors/aoa-course-connector",
+      "owner_boundary_ref": "aoa-course-connector:AGENTS.md",
+      "classification": "requires_port",
+      "port_ref": "aoa-course-connector:stats/port.manifest.json"
+    },
+    {
+      "repo_id": "aoa-discord-connector",
+      "workspace_route": "workspace:connectors/aoa-discord-connector",
+      "owner_boundary_ref": "aoa-discord-connector:AGENTS.md",
+      "classification": "requires_port",
+      "port_ref": "aoa-discord-connector:stats/port.manifest.json"
+    },
+    {
+      "repo_id": "aoa-evals",
+      "workspace_route": "workspace:aoa-evals",
+      "owner_boundary_ref": "aoa-evals:AGENTS.md",
+      "classification": "requires_port",
+      "port_ref": "aoa-evals:stats/port.manifest.json"
+    },
+    {
+      "repo_id": "aoa-kag",
+      "workspace_route": "workspace:aoa-kag",
+      "owner_boundary_ref": "aoa-kag:AGENTS.md",
+      "classification": "requires_port",
+      "port_ref": "aoa-kag:stats/port.manifest.json"
+    },
+    {
+      "repo_id": "aoa-memo",
+      "workspace_route": "workspace:aoa-memo",
+      "owner_boundary_ref": "aoa-memo:AGENTS.md",
+      "classification": "requires_port",
+      "port_ref": "aoa-memo:stats/port.manifest.json"
+    },
+    {
+      "repo_id": "aoa-playbooks",
+      "workspace_route": "workspace:aoa-playbooks",
+      "owner_boundary_ref": "aoa-playbooks:AGENTS.md",
+      "classification": "requires_port",
+      "port_ref": "aoa-playbooks:stats/port.manifest.json"
+    },
+    {
+      "repo_id": "aoa-routing",
+      "workspace_route": "workspace:aoa-routing",
+      "owner_boundary_ref": "aoa-routing:AGENTS.md",
+      "classification": "requires_port",
+      "port_ref": "aoa-routing:stats/port.manifest.json"
+    },
+    {
+      "repo_id": "aoa-sdk",
+      "workspace_route": "workspace:aoa-sdk",
+      "owner_boundary_ref": "aoa-sdk:AGENTS.md",
+      "classification": "requires_port",
+      "port_ref": "aoa-sdk:stats/port.manifest.json"
+    },
+    {
+      "repo_id": "aoa-session-memory",
+      "workspace_route": "workspace:bundles/aoa-session-memory",
+      "owner_boundary_ref": "aoa-session-memory:AGENTS.md",
+      "classification": "requires_port",
+      "port_ref": "aoa-session-memory:stats/port.manifest.json"
+    },
+    {
+      "repo_id": "aoa-skills",
+      "workspace_route": "workspace:aoa-skills",
+      "owner_boundary_ref": "aoa-skills:AGENTS.md",
+      "classification": "requires_port",
+      "port_ref": "aoa-skills:stats/port.manifest.json"
+    },
+    {
+      "repo_id": "aoa-stackoverflow-connector",
+      "workspace_route": "workspace:connectors/aoa-stackoverflow-connector",
+      "owner_boundary_ref": "aoa-stackoverflow-connector:AGENTS.md",
+      "classification": "requires_port",
+      "port_ref": "aoa-stackoverflow-connector:stats/port.manifest.json"
+    },
+    {
+      "repo_id": "aoa-stats",
+      "workspace_route": "workspace:aoa-stats",
+      "owner_boundary_ref": "aoa-stats:AGENTS.md",
+      "classification": "implemented",
+      "port_ref": "aoa-stats:stats/source_home.manifest.json"
+    },
+    {
+      "repo_id": "aoa-techniques",
+      "workspace_route": "workspace:aoa-techniques",
+      "owner_boundary_ref": "aoa-techniques:AGENTS.md",
+      "classification": "requires_port",
+      "port_ref": "aoa-techniques:stats/port.manifest.json"
+    },
+    {
+      "repo_id": "aoa-telegram-connector",
+      "workspace_route": "workspace:connectors/aoa-telegram-connector",
+      "owner_boundary_ref": "aoa-telegram-connector:AGENTS.md",
+      "classification": "requires_port",
+      "port_ref": "aoa-telegram-connector:stats/port.manifest.json"
+    },
+    {
+      "repo_id": "aoa-xda-connector",
+      "workspace_route": "workspace:connectors/aoa-xda-connector",
+      "owner_boundary_ref": "aoa-xda-connector:AGENTS.md",
+      "classification": "requires_port",
+      "port_ref": "aoa-xda-connector:stats/port.manifest.json"
+    }
+  ],
+  "routed_surfaces": [
+    {
+      "id": "deployed-abyss-stack-runtime-mirror",
+      "classification": "routed_to_stronger_owner",
+      "owner_repo": "abyss-stack",
+      "owner_route": "source:abyss-stack",
+      "rationale": "The deployed runtime mirror is not a second source owner."
+    },
+    {
+      "id": "raw-aoa-session-state",
+      "classification": "routed_to_stronger_owner",
+      "owner_repo": "aoa-session-memory",
+      "owner_route": "workspace:bundles/aoa-session-memory",
+      "rationale": "Raw session state is runtime evidence, not a separate authored stats owner."
+    }
+  ]
+}

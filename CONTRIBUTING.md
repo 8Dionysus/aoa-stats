@@ -6,6 +6,8 @@ Thank you for contributing.
 
 Good contributions:
 
+- shared measurement compatibility that preserves local owner meaning
+- owner-local port interoperability and cross-repo validation
 - derived summary schemas and summary-shape improvements
 - deterministic builder or validator improvements
 - better receipt-envelope or event-kind contract clarity
@@ -29,6 +31,9 @@ Bad contributions:
 Please make sure:
 
 - the changed summary, schema, or builder stays explicitly derived
+- owner-local measurement questions and definitions remain with their owner
+- population, unit, dimensions, missingness, uncertainty, provenance, and
+  live/reference posture stay explicit where applicable
 - owner repos supplying the input facts are named clearly
 - output-shape changes are intentional and documented
 - generated surfaces are current when tracked outputs changed
@@ -46,11 +51,8 @@ Before opening a PR, run local validation for:
 
 ## Local development setup
 
-Recommended local setup:
-
-- `python -m pip install -r requirements-dev.txt`
-
-Run the repository gate from [`AGENTS.md#verify`](AGENTS.md#verify), then the
+Dependency manifests live at the repository root. Run the repository gate from
+[`AGENTS.md#verify`](AGENTS.md#verify), then the
 nearest changed family's `AGENTS.md` and mechanic part's `VALIDATION.md`.
 
 If your change touches live receipt source registration, watcher behavior, or

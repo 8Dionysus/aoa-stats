@@ -130,6 +130,10 @@ def main() -> int:
             [sys.executable, "scripts/validate_stats_source_home.py"],
         ),
         (
+            "validate_stats_protocol",
+            [sys.executable, "scripts/validate_stats_protocol.py"],
+        ),
+        (
             "check_agon_kag_stats_observability_registry",
             [
                 sys.executable,

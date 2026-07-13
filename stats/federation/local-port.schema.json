@@ -1,0 +1,163 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://aoa-stats/stats/federation/local-port.schema.json",
+  "title": "OS Abyss owner-local stats port",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema_version",
+    "contract_version",
+    "owner_repo",
+    "status",
+    "owner_boundary_ref",
+    "central_contract_refs",
+    "evidence_posture",
+    "questions",
+    "measurements",
+    "exports"
+  ],
+  "properties": {
+    "schema_version": {
+      "const": "aoa_stats_local_port_v1"
+    },
+    "contract_version": {
+      "type": "string",
+      "pattern": "^[0-9]+\\.[0-9]+\\.[0-9]+$"
+    },
+    "owner_repo": {
+      "type": "string",
+      "minLength": 1
+    },
+    "status": {
+      "enum": [
+        "active",
+        "deprecated"
+      ]
+    },
+    "owner_boundary_ref": {
+      "type": "string",
+      "minLength": 1
+    },
+    "central_contract_refs": {
+      "type": "array",
+      "minItems": 2,
+      "uniqueItems": true,
+      "items": {
+        "enum": [
+          "aoa-stats:stats/measurement-contract/measurement-contract.schema.json",
+          "aoa-stats:stats/measurement-contract/measurement-packet.schema.json"
+        ]
+      }
+    },
+    "evidence_posture": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "live_state",
+        "privacy",
+        "raw_content_allowed"
+      ],
+      "properties": {
+        "live_state": {
+          "enum": [
+            "reference_only",
+            "live_capable",
+            "mixed"
+          ]
+        },
+        "privacy": {
+          "enum": [
+            "public",
+            "internal",
+            "sensitive"
+          ]
+        },
+        "raw_content_allowed": {
+          "const": false
+        }
+      }
+    },
+    "questions": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "id",
+          "question",
+          "consumer_refs"
+        ],
+        "properties": {
+          "id": {
+            "type": "string",
+            "pattern": "^question:[a-z][a-z0-9_.-]*$"
+          },
+          "question": {
+            "type": "string",
+            "minLength": 1
+          },
+          "consumer_refs": {
+            "type": "array",
+            "minItems": 1,
+            "uniqueItems": true,
+            "items": {
+              "type": "string",
+              "minLength": 1
+            }
+          }
+        }
+      }
+    },
+    "measurements": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "$ref": "../measurement-contract/measurement-contract.schema.json"
+      }
+    },
+    "exports": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "measurement_id",
+          "posture",
+          "packet_refs",
+          "evidence_refs"
+        ],
+        "properties": {
+          "measurement_id": {
+            "type": "string",
+            "minLength": 1
+          },
+          "posture": {
+            "enum": [
+              "declaration_only",
+              "reference",
+              "live"
+            ]
+          },
+          "packet_refs": {
+            "type": "array",
+            "uniqueItems": true,
+            "items": {
+              "type": "string",
+              "minLength": 1
+            }
+          },
+          "evidence_refs": {
+            "type": "array",
+            "minItems": 1,
+            "uniqueItems": true,
+            "items": {
+              "type": "string",
+              "minLength": 1
+            }
+          }
+        }
+      }
+    }
+  }
+}

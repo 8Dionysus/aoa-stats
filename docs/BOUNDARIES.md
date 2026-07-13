@@ -19,6 +19,12 @@ must not pretend to own.
 
 `aoa-stats` is derived.
 
+It owns the shared statistical grammar, local-port compatibility, central
+coverage inventory, deterministic cross-field semantics, and weaker derived
+views. Each owner repository retains its measurement questions, object and
+population meaning, dimensions, evidence, privacy posture, freshness, and
+exports.
+
 `aoa-stats` also owns the canonical shared receipt envelope and active
 cross-repo event-kind vocabulary used by stats builders and live refresh.
 Owner repos still own payload schemas and payload meaning inside that shared
@@ -54,6 +60,9 @@ It must not emit:
 - workflow instructions that override owner repos
 - durable memory truth or memory promotion decisions
 - inboxes that pretend to be governance
+- owner-local metric definitions authored centrally
+- raw traces, raw session transcripts, or raw memory content
+- MCP, routing, remediation, or runtime write commands
 
 ## Anti-collapse rules
 
@@ -63,3 +72,8 @@ It must not emit:
 - raw checkpoint notes stay out unless an owner-local reviewed receipt carries the needed lineage forward
 - evidence stays linked rather than duplicated
 - derived summaries stay weaker than owner-local meaning
+- missing, unknown, stale, zero, fail, and partial remain distinct
+- incompatible units, versions, populations, windows, or dimensions do not
+  aggregate
+- a local root `stats/` port does not transfer domain authority to
+  `aoa-stats`

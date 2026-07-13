@@ -29,6 +29,8 @@ EXPECTED_CROSS_TOPOLOGY_DOCS = {
     "mechanics/recurrence/parts/live-receipt-refresh/systemd/AGENTS.md",
     "stats/AGENTS.md",
     "stats/intake-contract/AGENTS.md",
+    "stats/measurement-contract/AGENTS.md",
+    "stats/federation/AGENTS.md",
     "stats/operation-contracts/AGENTS.md",
     "stats/read-models/AGENTS.md",
     "stats/surface-catalog/AGENTS.md",

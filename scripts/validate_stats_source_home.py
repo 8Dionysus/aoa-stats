@@ -32,12 +32,27 @@ OPERATION_CONTRACT_SCHEMA_PATH = (
 TOPOLOGY_PATH = Path("mechanics/topology.json")
 
 EXPECTED_FAMILIES = {
+    "measurement_contract": "stats/measurement-contract",
+    "federation": "stats/federation",
     "intake_contract": "stats/intake-contract",
     "read_models": "stats/read-models",
     "operation_contracts": "stats/operation-contracts",
     "surface_catalog": "stats/surface-catalog",
 }
 EXPECTED_BRANCH_ENTRIES = {
+    "stats/measurement-contract": {
+        "AGENTS.md",
+        "README.md",
+        "measurement-contract.schema.json",
+        "measurement-packet.schema.json",
+    },
+    "stats/federation": {
+        "AGENTS.md",
+        "README.md",
+        "local-port.schema.json",
+        "owner-inventory.schema.json",
+        "owner-inventory.json",
+    },
     "stats/intake-contract": {
         "AGENTS.md",
         "README.md",
@@ -78,6 +93,13 @@ OPTIONAL_ROUTE_FIELDS = ("generated_routes", "read_only_access_routes")
 INTAKE_FIXTURE = Path(
     "stats/intake-contract/examples/session_harvest_family.receipts.example.json"
 )
+PROTOCOL_JSON_PATHS = {
+    "stats/measurement-contract/measurement-contract.schema.json",
+    "stats/measurement-contract/measurement-packet.schema.json",
+    "stats/federation/local-port.schema.json",
+    "stats/federation/owner-inventory.schema.json",
+    "stats/federation/owner-inventory.json",
+}
 OPERATION_POSTURES_BY_PACKAGE = {
     "agon": ("seed_registry_compiler", "retained_compatibility_registry"),
     "experience": ("schema_example_contracts", "part_local_schema_contracts"),
@@ -291,6 +313,7 @@ def _validate_stats_json_allowlist(
         OPERATION_CONTRACT_SCHEMA_PATH.as_posix(),
         "stats/intake-contract/event-kind-registry.json",
         INTAKE_FIXTURE.as_posix(),
+        *PROTOCOL_JSON_PATHS,
         *[path.relative_to(repo_root).as_posix() for path in active_paths],
         *[path.relative_to(repo_root).as_posix() for path in deferred_paths],
         *[path.relative_to(repo_root).as_posix() for path in retired_paths],
@@ -750,9 +773,9 @@ def validate(
         return [manifest_error]
     assert manifest is not None
 
-    if manifest.get("schema_version") != "aoa_stats_source_home_v2":
+    if manifest.get("schema_version") != "aoa_stats_source_home_v3":
         issues.append(
-            "stats/source_home.manifest.json: schema_version must be aoa_stats_source_home_v2"
+            "stats/source_home.manifest.json: schema_version must be aoa_stats_source_home_v3"
         )
     if manifest.get("owner_repo") != "aoa-stats":
         issues.append("stats/source_home.manifest.json: owner_repo must be aoa-stats")

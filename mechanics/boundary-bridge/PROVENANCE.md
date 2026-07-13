@@ -29,11 +29,18 @@ public schema/output route and reference-only admission truth. The Cycle 9
 false-live correction is about the missing refresh observation contract, not
 about the authority of the reviewed `aoa-memo` corpus; rationale stays in
 `docs/decisions/AOST-D-0004-live-admission-requires-refresh-observation.md`.
-All three parts use mixed localized/public placement declared exactly by the
-topology.
+`measurement-packet-crossing` is evidenced by the central measurement and
+local-port schemas, the filesystem-free semantic core, the protocol validator,
+and part-local tests derived from manual positive and negative trials. It owns
+no owner metric or runtime access surface.
+
+The topology declares the exact localized or mixed placement of all four
+parts.
 
 ## Source-family crosswalk
 
 - `receipt-abi-crossing` ↔ `stats` family `intake_contract`
 - `consumer-regrounding` ↔ `stats` family `surface_catalog`
 - `memory-owner-handoff` ↔ `stats` family `read_models`
+- `measurement-packet-crossing` ↔ `stats` families `measurement_contract` and
+  `federation`

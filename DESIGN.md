@@ -2,13 +2,14 @@
 
 ## Role
 
-`aoa-stats` is AoA's derived observability organ. It turns bounded,
-source-owned evidence into deterministic read models without replacing the
-sources that give that movement meaning.
+`aoa-stats` is the central statistical measurability organ of OS Abyss. It
+defines compatible measurement semantics, federates owner-local `stats/`
+ports, and turns bounded source-owned evidence into deterministic read models
+without replacing the sources that give that movement meaning.
 
 ## Thesis
 
-Useful observability needs two structures:
+Useful statistical observability needs two structures:
 
 - a source home that says what a stats object means
 - mechanics homes that say how repeatable operations produce, refresh,
@@ -41,6 +42,8 @@ than path depth.
 
 `stats/` owns source-authored semantics:
 
+- the portable measurement and packet grammar
+- the local-port contract and owner-level coverage inventory
 - receipt-envelope and event-kind admission meaning
 - active, deferred, and retired read-model profiles
 - bounded operation records for parts without a public catalog model
@@ -52,6 +55,41 @@ read-model meaning. Operation records make non-catalog questions visible
 without copying mechanic payload or inventing a fake surface. Runtime code
 stays under `src/`; `stats/` is not an import package, output dump, receipt
 store, or archive.
+
+### Statistical model
+
+The central model separates six things that are often collapsed:
+
+- an event or trace records one occurrence
+- a measure or metric defines what is measured and by which unit
+- a statistic describes a population, sample, cohort, or window
+- a reporting view applies a named and versioned presentation rule
+- a bounded signal supports analysis or triage without becoming proof
+- an eval verdict or routing decision remains with its stronger owner
+
+The source contract makes observation and metric identity, single-writer
+owner, population, sample, cohort, window, value, unit, dimensions,
+cardinality, numerator and denominator, aggregation, temporality, lifecycle,
+compatibility, missingness, uncertainty, provenance, reporting rule, privacy,
+and live/reference posture explicit.
+
+`pass_at_k` means at least one success among `k`; `pass_all_k` is the portable
+identifier for `pass^k`, where all selected attempts succeed. Ratios retain
+their components. Distributions and quantiles retain represented sample and
+population. `missing`, `unknown`, and `stale` do not become zero or fail.
+
+### Federation
+
+Every active source owner receives a root `stats/` port unless an explicit
+owner boundary routes the surface to a stronger owner. The central local-port
+schema owns compatibility only. A local port owns its questions, measurement
+definitions, populations, dimensions, evidence handoffs, privacy and freshness
+posture, and real exports.
+
+`stats/federation/owner-inventory.json` is the durable coverage map. It names
+portable owner routes, never host paths, worktree state, or session history.
+Significant deployed or runtime surfaces that are not independent source
+owners are routed rather than counted twice.
 
 ### The `mechanics/` operation home
 
@@ -65,14 +103,43 @@ The topology returns every active part to the stats family it serves.
 
 ### Implementation and publication districts
 
-`src/aoa_stats_builder/` owns deterministic logic and source adapters.
-`src/aoa_stats_mcp/` is a read-only access plane. `schemas/` and `generated/`
-keep stable public paths.
+`src/aoa_stats_builder/measurement.py` is a filesystem-free executable
+interpretation of the measurement source contracts. Existing derived-view
+modules contain bounded pure projections; source discovery and loading remain
+adapters. `src/aoa_stats_mcp/` is the current read-only access plane pending a
+verified cutover to the stack-owned `aoa-stats-mcp`. `schemas/` and
+`generated/` keep stable public paths.
 
 Root `scripts/`, `tests/`, `docs/`, `examples/`, and `manifests/` contain only
 repo-wide or explicit compatibility/public surfaces. Operation-owned config,
 docs, examples, schemas, scripts, units, and focused tests live under the
 nearest mechanic part.
+
+### Existing-surface classification
+
+The current repository is classified by authoritative route rather than a
+second hand-maintained file roster:
+
+- measurement, federation, and receipt-envelope schemas are fundamental shared
+  contracts
+- active read-model profiles are concrete derived-view contracts; deferred
+  profiles are evidence-gated domain candidates; retired profiles are obsolete
+  publication tombstones retained only for cleanup and provenance
+- filesystem-free projection modules are bounded cores for their views, while
+  `*_sources.py`, workspace discovery, refresh, and build fan-out are domain or
+  infrastructure adapters
+- files under `generated/` are generated projections, never edit sources
+- examples and committed snapshots remain reference surfaces unless an authored
+  profile and observable producer admit them to live state
+- ignored `state/`, systemd, and deployment material are runtime-only surfaces
+- `src/aoa_stats_mcp/` is temporary access glue pending the stack-owned cutover
+- root wrappers are compatibility surfaces only when topology names a current
+  consumer; unsupported wrappers and empty read models remain retired rather
+  than preserved as legacy
+
+This route-based classification covers new families without creating another
+mutable object inventory. A surface that fits none of these classes must first
+acquire an owner and consumer or be removed as repetition or overcode.
 
 ## Authority surfaces
 
@@ -80,6 +147,8 @@ nearest mechanic part.
 | --- | --- |
 | repository identity and edit route | root and nearest nested `AGENTS.md` |
 | durable architecture | `DESIGN.md` |
+| shared statistical grammar | `stats/measurement-contract/` |
+| local-port protocol and owner coverage | `stats/federation/` |
 | source-family map and root posture | `stats/source_home.manifest.json` |
 | exact public surface state | target profile under `stats/read-models/` |
 | non-catalog input maturity | target record under `stats/operation-contracts/` |
@@ -111,9 +180,17 @@ profiles, topology, generated discovery, decisions, and the changelog.
 
 ## Core, adapter, and proof boundaries
 
-Pure receipt-to-read-model rules belong in `src/aoa_stats_builder/`.
-Filesystem loading, workspace discovery, CLI policy, write/check mode, and
-output fan-out stay at adapters and root entrypoints.
+Shared statistical meaning belongs in the schemas under
+`stats/measurement-contract/`. Their pure cross-field implementation and
+receipt-to-read-model rules belong in `src/aoa_stats_builder/`. Filesystem
+loading, workspace discovery, CLI policy, write/check mode, output fan-out,
+runtime registration, and MCP transport stay at adapters and entrypoints.
+
+The pure measurement core may validate compatibility, preserve evidence and
+semantic identity, summarize privacy-bounded distributions, compute exact
+finite-sample pass statistics, and aggregate only along owner-declared axes.
+It does not discover repositories, read owner files, publish state, or decide
+what a local metric means.
 
 Shared implementation does not imply shared proof ownership:
 
@@ -236,6 +313,10 @@ Stats facts are projections, not promotions:
 - missing, stale, rejected, or unregistered evidence remains visible
 - evidence references are preferred over copied owner artifacts
 
+The same ladder governs local ports: the owner writes the measurement identity
+and evidence; `aoa-stats` checks compatibility and derives a weaker view; MCP,
+KAG, dashboards, and caches expose that view without gaining its authority.
+
 ## Shared mechanic vocabulary
 
 Reuse only common AoA mechanics supported by current operations and payload.
@@ -259,6 +340,10 @@ but cannot invent another package or part.
 7. **Thin access planes.** CLI, systemd, and MCP do not become owner truth.
 8. **Thin entrypoints.** Route docs point to owners instead of replaying
    changing status.
+9. **Federated meaning.** Central compatibility does not absorb local metric
+   meaning.
+10. **Explicit absence and uncertainty.** Missingness, freshness, sample size,
+    and uncertainty survive every projection.
 
 ## Good shape
 

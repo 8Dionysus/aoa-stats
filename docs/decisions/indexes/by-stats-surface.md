@@ -22,6 +22,10 @@
 
 - [AOST-D-0011 - Antifragility Vector Remains An Evidence-Gated Incubator](../AOST-D-0011-antifragility-vector-remains-an-evidence-gated-incubator.md) (`docs/decisions/AOST-D-0011-antifragility-vector-remains-an-evidence-gated-incubator.md`)
 
+## derived read contract
+
+- [AOST-D-0012 - Federated Measurement Ownership and Thin Access](../AOST-D-0012-federated-measurement-ownership-and-thin-access.md) (`docs/decisions/AOST-D-0012-federated-measurement-ownership-and-thin-access.md`)
+
 ## derived-only boundary
 
 - [AOST-D-0002 - Canonical Decision Lane](../AOST-D-0002-canonical-decision-lane.md) (`docs/decisions/AOST-D-0002-canonical-decision-lane.md`)
@@ -59,9 +63,25 @@
 
 - [AOST-D-0003 - Component Refresh Fixtures Are Not Live State](../AOST-D-0003-component-refresh-fixtures-are-not-live-state.md) (`docs/decisions/AOST-D-0003-component-refresh-fixtures-are-not-live-state.md`)
 
+## local stats port
+
+- [AOST-D-0012 - Federated Measurement Ownership and Thin Access](../AOST-D-0012-federated-measurement-ownership-and-thin-access.md) (`docs/decisions/AOST-D-0012-federated-measurement-ownership-and-thin-access.md`)
+
+## measurement contract
+
+- [AOST-D-0012 - Federated Measurement Ownership and Thin Access](../AOST-D-0012-federated-measurement-ownership-and-thin-access.md) (`docs/decisions/AOST-D-0012-federated-measurement-ownership-and-thin-access.md`)
+
+## measurement packet
+
+- [AOST-D-0012 - Federated Measurement Ownership and Thin Access](../AOST-D-0012-federated-measurement-ownership-and-thin-access.md) (`docs/decisions/AOST-D-0012-federated-measurement-ownership-and-thin-access.md`)
+
 ## Memory Movement
 
 - [AOST-D-0004 - Live Admission Requires Refresh Observation](../AOST-D-0004-live-admission-requires-refresh-observation.md) (`docs/decisions/AOST-D-0004-live-admission-requires-refresh-observation.md`)
+
+## owner inventory
+
+- [AOST-D-0012 - Federated Measurement Ownership and Thin Access](../AOST-D-0012-federated-measurement-ownership-and-thin-access.md) (`docs/decisions/AOST-D-0012-federated-measurement-ownership-and-thin-access.md`)
 
 ## Owner Landing
 

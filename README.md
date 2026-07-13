@@ -1,9 +1,10 @@
 # aoa-stats
 
-`aoa-stats` is the derived observability organ of AoA. It turns bounded,
-source-owned receipts and reviewed evidence into deterministic read models.
-Those models help humans and tools see movement; they do not become workflow,
-proof, route, memory, runtime, identity, or owner truth.
+`aoa-stats` is the central statistical measurability organ of OS Abyss. It
+defines shared statistical compatibility, federates owner-local root `stats/`
+ports, and turns bounded source-owned evidence into deterministic read models.
+Those models help humans and tools see populations and movement; they do not
+become workflow, proof, route, memory, KAG, runtime, identity, or owner truth.
 
 > Current release: `v0.1.3`
 
@@ -23,11 +24,15 @@ proof, route, memory, runtime, identity, or owner truth.
 
 | Concern | Authoritative surface | Weaker companions |
 | --- | --- | --- |
+| shared measurement grammar | `stats/measurement-contract/` | pure implementation, local packets, MCP representation |
+| local-port compatibility and owner coverage | `stats/federation/` | workspace scans and consumer caches |
+| owner-local metric meaning | each owner's root `stats/port.manifest.json` | central inventory and cross-repo views |
 | receipt admission | `stats/intake-contract/` and `schemas/stats-event-envelope.schema.json` | examples, live registry, generated summaries |
 | read-model lifecycle and meaning | `stats/read-models/{active,deferred,retired}/*.profile.json` | public catalog, generated output, MCP projection |
 | non-catalog stats contracts | `stats/operation-contracts/active/*.operation.json` | part-local payload and root compatibility routes |
 | operation ownership | `mechanics/topology.json` and nearest part cards | root compatibility routes |
-| implementation | `src/aoa_stats_builder/` and `src/aoa_stats_mcp/` | command entrypoints |
+| executable measurement semantics | `stats/measurement-contract/` as source, `src/aoa_stats_builder/measurement.py` as pure implementation | validators and access adapters |
+| current access implementation | `src/aoa_stats_mcp/` until stack-owned cutover | command entrypoint |
 | public contracts | catalog schemas under `schemas/` | examples and docs |
 | public derived output | `generated/*.min.json` | KAG indexes and consumer caches |
 | local live output admission | `stats/read-models/active/*.profile.json#live_state_capable` | `state/generated/`, live catalog, watcher output |
@@ -38,8 +43,9 @@ their authored source and named owner inputs.
 
 ## Current v0 surface
 
-The checked source home carries receipt admission, authored read-model and
-operation contracts, deterministic projection, stable public schemas, and
+The checked source home carries the shared measurement grammar, local-port
+federation contract and owner inventory, receipt admission, authored read-model
+and operation contracts, deterministic projection, stable public schemas, and
 read-only catalog access. Exact lifecycle state comes from the profiles under
 [`stats/read-models/`](stats/read-models/); non-catalog maturity comes from
 [`stats/operation-contracts/`](stats/operation-contracts/); the compact public
@@ -95,13 +101,16 @@ current admission and lifecycle rationale.
 
 For read-only MCP use, follow
 [`stats/surface-catalog/CODEX_MCP.md`](stats/surface-catalog/CODEX_MCP.md).
+The current repo-local server remains the single access plane until a verified
+cutover to the stack-owned `aoa-stats-mcp`; the statistical core does not
+depend on MCP runtime.
 
 ## Boundaries
 
 - Source repositories own payload meaning and current domain truth.
 - `aoa-evals` owns bounded proof and verdict interpretation.
-- `aoa-stats` owns only deterministic derivation and the shape of its read
-  models.
+- `aoa-stats` owns shared statistical compatibility, deterministic derivation,
+  and the shape of its read models; local owners retain metric meaning.
 - Missing, stale, rejected, or unregistered evidence stays visible; it is not
   converted into success or zero.
 - A count, trend, or window cannot by itself prove mastery, intent, causality,

@@ -4,9 +4,10 @@ Root route card for `aoa-stats`.
 
 ## Purpose
 
-`aoa-stats` is AoA's derived observability organ. It consumes source-owned
-receipts, evidence references, and bounded verdicts to build deterministic read
-models without taking authority from their owners.
+`aoa-stats` is the central statistical measurability organ of OS Abyss. It
+defines a shared measurement grammar and federates owner-local `stats/` ports,
+then consumes source-owned receipts, evidence references, and bounded verdicts
+to build deterministic read models without taking authority from their owners.
 
 Dashboards are lanterns, not sovereigns.
 
@@ -14,15 +15,21 @@ Dashboards are lanterns, not sovereigns.
 
 This repository owns:
 
+- the shared grammar for measurement identity, populations, units,
+  dimensions, aggregation, missingness, uncertainty, provenance, lifecycle,
+  reporting rules, privacy, and live/reference posture
+- the compatible root `stats/` port contract and owner coverage inventory
 - the stable meaning and contracts of stats-authored read models
 - one bounded question and authority ceiling for each non-catalog stats
   operation contract
 - the shared receipt envelope and event-kind vocabulary used by those models
 - deterministic projection, refresh, validation, and derived-only access
 
-It does not own workflow, proof, practice, scenario, role, memory, runtime,
-route, quest-state, or self-agent truth. Counts do not create mastery, intent,
-causality, or owner truth.
+Owner repositories own their questions, metric definitions, populations,
+dimensions, evidence handoffs, privacy posture, and exports. This repository
+does not own workflow, proof, practice, scenario, role, memory, KAG, runtime,
+route, quest-state, RPG meaning, or self-agent truth. Counts do not create
+mastery, intent, causality, or owner truth.
 
 ## Start here
 
@@ -71,6 +78,11 @@ profile and indexed decision.
 `stats/source_home.manifest.json` is the machine-readable source-family
 crosswalk. `mechanics/topology.json` is the machine-readable operation and
 placement map. Human route docs explain those maps; they do not override them.
+
+The `measurement_contract` family owns portable statistical shape. The
+`federation` family owns local-port compatibility and the durable owner-level
+coverage inventory. Neither may copy owner-local definitions or one-session
+workspace state.
 
 Repo-wide validators keep only stable repository entrypoints as their direct
 text inventory. Stats-family membership comes from the source manifest and
@@ -155,6 +167,9 @@ public or compatibility contract.
   symbolic. Documentation and examples do not become runtime evidence.
 - Generated, compact, MCP, adapter, and runtime convenience surfaces remain
   weaker than authored profiles and owner-local facts.
+- The repo-local MCP is temporary runtime glue until the separately verified
+  stack-owned `aoa-stats-mcp` cutover. Keep exactly one active access plane and
+  do not move statistical semantics into it.
 
 For any specific surface, follow its profile or operation record, mechanic
 contract, focused validation card, and indexed decision rationale. Do not copy
@@ -231,6 +246,7 @@ For source-home, mechanics, or route-card changes, also run:
 
 ```bash
 python scripts/validate_stats_source_home.py
+python scripts/validate_stats_protocol.py
 python scripts/validate_mechanics_topology.py
 python scripts/validate_nested_agents.py --fail-on-untracked
 python -m pytest -q tests/test_stats_source_home.py tests/test_mechanics_topology.py tests/test_docs_routes.py

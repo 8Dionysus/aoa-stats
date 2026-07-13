@@ -36,6 +36,14 @@ REQUIRED_AGENTS_DOCS: dict[str, tuple[str, ...]] = {
     'src/AGENTS.md': ('aoa_stats_mcp', 'workflow, proof, route, or quest authority'),
     'stats/AGENTS.md': ('source-authored meaning of stats families', 'source_home.manifest.json'),
     'stats/intake-contract/AGENTS.md': ('shared stats receipt envelope', 'Mechanics crosswalk'),
+    'stats/measurement-contract/AGENTS.md': (
+        'portable statistical grammar',
+        'one writer owner',
+    ),
+    'stats/federation/AGENTS.md': (
+        'compatibility shape',
+        'host-specific paths',
+    ),
     'stats/operation-contracts/AGENTS.md': (
         'part-local stats operations',
         'Do not add a public surface profile',

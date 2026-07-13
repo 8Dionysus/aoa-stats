@@ -2,10 +2,9 @@
 
 This directory is the durable decision surface for `aoa-stats`.
 
-Use it when a future contributor needs the rationale for a derived-observability
-boundary, receipt-intake rule, summary-strength model, generated read model,
-live-source registry posture, MCP posture, validator guard, or consumer
-regrounding route.
+Use it when a future contributor needs the rationale for a federated
+measurement, derived-observability, receipt-intake, summary-strength, generated
+read-model, live-source, MCP, validator, or consumer-regrounding boundary.
 
 Ordinary implementation notes, generated output, runtime logs, private
 evidence, proof verdicts, source-authored meaning, mutable status, and one-off

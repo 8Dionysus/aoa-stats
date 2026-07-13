@@ -4,10 +4,9 @@
 
 `docs/decisions/` is the durable decision-rationale lane for `aoa-stats`.
 
-Use it when the repository needs to preserve why a derived-observability
-boundary, receipt-intake rule, summary-strength model, generated read model,
-live-source registry posture, MCP posture, validator guard, or consumer
-regrounding route was chosen.
+Use it when the repository needs to preserve why a federated measurement,
+derived-observability, receipt-intake, summary-strength, generated read-model,
+live-source, MCP, validator, or consumer-regrounding boundary was chosen.
 
 Do not use this lane for source-authored meaning, proof verdicts, live runtime
 logs, generated summary payloads, private evidence, broad planning notes,
