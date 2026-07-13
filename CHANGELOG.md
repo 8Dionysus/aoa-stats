@@ -46,6 +46,8 @@ Tracking starts with the first public release-prep baseline for this repository.
 
 ### Changed
 
+- Marked the `aoa-routing` owner-local stats port as implemented after its
+  landing.
 - Marked the `aoa-evals`, `aoa-kag`, and `aoa-memo` owner-local stats ports as
   implemented after their landings and clarified the shared-validator
   dependency modes proven by those pilots.
