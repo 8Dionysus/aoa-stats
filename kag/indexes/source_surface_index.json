@@ -81,7 +81,7 @@
   },
   "index_identity": {
     "artifact_kind": "source_surface_index",
-    "content_digest": "0db798ac1634e0570687cf3377a3bac664f542eb519b18477c6650fe387b0844",
+    "content_digest": "4334b2af4e802f1094c56d62a1219bd96a834ae03cfec8ab5866b2721b33525e",
     "local_id": "index:repo-local:source-surfaces",
     "schema_ref": "aoa-kag:schemas/repo-local-kag-index.schema.json"
   },
@@ -90029,13 +90029,13 @@
         "state": "current"
       },
       "identity": {
-        "content_hash": "a1d48dbbc17565ed590126f60942c90cd39ee407fac6620aa0e98f345121b324",
+        "content_hash": "cc98e3c5d69f6c5244e34db98c46d4c9497939400a4823393a28ec286fd6f8e8",
         "git_ref": "git-index-source-tree",
         "id": "file:scripts/validate_stats_protocol.py:b585d0ad81",
         "mime": "text/x-python",
         "path": "scripts/validate_stats_protocol.py",
         "repo": "aoa-stats",
-        "size_bytes": 19510
+        "size_bytes": 19889
       },
       "mechanics_role": "none",
       "observed_form": "command",
@@ -90068,7 +90068,7 @@
       },
       "signs": {
         "attestation_ref": "",
-        "digest": "a1d48dbbc17565ed590126f60942c90cd39ee407fac6620aa0e98f345121b324",
+        "digest": "cc98e3c5d69f6c5244e34db98c46d4c9497939400a4823393a28ec286fd6f8e8",
         "signature_ref": "",
         "verification_state": "digest-only"
       },
@@ -100959,13 +100959,13 @@
         "state": "current"
       },
       "identity": {
-        "content_hash": "aa69c44da9e14419c49bc61169a57d123095cbb1e697a1a650c6f50d1a0c7632",
+        "content_hash": "5d9ea9de05c38d4aaae93336c1ee4461d5347e95efc4b0b4a6778aecd48c711c",
         "git_ref": "git-index-source-tree",
         "id": "file:tests/test_stats_protocol.py:30490e0692",
         "mime": "text/x-python",
         "path": "tests/test_stats_protocol.py",
         "repo": "aoa-stats",
-        "size_bytes": 10611
+        "size_bytes": 10956
       },
       "mechanics_role": "none",
       "observed_form": "command",
@@ -100998,7 +100998,7 @@
       },
       "signs": {
         "attestation_ref": "",
-        "digest": "aa69c44da9e14419c49bc61169a57d123095cbb1e697a1a650c6f50d1a0c7632",
+        "digest": "5d9ea9de05c38d4aaae93336c1ee4461d5347e95efc4b0b4a6778aecd48c711c",
         "signature_ref": "",
         "verification_state": "digest-only"
       },

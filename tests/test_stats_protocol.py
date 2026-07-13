@@ -253,6 +253,14 @@ def test_port_validation_resolves_and_checks_reference_packets(tmp_path: Path) -
     assert validator.validate(REPO_ROOT, port_paths=[port_path]) == []
 
 
+def test_port_validation_accepts_owner_qualified_contract_ref(tmp_path: Path) -> None:
+    packet = reference_packet()
+    packet["contract_ref"] = "aoa-evals:stats/port.manifest.json#/measurements/0"
+    port_path = write_reference_port(tmp_path, packet=packet)
+
+    assert validator.validate(REPO_ROOT, port_paths=[port_path]) == []
+
+
 def test_port_validation_rejects_missing_and_escaping_packet_refs(tmp_path: Path) -> None:
     missing = write_reference_port(tmp_path / "missing")
     missing_issues = validator.validate(REPO_ROOT, port_paths=[missing])
@@ -270,7 +278,7 @@ def test_port_validation_rejects_false_packet_semantics_and_contract_link(
     tmp_path: Path,
 ) -> None:
     packet = deepcopy(reference_packet())
-    packet["contract_ref"] = "stats/port.manifest.json#/measurements/999"
+    packet["contract_ref"] = "aoa-stats:stats/port.manifest.json#/measurements/0"
     packet["writer_repo"] = "aoa-stats"
     packet["value"]["number"] = -1
     packet["posture"]["live_state"] = "live"

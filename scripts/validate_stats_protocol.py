@@ -356,6 +356,10 @@ def _validate_port_packets(
             continue
         measurement_index, contract = measurement_entry
         expected_contract_ref = f"{port_ref}#/measurements/{measurement_index}"
+        expected_contract_refs = {expected_contract_ref}
+        owner_repo = port.get("owner_repo")
+        if isinstance(owner_repo, str) and owner_repo:
+            expected_contract_refs.add(f"{owner_repo}:{expected_contract_ref}")
         packets: list[Mapping[str, Any]] = []
         for packet_ref in export.get("packet_refs", []):
             if not isinstance(packet_ref, str) or not _portable_ref(packet_ref):
@@ -382,9 +386,12 @@ def _validate_port_packets(
                     registry=registry,
                 )
             )
-            if packet.get("contract_ref") != expected_contract_ref:
+            if packet.get("contract_ref") not in expected_contract_refs:
+                expected_values = ", ".join(
+                    repr(value) for value in sorted(expected_contract_refs)
+                )
                 issues.append(
-                    f"{packet_path}: contract_ref must equal {expected_contract_ref!r}"
+                    f"{packet_path}: contract_ref must equal one of {expected_values}"
                 )
             packet_posture = packet.get("posture")
             packet_live_state = (
