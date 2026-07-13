@@ -1,6 +1,7 @@
 from __future__ import annotations
 
 import importlib.util
+import json
 from pathlib import Path
 
 
@@ -76,3 +77,40 @@ def test_pre_materialization_gate_denies_only_missing_subject_store() -> None:
     assert rejected["unexpected_pre_materialization_blockers"] == [
         "unexpected_trust_regression"
     ]
+
+
+def test_manifest_requires_registry_lifecycle_and_sbom_lite() -> None:
+    manifest = json.loads(
+        (
+            REPO_ROOT
+            / "manifests/artifact_bundles/summary_surface_catalog.bundle.json"
+        ).read_text(encoding="utf-8")
+    )
+
+    assert manifest["artifact_class"] == "derived_observability_readmodel_catalog"
+    assert manifest["public_safe"] is True
+    assert (
+        manifest["artifact_source"]["kind"]
+        == "generated_observability_readmodel_catalog"
+    )
+    assert manifest["lifecycle"]["initial_state"] == "candidate"
+    assert "release-ready" in manifest["lifecycle"]["promotion_path"]
+    assert manifest["consumer_contract"]["registry_required"] is True
+    command_text = "\n".join(manifest["consumer_command"])
+    assert "evidence-promote" in command_text
+    assert "materialize-subjects" in command_text
+    assert "trust-gate" in command_text
+    assert "registry-latest" in command_text
+    assert "--consumer-ref aoa-stats:summary-surface-catalog" in command_text
+    assert {item["role"] for item in manifest["artifact_subjects"]} == {
+        "authority_doc",
+        "schema",
+        "summary_surface_catalog",
+    }
+    assert "--source-repo aoa-stats" in command_text
+    assert "--trust-root-mode host_managed" in command_text
+    assert manifest["consumer_contract"]["subject_store_required"] is True
+    assert (
+        manifest["consumer_contract"]["admission_gate"]
+        == "fail_closed_consumer_admission"
+    )

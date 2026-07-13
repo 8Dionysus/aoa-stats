@@ -36,6 +36,10 @@ Tracking starts with the first public release-prep baseline for this repository.
 
 ### Changed
 
+- Moved exact catalog consumer-return and artifact trust-lifecycle assertions
+  from the root catalog test to their Boundary Bridge and Release Support
+  owners, preserving the checks while leaving root proof focused on the shared
+  authored/public catalog contract.
 - Removed fixed active/deferred/retired profile counts from source-home
   validation while preserving non-empty active publication, stable slot, retired
   reservation, schema, route, and generated-catalog parity checks. A functional

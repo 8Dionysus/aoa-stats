@@ -15,6 +15,9 @@ mechanic part even when the root facade keeps a compatibility alias.
 Root fan-out proof derives expected public output names from authored profiles
 and compares complete outputs with their committed bytes. It must not replay
 part-owned field values, counts, or example semantics as a second test suite.
+The same boundary applies to consumers and release operations: owner-return
+routes and artifact trust lifecycles are proved by their Boundary Bridge and
+Release Support parts, not by the root catalog-contract test.
 
 ## Editing posture
 Prefer fixtures that expose boundary drift: ambiguous evidence refs, unknown

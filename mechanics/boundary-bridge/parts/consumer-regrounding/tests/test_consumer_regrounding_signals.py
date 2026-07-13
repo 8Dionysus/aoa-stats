@@ -87,3 +87,25 @@ def test_derived_signal_hygiene_is_part_local_and_preserves_authority_order() ->
     assert "no closed citation loop becomes proof" in guide
     assert "Wave 4" not in guide
     assert not (REPO_ROOT / "docs" / "DERIVED_SIGNAL_HYGIENE.md").exists()
+
+
+def test_consumer_regrounding_inputs_prefer_real_owner_surfaces() -> None:
+    payload = json.loads(
+        (REPO_ROOT / "generated" / "summary_surface_catalog.min.json").read_text(
+            encoding="utf-8"
+        )
+    )
+    profiles = {item["name"]: item for item in payload["surfaces"]}
+
+    route_inputs = profiles["route_progression_summary"]["owner_truth_inputs"]
+    assert route_inputs[:2] == [
+        "aoa-skills/skills/core/session-growth/aoa-session-progression-lift/"
+        "references/progression-delta-receipt-schema.yaml",
+        "aoa-skills/mechanics/growth-cycle/examples/session-growth-artifacts/"
+        "progression_delta_receipt.kernel-maturity.json",
+    ]
+    assert "legacy numeric" not in route_inputs[0]
+    assert "owner_landing_summary" not in profiles
+
+    stress_input = profiles["stress_recovery_window_summary"]["owner_truth_inputs"][0]
+    assert stress_input.startswith("aoa-evals/")

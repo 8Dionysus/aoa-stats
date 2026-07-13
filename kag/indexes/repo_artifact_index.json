@@ -1738,7 +1738,7 @@
     },
     {
       "artifact_kind": "document",
-      "content_hash": "b88843d25a107d3b17759704da8ef218dfba533aea96caf8a4628db54f9dedd5",
+      "content_hash": "8818794cc4bfc331dc5eb5f940a0358546faae782855ae1901afcbb4d49e242b",
       "id": "artifact:file:changelog.md:06572a96a5",
       "path": "CHANGELOG.md",
       "source_record_id": "file:changelog.md:06572a96a5",
@@ -1762,7 +1762,7 @@
     },
     {
       "artifact_kind": "document",
-      "content_hash": "937363efe5b1840000a0000c1454df5ceefe1da0e0a132e14c48ffeed13627a5",
+      "content_hash": "afd64bf674b4c2604fe8d7b11c91dbb42c45dbc6e66ef7e35ac8ec6b20eb84eb",
       "id": "artifact:file:design.md:3dc5dd454e",
       "path": "DESIGN.md",
       "source_record_id": "file:design.md:3dc5dd454e",
@@ -3946,7 +3946,7 @@
     },
     {
       "artifact_kind": "document",
-      "content_hash": "01a4376c6820ab936942a72275861f8e4157371ec8850eb0de7585e0cc15a3b5",
+      "content_hash": "894cd7748dc7a5062684e73dc18105df825a7db95e08a2a0a0979c07cb0454db",
       "id": "artifact:file:mechanics/boundary-bridge/parts/consumer-regrounding/validation.md:7633910c6a",
       "path": "mechanics/boundary-bridge/parts/consumer-regrounding/VALIDATION.md",
       "source_record_id": "file:mechanics/boundary-bridge/parts/consumer-regrounding/validation.md:7633910c6a",
@@ -3962,7 +3962,7 @@
     },
     {
       "artifact_kind": "test",
-      "content_hash": "1f5b1453a216db2b9d6978172dc569ea659b5092d686d162984cbb67bd52edc4",
+      "content_hash": "a3a5a4d2265ddbdf757009ec0c71cdfeb95d0754f533833ea90d5896da1cf3bd",
       "id": "artifact:file:mechanics/boundary-bridge/parts/consumer-regrounding/tests/test_consumer_regrounding_signals.py:d6c0ab422d",
       "path": "mechanics/boundary-bridge/parts/consumer-regrounding/tests/test_consumer_regrounding_signals.py",
       "source_record_id": "file:mechanics/boundary-bridge/parts/consumer-regrounding/tests/test_consumer_regrounding_signals.py:d6c0ab422d",
@@ -6146,7 +6146,7 @@
     },
     {
       "artifact_kind": "test",
-      "content_hash": "5db69d0ac3ec7ce641c43d7ac1ba51002928d52b4213fbed553e5c8d5b35e4c5",
+      "content_hash": "a0454f03f3648f0b31efb94245c2e5ae6fc200e8aeabe87bcbddaa83f90ec10b",
       "id": "artifact:file:mechanics/release-support/parts/summary-catalog-artifact-bundle/tests/test_summary_catalog_artifact_bundle.py:1dbcf7b179",
       "path": "mechanics/release-support/parts/summary-catalog-artifact-bundle/tests/test_summary_catalog_artifact_bundle.py",
       "source_record_id": "file:mechanics/release-support/parts/summary-catalog-artifact-bundle/tests/test_summary_catalog_artifact_bundle.py:1dbcf7b179",
@@ -7602,7 +7602,7 @@
     },
     {
       "artifact_kind": "document",
-      "content_hash": "fa9f6232942b45833a726b0c03940bc29fd5e98fcbff789d598d18912bd4636c",
+      "content_hash": "be0936b2f4510ac04713650af9f7f88a17cfe084dbf3d670219eabcb8440b6aa",
       "id": "artifact:file:tests/agents.md:712d5f0348",
       "path": "tests/AGENTS.md",
       "source_record_id": "file:tests/agents.md:712d5f0348",
@@ -7682,7 +7682,7 @@
     },
     {
       "artifact_kind": "test",
-      "content_hash": "9229110a20c1d140c31a61e27237d33b53fcc8e72e6f3fab8cce067f5cd93ad4",
+      "content_hash": "4a59c5b230d0ea4f61672518d4e43667f948e450424ce12cef8f0db6641ef92e",
       "id": "artifact:file:tests/test_summary_surface_catalog.py:ebdd6f47a0",
       "path": "tests/test_summary_surface_catalog.py",
       "source_record_id": "file:tests/test_summary_surface_catalog.py:ebdd6f47a0",
@@ -7699,7 +7699,7 @@
   ],
   "index_identity": {
     "artifact_kind": "repository_artifact_index",
-    "content_digest": "6a54cc466281a52873e6a6faceeff62fa74b9745db48e28a630a99df5e3eb069",
+    "content_digest": "5c15fa153c28d0056afdcc11032288bb1b82e1cc97c636fed912aa3fc1a70ef8",
     "index_kind": "artifact",
     "local_id": "index:repo-local:artifacts",
     "schema_ref": "aoa-kag:schemas/repo-local-kag-repository-index.schema.json"
@@ -7723,7 +7723,7 @@
   },
   "schema_version": "aoa-repo-local-kag-repository-index-v1",
   "source_index": {
-    "content_digest": "72497d249f0843822743a22976275a09f4b5009f53d4b243502761587d69336a",
+    "content_digest": "fb13a2c5f3cc55310e527410c2e2b5adc4df3b7b0a73127375df72c58864094a",
     "local_id": "index:repo-local:source-surfaces",
     "path": "kag/indexes/source_surface_index.json"
   },

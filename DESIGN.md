@@ -117,6 +117,9 @@ Shared implementation does not imply shared proof ownership:
 The root build integration derives its expected output set from active profiles
 and checks complete committed-byte parity. Field-level meaning, example values,
 and projection invariants stay with the mechanic that owns each output.
+Consumer return-route assertions and catalog artifact trust-lifecycle proof are
+also mechanic-owned; the root catalog test constrains only the authored/public
+catalog contract shared across those operations.
 
 Compatibility applies to evidenced interfaces. A root CLI, builder, or alias
 may remain stable while uncalled helper symbols are removed after current

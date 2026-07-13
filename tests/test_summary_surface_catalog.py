@@ -1,7 +1,6 @@
 from __future__ import annotations
 
 import importlib.util
-import json
 import re
 from pathlib import Path
 import sys
@@ -128,63 +127,3 @@ def test_surface_strength_vocabulary_matches_authored_profile_postures() -> None
     assert documented_postures == authored_postures
     assert "antifragility_vector" not in model
     assert "Today" not in model
-
-
-def test_consumer_regrounding_inputs_prefer_real_owner_surfaces() -> None:
-    payload = json.loads(
-        (REPO_ROOT / "generated" / "summary_surface_catalog.min.json").read_text(
-            encoding="utf-8"
-        )
-    )
-    profiles = {item["name"]: item for item in payload["surfaces"]}
-
-    route_inputs = profiles["route_progression_summary"]["owner_truth_inputs"]
-    assert route_inputs[:2] == [
-        "aoa-skills/skills/core/session-growth/aoa-session-progression-lift/references/progression-delta-receipt-schema.yaml",
-        "aoa-skills/mechanics/growth-cycle/examples/session-growth-artifacts/progression_delta_receipt.kernel-maturity.json",
-    ]
-    assert "legacy numeric" not in route_inputs[0]
-
-    assert "owner_landing_summary" not in profiles
-
-    stress_input = profiles["stress_recovery_window_summary"]["owner_truth_inputs"][0]
-    assert stress_input.startswith("aoa-evals/")
-
-
-def test_artifact_bundle_manifest_requires_registry_lifecycle_and_sbom_lite() -> None:
-    manifest = json.loads(
-        (
-            REPO_ROOT
-            / "manifests"
-            / "artifact_bundles"
-            / "summary_surface_catalog.bundle.json"
-        ).read_text(encoding="utf-8")
-    )
-
-    assert manifest["artifact_class"] == "derived_observability_readmodel_catalog"
-    assert manifest["public_safe"] is True
-    assert (
-        manifest["artifact_source"]["kind"]
-        == "generated_observability_readmodel_catalog"
-    )
-    assert manifest["lifecycle"]["initial_state"] == "candidate"
-    assert "release-ready" in manifest["lifecycle"]["promotion_path"]
-    assert manifest["consumer_contract"]["registry_required"] is True
-    command_text = "\n".join(manifest["consumer_command"])
-    assert "evidence-promote" in command_text
-    assert "materialize-subjects" in command_text
-    assert "trust-gate" in command_text
-    assert "registry-latest" in command_text
-    assert "--consumer-ref aoa-stats:summary-surface-catalog" in command_text
-    assert {item["role"] for item in manifest["artifact_subjects"]} == {
-        "authority_doc",
-        "schema",
-        "summary_surface_catalog",
-    }
-    assert "--source-repo aoa-stats" in command_text
-    assert "--trust-root-mode host_managed" in command_text
-    assert manifest["consumer_contract"]["subject_store_required"] is True
-    assert (
-        manifest["consumer_contract"]["admission_gate"]
-        == "fail_closed_consumer_admission"
-    )
