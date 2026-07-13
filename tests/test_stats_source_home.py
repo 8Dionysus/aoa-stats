@@ -218,6 +218,11 @@ def test_source_home_contains_only_declared_source_records() -> None:
         "intake-contract/examples/session_harvest_family.receipts.example.json",
         "operation-contracts/operation-contract.schema.json",
         "read-models/surface-profile.schema.json",
+        "measurement-contract/measurement-contract.schema.json",
+        "measurement-contract/measurement-packet.schema.json",
+        "federation/local-port.schema.json",
+        "federation/owner-inventory.schema.json",
+        "federation/owner-inventory.json",
         *operation_contracts,
         *active_profiles,
         *deferred_profiles,
@@ -232,6 +237,8 @@ def test_source_home_contains_only_declared_source_records() -> None:
         "AGENTS.md",
         "README.md",
         "source_home.manifest.json",
+        "measurement-contract",
+        "federation",
         "intake-contract",
         "operation-contracts",
         "read-models",
@@ -244,6 +251,8 @@ def test_source_families_name_meaning_ceiling_and_current_routes() -> None:
     families = {family["id"]: family for family in manifest["families"]}
 
     assert set(families) == {
+        "measurement_contract",
+        "federation",
         "intake_contract",
         "operation_contracts",
         "read_models",

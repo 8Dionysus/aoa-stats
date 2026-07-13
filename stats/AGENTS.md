@@ -4,9 +4,9 @@ Route card for the `stats/` source home.
 
 ## Scope
 
-`stats/` owns the source-authored meaning of stats families: what an intake
-contract admits, what a derived surface describes, and where each family's
-authority stops.
+`stats/` owns the source-authored meaning of stats families: the shared
+measurement grammar, local-port compatibility, what an intake contract admits,
+what a derived surface describes, and where each family's authority stops.
 
 It does not own operation payloads, generated outputs, Python implementation,
 or source-owner facts. Those remain in the active routes named by
@@ -24,6 +24,8 @@ or source-owner facts. Those remain in the active routes named by
 ## Source-home law
 
 - Keep source meaning and authority ceilings here.
+- Keep shared compatibility in `measurement-contract/` and `federation/`;
+  keep owner-local definitions in each owner's root `stats/` port.
 - Keep implementation under `src/`, committed derived outputs under
   `generated/`, canonical published schemas under `schemas/`, and public or
   compatibility commands under `scripts/` unless their owner route changes
@@ -54,6 +56,9 @@ or source-owner facts. Those remain in the active routes named by
 
 ## Branch routes
 
+- `measurement-contract/` owns the portable measurement and packet grammar.
+- `federation/` owns local-port compatibility and the owner-level coverage
+  inventory.
 - `intake-contract/` owns the shared stats receipt-envelope and event-family
   admission meaning, below each source repo's payload authority.
 - `read-models/` owns active and deferred surface profiles plus minimal retired
@@ -90,6 +95,7 @@ authority.
 
 ```bash
 python -m json.tool stats/source_home.manifest.json >/dev/null
+python scripts/validate_stats_protocol.py
 python scripts/validate_stats_source_home.py
 python scripts/build_views.py --check
 python scripts/validate_nested_agents.py

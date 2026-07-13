@@ -57,8 +57,9 @@
         "scripts/validate_mechanics_topology.py",
         "scripts/validate_nested_agents.py",
         "scripts/validate_receipt_abi.py",
-        "scripts/validate_repo.py",
-        "scripts/validate_stats_source_home.py"
+                "scripts/validate_repo.py",
+                "scripts/validate_stats_protocol.py",
+                "scripts/validate_stats_source_home.py"
       ],
       "tests": [
         "tests/AGENTS.md",
@@ -70,8 +71,9 @@
         "tests/test_mechanics_topology.py",
         "tests/test_release_check.py",
         "tests/test_roadmap_parity.py",
-        "tests/test_stats_source_home.py",
-        "tests/test_summary_surface_catalog.py",
+                "tests/test_stats_source_home.py",
+                "tests/test_stats_protocol.py",
+                "tests/test_summary_surface_catalog.py",
         "tests/test_validate_nested_agents.py"
       ]
     },
@@ -119,9 +121,23 @@
     ],
     "unlisted_package_status": "inactive_not_mapped"
   },
-  "source_family_crosswalks": [
-    {
-      "stats_source_family_ref": "intake_contract",
+    "source_family_crosswalks": [
+        {
+            "stats_source_family_ref": "measurement_contract",
+            "stats_source_family_manifest": "stats/source_home.manifest.json",
+            "mechanic_part_refs": [
+                "mechanics/boundary-bridge/parts/measurement-packet-crossing"
+            ]
+        },
+        {
+            "stats_source_family_ref": "federation",
+            "stats_source_family_manifest": "stats/source_home.manifest.json",
+            "mechanic_part_refs": [
+                "mechanics/boundary-bridge/parts/measurement-packet-crossing"
+            ]
+        },
+        {
+            "stats_source_family_ref": "intake_contract",
       "stats_source_family_manifest": "stats/source_home.manifest.json",
       "mechanic_part_refs": [
         "mechanics/boundary-bridge/parts/receipt-abi-crossing",
@@ -538,6 +554,20 @@
           ],
           "localized_payload_roots": [
             "docs",
+            "tests"
+          ],
+          "retained_root_routes": []
+        },
+        {
+          "path": "measurement-packet-crossing",
+          "owner_surface": "mechanics/boundary-bridge/parts/measurement-packet-crossing/CONTRACT.md",
+          "validation_surface": "mechanics/boundary-bridge/parts/measurement-packet-crossing/VALIDATION.md",
+          "payload_class": "measurement-packet-crossing-stats-operation",
+          "stats_source_family_refs": [
+            "measurement_contract",
+            "federation"
+          ],
+          "localized_payload_roots": [
             "tests"
           ],
           "retained_root_routes": []

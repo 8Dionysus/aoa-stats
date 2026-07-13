@@ -2,9 +2,9 @@
 
 ## One sentence
 
-`aoa-stats` is an evidence-linked observability layer that turns bounded,
-owner-local facts into deterministic read models without promoting those
-models into owner truth.
+`aoa-stats` is the evidence-linked statistical compatibility layer that joins
+owner-local measurement contracts into deterministic read models without
+promoting those models into owner truth.
 
 ## Authority ladder
 
@@ -12,13 +12,26 @@ The layer is deliberately downstream:
 
 1. owner repositories define payload meaning and current domain facts
 2. bounded proof owners define verdict meaning
-3. stats-authored profiles and operation contracts define derived questions
-4. builders project those contracts into public read models
-5. catalogs, MCP, KAG, bundles, and consumer caches expose weaker views
+3. owner-local `stats/` ports define their measurement questions and meaning
+4. central measurement contracts define compatibility and reporting shape
+5. stats-authored profiles and operation contracts define derived questions
+6. builders project those contracts into public read models
+7. catalogs, MCP, KAG, bundles, and consumer caches expose weaker views
 
 No lower step may silently strengthen, repair, or replace an upper one.
 
-## Five layers
+## Measurement and projection layers
+
+### Measurement contracts and local ports
+
+The shared schemas under `stats/measurement-contract/` define measurement and
+packet compatibility. `stats/federation/` defines the local-port shape and
+durable owner coverage map. Each owner-local port retains its object,
+population, dimension, privacy, evidence, freshness, and export meaning.
+
+The pure measurement implementation can reject incompatible units, versions,
+populations, windows, dimensions, uncertainty, or live posture. It cannot
+invent a local metric or upgrade a packet into proof.
 
 ### 1. Event facts
 
@@ -72,10 +85,11 @@ their root paths, but their meaning routes back to authored stats sources.
 
 ## Projection boundary
 
-Filesystem-free transformation rules belong in `src/aoa_stats_builder/`.
-Source discovery, filesystem loading, write/check mode, CLI policy, and output
-fan-out stay at adapters and entrypoints. A shared implementation core does not
-move operation-specific proof away from its mechanic owner.
+Source-authored statistical meaning belongs under `stats/`. Filesystem-free
+transformation rules belong in `src/aoa_stats_builder/`. Source discovery,
+filesystem loading, write/check mode, CLI policy, output fan-out, and transport
+stay at adapters and entrypoints. A shared implementation core does not move
+operation-specific proof away from its mechanic owner.
 
 Generated views remain machine-first and reproducible. Missing, stale,
 rejected, or unregistered evidence stays visible; it is never converted into
@@ -110,10 +124,11 @@ it is not a release signature. The OS Abyss artifact-bundle validator adds ABI,
 subject-inventory, registry, and isolated materialization checks without
 making the catalog stronger than its source evidence.
 
-The read-only access plane under `src/aoa_stats_mcp/` may expose the catalog,
-surface payloads, and this boundary text. Access convenience does not alter
-authority, activate a profile, or turn committed reference data into live
-state.
+The current read-only access plane under `src/aoa_stats_mcp/` may expose the
+catalog, surface payloads, and this boundary text until the verified stack-owned
+`aoa-stats-mcp` cutover. Access convenience does not alter authority, activate
+a profile, or turn committed reference data into live state. The statistical
+core remains usable when MCP is absent.
 
 ## Canonical questions
 

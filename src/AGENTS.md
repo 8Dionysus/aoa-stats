@@ -1,13 +1,17 @@
 # AGENTS.md
 Local guidance for `src/` in `aoa-stats`.
 
-Read the root `AGENTS.md` before changing package code. Builder changes also
-start from the selected profile under `stats/read-models/` and its mechanic
-contract; MCP changes start from `stats/surface-catalog/CODEX_MCP.md`.
+Read the root `AGENTS.md` before changing package code. Measurement-core
+changes start from `stats/measurement-contract/` and its Boundary Bridge part.
+Derived-view changes start from the selected profile under
+`stats/read-models/` and its mechanic contract; MCP changes start from
+`stats/surface-catalog/CODEX_MCP.md`.
 
 ## Local role
-`src/aoa_stats_builder/` owns deterministic projection core and
-`src/aoa_stats_mcp/` owns read-only access implementation. Root scripts own
+`src/aoa_stats_builder/` contains pure executable interpretations of
+stats-authored contracts plus bounded derived-view code and adapters.
+`src/aoa_stats_mcp/` owns the current read-only access implementation until the
+stack-owned cutover. Root scripts own
 repo-wide orchestration and compatibility entrypoints. Source code should make
 stats surfaces easier to build or read without claiming workflow, proof,
 route, or quest authority.

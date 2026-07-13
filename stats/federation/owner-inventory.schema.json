@@ -1,0 +1,111 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://aoa-stats/stats/federation/owner-inventory.schema.json",
+  "title": "OS Abyss stats owner inventory",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema_version",
+    "contract_version",
+    "owners",
+    "routed_surfaces"
+  ],
+  "properties": {
+    "schema_version": {
+      "const": "aoa_stats_owner_inventory_v1"
+    },
+    "contract_version": {
+      "type": "string",
+      "pattern": "^[0-9]+\\.[0-9]+\\.[0-9]+$"
+    },
+    "owners": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "$ref": "#/$defs/entry"
+      }
+    },
+    "routed_surfaces": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "id",
+          "classification",
+          "owner_repo",
+          "owner_route",
+          "rationale"
+        ],
+        "properties": {
+          "id": {
+            "type": "string",
+            "minLength": 1
+          },
+          "classification": {
+            "const": "routed_to_stronger_owner"
+          },
+          "owner_repo": {
+            "type": "string",
+            "minLength": 1
+          },
+          "owner_route": {
+            "type": "string",
+            "minLength": 1
+          },
+          "rationale": {
+            "type": "string",
+            "minLength": 1
+          }
+        }
+      }
+    }
+  },
+  "$defs": {
+    "entry": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "repo_id",
+        "workspace_route",
+        "owner_boundary_ref",
+        "classification",
+        "port_ref"
+      ],
+      "properties": {
+        "repo_id": {
+          "type": "string",
+          "minLength": 1
+        },
+        "workspace_route": {
+          "type": "string",
+          "minLength": 1
+        },
+        "owner_boundary_ref": {
+          "type": "string",
+          "minLength": 1
+        },
+        "classification": {
+          "enum": [
+            "implemented",
+            "requires_port",
+            "routed_to_stronger_owner",
+            "not_applicable",
+            "blocked"
+          ]
+        },
+        "port_ref": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "minLength": 1
+        },
+        "rationale": {
+          "type": "string",
+          "minLength": 1
+        }
+      }
+    }
+  }
+}

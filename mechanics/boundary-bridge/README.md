@@ -4,7 +4,7 @@ This package maps the common AoA Boundary Bridge mechanic into `aoa-stats`.
 
 ## Mechanic card
 
-Status: mapped common-center mechanic with three active part routes. Payloads
+Status: mapped common-center mechanic with four active part routes. Payloads
 are localized or retained as explicit public routes in `mechanics/topology.json`.
 
 ### Trigger
@@ -45,4 +45,5 @@ activation, or permission to mutate a source system.
 Start with `PARTS.md`. Use `parts/receipt-abi-crossing/` for intake admission
 and `parts/consumer-regrounding/` for derived catalog and coverage signals.
 Use `parts/memory-owner-handoff/` for reviewed memory movement and return to
-the stronger memory owner.
+the stronger memory owner. Use `parts/measurement-packet-crossing/` for
+owner-local measurement compatibility and bounded aggregation.

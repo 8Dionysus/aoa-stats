@@ -26,7 +26,7 @@ def test_roadmap_owns_direction_without_replaying_mutable_inventory() -> None:
     assert "> Current release: `v0.1.3`" in readme
     assert "## [0.1.3] - 2026-04-23" in changelog
     assert "`v0.1.3`" in roadmap
-    assert "derived-observability hardening" in roadmap
+    assert "federated statistical measurability" in roadmap
     assert "Priority sequence" in roadmap
     assert "alternating cross-slices" in roadmap
     assert "remain weaker than source-owned rollout history" in roadmap
@@ -63,6 +63,8 @@ def test_roadmap_routes_exact_state_to_authoritative_surfaces() -> None:
         "CHANGELOG.md",
         "stats/README.md",
         "stats/source_home.manifest.json",
+        "stats/measurement-contract/",
+        "stats/federation/",
         "stats/read-models/",
         "stats/operation-contracts/",
         "stats/intake-contract/",

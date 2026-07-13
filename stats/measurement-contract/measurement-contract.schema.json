@@ -1,0 +1,369 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://aoa-stats/stats/measurement-contract/measurement-contract.schema.json",
+  "title": "OS Abyss owner-local measurement contract",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema_version",
+    "measurement_id",
+    "contract_version",
+    "owner_repo",
+    "question_ref",
+    "semantic_class",
+    "statistic",
+    "object_kind",
+    "unit",
+    "population",
+    "window",
+    "dimensions",
+    "aggregation",
+    "missingness",
+    "uncertainty",
+    "provenance",
+    "lifecycle",
+    "privacy",
+    "live_state",
+    "authority_ceiling"
+  ],
+  "properties": {
+    "schema_version": {
+      "const": "aoa_stats_measurement_contract_v1"
+    },
+    "measurement_id": {
+      "type": "string",
+      "pattern": "^[A-Za-z0-9][A-Za-z0-9_.-]*/[a-z][a-z0-9_.-]*$"
+    },
+    "contract_version": {
+      "type": "string",
+      "pattern": "^[0-9]+\\.[0-9]+\\.[0-9]+$"
+    },
+    "owner_repo": {
+      "type": "string",
+      "minLength": 1
+    },
+    "question_ref": {
+      "type": "string",
+      "pattern": "^question:[a-z][a-z0-9_.-]*$"
+    },
+    "semantic_class": {
+      "enum": [
+        "measure",
+        "metric",
+        "statistic",
+        "view",
+        "signal",
+        "score"
+      ]
+    },
+    "statistic": {
+      "enum": [
+        "count",
+        "gauge",
+        "rate",
+        "ratio",
+        "distribution",
+        "quantile",
+        "pass_at_k",
+        "pass_all_k"
+      ]
+    },
+    "object_kind": {
+      "type": "string",
+      "minLength": 1
+    },
+    "unit": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "symbol",
+        "quantity"
+      ],
+      "properties": {
+        "symbol": {
+          "type": "string",
+          "minLength": 1
+        },
+        "quantity": {
+          "type": "string",
+          "minLength": 1
+        }
+      }
+    },
+    "population": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "subject",
+        "definition",
+        "inclusion_rule",
+        "exclusion_rule",
+        "sampling"
+      ],
+      "properties": {
+        "subject": {
+          "type": "string",
+          "minLength": 1
+        },
+        "definition": {
+          "type": "string",
+          "minLength": 1
+        },
+        "inclusion_rule": {
+          "type": "string",
+          "minLength": 1
+        },
+        "exclusion_rule": {
+          "type": "string",
+          "minLength": 1
+        },
+        "sampling": {
+          "enum": [
+            "census",
+            "sample",
+            "either"
+          ]
+        }
+      }
+    },
+    "window": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "temporality",
+        "clock"
+      ],
+      "properties": {
+        "temporality": {
+          "enum": [
+            "instant",
+            "interval",
+            "cumulative"
+          ]
+        },
+        "clock": {
+          "enum": [
+            "event_time",
+            "processing_time",
+            "owner_defined"
+          ]
+        }
+      }
+    },
+    "dimensions": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "allowed",
+        "prohibited"
+      ],
+      "properties": {
+        "allowed": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+              "name",
+              "max_cardinality",
+              "sensitivity"
+            ],
+            "properties": {
+              "name": {
+                "type": "string",
+                "pattern": "^[a-z][a-z0-9_.-]*$"
+              },
+              "max_cardinality": {
+                "type": "integer",
+                "minimum": 1
+              },
+              "sensitivity": {
+                "enum": [
+                  "public",
+                  "internal",
+                  "sensitive"
+                ]
+              }
+            }
+          }
+        },
+        "prohibited": {
+          "type": "array",
+          "uniqueItems": true,
+          "items": {
+            "type": "string",
+            "pattern": "^[a-z][a-z0-9_.-]*$"
+          }
+        }
+      }
+    },
+    "aggregation": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "operator",
+        "across"
+      ],
+      "properties": {
+        "operator": {
+          "enum": [
+            "none",
+            "sum",
+            "weighted_mean",
+            "ratio_of_sums",
+            "histogram_merge",
+            "pass_estimate"
+          ]
+        },
+        "across": {
+          "type": "array",
+          "uniqueItems": true,
+          "items": {
+            "enum": [
+              "population",
+              "cohort",
+              "window",
+              "dimension"
+            ]
+          }
+        }
+      }
+    },
+    "missingness": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "states",
+        "zero_is_observation"
+      ],
+      "properties": {
+        "states": {
+          "type": "array",
+          "minItems": 3,
+          "maxItems": 3,
+          "uniqueItems": true,
+          "items": {
+            "enum": [
+              "missing",
+              "unknown",
+              "stale"
+            ]
+          }
+        },
+        "zero_is_observation": {
+          "type": "boolean"
+        }
+      }
+    },
+    "uncertainty": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "required",
+        "methods"
+      ],
+      "properties": {
+        "required": {
+          "type": "boolean"
+        },
+        "methods": {
+          "type": "array",
+          "uniqueItems": true,
+          "items": {
+            "enum": [
+              "binomial_exact",
+              "bootstrap",
+              "confidence_interval",
+              "standard_error",
+              "not_estimated",
+              "not_applicable"
+            ]
+          }
+        }
+      }
+    },
+    "provenance": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "evidence_refs_required",
+        "source_revision_required"
+      ],
+      "properties": {
+        "evidence_refs_required": {
+          "const": true
+        },
+        "source_revision_required": {
+          "type": "boolean"
+        }
+      }
+    },
+    "lifecycle": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "status",
+        "compatible_with"
+      ],
+      "properties": {
+        "status": {
+          "enum": [
+            "active",
+            "deprecated"
+          ]
+        },
+        "compatible_with": {
+          "type": "array",
+          "uniqueItems": true,
+          "items": {
+            "type": "string",
+            "pattern": "^[0-9]+\\.[0-9]+\\.[0-9]+$"
+          }
+        }
+      }
+    },
+    "privacy": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "classification",
+        "raw_content_allowed",
+        "sensitive_dimensions_allowed"
+      ],
+      "properties": {
+        "classification": {
+          "enum": [
+            "public",
+            "internal",
+            "sensitive"
+          ]
+        },
+        "raw_content_allowed": {
+          "const": false
+        },
+        "sensitive_dimensions_allowed": {
+          "type": "boolean"
+        }
+      }
+    },
+    "live_state": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "capability"
+      ],
+      "properties": {
+        "capability": {
+          "enum": [
+            "reference_only",
+            "live_capable"
+          ]
+        }
+      }
+    },
+    "authority_ceiling": {
+      "type": "string",
+      "minLength": 1
+    }
+  }
+}

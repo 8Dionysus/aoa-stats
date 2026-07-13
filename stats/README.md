@@ -1,9 +1,10 @@
 # Stats source home
 
-`stats/` is the source-authored home for the meaning and authority ceilings of
-`aoa-stats` families. It tells a reader what the repository may derive and
-routes that meaning to current contracts, implementation, outputs, validators,
-and mechanics.
+`stats/` is the canonical source home for the OS Abyss statistical grammar and
+the meaning and authority ceilings of `aoa-stats` families. It tells owners how
+to publish compatible local measures, tells readers what this repository may
+derive, and routes that meaning to current contracts, implementation, outputs,
+validators, and mechanics.
 
 It is not an importable Python package, generated-output directory, receipt
 store, runtime state home, or second copy of root contracts.
@@ -27,6 +28,8 @@ stats/
 ├── AGENTS.md
 ├── README.md
 ├── source_home.manifest.json
+├── measurement-contract/
+├── federation/
 ├── intake-contract/
 ├── read-models/
 │   ├── active/
@@ -40,6 +43,8 @@ stats/
 
 | Family | Owns | Start here |
 | --- | --- | --- |
+| measurement contract | shared statistical vocabulary, source schemas, and compatibility | `measurement-contract/README.md` |
+| federation | root local-port contract and owner-level coverage inventory | `federation/README.md` |
 | intake contract | shared envelope and event-kind admission, below payload owners | `intake-contract/README.md` |
 | read models | authored public, deferred, and retired surface lifecycle | `read-models/README.md` |
 | operation contracts | bounded non-catalog questions and owner-return posture | `operation-contracts/README.md` |
@@ -55,6 +60,9 @@ Use the smallest source that owns the question:
 
 | Question | Source |
 | --- | --- |
+| What makes two measurements statistically compatible? | `measurement-contract/measurement-contract.schema.json` and its pure implementation route |
+| Which owner homes have a landed stats port? | `federation/owner-inventory.json` |
+| What does one owner measure and why? | that owner's root `stats/port.manifest.json` |
 | What does this public summary mean now? | its file under `read-models/active/` |
 | Why is a candidate not active? | its deferred profile and linked decision |
 | Why is a former output absent? | its retired tombstone and `decision_ref` |
@@ -80,6 +88,8 @@ source facts, proof, routing, workflow, memory, or runtime truth.
 
 - Do not add Python, generated payload, runtime state, or owner-local feeds
   under `stats/`.
+- Do not copy a local port's measurement definitions into the central
+  federation inventory.
 - Do not hand-edit a generated catalog as source.
 - Do not let a profile or operation record outrank stronger-owner inputs.
 - Do not infer live state from a committed example or resolvable adapter.

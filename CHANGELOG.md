@@ -9,6 +9,16 @@ Tracking starts with the first public release-prep baseline for this repository.
 
 ### Added
 
+- Added the shared measurement-contract and measurement-packet grammar for
+  explicit identity, population, units, dimensions, aggregation, missingness,
+  uncertainty, provenance, reporting, privacy, and live/reference posture.
+- Added the federated local-port contract and portable owner inventory so each
+  active OS Abyss owner can keep metric meaning local while remaining
+  centrally compatible.
+- Added a filesystem-free measurement core and Boundary Bridge crossing with
+  manual-trial-derived negative proof for incompatible units, undeclared
+  population aggregation, false zero, duplicate writers, cardinality overflow,
+  false live posture, uncertainty loss, and raw session leakage.
 - Added the root design spine for the staged source-home and mechanics
   refactor, including the authority split and alternating cross-mode.
 - Added explicit route homes for stats-authored source families and evidenced
@@ -36,6 +46,13 @@ Tracking starts with the first public release-prep baseline for this repository.
 
 ### Changed
 
+- Reframed `aoa-stats` from an observability-summary collection into the
+  derived, non-sovereign statistical measurability organ while preserving the
+  existing source-home/mechanics ownership split and current read-model
+  consumers.
+- Classified the repo-local MCP as the single temporary access implementation
+  pending a separately verified stack-owned `aoa-stats-mcp` cutover; the
+  statistical core remains independent of MCP runtime.
 - Centralized active validation and test commands in owner `AGENTS.md`, part
   `VALIDATION.md`, and the primary release, live-use, and MCP guides. Other
   active Markdown now routes to those owners, with a repo-wide docs guard

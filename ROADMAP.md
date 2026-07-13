@@ -8,9 +8,10 @@ snapshot lives at `README.md#current-v0-surface`.
 
 ## Current direction
 
-The current line is derived-observability hardening: keep read models useful,
-deterministic, and easy to consume while keeping them weaker than source-owned
-receipts, proof, rollout history, runtime state, and owner decisions.
+The current line is federated statistical measurability: establish one small
+compatible grammar, let every active owner define meaningful local measures,
+and keep cross-repo views useful while weaker than source-owned receipts,
+proof, rollout history, runtime state, and owner decisions.
 
 Work advances through alternating cross-slices between the authored `stats/`
 source home and the repeatable operations under `mechanics/`. Each slice has
@@ -19,32 +20,40 @@ needs, and leaves the next slice to reverse the lead.
 
 ## Priority sequence
 
-1. **Current owner inputs.** Re-ground authored receipts, profiles, examples,
-   and reports on canonical owner paths. Keep compatibility only for an
-   evidenced current consumer, then remove translation and fallback branches.
-2. **Source meaning.** Make every public read model or non-catalog observation
+1. **Measurement protocol.** Keep identity, population, sample, unit,
+   dimensions, aggregation, missingness, uncertainty, provenance, reporting,
+   privacy, and live/reference posture explicit and versioned.
+2. **Owner federation.** Grow root `stats/` ports from real owner questions and
+   consumers. Return only proven common requirements to the central contract;
+   keep unique meaning local.
+3. **Current owner inputs.** Re-ground authored receipts, profiles, examples,
+   reports, and local packets on canonical owner paths. Keep compatibility only
+   for an evidenced current consumer, then remove translations and fallbacks.
+4. **Source meaning.** Make every public read model or non-catalog observation
    state one bounded question, exact input posture, stronger-owner chain,
    consumer risk, and authority ceiling under `stats/`.
-3. **Mechanic ownership.** Keep repeatable config, docs, examples, supporting
+5. **Mechanic ownership.** Keep repeatable config, docs, examples, supporting
    schemas, scripts, and focused proof with the nearest real mechanic part.
    Reuse a common parent only when the operation shape is genuinely shared.
-4. **Live admission.** Admit a profile to local live materialization only when
+6. **Live admission.** Admit a profile or packet to live materialization only when
    both a current owner source and a refresh-observation route exist. Missing,
    stale, or malformed evidence stays visible and never triggers example
    fallback.
-5. **Publication integrity.** Preserve stable public schema and generated paths
+7. **Publication integrity.** Preserve stable public schema and generated paths
    where consumers depend on them, rebuild deterministic outputs from authored
    sources, and keep retired records limited to cleanup and provenance.
-6. **Thin consumption.** Keep generated catalogs, KAG projections, CLI,
-   systemd, and future MCP access weaker than profiles and owner-local facts.
-   Access convenience does not widen authority or make incomplete mechanics
-   ready.
+8. **Single thin access plane.** Move stats MCP transport into the stack-owned
+   service after direct and MCP reads prove one semantic identity. Remove the
+   repo-local server after consumer cutover; the statistical core remains
+   independent of MCP runtime.
 
 ## Authority routes
 
 | Need | Authoritative route |
 | --- | --- |
 | repository shape and edit law | `DESIGN.md` and `AGENTS.md` |
+| shared measurement grammar | `stats/measurement-contract/` |
+| local-port compatibility and owner coverage | `stats/federation/` |
 | authored stats-family map | `stats/README.md` and `stats/source_home.manifest.json` |
 | exact read-model lifecycle and input posture | target record under `stats/read-models/` |
 | non-catalog observation maturity | target record under `stats/operation-contracts/` |

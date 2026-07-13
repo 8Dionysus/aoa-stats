@@ -1,11 +1,13 @@
 {
-  "schema_version": "aoa_stats_source_home_v2",
+  "schema_version": "aoa_stats_source_home_v3",
   "owner_repo": "aoa-stats",
   "home": "stats/",
   "status": "active_source_home",
-  "role": "Source-authored home for receipt admission, derived read-model profiles, part-local operation contracts, catalog posture, authority ceilings, and mechanics handoffs.",
+  "role": "Canonical source home for the OS Abyss statistical grammar, local-port federation, receipt admission, derived read-model profiles, part-local operation contracts, catalog posture, authority ceilings, and mechanics handoffs.",
   "home_rules": [
-    "stats/ owns authored intake and read-model meaning, not Python implementation.",
+    "stats/ owns shared statistical meaning, local-port compatibility, authored intake, and read-model meaning, not Python implementation.",
+    "Owner-local measurement questions and definitions remain in each owner's root stats/ port.",
+    "The filesystem-free measurement core implements source contracts without becoming a parallel source of meaning.",
     "Every active public catalog surface has one authored profile under stats/read-models/active/.",
     "Contract-only surface candidates live under stats/read-models/deferred/.",
     "Canonical published schemas remain under schemas/.",
@@ -18,6 +20,26 @@
     "Mechanic documentation routes point directly to part-local owners after active consumers are re-grounded; stats source records do not require flat root redirects."
   ],
   "branches": [
+    {
+      "id": "measurement_contract",
+      "path": "stats/measurement-contract",
+      "role": "Portable measurement and packet grammar for evidence-linked owner-local statistics.",
+      "families": [
+        "measurement_contract"
+      ],
+      "owner_surface": "stats/measurement-contract/AGENTS.md",
+      "authority_ceiling": "Owns shared statistical shape and compatibility only; each owner repository retains metric questions, population meaning, evidence, privacy decisions, verdicts, and domain truth."
+    },
+    {
+      "id": "federation",
+      "path": "stats/federation",
+      "role": "Local-port compatibility and canonical owner-level stats coverage inventory.",
+      "families": [
+        "federation"
+      ],
+      "owner_surface": "stats/federation/AGENTS.md",
+      "authority_ceiling": "Owns portable port shape and coverage classification only; local ports retain their definitions and owner routes retain their truth."
+    },
     {
       "id": "intake_contract",
       "path": "stats/intake-contract",
@@ -60,6 +82,86 @@
     }
   ],
   "families": [
+    {
+      "id": "measurement_contract",
+      "branch": "measurement_contract",
+      "path": "stats/measurement-contract",
+      "source_kind": "shared_statistical_measurement_grammar",
+      "meaning": "The common OS Abyss grammar for measurement identity, population, sample, cohort, window, units, dimensions, aggregation, missingness, uncertainty, provenance, reporting, privacy, lifecycle, and live/reference posture.",
+      "owner_surface": "stats/measurement-contract/AGENTS.md",
+      "authority_ceiling": "Defines compatible statistical shape and pure cross-field semantics without acquiring any owner-local metric, evidence, verdict, runtime, or decision authority.",
+      "source_routes": [
+        "stats/measurement-contract/AGENTS.md",
+        "stats/measurement-contract/README.md",
+        "stats/measurement-contract/measurement-contract.schema.json",
+        "stats/measurement-contract/measurement-packet.schema.json",
+        "DESIGN.md",
+        "docs/BOUNDARIES.md"
+      ],
+      "public_contract_routes": [
+        "stats/measurement-contract/measurement-contract.schema.json",
+        "stats/measurement-contract/measurement-packet.schema.json"
+      ],
+      "implementation_routes": [
+        "src/aoa_stats_builder/measurement.py"
+      ],
+      "validator_routes": [
+        "scripts/validate_stats_protocol.py",
+        "mechanics/boundary-bridge/parts/measurement-packet-crossing/tests/test_measurement_packet_crossing.py"
+      ],
+      "mechanic_routes": [
+        {
+          "package": "boundary-bridge",
+          "part": "measurement-packet-crossing",
+          "path": "mechanics/boundary-bridge/parts/measurement-packet-crossing"
+        }
+      ],
+      "stop_lines": [
+        "Do not centralize owner-local questions, metric definitions, or source evidence.",
+        "Do not aggregate incompatible units, populations, dimensions, windows, versions, or reporting rules.",
+        "Do not convert missing, unknown, stale, partial, reference-only, or uncertain input into stronger state."
+      ]
+    },
+    {
+      "id": "federation",
+      "branch": "federation",
+      "path": "stats/federation",
+      "source_kind": "owner_local_stats_port_federation",
+      "meaning": "The portable root stats/ port contract, owner-level coverage inventory, and stronger-owner routing posture for significant non-source surfaces.",
+      "owner_surface": "stats/federation/AGENTS.md",
+      "authority_ceiling": "Records compatibility and coverage without copying local definitions, evidence, runtime state, raw sessions, or one-session execution history.",
+      "source_routes": [
+        "stats/federation/AGENTS.md",
+        "stats/federation/README.md",
+        "stats/federation/local-port.schema.json",
+        "stats/federation/owner-inventory.schema.json",
+        "stats/federation/owner-inventory.json"
+      ],
+      "public_contract_routes": [
+        "stats/federation/local-port.schema.json",
+        "stats/federation/owner-inventory.schema.json"
+      ],
+      "implementation_routes": [
+        "scripts/validate_stats_protocol.py"
+      ],
+      "validator_routes": [
+        "scripts/validate_stats_protocol.py",
+        "tests/test_stats_protocol.py",
+        "mechanics/boundary-bridge/parts/measurement-packet-crossing/tests/test_measurement_packet_crossing.py"
+      ],
+      "mechanic_routes": [
+        {
+          "package": "boundary-bridge",
+          "part": "measurement-packet-crossing",
+          "path": "mechanics/boundary-bridge/parts/measurement-packet-crossing"
+        }
+      ],
+      "stop_lines": [
+        "Do not mark a port implemented before its owner-local landing exists.",
+        "Do not encode host paths, worktree state, migration notes, or session evidence in the inventory.",
+        "Do not treat port presence as owner health, proof, or live export."
+      ]
+    },
     {
       "id": "intake_contract",
       "branch": "intake_contract",
@@ -557,12 +659,12 @@
     {
       "path": "src/aoa_stats_builder/",
       "status": "active_implementation_district",
-      "meaning": "Deterministic builder and validation implementation remains importable code, not source-home prose."
+      "meaning": "The measurement module is a filesystem-free executable interpretation of source-authored contracts; existing builders and source adapters implement concrete derived views without owning their meaning."
     },
     {
       "path": "src/aoa_stats_mcp/",
-      "status": "active_read_only_derived_access_district",
-      "meaning": "The current MCP reads the part-local live-source registry, root boundaries, generated catalog, and catalog-listed surfaces without becoming source or owner authority."
+      "status": "active_read_only_access_pending_stack_cutover",
+      "meaning": "The current repo-local MCP remains the single read-only access plane until a separately verified stack-owned aoa-stats-mcp cutover; it is runtime glue, not source authority."
     },
     {
       "path": "scripts/",

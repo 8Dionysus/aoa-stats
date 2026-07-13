@@ -180,6 +180,8 @@ def test_source_home_entrypoints_route_mutable_status_to_authored_owners() -> No
 
     for route in (
         "source_home.manifest.json",
+        "measurement-contract/README.md",
+        "federation/README.md",
         "intake-contract/README.md",
         "read-models/README.md",
         "operation-contracts/README.md",

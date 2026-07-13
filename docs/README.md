@@ -9,13 +9,18 @@ as a second part-by-part map here.
 
 - durable repository shape: [`../DESIGN.md`](../DESIGN.md)
 - authored stats source home: [`../stats/README.md`](../stats/README.md)
+- shared measurement grammar:
+  [`../stats/measurement-contract/README.md`](../stats/measurement-contract/README.md)
+- local-port federation and owner coverage:
+  [`../stats/federation/README.md`](../stats/federation/README.md)
 - exact read-model state: [`../stats/read-models/README.md`](../stats/read-models/README.md)
 - non-catalog operation contracts:
   [`../stats/operation-contracts/README.md`](../stats/operation-contracts/README.md)
 - operation topology: [`../mechanics/README.md`](../mechanics/README.md) and
   [`../mechanics/topology.json`](../mechanics/topology.json)
 - ownership boundary: [`BOUNDARIES.md`](BOUNDARIES.md)
-- derived-view architecture: [`ARCHITECTURE.md`](ARCHITECTURE.md)
+- public statistical and derived-view architecture:
+  [`ARCHITECTURE.md`](ARCHITECTURE.md)
 - current direction: [`../ROADMAP.md`](../ROADMAP.md) and
   [`../README.md#current-v0-surface`](../README.md#current-v0-surface)
 - durable rationale: [`decisions/README.md`](decisions/README.md)
