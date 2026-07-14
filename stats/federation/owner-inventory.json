@@ -34,7 +34,7 @@
       "repo_id": "Tree-of-Sophia",
       "workspace_route": "workspace:Tree-of-Sophia",
       "owner_boundary_ref": "Tree-of-Sophia:AGENTS.md",
-      "classification": "requires_port",
+      "classification": "implemented",
       "port_ref": "Tree-of-Sophia:stats/port.manifest.json"
     },
     {
