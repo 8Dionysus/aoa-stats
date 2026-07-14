@@ -6,7 +6,7 @@
       "repo_id": "8Dionysus",
       "workspace_route": "workspace:8Dionysus",
       "owner_boundary_ref": "8Dionysus:AGENTS.md",
-      "classification": "requires_port",
+      "classification": "implemented",
       "port_ref": "8Dionysus:stats/port.manifest.json"
     },
     {
