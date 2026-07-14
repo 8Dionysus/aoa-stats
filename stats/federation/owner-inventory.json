@@ -20,7 +20,7 @@
       "repo_id": "Agents-of-Abyss",
       "workspace_route": "workspace:Agents-of-Abyss",
       "owner_boundary_ref": "Agents-of-Abyss:AGENTS.md",
-      "classification": "requires_port",
+      "classification": "implemented",
       "port_ref": "Agents-of-Abyss:stats/port.manifest.json"
     },
     {
