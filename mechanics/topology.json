@@ -49,6 +49,7 @@
         "scripts/check_live_publishers.py",
         "scripts/generate_decision_indexes.py",
         "scripts/install_live_refresh_units.py",
+        "scripts/read_measurement_packet.py",
         "scripts/refresh_live_stats.py",
         "scripts/release_check.py",
         "scripts/validate_abyss_machine_summary_catalog_bundle.py",

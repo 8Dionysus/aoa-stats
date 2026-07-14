@@ -16,6 +16,8 @@ ceiling.
 
 - cross-field semantic findings
 - stable evidence and statistic identities
+- a versioned compatibility-only read result with owner and access authority
+  ceilings
 - a compatible derived packet when the owner contract explicitly admits the
   requested aggregation
 - privacy-bounded distribution summaries and exact finite-sample `pass@k` or

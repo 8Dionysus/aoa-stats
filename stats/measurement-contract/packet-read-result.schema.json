@@ -1,0 +1,130 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://aoa-stats/stats/measurement-contract/packet-read-result.schema.json",
+  "title": "OS Abyss measurement packet read result",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema_version",
+    "truth_status",
+    "compatible",
+    "measurement_id",
+    "contract_version",
+    "semantic_identity",
+    "evidence_identity",
+    "owner_authority_ceiling",
+    "access_authority_ceiling",
+    "issues"
+  ],
+  "properties": {
+    "schema_version": {
+      "const": "aoa_stats_packet_read_result_v1"
+    },
+    "truth_status": {
+      "const": "compatibility_check_only"
+    },
+    "compatible": {
+      "type": "boolean"
+    },
+    "measurement_id": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "contract_version": {
+      "oneOf": [
+        {
+          "type": "null"
+        },
+        {
+          "type": "string",
+          "pattern": "^[0-9]+\\.[0-9]+\\.[0-9]+$"
+        }
+      ]
+    },
+    "semantic_identity": {
+      "oneOf": [
+        {
+          "type": "null"
+        },
+        {
+          "type": "string",
+          "pattern": "^aoa-stats-statistic:sha256:[a-f0-9]{64}$"
+        }
+      ]
+    },
+    "evidence_identity": {
+      "oneOf": [
+        {
+          "type": "null"
+        },
+        {
+          "type": "string",
+          "pattern": "^aoa-stats-evidence:sha256:[a-f0-9]{64}$"
+        }
+      ]
+    },
+    "owner_authority_ceiling": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "access_authority_ceiling": {
+      "const": "Compatibility only; this result does not attest owner truth, evidence validity, freshness, proof, or permission to act."
+    },
+    "issues": {
+      "type": "array",
+      "uniqueItems": true,
+      "items": {
+        "type": "string",
+        "minLength": 1
+      }
+    }
+  },
+  "allOf": [
+    {
+      "if": {
+        "properties": {
+          "compatible": {
+            "const": true
+          }
+        }
+      },
+      "then": {
+        "properties": {
+          "semantic_identity": {
+            "type": "string"
+          },
+          "evidence_identity": {
+            "type": "string"
+          },
+          "owner_authority_ceiling": {
+            "type": "string",
+            "minLength": 1
+          },
+          "issues": {
+            "maxItems": 0
+          }
+        }
+      },
+      "else": {
+        "properties": {
+          "semantic_identity": {
+            "type": "null"
+          },
+          "evidence_identity": {
+            "type": "null"
+          },
+          "owner_authority_ceiling": {
+            "type": "null"
+          },
+          "issues": {
+            "minItems": 1
+          }
+        }
+      }
+    }
+  ]
+}

@@ -36,3 +36,17 @@ question, object, population definition, admissible dimensions, evidence
 handoff, privacy posture, and whether a live export exists. The pure semantic
 implementation is reached through the reciprocal Boundary Bridge part;
 filesystem, runtime, generated, and MCP surfaces remain adapters.
+
+## Read boundary
+
+`packet-read-request.schema.json` and `packet-read-result.schema.json` define
+the stable transport-neutral boundary for checking one supplied contract and
+packet. A successful result carries deterministic evidence and semantic
+identities plus the owner and access authority ceilings. An incompatible
+packet remains an inspectable compatibility result with no identity claim;
+an invalid request envelope is a protocol error.
+
+The public entrypoint is `scripts/read_measurement_packet.py`. It accepts the
+versioned request on standard input and emits the versioned result on standard
+output. It does not discover repositories, open owner files, validate source
+truth, or require an MCP runtime.

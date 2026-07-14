@@ -95,18 +95,28 @@
         "stats/measurement-contract/README.md",
         "stats/measurement-contract/measurement-contract.schema.json",
         "stats/measurement-contract/measurement-packet.schema.json",
+        "stats/measurement-contract/packet-read-request.schema.json",
+        "stats/measurement-contract/packet-read-result.schema.json",
         "DESIGN.md",
         "docs/BOUNDARIES.md"
       ],
       "public_contract_routes": [
         "stats/measurement-contract/measurement-contract.schema.json",
-        "stats/measurement-contract/measurement-packet.schema.json"
+        "stats/measurement-contract/measurement-packet.schema.json",
+        "stats/measurement-contract/packet-read-request.schema.json",
+        "stats/measurement-contract/packet-read-result.schema.json"
       ],
       "implementation_routes": [
-        "src/aoa_stats_builder/measurement.py"
+        "src/aoa_stats_builder/measurement.py",
+        "src/aoa_stats_builder/packet_read.py",
+        "src/aoa_stats_builder/schema_validation.py"
+      ],
+      "read_only_access_routes": [
+        "scripts/read_measurement_packet.py"
       ],
       "validator_routes": [
         "scripts/validate_stats_protocol.py",
+        "tests/test_stats_protocol.py",
         "mechanics/boundary-bridge/parts/measurement-packet-crossing/tests/test_measurement_packet_crossing.py"
       ],
       "mechanic_routes": [

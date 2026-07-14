@@ -1,0 +1,23 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://aoa-stats/stats/measurement-contract/packet-read-request.schema.json",
+  "title": "OS Abyss measurement packet read request",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema_version",
+    "contract",
+    "packet"
+  ],
+  "properties": {
+    "schema_version": {
+      "const": "aoa_stats_packet_read_request_v1"
+    },
+    "contract": {
+      "type": "object"
+    },
+    "packet": {
+      "type": "object"
+    }
+  }
+}
