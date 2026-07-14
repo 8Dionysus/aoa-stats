@@ -167,7 +167,7 @@
       "repo_id": "aoa-xda-connector",
       "workspace_route": "workspace:connectors/aoa-xda-connector",
       "owner_boundary_ref": "aoa-xda-connector:AGENTS.md",
-      "classification": "requires_port",
+      "classification": "implemented",
       "port_ref": "aoa-xda-connector:stats/port.manifest.json"
     }
   ],
