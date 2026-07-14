@@ -41,7 +41,7 @@
       "repo_id": "abyss-machine",
       "workspace_route": "source:abyss-machine",
       "owner_boundary_ref": "abyss-machine:AGENTS.md",
-      "classification": "requires_port",
+      "classification": "implemented",
       "port_ref": "abyss-machine:stats/port.manifest.json"
     },
     {
