@@ -67,6 +67,23 @@ def test_live_stats_source_home_passes_before_mechanics_integration() -> None:
     assert validator.validate(REPO_ROOT, require_mechanics=False) == []
 
 
+def test_source_validator_rejects_retired_repo_local_mcp_transport(
+    tmp_path: Path,
+) -> None:
+    repo_root = copy_repo(tmp_path)
+    retired_transport = repo_root / "src/aoa_stats_mcp"
+    if retired_transport.exists():
+        shutil.rmtree(retired_transport)
+    retired_transport.mkdir()
+
+    issues = validator.validate(repo_root, require_mechanics=False)
+
+    assert any(
+        "src/aoa_stats_mcp: repo-local MCP transport is retired" in issue
+        for issue in issues
+    )
+
+
 def test_source_validator_derives_profile_cardinality_from_authored_state(
     tmp_path: Path,
 ) -> None:

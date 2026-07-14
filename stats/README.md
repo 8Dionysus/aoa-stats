@@ -81,8 +81,9 @@ remain under `generated/`; implementation remains under `src/`; public and
 compatibility commands remain under `scripts/`; focused operation payload and
 proof remain under `mechanics/`.
 
-The repo-local MCP reads derived surfaces only. It does not own profile state,
-source facts, proof, routing, workflow, memory, or runtime truth.
+The public stats read contract is authored here and implemented by the
+stack-owned `aoa-stats-mcp`. Neither the contract nor its transport owns
+profile state, source facts, proof, routing, workflow, memory, or runtime truth.
 
 ## Stop lines
 

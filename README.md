@@ -32,7 +32,7 @@ become workflow, proof, route, memory, KAG, runtime, identity, or owner truth.
 | non-catalog stats contracts | `stats/operation-contracts/active/*.operation.json` | part-local payload and root compatibility routes |
 | operation ownership | `mechanics/topology.json` and nearest part cards | root compatibility routes |
 | executable measurement semantics | `stats/measurement-contract/` as source, `src/aoa_stats_builder/measurement.py` as pure implementation | validators and access adapters |
-| current access implementation | `src/aoa_stats_mcp/` until stack-owned cutover | command entrypoint |
+| stats read contract | `stats/surface-catalog/CODEX_MCP.md` | stack-owned `aoa-stats-mcp` implementation and project registration |
 | public contracts | catalog schemas under `schemas/` | examples and docs |
 | public derived output | `generated/*.min.json` | KAG indexes and consumer caches |
 | local live output admission | `stats/read-models/active/*.profile.json#live_state_capable` | `state/generated/`, live catalog, watcher output |
@@ -101,9 +101,9 @@ current admission and lifecycle rationale.
 
 For read-only MCP use, follow
 [`stats/surface-catalog/CODEX_MCP.md`](stats/surface-catalog/CODEX_MCP.md).
-The current repo-local server remains the single access plane until a verified
-cutover to the stack-owned `aoa-stats-mcp`; the statistical core does not
-depend on MCP runtime.
+The stack-owned `aoa-stats-mcp` is the single MCP access implementation. The
+statistical core and its direct packet-read contract do not depend on MCP
+runtime.
 
 ## Boundaries
 

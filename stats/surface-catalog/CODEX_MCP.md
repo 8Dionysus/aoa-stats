@@ -1,76 +1,45 @@
-# Codex MCP
+# Stats MCP read contract
 
-## Purpose
+## Ownership
 
-`aoa-stats` now ships a narrow repo-local MCP server so Codex can inspect the
-derived observability layer without turning it into workflow authority, proof
-authority, or quest-state authority.
+`aoa-stats` owns the transport-neutral meaning and authority ceiling of public
+stats reads. The stack-owned `aoa-stats-mcp` service implements that contract;
+the project Codex plane owns registration under the stable name `aoa_stats`.
 
-This surface is intentionally:
+The access plane is read-only and non-sovereign. It does not own a measurement,
+owner-local definition, evidence, freshness, verdict, route, workflow, or
+permission to act. The statistical core remains usable when MCP is absent.
 
-- read-only
-- active-summary-surface-first
-- boundary-aware
-- repo-local
-- non-sovereign
+## Public access shape
 
-## Start posture
+The read contract permits bounded access to:
 
-When using this MCP:
+- the owner-produced derived-surface catalog
+- one catalog-listed surface with explicit reference or live-materialization
+  posture
+- the central authority and source-owner boundary references
+- the federated owner inventory and one owner-local port definition
+- compatibility findings for a caller-provided measurement contract and packet
 
-1. call `stats_boundary_rules` first when there is any risk of overclaiming
-2. call `stats_catalog` before reading a specific surface
-3. read the catalog entry's strength metadata before trusting a summary
-4. prefer `stats_surface_read(..., mode="preview")`
-5. expand to `mode="full"` only when the task truly needs the whole payload
+Catalog and owner-port reads return owner-authored definitions or derived
+projections, not attested truth. Packet checking reports compatibility only;
+it preserves the same semantic identity as the direct packet reader without
+attesting the packet's evidence or freshness.
 
-If semantics matter, go back to the owner repo. `aoa-stats` stays derived.
+Missing, stale, unknown, and reference-only states remain explicit. Access must
+stay bounded and must not expose raw session material or sensitive owner
+content.
 
-## Tools
+## Owner routes
 
-- `stats_catalog`: read the active summary catalog, preferring `state/generated/summary_surface_catalog.min.json` when a refreshed live state is present and otherwise falling back to `generated/summary_surface_catalog.min.json`
-- `stats_surface_read`: read one active summary surface by `surface_name`, or one exact surface by `surface_ref`; the payload wrapper includes the matched `surface_profile` when the catalog can resolve it
-- `stats_source_registry`: inspect
-  `mechanics/recurrence/parts/live-receipt-refresh/config/live_receipt_sources.json`
-- `stats_boundary_rules`: reground on `docs/BOUNDARIES.md` and `docs/ARCHITECTURE.md`
+- Statistical semantics and direct read contract: `stats/measurement-contract/`
+  and `scripts/read_measurement_packet.py`
+- Catalog meaning and authority ceiling: `stats/surface-catalog/`
+- Owner coverage and local-port compatibility: `stats/federation/`
+- Runnable MCP service and exact tool surface:
+  `abyss-stack/mcp/services/aoa-stats-mcp/`
+- Project registration and wrapper: the Codex-plane owner in `8Dionysus`
 
-## Resources
-
-- `aoa-stats://catalog`
-- `aoa-stats://source-registry`
-- `aoa-stats://boundaries`
-- `aoa-stats://surface/{name}`
-
-## Local run
-
-Install the optional MCP dependency:
-
-```bash
-python -m pip install -r requirements-mcp.txt
-```
-
-Run the focused MCP tests:
-
-```bash
-python -m pytest -q tests/test_aoa_stats_mcp_state.py
-```
-
-Start the STDIO server from the repo root:
-
-```bash
-python scripts/aoa_stats_mcp_server.py
-```
-
-## Project-level Codex wiring
-
-The AoA workspace-level Codex config can wire this repo-local server with:
-
-```toml
-[mcp_servers.aoa_stats]
-command = "python3"
-args = ["scripts/aoa_stats_mcp_server.py"]
-cwd = "/srv/AbyssOS/aoa-stats"
-```
-
-Keep the wiring project-scoped. Do not mirror personal sandbox or model
-defaults into the project layer.
+The former repo-local MCP package, launcher, optional dependency, resources,
+prompts, and live-source-registry access are retired. Reintroducing them would
+create a second access implementation and violate the single-owner boundary.

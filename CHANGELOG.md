@@ -101,9 +101,12 @@ Tracking starts with the first public release-prep baseline for this repository.
   derived, non-sovereign statistical measurability organ while preserving the
   existing source-home/mechanics ownership split and current read-model
   consumers.
-- Classified the repo-local MCP as the single temporary access implementation
-  pending a separately verified stack-owned `aoa-stats-mcp` cutover; the
-  statistical core remains independent of MCP runtime.
+- Completed the stats access-plane owner split: the transport-neutral read
+  contract remains in `aoa-stats`, the runnable `aoa-stats-mcp` service lives
+  in `abyss-stack`, and the former repo-local server, launcher, dependency,
+  prompts, resources, source-registry tool, and focused transport tests were
+  retired after consumer cutover. The statistical core remains independent of
+  MCP runtime.
 - Centralized active validation and test commands in owner `AGENTS.md`, part
   `VALIDATION.md`, and the primary release, live-use, and MCP guides. Other
   active Markdown now routes to those owners, with a repo-wide docs guard

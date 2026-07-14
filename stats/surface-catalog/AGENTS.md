@@ -33,10 +33,8 @@ copy either payload under this directory.
   `scripts/build_views.py`
 - validation: `tests/test_summary_surface_catalog.py` and the existing
   `scripts/build_views.py --check` route
-- current read-only access: `stats/surface-catalog/CODEX_MCP.md`,
-  `scripts/aoa_stats_mcp_server.py`, `src/aoa_stats_mcp/repo_state.py`, and
-  `src/aoa_stats_mcp/server.py`
-- access validation: `tests/test_aoa_stats_mcp_state.py`
+- public read contract: `stats/surface-catalog/CODEX_MCP.md`
+- access implementation: stack-owned `aoa-stats-mcp`, outside this repository
 
 ## Mechanics crosswalk
 
@@ -62,11 +60,12 @@ surfaces. Neither part may strengthen a catalog entry's authority.
   catalog, and indexed decisions rather than being copied into that document.
 - High-risk or thin-input surfaces must continue to route consumers back to
   stronger owner-local evidence.
-- Keep the MCP read-only and derived-only when catalog access changes.
+- Keep the public read contract read-only and derived-only when catalog access
+  changes; runtime implementation changes return to the stack owner.
 
 ## Verify
 
 ```bash
 python scripts/build_views.py --check
-python -m pytest -q tests/test_summary_surface_catalog.py tests/test_aoa_stats_mcp_state.py
+python -m pytest -q tests/test_summary_surface_catalog.py
 ```

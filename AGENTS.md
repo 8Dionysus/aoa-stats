@@ -167,9 +167,10 @@ public or compatibility contract.
   symbolic. Documentation and examples do not become runtime evidence.
 - Generated, compact, MCP, adapter, and runtime convenience surfaces remain
   weaker than authored profiles and owner-local facts.
-- The repo-local MCP is temporary runtime glue until the separately verified
-  stack-owned `aoa-stats-mcp` cutover. Keep exactly one active access plane and
-  do not move statistical semantics into it.
+- The stack-owned `aoa-stats-mcp` is the only MCP access implementation.
+  `aoa-stats` owns its transport-neutral read contract; `abyss-stack` owns
+  runtime transport and lifecycle. Do not reintroduce a repo-local server or
+  move statistical semantics into the access plane.
 
 For any specific surface, follow its profile or operation record, mechanic
 contract, focused validation card, and indexed decision rationale. Do not copy

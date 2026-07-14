@@ -42,9 +42,9 @@ needs, and leaves the next slice to reverse the lead.
 7. **Publication integrity.** Preserve stable public schema and generated paths
    where consumers depend on them, rebuild deterministic outputs from authored
    sources, and keep retired records limited to cleanup and provenance.
-8. **Single thin access plane.** Move stats MCP transport into the stack-owned
-   service after direct and MCP reads prove one semantic identity. Remove the
-   repo-local server after consumer cutover; the statistical core remains
+8. **Single thin access plane.** Keep stats MCP transport in the stack-owned
+   service and preserve one semantic identity across direct and MCP reads. Do
+   not reintroduce a repo-local server; the statistical core remains
    independent of MCP runtime.
 
 ## Authority routes

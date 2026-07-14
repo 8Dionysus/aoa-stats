@@ -44,7 +44,6 @@
       ],
       "scripts": [
         "scripts/AGENTS.md",
-        "scripts/aoa_stats_mcp_server.py",
         "scripts/build_views.py",
         "scripts/check_live_publishers.py",
         "scripts/generate_decision_indexes.py",
@@ -64,7 +63,6 @@
       ],
       "tests": [
         "tests/AGENTS.md",
-        "tests/test_aoa_stats_mcp_state.py",
         "tests/test_build_views.py",
         "tests/test_decision_indexes.py",
         "tests/test_docs_routes.py",

@@ -106,9 +106,9 @@ The topology returns every active part to the stats family it serves.
 `src/aoa_stats_builder/measurement.py` is a filesystem-free executable
 interpretation of the measurement source contracts. Existing derived-view
 modules contain bounded pure projections; source discovery and loading remain
-adapters. `src/aoa_stats_mcp/` is the current read-only access plane pending a
-verified cutover to the stack-owned `aoa-stats-mcp`. `schemas/` and
-`generated/` keep stable public paths.
+adapters. `stats/surface-catalog/CODEX_MCP.md` owns the transport-neutral read
+contract, while the stack-owned `aoa-stats-mcp` owns MCP transport and service
+lifecycle. `schemas/` and `generated/` keep stable public paths.
 
 Root `scripts/`, `tests/`, `docs/`, `examples/`, and `manifests/` contain only
 repo-wide or explicit compatibility/public surfaces. Operation-owned config,
@@ -132,7 +132,8 @@ second hand-maintained file roster:
 - examples and committed snapshots remain reference surfaces unless an authored
   profile and observable producer admit them to live state
 - ignored `state/`, systemd, and deployment material are runtime-only surfaces
-- `src/aoa_stats_mcp/` is temporary access glue pending the stack-owned cutover
+- MCP runtime implementation belongs to the stack-owned `aoa-stats-mcp`; this
+  repository retains only its statistical read contract
 - root wrappers are compatibility surfaces only when topology names a current
   consumer; unsupported wrappers and empty read models remain retired rather
   than preserved as legacy
