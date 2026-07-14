@@ -10,8 +10,8 @@ from pathlib import Path
 import sys
 from typing import Any
 
-from jsonschema import Draft202012Validator, FormatChecker, SchemaError
-from referencing import Registry, Resource
+from jsonschema import Draft202012Validator, SchemaError
+from referencing import Registry
 
 REPO_ROOT = Path(__file__).resolve().parents[1]
 SRC_ROOT = REPO_ROOT / "src"
@@ -23,11 +23,21 @@ from aoa_stats_builder.measurement import (  # noqa: E402
     validate_packet_semantics,
     validate_packet_set,
 )
+from aoa_stats_builder.schema_validation import (  # noqa: E402
+    schema_issues,
+    schema_registry,
+)
 
 MEASUREMENT_SCHEMA_PATH = Path(
     "stats/measurement-contract/measurement-contract.schema.json"
 )
 PACKET_SCHEMA_PATH = Path("stats/measurement-contract/measurement-packet.schema.json")
+PACKET_READ_REQUEST_SCHEMA_PATH = Path(
+    "stats/measurement-contract/packet-read-request.schema.json"
+)
+PACKET_READ_RESULT_SCHEMA_PATH = Path(
+    "stats/measurement-contract/packet-read-result.schema.json"
+)
 PORT_SCHEMA_PATH = Path("stats/federation/local-port.schema.json")
 INVENTORY_SCHEMA_PATH = Path("stats/federation/owner-inventory.schema.json")
 INVENTORY_PATH = Path("stats/federation/owner-inventory.json")
@@ -65,17 +75,7 @@ def _portable_ref(value: object) -> bool:
 def _schema_issues(
     schema: Mapping[str, Any], payload: Mapping[str, Any], *, label: str, registry: Registry[Any] | None = None
 ) -> list[str]:
-    validator = Draft202012Validator(
-        schema,
-        format_checker=FormatChecker(),
-        registry=registry or Registry(),
-    )
-    issues: list[str] = []
-    for error in sorted(validator.iter_errors(payload), key=lambda item: list(item.absolute_path)):
-        location = ".".join(str(part) for part in error.absolute_path)
-        suffix = f":{location}" if location else ""
-        issues.append(f"{label}{suffix}: {error.message}")
-    return issues
+    return schema_issues(schema, payload, label=label, registry=registry)
 
 
 def _load_schemas(repo_root: Path) -> tuple[dict[str, dict[str, Any]], list[str]]:
@@ -84,6 +84,8 @@ def _load_schemas(repo_root: Path) -> tuple[dict[str, dict[str, Any]], list[str]
     for relative in (
         MEASUREMENT_SCHEMA_PATH,
         PACKET_SCHEMA_PATH,
+        PACKET_READ_REQUEST_SCHEMA_PATH,
+        PACKET_READ_RESULT_SCHEMA_PATH,
         PORT_SCHEMA_PATH,
         INVENTORY_SCHEMA_PATH,
     ):
@@ -102,12 +104,7 @@ def _load_schemas(repo_root: Path) -> tuple[dict[str, dict[str, Any]], list[str]
 
 
 def _registry(schemas: Mapping[str, Mapping[str, Any]]) -> Registry[Any]:
-    registry: Registry[Any] = Registry()
-    for schema in schemas.values():
-        schema_id = schema.get("$id")
-        if isinstance(schema_id, str):
-            registry = registry.with_resource(schema_id, Resource.from_contents(schema))
-    return registry
+    return schema_registry(schemas)
 
 
 def _validate_inventory(

@@ -10,11 +10,19 @@ import sys
 
 REPO_ROOT = Path(__file__).resolve().parents[1]
 SCRIPT_PATH = REPO_ROOT / "scripts" / "validate_stats_protocol.py"
+READ_SCRIPT_PATH = REPO_ROOT / "scripts" / "read_measurement_packet.py"
 SPEC = importlib.util.spec_from_file_location("validate_stats_protocol", SCRIPT_PATH)
 validator = importlib.util.module_from_spec(SPEC)
 assert SPEC.loader is not None
 sys.modules[SPEC.name] = validator
 SPEC.loader.exec_module(validator)
+
+from aoa_stats_builder.measurement import (  # noqa: E402
+    evidence_identity,
+    semantic_identity,
+)
+from aoa_stats_builder.packet_read import build_packet_read_result  # noqa: E402
+from aoa_stats_builder.schema_validation import schema_issues  # noqa: E402
 
 
 def load_json(relative_path: str) -> dict[str, object]:
@@ -293,3 +301,95 @@ def test_port_validation_rejects_false_packet_semantics_and_contract_link(
     assert any("reference-only contract cannot produce a live packet" in issue for issue in issues)
     assert any("posture.live_state must match export posture" in issue for issue in issues)
     assert any("uses a host-local path" in issue for issue in issues)
+
+
+def packet_read_request() -> dict[str, object]:
+    return {
+        "schema_version": "aoa_stats_packet_read_request_v1",
+        "contract": local_port()["measurements"][0],
+        "packet": reference_packet(),
+    }
+
+
+def build_reference_read_result(
+    request: dict[str, object],
+) -> dict[str, object]:
+    return build_packet_read_result(
+        request["contract"],
+        request["packet"],
+        contract_schema=load_json(
+            "stats/measurement-contract/measurement-contract.schema.json"
+        ),
+        packet_schema=load_json(
+            "stats/measurement-contract/measurement-packet.schema.json"
+        ),
+    )
+
+
+def test_packet_read_result_is_schema_backed_and_identity_stable() -> None:
+    request = packet_read_request()
+    result = build_reference_read_result(request)
+
+    assert result["compatible"] is True
+    assert result["issues"] == []
+    assert result["semantic_identity"] == semantic_identity(request["packet"])
+    assert result["evidence_identity"] == evidence_identity(request["packet"])
+    assert result == build_reference_read_result(deepcopy(request))
+    assert schema_issues(
+        load_json("stats/measurement-contract/packet-read-result.schema.json"),
+        result,
+        label="result",
+    ) == []
+
+
+def test_packet_read_result_rejects_shape_and_semantic_drift_without_identity() -> None:
+    unit_request = packet_read_request()
+    unit_request["packet"]["value"]["unit"] = "ms"
+    unit_result = build_reference_read_result(unit_request)
+
+    assert unit_result["compatible"] is False
+    assert unit_result["semantic_identity"] is None
+    assert unit_result["evidence_identity"] is None
+    assert unit_result["owner_authority_ceiling"] is None
+    assert unit_result["issues"] == [
+        "semantic: value.unit does not match contract unit"
+    ]
+
+    shape_request = packet_read_request()
+    del shape_request["packet"]["value"]["status"]
+    shape_result = build_reference_read_result(shape_request)
+    assert shape_result["compatible"] is False
+    assert shape_result["issues"] == [
+        "packet:value: 'status' is a required property"
+    ]
+
+
+def test_packet_read_cli_preserves_result_and_separates_protocol_errors() -> None:
+    request = packet_read_request()
+    success = subprocess.run(
+        [sys.executable, str(READ_SCRIPT_PATH)],
+        cwd=REPO_ROOT,
+        input=json.dumps(request),
+        check=False,
+        capture_output=True,
+        text=True,
+    )
+
+    assert success.returncode == 0
+    assert json.loads(success.stdout) == build_reference_read_result(request)
+
+    malformed = subprocess.run(
+        [sys.executable, str(READ_SCRIPT_PATH)],
+        cwd=REPO_ROOT,
+        input=json.dumps(
+            {
+                "schema_version": "aoa_stats_packet_read_request_v1",
+                "packet": {},
+            }
+        ),
+        check=False,
+        capture_output=True,
+        text=True,
+    )
+    assert malformed.returncode == 2
+    assert "request: 'contract' is a required property" in malformed.stderr

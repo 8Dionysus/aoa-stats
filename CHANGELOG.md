@@ -9,6 +9,10 @@ Tracking starts with the first public release-prep baseline for this repository.
 
 ### Added
 
+- Added a versioned, transport-neutral measurement-packet read contract that
+  returns compatibility findings, stable evidence and semantic identities,
+  and explicit owner/access authority ceilings without filesystem discovery
+  or MCP runtime dependency.
 - Added the shared measurement-contract and measurement-packet grammar for
   explicit identity, population, units, dimensions, aggregation, missingness,
   uncertainty, provenance, reporting, privacy, and live/reference posture.
