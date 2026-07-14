@@ -46,6 +46,8 @@ Tracking starts with the first public release-prep baseline for this repository.
 
 ### Changed
 
+- Marked the `ATM10-Agent` owner-local stats port as implemented after its
+  landing.
 - Marked the `8Dionysus` owner-local stats port as implemented after its
   landing.
 - Marked the `aoa-agents` owner-local stats port as implemented after its

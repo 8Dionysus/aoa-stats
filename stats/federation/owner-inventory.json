@@ -13,7 +13,7 @@
       "repo_id": "ATM10-Agent",
       "workspace_route": "workspace:ATM10-Agent",
       "owner_boundary_ref": "ATM10-Agent:AGENTS.md",
-      "classification": "requires_port",
+      "classification": "implemented",
       "port_ref": "ATM10-Agent:stats/port.manifest.json"
     },
     {
