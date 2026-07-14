@@ -69,7 +69,7 @@
       "repo_id": "aoa-course-connector",
       "workspace_route": "workspace:connectors/aoa-course-connector",
       "owner_boundary_ref": "aoa-course-connector:AGENTS.md",
-      "classification": "requires_port",
+      "classification": "implemented",
       "port_ref": "aoa-course-connector:stats/port.manifest.json"
     },
     {
