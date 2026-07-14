@@ -27,7 +27,7 @@
       "repo_id": "Dionysus",
       "workspace_route": "workspace:Dionysus",
       "owner_boundary_ref": "Dionysus:AGENTS.md",
-      "classification": "requires_port",
+      "classification": "implemented",
       "port_ref": "Dionysus:stats/port.manifest.json"
     },
     {
