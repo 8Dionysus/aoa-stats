@@ -160,7 +160,7 @@
       "repo_id": "aoa-telegram-connector",
       "workspace_route": "workspace:connectors/aoa-telegram-connector",
       "owner_boundary_ref": "aoa-telegram-connector:AGENTS.md",
-      "classification": "requires_port",
+      "classification": "implemented",
       "port_ref": "aoa-telegram-connector:stats/port.manifest.json"
     },
     {
