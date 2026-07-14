@@ -46,6 +46,8 @@ Tracking starts with the first public release-prep baseline for this repository.
 
 ### Changed
 
+- Marked the `aoa-xda-connector` owner-local stats port as implemented after
+  its landing.
 - Marked the `aoa-telegram-connector` owner-local stats port as implemented
   after its landing.
 - Marked the `aoa-stackoverflow-connector` owner-local stats port as implemented
