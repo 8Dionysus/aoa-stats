@@ -55,7 +55,7 @@
       "repo_id": "aoa-4pda-connector",
       "workspace_route": "workspace:connectors/aoa-4pda-connector",
       "owner_boundary_ref": "aoa-4pda-connector:AGENTS.md",
-      "classification": "requires_port",
+      "classification": "implemented",
       "port_ref": "aoa-4pda-connector:stats/port.manifest.json"
     },
     {
