@@ -46,6 +46,8 @@ Tracking starts with the first public release-prep baseline for this repository.
 
 ### Changed
 
+- Marked the `Tree-of-Sophia` owner-local stats port as implemented after its
+  landing.
 - Marked the `Dionysus` owner-local stats port as implemented after its
   landing.
 - Marked the `Agents-of-Abyss` owner-local stats port as implemented after its
