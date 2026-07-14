@@ -76,7 +76,7 @@
       "repo_id": "aoa-discord-connector",
       "workspace_route": "workspace:connectors/aoa-discord-connector",
       "owner_boundary_ref": "aoa-discord-connector:AGENTS.md",
-      "classification": "requires_port",
+      "classification": "implemented",
       "port_ref": "aoa-discord-connector:stats/port.manifest.json"
     },
     {

@@ -46,6 +46,8 @@ Tracking starts with the first public release-prep baseline for this repository.
 
 ### Changed
 
+- Marked the `aoa-discord-connector` owner-local stats port as implemented
+  after its landing.
 - Marked the `aoa-course-connector` owner-local stats port as implemented after
   its landing.
 - Marked the `aoa-4pda-connector` owner-local stats port as implemented after
