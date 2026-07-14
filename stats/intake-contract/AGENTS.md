@@ -36,8 +36,6 @@ registration belongs to the recurrence mechanic.
   `mechanics/boundary-bridge/parts/receipt-abi-crossing/tests/test_receipt_feed_resolution.py`,
   `mechanics/recurrence/parts/live-receipt-refresh/tests/test_refresh_live_stats.py`,
   and `mechanics/recurrence/parts/live-receipt-refresh/tests/test_check_live_publishers.py`
-- current read-only access: `src/aoa_stats_mcp/repo_state.py` and
-  `src/aoa_stats_mcp/server.py`
 
 ## Mechanics crosswalk
 

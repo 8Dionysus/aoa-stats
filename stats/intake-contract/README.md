@@ -25,8 +25,9 @@ transfer of domain authority.
 | Publisher audit | `scripts/check_live_publishers.py` |
 | ABI validator | `scripts/validate_receipt_abi.py` |
 
-The read-only repo-local MCP can expose the current live-source registry, but
-that access route does not own or alter the intake contract.
+The live-source registry remains mechanic-owned runtime configuration. It is
+not part of the public stats MCP contract and does not own or alter the intake
+contract.
 
 ## Operation crosswalk
 

@@ -14,7 +14,7 @@
     "Committed derived outputs remain under generated/.",
     "Repeatable operation payloads and validation remain under mechanics/.",
     "Part-local observation contracts without public catalog surfaces have one authored meaning record under stats/operation-contracts/ and cross back to their mechanic owner.",
-    "The repo-local MCP remains a read-only derived access route.",
+    "This repository owns the transport-neutral stats read contract; the stack-owned aoa-stats-mcp owns MCP transport and runtime lifecycle.",
     "No generated catalog or owner payload is copied under stats/.",
     "Source-home README files route to authored records and do not duplicate mutable profile or operation status.",
     "Mechanic documentation routes point directly to part-local owners after active consumers are re-grounded; stats source records do not require flat root redirects."
@@ -199,10 +199,7 @@
         "mechanics/recurrence/parts/live-receipt-refresh/scripts/check_live_publishers.py",
         "mechanics/recurrence/parts/live-receipt-refresh/scripts/install_live_refresh_units.py"
       ],
-      "read_only_access_routes": [
-        "src/aoa_stats_mcp/repo_state.py",
-        "src/aoa_stats_mcp/server.py"
-      ],
+      "read_only_access_routes": [],
       "validator_routes": [
         "scripts/validate_receipt_abi.py",
         "mechanics/boundary-bridge/parts/receipt-abi-crossing/tests/test_receipt_abi_governance.py",
@@ -325,9 +322,7 @@
         "generated/surface_detection_summary.min.json"
       ],
       "read_only_access_routes": [
-        "generated/summary_surface_catalog.min.json",
-        "src/aoa_stats_mcp/repo_state.py",
-        "src/aoa_stats_mcp/server.py"
+        "generated/summary_surface_catalog.min.json"
       ],
       "validator_routes": [
         "scripts/validate_stats_source_home.py",
@@ -616,10 +611,7 @@
         "generated/summary_surface_catalog.min.json"
       ],
       "read_only_access_routes": [
-        "stats/surface-catalog/CODEX_MCP.md",
-        "scripts/aoa_stats_mcp_server.py",
-        "src/aoa_stats_mcp/repo_state.py",
-        "src/aoa_stats_mcp/server.py"
+        "stats/surface-catalog/CODEX_MCP.md"
       ],
       "validator_routes": [
         "scripts/build_views.py",
@@ -628,8 +620,7 @@
         "mechanics/recurrence/parts/component-manifests/tests/test_component_manifests.py",
         "mechanics/release-support/parts/summary-catalog-artifact-bundle/scripts/validate_abyss_machine_summary_catalog_bundle.py",
         "mechanics/release-support/parts/summary-catalog-artifact-bundle/tests/test_summary_catalog_artifact_bundle.py",
-        "tests/test_summary_surface_catalog.py",
-        "tests/test_aoa_stats_mcp_state.py"
+        "tests/test_summary_surface_catalog.py"
       ],
       "mechanic_routes": [
         {
@@ -670,11 +661,6 @@
       "path": "src/aoa_stats_builder/",
       "status": "active_implementation_district",
       "meaning": "The measurement module is a filesystem-free executable interpretation of source-authored contracts; existing builders and source adapters implement concrete derived views without owning their meaning."
-    },
-    {
-      "path": "src/aoa_stats_mcp/",
-      "status": "active_read_only_access_pending_stack_cutover",
-      "meaning": "The current repo-local MCP remains the single read-only access plane until a separately verified stack-owned aoa-stats-mcp cutover; it is runtime glue, not source authority."
     },
     {
       "path": "scripts/",

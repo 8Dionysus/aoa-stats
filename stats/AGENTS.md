@@ -86,9 +86,9 @@ must preserve the source-family ceiling declared here.
 
 ## Current root posture
 
-The root `schemas/` and `generated/` districts remain active. The repo-local
-MCP under `src/aoa_stats_mcp/` remains a read-only derived access surface over
-the part-local live-source registry and generated catalog; it is not source
+The root `schemas/` and `generated/` districts remain active. This source home
+owns the transport-neutral stats read contract; the stack-owned
+`aoa-stats-mcp` service implements MCP access without becoming source
 authority.
 
 ## Verify

@@ -41,9 +41,9 @@ That part owns the derived-signal precedence guide and its anti-loop consumer
 proof. The catalog family supplies authored ceilings and owner refs without
 duplicating the operation guide under `stats/` or root `docs/`.
 
-The current MCP reads the generated catalog and catalog-listed surfaces. It is
-an access route only; source meaning stays in this family and the root routes
-listed above.
+The stack-owned MCP reads the generated catalog and catalog-listed surfaces
+through the contract owned here. It is an access route only; source meaning
+stays in this family and the root routes listed above.
 
 The authoritative machine-readable mapping is
 `stats/source_home.manifest.json`.

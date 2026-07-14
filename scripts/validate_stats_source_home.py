@@ -30,6 +30,12 @@ OPERATION_CONTRACT_SCHEMA_PATH = (
     STATS_ROOT / "operation-contracts" / "operation-contract.schema.json"
 )
 TOPOLOGY_PATH = Path("mechanics/topology.json")
+RETIRED_REPO_LOCAL_MCP_PATHS = (
+    Path("src/aoa_stats_mcp"),
+    Path("scripts/aoa_stats_mcp_server.py"),
+    Path("tests/test_aoa_stats_mcp_state.py"),
+    Path("requirements-mcp.txt"),
+)
 
 EXPECTED_FAMILIES = {
     "measurement_contract": "stats/measurement-contract",
@@ -771,6 +777,13 @@ def validate(
 
     if not stats_root.is_dir():
         return ["stats/: directory is missing"]
+
+    for retired_path in RETIRED_REPO_LOCAL_MCP_PATHS:
+        if (repo_root / retired_path).exists():
+            issues.append(
+                f"{retired_path.as_posix()}: repo-local MCP transport is retired; "
+                "the stack-owned aoa-stats-mcp is the only access implementation"
+            )
 
     manifest, manifest_error = _load_object(repo_root / MANIFEST_PATH)
     if manifest_error:

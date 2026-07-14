@@ -124,11 +124,11 @@ it is not a release signature. The OS Abyss artifact-bundle validator adds ABI,
 subject-inventory, registry, and isolated materialization checks without
 making the catalog stronger than its source evidence.
 
-The current read-only access plane under `src/aoa_stats_mcp/` may expose the
-catalog, surface payloads, and this boundary text until the verified stack-owned
-`aoa-stats-mcp` cutover. Access convenience does not alter authority, activate
-a profile, or turn committed reference data into live state. The statistical
-core remains usable when MCP is absent.
+The stack-owned `aoa-stats-mcp` may expose the catalog, bounded surface reads,
+owner-port definitions, boundary references, and packet compatibility through
+the transport-neutral contract owned here. Access convenience does not alter
+authority, activate a profile, attest freshness, or turn committed reference
+data into live state. The statistical core remains usable when MCP is absent.
 
 ## Canonical questions
 
