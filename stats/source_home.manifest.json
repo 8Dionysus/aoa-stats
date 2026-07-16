@@ -683,8 +683,16 @@
       "route": "aoa-evals"
     },
     {
-      "pressure": "workflow or skill meaning",
+      "pressure": "shared portable procedure or common skill-port grammar",
       "route": "aoa-skills"
+    },
+    {
+      "pressure": "aoa-stats repository-local callable procedure",
+      "route": "skills/aoa-stats/SKILL.md and skills/port.manifest.json"
+    },
+    {
+      "pressure": "workflow or scenario composition",
+      "route": "aoa-playbooks or the target runtime owner"
     },
     {
       "pressure": "route or quest-state authority",

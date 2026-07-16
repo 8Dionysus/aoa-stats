@@ -1,0 +1,25 @@
+{
+  "schema_version": "aoa_skill_home_port_v1",
+  "contract_ref": "aoa-skills:schemas/skill-home-port.schema.json",
+  "owner_repo": "aoa-stats",
+  "owner_ref": "AGENTS.md",
+  "bundles": [
+    {
+      "name": "aoa-stats",
+      "path": "skills/aoa-stats",
+      "version": "0.1.0",
+      "lifecycle": "admitted",
+      "visibility": "advertised",
+      "admission_ref": "docs/decisions/AOST-D-0013-aoa-stats-owner-skill-bundle.md"
+    }
+  ],
+  "projection": {
+    "runtime": "codex",
+    "scope": "repo",
+    "root": ".agents/skills",
+    "mode": "generated-copy",
+    "skills": [
+      "aoa-stats"
+    ]
+  }
+}

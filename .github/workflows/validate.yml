@@ -14,8 +14,11 @@ jobs:
       - name: Checkout
         uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd
 
+      - name: Check repository skill home
+        uses: 8Dionysus/aoa-skills/.github/actions/home-skill-port@bef949a8324fd3579569c329b9e6c74a2cacc4a5
+
       - name: Check repo-local KAG index family
-        uses: 8Dionysus/aoa-kag/.github/actions/repo-local-kag-index@da9f50a581645b2173b99dbf771a63d447ec2fec
+        uses: 8Dionysus/aoa-kag/.github/actions/repo-local-kag-index@c9f250d8a768b5c094b427af77fc30394c538cac
         with:
           history-ref: ${{ github.event.pull_request.base.sha || github.event.before || format('{0}^', github.sha) }}
           event-history-ref: ${{ github.event.pull_request.base.sha || github.event.before || format('{0}^', github.sha) }}
