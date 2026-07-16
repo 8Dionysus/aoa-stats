@@ -97,9 +97,17 @@
 - [AOST-D-0008 - Retired Outputs Remain Cleanup Tombstones, Not Active Stats](../AOST-D-0008-retired-outputs-remain-cleanup-tombstones-not-active-stats.md) (`docs/decisions/AOST-D-0008-retired-outputs-remain-cleanup-tombstones-not-active-stats.md`)
 - [AOST-D-0009 - Retirement Reserves Catalog Slots Without Preserving Empty Mechanics](../AOST-D-0009-retirement-reserves-catalog-slots-without-preserving-empty-mechanics.md) (`docs/decisions/AOST-D-0009-retirement-reserves-catalog-slots-without-preserving-empty-mechanics.md`)
 
+## aoa-stats owner sources
+
+- [AOST-D-0013 - aoa-stats Owner Skill Bundle](../AOST-D-0013-aoa-stats-owner-skill-bundle.md) (`docs/decisions/AOST-D-0013-aoa-stats-owner-skill-bundle.md`)
+
 ## ATM10-Agent
 
 - [AOST-D-0011 - Antifragility Vector Remains An Evidence-Gated Incubator](../AOST-D-0011-antifragility-vector-remains-an-evidence-gated-incubator.md) (`docs/decisions/AOST-D-0011-antifragility-vector-remains-an-evidence-gated-incubator.md`)
+
+## bounded proof
+
+- [AOST-D-0013 - aoa-stats Owner Skill Bundle](../AOST-D-0013-aoa-stats-owner-skill-bundle.md) (`docs/decisions/AOST-D-0013-aoa-stats-owner-skill-bundle.md`)
 
 ## Dionysus seed landing traces
 
@@ -120,6 +128,14 @@
 ## owner-local landing receipts
 
 - [AOST-D-0004 - Live Admission Requires Refresh Observation](../AOST-D-0004-live-admission-requires-refresh-observation.md) (`docs/decisions/AOST-D-0004-live-admission-requires-refresh-observation.md`)
+
+## owner-local stats ports
+
+- [AOST-D-0013 - aoa-stats Owner Skill Bundle](../AOST-D-0013-aoa-stats-owner-skill-bundle.md) (`docs/decisions/AOST-D-0013-aoa-stats-owner-skill-bundle.md`)
+
+## runtime observation
+
+- [AOST-D-0013 - aoa-stats Owner Skill Bundle](../AOST-D-0013-aoa-stats-owner-skill-bundle.md) (`docs/decisions/AOST-D-0013-aoa-stats-owner-skill-bundle.md`)
 
 ## sibling decision-lane pattern
 

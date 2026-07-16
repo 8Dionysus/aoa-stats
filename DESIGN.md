@@ -25,6 +25,7 @@ contracts it was meant to serve.
 aoa-stats/
 ├── stats/          source-authored stats meaning and family routes
 ├── mechanics/      repeatable operation packages and parts
+├── skills/         admitted owner-local callable procedure source
 ├── src/            implementation libraries and access adapters
 ├── generated/      committed derived outputs
 ├── schemas/        stable published contract surfaces
@@ -33,8 +34,8 @@ aoa-stats/
 ```
 
 Root publication districts remain legitimate by contract, not inertia. Their
-authority comes from profiles, topology, route cards, and validators rather
-than path depth.
+authority comes from profiles, manifests, topology, route cards, decisions,
+and validators rather than path depth.
 
 ## Anatomy
 
@@ -101,6 +102,18 @@ A real part exposes an owner contract, payload or declared public route,
 validation, and compatibility posture. Empty symmetry packages are not active.
 The topology returns every active part to the stats family it serves.
 
+### The `skills/` callable interface
+
+`skills/aoa-stats/SKILL.md` is one repository-owned callable bundle with
+internal `answer`, `diagnose`, and `evolve` modes. It routes an agent through
+the existing stats and mechanics owners; it does not duplicate their meaning,
+payload, proof, or implementation. `.agents/skills/aoa-stats` is a generated
+repo-scoped host copy and never outranks the canonical source.
+
+The home admits no generic shared bundles and no experimental modes as separate
+prompt-visible skills. A split requires held-out evidence of independent
+trigger, ABI, composition value, and outcome benefit.
+
 ### Implementation and publication districts
 
 `src/aoa_stats_builder/measurement.py` is a filesystem-free executable
@@ -110,10 +123,10 @@ adapters. `stats/surface-catalog/CODEX_MCP.md` owns the transport-neutral read
 contract, while the stack-owned `aoa-stats-mcp` owns MCP transport and service
 lifecycle. `schemas/` and `generated/` keep stable public paths.
 
-Root `scripts/`, `tests/`, `docs/`, `examples/`, and `manifests/` contain only
-repo-wide or explicit compatibility/public surfaces. Operation-owned config,
-docs, examples, schemas, scripts, units, and focused tests live under the
-nearest mechanic part.
+Root `scripts/`, `tests/`, `docs/`, `examples/`, `manifests/`, and `skills/`
+contain only repo-wide, explicit compatibility/public, or admitted callable
+surfaces. Operation-owned config, docs, examples, schemas, scripts, units, and
+focused tests live under the nearest mechanic part.
 
 ### Existing-surface classification
 
@@ -129,6 +142,8 @@ second hand-maintained file roster:
   `*_sources.py`, workspace discovery, refresh, and build fan-out are domain or
   infrastructure adapters
 - files under `generated/` are generated projections, never edit sources
+- `skills/aoa-stats/SKILL.md` is the admitted callable source, while
+  `.agents/skills/aoa-stats` is only its exact repository projection
 - examples and committed snapshots remain reference surfaces unless an authored
   profile and observable producer admit them to live state
 - ignored `state/`, systemd, and deployment material are runtime-only surfaces
@@ -154,6 +169,7 @@ acquire an owner and consumer or be removed as repetition or overcode.
 | exact public surface state | target profile under `stats/read-models/` |
 | non-catalog input maturity | target record under `stats/operation-contracts/` |
 | active operation and placement | `mechanics/topology.json` and target part |
+| repository callable procedure | `skills/aoa-stats/SKILL.md` and `skills/port.manifest.json` |
 | stable derived-view layering | `docs/ARCHITECTURE.md` |
 | material boundary rationale | source notes under `docs/decisions/` |
 | compact consumer discovery | generated catalog and read models |

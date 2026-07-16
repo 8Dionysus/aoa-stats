@@ -14,11 +14,12 @@ become workflow, proof, route, memory, KAG, runtime, identity, or owner truth.
 2. [`DESIGN.md`](DESIGN.md) — durable source/mechanics architecture
 3. [`stats/README.md`](stats/README.md) — authored stats source home
 4. [`mechanics/README.md`](mechanics/README.md) — operation and payload map
-5. [`docs/BOUNDARIES.md`](docs/BOUNDARIES.md) — authority stop-lines
-6. [`docs/ARCHITECTURE.md`](docs/ARCHITECTURE.md) — derived-view layers
-7. [`ROADMAP.md`](ROADMAP.md) and
+5. [`skills/README.md`](skills/README.md) — admitted owner-local callable procedure
+6. [`docs/BOUNDARIES.md`](docs/BOUNDARIES.md) — authority stop-lines
+7. [`docs/ARCHITECTURE.md`](docs/ARCHITECTURE.md) — derived-view layers
+8. [`ROADMAP.md`](ROADMAP.md) and
    [`README.md#current-v0-surface`](README.md#current-v0-surface) — current contour
-8. [`docs/decisions/`](docs/decisions/) — durable rationale, not status
+9. [`docs/decisions/`](docs/decisions/) — durable rationale, not status
 
 ## Authority map
 
@@ -31,6 +32,7 @@ become workflow, proof, route, memory, KAG, runtime, identity, or owner truth.
 | read-model lifecycle and meaning | `stats/read-models/{active,deferred,retired}/*.profile.json` | public catalog, generated output, MCP projection |
 | non-catalog stats contracts | `stats/operation-contracts/active/*.operation.json` | part-local payload and root compatibility routes |
 | operation ownership | `mechanics/topology.json` and nearest part cards | root compatibility routes |
+| repository callable procedure | `skills/aoa-stats/SKILL.md` and `skills/port.manifest.json` | generated `.agents/skills/aoa-stats` copy |
 | executable measurement semantics | `stats/measurement-contract/` as source, `src/aoa_stats_builder/measurement.py` as pure implementation | validators and access adapters |
 | stats read contract | `stats/surface-catalog/CODEX_MCP.md` | stack-owned `aoa-stats-mcp` implementation and project registration |
 | public contracts | catalog schemas under `schemas/` | examples and docs |
@@ -59,6 +61,7 @@ The root is intentionally narrow:
 - `schemas/` — stable catalog and receipt contracts
 - `generated/` — committed public read models
 - `scripts/` — public, compatibility, and repo-wide commands
+- `skills/` — one admitted owner-local callable bundle and its port manifest
 - `tests/` — repository and public-contract checks
 - `docs/` — repository-wide architecture, boundaries, decisions, release
   guidance, and history

@@ -7,7 +7,8 @@ must not pretend to own.
 
 ## Source ownership
 
-- `aoa-skills` owns bounded workflow meaning
+- `aoa-skills` owns shared portable procedures and the common home/projection
+  grammar; each repository owns its admitted local callable procedures
 - `aoa-evals` owns bounded proof meaning
 - `aoa-techniques` owns reusable practice meaning
 - `aoa-playbooks` owns scenario composition
@@ -18,6 +19,10 @@ must not pretend to own.
 ## Stats posture
 
 `aoa-stats` is derived.
+
+Its `aoa-stats` skill owns a bounded procedure for selecting answer, diagnosis,
+or evolution work. It does not own the facts, proof, runtime, route, or
+workflow reached by that procedure.
 
 It owns the shared statistical grammar, local-port compatibility, central
 coverage inventory, deterministic cross-field semantics, and weaker derived

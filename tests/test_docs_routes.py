@@ -126,10 +126,18 @@ def test_agents_routes_design_and_cross_homes_before_roadmap() -> None:
     design_step = "2. `DESIGN.md`"
     stats_step = "3. `stats/README.md`"
     mechanics_step = "4. `mechanics/README.md`"
-    roadmap_step = "5. `ROADMAP.md`"
-    boundaries_step = "6. `docs/BOUNDARIES.md`"
+    skills_step = "5. `skills/README.md`"
+    roadmap_step = "6. `ROADMAP.md`"
+    boundaries_step = "7. `docs/BOUNDARIES.md`"
 
-    ordered_steps = [design_step, stats_step, mechanics_step, roadmap_step, boundaries_step]
+    ordered_steps = [
+        design_step,
+        stats_step,
+        mechanics_step,
+        skills_step,
+        roadmap_step,
+        boundaries_step,
+    ]
     for step in ordered_steps:
         assert step in agents
     assert [agents.index(step) for step in ordered_steps] == sorted(

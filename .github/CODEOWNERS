@@ -9,6 +9,7 @@
 /quests/ @8Dionysus
 /schemas/ @8Dionysus
 /scripts/ @8Dionysus
+/skills/ @8Dionysus
 /src/ @8Dionysus
 /state/ @8Dionysus
 /systemd/ @8Dionysus

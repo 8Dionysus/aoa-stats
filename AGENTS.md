@@ -24,6 +24,8 @@ This repository owns:
   operation contract
 - the shared receipt envelope and event-kind vocabulary used by those models
 - deterministic projection, refresh, validation, and derived-only access
+- the admitted repository-local `aoa-stats` callable procedure and its source
+  to Codex projection contract
 
 Owner repositories own their questions, metric definitions, populations,
 dimensions, evidence handoffs, privacy posture, and exports. This repository
@@ -37,12 +39,13 @@ mastery, intent, causality, or owner truth.
 2. `DESIGN.md`
 3. `stats/README.md` for the source-authored stats home
 4. `mechanics/README.md` for repeatable operation topology
-5. `ROADMAP.md`
-6. `docs/BOUNDARIES.md`
-7. `docs/ARCHITECTURE.md`
-8. `docs/decisions/README.md` for durable rationale and generated lookup
-9. the nearest nested `AGENTS.md` for every path you touch
-10. `docs/history/AGENTS_ROOT_REFERENCE.md` only for historical provenance
+5. `skills/README.md` for the admitted owner-local callable interface
+6. `ROADMAP.md`
+7. `docs/BOUNDARIES.md`
+8. `docs/ARCHITECTURE.md`
+9. `docs/decisions/README.md` for durable rationale and generated lookup
+10. the nearest nested `AGENTS.md` for every path you touch
+11. `docs/history/AGENTS_ROOT_REFERENCE.md` only for historical provenance
 
 Do not turn this root card into a profile-by-profile status roster. Exact
 surface state belongs in `stats/read-models/`; non-catalog input maturity
@@ -75,6 +78,11 @@ profile and indexed decision.
 - `mechanics/` owns repeatable intake, projection, refresh, validation, and
   release operations around those sources.
 
+`skills/` is a separate callable interface over those owners, not a third home
+for stats meaning or operation payload. It selects one bounded agent procedure;
+the selected mode must return to `stats/`, `mechanics/`, or a stronger external
+owner for truth and effects.
+
 `stats/source_home.manifest.json` is the machine-readable source-family
 crosswalk. `mechanics/topology.json` is the machine-readable operation and
 placement map. Human route docs explain those maps; they do not override them.
@@ -98,7 +106,7 @@ Operation payload lives under the nearest mechanic part. Root `schemas/` and
 `generated/` remain stable public districts. Root `scripts/` and `tests/`
 keep only public, compatibility, or repo-wide surfaces. Other root districts
 need an explicit public, decision, bundle, or compatibility role declared by
-topology and validated by the repository gates.
+an owning manifest or topology and validated by the repository gates.
 
 A stable root module does not make every historical helper name permanent ABI.
 Retain a symbol-level compatibility export only for a current caller, explicit
