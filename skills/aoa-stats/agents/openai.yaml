@@ -1,0 +1,7 @@
+interface:
+  display_name: "AoA Stats"
+  short_description: "Answer, diagnose, or evolve AoA stats"
+  default_prompt: "Use $aoa-stats to choose one bounded answer, diagnose, or evolve mode from the strongest owner sources."
+
+policy:
+  allow_implicit_invocation: true

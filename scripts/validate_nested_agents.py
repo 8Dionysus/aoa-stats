@@ -33,7 +33,10 @@ REQUIRED_AGENTS_DOCS: dict[str, tuple[str, ...]] = {
     ),
     'schemas/AGENTS.md': ('Schema changes are contract changes', 'shared receipt envelope'),
     'scripts/AGENTS.md': ('build_views.py --check', 'derived-only'),
-    'skills/AGENTS.md': ('canonical `aoa-stats/skills/` home', 'generated Codex projection'),
+    'skills/AGENTS.md': (
+        'canonical `aoa-stats/skills/` home',
+        'managed OS user-profile copy',
+    ),
     'src/AGENTS.md': ('aoa_stats_builder', 'workflow, proof, route, or quest authority'),
     'stats/AGENTS.md': ('source-authored meaning of stats families', 'source_home.manifest.json'),
     'stats/intake-contract/AGENTS.md': ('shared stats receipt envelope', 'Mechanics crosswalk'),

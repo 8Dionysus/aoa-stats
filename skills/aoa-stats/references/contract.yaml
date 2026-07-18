@@ -1,0 +1,75 @@
+schema_version: aoa-skill-contract-v1
+identity:
+  name: aoa-stats
+  owner: aoa-stats
+  version: 0.2.1
+  health: challenger
+purpose: Route one bounded statistical answer, diagnosis, or evolution through the canonical aoa-stats owner without promoting a derived view into truth.
+applicability:
+  use_when:
+    - Shared measurement compatibility, owner stats-port federation, receipt admission, a stats-authored profile or operation, source coverage, live publisher posture, or stats access is material.
+  do_not_use_when:
+    - The task is generic analytics, an undefined owner metric, central eval interpretation, routing, workflow execution, runtime repair, or only an already named validator invocation.
+  ambiguous_when:
+    - A derived stats view may be relevant but the owner question, time posture, or requested authority ceiling is not yet explicit.
+freedom_level: bounded-judgment
+tool_requirements:
+  - Read access to the installed bundle and its exact owner source handle or canonical owner checkout.
+  - Read access to the selected authored profile, operation, mechanic, owner inputs, and derived observation.
+  - Owner-local write access only for an explicitly authorized evolve operation.
+trust:
+  posture: authored-owner-procedure
+  source_authority: false
+  proof_authority: false
+  health_authority: false
+provenance:
+  source: skills/aoa-stats
+  techniques_runtime_dependency: false
+modes:
+  answer:
+    input_abi: bounded-statistical-question
+    output_abi: bounded-stats-answer
+    effects: [none]
+    reference: answer.md
+  diagnose:
+    input_abi: stats-surface-symptom
+    output_abi: bounded-stats-diagnosis
+    effects: [none]
+    reference: diagnose.md
+  evolve:
+    input_abi: stats-evolution-need
+    output_abi: bounded-stats-evolution-result
+    effects: [none, owner-local-write, generated-write]
+    reference: evolve.md
+relations:
+  - kind: requires
+    target: aoa-stats-owner-source
+    condition: Every owner-dependent mode.
+  - kind: consumes
+    target: owner-local-stats-port
+    condition: The bounded question depends on owner-defined metric meaning.
+  - kind: consumes
+    target: bounded-eval-verdict
+    condition: A stats view quotes a proof-owned result without reinterpreting it.
+  - kind: hands-off-to
+    target: aoa-evals
+    condition: The unresolved question is proof or verdict interpretation.
+  - kind: hands-off-to
+    target: domain-owner
+    condition: Metric meaning, population, privacy, freshness expectation, or current source truth is missing.
+failure_modes:
+  - Searching the whole repository after an exact authored route is available.
+  - Running a live audit from a source worktree without separately resolving the deployed runtime and federation root.
+  - Treating a committed or generated view as current live evidence.
+  - Treating a refresh or file-modification time as the freshness of the underlying observations.
+  - Converting missing, stale, unknown, zero, fail, or partial into one state.
+  - Turning counts, parseability, or a green command into owner or OS health.
+  - Inventing a central metric before a domain owner defines the question.
+termination:
+  success: One typed bounded result with sources, temporal posture, authority ceiling, actual effects, verification, skipped checks, handoff, and stop line.
+  blocked: Owner source, measure meaning, current observation, compatibility, consumer, authority, or required mode input is unavailable.
+verification:
+  - Resolve the owner through the same-bundle source handle or canonical git root and validate its port manifest before owner-relative reads.
+  - Follow one bounded route from authored meaning through the selected observation.
+  - Inspect an actual record or artifact and disconfirm an adjacent layer when diagnosing.
+  - Report what the evidence cannot establish.

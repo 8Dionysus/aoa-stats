@@ -22,7 +22,7 @@ No lower step may silently strengthen, repair, or replace an upper one.
 
 The repository skill is a procedural route across this ladder, not another
 authority level. Its canonical source is `skills/aoa-stats/SKILL.md`; the
-`.agents/skills/aoa-stats` host copy is derived.
+managed OS user-profile copy is derived.
 
 ## Measurement and projection layers
 
@@ -99,10 +99,10 @@ Generated views remain machine-first and reproducible. Missing, stale,
 rejected, or unregistered evidence stays visible; it is never converted into
 success, current state, or an invented zero.
 
-The skill projection follows the same rule: `skills/` owns the procedure and
-`.agents/skills/` only exposes an exact repo-scoped copy. The skill may choose
-an `answer`, `diagnose`, or `evolve` mode, but source meaning and operation
-effects remain with the named owners above.
+Skill exposure follows the same rule: `skills/` owns the procedure and the OS
+profile supplies one managed user copy. The skill may choose an `answer`,
+`diagnose`, or `evolve` mode, but source meaning and operation effects remain
+with the named owners above.
 
 ## Catalog and lifecycle
 
