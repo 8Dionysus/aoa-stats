@@ -32,7 +32,7 @@ become workflow, proof, route, memory, KAG, runtime, identity, or owner truth.
 | read-model lifecycle and meaning | `stats/read-models/{active,deferred,retired}/*.profile.json` | public catalog, generated output, MCP projection |
 | non-catalog stats contracts | `stats/operation-contracts/active/*.operation.json` | part-local payload and root compatibility routes |
 | operation ownership | `mechanics/topology.json` and nearest part cards | root compatibility routes |
-| repository callable procedure | `skills/aoa-stats/SKILL.md` and `skills/port.manifest.json` | generated `.agents/skills/aoa-stats` copy |
+| repository callable procedure | `skills/aoa-stats/SKILL.md` and `skills/port.manifest.json` | managed OS user-profile copy |
 | executable measurement semantics | `stats/measurement-contract/` as source, `src/aoa_stats_builder/measurement.py` as pure implementation | validators and access adapters |
 | stats read contract | `stats/surface-catalog/CODEX_MCP.md` | stack-owned `aoa-stats-mcp` implementation and project registration |
 | public contracts | catalog schemas under `schemas/` | examples and docs |

@@ -107,8 +107,8 @@ The topology returns every active part to the stats family it serves.
 `skills/aoa-stats/SKILL.md` is one repository-owned callable bundle with
 internal `answer`, `diagnose`, and `evolve` modes. It routes an agent through
 the existing stats and mechanics owners; it does not duplicate their meaning,
-payload, proof, or implementation. `.agents/skills/aoa-stats` is a generated
-repo-scoped host copy and never outranks the canonical source.
+payload, proof, or implementation. One managed OS user-profile copy exposes it
+to Codex and never outranks the canonical source.
 
 The home admits no generic shared bundles and no experimental modes as separate
 prompt-visible skills. A split requires held-out evidence of independent
@@ -142,8 +142,8 @@ second hand-maintained file roster:
   `*_sources.py`, workspace discovery, refresh, and build fan-out are domain or
   infrastructure adapters
 - files under `generated/` are generated projections, never edit sources
-- `skills/aoa-stats/SKILL.md` is the admitted callable source, while
-  `.agents/skills/aoa-stats` is only its exact repository projection
+- `skills/aoa-stats/SKILL.md` is the admitted callable source; the OS profile
+  installs one derived user copy and this repository creates no duplicate
 - examples and committed snapshots remain reference surfaces unless an authored
   profile and observable producer admit them to live state
 - ignored `state/`, systemd, and deployment material are runtime-only surfaces

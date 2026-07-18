@@ -8,160 +8,91 @@ description: Answer, diagnose, or evolve a bounded `aoa-stats` surface. Use for 
 ## Intent
 
 Provide one owner-local front door for statistical work without turning a
-derived view into proof, health, causality, workflow, or source truth. Select
-one internal mode: `answer`, `diagnose`, or `evolve`.
+derived view into proof, health, causality, workflow, or source truth. Keep
+`answer`, `diagnose`, and `evolve` as internal modes until held-out work proves
+that separate prompt-visible skills add value.
 
-## Contract
+## Applicability preflight
 
-| Field | Value |
-| --- | --- |
-| identity | `aoa-stats` home bundle, version `0.1.0` |
-| owner | `aoa-stats` repository |
-| lifecycle | admitted and advertised in repository scope |
-| trust | derived-only; owner evidence and bounded proof remain stronger |
-| effects | read-only in `answer` and `diagnose`; owner-authorized source changes only in `evolve` |
-| composition | may consume owner-local `stats/` ports, eval verdicts, receipts, profiles, mechanics, generated views, and live access as typed task-local DAG nodes |
-| conflicts | global health scoring, central invention of local metrics, missing-as-zero, generated-as-source, dashboard-first reasoning |
-| termination | one bounded result, owner handoff, no-change verdict, or explicit blocker |
+Inspect the request before resolving an owner checkout:
 
-## Applicability
+- use this bundle when the task depends on shared measurement compatibility,
+  an owner stats port, receipt admission, an authored stats profile or
+  operation, a generated or live read model, source coverage, or stats access
+- return `not_applicable` for generic analytics, ordinary code edits, an
+  owner's undefined domain metric, central eval interpretation, routing,
+  workflow execution, runtime repair, or a request whose only need is to run
+  an already named validator
+- do not inspect the workspace or search for an owner repository when the
+  negative boundary already decides the route
 
-Use this bundle when the task materially depends on one or more of:
+## Start
 
-- measurement identity, compatibility, population, unit, dimension, window,
-  missingness, uncertainty, privacy, or reporting shape shared by owners;
-- an owner-local root `stats/` port and its compatibility with the federation;
-- receipt-envelope admission or an event-kind boundary;
-- an `aoa-stats` profile, operation contract, mechanic, builder, generated read
-  model, live publisher, source-coverage surface, or stats access projection;
-- disagreement between a derived statistical view and its stronger owner.
+1. Record `<bundle_dir>` as the directory containing this loaded `SKILL.md`.
+2. Read `references/contract.yaml` and `references/source-return.md` to EOF.
+3. Select exactly one mode from the requested operation:
 
-Do not use it for generic analytics, ordinary code edits, an owner's domain
-question before that owner defines the measure, proof interpretation owned by
-`aoa-evals`, route decisions, workflow execution, runtime remediation, or a
-request whose only need is to run an already named validator.
+   | Mode | Select when | Read |
+   | --- | --- | --- |
+   | `answer` | The request asks whether, how much, which, present, covered, current, or fresh for an already meaningful surface. A negative, partial, stale, or unknown result stays `answer`. | `references/answer.md` |
+   | `diagnose` | The request asks why an observed stats symptom occurred or where its earliest causal boundary lies. | `references/diagnose.md` |
+   | `evolve` | A confirmed question or consumer lacks an adequate admitted contract or surface. | `references/evolve.md` |
 
-## Inputs
+   Missing inputs block the selected mode; they do not change its identity.
+   Do not select `diagnose` merely because an `answer` may expose stale,
+   missing, misleading, or inconsistent data.
+4. Read only the selected mode reference. Do not preload the other procedures.
+5. Only after the selected mode reference is loaded, execute the source-return
+   gate before any owner-relative read. Reading `source-return.md` does not
+   execute that gate: do not open `.aoa-skill-source.json`, the owner manifest,
+   or any owner document before the mode reference.
+6. Follow the selected procedure and return its typed output.
 
-- exactly one intent: answer, diagnose, or evolve;
-- named question, symptom, or desired measurement and the affected owner;
-- source/runtime boundary, time posture, and effect authority;
-- relevant owner port, central contract, profile/operation, mechanic, output,
-  consumer, or access surface when known.
+The owner source checkout locates authored procedure and contract truth. It
+does not by itself identify the deployed runtime or the federation root used
+for a live observation. Resolve those separately when the requested time
+posture is current/live.
 
-## Outputs
+## Owner and authority boundary
 
-Every result states:
+- `aoa-stats` owns shared measurement compatibility, federation, receipt
+  admission, stats-authored profiles, deterministic derivation, and the shape
+  of its weaker read models.
+- Domain owners retain metric meaning, populations, dimensions, evidence,
+  privacy, freshness expectations, and current exports.
+- `aoa-evals` retains proof and verdict interpretation.
+- MCP, KAG, dashboards, catalogs, generated files, and the installed bundle
+  remain access or projection layers; none gains source authority.
+- `answer` and `diagnose` are read-only. `evolve` may change owner source only
+  with explicit effect authority and the repository's normal approval route.
 
-- selected mode and exact bounded question;
-- strongest owner sources used and weaker projections inspected;
-- population/window or failure boundary as applicable;
-- compatibility, missingness, freshness, and uncertainty posture;
-- authority ceiling: what the result does and does not establish;
-- effect performed, verification, skipped checks, owner handoff, and stop line.
+## Composition
 
-## Procedure
-
-### 1. Select exactly one mode
-
-| Mode | Select when | Primary output |
-| --- | --- | --- |
-| `answer` | A bounded statistical question is already meaningful. | Source-backed answer with measure shape and authority ceiling. |
-| `diagnose` | A stats surface is absent, stale, incompatible, misleading, or inconsistent. | Earliest evidenced failure boundary and owner handoff. |
-| `evolve` | A confirmed question or consumer lacks an adequate admitted contract or surface. | Smallest owner-first change or explicit no-change decision. |
-
-Do not split the three modes into separately advertised skills unless held-out
-trials prove independent triggers, ABIs, composition value, and outcome gain.
-
-### 2. Build the smallest authority chain
-
-Read the nearest owner route first, then only the nodes needed from this chain:
+Build only the task-local edges required by the question:
 
 ```text
-domain owner source
-  -> owner-local stats port or bounded proof
-  -> central compatibility/intake contract
-  -> authored profile or operation contract
-  -> owning mechanic and pure implementation
-  -> generated/live read model
-  -> MCP, KAG, dashboard, or consumer cache
+domain owner or registered receipt
+  -> compatible stats contract
+  -> authored profile or operation
+  -> owning mechanic
+  -> generated or live observation
+  -> bounded answer, diagnosis, or evolution result
 ```
 
-Classify every used surface as authored owner meaning, compatibility contract,
-bounded proof, deterministic derivation, runtime observation, or access
-projection. A later node cannot silently repair or strengthen an earlier one.
+A valid chain is not execution evidence. Record the procedure loaded, owner
+sources read, commands actually invoked, typed result produced, verification,
+effects, and stop line.
 
-### Mode: answer
+## Verification and stop
 
-1. Restate the exact measure or question. Name object, population, sample or
-   cohort, window, value/unit, dimensions, numerator/denominator when relevant,
-   aggregation, missingness, uncertainty, freshness, and reporting rule.
-2. Read the owner-local definition before the central inventory or derived
-   view. Use a generated or live surface only after tracing it to its profile,
-   inputs, and current observation route.
-3. Compare units, versions, populations, windows, dimensions, privacy, and
-   temporal posture before combining anything. Preserve `missing`, `unknown`,
-   `stale`, zero, fail, and partial as distinct states.
-4. Inspect the actual selected records or artifact manually. Return the answer
-   with source refs and an explicit authority ceiling. A parseable publisher,
-   green command, recent refresh, count, trend, or dashboard never establishes
-   owner or OS health by itself.
-
-### Mode: diagnose
-
-1. Record the observed symptom without converting it into a cause.
-2. Walk upstream from the visible symptom through access, output, builder,
-   mechanic, profile/operation, intake/compatibility, owner port, and producer.
-   Stop at the earliest boundary supported by direct evidence.
-3. Check at least one plausible competing layer and record why it is or is not
-   causal. Distinguish absent source, stale source, missing observation trigger,
-   incompatible contract, rejected receipt, non-admitted profile, builder drift,
-   stale generated output, and access/projection drift.
-4. Return a read-only diagnosis and the smallest owner handoff. Do not mutate a
-   producer, service, profile, registry, cache, or generated file in this mode.
-
-### Mode: evolve
-
-1. Require a stable owner question, named consumer, observed no-fit or failure,
-   and an explicit authority ceiling. If any is missing, stop with the exact
-   discovery task rather than inventing a metric.
-2. Decide the owner before the shape:
-   - domain meaning and freshness expectation stay in the domain owner's port;
-   - shared compatibility or receipt vocabulary belongs in the matching
-     `stats/` source family;
-   - a derived public question needs an authored profile or operation contract;
-   - repeatable projection/refresh work belongs to the reciprocal mechanic;
-   - implementation stays pure where possible, with I/O and transport at edges.
-3. Compare reuse, extension, activation, retirement, and no-change. Do not add
-   a central surface when an owner-local answer or existing profile suffices.
-4. Exercise expected, rejected, missing, stale, incompatible, and nearest
-   collision cases manually before durable automation. Add a validator or test
-   only for a stable long-lived invariant that those trials expose.
-5. If authorized, change source before generated companions, rebuild only its
-   declared projections, inspect artifacts manually, and report what green
-   checks cannot prove. Otherwise return a bounded owner-ready proposal.
-
-## Failure modes and stops
-
-- `not_applicable`: the task belongs to a domain owner, eval, workflow, route,
-  runtime, or generic analytics rather than `aoa-stats`.
-- `blocked_missing_meaning`: object, population, unit, window, owner, or
-  consumer is undefined.
-- `blocked_stale_or_unknown`: evidence exists but cannot support the requested
-  temporal claim.
-- `incompatible`: inputs cannot be combined without changing meaning.
-- `owner_handoff`: the earliest evidenced boundary is outside `aoa-stats`.
-- `no_change`: an existing source or route already answers the need.
-- `verified_bounded`: the selected result or owner-authorized change satisfies
-  its acceptance criteria with stated claim limits.
-
-## Manual verification
-
-- trace every material claim to its strongest available source;
-- inspect at least one actual record or generated artifact, not only a command
-  exit code;
-- for diagnosis, disconfirm at least one adjacent layer;
-- for evolution, replay the motivating case and the strongest negative case;
-- report skipped live, cross-owner, model, host, or consumer checks explicitly;
-- keep task-local DAGs, raw trials, and comparison notes in session state rather
-  than committing them as skill truth.
+- trace every material claim to the strongest source actually read
+- separate procedure-source, deployed-runtime, and live-data roots in every
+  current-state claim
+- inspect at least one selected record or artifact, not only a command exit
+- preserve `missing`, `unknown`, `stale`, zero, fail, and partial as distinct
+- for diagnosis, disconfirm at least one adjacent layer
+- for evolution, exercise the motivating and strongest negative cases before
+  durable automation
+- stop after one bounded result, owner handoff, no-change decision, or explicit
+  blocker
+- keep raw trials and task-local DAGs in session state

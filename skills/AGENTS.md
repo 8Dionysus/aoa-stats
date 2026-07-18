@@ -7,8 +7,8 @@ This card applies to the canonical `aoa-stats/skills/` home.
 ## Role
 
 This home owns only admitted repository-specific callable procedures. The
-current source is `skills/aoa-stats/SKILL.md`; `.agents/skills/aoa-stats` is a
-generated Codex projection and never source truth.
+current source is `skills/aoa-stats/SKILL.md`. Global Codex exposure is a
+managed OS user-profile copy and never source truth.
 
 ## Read before editing
 
@@ -20,23 +20,24 @@ mechanic owner.
 
 - Keep answer, diagnosis, and evolution as internal modes until held-out work
   proves that a split adds independent value.
-- Do not copy shared `aoa-skills` bundles into this home or its projection.
+- Do not copy shared `aoa-skills` bundles into this home or `.agents/`.
 - Do not keep candidates, task-local DAGs, raw trials, session notes, runtime
   state, owner facts, tests, or generated read models here.
 - The skill routes work through `aoa-stats`; it cannot strengthen owner
   evidence, eval verdicts, freshness, causality, or health.
-- Change canonical source first, then rebuild the exact repo projection through
-  the pinned `aoa-skills` home-port contract.
+- Change canonical source first, validate the owner home, then reinstall the
+  single OS user profile through the owning `aoa-skills` route.
 
 ## Validation
 
 Manual isolated, negative, held-out, and coexistence tasks decide usefulness.
 `skills-ref validate skills/aoa-stats` checks portable shape. The pinned
-`aoa-skills` composite action checks owner, manifest, and byte/mode projection
-parity; green output makes no outcome claim.
+`aoa-skills` composite action checks owner, manifest, source, and package
+digest; the OS installer owns installed byte/mode parity. Green output makes
+no outcome claim.
 
 ## Closeout
 
-Report the mode cases exercised, strongest owner sources, projection rebuild,
+Report the mode cases exercised, strongest owner sources, OS-profile status,
 prompt-visible inspection, checks skipped, and any session-only fixtures
 removed.
