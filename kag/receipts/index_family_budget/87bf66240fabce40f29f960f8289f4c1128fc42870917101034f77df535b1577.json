@@ -1,0 +1,17 @@
+{
+  "allowed_bytes": 3344351,
+  "allowed_tracked_bytes": 8138252,
+  "approved_by": "repository-owner",
+  "base_ref": "24c3ae6e2844c2d24e0b15e5ce5b08c6999fd455",
+  "changed_generated_bytes": 3344351,
+  "changed_generated_files": 139,
+  "decision_ref": "aoa-kag:docs/decisions/AOA-KAG-D-0017-portable-content-addressed-repository-family.md",
+  "default_limit_bytes": 1048576,
+  "head_family_digest": "87bf66240fabce40f29f960f8289f4c1128fc42870917101034f77df535b1577",
+  "reason": "Expose the admitted aoa-stats owner bundle through the OS user profile, preserve its answer, diagnose, and evolve procedures as progressive-disclosure resources, retire the duplicate repository projection, and pin the released v2 owner-port validator; the reviewed source changes distribute anchors across content-addressed shards.",
+  "repo": "aoa-stats",
+  "schema_version": "aoa-repo-local-kag-budget-receipt-v1",
+  "scope": "generated_delta",
+  "tracked_bytes": 8138252,
+  "tracked_bytes_max": 9437184
+}
