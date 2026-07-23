@@ -9,12 +9,17 @@ it is not a repository-discovery search.
 1. Inspect exactly `<bundle_dir>/.aoa-skill-source.json` in one tool turn that
    contains no other read or command.
 2. When it exists, require:
-   - schema `aoa_skill_source_receipt_v1`
+   - schema `aoa_skill_source_receipt_v1` or
+     `aoa_skill_source_receipt_v2`
    - bundle and source name `aoa-stats`
    - owner `aoa-stats`
+   - version `0.2.2`
    - an existing absolute `owner_root`
    - safe relative `source_path`
    - `<owner_root>/<source_path>/SKILL.md`
+   - for v2, non-empty `digest`, `source_fingerprint`,
+     `source_fingerprint_scope`, and `prompt_description_sha256`; preserve
+     `capability_graph_hash` when present
 3. An invalid or mismatched existing handle is terminal:
    `blocked_missing_owner_source`. Do not try another checkout.
 4. Only when that exact handle does not exist, run
@@ -24,7 +29,8 @@ it is not a repository-discovery search.
    bundle name, and the same source path. A manifest read batched with an owner
    document is not an observed gate and terminates
    `blocked_owner_source_gate_not_observed`.
-6. Treat handle ref, commit, dirty posture, and digest as location provenance,
+6. Treat handle schema, commit, dirty posture, digest, source fingerprint,
+   capability graph hash, and prompt-description hash as location provenance,
    not parity, currentness, or source authority.
 
 Never use parent traversal, sibling scans, `find`, `rg --files`, a
@@ -131,6 +137,7 @@ case.
    `state/generated/summary_surface_catalog.min.json`, another read-model
    output, or another profile for this route.
 
-Report the source route, owner root, handle/git action, manifest action, first
-owner-read action, procedure source root, runtime repo root, live data root,
-selected authored route, command result, and skipped checks.
+Report the source route, owner root, handle schema and identity dimensions or
+git action, manifest action, first owner-read action, procedure source root,
+runtime repo root, live data root, selected authored route, command result, and
+skipped checks.
