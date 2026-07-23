@@ -7,7 +7,7 @@
     {
       "name": "aoa-stats",
       "path": "skills/aoa-stats",
-      "version": "0.2.1",
+      "version": "0.2.2",
       "lifecycle": "admitted",
       "visibility": "advertised",
       "admission_ref": "docs/decisions/AOST-D-0013-aoa-stats-owner-skill-bundle.md"
