@@ -112,13 +112,14 @@ admission evidence; green checks do not replace them.
 
 ## Current Applicability
 
-As of 2026-07-17:
+As of 2026-07-23:
 
 - Still valid: `skills/aoa-stats/` is the canonical one-bundle owner home, and
   its internal modes retain the admitted trigger and result contract. Version
-  `0.2.1` keeps one short front door and conditionally loads the shared
+  `0.2.2` keeps one short front door and conditionally loads the shared
   contract, source-return procedure, and exactly one of `answer`, `diagnose`,
-  or `evolve`.
+  or `evolve`. It adds verifiable v2 installed-copy source identity while
+  retaining bounded v1 source-return compatibility.
 - Changed: `skills/port.manifest.json` now selects the bundle for the single
   OS-level `os-user-default` profile; no repository `.agents/skills` copy is
   part of the active architecture.
@@ -126,6 +127,25 @@ As of 2026-07-17:
   by the v2 owner-home exposure contract. Manual admission evidence remains.
 
 ## Review Log
+
+### 2026-07-23 - Preserve owner return across the profile receipt transition
+
+- Integration pressure: the OS profile assembler now emits
+  `aoa_skill_source_receipt_v2`, while the admitted bundle accepted only v1.
+  A green installation therefore could not return to this canonical owner
+  source.
+- Correction: version `0.2.2` accepts v1 or v2 identity. V2 additionally
+  requires package digest, source fingerprint and scope, and prompt-description
+  hash; the capability-graph hash remains optional but must be non-empty when
+  present.
+- Manual result: the installed package receipt resolved the exact clean owner
+  root and matched the current manifest version and v2 identity dimensions.
+  A malformed v2 shape was rejected before owner use; the bounded v1 path
+  remains accepted.
+- Claim limit: this proves only the exercised installed-copy source return and
+  fail-closed identity checks. It does not re-prove live stats meaning,
+  deployed-root selection, all three mode outcomes, or general outcome
+  superiority.
 
 ### 2026-07-16 - Move discovery to the single OS user profile
 
