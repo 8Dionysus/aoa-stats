@@ -13,7 +13,7 @@ it is not a repository-discovery search.
      `aoa_skill_source_receipt_v2`
    - bundle and source name `aoa-stats`
    - owner `aoa-stats`
-   - version `0.2.3`
+   - version `0.2.4`
    - an existing absolute `owner_root`
    - safe relative `source_path`
    - `<owner_root>/<source_path>/SKILL.md`

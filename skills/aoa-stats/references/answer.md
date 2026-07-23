@@ -28,7 +28,12 @@ Stop `blocked_missing_meaning` when material meaning is absent.
    posture before combining inputs.
 5. Inspect the selected record or artifact manually. Preserve `missing`,
    `unknown`, `stale`, zero, fail, and partial as distinct states.
-6. Return a `bounded-stats-answer` containing:
+6. Do not run the repository-wide release gate for a read-only answer. Once
+   the exact authored route is known, manual source and artifact inspection is
+   the primary verification. If one material structural claim still requires
+   executable confirmation, run only the narrow owner validator named by that
+   route and report its limited claim; do not substitute a broader green gate.
+7. Return a `bounded-stats-answer` containing:
    - mode and exact question
    - measure/population/window shape when applicable
    - strongest owner sources and weaker observations inspected
