@@ -13,13 +13,14 @@ it is not a repository-discovery search.
      `aoa_skill_source_receipt_v2`
    - bundle and source name `aoa-stats`
    - owner `aoa-stats`
-   - version `0.2.2`
+   - version `0.2.3`
    - an existing absolute `owner_root`
    - safe relative `source_path`
    - `<owner_root>/<source_path>/SKILL.md`
    - for v2, non-empty `digest`, `source_fingerprint`,
-     `source_fingerprint_scope`, and `prompt_description_sha256`; preserve
-     `capability_graph_hash` when present
+     `source_fingerprint_scope`, and `prompt_description_sha256`; when
+     `capability_graph_hash` is present, require it to be a non-empty string
+     and preserve it
 3. An invalid or mismatched existing handle is terminal:
    `blocked_missing_owner_source`. Do not try another checkout.
 4. Only when that exact handle does not exist, run

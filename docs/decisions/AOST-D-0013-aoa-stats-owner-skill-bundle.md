@@ -116,7 +116,7 @@ As of 2026-07-23:
 
 - Still valid: `skills/aoa-stats/` is the canonical one-bundle owner home, and
   its internal modes retain the admitted trigger and result contract. Version
-  `0.2.2` keeps one short front door and conditionally loads the shared
+  `0.2.3` keeps one short front door and conditionally loads the shared
   contract, source-return procedure, and exactly one of `answer`, `diagnose`,
   or `evolve`. It adds verifiable v2 installed-copy source identity while
   retaining bounded v1 source-return compatibility.
@@ -127,6 +127,20 @@ As of 2026-07-23:
   by the v2 owner-home exposure contract. Manual admission evidence remains.
 
 ## Review Log
+
+### 2026-07-23 - Reject empty optional graph identity
+
+- Review result: the v2 source-return text required the four mandatory
+  identity fields but only said to preserve `capability_graph_hash` when
+  present. An empty string could therefore be treated as acceptable even
+  though the admission record required a non-empty optional value.
+- Correction: version `0.2.3` explicitly rejects a present graph hash unless
+  it is a non-empty string, then preserves it as install provenance.
+- Manual result: the empty-string v2 shape was exercised through the existing
+  executable source-return consumer and stopped before owner use. No validator
+  or regression scaffold was added for this wording correction.
+- Claim limit: this closes the reviewed identity shape only; it does not
+  re-prove stats routing, live-data meaning, or outcome benefit.
 
 ### 2026-07-23 - Preserve owner return across the profile receipt transition
 
