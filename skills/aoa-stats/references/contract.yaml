@@ -2,7 +2,7 @@ schema_version: aoa-skill-contract-v1
 identity:
   name: aoa-stats
   owner: aoa-stats
-  version: 0.2.2
+  version: 0.2.3
   health: challenger
 purpose: Route one bounded statistical answer, diagnosis, or evolution through the canonical aoa-stats owner without promoting a derived view into truth.
 applicability:
