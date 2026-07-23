@@ -116,7 +116,7 @@ As of 2026-07-23:
 
 - Still valid: `skills/aoa-stats/` is the canonical one-bundle owner home, and
   its internal modes retain the admitted trigger and result contract. Version
-  `0.2.3` keeps one short front door and conditionally loads the shared
+  `0.2.4` keeps one short front door and conditionally loads the shared
   contract, source-return procedure, and exactly one of `answer`, `diagnose`,
   or `evolve`. It adds verifiable v2 installed-copy source identity while
   retaining bounded v1 source-return compatibility.
@@ -127,6 +127,25 @@ As of 2026-07-23:
   by the v2 owner-home exposure contract. Manual admission evidence remains.
 
 ## Review Log
+
+### 2026-07-23 - Keep bounded answers on bounded verification
+
+- Manual pressure: a fresh-session owner-inventory answer selected the correct
+  bundle and returned the correct bounded result, but first invoked the
+  repository-wide release gate. The broad gate reached unrelated late checks,
+  failed on a read-only sandbox temporary-directory boundary, and added no
+  evidence to the inventory answer. The same session then used the exact
+  narrow stats-protocol validator successfully.
+- Correction: version `0.2.4` makes manual source and artifact inspection the
+  primary answer verification, forbids the root release gate for this mode,
+  and permits only the narrow validator named by the selected owner route when
+  a material structural claim still needs executable confirmation.
+- Evidence route: repeat the same fresh-session inventory question after
+  installation and require the same bounded answer without `release_check.py`.
+  No validator or test was added; the existing owner validator remains the
+  only executable structural check involved.
+- Claim limit: this corrects the exercised answer route and does not imply
+  lower cost for every stats task or replace future manual coexistence trials.
 
 ### 2026-07-23 - Reject empty optional graph identity
 

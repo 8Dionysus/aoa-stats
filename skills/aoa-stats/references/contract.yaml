@@ -2,7 +2,7 @@ schema_version: aoa-skill-contract-v1
 identity:
   name: aoa-stats
   owner: aoa-stats
-  version: 0.2.3
+  version: 0.2.4
   health: challenger
 purpose: Route one bounded statistical answer, diagnosis, or evolution through the canonical aoa-stats owner without promoting a derived view into truth.
 applicability:
@@ -59,6 +59,7 @@ relations:
     condition: Metric meaning, population, privacy, freshness expectation, or current source truth is missing.
 failure_modes:
   - Searching the whole repository after an exact authored route is available.
+  - Running the repository-wide release gate for one bounded read-only answer.
   - Running a live audit from a source worktree without separately resolving the deployed runtime and federation root.
   - Treating a committed or generated view as current live evidence.
   - Treating a refresh or file-modification time as the freshness of the underlying observations.
