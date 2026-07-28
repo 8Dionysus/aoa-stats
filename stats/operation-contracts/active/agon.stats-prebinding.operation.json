@@ -20,8 +20,8 @@
       "binding": "symbolic_unbound"
     },
     {
-      "owner_repo": "aoa-routing",
-      "truth_scope": "Agon gate-routing state and owner-review requirements",
+      "owner_repo": "aoa-sdk",
+      "truth_scope": "Routing control-plane gate state and owner-review requirements",
       "binding": "symbolic_unbound"
     }
   ],
@@ -41,8 +41,8 @@
       "route_kind": "runtime"
     },
     {
-      "repo": "aoa-routing",
-      "surface": "mechanics/agon/parts/gate-routing/config/agon_gate_routing.config.json",
+      "repo": "aoa-sdk",
+      "surface": "mechanics/boundary-bridge/parts/consumed-surface-posture-gate/docs/routing-consumer-contract.md",
       "route_kind": "routing"
     }
   ],

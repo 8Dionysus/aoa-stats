@@ -11,7 +11,7 @@
   "owner_truth_inputs": [
     "aoa-skills core skill application receipts"
   ],
-  "authority_ceiling": "Weaker than owner-local route decisions and weaker than aoa-sdk or aoa-routing dispatch surfaces.",
+  "authority_ceiling": "Weaker than owner-local route decisions and weaker than aoa-sdk routing control-plane surfaces.",
   "consumer_risk": "high",
   "live_state_capable": true,
   "mechanic_routes": [

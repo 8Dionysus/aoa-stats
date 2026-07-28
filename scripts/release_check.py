@@ -67,12 +67,6 @@ def _env() -> dict[str, str]:
             str((REPO_ROOT.parent / "aoa-kag").resolve()),
             "/srv/AbyssOS/aoa-kag",
         ),
-        "AOA_ROUTING_ROOT": (
-            env.get("AOA_ROUTING_ROOT"),
-            str((REPO_ROOT / ".deps" / "aoa-routing").resolve()),
-            str((REPO_ROOT.parent / "aoa-routing").resolve()),
-            "/srv/AbyssOS/aoa-routing",
-        ),
         "AOA_8DIONYSUS_ROOT": (
             env.get("AOA_8DIONYSUS_ROOT"),
             str((REPO_ROOT / ".deps" / "8Dionysus").resolve()),

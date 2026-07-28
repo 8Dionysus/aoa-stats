@@ -37,6 +37,7 @@
 ## downstream canaries
 
 - [AOST-D-0001 - Stats Strength And Intake Governance](../AOST-D-0001-stats-strength-and-intake-governance.md) (`docs/decisions/AOST-D-0001-stats-strength-and-intake-governance.md`)
+- [AOST-D-0014 - - Routing Owner Succession](../AOST-D-0014-routing-owner-succession.md) (`docs/decisions/AOST-D-0014-routing-owner-succession.md`)
 
 ## event-kind registry
 
@@ -96,9 +97,14 @@
 
 - [AOST-D-0004 - Live Admission Requires Refresh Observation](../AOST-D-0004-live-admission-requires-refresh-observation.md) (`docs/decisions/AOST-D-0004-live-admission-requires-refresh-observation.md`)
 
+## operation owner returns
+
+- [AOST-D-0014 - - Routing Owner Succession](../AOST-D-0014-routing-owner-succession.md) (`docs/decisions/AOST-D-0014-routing-owner-succession.md`)
+
 ## owner inventory
 
 - [AOST-D-0012 - Federated Measurement Ownership and Thin Access](../AOST-D-0012-federated-measurement-ownership-and-thin-access.md) (`docs/decisions/AOST-D-0012-federated-measurement-ownership-and-thin-access.md`)
+- [AOST-D-0014 - - Routing Owner Succession](../AOST-D-0014-routing-owner-succession.md) (`docs/decisions/AOST-D-0014-routing-owner-succession.md`)
 
 ## Owner Landing
 
@@ -145,6 +151,7 @@
 ## Stress Recovery Window
 
 - [AOST-D-0004 - Live Admission Requires Refresh Observation](../AOST-D-0004-live-admission-requires-refresh-observation.md) (`docs/decisions/AOST-D-0004-live-admission-requires-refresh-observation.md`)
+- [AOST-D-0014 - - Routing Owner Succession](../AOST-D-0014-routing-owner-succession.md) (`docs/decisions/AOST-D-0014-routing-owner-succession.md`)
 
 ## summary surface catalog
 
@@ -154,6 +161,10 @@
 ## Supersession Drop
 
 - [AOST-D-0009 - Retirement Reserves Catalog Slots Without Preserving Empty Mechanics](../AOST-D-0009-retirement-reserves-catalog-slots-without-preserving-empty-mechanics.md) (`docs/decisions/AOST-D-0009-retirement-reserves-catalog-slots-without-preserving-empty-mechanics.md`)
+
+## surface catalog
+
+- [AOST-D-0014 - - Routing Owner Succession](../AOST-D-0014-routing-owner-succession.md) (`docs/decisions/AOST-D-0014-routing-owner-succession.md`)
 
 ## surface strength
 

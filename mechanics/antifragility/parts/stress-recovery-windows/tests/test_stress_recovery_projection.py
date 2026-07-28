@@ -142,7 +142,7 @@ def test_unsuppressed_projection_connects_counts_to_metrics() -> None:
             "end_utc": "2026-04-07T00:00:00Z",
         },
         "scope": {
-            "repo_roots": ["aoa-evals", "aoa-routing"],
+            "repo_roots": ["aoa-evals", "aoa-sdk"],
             "stressor_family": "hybrid-query-kag-unhealthy",
             "owner_surface": "hybrid-query",
             "surface_family": "kag-regrounding",

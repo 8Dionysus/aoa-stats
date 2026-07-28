@@ -10,8 +10,8 @@ The two stats-owned inputs are:
 - `generated/summary_surface_catalog.min.json` as the surface-profile catalog
 - `generated/source_coverage_summary.min.json` as the intake-coverage audit
 
-These inputs are signals for consumers such as `aoa-sdk` and `aoa-routing`.
-They are not proof verdicts, route decisions, or workflow instructions.
+These inputs are signals for consumers such as the `aoa-sdk` routing control
+plane. They are not proof verdicts, route decisions, or workflow instructions.
 
 ## Surface Profile
 
@@ -56,8 +56,9 @@ The stats layer must not say:
 - this workflow should activate
 - this quest or continuity state is canonically true
 
-`aoa-sdk` owns policy application. `aoa-routing` may expose advisory next-read
-hints. `aoa-evals` owns bounded proof verdicts.
+`aoa-sdk` owns policy application and may expose advisory next-read hints
+through the stable `aoa-routing` compatibility layer. `aoa-evals` owns bounded
+proof verdicts.
 
 ## Repair Rule
 

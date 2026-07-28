@@ -1,0 +1,17 @@
+{
+  "allowed_bytes": 5667547,
+  "allowed_tracked_bytes": 8193008,
+  "approved_by": "repository-owner",
+  "base_ref": "504571995cc36905cc886259c0a19be6e8e35045",
+  "changed_generated_bytes": 5667547,
+  "changed_generated_files": 249,
+  "decision_ref": "aoa-kag:docs/decisions/AOA-KAG-D-0017-portable-content-addressed-repository-family.md",
+  "default_limit_bytes": 1048576,
+  "head_family_digest": "ea5dc23bad3d65e499ce4b8a42f2d00d2efc79efd3b423a8a7eec5546f27ff48",
+  "reason": "Return aoa-stats active federation, downstream canaries, operation contracts, and Stress Recovery fixtures from the predecessor to aoa-sdk; decision-index anchor identities disperse across portable shards while the family remains below its standing cap.",
+  "repo": "aoa-stats",
+  "schema_version": "aoa-repo-local-kag-budget-receipt-v1",
+  "scope": "generated_delta",
+  "tracked_bytes": 8193008,
+  "tracked_bytes_max": 9437184
+}

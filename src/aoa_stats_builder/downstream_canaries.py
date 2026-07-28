@@ -9,11 +9,14 @@ REQUIRED_CANARIES = (
         "needles": ("aoa-stats", "descriptive only"),
     },
     {
-        "repo": "aoa-routing",
-        "relative_path": "README.md",
+        "repo": "aoa-sdk",
+        "relative_path": (
+            "mechanics/boundary-bridge/parts/consumed-surface-posture-gate/"
+            "docs/routing-consumer-contract.md"
+        ),
         "needles": (
             "aoa-stats/generated/stress_recovery_window_summary.min.json",
-            "does not replace `recommended_paths.min.json`, `owner_layer_shortlist.min.json`",
+            "must not require an `aoa-routing` checkout",
         ),
     },
     {

@@ -635,7 +635,7 @@ def test_refresh_live_state_does_not_admit_stress_report_without_live_profile(
                 },
                 "scope": {
                     "stressor_family": "hybrid-query-kag-unhealthy",
-                    "repo_roots": ["aoa-routing", "aoa-memo"],
+                    "repo_roots": ["aoa-sdk", "aoa-memo"],
                     "owner_surface": "hybrid-query",
                     "surface_family": "kag-regrounding",
                 },
@@ -776,7 +776,7 @@ def test_refresh_live_state_does_not_admit_vendored_stress_report_without_live_p
                 },
                 "scope": {
                     "stressor_family": "hybrid-query-kag-unhealthy",
-                    "repo_roots": ["aoa-routing", "aoa-memo"],
+                    "repo_roots": ["aoa-sdk", "aoa-memo"],
                     "owner_surface": "hybrid-query",
                     "surface_family": "kag-regrounding",
                 },

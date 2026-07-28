@@ -25,6 +25,7 @@
 ## consumer regrounding
 
 - [AOST-D-0005 - Route Progression Semantic Receipts Are Not Numeric Live State](../AOST-D-0005-route-progression-semantic-receipts-are-not-numeric-live-state.md) (`docs/decisions/AOST-D-0005-route-progression-semantic-receipts-are-not-numeric-live-state.md`)
+- [AOST-D-0014 - - Routing Owner Succession](../AOST-D-0014-routing-owner-succession.md) (`docs/decisions/AOST-D-0014-routing-owner-succession.md`)
 
 ## consumer safety
 
@@ -53,10 +54,12 @@
 - [AOST-D-0011 - Antifragility Vector Remains An Evidence-Gated Incubator](../AOST-D-0011-antifragility-vector-remains-an-evidence-gated-incubator.md) (`docs/decisions/AOST-D-0011-antifragility-vector-remains-an-evidence-gated-incubator.md`)
 - [AOST-D-0012 - Federated Measurement Ownership and Thin Access](../AOST-D-0012-federated-measurement-ownership-and-thin-access.md) (`docs/decisions/AOST-D-0012-federated-measurement-ownership-and-thin-access.md`)
 - [AOST-D-0013 - aoa-stats Owner Skill Bundle](../AOST-D-0013-aoa-stats-owner-skill-bundle.md) (`docs/decisions/AOST-D-0013-aoa-stats-owner-skill-bundle.md`)
+- [AOST-D-0014 - - Routing Owner Succession](../AOST-D-0014-routing-owner-succession.md) (`docs/decisions/AOST-D-0014-routing-owner-succession.md`)
 
 ## downstream canaries
 
 - [AOST-D-0001 - Stats Strength And Intake Governance](../AOST-D-0001-stats-strength-and-intake-governance.md) (`docs/decisions/AOST-D-0001-stats-strength-and-intake-governance.md`)
+- [AOST-D-0014 - - Routing Owner Succession](../AOST-D-0014-routing-owner-succession.md) (`docs/decisions/AOST-D-0014-routing-owner-succession.md`)
 
 ## generated-index parity
 
@@ -96,9 +99,17 @@
 
 - [AOST-D-0013 - aoa-stats Owner Skill Bundle](../AOST-D-0013-aoa-stats-owner-skill-bundle.md) (`docs/decisions/AOST-D-0013-aoa-stats-owner-skill-bundle.md`)
 
+## no predecessor checkout
+
+- [AOST-D-0014 - - Routing Owner Succession](../AOST-D-0014-routing-owner-succession.md) (`docs/decisions/AOST-D-0014-routing-owner-succession.md`)
+
 ## owner evidence
 
 - [AOST-D-0011 - Antifragility Vector Remains An Evidence-Gated Incubator](../AOST-D-0011-antifragility-vector-remains-an-evidence-gated-incubator.md) (`docs/decisions/AOST-D-0011-antifragility-vector-remains-an-evidence-gated-incubator.md`)
+
+## owner succession
+
+- [AOST-D-0014 - - Routing Owner Succession](../AOST-D-0014-routing-owner-succession.md) (`docs/decisions/AOST-D-0014-routing-owner-succession.md`)
 
 ## owner-contract compatibility
 
