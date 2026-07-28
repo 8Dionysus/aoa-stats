@@ -1,0 +1,17 @@
+{
+  "allowed_bytes": 5667538,
+  "allowed_tracked_bytes": 8192999,
+  "approved_by": "repository-owner",
+  "base_ref": "504571995cc36905cc886259c0a19be6e8e35045",
+  "changed_generated_bytes": 5667538,
+  "changed_generated_files": 249,
+  "decision_ref": "aoa-kag:docs/decisions/AOA-KAG-D-0017-portable-content-addressed-repository-family.md",
+  "default_limit_bytes": 1048576,
+  "head_family_digest": "0d5ed911f0b14e1c6900ec33486cc20246b9a725a7fb6713630943f19f455f65",
+  "reason": "Routing-owner succession updates the bounded source and decision surfaces; this one-change receipt preserves standing family caps while admitting the reviewed migration delta.",
+  "repo": "aoa-stats",
+  "schema_version": "aoa-repo-local-kag-budget-receipt-v1",
+  "scope": "generated_delta",
+  "tracked_bytes": 8192999,
+  "tracked_bytes_max": 9437184
+}
