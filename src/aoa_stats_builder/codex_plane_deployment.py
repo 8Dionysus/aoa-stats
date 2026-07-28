@@ -28,7 +28,6 @@ DEPLOYMENT_STATES = (
 CODEX_PLANE_V1_STABLE_MCP_NAMES = (
     "aoa_workspace",
     "aoa_stats",
-    "dionysus",
     "aoa_memo",
     "aoa_session_memory",
     "aoa_evals",
