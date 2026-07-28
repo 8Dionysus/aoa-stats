@@ -27,28 +27,28 @@ jobs:
         uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd
         with:
           repository: 8Dionysus/8Dionysus
-          ref: c5209907175ced0b129b0cc3fa2cf505488a0517
+          ref: aa67908a137a9c9631a439f266d32a8918c7213c
           path: .deps/8Dionysus
 
       - name: Checkout aoa-agents
         uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd
         with:
           repository: 8Dionysus/aoa-agents
-          ref: 0acb7070c64ae00421d217a003ae3a844b2c816e
+          ref: 92dd79e6c79fef60faedf6b97f2c65ff89477d06
           path: .deps/aoa-agents
 
       - name: Checkout aoa-playbooks
         uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd
         with:
           repository: 8Dionysus/aoa-playbooks
-          ref: f0ea31c8d0d7286fefb5d5de8e103b3ca343e8a9
+          ref: 9a8536c9b4570263dfb4ff039eec0c4a580b2db5
           path: .deps/aoa-playbooks
 
       - name: Checkout aoa-memo
         uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd
         with:
           repository: 8Dionysus/aoa-memo
-          ref: 922e072f839d75e9f14c9afcd62a07fb8729fe2b
+          ref: bcda57fe47d5e3daaee8258cc4428dc6315ae239
           path: .deps/aoa-memo
 
       - name: Checkout aoa-sdk
@@ -62,7 +62,7 @@ jobs:
         uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd
         with:
           repository: 8Dionysus/aoa-evals
-          ref: 4b5afa5c58080518ac5d1e47921601045c598bfc
+          ref: 12b408727e40174dd10e1f9ad0fa2e7f7fd11eec
           path: .deps/aoa-evals
 
       - name: Checkout abyss-machine
