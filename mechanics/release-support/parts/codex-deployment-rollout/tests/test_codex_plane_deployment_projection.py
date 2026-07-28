@@ -198,7 +198,7 @@ def test_committed_reference_core_facade_example_and_schema_are_aligned() -> Non
         "8Dionysus/examples/codex_plane_rollout_receipt.example.json",
     ]
     assert committed["stable_mcp_name_set"] == sorted(
-        codex_plane_deployment.CODEX_PLANE_V1_STABLE_MCP_NAMES
+        trust["mcp_server_names_expected"]
     )
 
 
@@ -505,6 +505,50 @@ def test_detected_project_mcp_superset_is_not_stable_name_drift() -> None:
     assert summary["stable_mcp_name_set"] == sorted(
         codex_plane_deployment.CODEX_PLANE_V1_STABLE_MCP_NAMES
     )
+
+
+def test_published_v1_dionysus_name_set_remains_readable() -> None:
+    trust = trust_payload()
+    regeneration = regeneration_payload()
+
+    summary = codex_plane_deployment.build_codex_plane_deployment_summary(
+        source_payload(), trust, regeneration, receipt_payload()
+    )
+
+    assert "dionysus" in trust["mcp_server_names_expected"]
+    assert "dionysus" in regeneration["stable_names"]
+    assert "dionysus" in summary["stable_mcp_name_set"]
+
+
+def test_exact_post_retirement_v1_name_set_remains_readable() -> None:
+    trust = trust_payload()
+    trust["mcp_server_names_expected"] = list(
+        codex_plane_deployment.CODEX_PLANE_V1_POST_DIONYSUS_RETIREMENT_MCP_NAMES
+    )
+    trust["mcp_server_names_detected"] = list(
+        codex_plane_deployment.CODEX_PLANE_V1_POST_DIONYSUS_RETIREMENT_MCP_NAMES
+    )
+    regeneration = regeneration_payload()
+    regeneration["stable_names"].pop("dionysus")
+
+    summary = codex_plane_deployment.build_codex_plane_deployment_summary(
+        source_payload(), trust, regeneration, receipt_payload()
+    )
+
+    assert "dionysus" not in summary["stable_mcp_name_set"]
+
+
+def test_trust_and_regeneration_reject_mismatched_v1_name_variants() -> None:
+    regeneration = regeneration_payload()
+    regeneration["stable_names"].pop("dionysus")
+
+    with pytest.raises(
+        codex_plane_deployment.ReceiptValidationError,
+        match="same exact v1 stable-name set",
+    ):
+        codex_plane_deployment.validate_codex_plane_deployment_chain(
+            trust_payload(), regeneration, receipt_payload()
+        )
 
 
 def test_explicit_root_drift_drives_drift_and_rollback_counts() -> None:
