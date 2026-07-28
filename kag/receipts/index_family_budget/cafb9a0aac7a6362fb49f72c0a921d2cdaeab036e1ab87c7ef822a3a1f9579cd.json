@@ -1,0 +1,17 @@
+{
+  "allowed_bytes": 5819756,
+  "allowed_tracked_bytes": 8202072,
+  "approved_by": "repository-owner",
+  "base_ref": "504571995cc36905cc886259c0a19be6e8e35045",
+  "changed_generated_bytes": 5819756,
+  "changed_generated_files": 253,
+  "decision_ref": "aoa-kag:docs/decisions/AOA-KAG-D-0017-portable-content-addressed-repository-family.md",
+  "default_limit_bytes": 1048576,
+  "head_family_digest": "cafb9a0aac7a6362fb49f72c0a921d2cdaeab036e1ab87c7ef822a3a1f9579cd",
+  "reason": "Retain the published Codex Plane v1 MCP compatibility set and bind the landed Agent OS control-plane consumers; the reviewed source and exact dependency-pin changes re-shard the content-addressed family.",
+  "repo": "aoa-stats",
+  "schema_version": "aoa-repo-local-kag-budget-receipt-v1",
+  "scope": "generated_delta",
+  "tracked_bytes": 8202072,
+  "tracked_bytes_max": 9437184
+}
