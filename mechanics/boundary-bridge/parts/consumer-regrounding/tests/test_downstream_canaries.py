@@ -30,6 +30,22 @@ def test_downstream_canaries_report_missing_needles(tmp_path: Path) -> None:
     assert any("aoa-sdk/docs/aoa-surface-detection-second-wave.md" in error for error in result["errors"])
 
 
+def test_downstream_canaries_reject_missing_contract_in_available_owner_checkout(
+    tmp_path: Path,
+) -> None:
+    (tmp_path / "aoa-sdk").mkdir()
+
+    result = validate_downstream_canaries(workspace_root=tmp_path)
+
+    assert any(
+        "aoa-sdk/mechanics/boundary-bridge/parts/"
+        "consumed-surface-posture-gate/docs/routing-consumer-contract.md"
+        in error
+        and "required downstream canary is missing" in error
+        for error in result["errors"]
+    )
+
+
 def test_downstream_canaries_use_sdk_routing_owner_without_predecessor_checkout(
     tmp_path: Path,
 ) -> None:

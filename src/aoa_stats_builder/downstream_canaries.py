@@ -44,10 +44,17 @@ def validate_downstream_canaries(*, workspace_root: Path) -> dict[str, list[str]
     errors: list[str] = []
 
     for spec in REQUIRED_CANARIES:
-        path = workspace_root / spec["repo"] / spec["relative_path"]
+        repo_root = workspace_root / spec["repo"]
+        path = repo_root / spec["relative_path"]
         label = f"{spec['repo']}/{spec['relative_path']}"
         if not path.exists():
-            skipped.append(label)
+            if repo_root.exists():
+                errors.append(
+                    f"{label}: required downstream canary is missing from "
+                    "the available owner checkout"
+                )
+            else:
+                skipped.append(label)
             continue
         text = path.read_text(encoding="utf-8")
         checked.append(label)
