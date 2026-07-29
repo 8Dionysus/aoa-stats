@@ -47,9 +47,17 @@
 
 - [AOST-D-0013 - aoa-stats Owner Skill Bundle](../AOST-D-0013-aoa-stats-owner-skill-bundle.md) (`docs/decisions/AOST-D-0013-aoa-stats-owner-skill-bundle.md`)
 
+## freshness watermark
+
+- [AOST-D-0015 - Review Captured Stats Catalog In The Owner](../AOST-D-0015-review-captured-stats-catalog-in-the-owner.md) (`docs/decisions/AOST-D-0015-review-captured-stats-catalog-in-the-owner.md`)
+
 ## generated lookup indexes
 
 - [AOST-D-0002 - Canonical Decision Lane](../AOST-D-0002-canonical-decision-lane.md) (`docs/decisions/AOST-D-0002-canonical-decision-lane.md`)
+
+## grounding review
+
+- [AOST-D-0015 - Review Captured Stats Catalog In The Owner](../AOST-D-0015-review-captured-stats-catalog-in-the-owner.md) (`docs/decisions/AOST-D-0015-review-captured-stats-catalog-in-the-owner.md`)
 
 ## intake
 
@@ -157,6 +165,7 @@
 
 - [AOST-D-0007 - Titan Reference Rosters Are Not Observed Swarm Activity](../AOST-D-0007-titan-reference-rosters-are-not-observed-swarm-activity.md) (`docs/decisions/AOST-D-0007-titan-reference-rosters-are-not-observed-swarm-activity.md`)
 - [AOST-D-0008 - Retired Outputs Remain Cleanup Tombstones, Not Active Stats](../AOST-D-0008-retired-outputs-remain-cleanup-tombstones-not-active-stats.md) (`docs/decisions/AOST-D-0008-retired-outputs-remain-cleanup-tombstones-not-active-stats.md`)
+- [AOST-D-0015 - Review Captured Stats Catalog In The Owner](../AOST-D-0015-review-captured-stats-catalog-in-the-owner.md) (`docs/decisions/AOST-D-0015-review-captured-stats-catalog-in-the-owner.md`)
 
 ## Supersession Drop
 

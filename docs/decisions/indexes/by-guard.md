@@ -55,11 +55,20 @@
 - [AOST-D-0012 - Federated Measurement Ownership and Thin Access](../AOST-D-0012-federated-measurement-ownership-and-thin-access.md) (`docs/decisions/AOST-D-0012-federated-measurement-ownership-and-thin-access.md`)
 - [AOST-D-0013 - aoa-stats Owner Skill Bundle](../AOST-D-0013-aoa-stats-owner-skill-bundle.md) (`docs/decisions/AOST-D-0013-aoa-stats-owner-skill-bundle.md`)
 - [AOST-D-0014 - - Routing Owner Succession](../AOST-D-0014-routing-owner-succession.md) (`docs/decisions/AOST-D-0014-routing-owner-succession.md`)
+- [AOST-D-0015 - Review Captured Stats Catalog In The Owner](../AOST-D-0015-review-captured-stats-catalog-in-the-owner.md) (`docs/decisions/AOST-D-0015-review-captured-stats-catalog-in-the-owner.md`)
 
 ## downstream canaries
 
 - [AOST-D-0001 - Stats Strength And Intake Governance](../AOST-D-0001-stats-strength-and-intake-governance.md) (`docs/decisions/AOST-D-0001-stats-strength-and-intake-governance.md`)
 - [AOST-D-0014 - - Routing Owner Succession](../AOST-D-0014-routing-owner-succession.md) (`docs/decisions/AOST-D-0014-routing-owner-succession.md`)
+
+## exact capture binding
+
+- [AOST-D-0015 - Review Captured Stats Catalog In The Owner](../AOST-D-0015-review-captured-stats-catalog-in-the-owner.md) (`docs/decisions/AOST-D-0015-review-captured-stats-catalog-in-the-owner.md`)
+
+## freshness
+
+- [AOST-D-0015 - Review Captured Stats Catalog In The Owner](../AOST-D-0015-review-captured-stats-catalog-in-the-owner.md) (`docs/decisions/AOST-D-0015-review-captured-stats-catalog-in-the-owner.md`)
 
 ## generated-index parity
 
@@ -98,6 +107,10 @@
 ## negative applicability
 
 - [AOST-D-0013 - aoa-stats Owner Skill Bundle](../AOST-D-0013-aoa-stats-owner-skill-bundle.md) (`docs/decisions/AOST-D-0013-aoa-stats-owner-skill-bundle.md`)
+
+## no acceptance inference
+
+- [AOST-D-0015 - Review Captured Stats Catalog In The Owner](../AOST-D-0015-review-captured-stats-catalog-in-the-owner.md) (`docs/decisions/AOST-D-0015-review-captured-stats-catalog-in-the-owner.md`)
 
 ## no predecessor checkout
 

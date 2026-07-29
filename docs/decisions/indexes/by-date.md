@@ -33,3 +33,7 @@
 ## 2026-07-27
 
 - [AOST-D-0014 - - Routing Owner Succession](../AOST-D-0014-routing-owner-succession.md) (`docs/decisions/AOST-D-0014-routing-owner-succession.md`)
+
+## 2026-07-28
+
+- [AOST-D-0015 - Review Captured Stats Catalog In The Owner](../AOST-D-0015-review-captured-stats-catalog-in-the-owner.md) (`docs/decisions/AOST-D-0015-review-captured-stats-catalog-in-the-owner.md`)
