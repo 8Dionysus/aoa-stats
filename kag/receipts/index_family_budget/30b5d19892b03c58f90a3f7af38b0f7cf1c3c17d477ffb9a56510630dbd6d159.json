@@ -1,0 +1,17 @@
+{
+  "allowed_bytes": 5409909,
+  "allowed_tracked_bytes": 8305891,
+  "approved_by": "repository-owner",
+  "base_ref": "740c57d6ab2fe78d6a8440c19c2637431e039c6b",
+  "changed_generated_bytes": 5409909,
+  "changed_generated_files": 235,
+  "decision_ref": "aoa-kag:docs/decisions/AOA-KAG-D-0017-portable-content-addressed-repository-family.md",
+  "default_limit_bytes": 1048576,
+  "head_family_digest": "30b5d19892b03c58f90a3f7af38b0f7cf1c3c17d477ffb9a56510630dbd6d159",
+  "reason": "Rebuild the Stats owner-result review projection with the workflow-pinned KAG action",
+  "repo": "aoa-stats",
+  "schema_version": "aoa-repo-local-kag-budget-receipt-v1",
+  "scope": "generated_delta",
+  "tracked_bytes": 8305891,
+  "tracked_bytes_max": 9437184
+}
