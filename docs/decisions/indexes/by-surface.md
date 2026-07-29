@@ -52,11 +52,13 @@
 
 - [AOST-D-0004 - Live Admission Requires Refresh Observation](../AOST-D-0004-live-admission-requires-refresh-observation.md) (`docs/decisions/AOST-D-0004-live-admission-requires-refresh-observation.md`)
 - [AOST-D-0011 - Antifragility Vector Remains An Evidence-Gated Incubator](../AOST-D-0011-antifragility-vector-remains-an-evidence-gated-incubator.md) (`docs/decisions/AOST-D-0011-antifragility-vector-remains-an-evidence-gated-incubator.md`)
+- [AOST-D-0014 - - Routing Owner Succession](../AOST-D-0014-routing-owner-succession.md) (`docs/decisions/AOST-D-0014-routing-owner-succession.md`)
 
 ## mechanics/boundary-bridge
 
 - [AOST-D-0004 - Live Admission Requires Refresh Observation](../AOST-D-0004-live-admission-requires-refresh-observation.md) (`docs/decisions/AOST-D-0004-live-admission-requires-refresh-observation.md`)
 - [AOST-D-0012 - Federated Measurement Ownership and Thin Access](../AOST-D-0012-federated-measurement-ownership-and-thin-access.md) (`docs/decisions/AOST-D-0012-federated-measurement-ownership-and-thin-access.md`)
+- [AOST-D-0014 - - Routing Owner Succession](../AOST-D-0014-routing-owner-succession.md) (`docs/decisions/AOST-D-0014-routing-owner-succession.md`)
 
 ## mechanics/checkpoint
 
@@ -102,6 +104,10 @@
 
 - [AOST-D-0001 - Stats Strength And Intake Governance](../AOST-D-0001-stats-strength-and-intake-governance.md) (`docs/decisions/AOST-D-0001-stats-strength-and-intake-governance.md`)
 
+## scripts/release
+
+- [AOST-D-0014 - - Routing Owner Succession](../AOST-D-0014-routing-owner-succession.md) (`docs/decisions/AOST-D-0014-routing-owner-succession.md`)
+
 ## scripts/validators
 
 - [AOST-D-0001 - Stats Strength And Intake Governance](../AOST-D-0001-stats-strength-and-intake-governance.md) (`docs/decisions/AOST-D-0001-stats-strength-and-intake-governance.md`)
@@ -115,6 +121,10 @@
 
 - [AOST-D-0003 - Component Refresh Fixtures Are Not Live State](../AOST-D-0003-component-refresh-fixtures-are-not-live-state.md) (`docs/decisions/AOST-D-0003-component-refresh-fixtures-are-not-live-state.md`)
 - [AOST-D-0004 - Live Admission Requires Refresh Observation](../AOST-D-0004-live-admission-requires-refresh-observation.md) (`docs/decisions/AOST-D-0004-live-admission-requires-refresh-observation.md`)
+
+## src/canaries
+
+- [AOST-D-0014 - - Routing Owner Succession](../AOST-D-0014-routing-owner-succession.md) (`docs/decisions/AOST-D-0014-routing-owner-succession.md`)
 
 ## src/catalog
 
@@ -145,10 +155,15 @@
 ## stats/federation
 
 - [AOST-D-0012 - Federated Measurement Ownership and Thin Access](../AOST-D-0012-federated-measurement-ownership-and-thin-access.md) (`docs/decisions/AOST-D-0012-federated-measurement-ownership-and-thin-access.md`)
+- [AOST-D-0014 - - Routing Owner Succession](../AOST-D-0014-routing-owner-succession.md) (`docs/decisions/AOST-D-0014-routing-owner-succession.md`)
 
 ## stats/measurement-contract
 
 - [AOST-D-0012 - Federated Measurement Ownership and Thin Access](../AOST-D-0012-federated-measurement-ownership-and-thin-access.md) (`docs/decisions/AOST-D-0012-federated-measurement-ownership-and-thin-access.md`)
+
+## stats/operation-contracts
+
+- [AOST-D-0014 - - Routing Owner Succession](../AOST-D-0014-routing-owner-succession.md) (`docs/decisions/AOST-D-0014-routing-owner-succession.md`)
 
 ## stats/read-models
 
@@ -161,6 +176,7 @@
 - [AOST-D-0009 - Retirement Reserves Catalog Slots Without Preserving Empty Mechanics](../AOST-D-0009-retirement-reserves-catalog-slots-without-preserving-empty-mechanics.md) (`docs/decisions/AOST-D-0009-retirement-reserves-catalog-slots-without-preserving-empty-mechanics.md`)
 - [AOST-D-0010 - Runtime Closeout Wave Snapshot Is Contract History, Not Active Observability](../AOST-D-0010-runtime-closeout-wave-snapshot-is-contract-history-not-active-observability.md) (`docs/decisions/AOST-D-0010-runtime-closeout-wave-snapshot-is-contract-history-not-active-observability.md`)
 - [AOST-D-0011 - Antifragility Vector Remains An Evidence-Gated Incubator](../AOST-D-0011-antifragility-vector-remains-an-evidence-gated-incubator.md) (`docs/decisions/AOST-D-0011-antifragility-vector-remains-an-evidence-gated-incubator.md`)
+- [AOST-D-0014 - - Routing Owner Succession](../AOST-D-0014-routing-owner-succession.md) (`docs/decisions/AOST-D-0014-routing-owner-succession.md`)
 
 ## tests/release-checks
 

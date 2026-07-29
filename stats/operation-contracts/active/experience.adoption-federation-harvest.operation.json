@@ -15,8 +15,8 @@
       "binding": "symbolic_unbound"
     },
     {
-      "owner_repo": "aoa-routing",
-      "truth_scope": "Owner landing and adoption-route state",
+      "owner_repo": "aoa-sdk",
+      "truth_scope": "Routing control-plane owner landing and adoption-route state",
       "binding": "symbolic_unbound"
     },
     {
@@ -36,8 +36,8 @@
       "route_kind": "authored_meaning"
     },
     {
-      "repo": "aoa-routing",
-      "surface": "mechanics/boundary-bridge/parts/federation-harvest-routing/docs/federation-owner-landing.md",
+      "repo": "aoa-sdk",
+      "surface": "mechanics/boundary-bridge/parts/consumed-surface-posture-gate/docs/routing-consumer-contract.md",
       "route_kind": "routing"
     },
     {

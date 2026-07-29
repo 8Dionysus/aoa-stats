@@ -29,3 +29,7 @@
 ## 2026-07-15
 
 - [AOST-D-0013 - aoa-stats Owner Skill Bundle](../AOST-D-0013-aoa-stats-owner-skill-bundle.md) (`docs/decisions/AOST-D-0013-aoa-stats-owner-skill-bundle.md`)
+
+## 2026-07-27
+
+- [AOST-D-0014 - - Routing Owner Succession](../AOST-D-0014-routing-owner-succession.md) (`docs/decisions/AOST-D-0014-routing-owner-succession.md`)

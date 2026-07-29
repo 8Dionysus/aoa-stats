@@ -1,0 +1,17 @@
+{
+  "allowed_bytes": 5885414,
+  "allowed_tracked_bytes": 8209746,
+  "approved_by": "repository-owner",
+  "base_ref": "504571995cc36905cc886259c0a19be6e8e35045",
+  "changed_generated_bytes": 5885414,
+  "changed_generated_files": 255,
+  "decision_ref": "aoa-kag:docs/decisions/AOA-KAG-D-0017-portable-content-addressed-repository-family.md",
+  "default_limit_bytes": 1048576,
+  "head_family_digest": "242a350e63ecefaa30c823e248e2732bfc2d8cf0b3deebfe88b63fdc4b927587",
+  "reason": "Bind downstream canaries to the exact CI owner roots, retain published Codex Plane v1 compatibility, and pin the landed Agent OS consumers; the reviewed source changes re-shard the portable family.",
+  "repo": "aoa-stats",
+  "schema_version": "aoa-repo-local-kag-budget-receipt-v1",
+  "scope": "generated_delta",
+  "tracked_bytes": 8209746,
+  "tracked_bytes_max": 9437184
+}

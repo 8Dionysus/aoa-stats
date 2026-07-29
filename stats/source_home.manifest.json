@@ -696,7 +696,7 @@
     },
     {
       "pressure": "route or quest-state authority",
-      "route": "aoa-routing or the owning quest surface"
+      "route": "aoa-sdk routing control plane (stable aoa-routing compatibility layer) or the owning quest surface"
     },
     {
       "pressure": "durable memory truth",

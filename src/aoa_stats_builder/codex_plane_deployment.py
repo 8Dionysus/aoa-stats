@@ -35,6 +35,15 @@ CODEX_PLANE_V1_STABLE_MCP_NAMES = (
     "aoa_decisions",
     "abyss_machine",
 )
+CODEX_PLANE_V1_POST_DIONYSUS_RETIREMENT_MCP_NAMES = tuple(
+    name for name in CODEX_PLANE_V1_STABLE_MCP_NAMES if name != "dionysus"
+)
+CODEX_PLANE_V1_COMPATIBLE_MCP_NAME_SETS = frozenset(
+    {
+        frozenset(CODEX_PLANE_V1_STABLE_MCP_NAMES),
+        frozenset(CODEX_PLANE_V1_POST_DIONYSUS_RETIREMENT_MCP_NAMES),
+    }
+)
 TRUST_REQUIRED_FIELDS = frozenset(
     {
         "schema_version",
@@ -185,9 +194,9 @@ def _validate_trust_state(trust: Mapping[str, Any]) -> datetime:
         label=f"{label} mcp_server_names_detected",
         allow_empty=True,
     )
-    if set(expected_names) != set(CODEX_PLANE_V1_STABLE_MCP_NAMES):
+    if frozenset(expected_names) not in CODEX_PLANE_V1_COMPATIBLE_MCP_NAME_SETS:
         raise ReceiptValidationError(
-            f"{label} expected MCP names must match the published v1 stable set"
+            f"{label} expected MCP names must match a supported exact v1 stable set"
         )
     project_config_active = _require_bool(
         trust.get("project_config_active"),
@@ -310,12 +319,11 @@ def _validate_regeneration_report(regeneration: Mapping[str, Any]) -> datetime:
     if not isinstance(stable_names, Mapping):
         raise ReceiptValidationError(f"{label} stable_names must be an object")
     stable_name_keys = set(stable_names)
-    expected_name_keys = set(CODEX_PLANE_V1_STABLE_MCP_NAMES)
-    if stable_name_keys != expected_name_keys:
+    if frozenset(stable_name_keys) not in CODEX_PLANE_V1_COMPATIBLE_MCP_NAME_SETS:
         raise ReceiptValidationError(
-            f"{label} stable_names must match the published v1 stable set"
+            f"{label} stable_names must match a supported exact v1 stable set"
         )
-    for name in CODEX_PLANE_V1_STABLE_MCP_NAMES:
+    for name in sorted(stable_name_keys):
         _require_bool(stable_names.get(name), label=f"{label} stable_names.{name}")
     _require_string_sequence(
         regeneration.get("warnings"),
@@ -376,6 +384,12 @@ def validate_codex_plane_deployment_chain(
     if trust.get("workspace_root") != regeneration.get("target_workspace_root"):
         raise ReceiptValidationError(
             "Codex Plane regeneration target must match the trust-state workspace root"
+        )
+    if set(trust["mcp_server_names_expected"]) != set(
+        regeneration["stable_names"]
+    ):
+        raise ReceiptValidationError(
+            "Codex Plane trust and regeneration must use the same exact v1 stable-name set"
         )
     if receipt.get("trust_state_id") != trust.get("trust_state_id"):
         raise ReceiptValidationError(

@@ -44,6 +44,10 @@ remains at `examples/codex_plane_deployment_summary.example.json`.
 
 - trust, regeneration, and receipt schema versions must match the published v1
   contracts
+- the published v1 stable-name set containing `dionysus` remains readable;
+  the exact post-retirement set without `dionysus` is accepted as a bounded
+  compatibility variant, while arbitrary partial sets remain invalid
+- trust and regeneration must use the same exact stable-name variant
 - trust and regeneration must name the same workspace root
 - live trust state must name the actual workspace root selected by the adapter
 - the receipt must reference the loaded trust-state and regeneration ids

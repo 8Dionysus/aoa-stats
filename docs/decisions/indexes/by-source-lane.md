@@ -40,6 +40,10 @@
 
 - [AOST-D-0004 - Live Admission Requires Refresh Observation](../AOST-D-0004-live-admission-requires-refresh-observation.md) (`docs/decisions/AOST-D-0004-live-admission-requires-refresh-observation.md`)
 
+## aoa-evals stress-recovery report
+
+- [AOST-D-0014 - - Routing Owner Succession](../AOST-D-0014-routing-owner-succession.md) (`docs/decisions/AOST-D-0014-routing-owner-succession.md`)
+
 ## aoa-memo reviewed corpus
 
 - [AOST-D-0004 - Live Admission Requires Refresh Observation](../AOST-D-0004-live-admission-requires-refresh-observation.md) (`docs/decisions/AOST-D-0004-live-admission-requires-refresh-observation.md`)
@@ -61,6 +65,10 @@
 ## aoa-sdk reviewed component refresh examples
 
 - [AOST-D-0003 - Component Refresh Fixtures Are Not Live State](../AOST-D-0003-component-refresh-fixtures-are-not-live-state.md) (`docs/decisions/AOST-D-0003-component-refresh-fixtures-are-not-live-state.md`)
+
+## aoa-sdk routing control plane
+
+- [AOST-D-0014 - - Routing Owner Succession](../AOST-D-0014-routing-owner-succession.md) (`docs/decisions/AOST-D-0014-routing-owner-succession.md`)
 
 ## aoa-sdk runtime return transport
 
@@ -116,6 +124,10 @@
 ## historical abyss-stack wave receipts
 
 - [AOST-D-0010 - Runtime Closeout Wave Snapshot Is Contract History, Not Active Observability](../AOST-D-0010-runtime-closeout-wave-snapshot-is-contract-history-not-active-observability.md) (`docs/decisions/AOST-D-0010-runtime-closeout-wave-snapshot-is-contract-history-not-active-observability.md`)
+
+## historical aoa-routing provenance
+
+- [AOST-D-0014 - - Routing Owner Succession](../AOST-D-0014-routing-owner-succession.md) (`docs/decisions/AOST-D-0014-routing-owner-succession.md`)
 
 ## owner-local component refresh receipts
 

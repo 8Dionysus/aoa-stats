@@ -108,13 +108,6 @@
       "port_ref": "aoa-playbooks:stats/port.manifest.json"
     },
     {
-      "repo_id": "aoa-routing",
-      "workspace_route": "workspace:aoa-routing",
-      "owner_boundary_ref": "aoa-routing:AGENTS.md",
-      "classification": "implemented",
-      "port_ref": "aoa-routing:stats/port.manifest.json"
-    },
-    {
       "repo_id": "aoa-sdk",
       "workspace_route": "workspace:aoa-sdk",
       "owner_boundary_ref": "aoa-sdk:AGENTS.md",

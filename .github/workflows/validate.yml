@@ -18,7 +18,7 @@ jobs:
         uses: 8Dionysus/aoa-skills/.github/actions/home-skill-port@5ea0e38a2c405274dce870fb3750ec76fd01ba23
 
       - name: Check repo-local KAG index family
-        uses: 8Dionysus/aoa-kag/.github/actions/repo-local-kag-index@b28f64a497fd440dd58cbaae90d655da46224d8c
+        uses: 8Dionysus/aoa-kag/.github/actions/repo-local-kag-index@58ab52ffc06bab5cc28842a0b4336c6efa16b6ff
         with:
           history-ref: ${{ github.event.pull_request.base.sha || github.event.before || format('{0}^', github.sha) }}
           event-history-ref: ${{ github.event.pull_request.base.sha || github.event.before || format('{0}^', github.sha) }}
@@ -27,42 +27,42 @@ jobs:
         uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd
         with:
           repository: 8Dionysus/8Dionysus
-          ref: da16f337b09829d16a470cd5c8ba98dcba7b248c
+          ref: aa67908a137a9c9631a439f266d32a8918c7213c
           path: .deps/8Dionysus
 
       - name: Checkout aoa-agents
         uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd
         with:
           repository: 8Dionysus/aoa-agents
-          ref: 3ac8066e74fd7bc0a4235b3b8ee057de99b8fb19
+          ref: 92dd79e6c79fef60faedf6b97f2c65ff89477d06
           path: .deps/aoa-agents
 
       - name: Checkout aoa-playbooks
         uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd
         with:
           repository: 8Dionysus/aoa-playbooks
-          ref: 5667de359e7aae2f9b409435cb8fcacaab2d37b1
+          ref: 9a8536c9b4570263dfb4ff039eec0c4a580b2db5
           path: .deps/aoa-playbooks
 
       - name: Checkout aoa-memo
         uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd
         with:
           repository: 8Dionysus/aoa-memo
-          ref: 5f87c4f2db09738eae8ba782a7dff26b4be76c62
+          ref: bcda57fe47d5e3daaee8258cc4428dc6315ae239
           path: .deps/aoa-memo
 
       - name: Checkout aoa-sdk
         uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd
         with:
           repository: 8Dionysus/aoa-sdk
-          ref: 51ac67d87ebb8a513720b19a97a18d39a7bc7ce7
+          ref: ac6c1e5f7dd824ebaa6a583c4bb8965e3ca194a0
           path: .deps/aoa-sdk
 
       - name: Checkout aoa-evals
         uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd
         with:
           repository: 8Dionysus/aoa-evals
-          ref: f8e9a263f6890202a24da0ed4abf313e65e0d919
+          ref: 12b408727e40174dd10e1f9ad0fa2e7f7fd11eec
           path: .deps/aoa-evals
 
       - name: Checkout abyss-machine

@@ -101,14 +101,9 @@ def test_stress_recovery_chaos_wave1_example_refs_existing_neighbor_surfaces() -
         "aoa-evals",
     )
     assert_repo_ref_matches_neighbor(
-        "repo:aoa-routing/mechanics/antifragility/parts/degraded-route-hints/examples/stress_navigation_hint.timeout-chaos.example.json",
-        "AOA_ROUTING_ROOT",
-        "aoa-routing",
-    )
-    assert_repo_ref_matches_neighbor(
-        "repo:aoa-routing/mechanics/antifragility/parts/composite-stress-routing/examples/composite_stress_route_hint.retrieval-outage-honesty.example.json",
-        "AOA_ROUTING_ROOT",
-        "aoa-routing",
+        "repo:aoa-sdk/mechanics/boundary-bridge/parts/consumed-surface-posture-gate/examples/composite_stress_route_hint.example.json",
+        "AOA_SDK_ROOT",
+        "aoa-sdk",
     )
     assert_repo_ref_matches_neighbor(
         "repo:aoa-memo/mechanics/antifragility/parts/recovery-pattern-memory/examples/pattern.antifragility-stress-recovery-window.example.json",
@@ -131,12 +126,9 @@ def test_stress_recovery_chaos_wave1_example_refs_existing_neighbor_surfaces() -
         "examples/runtime_evidence_selection.return-anchor-integrity.example.json"
     ) in inputs["eval_report_refs"]
     assert (
-        "repo:aoa-routing/mechanics/antifragility/parts/degraded-route-hints/"
-        "examples/stress_navigation_hint.timeout-chaos.example.json"
-    ) in inputs["route_hint_refs"]
-    assert (
-        "repo:aoa-routing/mechanics/antifragility/parts/composite-stress-routing/"
-        "examples/composite_stress_route_hint.retrieval-outage-honesty.example.json"
+        "repo:aoa-sdk/mechanics/boundary-bridge/parts/"
+        "consumed-surface-posture-gate/examples/"
+        "composite_stress_route_hint.example.json"
     ) in inputs["route_hint_refs"]
     assert (
         "repo:aoa-memo/mechanics/antifragility/parts/recovery-pattern-memory/"

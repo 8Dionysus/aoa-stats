@@ -1,6 +1,7 @@
 #!/usr/bin/env python3
 from __future__ import annotations
 
+import os
 import sys
 from pathlib import Path
 
@@ -13,8 +14,26 @@ if str(SRC_ROOT) not in sys.path:
 from aoa_stats_builder.downstream_canaries import validate_downstream_canaries  # noqa: E402
 
 
+DEPENDENCY_ROOT_ENV = {
+    "aoa-sdk": "AOA_SDK_ROOT",
+    "aoa-memo": "AOA_MEMO_ROOT",
+    "aoa-evals": "AOA_EVALS_ROOT",
+}
+
+
+def _explicit_dependency_roots() -> dict[str, Path]:
+    return {
+        repo: Path(value).expanduser().resolve()
+        for repo, env_name in DEPENDENCY_ROOT_ENV.items()
+        if (value := os.environ.get(env_name))
+    }
+
+
 def main() -> int:
-    result = validate_downstream_canaries(workspace_root=REPO_ROOT.parent)
+    result = validate_downstream_canaries(
+        workspace_root=REPO_ROOT.parent,
+        repo_roots=_explicit_dependency_roots(),
+    )
     if result["errors"]:
         print("Downstream canary validation failed.")
         for error in result["errors"]:
