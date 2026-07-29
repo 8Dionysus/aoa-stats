@@ -28,7 +28,8 @@
     "aoa_memo",
     "aoa_session_memory",
     "aoa_stats",
-    "aoa_workspace"
+    "aoa_workspace",
+    "dionysus"
   ],
   "latest_receipt_ref": "cprollout-2026-04-11T210700Z-root-srv"
 }

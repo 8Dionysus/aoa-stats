@@ -42,6 +42,7 @@
 ## MCP/access
 
 - [AOST-D-0012 - Federated Measurement Ownership and Thin Access](../AOST-D-0012-federated-measurement-ownership-and-thin-access.md) (`docs/decisions/AOST-D-0012-federated-measurement-ownership-and-thin-access.md`)
+- [AOST-D-0015 - Review Captured Stats Catalog In The Owner](../AOST-D-0015-review-captured-stats-catalog-in-the-owner.md) (`docs/decisions/AOST-D-0015-review-captured-stats-catalog-in-the-owner.md`)
 
 ## MCP/catalog
 
@@ -91,6 +92,10 @@
 ## owner boundary
 
 - [AOST-D-0013 - aoa-stats Owner Skill Bundle](../AOST-D-0013-aoa-stats-owner-skill-bundle.md) (`docs/decisions/AOST-D-0013-aoa-stats-owner-skill-bundle.md`)
+
+## owner evidence
+
+- [AOST-D-0015 - Review Captured Stats Catalog In The Owner](../AOST-D-0015-review-captured-stats-catalog-in-the-owner.md) (`docs/decisions/AOST-D-0015-review-captured-stats-catalog-in-the-owner.md`)
 
 ## repository projection
 
@@ -177,6 +182,10 @@
 - [AOST-D-0010 - Runtime Closeout Wave Snapshot Is Contract History, Not Active Observability](../AOST-D-0010-runtime-closeout-wave-snapshot-is-contract-history-not-active-observability.md) (`docs/decisions/AOST-D-0010-runtime-closeout-wave-snapshot-is-contract-history-not-active-observability.md`)
 - [AOST-D-0011 - Antifragility Vector Remains An Evidence-Gated Incubator](../AOST-D-0011-antifragility-vector-remains-an-evidence-gated-incubator.md) (`docs/decisions/AOST-D-0011-antifragility-vector-remains-an-evidence-gated-incubator.md`)
 - [AOST-D-0014 - - Routing Owner Succession](../AOST-D-0014-routing-owner-succession.md) (`docs/decisions/AOST-D-0014-routing-owner-succession.md`)
+
+## stats/surface-catalog
+
+- [AOST-D-0015 - Review Captured Stats Catalog In The Owner](../AOST-D-0015-review-captured-stats-catalog-in-the-owner.md) (`docs/decisions/AOST-D-0015-review-captured-stats-catalog-in-the-owner.md`)
 
 ## tests/release-checks
 

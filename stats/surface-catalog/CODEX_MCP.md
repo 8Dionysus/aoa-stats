@@ -43,3 +43,23 @@ content.
 The former repo-local MCP package, launcher, optional dependency, resources,
 prompts, and live-source-registry access are retired. Reintroducing them would
 create a second access implementation and violate the single-owner boundary.
+
+## Owner review of a captured catalog
+
+An authenticated `stats_catalog` call remains runtime evidence only.
+`abyss-stack` may preserve the exact result as a private, untrusted,
+content-addressed artifact. `scripts/review_stats_mcp_result.py` then verifies
+the capture binding, validates the payload against
+`schemas/summary-surface-catalog.schema.json`, and requires byte-semantic
+equality with the owner-selected committed or live catalog.
+
+Reviewing a live `state/generated/` result requires an explicit
+`--owner-runtime-root`. The reviewer validates that runtime checkout's exact
+Git revision against the requested owner source revision and blocks when the
+root is absent or drifted; it never substitutes the procedure source worktree
+as live evidence.
+
+The owner review uses `generated_from.latest_observed_at` as its provider
+watermark. A schema-valid exact catalog may be grounded while still failing
+freshness when its underlying receipts are old. The receipt does not assert
+stats acceptance, central proof, admission, cross-organ benefit, or rollback.

@@ -45,5 +45,12 @@ The stack-owned MCP reads the generated catalog and catalog-listed surfaces
 through the contract owned here. It is an access route only; source meaning
 stays in this family and the root routes listed above.
 
+The owner-review route for one private stack-captured `stats_catalog` result
+is `scripts/review_stats_mcp_result.py`. It binds exact captured bytes back to
+the selected owner catalog and reports grounding separately from the
+`generated_from` freshness watermark. A live `state/generated/` catalog
+requires an explicit owner runtime root at the same Git revision; the source
+worktree is never an implicit live-runtime fallback.
+
 The authoritative machine-readable mapping is
 `stats/source_home.manifest.json`.
