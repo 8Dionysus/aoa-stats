@@ -1,0 +1,18 @@
+{
+  "canonical_source_ref": "generated/summary_surface_catalog.min.json",
+  "claim_limits": [
+    "Fictional public example of one committed stats MCP catalog identity.",
+    "The digest identifies a derived catalog and does not promote its rows into owner truth.",
+    "No deployment, proof, acceptance, admission, or rollback is asserted."
+  ],
+  "contains_secrets": false,
+  "expected_sync_tree_digest": "sha256:2222222222222222222222222222222222222222222222222222222222222222",
+  "expires_at": "2026-08-02T06:00:00Z",
+  "issued_at": "2026-08-01T06:00:00Z",
+  "owner": "aoa-stats",
+  "receipt_digest": "sha256:858dd29857a1f02ff39167d4c2ce3b71484aad328d0ce12ecaa0abba0e1ea24c",
+  "revision": "1111111111111111111111111111111111111111",
+  "schema_version": "aoa_stats_mcp_source_identity_receipt_v1",
+  "source_ref": "owner-source://aoa-stats/1111111111111111111111111111111111111111/3333333333333333333333333333333333333333333333333333333333333333",
+  "tree_digest": "sha256:2222222222222222222222222222222222222222222222222222222222222222"
+}

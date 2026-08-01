@@ -36,7 +36,8 @@
       ],
       "examples": [
         "examples/AGENTS.md",
-        "examples/codex_plane_deployment_summary.example.json"
+        "examples/codex_plane_deployment_summary.example.json",
+        "examples/stats_mcp_source_identity_receipt.example.json"
       ],
       "manifests": [
         "manifests/artifact_bundles/README.md",
@@ -48,10 +49,12 @@
         "scripts/check_live_publishers.py",
         "scripts/generate_decision_indexes.py",
         "scripts/install_live_refresh_units.py",
+        "scripts/issue_stats_mcp_source_identity.py",
         "scripts/read_measurement_packet.py",
         "scripts/refresh_live_stats.py",
         "scripts/release_check.py",
         "scripts/review_stats_mcp_result.py",
+        "scripts/project_stats_mcp_owner_review.py",
         "scripts/validate_abyss_machine_summary_catalog_bundle.py",
         "scripts/validate_decision_records.py",
         "scripts/validate_downstream_canaries.py",
@@ -71,6 +74,8 @@
         "tests/test_release_check.py",
         "tests/test_roadmap_parity.py",
         "tests/test_stats_mcp_owner_review.py",
+                "tests/test_stats_mcp_owner_review_projection.py",
+                "tests/test_stats_mcp_source_identity.py",
                 "tests/test_stats_source_home.py",
                 "tests/test_stats_protocol.py",
                 "tests/test_summary_surface_catalog.py",
@@ -90,6 +95,7 @@
     "derived_public_districts": {
       "additional_schema_routes": [
         "schemas/stats-event-envelope.schema.json",
+        "schemas/stats-mcp-source-identity-receipt.schema.json",
         "schemas/summary-surface-catalog.schema.json"
       ],
       "additional_generated_routes": [

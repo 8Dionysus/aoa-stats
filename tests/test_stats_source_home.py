@@ -242,6 +242,7 @@ def test_source_home_contains_only_declared_source_records() -> None:
         "federation/local-port.schema.json",
         "federation/owner-inventory.schema.json",
         "federation/owner-inventory.json",
+        "surface-catalog/runtime_capture_trust.json",
         *operation_contracts,
         *active_profiles,
         *deferred_profiles,

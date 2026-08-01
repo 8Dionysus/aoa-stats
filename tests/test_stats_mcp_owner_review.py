@@ -1,8 +1,11 @@
 from __future__ import annotations
 
+import base64
+import hashlib
 import json
 import os
 import subprocess
+import tempfile
 from datetime import datetime, timedelta, timezone
 from pathlib import Path
 
@@ -13,12 +16,77 @@ from scripts.review_stats_mcp_result import (
     STATS_RESULT_SCHEMA,
     StatsOwnerReviewError,
     _digest,
+    _trusted_stack_signer,
     _write_private_json,
     review_stats_capture,
 )
 
 
 NOW = datetime(2026, 7, 28, 12, 0, tzinfo=timezone.utc)
+TEST_PRIVATE_KEY_RAW = bytes(range(32))
+TEST_PUBLIC_KEY_RAW = bytes.fromhex(
+    "03a107bff3ce10be1d70dd18e74bc09967e4d6309ba50d5f1ddc8664125531b8"
+)
+TEST_SIGNER_ID = "sha256:" + hashlib.sha256(TEST_PUBLIC_KEY_RAW).hexdigest()
+TEST_PRIVATE_KEY_DER = (
+    bytes.fromhex("302e020100300506032b657004220420") + TEST_PRIVATE_KEY_RAW
+)
+
+
+@pytest.fixture(autouse=True)
+def trusted_test_signer(monkeypatch: pytest.MonkeyPatch) -> None:
+    monkeypatch.setattr(
+        "scripts.review_stats_mcp_result._trusted_stack_signer",
+        lambda _revision: (TEST_SIGNER_ID, TEST_PUBLIC_KEY_RAW),
+    )
+
+
+def _attested_payload(body: dict, identity: str) -> dict:
+    unsigned_body = {
+        "signer_id": TEST_SIGNER_ID,
+        "attestation_algorithm": "ed25519",
+        **body,
+    }
+    statement = {identity: _digest(unsigned_body), **unsigned_body}
+    with tempfile.TemporaryDirectory() as directory:
+        root = Path(directory)
+        private_path = root / "private.der"
+        statement_path = root / "statement.json"
+        attestation_path = root / "attestation.bin"
+        private_path.write_bytes(TEST_PRIVATE_KEY_DER)
+        statement_path.write_text(
+            json.dumps(
+                statement,
+                ensure_ascii=False,
+                sort_keys=True,
+                separators=(",", ":"),
+            ),
+            encoding="utf-8",
+        )
+        result = subprocess.run(
+            [
+                "openssl",
+                "pkeyutl",
+                "-sign",
+                "-inkey",
+                str(private_path),
+                "-keyform",
+                "DER",
+                "-rawin",
+                "-in",
+                str(statement_path),
+                "-out",
+                str(attestation_path),
+            ],
+            check=False,
+            capture_output=True,
+        )
+        if result.returncode != 0:
+            raise AssertionError("test capture attestation failed")
+        attestation = base64.urlsafe_b64encode(
+            attestation_path.read_bytes()
+        ).decode("ascii").rstrip("=")
+    return {**statement, "attestation": attestation}
 
 
 def _sdk_schema() -> dict:
@@ -65,7 +133,7 @@ def _capture(root: Path, payload: dict) -> tuple[Path, Path]:
     result_digest = _digest(payload)
     result_ref = f"results/aoa-stats/{result_digest.removeprefix('sha256:')}.json"
     receipt_body = {
-        "schema_version": "abyss_stack_mcp_canary_receipt_v1",
+        "schema_version": "abyss_stack_mcp_canary_receipt_v2",
         "issuer": "abyss-stack",
         "consumer_id": "abyss-stack-mcp-canary",
         "organ_id": "aoa-stats",
@@ -101,9 +169,9 @@ def _capture(root: Path, payload: dict) -> tuple[Path, Path]:
         "instruction_authority": "none",
         "claim_limit": "stack capture only",
     }
-    receipt = {"receipt_id": _digest(receipt_body), **receipt_body}
+    receipt = _attested_payload(receipt_body, "receipt_id")
     artifact_body = {
-        "schema_version": "abyss_stack_mcp_canary_result_artifact_v1",
+        "schema_version": "abyss_stack_mcp_canary_result_artifact_v2",
         "issuer": "abyss-stack",
         "organ_id": "aoa-stats",
         "policy_family": "read",
@@ -120,7 +188,7 @@ def _capture(root: Path, payload: dict) -> tuple[Path, Path]:
         "instruction_authority": "none",
         "claim_limit": "capture is not owner review",
     }
-    artifact = {"artifact_id": _digest(artifact_body), **artifact_body}
+    artifact = _attested_payload(artifact_body, "artifact_id")
     receipt_path = (
         root
         / "records"
@@ -380,3 +448,63 @@ def test_public_or_tampered_capture_fails_closed(tmp_path: Path) -> None:
             source_revision=revision,
             reviewed_at=NOW + timedelta(seconds=1),
         )
+
+
+def test_forged_capture_attestation_fails_closed(tmp_path: Path) -> None:
+    payload = json.loads(
+        (REPO_ROOT / "generated" / "summary_surface_catalog.min.json").read_text(
+            encoding="utf-8"
+        )
+    )
+    receipt, result = _capture(tmp_path, payload)
+    forged = json.loads(receipt.read_text(encoding="utf-8"))
+    forged["attestation"] = "A" * 86
+    _write_private_json(receipt, forged)
+    sdk_schema = tmp_path / "sdk-review.schema.json"
+    sdk_schema.write_text(json.dumps(_sdk_schema()), encoding="utf-8")
+    revision = subprocess.run(
+        ["git", "rev-parse", "HEAD"],
+        cwd=REPO_ROOT,
+        check=True,
+        capture_output=True,
+        text=True,
+    ).stdout.strip()
+
+    with pytest.raises(StatsOwnerReviewError, match="attestation"):
+        review_stats_capture(
+            capture_root=tmp_path,
+            receipt_path=receipt,
+            artifact_path=result,
+            sdk_review_schema_path=sdk_schema,
+            source_revision=revision,
+            reviewed_at=NOW + timedelta(seconds=1),
+        )
+
+
+def test_stack_signer_is_bound_to_owner_trust_registry(
+    monkeypatch: pytest.MonkeyPatch,
+) -> None:
+    trust = {
+        "schema_version": "aoa_stats_runtime_capture_trust_v1",
+        "issuers": [
+            {
+                "issuer": "abyss-stack",
+                "purpose": "mcp-canary-capture",
+                "state": "active",
+                "attestation_algorithm": "ed25519",
+                "signer_id": TEST_SIGNER_ID,
+                "public_key_base64url": base64.urlsafe_b64encode(
+                    TEST_PUBLIC_KEY_RAW
+                ).decode("ascii").rstrip("="),
+            }
+        ],
+    }
+    monkeypatch.setattr(
+        "scripts.review_stats_mcp_result._read_git_public_json",
+        lambda *_args: trust,
+    )
+
+    signer_id, public_key = _trusted_stack_signer("a" * 40)
+
+    assert signer_id == TEST_SIGNER_ID
+    assert public_key == TEST_PUBLIC_KEY_RAW

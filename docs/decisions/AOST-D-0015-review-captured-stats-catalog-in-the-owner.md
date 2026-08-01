@@ -69,6 +69,7 @@ compose evidence without becoming the statistical owner.
 - `generated/summary_surface_catalog.min.json`
 - `scripts/review_stats_mcp_result.py`
 - `tests/test_stats_mcp_owner_review.py`
+- `docs/decisions/AOST-D-0016-authenticate-and-separate-stats-mcp-owner-evidence.md`
 - `aoa-sdk:schemas/organ-access/organ-owner-result-review.schema.json`
 - `abyss-stack:mcp/services/abyss-stack-mcp/src/abyss_stack_mcp/canary.py`
 
