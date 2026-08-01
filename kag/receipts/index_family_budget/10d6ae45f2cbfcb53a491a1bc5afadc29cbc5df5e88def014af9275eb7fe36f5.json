@@ -1,0 +1,17 @@
+{
+  "allowed_bytes": 6673787,
+  "allowed_tracked_bytes": 8440452,
+  "approved_by": "repository-owner",
+  "base_ref": "5627c41efe9f766a4b3437da857060847cb4f0f1",
+  "changed_generated_bytes": 6673787,
+  "changed_generated_files": 272,
+  "decision_ref": "aoa-kag:docs/decisions/AOA-KAG-D-0017-portable-content-addressed-repository-family.md",
+  "default_limit_bytes": 1048576,
+  "head_family_digest": "10d6ae45f2cbfcb53a491a1bc5afadc29cbc5df5e88def014af9275eb7fe36f5",
+  "reason": "Stats MCP owner acceptance now composes with landed memo and Codex consumer revisions while preserving O2 evidence and the derived-only boundary; this receipt admits only the measured portable-family growth for PR #180.",
+  "repo": "aoa-stats",
+  "schema_version": "aoa-repo-local-kag-budget-receipt-v1",
+  "scope": "generated_delta",
+  "tracked_bytes": 8440452,
+  "tracked_bytes_max": 9437184
+}
