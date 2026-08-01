@@ -63,3 +63,16 @@ The owner review uses `generated_from.latest_observed_at` as its provider
 watermark. A schema-valid exact catalog may be grounded while still failing
 freshness when its underlying receipts are old. The receipt does not assert
 stats acceptance, central proof, admission, cross-organ benefit, or rollback.
+
+Current stack captures use the v2 receipt and result-artifact ABI. Both are
+Ed25519-attested and are trusted only through the single active public key in
+`stats/surface-catalog/runtime_capture_trust.json` at the reviewed owner
+revision. Content addressing alone is not issuer authentication.
+
+`scripts/issue_stats_mcp_source_identity.py` separately identifies the clean
+committed catalog surface used by this access contour. Its digest describes
+the derived catalog bytes; it does not turn catalog rows into source truth.
+After an exact owner review,
+`scripts/project_stats_mcp_owner_review.py` may project only endpoint,
+freshness, and grounded-canary evidence into the stack overlay. Neither path
+issues central proof, owner acceptance, admission, or rollback.

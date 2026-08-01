@@ -219,6 +219,7 @@ def test_flat_operation_districts_are_empty_and_public_districts_are_explicit() 
     assert contract["allowed_exact"]["examples"] == [
         "examples/AGENTS.md",
         "examples/codex_plane_deployment_summary.example.json",
+        "examples/stats_mcp_source_identity_receipt.example.json",
     ]
     assert "schemas/stats-event-envelope.schema.json" in contract[
         "derived_public_districts"

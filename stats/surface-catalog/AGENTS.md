@@ -34,6 +34,10 @@ copy either payload under this directory.
 - validation: `tests/test_summary_surface_catalog.py` and the existing
   `scripts/build_views.py --check` route
 - public read contract: `stats/surface-catalog/CODEX_MCP.md`
+- capture signer trust: `stats/surface-catalog/runtime_capture_trust.json`
+- owner evidence: `scripts/issue_stats_mcp_source_identity.py`,
+  `scripts/review_stats_mcp_result.py`, and
+  `scripts/project_stats_mcp_owner_review.py`
 - access implementation: stack-owned `aoa-stats-mcp`, outside this repository
 
 ## Mechanics crosswalk

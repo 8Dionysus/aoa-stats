@@ -88,6 +88,7 @@ EXPECTED_BRANCH_ENTRIES = {
         "CODEX_MCP.md",
         "CONSUMER_REGROUNDING.md",
         "SURFACE_STRENGTH_MODEL.md",
+        "runtime_capture_trust.json",
     },
 }
 REQUIRED_ROOT_FILES = {"AGENTS.md", "README.md", "source_home.manifest.json"}
@@ -322,6 +323,7 @@ def _validate_stats_json_allowlist(
         PROFILE_SCHEMA_PATH.as_posix(),
         OPERATION_CONTRACT_SCHEMA_PATH.as_posix(),
         "stats/intake-contract/event-kind-registry.json",
+        "stats/surface-catalog/runtime_capture_trust.json",
         INTAKE_FIXTURE.as_posix(),
         *PROTOCOL_JSON_PATHS,
         *[path.relative_to(repo_root).as_posix() for path in active_paths],

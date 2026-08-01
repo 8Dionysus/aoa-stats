@@ -1,0 +1,17 @@
+{
+  "allowed_bytes": 6588540,
+  "allowed_tracked_bytes": 8440782,
+  "approved_by": "repository-owner",
+  "base_ref": "5627c41efe9f766a4b3437da857060847cb4f0f1",
+  "changed_generated_bytes": 6588540,
+  "changed_generated_files": 272,
+  "decision_ref": "aoa-kag:docs/decisions/AOA-KAG-D-0017-portable-content-addressed-repository-family.md",
+  "default_limit_bytes": 1048576,
+  "head_family_digest": "d35fb980818adb90db0b174e98b91ef77bf01d61c16ed7b03c42cd5f58c37dfc",
+  "reason": "Stats MCP owner evidence and the derived accepted-O2 source observation add reviewed measurement source; this receipt admits only the measured portable-family growth for PR #180.",
+  "repo": "aoa-stats",
+  "schema_version": "aoa-repo-local-kag-budget-receipt-v1",
+  "scope": "generated_delta",
+  "tracked_bytes": 8440782,
+  "tracked_bytes_max": 9437184
+}

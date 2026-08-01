@@ -4,6 +4,8 @@
 from __future__ import annotations
 
 import argparse
+import base64
+import binascii
 import hashlib
 import json
 import os
@@ -22,10 +24,11 @@ CATALOG_SCHEMA = REPO_ROOT / "schemas" / "summary-surface-catalog.schema.json"
 OWNER_PAYLOAD_SCHEMA_REF = "owner://aoa-stats/schema/payload"
 COMMITTED_CATALOG = REPO_ROOT / "generated" / "summary_surface_catalog.min.json"
 LIVE_CATALOG = REPO_ROOT / "state" / "generated" / "summary_surface_catalog.min.json"
+RUNTIME_CAPTURE_TRUST_REF = "stats/surface-catalog/runtime_capture_trust.json"
 MAX_INPUT_BYTES = 2 * 1024 * 1024
 MAX_REVIEW_TTL_SECONDS = 300
-CAPTURE_RECEIPT_SCHEMA = "abyss_stack_mcp_canary_receipt_v1"
-RESULT_ARTIFACT_SCHEMA = "abyss_stack_mcp_canary_result_artifact_v1"
+CAPTURE_RECEIPT_SCHEMA = "abyss_stack_mcp_canary_receipt_v2"
+RESULT_ARTIFACT_SCHEMA = "abyss_stack_mcp_canary_result_artifact_v2"
 REVIEW_SCHEMA = "aoa_organ_owner_result_review_v1"
 STATS_RESULT_SCHEMA = "aoa_stats_summary_surface_catalog_v2"
 REVIEW_CLAIM_LIMIT = (
@@ -122,6 +125,170 @@ def _read_public_schema(path: Path, label: str) -> dict[str, Any]:
     return value
 
 
+def _read_git_public_json(
+    source_revision: str,
+    relative_path: str,
+    label: str,
+) -> dict[str, Any]:
+    try:
+        resolved = subprocess.run(
+            ["git", "--no-replace-objects", "rev-parse", f"{source_revision}^{{commit}}"],
+            cwd=REPO_ROOT,
+            check=True,
+            capture_output=True,
+            text=True,
+        ).stdout.strip()
+        if resolved != source_revision:
+            raise StatsOwnerReviewError(
+                f"{label} revision does not resolve to the exact pinned commit"
+            )
+        raw = subprocess.run(
+            [
+                "git",
+                "--no-replace-objects",
+                "show",
+                f"{source_revision}:{relative_path}",
+            ],
+            cwd=REPO_ROOT,
+            check=True,
+            capture_output=True,
+        ).stdout
+        value = json.loads(raw.decode("utf-8"))
+    except (
+        OSError,
+        UnicodeError,
+        json.JSONDecodeError,
+        subprocess.CalledProcessError,
+    ) as exc:
+        raise StatsOwnerReviewError(
+            f"{label} is unavailable or invalid at source revision"
+        ) from exc
+    if not isinstance(value, dict):
+        raise StatsOwnerReviewError(f"{label} must be a JSON object")
+    return value
+
+
+def _trusted_stack_signer(source_revision: str) -> tuple[str, bytes]:
+    trust = _read_git_public_json(
+        source_revision,
+        RUNTIME_CAPTURE_TRUST_REF,
+        "stats runtime capture trust registry",
+    )
+    if trust.get("schema_version") != "aoa_stats_runtime_capture_trust_v1":
+        raise StatsOwnerReviewError("stats runtime capture trust registry is malformed")
+    issuers = trust.get("issuers")
+    matches = (
+        [
+            issuer
+            for issuer in issuers
+            if isinstance(issuer, dict)
+            and issuer.get("issuer") == "abyss-stack"
+            and issuer.get("purpose") == "mcp-canary-capture"
+            and issuer.get("state") == "active"
+        ]
+        if isinstance(issuers, list)
+        else []
+    )
+    if len(matches) != 1:
+        raise StatsOwnerReviewError(
+            "stats runtime capture trust registry must name one active stack signer"
+        )
+    signer = matches[0]
+    signer_id = signer.get("signer_id")
+    encoded = signer.get("public_key_base64url")
+    if (
+        signer.get("attestation_algorithm") != "ed25519"
+        or not isinstance(signer_id, str)
+        or not isinstance(encoded, str)
+    ):
+        raise StatsOwnerReviewError("stats runtime capture signer is malformed")
+    try:
+        public_key = base64.b64decode(
+            encoded + ("=" * (-len(encoded) % 4)),
+            altchars=b"-_",
+            validate=True,
+        )
+    except (ValueError, binascii.Error) as exc:
+        raise StatsOwnerReviewError(
+            "stats runtime capture signer public key is malformed"
+        ) from exc
+    expected_id = "sha256:" + hashlib.sha256(public_key).hexdigest()
+    if len(public_key) != 32 or signer_id != expected_id:
+        raise StatsOwnerReviewError(
+            "stats runtime capture signer identity does not match its public key"
+        )
+    return signer_id, public_key
+
+
+def _verify_capture_attestation(
+    payload: dict[str, Any],
+    *,
+    identity: str,
+    label: str,
+    trusted_signer_id: str,
+    public_key: bytes,
+) -> None:
+    if (
+        payload.get("signer_id") != trusted_signer_id
+        or payload.get("attestation_algorithm") != "ed25519"
+    ):
+        raise StatsOwnerReviewError(f"{label} signer is not trusted")
+    encoded = payload.get("attestation")
+    if not isinstance(encoded, str):
+        raise StatsOwnerReviewError(f"{label} attestation is unavailable")
+    try:
+        attestation = base64.b64decode(
+            encoded + ("=" * (-len(encoded) % 4)),
+            altchars=b"-_",
+            validate=True,
+        )
+    except (ValueError, binascii.Error) as exc:
+        raise StatsOwnerReviewError(f"{label} attestation is malformed") from exc
+    if len(attestation) != 64:
+        raise StatsOwnerReviewError(f"{label} attestation is malformed")
+    statement = dict(payload)
+    statement.pop("attestation", None)
+    if identity not in statement:
+        raise StatsOwnerReviewError(f"{label} identity is unavailable")
+    subject_public_key = bytes.fromhex("302a300506032b6570032100") + public_key
+    with tempfile.TemporaryDirectory(prefix="aoa-stats-capture-verify-") as directory:
+        root = Path(directory)
+        public_path = root / "public.der"
+        statement_path = root / "statement.json"
+        attestation_path = root / "attestation.bin"
+        public_path.write_bytes(subject_public_key)
+        statement_path.write_bytes(
+            _canonical_json_bytes(statement, ensure_ascii=False)
+        )
+        attestation_path.write_bytes(attestation)
+        try:
+            result = subprocess.run(
+                [
+                    "openssl",
+                    "pkeyutl",
+                    "-verify",
+                    "-pubin",
+                    "-inkey",
+                    str(public_path),
+                    "-keyform",
+                    "DER",
+                    "-rawin",
+                    "-in",
+                    str(statement_path),
+                    "-sigfile",
+                    str(attestation_path),
+                ],
+                check=False,
+                capture_output=True,
+            )
+        except OSError as exc:
+            raise StatsOwnerReviewError(
+                f"{label} attestation verifier is unavailable"
+            ) from exc
+    if result.returncode != 0:
+        raise StatsOwnerReviewError(f"{label} attestation does not verify")
+
+
 def _relative_ref(root: Path, path: Path, label: str) -> str:
     root = root.expanduser().absolute()
     try:
@@ -134,6 +301,7 @@ def _assert_content_address(payload: dict[str, Any], identity: str, label: str) 
     claimed = payload.get(identity)
     body = dict(payload)
     body.pop(identity, None)
+    body.pop("attestation", None)
     if claimed != _digest(body):
         raise StatsOwnerReviewError(f"{label} content address does not match")
 
@@ -145,6 +313,8 @@ def _validate_capture(
     capture_root: Path,
     receipt_path: Path,
     artifact_path: Path,
+    trusted_signer_id: str,
+    public_key: bytes,
 ) -> tuple[dict[str, Any], datetime, datetime, str, str]:
     if receipt.get("schema_version") != CAPTURE_RECEIPT_SCHEMA:
         raise StatsOwnerReviewError("capture receipt schema is unsupported")
@@ -169,6 +339,13 @@ def _validate_capture(
             "successful capture receipt carries failure reasons"
         )
     _assert_content_address(receipt, "receipt_id", "capture receipt")
+    _verify_capture_attestation(
+        receipt,
+        identity="receipt_id",
+        label="capture receipt",
+        trusted_signer_id=trusted_signer_id,
+        public_key=public_key,
+    )
 
     if artifact.get("schema_version") != RESULT_ARTIFACT_SCHEMA:
         raise StatsOwnerReviewError("result artifact schema is unsupported")
@@ -191,6 +368,15 @@ def _validate_capture(
         if artifact.get(field) != expected:
             raise StatsOwnerReviewError(f"result artifact {field} does not match")
     _assert_content_address(artifact, "artifact_id", "result artifact")
+    _verify_capture_attestation(
+        artifact,
+        identity="artifact_id",
+        label="result artifact",
+        trusted_signer_id=trusted_signer_id,
+        public_key=public_key,
+    )
+    if artifact.get("signer_id") != receipt.get("signer_id"):
+        raise StatsOwnerReviewError("result artifact signer does not match receipt")
 
     owner_payload = artifact.get("owner_payload")
     if not isinstance(owner_payload, dict):
@@ -298,6 +484,7 @@ def review_stats_capture(
     reviewed_at = _aware_time(reviewed_at, "reviewed_at")
     receipt = _read_private_json(receipt_path, "capture receipt")
     artifact = _read_private_json(artifact_path, "result artifact")
+    trusted_signer_id, public_key = _trusted_stack_signer(source_revision)
     (
         owner_payload,
         observed_at,
@@ -310,6 +497,8 @@ def review_stats_capture(
         capture_root=capture_root,
         receipt_path=receipt_path,
         artifact_path=artifact_path,
+        trusted_signer_id=trusted_signer_id,
+        public_key=public_key,
     )
     if reviewed_at < observed_at or reviewed_at >= capture_expires_at:
         raise StatsOwnerReviewError("review time is outside the live capture window")
