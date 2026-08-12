@@ -68,8 +68,9 @@ or an explicit canonical back-reference.
 
 The structural contract must stay identical.
 
-Today `aoa-evals/schemas/stats-event-envelope.schema.json` is the required
-mirror check.
+Today
+`aoa-evals/mechanics/publication-receipts/parts/stats-envelope-mirror/schemas/stats-event-envelope.schema.json`
+is the required mirror check.
 
 ## Admission rule for a new event family
 

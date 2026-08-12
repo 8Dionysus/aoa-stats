@@ -1,0 +1,17 @@
+{
+  "allowed_bytes": 5616124,
+  "allowed_tracked_bytes": 8482223,
+  "approved_by": "repository-owner",
+  "base_ref": "326d56e9108b51728ce334da2ed49d53252bd81d",
+  "changed_generated_bytes": 5616124,
+  "changed_generated_files": 242,
+  "decision_ref": "aoa-kag:docs/decisions/AOA-KAG-D-0017-portable-content-addressed-repository-family.md",
+  "default_limit_bytes": 1048576,
+  "head_family_digest": "ef7bbf4824cf1f1bc22da7c01700e4f3ee4463454630755f35b091bf8ad21b1e",
+  "reason": "Admit the distinct aoa-agents actor responsibility execution receipt family, restore current aoa-evals mirror governance, and index the accepted owner-boundary rationale; this receipt authorizes only the measured deterministic portable-family delta without raising standing budgets.",
+  "repo": "aoa-stats",
+  "schema_version": "aoa-repo-local-kag-budget-receipt-v1",
+  "scope": "generated_delta",
+  "tracked_bytes": 8482223,
+  "tracked_bytes_max": 9437184
+}

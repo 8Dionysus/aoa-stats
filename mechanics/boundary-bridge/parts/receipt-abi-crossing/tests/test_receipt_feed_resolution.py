@@ -83,6 +83,12 @@ def test_root_build_facade_reexports_receipt_abi_core() -> None:
     ("event_kind", "actor_ref", "object_kind", "object_id"),
     (
         (
+            "actor_responsibility_execution_receipt",
+            "aoa-agents:aoa-summon",
+            "actor_responsibility_execution",
+            "external-actors:stats:writer:v15",
+        ),
+        (
             "memo_writeback_receipt",
             "aoa-memo:writeback",
             "memory_object",

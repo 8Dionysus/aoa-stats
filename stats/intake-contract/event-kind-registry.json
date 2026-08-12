@@ -2,6 +2,17 @@
   "schema_version": 1,
   "event_kinds": [
     {
+      "event_kind": "actor_responsibility_execution_receipt",
+      "status": "active",
+      "payload_owner_repo": "aoa-agents",
+      "summary_surface_names": [
+        "object_summary",
+        "repeated_window_summary",
+        "source_coverage_summary"
+      ],
+      "notes": "One bounded actor responsibility execution or closeout observation whose payload meaning remains with aoa-agents summon-result-v4 and whose exact runtime, A2A, usage, effect, review, outcome, and acceptance refs remain owner-qualified. Receipt presence does not prove benefit, model fit, or owner acceptance."
+    },
+    {
       "event_kind": "automation_candidate_receipt",
       "status": "active",
       "payload_owner_repo": "aoa-skills",
