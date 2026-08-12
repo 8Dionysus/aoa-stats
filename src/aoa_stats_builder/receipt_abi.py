@@ -13,7 +13,11 @@ CANONICAL_ENVELOPE_SCHEMA_PATH = REPO_ROOT / "schemas" / "stats-event-envelope.s
 CANONICAL_ENVELOPE_SCHEMA_REF = "schemas/stats-event-envelope.schema.json"
 EVENT_KIND_REGISTRY_PATH = REPO_ROOT / "stats" / "intake-contract" / "event-kind-registry.json"
 EVENT_KIND_REGISTRY_REF = "stats/intake-contract/event-kind-registry.json"
-DEFAULT_EVALS_MIRROR_PATH = WORKSPACE_ROOT / "aoa-evals" / "schemas" / "stats-event-envelope.schema.json"
+EVALS_MIRROR_SCHEMA_REF = (
+    "mechanics/publication-receipts/parts/stats-envelope-mirror/"
+    "schemas/stats-event-envelope.schema.json"
+)
+DEFAULT_EVALS_MIRROR_PATH = WORKSPACE_ROOT / "aoa-evals" / EVALS_MIRROR_SCHEMA_REF
 ALLOWED_MIRROR_METADATA_KEYS = frozenset(
     {"$id", "title", "description", "x-canonical_schema_ref"}
 )
@@ -369,7 +373,7 @@ def validate_receipt_abi_governance(
                     "active registry event kinds must match the canonical schema enum order exactly"
                 )
 
-    mirror_path = federation_root / "aoa-evals" / "schemas" / "stats-event-envelope.schema.json"
+    mirror_path = federation_root / "aoa-evals" / EVALS_MIRROR_SCHEMA_REF
     if mirror_path.exists():
         mirror_payload = load_json_object(mirror_path, label=str(mirror_path))
         if normalize_schema_for_mirror_compare(schema_payload) != normalize_schema_for_mirror_compare(
