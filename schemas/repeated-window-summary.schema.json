@@ -31,6 +31,10 @@
           "eval_result_count",
           "progression_delta_count",
           "automation_candidate_count",
+          "actor_usage_observation_count",
+          "actor_usage_complete_count",
+          "actor_usage_partial_count",
+          "actor_usage_unknown_count",
           "evidence_ref_count"
         ],
         "properties": {
@@ -62,6 +66,22 @@
             "minimum": 0
           },
           "automation_candidate_count": {
+            "type": "integer",
+            "minimum": 0
+          },
+          "actor_usage_observation_count": {
+            "type": "integer",
+            "minimum": 0
+          },
+          "actor_usage_complete_count": {
+            "type": "integer",
+            "minimum": 0
+          },
+          "actor_usage_partial_count": {
+            "type": "integer",
+            "minimum": 0
+          },
+          "actor_usage_unknown_count": {
             "type": "integer",
             "minimum": 0
           },
@@ -110,4 +130,3 @@
     }
   }
 }
-

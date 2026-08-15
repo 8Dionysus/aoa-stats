@@ -7,6 +7,10 @@ from typing import Any
 from .object_observation import object_key
 
 
+ACTOR_RESPONSIBILITY_EVENT_KIND = "actor_responsibility_execution_receipt"
+ACTOR_USAGE_STATUSES = {"complete", "partial", "unknown"}
+
+
 ObjectIdentity = Callable[[dict[str, Any]], tuple[str, str, str, str]]
 
 
@@ -29,6 +33,18 @@ def build_repeated_window_summary(
         unique_objects = {
             object_identity(receipt["object_ref"]) for receipt in group
         }
+        actor_usage_counts = Counter()
+        for receipt in group:
+            if receipt["event_kind"] != ACTOR_RESPONSIBILITY_EVENT_KIND:
+                continue
+            payload = receipt.get("payload")
+            projection = payload.get("usage_observation") if isinstance(payload, dict) else None
+            status = (
+                projection.get("observation_status")
+                if isinstance(projection, dict)
+                else "unknown"
+            )
+            actor_usage_counts[status if status in ACTOR_USAGE_STATUSES else "unknown"] += 1
         windows.append(
             {
                 "window_id": f"window:{window_date}",
@@ -43,6 +59,10 @@ def build_repeated_window_summary(
                 "automation_candidate_count": event_counts.get(
                     "automation_candidate_receipt", 0
                 ),
+                "actor_usage_observation_count": sum(actor_usage_counts.values()),
+                "actor_usage_complete_count": actor_usage_counts.get("complete", 0),
+                "actor_usage_partial_count": actor_usage_counts.get("partial", 0),
+                "actor_usage_unknown_count": actor_usage_counts.get("unknown", 0),
                 "evidence_ref_count": sum(
                     len(receipt["evidence_refs"]) for receipt in group
                 ),

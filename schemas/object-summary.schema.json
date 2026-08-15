@@ -98,6 +98,9 @@
                 "minimum": 0
               }
             }
+          },
+          "actor_usage_observation": {
+            "$ref": "#/$defs/actor_usage_observation"
           }
         }
       }
@@ -158,6 +161,172 @@
         }
       }
     },
+    "actor_usage_observation": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "status",
+        "source_ref",
+        "runtime_result_ref",
+        "model",
+        "tokens",
+        "timing",
+        "activity",
+        "runtime_outcome",
+        "cost",
+        "review_acceptance_posture",
+        "open_remainder",
+        "gap_reasons",
+        "unknown_fields"
+      ],
+      "properties": {
+        "status": {
+          "enum": ["complete", "partial", "unknown"],
+          "type": "string"
+        },
+        "source_ref": {
+          "oneOf": [{"$ref": "#/$defs/usage_observation_ref"}, {"type": "null"}]
+        },
+        "runtime_result_ref": {
+          "oneOf": [{"$ref": "#/$defs/runtime_result_ref"}, {"type": "null"}]
+        },
+        "model": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["slug", "reasoning_effort"],
+          "properties": {
+            "slug": {"type": ["string", "null"], "minLength": 1},
+            "reasoning_effort": {
+              "enum": ["low", "medium", "high", "xhigh", "max", null]
+            }
+          }
+        },
+        "tokens": {
+          "$ref": "#/$defs/actor_usage_tokens"
+        },
+        "timing": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["active_wall_seconds", "duration_seconds"],
+          "properties": {
+            "active_wall_seconds": {"type": ["number", "null"], "minimum": 0},
+            "duration_seconds": {"type": ["number", "null"], "minimum": 0}
+          }
+        },
+        "activity": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["turns", "commands", "attempts", "start_invocations", "resume_invocations"],
+          "properties": {
+            "turns": {"type": ["integer", "null"], "minimum": 0},
+            "commands": {"type": ["integer", "null"], "minimum": 0},
+            "attempts": {"type": ["integer", "null"], "minimum": 0},
+            "start_invocations": {"type": ["integer", "null"], "minimum": 0},
+            "resume_invocations": {"type": ["integer", "null"], "minimum": 0}
+          }
+        },
+        "runtime_outcome": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["status", "exit_code"],
+          "properties": {
+            "status": {"type": ["string", "null"], "minLength": 1},
+            "exit_code": {"type": ["integer", "null"]}
+          }
+        },
+        "cost": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["metering_mode", "active_cost_regime", "usd", "status"],
+          "properties": {
+            "metering_mode": {"type": ["string", "null"], "enum": ["observe_only", null]},
+            "active_cost_regime": {"type": ["string", "null"], "minLength": 1},
+            "usd": {"type": ["number", "null"], "minimum": 0},
+            "status": {"enum": ["reported", "not_reported", "unknown"], "type": "string"}
+          }
+        },
+        "review_acceptance_posture": {
+          "$ref": "#/$defs/review_acceptance_posture"
+        },
+        "open_remainder": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["residual_risk", "next_route"],
+          "properties": {
+            "residual_risk": {"type": ["string", "null"], "minLength": 1},
+            "next_route": {"type": ["string", "null"], "minLength": 1}
+          }
+        },
+        "gap_reasons": {
+          "type": "array",
+          "items": {"$ref": "#/$defs/usage_observation_gap"}
+        },
+        "unknown_fields": {
+          "type": "array",
+          "uniqueItems": true,
+          "items": {"type": "string", "minLength": 1}
+        }
+      }
+    },
+    "actor_usage_tokens": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["input", "cached_input", "output"],
+      "properties": {
+        "input": {"type": ["integer", "null"], "minimum": 0},
+        "cached_input": {"type": ["integer", "null"], "minimum": 0},
+        "output": {"type": ["integer", "null"], "minimum": 0}
+      }
+    },
+    "review_acceptance_posture": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["benefit", "model_fit", "task_success", "proof", "review_approval", "owner_acceptance", "publication", "receipt_runtime_state", "return_validation_accepted"],
+      "properties": {
+        "benefit": {"type": ["string", "null"], "minLength": 1},
+        "model_fit": {"type": ["string", "null"], "minLength": 1},
+        "task_success": {"type": ["string", "null"], "minLength": 1},
+        "proof": {"type": ["string", "null"], "minLength": 1},
+        "review_approval": {"type": ["string", "null"], "minLength": 1},
+        "owner_acceptance": {"type": ["string", "null"], "minLength": 1},
+        "publication": {"type": ["string", "null"], "minLength": 1},
+        "receipt_runtime_state": {"type": ["string", "null"], "minLength": 1},
+        "return_validation_accepted": {"type": ["boolean", "null"]}
+      }
+    },
+    "usage_observation_gap": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["attempt_id", "reason", "event_sequence"],
+      "properties": {
+        "attempt_id": {"type": "string", "minLength": 1},
+        "reason": {"const": "controlled_interruption_before_turn_usage", "type": "string"},
+        "event_sequence": {"type": "integer", "minimum": 0}
+      }
+    },
+    "usage_observation_ref": {
+      "allOf": [
+        {"$ref": "#/$defs/content_ref"},
+        {"properties": {"owner_repo": {"const": "abyss-stack"}, "schema_version": {"const": "abyss_stack_external_codex_usage_observation_v1"}}}
+      ]
+    },
+    "runtime_result_ref": {
+      "allOf": [
+        {"$ref": "#/$defs/content_ref"},
+        {"properties": {"owner_repo": {"const": "abyss-stack"}, "schema_version": {"const": "abyss_stack_external_codex_result_v2"}}}
+      ]
+    },
+    "content_ref": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["object_id", "owner_repo", "schema_version", "digest"],
+      "properties": {
+        "object_id": {"type": "string", "minLength": 1},
+        "owner_repo": {"type": "string", "minLength": 1},
+        "schema_version": {"type": "string", "minLength": 1},
+        "digest": {"type": "string", "pattern": "^sha256:[0-9a-f]{64}$"}
+      }
+    },
     "count_map": {
       "type": "object",
       "additionalProperties": {
@@ -167,4 +336,3 @@
     }
   }
 }
-

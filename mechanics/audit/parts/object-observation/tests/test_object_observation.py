@@ -77,6 +77,72 @@ def receipt(
     }
 
 
+def actor_usage_payload(*, projected: bool) -> dict[str, Any]:
+    usage_ref = {
+        "object_id": "actor-task#/usage_observation",
+        "owner_repo": "abyss-stack",
+        "schema_version": "abyss_stack_external_codex_usage_observation_v1",
+        "digest": "sha256:" + "1" * 64,
+    }
+    runtime_ref = {
+        "object_id": "actor-task",
+        "owner_repo": "abyss-stack",
+        "schema_version": "abyss_stack_external_codex_result_v2",
+        "digest": "sha256:" + "2" * 64,
+    }
+    payload: dict[str, Any] = {
+        "execution": {"runtime_state": "accepted"},
+        "owner_evidence": {
+            "runtime_state": {
+                "usage_observation_ref": usage_ref,
+                "runtime_result_ref": runtime_ref,
+            },
+            "return_validation": {"accepted": True},
+            "closeout_handoff": {
+                "residual_risk": "review remains open",
+                "next_route": "owner-review",
+            },
+        },
+        "authority_posture": {
+            "benefit": "not_inferred",
+            "model_fit": "not_inferred",
+            "task_success": "not_inferred",
+            "proof": "not_inferred",
+            "review_approval": "not_inferred",
+            "owner_acceptance": "not_claimed",
+            "publication": "not_claimed",
+        },
+    }
+    if projected:
+        payload["usage_observation"] = {
+            "schema_version": "aoa_actor_usage_observation_projection_v1",
+            "source_ref": usage_ref,
+            "runtime_result_ref": runtime_ref,
+            "observation_status": "complete",
+            "gap_reasons": [],
+            "model_slug": "gpt-test",
+            "reasoning_effort": "xhigh",
+            "input_tokens": 10,
+            "cached_input_tokens": 4,
+            "output_tokens": 3,
+            "active_wall_seconds": 2.5,
+            "duration_seconds": 2.5,
+            "turn_count": 1,
+            "executed_command_count": 2,
+            "attempt_count": 1,
+            "start_invocation_count": 1,
+            "resume_invocation_count": 0,
+            "runtime_status": "review_required",
+            "exit_code": 0,
+            "metering_mode": "observe_only",
+            "active_cost_regime": "chatgpt_quota",
+            "cost_usd": None,
+            "cost_status": "not_reported",
+            "unknown_fields": [],
+        }
+    return payload
+
+
 def test_projection_preserves_root_result_schema_committed_bytes_and_inputs() -> None:
     receipts = load_receipts([RECEIPT_FIXTURE_PATH])
     active_receipts = resolve_active_receipts(receipts)
@@ -292,6 +358,89 @@ def test_automation_counts_require_exact_boolean_truth() -> None:
         "seed_ready": 1,
         "checkpoint_required": 1,
     }
+
+
+def test_actor_usage_projection_keeps_observation_and_posture_boundaries() -> None:
+    receipts = [
+        receipt(
+            "actor_responsibility_execution_receipt",
+            "evt-actor-unknown",
+            "2026-04-01T00:00:00Z",
+            object_id="unknown-actor",
+            payload=actor_usage_payload(projected=False),
+        ),
+        receipt(
+            "actor_responsibility_execution_receipt",
+            "evt-actor-complete",
+            "2026-04-01T00:01:00Z",
+            object_id="complete-actor",
+            payload=actor_usage_payload(projected=True),
+        ),
+    ]
+
+    observed = object_observation.build_object_summary(receipts, {})["objects"]
+    complete = next(item for item in observed if item["object_ref"]["id"] == "complete-actor")
+    unknown = next(item for item in observed if item["object_ref"]["id"] == "unknown-actor")
+
+    usage = complete["actor_usage_observation"]
+    assert usage["status"] == "complete"
+    assert usage["model"] == {"slug": "gpt-test", "reasoning_effort": "xhigh"}
+    assert usage["tokens"] == {"input": 10, "cached_input": 4, "output": 3}
+    assert usage["timing"] == {"active_wall_seconds": 2.5, "duration_seconds": 2.5}
+    assert usage["activity"] == {
+        "turns": 1,
+        "commands": 2,
+        "attempts": 1,
+        "start_invocations": 1,
+        "resume_invocations": 0,
+    }
+    assert usage["runtime_outcome"] == {"status": "review_required", "exit_code": 0}
+    assert usage["cost"]["usd"] is None
+    assert usage["cost"]["status"] == "not_reported"
+    assert usage["review_acceptance_posture"]["model_fit"] == "not_inferred"
+    assert usage["review_acceptance_posture"]["owner_acceptance"] == "not_claimed"
+    assert usage["open_remainder"] == {
+        "residual_risk": "review remains open",
+        "next_route": "owner-review",
+    }
+
+    unknown_usage = unknown["actor_usage_observation"]
+    assert unknown_usage["status"] == "unknown"
+    assert unknown_usage["tokens"] == {"input": None, "cached_input": None, "output": None}
+    assert "tokens.input" in unknown_usage["unknown_fields"]
+
+
+def test_malformed_actor_usage_projection_is_explicitly_unknown() -> None:
+    mutations = (
+        lambda projection: projection.update({"unknown_fields": None}),
+        lambda projection: projection.update({"input_tokens": "not-a-number"}),
+        lambda projection: projection.update({"observation_status": "invalid"}),
+        lambda projection: projection.update(
+            {"source_ref": {**projection["source_ref"], "object_id": "forged"}}
+        ),
+    )
+    for index, mutate in enumerate(mutations):
+        payload = actor_usage_payload(projected=True)
+        mutate(payload["usage_observation"])
+        observed = object_observation.build_object_summary(
+            [
+                receipt(
+                    "actor_responsibility_execution_receipt",
+                    f"evt-actor-malformed-{index}",
+                    "2026-04-01T00:02:00Z",
+                    object_id=f"malformed-actor-{index}",
+                    payload=payload,
+                )
+            ],
+            {},
+        )["objects"][0]["actor_usage_observation"]
+        assert observed["status"] == "unknown"
+        assert "usage_observation" in observed["unknown_fields"]
+        assert observed["tokens"] == {
+            "input": None,
+            "cached_input": None,
+            "output": None,
+        }
 
 
 def test_projection_shape_is_bounded_and_inputs_are_not_mutated() -> None:

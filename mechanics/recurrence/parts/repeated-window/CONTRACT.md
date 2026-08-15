@@ -29,6 +29,9 @@ visible without treating repetition as proof, promotion, or action authority.
 - deterministic ordering is preserved across equivalent input orderings
 - receipt, event-kind, object-identity, and evidence-ref counts are conserved
   within each window
+- actor usage is represented only by complete, partial, and unknown observation
+  counts. This window does not sum tokens or cost, combine model values, or
+  turn an observation count into a budget, limiter, proof, or acceptance claim.
 
 ## Crosswalk
 

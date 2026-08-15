@@ -1,0 +1,17 @@
+{
+  "allowed_bytes": 1613080,
+  "allowed_tracked_bytes": 8513809,
+  "approved_by": "repository-owner",
+  "base_ref": "392cf097734b7e801c16f8a94cecd6d59a5fd98e",
+  "changed_generated_bytes": 1613080,
+  "changed_generated_files": 48,
+  "decision_ref": "aoa-kag:docs/decisions/AOA-KAG-D-0017-portable-content-addressed-repository-family.md",
+  "default_limit_bytes": 1048576,
+  "head_family_digest": "043739a6be2bd2beda333affa727d8f7451c0009c1c8d02e95a30213619609a9",
+  "reason": "Refresh owner-local KAG family for live actor usage projection and read-model contract changes.",
+  "repo": "aoa-stats",
+  "schema_version": "aoa-repo-local-kag-budget-receipt-v1",
+  "scope": "generated_delta",
+  "tracked_bytes": 8513809,
+  "tracked_bytes_max": 9437184
+}

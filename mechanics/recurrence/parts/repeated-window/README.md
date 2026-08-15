@@ -4,6 +4,10 @@ This part owns the focused operation boundary for the deterministic
 repeated-window summary without moving its stable public contract merely for
 directory symmetry.
 
+For actor responsibility receipts the summary adds status counts for usage
+observations only. It intentionally does not aggregate model, reasoning,
+tokens, duration, or cost across a window.
+
 - status: `localized_active`
 - stats source family: `read_models`
 - source profile: `stats/read-models/active/repeated_window_summary.profile.json`

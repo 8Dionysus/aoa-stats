@@ -12,6 +12,12 @@
 - Preserve the supplied-order last evaluation verdict and supplied-order last
   progression verdict within their respective event families.
 - Do not mutate the admitted receipt collection while projecting the view.
+- For `actor_responsibility_execution_receipt`, project only the optional
+  owner-supplied `usage_observation` snapshot. Preserve its runtime and usage
+  refs, keep absent or malformed snapshots explicitly `unknown`, and copy the
+  receipt's review/acceptance posture and closeout remainder as posture rather
+  than owner verdicts. The model and reasoning fields are observations, not a
+  model-fit claim; a null cost remains not reported.
 
 ## Output and compatibility
 
@@ -29,6 +35,11 @@ Receipt owners retain object identity, event, verdict, progression, and source
 health truth. Recency and occurrence counts are derived observations only;
 they cannot prove an object is current, valid, healthy, complete, or correctly
 routed.
+
+The actor usage fields remain descriptive runtime observations. They do not
+grant model-fit, benefit, task-success, proof, review approval, owner
+acceptance, publication, budget, or limiting authority. The explicit open
+remainder remains visible when the owner receipt carries it.
 
 The mixed input-first, temporal-latest, and input-last-within-family selectors
 are compatibility debt retained for byte and facade stability. They are not a

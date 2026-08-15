@@ -46,6 +46,7 @@ def receipt(
     object_id: str,
     object_version: str | None = None,
     evidence_count: int = 1,
+    payload: dict[str, Any] | None = None,
 ) -> dict[str, Any]:
     object_ref = {
         "repo": "aoa-owner",
@@ -66,7 +67,7 @@ def receipt(
             {"kind": "receipt", "ref": f"repo:aoa-owner/{event_id}/{index}"}
             for index in range(evidence_count)
         ],
-        "payload": {},
+        "payload": payload or {},
     }
 
 
@@ -156,6 +157,10 @@ def test_groups_observed_calendar_dates_without_inventing_change() -> None:
                 "eval_result_count": 0,
                 "progression_delta_count": 0,
                 "automation_candidate_count": 1,
+                "actor_usage_observation_count": 0,
+                "actor_usage_complete_count": 0,
+                "actor_usage_partial_count": 0,
+                "actor_usage_unknown_count": 0,
                 "evidence_ref_count": 1,
             },
             {
@@ -170,11 +175,58 @@ def test_groups_observed_calendar_dates_without_inventing_change() -> None:
                 "eval_result_count": 2,
                 "progression_delta_count": 1,
                 "automation_candidate_count": 0,
+                "actor_usage_observation_count": 0,
+                "actor_usage_complete_count": 0,
+                "actor_usage_partial_count": 0,
+                "actor_usage_unknown_count": 0,
                 "evidence_ref_count": 6,
             },
         ],
     }
     assert_public_schema_valid(summary)
+
+
+def test_actor_usage_window_counts_expose_missingness_without_aggregating_usage() -> None:
+    actor_kind = "actor_responsibility_execution_receipt"
+    complete_payload = {
+        "usage_observation": {"observation_status": "complete"},
+    }
+    partial_payload = {
+        "usage_observation": {"observation_status": "partial"},
+    }
+    receipts = [
+        receipt(
+            "evt-actor-complete",
+            "2026-04-07T10:00:00Z",
+            event_kind=actor_kind,
+            object_id="actor-complete",
+            payload=complete_payload,
+        ),
+        receipt(
+            "evt-actor-partial",
+            "2026-04-07T11:00:00Z",
+            event_kind=actor_kind,
+            object_id="actor-partial",
+            payload=partial_payload,
+        ),
+        receipt(
+            "evt-actor-unknown",
+            "2026-04-07T12:00:00Z",
+            event_kind=actor_kind,
+            object_id="actor-unknown",
+        ),
+    ]
+
+    window = repeated_window.build_repeated_window_summary(
+        receipts, public_source(len(receipts))
+    )["windows"][0]
+
+    assert window["actor_usage_observation_count"] == 3
+    assert window["actor_usage_complete_count"] == 1
+    assert window["actor_usage_partial_count"] == 1
+    assert window["actor_usage_unknown_count"] == 1
+    assert "tokens" not in window
+    assert "model" not in window
 
 
 def test_projection_is_invariant_across_bounded_input_permutations() -> None:
