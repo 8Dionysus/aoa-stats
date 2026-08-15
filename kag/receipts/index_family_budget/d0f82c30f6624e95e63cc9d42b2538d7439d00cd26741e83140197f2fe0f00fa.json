@@ -1,0 +1,17 @@
+{
+  "allowed_bytes": 1490727,
+  "allowed_tracked_bytes": 8487081,
+  "approved_by": "repository-owner",
+  "base_ref": "85a686a8d6bbcb1b28e8f26ab3d92f946bf8152f",
+  "changed_generated_bytes": 1490727,
+  "changed_generated_files": 34,
+  "decision_ref": "aoa-kag:docs/decisions/AOA-KAG-D-0017-portable-content-addressed-repository-family.md",
+  "default_limit_bytes": 1048576,
+  "head_family_digest": "d0f82c30f6624e95e63cc9d42b2538d7439d00cd26741e83140197f2fe0f00fa",
+  "reason": "Register the optional aoa-agents actor responsibility live publisher and its refresh observation route.",
+  "repo": "aoa-stats",
+  "schema_version": "aoa-repo-local-kag-budget-receipt-v1",
+  "scope": "generated_delta",
+  "tracked_bytes": 8487081,
+  "tracked_bytes_max": 9437184
+}
