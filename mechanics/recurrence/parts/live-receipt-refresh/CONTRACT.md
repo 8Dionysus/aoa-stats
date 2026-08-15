@@ -96,6 +96,18 @@ reintroduction requires an owner-approved canonical receipt, a new active
 profile and slot, a real observed log, registry and watcher parity, and
 end-to-end refresh proof.
 
+Actor responsibility execution is a staged optional publisher. The registry
+reserves `aoa-agents/.aoa/live_receipts/actor-responsibility-execution-receipts.jsonl`
+for the `actor_responsibility_execution_receipt` family because `aoa-agents`
+owns the payload and its `summon-result-v4` meaning. The runtime's A2A, usage,
+effect, review, outcome, and acceptance artifacts remain evidence references;
+they are not alternate stats inputs. Until the owner producer writes a
+canonical envelope, publisher audit reports `optional-missing`, source
+coverage reports `aoa-agents` as missing, and refresh emits no actor count.
+Once the feed exists, the current envelope validator and generic Object,
+Repeated Window, and Source Coverage projections consume it without inventing
+a stats-owned payload or a quality verdict.
+
 Memory Movement remains a committed snapshot of real reviewed `aoa-memo`
 corpus truth. Its catalog, object corpus, reviewed intake, and landing receipts
 are authentic owner sources, but none of those four roots currently causes the

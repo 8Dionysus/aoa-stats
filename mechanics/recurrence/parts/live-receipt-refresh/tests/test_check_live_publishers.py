@@ -121,6 +121,49 @@ def test_audit_live_publishers_fails_on_missing_required_source(tmp_path: Path) 
     assert "missing required live receipt source" in errors[0]
 
 
+def test_audit_live_publishers_keeps_optional_actor_source_missing(tmp_path: Path) -> None:
+    module = load_check_live_publishers_module()
+    federation_root = tmp_path / "srv"
+    registry_path = tmp_path / "live_receipt_sources.json"
+    write_registry(
+        registry_path,
+        [
+            {
+                "name": "actor-responsibility",
+                "repo": "aoa-agents",
+                "relative_path": ".aoa/live_receipts/actor-responsibility-execution-receipts.jsonl",
+                "required": False,
+            }
+        ],
+    )
+
+    audits, errors = module.audit_live_publishers(
+        registry_path=registry_path,
+        federation_root=federation_root,
+        require_non_empty=True,
+    )
+
+    assert errors == []
+    assert audits == [
+        {
+            "name": "actor-responsibility",
+            "label": "aoa-agents/.aoa/live_receipts/actor-responsibility-execution-receipts.jsonl",
+            "path": str(
+                federation_root
+                / "aoa-agents"
+                / ".aoa"
+                / "live_receipts"
+                / "actor-responsibility-execution-receipts.jsonl"
+            ),
+            "required": False,
+            "status": "optional-missing",
+            "receipt_count": 0,
+            "event_kinds": [],
+            "modified_at": None,
+        }
+    ]
+
+
 def test_audit_live_publishers_fails_on_unknown_event_kind(tmp_path: Path) -> None:
     module = load_check_live_publishers_module()
     federation_root = tmp_path / "srv"
