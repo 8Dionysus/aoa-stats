@@ -41,11 +41,13 @@ neither is admitted as a wave alias. AOST-D-0006 records the ABI boundary and
 AOST-D-0010 records the standalone surface retirement.
 
 The registry also reserves an optional `aoa-agents` publisher for
-`actor_responsibility_execution_receipt`. The current campaign has runtime,
-A2A, and usage evidence but no canonical owner receipt, so the optional source
-must remain visibly missing until `aoa-agents` publishes the envelope. Stats
-does not reconstruct that event from runtime artifacts or treat the gap as
-zero; AOST-D-0017 keeps the payload and stronger meaning with `aoa-agents`.
+`actor_responsibility_execution_receipt`. The optional source may be missing
+until `aoa-agents` publishes the owner-qualified envelope; when it is absent,
+missingness remains visible and stats does not reconstruct the event from
+runtime artifacts or treat the gap as zero. Once the feed exists, the same
+generic live audit and projections may consume its receipts without taking
+payload or stronger meaning from `aoa-agents`; AOST-D-0017 keeps that meaning
+with the owner.
 
 Codex Plane refresh passes an explicit `live` source mode and workspace root
 so future activation cannot silently reuse committed 8Dionysus inputs. The
