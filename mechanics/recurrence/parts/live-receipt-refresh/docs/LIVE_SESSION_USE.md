@@ -159,6 +159,15 @@ distinct contracts and are not implicit aliases. The active registry does not
 read the historical wave log, and the committed builder no longer publishes a
 standalone Runtime Closeout summary.
 
+The actor responsibility feed is a separate optional owner source at
+`/srv/AbyssOS/aoa-agents/.aoa/live_receipts/actor-responsibility-execution-receipts.jsonl`.
+It is the next connection for an `aoa-agents`
+`actor_responsibility_execution_receipt`; runtime result, A2A return, and usage
+observation files remain evidence refs and must not be copied into this feed.
+While the producer is absent, `check_live_publishers.py` reports
+`optional-missing`, `source_coverage_summary.min.json` reports the missing owner,
+and live stats contains no actor execution observation.
+
 The current-source plus refresh-observation law and these three audit outcomes
 are recorded in
 `docs/decisions/AOST-D-0004-live-admission-requires-refresh-observation.md`.
@@ -206,6 +215,7 @@ watch paths before it writes user units.
 - `/srv/AbyssOS/aoa-playbooks/.aoa/live_receipts/playbook-receipts.jsonl`
 - `/srv/AbyssOS/aoa-techniques/.aoa/live_receipts/technique-receipts.jsonl`
 - `/srv/AbyssOS/aoa-memo/.aoa/live_receipts/memo-writeback-receipts.jsonl`
+- `/srv/AbyssOS/aoa-agents/.aoa/live_receipts/actor-responsibility-execution-receipts.jsonl`
 
 The watched memo writeback log participates in the shared receipt feed, but it
 does not observe every change to the reviewed corpus roots consumed by the
@@ -223,7 +233,7 @@ separate live proof.
 
 ## Readiness audit
 
-Audit all required live publishers before or after a refresh:
+Audit all registered live publishers before or after a refresh:
 
 ```bash
 python scripts/check_live_publishers.py
@@ -232,7 +242,9 @@ python scripts/check_live_publishers.py
 This command checks that required sources named in
 `mechanics/recurrence/parts/live-receipt-refresh/config/live_receipt_sources.json`
 exist, are readable, and parse as receipts compatible with the canonical
-shared envelope and event family.
+shared envelope and event family. Optional sources are reported explicitly as
+`optional-missing` until their owner publisher exists; they are not converted to
+empty success or zero activity.
 
 ## Boundary reminder
 

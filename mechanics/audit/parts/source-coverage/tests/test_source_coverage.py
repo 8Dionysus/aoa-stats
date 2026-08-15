@@ -91,6 +91,7 @@ def test_committed_source_coverage_matches_schema_and_public_bytes() -> None:
     ).read_text(encoding="utf-8")
     assert summary["source_mode"] == "registry_backed_receipt_feed"
     assert summary["missing_owner_repos"] == [
+        "aoa-agents",
         "aoa-memo",
         "aoa-playbooks",
         "aoa-techniques",

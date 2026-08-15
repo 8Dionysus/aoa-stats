@@ -397,6 +397,12 @@ def test_refresh_live_state_combines_repo_relative_sources(tmp_path: Path) -> No
                         "repo": "aoa-evals",
                         "relative_path": ".aoa/live_receipts/eval-result-receipts.jsonl",
                     },
+                    {
+                        "name": "actor-responsibility",
+                        "repo": "aoa-agents",
+                        "relative_path": ".aoa/live_receipts/actor-responsibility-execution-receipts.jsonl",
+                        "required": False,
+                    },
                 ],
             },
             indent=2,
@@ -428,6 +434,18 @@ def test_refresh_live_state_combines_repo_relative_sources(tmp_path: Path) -> No
     assert pipeline_summary["generated_from"]["receipt_input_paths"] == source_labels
     assert pipeline_summary["generated_from"]["total_receipts"] == 2
     assert pipeline_summary["pipelines"][0]["pipeline_ref"] == "pipeline:test"
+    source_coverage = json.loads(
+        (summary_output_dir / "source_coverage_summary.min.json").read_text(
+            encoding="utf-8"
+        )
+    )
+    assert source_coverage["expected_owner_repos"] == [
+        "aoa-agents",
+        "aoa-evals",
+        "aoa-skills",
+    ]
+    assert source_coverage["missing_owner_repos"] == ["aoa-agents"]
+    assert source_coverage["owner_repo_counts"] == {"aoa-evals": 1, "aoa-skills": 1}
     catalog = json.loads(
         (summary_output_dir / "summary_surface_catalog.min.json").read_text(encoding="utf-8")
     )

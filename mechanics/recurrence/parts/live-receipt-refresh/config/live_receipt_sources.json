@@ -1,7 +1,7 @@
 {
   "schema_version": 1,
   "profile": "session-growth-live",
-  "description": "Canonical owner-local live receipt sources for automatic session-growth refresh under /srv across detail skill receipts, project-core kernel skill applications, evals, playbooks, techniques, and memo. Historical runtime-wave closeouts are excluded until the current owner receipt ABI and observation route are explicitly integrated. Growth-refinery candidate lineage summary stays reviewed-owner-local only and does not read raw checkpoint notes directly.",
+  "description": "Canonical owner-local live receipt sources for automatic session-growth refresh under /srv across detail skill receipts, project-core kernel skill applications, evals, playbooks, techniques, memo, and the staged aoa-agents actor-responsibility feed. The actor feed is optional until aoa-agents publishes an owner-qualified actor_responsibility_execution_receipt from the reviewed summon-result-v4 chain; its absence remains visible as missingness and is never inferred as zero. Historical runtime-wave closeouts are excluded until the current owner receipt ABI and observation route are explicitly integrated. Growth-refinery candidate lineage summary stays reviewed-owner-local only and does not read raw checkpoint notes directly.",
   "sources": [
     {
       "name": "session_harvest_family_live_log",
@@ -44,6 +44,13 @@
       "relative_path": ".aoa/live_receipts/memo-writeback-receipts.jsonl",
       "payload_shape": "jsonl",
       "required": true
+    },
+    {
+      "name": "actor_responsibility_execution_live_log",
+      "repo": "aoa-agents",
+      "relative_path": ".aoa/live_receipts/actor-responsibility-execution-receipts.jsonl",
+      "payload_shape": "jsonl",
+      "required": false
     }
   ]
 }
