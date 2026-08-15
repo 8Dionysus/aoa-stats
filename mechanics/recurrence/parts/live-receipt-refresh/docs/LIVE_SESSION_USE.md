@@ -161,12 +161,14 @@ standalone Runtime Closeout summary.
 
 The actor responsibility feed is a separate optional owner source at
 `/srv/AbyssOS/aoa-agents/.aoa/live_receipts/actor-responsibility-execution-receipts.jsonl`.
-It is the next connection for an `aoa-agents`
-`actor_responsibility_execution_receipt`; runtime result, A2A return, and usage
-observation files remain evidence refs and must not be copied into this feed.
-While the producer is absent, `check_live_publishers.py` reports
+It carries `aoa-agents`
+`actor_responsibility_execution_receipt` events; runtime result, A2A return, and
+usage observation files remain evidence refs and must not be copied into this
+feed. While the producer is absent, `check_live_publishers.py` reports
 `optional-missing`, `source_coverage_summary.min.json` reports the missing owner,
-and live stats contains no actor execution observation.
+and live stats contains no actor execution observation. After the owner feed is
+published, the audit reports its observed receipts and an explicit live refresh
+may include the actor events in the derived summaries.
 
 The current-source plus refresh-observation law and these three audit outcomes
 are recorded in
