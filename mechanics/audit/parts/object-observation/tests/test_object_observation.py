@@ -410,6 +410,39 @@ def test_actor_usage_projection_keeps_observation_and_posture_boundaries() -> No
     assert "tokens.input" in unknown_usage["unknown_fields"]
 
 
+def test_malformed_actor_usage_projection_is_explicitly_unknown() -> None:
+    mutations = (
+        lambda projection: projection.update({"unknown_fields": None}),
+        lambda projection: projection.update({"input_tokens": "not-a-number"}),
+        lambda projection: projection.update({"observation_status": "invalid"}),
+        lambda projection: projection.update(
+            {"source_ref": {**projection["source_ref"], "object_id": "forged"}}
+        ),
+    )
+    for index, mutate in enumerate(mutations):
+        payload = actor_usage_payload(projected=True)
+        mutate(payload["usage_observation"])
+        observed = object_observation.build_object_summary(
+            [
+                receipt(
+                    "actor_responsibility_execution_receipt",
+                    f"evt-actor-malformed-{index}",
+                    "2026-04-01T00:02:00Z",
+                    object_id=f"malformed-actor-{index}",
+                    payload=payload,
+                )
+            ],
+            {},
+        )["objects"][0]["actor_usage_observation"]
+        assert observed["status"] == "unknown"
+        assert "usage_observation" in observed["unknown_fields"]
+        assert observed["tokens"] == {
+            "input": None,
+            "cached_input": None,
+            "output": None,
+        }
+
+
 def test_projection_shape_is_bounded_and_inputs_are_not_mutated() -> None:
     receipts = [
         receipt(

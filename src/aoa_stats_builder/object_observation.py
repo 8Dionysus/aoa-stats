@@ -1,6 +1,8 @@
 from __future__ import annotations
 
 from collections import Counter, defaultdict
+import math
+import re
 from typing import Any
 
 
@@ -25,6 +27,10 @@ ACTOR_USAGE_UNKNOWN_FIELDS = [
     "cost.active_cost_regime",
     "cost.usd",
 ]
+ACTOR_USAGE_PROJECTION_SCHEMA = "aoa_actor_usage_observation_projection_v1"
+ACTOR_USAGE_REASONING_EFFORTS = {"low", "medium", "high", "xhigh", "max"}
+ACTOR_USAGE_COST_STATUSES = {"reported", "not_reported", "unknown"}
+DIGEST_RE = re.compile(r"^sha256:[0-9a-f]{64}$")
 
 
 def object_key(object_ref: dict[str, Any]) -> tuple[str, str, str, str]:
@@ -44,7 +50,131 @@ def _valid_ref(value: Any) -> dict[str, str] | None:
         return None
     if not all(isinstance(value[field], str) and value[field] for field in required):
         return None
+    if DIGEST_RE.fullmatch(value["digest"]) is None:
+        return None
     return {field: value[field] for field in REF_FIELDS}
+
+
+def _valid_optional_string(value: Any) -> bool:
+    return value is None or (isinstance(value, str) and bool(value))
+
+
+def _valid_optional_number(value: Any, *, integer: bool = False) -> bool:
+    if value is None:
+        return True
+    if isinstance(value, bool) or not isinstance(value, (int, float)):
+        return False
+    if not math.isfinite(value) or value < 0:
+        return False
+    return not integer or isinstance(value, int)
+
+
+def _valid_actor_usage_projection(payload: dict[str, Any], projection: dict[str, Any]) -> bool:
+    required = {
+        "schema_version",
+        "source_ref",
+        "runtime_result_ref",
+        "observation_status",
+        "gap_reasons",
+        "model_slug",
+        "reasoning_effort",
+        "input_tokens",
+        "cached_input_tokens",
+        "output_tokens",
+        "active_wall_seconds",
+        "duration_seconds",
+        "turn_count",
+        "executed_command_count",
+        "attempt_count",
+        "start_invocation_count",
+        "resume_invocation_count",
+        "runtime_status",
+        "exit_code",
+        "metering_mode",
+        "active_cost_regime",
+        "cost_usd",
+        "cost_status",
+        "unknown_fields",
+    }
+    if set(projection) != required:
+        return False
+    if projection["schema_version"] != ACTOR_USAGE_PROJECTION_SCHEMA:
+        return False
+    source_ref = _valid_ref(projection["source_ref"])
+    runtime_result_ref = _valid_ref(projection["runtime_result_ref"])
+    owner_evidence = payload.get("owner_evidence")
+    owner_evidence = owner_evidence if isinstance(owner_evidence, dict) else {}
+    runtime_state = owner_evidence.get("runtime_state")
+    runtime_state = runtime_state if isinstance(runtime_state, dict) else {}
+    owner_source_ref = _valid_ref(runtime_state.get("usage_observation_ref"))
+    owner_runtime_result_ref = _valid_ref(runtime_state.get("runtime_result_ref"))
+    if source_ref is None or runtime_result_ref is None:
+        return False
+    if source_ref != owner_source_ref or runtime_result_ref != owner_runtime_result_ref:
+        return False
+    if source_ref["owner_repo"] != "abyss-stack" or source_ref["schema_version"] != "abyss_stack_external_codex_usage_observation_v1":
+        return False
+    if runtime_result_ref["owner_repo"] != "abyss-stack" or runtime_result_ref["schema_version"] != "abyss_stack_external_codex_result_v2":
+        return False
+    if source_ref["object_id"] != f"{runtime_result_ref['object_id']}#/usage_observation":
+        return False
+    status = projection["observation_status"]
+    if status not in {"complete", "partial"}:
+        return False
+    gaps = projection["gap_reasons"]
+    if not isinstance(gaps, list):
+        return False
+    for gap in gaps:
+        if not isinstance(gap, dict) or set(gap) != {"attempt_id", "reason", "event_sequence"}:
+            return False
+        if not isinstance(gap["attempt_id"], str) or not gap["attempt_id"]:
+            return False
+        if gap["reason"] != "controlled_interruption_before_turn_usage":
+            return False
+        if gap["event_sequence"] is None or not _valid_optional_number(
+            gap["event_sequence"], integer=True
+        ):
+            return False
+    if (status == "complete" and gaps) or (status == "partial" and not gaps):
+        return False
+    if not _valid_optional_string(projection["model_slug"]):
+        return False
+    if projection["reasoning_effort"] not in ACTOR_USAGE_REASONING_EFFORTS | {None}:
+        return False
+    for field in (
+        "input_tokens",
+        "cached_input_tokens",
+        "output_tokens",
+        "turn_count",
+        "executed_command_count",
+        "attempt_count",
+        "start_invocation_count",
+        "resume_invocation_count",
+    ):
+        if not _valid_optional_number(projection[field], integer=True):
+            return False
+    for field in ("active_wall_seconds", "duration_seconds", "cost_usd"):
+        if not _valid_optional_number(projection[field]):
+            return False
+    if not _valid_optional_string(projection["runtime_status"]):
+        return False
+    if projection["exit_code"] is not None and (
+        isinstance(projection["exit_code"], bool)
+        or not isinstance(projection["exit_code"], int)
+    ):
+        return False
+    if projection["metering_mode"] not in {"observe_only", None}:
+        return False
+    if not _valid_optional_string(projection["active_cost_regime"]):
+        return False
+    if projection["cost_status"] not in ACTOR_USAGE_COST_STATUSES:
+        return False
+    unknown_fields = projection["unknown_fields"]
+    return (
+        isinstance(unknown_fields, list)
+        and len(unknown_fields) == len(set(unknown_fields))
+        and all(isinstance(field, str) and bool(field) for field in unknown_fields)
+    )
 
 
 def _posture_and_remainder(payload: dict[str, Any]) -> tuple[dict[str, Any], dict[str, Any]]:
@@ -161,7 +291,7 @@ def _actor_usage_observation(payload: dict[str, Any]) -> dict[str, Any]:
         "cost_status",
         "unknown_fields",
     }
-    if not required <= set(projection):
+    if not required <= set(projection) or not _valid_actor_usage_projection(payload, projection):
         unknown = _unknown_actor_usage(payload)
         unknown["unknown_fields"] = sorted(
             set(unknown["unknown_fields"]) | {"usage_observation"}
