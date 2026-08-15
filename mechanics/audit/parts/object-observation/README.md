@@ -6,6 +6,11 @@ This part groups the active, supersession-resolved receipt set by object
 identity and publishes bounded occurrence and recency observations. It has a
 separate core because its input is wider than the core-skill receipt family.
 
+Actor responsibility receipts may additionally expose a bounded, exact-byte
+runtime usage projection. It is a descriptive observation with preserved
+runtime refs; missing older projections remain explicitly unknown, and the
+receipt's review/acceptance posture is not upgraded by this read model.
+
 - source profile: `stats/read-models/active/object_summary.profile.json`
 - filesystem-free core: `src/aoa_stats_builder/object_observation.py`
 - focused part-local test:

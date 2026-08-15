@@ -6,7 +6,7 @@
   "surface_ref": "generated/object_summary.min.json",
   "schema_ref": "schemas/object-summary.schema.json",
   "primary_question": "How often and how broadly is each source object showing up in the current receipt feed?",
-  "derivation_rule": "group receipts by object_ref and keep counts, latest timestamps, and bounded posture flags",
+  "derivation_rule": "group receipts by object_ref and keep counts, latest timestamps, bounded posture flags, and for actor receipts an exact observe-only usage snapshot with explicit unknowns",
   "input_posture": "receipt_backed_live",
   "owner_truth_inputs": [
     "owner-local receipts across the active registry"
