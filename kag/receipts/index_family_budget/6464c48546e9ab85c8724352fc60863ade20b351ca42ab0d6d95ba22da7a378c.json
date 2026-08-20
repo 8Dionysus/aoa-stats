@@ -1,0 +1,17 @@
+{
+  "allowed_bytes": 6881623,
+  "allowed_tracked_bytes": 8727150,
+  "approved_by": "repository-owner",
+  "base_ref": "1d9bdfc803449d393856f5500a228ce9bc6bf761",
+  "changed_generated_bytes": 6881623,
+  "changed_generated_files": 276,
+  "decision_ref": "aoa-kag:docs/decisions/AOA-KAG-D-0017-portable-content-addressed-repository-family.md",
+  "default_limit_bytes": 1048576,
+  "head_family_digest": "6464c48546e9ab85c8724352fc60863ade20b351ca42ab0d6d95ba22da7a378c",
+  "reason": "Regenerate the owner-local KAG portable family for the admitted C10 outcome contract and descriptive outcome aggregates; the pinned owner-family generator requires parity for the newly authored source and validation routes.",
+  "repo": "aoa-stats",
+  "schema_version": "aoa-repo-local-kag-budget-receipt-v1",
+  "scope": "generated_delta",
+  "tracked_bytes": 8727150,
+  "tracked_bytes_max": 9437184
+}
