@@ -6,6 +6,7 @@ from pathlib import Path
 import sys
 
 from jsonschema import Draft202012Validator, FormatChecker
+import pytest
 
 
 REPO_ROOT = Path(__file__).resolve().parents[5]
@@ -112,6 +113,74 @@ def test_pending_delayed_outcome_keeps_aggregate_partial() -> None:
 
     assert aggregate["pending_or_overdue_delayed_count"] == 1
     assert aggregate["evidence_completeness"] == "partial"
+
+
+def test_unknown_accidental_success_does_not_qualify_positive_utility() -> None:
+    receipt = deepcopy(load_json(EXAMPLES_PATH)["valid_cases"][0]["payload"])
+    receipt["accidental_success"]["value"] = "unknown"
+    receipt["accidental_success"]["detection_basis"] = "unknown"
+    receipt["content_digest"] = normalized_outcome_receipt_digest(receipt)
+
+    aggregate = aggregate_episodic_utility(
+        aggregate_id="aggregate:test:unknown-accidental",
+        item_ref=item_ref(),
+        receipts=[receipt],
+        produced_at="2026-07-29T12:00:00Z",
+    )
+
+    assert aggregate["qualified_observation_count"] == 0
+    assert aggregate["measurement"]["qualified_signed_outcome_mean"] == 0.0
+
+
+def test_owner_rejected_delayed_outcome_does_not_add_utility() -> None:
+    receipt = deepcopy(load_json(EXAMPLES_PATH)["valid_cases"][0]["payload"])
+    delayed = deepcopy(receipt["terminal_outcome"])
+    delayed.update(
+        {
+            "outcome_id": "delayed-outcome:run-a:retention",
+            "kind": "delayed",
+            "observed_at": "2026-08-02T19:00:05-06:00",
+            "expected_at": "2026-08-02T19:00:05-06:00",
+            "task_owner_acceptance": False,
+        }
+    )
+    receipt["delayed_outcome_posture"] = "observed"
+    receipt["delayed_outcomes"] = [delayed]
+    receipt["content_digest"] = normalized_outcome_receipt_digest(receipt)
+
+    aggregate = aggregate_episodic_utility(
+        aggregate_id="aggregate:test:owner-rejected-delayed",
+        item_ref=item_ref(),
+        receipts=[receipt],
+        produced_at="2026-07-29T12:00:00Z",
+    )
+
+    assert aggregate["qualified_observation_count"] == 1
+    assert aggregate["measurement"]["delayed_adjustment_sum"] == 0.0
+    assert aggregate["measurement"]["qualified_signed_outcome_mean"] == 1.0
+
+
+def test_duplicate_receipt_delivery_is_rejected() -> None:
+    receipt = load_json(EXAMPLES_PATH)["valid_cases"][0]["payload"]
+
+    with pytest.raises(ValueError, match="duplicate receipt_id"):
+        aggregate_episodic_utility(
+            aggregate_id="aggregate:test:duplicate-receipt",
+            item_ref=item_ref(),
+            receipts=[receipt, deepcopy(receipt)],
+            produced_at="2026-07-29T12:00:00Z",
+        )
+
+    second = deepcopy(receipt)
+    second["receipt_id"] = "outcome-receipt:run-a-retry"
+    second["content_digest"] = normalized_outcome_receipt_digest(second)
+    with pytest.raises(ValueError, match="duplicate idempotency_key"):
+        aggregate_episodic_utility(
+            aggregate_id="aggregate:test:duplicate-idempotency",
+            item_ref=item_ref(),
+            receipts=[receipt, second],
+            produced_at="2026-07-29T12:00:00Z",
+        )
 
 
 def test_invalid_c10_receipt_is_rejected_before_aggregation() -> None:

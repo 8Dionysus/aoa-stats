@@ -70,6 +70,10 @@ ceiling.
 - utility aggregates require one tenant, consumer, and policy pin; invalid C10
   receipts are rejected before aggregation
 - terminal success without an action change cannot become qualified utility
+- unknown accidental-success status cannot qualify positive utility
+- delayed adjustments require explicit task-owner acceptance; rejected or
+  unknown delayed outcomes cannot strengthen utility
+- duplicate receipt ids or idempotency keys are rejected before aggregation
 - pending or overdue delayed outcomes keep utility evidence partial
 - the aggregate may report critical-event frequency but cannot demote, delete,
   preserve, promote, or otherwise decide an item's lifecycle

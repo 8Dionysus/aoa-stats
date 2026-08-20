@@ -28,8 +28,9 @@ is degraded or unavailable.
 
 `test_outcome_qualified_utility.py` additionally proves that aggregation
 rejects invalid C10, does not reward terminal success without action change,
-keeps pending delayed evidence partial, excludes access count, and emits no
-proof, semantic, or effect authority.
+keeps pending delayed evidence partial, excludes access count, rejects
+unknown or owner-rejected utility evidence and duplicate delivery, and emits
+no proof, semantic, or effect authority.
 
 `test_agent_local_federation_aggregate.py` proves that Phase 12 promotion
 results and operator minutes reconcile, while promotion and proof authority

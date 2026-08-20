@@ -103,6 +103,20 @@ def aggregate_episodic_utility(
     if issues:
         raise ValueError("; ".join(issues))
 
+    receipt_ids: set[str] = set()
+    idempotency_keys: set[str] = set()
+    for receipt in receipts:
+        receipt_id = str(receipt["receipt_id"])
+        idempotency_key = str(receipt["idempotency_key"])
+        if receipt_id in receipt_ids:
+            raise ValueError("utility aggregate cannot contain duplicate receipt_id")
+        if idempotency_key in idempotency_keys:
+            raise ValueError(
+                "utility aggregate cannot contain duplicate idempotency_key"
+            )
+        receipt_ids.add(receipt_id)
+        idempotency_keys.add(idempotency_key)
+
     tenants = {receipt.get("tenant_id") for receipt in receipts}
     consumers = {receipt.get("consumer_id") for receipt in receipts}
     policy_pins = {
@@ -152,11 +166,11 @@ def aggregate_episodic_utility(
             receipt["memory_used"] is True
             and action_changed
             and terminal["state"] in OBSERVED_OUTCOME_STATES
-            and terminal.get("task_owner_acceptance") is not False
+            and terminal.get("task_owner_acceptance") is True
             and attribution["status"] in {"possible", "supported"}
             and evaluation["eval_plane_status"] == "available"
             and counterfactual_present
-            and not accidental
+            and receipt["accidental_success"]["value"] is False
         )
         qualified_flags.append(qualified)
 
@@ -167,6 +181,7 @@ def aggregate_episodic_utility(
             _state_value(item.get("state"))
             for item in receipt.get("delayed_outcomes", ())
             if isinstance(item, Mapping)
+            and item.get("task_owner_acceptance") is True
         )
         delayed_adjustments.append(delayed_value)
         signed_values.append(
