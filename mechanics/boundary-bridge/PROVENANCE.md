@@ -29,10 +29,11 @@ public schema/output route and reference-only admission truth. The Cycle 9
 false-live correction is about the missing refresh observation contract, not
 about the authority of the reviewed `aoa-memo` corpus; rationale stays in
 `docs/decisions/AOST-D-0004-live-admission-requires-refresh-observation.md`.
-`measurement-packet-crossing` is evidenced by the central measurement and
-local-port schemas, the filesystem-free semantic core, the protocol validator,
-and part-local tests derived from manual positive and negative trials. It owns
-no owner metric or runtime access surface.
+`measurement-packet-crossing` is evidenced by the central measurement,
+outcome-receipt, and local-port schemas, the filesystem-free semantic cores,
+the protocol validator, and part-local tests and examples derived from manual
+positive and negative trials. It owns no owner metric, task-result meaning,
+eval verdict, or runtime access surface.
 
 The topology declares the exact localized or mixed placement of all four
 parts.
