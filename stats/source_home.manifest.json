@@ -23,7 +23,7 @@
     {
       "id": "measurement_contract",
       "path": "stats/measurement-contract",
-      "role": "Portable measurement and packet grammar for evidence-linked owner-local statistics.",
+      "role": "Portable measurement, packet, and content-minimized outcome-receipt grammar for evidence-linked owner-local statistics.",
       "families": [
         "measurement_contract"
       ],
@@ -87,7 +87,7 @@
       "branch": "measurement_contract",
       "path": "stats/measurement-contract",
       "source_kind": "shared_statistical_measurement_grammar",
-      "meaning": "The common OS Abyss grammar for measurement identity, population, sample, cohort, window, units, dimensions, aggregation, missingness, uncertainty, provenance, reporting, privacy, lifecycle, and live/reference posture.",
+      "meaning": "The common OS Abyss grammar for measurement identity, population, sample, cohort, window, units, dimensions, aggregation, missingness, uncertainty, provenance, reporting, privacy, lifecycle, live/reference posture, and content-minimized action/outcome observations without causal authority.",
       "owner_surface": "stats/measurement-contract/AGENTS.md",
       "authority_ceiling": "Defines compatible statistical shape and pure cross-field semantics without acquiring any owner-local metric, evidence, verdict, runtime, or decision authority.",
       "source_routes": [
@@ -95,6 +95,7 @@
         "stats/measurement-contract/README.md",
         "stats/measurement-contract/measurement-contract.schema.json",
         "stats/measurement-contract/measurement-packet.schema.json",
+        "stats/measurement-contract/outcome-receipt.schema.json",
         "stats/measurement-contract/packet-read-request.schema.json",
         "stats/measurement-contract/packet-read-result.schema.json",
         "DESIGN.md",
@@ -103,11 +104,13 @@
       "public_contract_routes": [
         "stats/measurement-contract/measurement-contract.schema.json",
         "stats/measurement-contract/measurement-packet.schema.json",
+        "stats/measurement-contract/outcome-receipt.schema.json",
         "stats/measurement-contract/packet-read-request.schema.json",
         "stats/measurement-contract/packet-read-result.schema.json"
       ],
       "implementation_routes": [
         "src/aoa_stats_builder/measurement.py",
+        "src/aoa_stats_builder/outcome.py",
         "src/aoa_stats_builder/packet_read.py",
         "src/aoa_stats_builder/schema_validation.py"
       ],
@@ -117,7 +120,8 @@
       "validator_routes": [
         "scripts/validate_stats_protocol.py",
         "tests/test_stats_protocol.py",
-        "mechanics/boundary-bridge/parts/measurement-packet-crossing/tests/test_measurement_packet_crossing.py"
+        "mechanics/boundary-bridge/parts/measurement-packet-crossing/tests/test_measurement_packet_crossing.py",
+        "mechanics/boundary-bridge/parts/measurement-packet-crossing/tests/test_active_organ_outcome_receipt.py"
       ],
       "mechanic_routes": [
         {
@@ -152,12 +156,15 @@
         "stats/federation/owner-inventory.schema.json"
       ],
       "implementation_routes": [
+        "src/aoa_stats_builder/utility.py",
         "scripts/validate_stats_protocol.py"
       ],
       "validator_routes": [
         "scripts/validate_stats_protocol.py",
         "tests/test_stats_protocol.py",
-        "mechanics/boundary-bridge/parts/measurement-packet-crossing/tests/test_measurement_packet_crossing.py"
+        "mechanics/boundary-bridge/parts/measurement-packet-crossing/tests/test_measurement_packet_crossing.py",
+        "mechanics/boundary-bridge/parts/measurement-packet-crossing/tests/test_outcome_qualified_utility.py",
+        "mechanics/boundary-bridge/parts/measurement-packet-crossing/tests/test_agent_local_federation_aggregate.py"
       ],
       "mechanic_routes": [
         {

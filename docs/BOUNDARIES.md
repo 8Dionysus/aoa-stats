@@ -30,6 +30,12 @@ views. Each owner repository retains its measurement questions, object and
 population meaning, dimensions, evidence, privacy posture, freshness, and
 exports.
 
+It also owns the strict C10 outcome-receipt grammar. Task and source owners
+retain action and outcome facts; `aoa-evals` retains counterfactual and verdict
+meaning. C10 can expose memory use, action change, delayed outcomes, harm,
+costs, confounders, accidental success, and attribution uncertainty, but never
+causality, task acceptance, effect permission, or training admission.
+
 `aoa-stats` also owns the canonical shared receipt envelope and active
 cross-repo event-kind vocabulary used by stats builders and live refresh.
 Owner repos still own payload schemas and payload meaning inside that shared
@@ -68,6 +74,7 @@ It must not emit:
 - owner-local metric definitions authored centrally
 - raw traces, raw session transcripts, or raw memory content
 - MCP, routing, remediation, or runtime write commands
+- causal verdicts or action permissions derived from an outcome receipt
 
 ## Anti-collapse rules
 

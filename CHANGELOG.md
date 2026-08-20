@@ -9,6 +9,9 @@ Tracking starts with the first public release-prep baseline for this repository.
 
 ### Added
 
+- Added decision `AOST-D-0018`, preserving active-organ outcome receipts and
+  aggregates as descriptive measurement that cannot self-promote memory,
+  policy, training, permission, or tenant scope.
 - Added a versioned, transport-neutral measurement-packet read contract that
   returns compatibility findings, stable evidence and semantic identities,
   and explicit owner/access authority ceilings without filesystem discovery

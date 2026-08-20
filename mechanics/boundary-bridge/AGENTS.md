@@ -11,6 +11,7 @@ mechanic. Read `../AGENTS.md`, this package's `README.md`, `PARTS.md`, and
 - `parts/receipt-abi-crossing/`
 - `parts/consumer-regrounding/`
 - `parts/memory-owner-handoff/`
+- `parts/measurement-packet-crossing/`
 
 ## Boundary
 
@@ -37,5 +38,7 @@ mechanic. Read `../AGENTS.md`, this package's `README.md`, `PARTS.md`, and
 - Do not turn a consumer warning or regrounding hint into an action verdict.
 - Do not aggregate a measurement packet across an undeclared compatibility
   axis or turn a local definition into central domain meaning.
+- Do not turn an outcome receipt into causal proof, task-owner acceptance,
+  effect permission, or policy-training admission.
 - Follow the focused executable routes named by the touched part's
   `VALIDATION.md`.

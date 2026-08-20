@@ -1,0 +1,233 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/8Dionysus/aoa-stats/main/mechanics/boundary-bridge/parts/measurement-packet-crossing/schemas/active_organ_episodic_utility_aggregate_v0.schema.json",
+  "title": "AoA Stats outcome-qualified episodic utility aggregate v0",
+  "description": "Descriptive aggregation over valid C10 receipts. It is neither a proof verdict nor ranking, policy, lifecycle, semantic, or effect authority.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema_version",
+    "aggregate_id",
+    "aggregate_version",
+    "stats_owner",
+    "item_ref",
+    "tenant_id",
+    "consumer_id",
+    "policy_pin",
+    "outcome_receipt_refs",
+    "observation_count",
+    "memory_used_count",
+    "action_change_count",
+    "qualified_observation_count",
+    "terminal_state_counts",
+    "delayed_state_counts",
+    "pending_or_overdue_delayed_count",
+    "accidental_success_count",
+    "observed_harm_count",
+    "critical_event_count",
+    "counterfactual_evidence_count",
+    "reward_hacking_evidence_count",
+    "attribution_state_counts",
+    "measurement",
+    "evidence_completeness",
+    "access_count_used_as_utility",
+    "proof_verdict",
+    "semantic_authority",
+    "effect_authority",
+    "produced_at",
+    "content_digest"
+  ],
+  "properties": {
+    "schema_version": {
+      "const": "aoa_stats_episodic_utility_aggregate_v0"
+    },
+    "aggregate_id": {
+      "$ref": "#/$defs/ref"
+    },
+    "aggregate_version": {
+      "const": 1
+    },
+    "stats_owner": {
+      "const": "aoa-stats"
+    },
+    "item_ref": {
+      "$ref": "#/$defs/provenance_ref"
+    },
+    "tenant_id": {
+      "$ref": "#/$defs/ref"
+    },
+    "consumer_id": {
+      "$ref": "#/$defs/ref"
+    },
+    "policy_pin": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "policy_id",
+        "policy_version",
+        "policy_digest",
+        "decision_ref"
+      ],
+      "properties": {
+        "policy_id": {
+          "$ref": "#/$defs/ref"
+        },
+        "policy_version": {
+          "$ref": "#/$defs/ref"
+        },
+        "policy_digest": {
+          "$ref": "#/$defs/sha256"
+        },
+        "decision_ref": {
+          "$ref": "#/$defs/ref"
+        }
+      }
+    },
+    "outcome_receipt_refs": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "$ref": "#/$defs/provenance_ref"
+      }
+    },
+    "observation_count": {
+      "$ref": "#/$defs/count"
+    },
+    "memory_used_count": {
+      "$ref": "#/$defs/non_negative_count"
+    },
+    "action_change_count": {
+      "$ref": "#/$defs/non_negative_count"
+    },
+    "qualified_observation_count": {
+      "$ref": "#/$defs/non_negative_count"
+    },
+    "terminal_state_counts": {
+      "$ref": "#/$defs/count_map"
+    },
+    "delayed_state_counts": {
+      "$ref": "#/$defs/count_map"
+    },
+    "pending_or_overdue_delayed_count": {
+      "$ref": "#/$defs/non_negative_count"
+    },
+    "accidental_success_count": {
+      "$ref": "#/$defs/non_negative_count"
+    },
+    "observed_harm_count": {
+      "$ref": "#/$defs/non_negative_count"
+    },
+    "critical_event_count": {
+      "$ref": "#/$defs/non_negative_count"
+    },
+    "counterfactual_evidence_count": {
+      "$ref": "#/$defs/non_negative_count"
+    },
+    "reward_hacking_evidence_count": {
+      "$ref": "#/$defs/non_negative_count"
+    },
+    "attribution_state_counts": {
+      "$ref": "#/$defs/count_map"
+    },
+    "measurement": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "qualified_signed_outcome_sum",
+        "qualified_signed_outcome_mean",
+        "action_change_rate",
+        "delayed_adjustment_sum"
+      ],
+      "properties": {
+        "qualified_signed_outcome_sum": {
+          "type": "number"
+        },
+        "qualified_signed_outcome_mean": {
+          "type": "number"
+        },
+        "action_change_rate": {
+          "type": "number",
+          "minimum": 0,
+          "maximum": 1
+        },
+        "delayed_adjustment_sum": {
+          "type": "number"
+        }
+      }
+    },
+    "evidence_completeness": {
+      "enum": [
+        "complete",
+        "partial"
+      ]
+    },
+    "access_count_used_as_utility": {
+      "const": false
+    },
+    "proof_verdict": {
+      "const": "forbidden"
+    },
+    "semantic_authority": {
+      "const": "none"
+    },
+    "effect_authority": {
+      "const": "none"
+    },
+    "produced_at": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "content_digest": {
+      "$ref": "#/$defs/sha256"
+    }
+  },
+  "$defs": {
+    "ref": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 1024
+    },
+    "sha256": {
+      "type": "string",
+      "pattern": "^sha256:[0-9a-f]{64}$"
+    },
+    "count": {
+      "type": "integer",
+      "minimum": 1
+    },
+    "non_negative_count": {
+      "type": "integer",
+      "minimum": 0
+    },
+    "count_map": {
+      "type": "object",
+      "additionalProperties": {
+        "$ref": "#/$defs/non_negative_count"
+      }
+    },
+    "provenance_ref": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "owner_repo",
+        "artifact_ref",
+        "artifact_version",
+        "artifact_digest"
+      ],
+      "properties": {
+        "owner_repo": {
+          "$ref": "#/$defs/ref"
+        },
+        "artifact_ref": {
+          "$ref": "#/$defs/ref"
+        },
+        "artifact_version": {
+          "$ref": "#/$defs/ref"
+        },
+        "artifact_digest": {
+          "$ref": "#/$defs/sha256"
+        }
+      }
+    }
+  }
+}

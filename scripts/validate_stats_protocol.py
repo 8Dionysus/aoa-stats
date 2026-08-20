@@ -23,6 +23,9 @@ from aoa_stats_builder.measurement import (  # noqa: E402
     validate_packet_semantics,
     validate_packet_set,
 )
+from aoa_stats_builder.outcome import (  # noqa: E402
+    validate_outcome_receipt_semantics,
+)
 from aoa_stats_builder.schema_validation import (  # noqa: E402
     schema_issues,
     schema_registry,
@@ -32,6 +35,9 @@ MEASUREMENT_SCHEMA_PATH = Path(
     "stats/measurement-contract/measurement-contract.schema.json"
 )
 PACKET_SCHEMA_PATH = Path("stats/measurement-contract/measurement-packet.schema.json")
+OUTCOME_RECEIPT_SCHEMA_PATH = Path(
+    "stats/measurement-contract/outcome-receipt.schema.json"
+)
 PACKET_READ_REQUEST_SCHEMA_PATH = Path(
     "stats/measurement-contract/packet-read-request.schema.json"
 )
@@ -84,6 +90,7 @@ def _load_schemas(repo_root: Path) -> tuple[dict[str, dict[str, Any]], list[str]
     for relative in (
         MEASUREMENT_SCHEMA_PATH,
         PACKET_SCHEMA_PATH,
+        OUTCOME_RECEIPT_SCHEMA_PATH,
         PACKET_READ_REQUEST_SCHEMA_PATH,
         PACKET_READ_RESULT_SCHEMA_PATH,
         PORT_SCHEMA_PATH,
@@ -414,6 +421,7 @@ def validate(
     port_paths: list[Path] | None = None,
     contract_path: Path | None = None,
     packet_paths: list[Path] | None = None,
+    outcome_receipt_paths: list[Path] | None = None,
 ) -> list[str]:
     repo_root = repo_root.resolve()
     schemas, issues = _load_schemas(repo_root)
@@ -491,6 +499,25 @@ def validate(
                     f"{path}: {issue}"
                     for issue in validate_packet_semantics(contract, packet)
                 )
+    for raw_path in outcome_receipt_paths or []:
+        path = raw_path.expanduser().resolve()
+        receipt, error = _load_object(path)
+        if error:
+            issues.append(error)
+            continue
+        assert receipt is not None
+        issues.extend(
+            _schema_issues(
+                schemas[OUTCOME_RECEIPT_SCHEMA_PATH.as_posix()],
+                receipt,
+                label=str(path),
+                registry=registry,
+            )
+        )
+        issues.extend(
+            f"{path}: {issue}"
+            for issue in validate_outcome_receipt_semantics(receipt)
+        )
     return issues
 
 
@@ -517,6 +544,13 @@ def parse_args(argv: list[str] | None = None) -> argparse.Namespace:
         type=Path,
         help="Measurement packet to validate against --contract; may be repeated.",
     )
+    parser.add_argument(
+        "--outcome-receipt",
+        action="append",
+        default=[],
+        type=Path,
+        help="C10 OutcomeReceipt to validate; may be repeated.",
+    )
     return parser.parse_args(argv)
 
 
@@ -526,6 +560,7 @@ def main(argv: list[str] | None = None) -> int:
         port_paths=args.port,
         contract_path=args.contract,
         packet_paths=args.packet,
+        outcome_receipt_paths=args.outcome_receipt,
     )
     if issues:
         for issue in issues:

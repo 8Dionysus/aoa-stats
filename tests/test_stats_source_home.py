@@ -237,6 +237,7 @@ def test_source_home_contains_only_declared_source_records() -> None:
         "read-models/surface-profile.schema.json",
         "measurement-contract/measurement-contract.schema.json",
         "measurement-contract/measurement-packet.schema.json",
+        "measurement-contract/outcome-receipt.schema.json",
         "measurement-contract/packet-read-request.schema.json",
         "measurement-contract/packet-read-result.schema.json",
         "federation/local-port.schema.json",
