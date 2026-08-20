@@ -28,14 +28,21 @@ managed OS user-profile copy is derived.
 
 ### Measurement contracts and local ports
 
-The shared schemas under `stats/measurement-contract/` define measurement and
-packet compatibility. `stats/federation/` defines the local-port shape and
+The shared schemas under `stats/measurement-contract/` define measurement,
+packet, and content-minimized C10 outcome-receipt compatibility.
+`stats/federation/` defines the local-port shape and
 durable owner coverage map. Each owner-local port retains its object,
 population, dimension, privacy, evidence, freshness, and export meaning.
 
 The pure measurement implementation can reject incompatible units, versions,
 populations, windows, dimensions, uncertainty, or live posture. It cannot
 invent a local metric or upgrade a packet into proof.
+
+The parallel outcome implementation checks action snapshots, memory-use state,
+owner fact refs, exact-effect binding refs, terminal and delayed observations,
+costs, harm, confounders, and attribution uncertainty. It cannot validate the
+truth of those refs or turn the receipt into a causal verdict, effect
+permission, semantic decision, or training grant.
 
 ### 1. Event facts
 

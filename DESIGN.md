@@ -43,7 +43,8 @@ and validators rather than path depth.
 
 `stats/` owns source-authored semantics:
 
-- the portable measurement and packet grammar
+- the portable measurement, packet, and content-minimized outcome-receipt
+  grammar
 - the local-port contract and owner-level coverage inventory
 - receipt-envelope and event-kind admission meaning
 - active, deferred, and retired read-model profiles
@@ -73,6 +74,13 @@ owner, population, sample, cohort, window, value, unit, dimensions,
 cardinality, numerator and denominator, aggregation, temporality, lifecycle,
 compatibility, missingness, uncertainty, provenance, reporting rule, privacy,
 and live/reference posture explicit.
+
+The C10 outcome-receipt contract is a parallel compatibility object for
+active-organ experiments. It records owner facts about action before and after
+memory, memory-use state, terminal and delayed outcomes, costs, harm,
+confounders, accidental success, and attribution uncertainty. It never grants
+effect, semantic, causal, or training authority; task/source owners retain
+facts and `aoa-evals` retains verdict meaning.
 
 `pass_at_k` means at least one success among `k`; `pass_all_k` is the portable
 identifier for `pass^k`, where all selected attempts succeed. Ratios retain

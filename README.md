@@ -25,7 +25,7 @@ become workflow, proof, route, memory, KAG, runtime, identity, or owner truth.
 
 | Concern | Authoritative surface | Weaker companions |
 | --- | --- | --- |
-| shared measurement grammar | `stats/measurement-contract/` | pure implementation, local packets, MCP representation |
+| shared measurement and outcome-observation grammar | `stats/measurement-contract/` | pure implementation, local packets, C10 producer adapters, MCP representation |
 | local-port compatibility and owner coverage | `stats/federation/` | workspace scans and consumer caches |
 | owner-local metric meaning | each owner's root `stats/port.manifest.json` | central inventory and cross-repo views |
 | receipt admission | `stats/intake-contract/` and `schemas/stats-event-envelope.schema.json` | examples, live registry, generated summaries |
@@ -33,7 +33,7 @@ become workflow, proof, route, memory, KAG, runtime, identity, or owner truth.
 | non-catalog stats contracts | `stats/operation-contracts/active/*.operation.json` | part-local payload and root compatibility routes |
 | operation ownership | `mechanics/topology.json` and nearest part cards | root compatibility routes |
 | repository callable procedure | `skills/aoa-stats/SKILL.md` and `skills/port.manifest.json` | managed OS user-profile copy |
-| executable measurement semantics | `stats/measurement-contract/` as source, `src/aoa_stats_builder/measurement.py` as pure implementation | validators and access adapters |
+| executable measurement semantics | `stats/measurement-contract/` as source, `src/aoa_stats_builder/measurement.py` and `src/aoa_stats_builder/outcome.py` as pure implementations | validators and access adapters |
 | stats read contract | `stats/surface-catalog/CODEX_MCP.md` | stack-owned `aoa-stats-mcp` implementation and project registration |
 | public contracts | catalog schemas under `schemas/` | examples and docs |
 | public derived output | `generated/*.min.json` | KAG indexes and consumer caches |
@@ -114,6 +114,8 @@ runtime.
 - `aoa-evals` owns bounded proof and verdict interpretation.
 - `aoa-stats` owns shared statistical compatibility, deterministic derivation,
   and the shape of its read models; local owners retain metric meaning.
+- C10 outcome receipts remain content-minimized owner observations; they grant
+  no causal, semantic, effect, or policy-training authority.
 - Missing, stale, rejected, or unregistered evidence stays visible; it is not
   converted into success or zero.
 - A count, trend, or window cannot by itself prove mastery, intent, causality,

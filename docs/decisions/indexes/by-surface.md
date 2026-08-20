@@ -61,6 +61,7 @@
 - [AOST-D-0004 - Live Admission Requires Refresh Observation](../AOST-D-0004-live-admission-requires-refresh-observation.md) (`docs/decisions/AOST-D-0004-live-admission-requires-refresh-observation.md`)
 - [AOST-D-0012 - Federated Measurement Ownership and Thin Access](../AOST-D-0012-federated-measurement-ownership-and-thin-access.md) (`docs/decisions/AOST-D-0012-federated-measurement-ownership-and-thin-access.md`)
 - [AOST-D-0014 - - Routing Owner Succession](../AOST-D-0014-routing-owner-succession.md) (`docs/decisions/AOST-D-0014-routing-owner-succession.md`)
+- [AOST-D-0018 - Memory Outcomes Remain Measurement, Not Authority](../AOST-D-0018-memory-outcomes-remain-measurement-not-authority.md) (`docs/decisions/AOST-D-0018-memory-outcomes-remain-measurement-not-authority.md`)
 
 ## mechanics/checkpoint
 
@@ -172,6 +173,7 @@
 
 - [AOST-D-0012 - Federated Measurement Ownership and Thin Access](../AOST-D-0012-federated-measurement-ownership-and-thin-access.md) (`docs/decisions/AOST-D-0012-federated-measurement-ownership-and-thin-access.md`)
 - [AOST-D-0014 - - Routing Owner Succession](../AOST-D-0014-routing-owner-succession.md) (`docs/decisions/AOST-D-0014-routing-owner-succession.md`)
+- [AOST-D-0018 - Memory Outcomes Remain Measurement, Not Authority](../AOST-D-0018-memory-outcomes-remain-measurement-not-authority.md) (`docs/decisions/AOST-D-0018-memory-outcomes-remain-measurement-not-authority.md`)
 
 ## stats/intake-contract
 
@@ -180,6 +182,7 @@
 ## stats/measurement-contract
 
 - [AOST-D-0012 - Federated Measurement Ownership and Thin Access](../AOST-D-0012-federated-measurement-ownership-and-thin-access.md) (`docs/decisions/AOST-D-0012-federated-measurement-ownership-and-thin-access.md`)
+- [AOST-D-0018 - Memory Outcomes Remain Measurement, Not Authority](../AOST-D-0018-memory-outcomes-remain-measurement-not-authority.md) (`docs/decisions/AOST-D-0018-memory-outcomes-remain-measurement-not-authority.md`)
 
 ## stats/operation-contracts
 
