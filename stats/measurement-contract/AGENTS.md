@@ -5,8 +5,9 @@ Route card for the shared measurement contract.
 ## Scope
 
 This branch owns the portable statistical grammar used to describe an
-owner-local measurement and one evidence-linked measurement packet. It owns
-compatibility rules for those shapes, not the meaning of any owner's metric.
+owner-local measurement, one evidence-linked measurement packet, and one
+content-minimized action/outcome observation. It owns compatibility rules for
+those shapes, not the meaning of any owner's metric, task result, or verdict.
 
 Read `README.md`, then the two source schemas. For executable behavior, follow
 the reciprocal Boundary Bridge part named by `stats/source_home.manifest.json`.
@@ -21,6 +22,11 @@ the reciprocal Boundary Bridge part named by `stats/source_home.manifest.json`.
   represented sample size.
 - A derived packet stays weaker than its owner evidence and any eval verdict it
   carries.
+- An outcome receipt records before/after action snapshots, use state,
+  terminal and delayed observations, costs, harm, confounders, accidental
+  success, and attribution uncertainty without asserting causality.
+- Unknown memory use or missing action snapshots remain unknown and cannot be
+  relabelled as success or admitted for training.
 - The schemas define shared shape only. Owner-local questions and definitions
   belong in the owner's root `stats/` port.
 
@@ -28,7 +34,7 @@ the reciprocal Boundary Bridge part named by `stats/source_home.manifest.json`.
 
 Do not place owner payloads, generated views, runtime state, raw traces, raw
 session material, or MCP implementation here. Do not add a global quality
-score or a write/action contract.
+score, causal verdict, policy-training grant, or write/action contract.
 
 ## Verification
 

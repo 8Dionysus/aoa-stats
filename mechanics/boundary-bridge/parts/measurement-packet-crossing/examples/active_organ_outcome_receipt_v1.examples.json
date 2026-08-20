@@ -1,0 +1,1022 @@
+{
+  "schema_version": "aoa_stats_active_organ_outcome_examples_v1",
+  "schema_ref": "stats/measurement-contract/outcome-receipt.schema.json",
+  "valid_cases": [
+    {
+      "case_id": "explicit_pull_observed_success",
+      "payload": {
+        "schema_version": "1.0.0",
+        "contract_id": "C10",
+        "contract_name": "OutcomeReceipt",
+        "receipt_id": "outcome-receipt:run-a",
+        "receipt_version": 1,
+        "idempotency_key": "outcome:run-a:v1",
+        "producer_owner": "abyss-stack",
+        "fact_owner": "task-owner",
+        "stats_schema_owner": "aoa-stats",
+        "tenant_id": "tenant:operator",
+        "consumer_id": "codex_owner_orientation_v0",
+        "run_id": "memory-run:a",
+        "task_ref": {
+          "owner_repo": "task-owner",
+          "artifact_ref": "repo:task-owner/tasks/task-a",
+          "artifact_version": "v1",
+          "artifact_digest": "sha256:7171717171717171717171717171717171717171717171717171717171717171"
+        },
+        "trigger_ref": {
+          "owner_repo": "task-owner",
+          "artifact_ref": "repo:task-owner/triggers/task-result",
+          "artifact_version": "v1",
+          "artifact_digest": "sha256:1111111111111111111111111111111111111111111111111111111111111111"
+        },
+        "anchor_ref": {
+          "owner_repo": "task-owner",
+          "artifact_ref": "repo:task-owner/anchors/task-a",
+          "artifact_version": "v3",
+          "artifact_digest": "sha256:2222222222222222222222222222222222222222222222222222222222222222"
+        },
+        "recall_intent_ref": {
+          "owner_repo": "aoa-sdk",
+          "artifact_ref": "receipt:aoa-sdk/recall-intent/run-a",
+          "artifact_version": "1.0.0",
+          "artifact_digest": "sha256:3333333333333333333333333333333333333333333333333333333333333333"
+        },
+        "recall_packet_refs": [
+          {
+            "owner_repo": "aoa-memo",
+            "artifact_ref": "receipt:aoa-memo/recall-packet/run-a",
+            "artifact_version": "1.0.0",
+            "artifact_digest": "sha256:4444444444444444444444444444444444444444444444444444444444444444"
+          }
+        ],
+        "intervention_decision_ref": null,
+        "runtime_delivery_ref": {
+          "owner_repo": "abyss-stack",
+          "artifact_ref": "receipt:abyss-stack/runtime-delivery/run-a",
+          "artifact_version": "1.0.0",
+          "artifact_digest": "sha256:5555555555555555555555555555555555555555555555555555555555555555"
+        },
+        "experiment_manifest_ref": {
+          "owner_repo": "aoa-evals",
+          "artifact_ref": "repo:aoa-evals/experiments/memory-abc-v1",
+          "artifact_version": "1.0.0",
+          "artifact_digest": "sha256:6666666666666666666666666666666666666666666666666666666666666666"
+        },
+        "model_prompt_provider_hardware_pin_ref": {
+          "owner_repo": "aoa-evals",
+          "artifact_ref": "receipt:aoa-evals/model-pin/run-a",
+          "artifact_version": "1.0.0",
+          "artifact_digest": "sha256:7777777777777777777777777777777777777777777777777777777777777777"
+        },
+        "host_observation_refs": [
+          {
+            "owner_repo": "abyss-machine",
+            "artifact_ref": "receipt:abyss-machine/resources/run-a",
+            "artifact_version": "1.0.0",
+            "artifact_digest": "sha256:7272727272727272727272727272727272727272727272727272727272727272"
+          }
+        ],
+        "experiment_assignment": {
+          "design": "randomized_holdout",
+          "arm_id": "B",
+          "assignment_digest": "sha256:7373737373737373737373737373737373737373737373737373737373737373",
+          "holdout": false,
+          "always_shadow_counterfactual_ref": {
+            "owner_repo": "aoa-evals",
+            "artifact_ref": "receipt:aoa-evals/always-shadow/run-a",
+            "artifact_version": "1.0.0",
+            "artifact_digest": "sha256:7474747474747474747474747474747474747474747474747474747474747474"
+          }
+        },
+        "exact_effect_binding_ref": {
+          "owner_repo": "task-owner",
+          "artifact_ref": "receipt:task-owner/effect-binding/run-a",
+          "artifact_version": "v1",
+          "artifact_digest": "sha256:8888888888888888888888888888888888888888888888888888888888888888"
+        },
+        "memory_used": true,
+        "action_before_memory": {
+          "phase": "before_memory",
+          "observed_at": "2026-07-28T19:00:00-06:00",
+          "completeness": "complete",
+          "decision_state": "candidate",
+          "action_class": "bounded-task-operation",
+          "target_ref": {
+            "owner_repo": "task-owner",
+            "artifact_ref": "repo:task-owner/targets/task-a",
+            "artifact_version": "v3",
+            "artifact_digest": "sha256:9999999999999999999999999999999999999999999999999999999999999999"
+          },
+          "operation_id": "task-owner.operation-a",
+          "parameters_digest": "sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+          "source_snapshot_ref": {
+            "owner_repo": "task-owner",
+            "artifact_ref": "repo:task-owner/snapshots/task-a-before",
+            "artifact_version": "v3",
+            "artifact_digest": "sha256:bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb"
+          },
+          "approval_ref": null,
+          "rollback_ref": null,
+          "snapshot_digest": "sha256:cccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc",
+          "raw_content_included": false
+        },
+        "action_after_memory": {
+          "phase": "after_memory",
+          "observed_at": "2026-07-28T19:00:02-06:00",
+          "completeness": "complete",
+          "decision_state": "completed",
+          "action_class": "bounded-task-operation",
+          "target_ref": {
+            "owner_repo": "task-owner",
+            "artifact_ref": "repo:task-owner/targets/task-a",
+            "artifact_version": "v3",
+            "artifact_digest": "sha256:9999999999999999999999999999999999999999999999999999999999999999"
+          },
+          "operation_id": "task-owner.operation-a",
+          "parameters_digest": "sha256:dddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddd",
+          "source_snapshot_ref": {
+            "owner_repo": "task-owner",
+            "artifact_ref": "repo:task-owner/snapshots/task-a-current",
+            "artifact_version": "v4",
+            "artifact_digest": "sha256:eeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee"
+          },
+          "approval_ref": {
+            "owner_repo": "task-owner",
+            "artifact_ref": "receipt:task-owner/approvals/run-a",
+            "artifact_version": "v1",
+            "artifact_digest": "sha256:ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff"
+          },
+          "rollback_ref": {
+            "owner_repo": "task-owner",
+            "artifact_ref": "repo:task-owner/rollback/operation-a",
+            "artifact_version": "v2",
+            "artifact_digest": "sha256:1010101010101010101010101010101010101010101010101010101010101010"
+          },
+          "snapshot_digest": "sha256:1212121212121212121212121212121212121212121212121212121212121212",
+          "raw_content_included": false
+        },
+        "terminal_outcome": {
+          "outcome_id": "task-outcome:run-a",
+          "kind": "terminal",
+          "state": "success",
+          "observed_at": "2026-07-28T19:00:05-06:00",
+          "expected_at": null,
+          "owner_fact_ref": {
+            "owner_repo": "task-owner",
+            "artifact_ref": "receipt:task-owner/outcomes/run-a",
+            "artifact_version": "v1",
+            "artifact_digest": "sha256:1313131313131313131313131313131313131313131313131313131313131313"
+          },
+          "task_owner_acceptance": true,
+          "quality_measurement_refs": [
+            {
+              "owner_repo": "task-owner",
+              "artifact_ref": "packet:task-owner/quality/run-a",
+              "artifact_version": "1.0.0",
+              "artifact_digest": "sha256:1414141414141414141414141414141414141414141414141414141414141414"
+            }
+          ],
+          "raw_content_included": false
+        },
+        "delayed_outcome_posture": "none_expected",
+        "delayed_outcomes": [],
+        "confounders": [],
+        "accidental_success": {
+          "value": false,
+          "detection_basis": "none",
+          "evidence_refs": []
+        },
+        "harm": {
+          "observed": false,
+          "severity": "none",
+          "harm_refs": [],
+          "immediate_stop_triggered": false
+        },
+        "cost_observations": [
+          {
+            "measurement_id": "task-owner/latency-ms",
+            "category": "latency",
+            "status": "observed",
+            "unit": "ms",
+            "number": 5000,
+            "sample_size": 1,
+            "measurement_packet_ref": {
+              "owner_repo": "task-owner",
+              "artifact_ref": "packet:task-owner/latency/run-a",
+              "artifact_version": "1.0.0",
+              "artifact_digest": "sha256:1515151515151515151515151515151515151515151515151515151515151515"
+            }
+          },
+          {
+            "measurement_id": "task-owner/token-count",
+            "category": "tokens",
+            "status": "observed",
+            "unit": "token",
+            "number": 850,
+            "sample_size": 1,
+            "measurement_packet_ref": {
+              "owner_repo": "task-owner",
+              "artifact_ref": "packet:task-owner/tokens/run-a",
+              "artifact_version": "1.0.0",
+              "artifact_digest": "sha256:1616161616161616161616161616161616161616161616161616161616161616"
+            }
+          }
+        ],
+        "evaluator": {
+          "evaluator_id": "aoa-evals.independent-judge.phase6",
+          "owner_repo": "aoa-evals",
+          "role": "independent_judge",
+          "evidence_ref": {
+            "owner_repo": "aoa-evals",
+            "artifact_ref": "receipt:aoa-evals/judge/run-a",
+            "artifact_version": "1.0.0",
+            "artifact_digest": "sha256:7575757575757575757575757575757575757575757575757575757575757575"
+          }
+        },
+        "operator_intervention": {
+          "occurred": false,
+          "intervention_class": "none",
+          "evidence_refs": [],
+          "time_measurement_ref": null
+        },
+        "evaluation_posture": {
+          "eval_plane_status": "available",
+          "independent_judge_ref": {
+            "owner_repo": "aoa-evals",
+            "artifact_ref": "receipt:aoa-evals/judge/run-a",
+            "artifact_version": "1.0.0",
+            "artifact_digest": "sha256:7575757575757575757575757575757575757575757575757575757575757575"
+          },
+          "reward_hacking_check_ref": {
+            "owner_repo": "aoa-evals",
+            "artifact_ref": "receipt:aoa-evals/reward-hacking/run-a",
+            "artifact_version": "1.0.0",
+            "artifact_digest": "sha256:7676767676767676767676767676767676767676767676767676767676767676"
+          },
+          "fairness_tenant_skew_ref": {
+            "owner_repo": "aoa-evals",
+            "artifact_ref": "receipt:aoa-evals/fairness/run-a",
+            "artifact_version": "1.0.0",
+            "artifact_digest": "sha256:7777777777777777777777777777777777777777777777777777777777777777"
+          },
+          "model_version_stratum_ref": {
+            "owner_repo": "aoa-evals",
+            "artifact_ref": "receipt:aoa-evals/model-stratum/run-a",
+            "artifact_version": "1.0.0",
+            "artifact_digest": "sha256:7878787878787878787878787878787878787878787878787878787878787878"
+          },
+          "access_count_used_as_utility": false,
+          "policy_update_state": "proposal_only",
+          "semantic_memory_transition_allowed": false
+        },
+        "attribution": {
+          "status": "supported",
+          "confidence": "medium",
+          "basis": "randomized_evidence",
+          "eval_verdict_ref": {
+            "owner_repo": "aoa-evals",
+            "artifact_ref": "receipt:aoa-evals/judge/run-a",
+            "artifact_version": "1.0.0",
+            "artifact_digest": "sha256:7575757575757575757575757575757575757575757575757575757575757575"
+          },
+          "counterfactual_ref": {
+            "owner_repo": "aoa-evals",
+            "artifact_ref": "receipt:aoa-evals/always-shadow/run-a",
+            "artifact_version": "1.0.0",
+            "artifact_digest": "sha256:7474747474747474747474747474747474747474747474747474747474747474"
+          },
+          "causal_claim": "forbidden"
+        },
+        "source_refs": [
+          {
+            "owner_repo": "task-owner",
+            "artifact_ref": "repo:task-owner/tasks/task-a",
+            "artifact_version": "v1",
+            "artifact_digest": "sha256:7171717171717171717171717171717171717171717171717171717171717171"
+          },
+          {
+            "owner_repo": "task-owner",
+            "artifact_ref": "receipt:task-owner/outcomes/run-a",
+            "artifact_version": "v1",
+            "artifact_digest": "sha256:1313131313131313131313131313131313131313131313131313131313131313"
+          },
+          {
+            "owner_repo": "abyss-stack",
+            "artifact_ref": "receipt:abyss-stack/runtime-delivery/run-a",
+            "artifact_version": "1.0.0",
+            "artifact_digest": "sha256:5555555555555555555555555555555555555555555555555555555555555555"
+          }
+        ],
+        "policy_pin": {
+          "policy_id": "aoa-memo.active-organ-influence",
+          "policy_version": "1.0.0",
+          "decision_ref": "repo:aoa-memo/policies/active-organ-v1",
+          "policy_digest": "sha256:1717171717171717171717171717171717171717171717171717171717171717"
+        },
+        "privacy_class": "D1",
+        "retention_until": "2026-10-26T19:00:05-06:00",
+        "validation_status": "valid",
+        "produced_at": "2026-07-28T19:00:06-06:00",
+        "content_digest": "sha256:1a97cc04f83b0ecb18e0f420ba0250a8a3dbfc7951a3dd389996496c99521416",
+        "raw_content_included": false,
+        "payload_refs_only": true,
+        "semantic_authority": "none",
+        "effect_authority": "none",
+        "training_use": "forbidden"
+      }
+    },
+    {
+      "case_id": "control_arm_with_pending_delayed_outcome",
+      "payload": {
+        "schema_version": "1.0.0",
+        "contract_id": "C10",
+        "contract_name": "OutcomeReceipt",
+        "receipt_id": "outcome-receipt:run-b",
+        "receipt_version": 1,
+        "idempotency_key": "outcome:run-b:v1",
+        "producer_owner": "task-owner",
+        "fact_owner": "task-owner",
+        "stats_schema_owner": "aoa-stats",
+        "tenant_id": "tenant:operator",
+        "consumer_id": "codex_owner_orientation_v0",
+        "run_id": "memory-run:b",
+        "task_ref": {
+          "owner_repo": "task-owner",
+          "artifact_ref": "repo:task-owner/tasks/task-b",
+          "artifact_version": "v1",
+          "artifact_digest": "sha256:7979797979797979797979797979797979797979797979797979797979797979"
+        },
+        "trigger_ref": {
+          "owner_repo": "task-owner",
+          "artifact_ref": "repo:task-owner/triggers/task-result",
+          "artifact_version": "v1",
+          "artifact_digest": "sha256:1919191919191919191919191919191919191919191919191919191919191919"
+        },
+        "anchor_ref": {
+          "owner_repo": "task-owner",
+          "artifact_ref": "repo:task-owner/anchors/task-b",
+          "artifact_version": "v1",
+          "artifact_digest": "sha256:2020202020202020202020202020202020202020202020202020202020202020"
+        },
+        "recall_intent_ref": null,
+        "recall_packet_refs": [],
+        "intervention_decision_ref": null,
+        "runtime_delivery_ref": null,
+        "experiment_manifest_ref": {
+          "owner_repo": "aoa-evals",
+          "artifact_ref": "repo:aoa-evals/experiments/memory-abc-v1",
+          "artifact_version": "1.0.0",
+          "artifact_digest": "sha256:2121212121212121212121212121212121212121212121212121212121212121"
+        },
+        "model_prompt_provider_hardware_pin_ref": {
+          "owner_repo": "aoa-evals",
+          "artifact_ref": "receipt:aoa-evals/model-pin/run-b",
+          "artifact_version": "1.0.0",
+          "artifact_digest": "sha256:2222222222222222222222222222222222222222222222222222222222222222"
+        },
+        "host_observation_refs": [
+          {
+            "owner_repo": "abyss-machine",
+            "artifact_ref": "receipt:abyss-machine/resources/run-b",
+            "artifact_version": "1.0.0",
+            "artifact_digest": "sha256:8080808080808080808080808080808080808080808080808080808080808080"
+          }
+        ],
+        "experiment_assignment": {
+          "design": "randomized_holdout",
+          "arm_id": "A",
+          "assignment_digest": "sha256:8181818181818181818181818181818181818181818181818181818181818181",
+          "holdout": true,
+          "always_shadow_counterfactual_ref": {
+            "owner_repo": "aoa-evals",
+            "artifact_ref": "receipt:aoa-evals/always-shadow/run-b",
+            "artifact_version": "1.0.0",
+            "artifact_digest": "sha256:8282828282828282828282828282828282828282828282828282828282828282"
+          }
+        },
+        "exact_effect_binding_ref": null,
+        "memory_used": false,
+        "action_before_memory": {
+          "phase": "before_memory",
+          "observed_at": "2026-07-28T19:10:00-06:00",
+          "completeness": "complete",
+          "decision_state": "no_action",
+          "action_class": null,
+          "target_ref": null,
+          "operation_id": null,
+          "parameters_digest": null,
+          "source_snapshot_ref": null,
+          "approval_ref": null,
+          "rollback_ref": null,
+          "snapshot_digest": "sha256:2323232323232323232323232323232323232323232323232323232323232323",
+          "raw_content_included": false
+        },
+        "action_after_memory": {
+          "phase": "after_memory",
+          "observed_at": "2026-07-28T19:10:01-06:00",
+          "completeness": "complete",
+          "decision_state": "no_action",
+          "action_class": null,
+          "target_ref": null,
+          "operation_id": null,
+          "parameters_digest": null,
+          "source_snapshot_ref": null,
+          "approval_ref": null,
+          "rollback_ref": null,
+          "snapshot_digest": "sha256:2424242424242424242424242424242424242424242424242424242424242424",
+          "raw_content_included": false
+        },
+        "terminal_outcome": {
+          "outcome_id": "task-outcome:run-b",
+          "kind": "terminal",
+          "state": "failure",
+          "observed_at": "2026-07-28T19:10:05-06:00",
+          "expected_at": null,
+          "owner_fact_ref": {
+            "owner_repo": "task-owner",
+            "artifact_ref": "receipt:task-owner/outcomes/run-b",
+            "artifact_version": "v1",
+            "artifact_digest": "sha256:2525252525252525252525252525252525252525252525252525252525252525"
+          },
+          "task_owner_acceptance": true,
+          "quality_measurement_refs": [],
+          "raw_content_included": false
+        },
+        "delayed_outcome_posture": "pending",
+        "delayed_outcomes": [
+          {
+            "outcome_id": "delayed-outcome:run-b:retention",
+            "kind": "delayed",
+            "state": "pending",
+            "observed_at": null,
+            "expected_at": "2026-08-04T19:10:05-06:00",
+            "owner_fact_ref": null,
+            "task_owner_acceptance": "unknown",
+            "quality_measurement_refs": [],
+            "raw_content_included": false
+          }
+        ],
+        "confounders": [],
+        "accidental_success": {
+          "value": false,
+          "detection_basis": "none",
+          "evidence_refs": []
+        },
+        "harm": {
+          "observed": false,
+          "severity": "none",
+          "harm_refs": [],
+          "immediate_stop_triggered": false
+        },
+        "cost_observations": [
+          {
+            "measurement_id": "task-owner/latency-ms",
+            "category": "latency",
+            "status": "unknown",
+            "unit": "ms",
+            "number": null,
+            "sample_size": 0,
+            "measurement_packet_ref": null
+          }
+        ],
+        "evaluator": {
+          "evaluator_id": "aoa-evals.independent-judge.phase6",
+          "owner_repo": "aoa-evals",
+          "role": "independent_judge",
+          "evidence_ref": {
+            "owner_repo": "aoa-evals",
+            "artifact_ref": "receipt:aoa-evals/judge/run-b",
+            "artifact_version": "1.0.0",
+            "artifact_digest": "sha256:8383838383838383838383838383838383838383838383838383838383838383"
+          }
+        },
+        "operator_intervention": {
+          "occurred": false,
+          "intervention_class": "none",
+          "evidence_refs": [],
+          "time_measurement_ref": null
+        },
+        "evaluation_posture": {
+          "eval_plane_status": "available",
+          "independent_judge_ref": {
+            "owner_repo": "aoa-evals",
+            "artifact_ref": "receipt:aoa-evals/judge/run-b",
+            "artifact_version": "1.0.0",
+            "artifact_digest": "sha256:8383838383838383838383838383838383838383838383838383838383838383"
+          },
+          "reward_hacking_check_ref": {
+            "owner_repo": "aoa-evals",
+            "artifact_ref": "receipt:aoa-evals/reward-hacking/run-b",
+            "artifact_version": "1.0.0",
+            "artifact_digest": "sha256:8484848484848484848484848484848484848484848484848484848484848484"
+          },
+          "fairness_tenant_skew_ref": {
+            "owner_repo": "aoa-evals",
+            "artifact_ref": "receipt:aoa-evals/fairness/run-b",
+            "artifact_version": "1.0.0",
+            "artifact_digest": "sha256:8585858585858585858585858585858585858585858585858585858585858585"
+          },
+          "model_version_stratum_ref": {
+            "owner_repo": "aoa-evals",
+            "artifact_ref": "receipt:aoa-evals/model-stratum/run-b",
+            "artifact_version": "1.0.0",
+            "artifact_digest": "sha256:8686868686868686868686868686868686868686868686868686868686868686"
+          },
+          "access_count_used_as_utility": false,
+          "policy_update_state": "proposal_only",
+          "semantic_memory_transition_allowed": false
+        },
+        "attribution": {
+          "status": "not_evaluated",
+          "confidence": "none",
+          "basis": "not_applicable",
+          "eval_verdict_ref": null,
+          "counterfactual_ref": null,
+          "causal_claim": "forbidden"
+        },
+        "source_refs": [
+          {
+            "owner_repo": "task-owner",
+            "artifact_ref": "repo:task-owner/tasks/task-b",
+            "artifact_version": "v1",
+            "artifact_digest": "sha256:7979797979797979797979797979797979797979797979797979797979797979"
+          },
+          {
+            "owner_repo": "task-owner",
+            "artifact_ref": "receipt:task-owner/outcomes/run-b",
+            "artifact_version": "v1",
+            "artifact_digest": "sha256:2525252525252525252525252525252525252525252525252525252525252525"
+          }
+        ],
+        "policy_pin": {
+          "policy_id": "aoa-evals.memory-control-arm",
+          "policy_version": "1.0.0",
+          "decision_ref": "repo:aoa-evals/experiments/memory-abc-v1",
+          "policy_digest": "sha256:2626262626262626262626262626262626262626262626262626262626262626"
+        },
+        "privacy_class": "D0",
+        "retention_until": "2026-10-26T19:10:05-06:00",
+        "validation_status": "partial",
+        "produced_at": "2026-07-28T19:10:06-06:00",
+        "content_digest": "sha256:3a5adc585e7141882b3d561a4c4fa641a56b16a2e368009a5bc9cac8517752a6",
+        "raw_content_included": false,
+        "payload_refs_only": true,
+        "semantic_authority": "none",
+        "effect_authority": "none",
+        "training_use": "forbidden"
+      }
+    },
+    {
+      "case_id": "unknown_use_and_attribution_remain_unknown",
+      "payload": {
+        "schema_version": "1.0.0",
+        "contract_id": "C10",
+        "contract_name": "OutcomeReceipt",
+        "receipt_id": "outcome-receipt:run-c",
+        "receipt_version": 1,
+        "idempotency_key": "outcome:run-c:v1",
+        "producer_owner": "consumer-adapter",
+        "fact_owner": "task-owner",
+        "stats_schema_owner": "aoa-stats",
+        "tenant_id": "tenant:operator",
+        "consumer_id": "codex_owner_orientation_v0",
+        "run_id": "memory-run:c",
+        "task_ref": {
+          "owner_repo": "task-owner",
+          "artifact_ref": "repo:task-owner/tasks/task-c",
+          "artifact_version": "v1",
+          "artifact_digest": "sha256:8787878787878787878787878787878787878787878787878787878787878787"
+        },
+        "trigger_ref": {
+          "owner_repo": "task-owner",
+          "artifact_ref": "repo:task-owner/triggers/task-result",
+          "artifact_version": "v1",
+          "artifact_digest": "sha256:2828282828282828282828282828282828282828282828282828282828282828"
+        },
+        "anchor_ref": {
+          "owner_repo": "task-owner",
+          "artifact_ref": "repo:task-owner/anchors/task-c",
+          "artifact_version": "v1",
+          "artifact_digest": "sha256:2929292929292929292929292929292929292929292929292929292929292929"
+        },
+        "recall_intent_ref": null,
+        "recall_packet_refs": [],
+        "intervention_decision_ref": null,
+        "runtime_delivery_ref": null,
+        "experiment_manifest_ref": null,
+        "model_prompt_provider_hardware_pin_ref": null,
+        "host_observation_refs": [],
+        "experiment_assignment": {
+          "design": "not_assigned",
+          "arm_id": null,
+          "assignment_digest": null,
+          "holdout": "unknown",
+          "always_shadow_counterfactual_ref": null
+        },
+        "exact_effect_binding_ref": null,
+        "memory_used": "unknown",
+        "action_before_memory": {
+          "phase": "before_memory",
+          "observed_at": "2026-07-28T19:20:00-06:00",
+          "completeness": "unknown",
+          "decision_state": "unknown",
+          "action_class": null,
+          "target_ref": null,
+          "operation_id": null,
+          "parameters_digest": null,
+          "source_snapshot_ref": null,
+          "approval_ref": null,
+          "rollback_ref": null,
+          "snapshot_digest": "sha256:3030303030303030303030303030303030303030303030303030303030303030",
+          "raw_content_included": false
+        },
+        "action_after_memory": {
+          "phase": "after_memory",
+          "observed_at": "2026-07-28T19:20:01-06:00",
+          "completeness": "unknown",
+          "decision_state": "unknown",
+          "action_class": null,
+          "target_ref": null,
+          "operation_id": null,
+          "parameters_digest": null,
+          "source_snapshot_ref": null,
+          "approval_ref": null,
+          "rollback_ref": null,
+          "snapshot_digest": "sha256:3131313131313131313131313131313131313131313131313131313131313131",
+          "raw_content_included": false
+        },
+        "terminal_outcome": {
+          "outcome_id": "task-outcome:run-c",
+          "kind": "terminal",
+          "state": "unknown",
+          "observed_at": null,
+          "expected_at": null,
+          "owner_fact_ref": null,
+          "task_owner_acceptance": "unknown",
+          "quality_measurement_refs": [],
+          "raw_content_included": false
+        },
+        "delayed_outcome_posture": "unknown",
+        "delayed_outcomes": [],
+        "confounders": [
+          {
+            "confounder_id": "measurement-gap:run-c",
+            "class": "measurement_gap",
+            "direction": "unknown",
+            "materiality": "known",
+            "evidence_refs": []
+          }
+        ],
+        "accidental_success": {
+          "value": "unknown",
+          "detection_basis": "unknown",
+          "evidence_refs": []
+        },
+        "harm": {
+          "observed": "unknown",
+          "severity": "unknown",
+          "harm_refs": [],
+          "immediate_stop_triggered": "unknown"
+        },
+        "cost_observations": [],
+        "evaluator": {
+          "evaluator_id": "not-evaluated",
+          "owner_repo": "aoa-evals",
+          "role": "not_evaluated",
+          "evidence_ref": null
+        },
+        "operator_intervention": {
+          "occurred": "unknown",
+          "intervention_class": "unknown",
+          "evidence_refs": [],
+          "time_measurement_ref": null
+        },
+        "evaluation_posture": {
+          "eval_plane_status": "unavailable",
+          "independent_judge_ref": null,
+          "reward_hacking_check_ref": null,
+          "fairness_tenant_skew_ref": null,
+          "model_version_stratum_ref": null,
+          "access_count_used_as_utility": false,
+          "policy_update_state": "frozen",
+          "semantic_memory_transition_allowed": false
+        },
+        "attribution": {
+          "status": "unknown",
+          "confidence": "unknown",
+          "basis": "insufficient_snapshots",
+          "eval_verdict_ref": null,
+          "counterfactual_ref": null,
+          "causal_claim": "forbidden"
+        },
+        "source_refs": [
+          {
+            "owner_repo": "task-owner",
+            "artifact_ref": "repo:task-owner/tasks/task-c",
+            "artifact_version": "v1",
+            "artifact_digest": "sha256:8787878787878787878787878787878787878787878787878787878787878787"
+          },
+          {
+            "owner_repo": "consumer-adapter",
+            "artifact_ref": "receipt:consumer-adapter/outcomes/run-c",
+            "artifact_version": "v1",
+            "artifact_digest": "sha256:3232323232323232323232323232323232323232323232323232323232323232"
+          }
+        ],
+        "policy_pin": {
+          "policy_id": "aoa-stats.outcome-receipt-minimization",
+          "policy_version": "1.0.0",
+          "decision_ref": "repo:aoa-stats/stats/measurement-contract/outcome-receipt-v1",
+          "policy_digest": "sha256:3333333333333333333333333333333333333333333333333333333333333333"
+        },
+        "privacy_class": "D1",
+        "retention_until": "2026-08-04T19:20:01-06:00",
+        "validation_status": "partial",
+        "produced_at": "2026-07-28T19:20:02-06:00",
+        "content_digest": "sha256:0aa023476408f1f3392e256f858d4980ef96767867f23c83dde5087d4c4938bd",
+        "raw_content_included": false,
+        "payload_refs_only": true,
+        "semantic_authority": "none",
+        "effect_authority": "none",
+        "training_use": "forbidden"
+      }
+    }
+  ],
+  "invalid_cases": [
+    {
+      "case_id": "unknown_schema_version",
+      "base_case": "explicit_pull_observed_success",
+      "mutation": {
+        "op": "replace",
+        "path": "/schema_version",
+        "value": "2.0.0"
+      },
+      "expected_failure": "schema"
+    },
+    {
+      "case_id": "unknown_field",
+      "base_case": "explicit_pull_observed_success",
+      "mutation": {
+        "op": "add",
+        "path": "/memory_autonomy",
+        "value": true
+      },
+      "expected_failure": "schema"
+    },
+    {
+      "case_id": "used_memory_without_packet",
+      "base_case": "explicit_pull_observed_success",
+      "mutation": {
+        "op": "replace",
+        "path": "/recall_packet_refs",
+        "value": []
+      },
+      "expected_failure": "memory_used true requires"
+    },
+    {
+      "case_id": "control_arm_carries_memory_packet",
+      "base_case": "explicit_pull_observed_success",
+      "mutation": {
+        "op": "replace",
+        "path": "/memory_used",
+        "value": false
+      },
+      "expected_failure": "memory_used false forbids"
+    },
+    {
+      "case_id": "action_without_effect_binding",
+      "base_case": "explicit_pull_observed_success",
+      "mutation": {
+        "op": "replace",
+        "path": "/exact_effect_binding_ref",
+        "value": null
+      },
+      "expected_failure": "exact_effect_binding_ref"
+    },
+    {
+      "case_id": "effect_binding_owner_mismatch",
+      "base_case": "explicit_pull_observed_success",
+      "mutation": {
+        "op": "replace",
+        "path": "/exact_effect_binding_ref/owner_repo",
+        "value": "aoa-sdk"
+      },
+      "expected_failure": "exact effect binding owner must match"
+    },
+    {
+      "case_id": "observed_cost_without_value",
+      "base_case": "explicit_pull_observed_success",
+      "mutation": {
+        "op": "replace",
+        "path": "/cost_observations/0/number",
+        "value": null
+      },
+      "expected_failure": "observed cost requires"
+    },
+    {
+      "case_id": "accidental_success_without_evidence",
+      "base_case": "explicit_pull_observed_success",
+      "mutation": {
+        "op": "replace",
+        "path": "/accidental_success/value",
+        "value": true
+      },
+      "expected_failure": "accidental_success true requires"
+    },
+    {
+      "case_id": "harm_true_with_none_severity",
+      "base_case": "explicit_pull_observed_success",
+      "mutation": {
+        "op": "replace",
+        "path": "/harm/observed",
+        "value": true
+      },
+      "expected_failure": "observed harm requires"
+    },
+    {
+      "case_id": "none_expected_with_delayed_item",
+      "base_case": "control_arm_with_pending_delayed_outcome",
+      "mutation": {
+        "op": "replace",
+        "path": "/delayed_outcome_posture",
+        "value": "none_expected"
+      },
+      "expected_failure": "none_expected delayed posture"
+    },
+    {
+      "case_id": "unknown_use_claims_supported_attribution",
+      "base_case": "unknown_use_and_attribution_remain_unknown",
+      "mutation": {
+        "op": "replace",
+        "path": "/attribution/status",
+        "value": "supported"
+      },
+      "expected_failure": "memory_used unknown requires"
+    },
+    {
+      "case_id": "raw_content_crosses",
+      "base_case": "explicit_pull_observed_success",
+      "mutation": {
+        "op": "replace",
+        "path": "/raw_content_included",
+        "value": true
+      },
+      "expected_failure": "schema"
+    },
+    {
+      "case_id": "host_local_source_ref",
+      "base_case": "explicit_pull_observed_success",
+      "mutation": {
+        "op": "replace",
+        "path": "/source_refs/0/artifact_ref",
+        "value": "/home/operator/private-outcome.json"
+      },
+      "expected_failure": "non-portable artifact_ref"
+    },
+    {
+      "case_id": "training_use_widened",
+      "base_case": "explicit_pull_observed_success",
+      "mutation": {
+        "op": "replace",
+        "path": "/training_use",
+        "value": "allowed"
+      },
+      "expected_failure": "schema"
+    },
+    {
+      "case_id": "swapped_action_phase",
+      "base_case": "explicit_pull_observed_success",
+      "mutation": {
+        "op": "replace",
+        "path": "/action_after_memory/phase",
+        "value": "before_memory"
+      },
+      "expected_failure": "after_memory snapshot"
+    },
+    {
+      "case_id": "terminal_pending",
+      "base_case": "unknown_use_and_attribution_remain_unknown",
+      "mutation": {
+        "op": "replace",
+        "path": "/terminal_outcome/state",
+        "value": "pending"
+      },
+      "expected_failure": "terminal_outcome cannot use pending"
+    },
+    {
+      "case_id": "terminal_fact_owner_mismatch",
+      "base_case": "explicit_pull_observed_success",
+      "mutation": {
+        "op": "replace",
+        "path": "/terminal_outcome/owner_fact_ref/owner_repo",
+        "value": "aoa-stats"
+      },
+      "expected_failure": "terminal owner_fact_ref owner must match"
+    },
+    {
+      "case_id": "duplicate_source_ref",
+      "base_case": "explicit_pull_observed_success",
+      "mutation": {
+        "op": "replace",
+        "path": "/source_refs/2",
+        "value": {
+          "owner_repo": "task-owner",
+          "artifact_ref": "receipt:task-owner/outcomes/run-a",
+          "artifact_version": "v1",
+          "artifact_digest": "sha256:1313131313131313131313131313131313131313131313131313131313131313"
+        }
+      },
+      "expected_failure": "source_refs must contain unique"
+    },
+    {
+      "case_id": "holdout_arm_uses_memory",
+      "base_case": "explicit_pull_observed_success",
+      "mutation": {
+        "op": "replace",
+        "path": "/experiment_assignment/holdout",
+        "value": true
+      },
+      "expected_failure": "randomized holdout arm must keep memory_used false"
+    },
+    {
+      "case_id": "randomized_assignment_loses_shadow_counterfactual",
+      "base_case": "explicit_pull_observed_success",
+      "mutation": {
+        "op": "replace",
+        "path": "/experiment_assignment/always_shadow_counterfactual_ref",
+        "value": null
+      },
+      "expected_failure": "randomized holdout requires"
+    },
+    {
+      "case_id": "supported_attribution_loses_independent_judge",
+      "base_case": "explicit_pull_observed_success",
+      "mutation": {
+        "op": "replace",
+        "path": "/evaluation_posture/independent_judge_ref",
+        "value": null
+      },
+      "expected_failure": "supported attribution requires"
+    },
+    {
+      "case_id": "unavailable_eval_plane_does_not_freeze_policy",
+      "base_case": "unknown_use_and_attribution_remain_unknown",
+      "mutation": {
+        "op": "replace",
+        "path": "/evaluation_posture/policy_update_state",
+        "value": "proposal_only"
+      },
+      "expected_failure": "must freeze policy"
+    },
+    {
+      "case_id": "access_count_becomes_utility",
+      "base_case": "explicit_pull_observed_success",
+      "mutation": {
+        "op": "replace",
+        "path": "/evaluation_posture/access_count_used_as_utility",
+        "value": true
+      },
+      "expected_failure": "schema"
+    },
+    {
+      "case_id": "outcome_score_authorizes_semantic_transition",
+      "base_case": "explicit_pull_observed_success",
+      "mutation": {
+        "op": "replace",
+        "path": "/evaluation_posture/semantic_memory_transition_allowed",
+        "value": true
+      },
+      "expected_failure": "schema"
+    },
+    {
+      "case_id": "no_operator_intervention_claims_correction",
+      "base_case": "explicit_pull_observed_success",
+      "mutation": {
+        "op": "replace",
+        "path": "/operator_intervention/intervention_class",
+        "value": "correction"
+      },
+      "expected_failure": "no operator intervention requires"
+    },
+    {
+      "case_id": "task_ref_owner_mismatch",
+      "base_case": "explicit_pull_observed_success",
+      "mutation": {
+        "op": "replace",
+        "path": "/task_ref/owner_repo",
+        "value": "aoa-stats"
+      },
+      "expected_failure": "task_ref owner must match"
+    },
+    {
+      "case_id": "evaluator_evidence_missing",
+      "base_case": "explicit_pull_observed_success",
+      "mutation": {
+        "op": "replace",
+        "path": "/evaluator/evidence_ref",
+        "value": null
+      },
+      "expected_failure": "evaluated receipt requires"
+    }
+  ]
+}

@@ -574,6 +574,8 @@
             "federation"
           ],
           "localized_payload_roots": [
+            "examples",
+            "schemas",
             "tests"
           ],
           "retained_root_routes": []

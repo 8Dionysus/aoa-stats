@@ -56,7 +56,8 @@ or source-owner facts. Those remain in the active routes named by
 
 ## Branch routes
 
-- `measurement-contract/` owns the portable measurement and packet grammar.
+- `measurement-contract/` owns the portable measurement, packet, and
+  content-minimized outcome-receipt grammar.
 - `federation/` owns local-port compatibility and the owner-level coverage
   inventory.
 - `intake-contract/` owns the shared stats receipt-envelope and event-family
