@@ -95,6 +95,7 @@
         "stats/measurement-contract/README.md",
         "stats/measurement-contract/measurement-contract.schema.json",
         "stats/measurement-contract/measurement-packet.schema.json",
+        "stats/measurement-contract/validation-telemetry-packet.schema.json",
         "stats/measurement-contract/outcome-receipt.schema.json",
         "stats/measurement-contract/packet-read-request.schema.json",
         "stats/measurement-contract/packet-read-result.schema.json",
@@ -104,6 +105,7 @@
       "public_contract_routes": [
         "stats/measurement-contract/measurement-contract.schema.json",
         "stats/measurement-contract/measurement-packet.schema.json",
+        "stats/measurement-contract/validation-telemetry-packet.schema.json",
         "stats/measurement-contract/outcome-receipt.schema.json",
         "stats/measurement-contract/packet-read-request.schema.json",
         "stats/measurement-contract/packet-read-result.schema.json"
@@ -112,6 +114,7 @@
         "src/aoa_stats_builder/measurement.py",
         "src/aoa_stats_builder/outcome.py",
         "src/aoa_stats_builder/packet_read.py",
+        "src/aoa_stats_builder/validation_telemetry.py",
         "src/aoa_stats_builder/schema_validation.py"
       ],
       "read_only_access_routes": [
@@ -120,6 +123,7 @@
       "validator_routes": [
         "scripts/validate_stats_protocol.py",
         "tests/test_stats_protocol.py",
+        "tests/test_validation_telemetry.py",
         "mechanics/boundary-bridge/parts/measurement-packet-crossing/tests/test_measurement_packet_crossing.py",
         "mechanics/boundary-bridge/parts/measurement-packet-crossing/tests/test_active_organ_outcome_receipt.py"
       ],
@@ -148,20 +152,27 @@
         "stats/federation/AGENTS.md",
         "stats/federation/README.md",
         "stats/federation/local-port.schema.json",
+        "stats/federation/validation-telemetry-port.schema.json",
         "stats/federation/owner-inventory.schema.json",
-        "stats/federation/owner-inventory.json"
+        "stats/federation/owner-inventory.json",
+        "schemas/validation-telemetry-baseline.schema.json"
       ],
       "public_contract_routes": [
         "stats/federation/local-port.schema.json",
-        "stats/federation/owner-inventory.schema.json"
+        "stats/federation/validation-telemetry-port.schema.json",
+        "stats/federation/owner-inventory.schema.json",
+        "schemas/validation-telemetry-baseline.schema.json"
       ],
       "implementation_routes": [
         "src/aoa_stats_builder/utility.py",
+        "src/aoa_stats_builder/validation_telemetry.py",
+        "scripts/build_validation_telemetry_baseline.py",
         "scripts/validate_stats_protocol.py"
       ],
       "validator_routes": [
         "scripts/validate_stats_protocol.py",
         "tests/test_stats_protocol.py",
+        "tests/test_validation_telemetry.py",
         "mechanics/boundary-bridge/parts/measurement-packet-crossing/tests/test_measurement_packet_crossing.py",
         "mechanics/boundary-bridge/parts/measurement-packet-crossing/tests/test_outcome_qualified_utility.py",
         "mechanics/boundary-bridge/parts/measurement-packet-crossing/tests/test_agent_local_federation_aggregate.py"

@@ -1,0 +1,600 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://aoa-stats/stats/measurement-contract/validation-telemetry-packet.schema.json",
+  "title": "OS Abyss owner-safe validation telemetry packet",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema_version",
+    "contract_version",
+    "owner_repo",
+    "telemetry_port_ref",
+    "observation_id",
+    "observed_at",
+    "node",
+    "result",
+    "candidate_identity",
+    "environment_identity",
+    "metrics",
+    "cache_posture",
+    "receipt_posture",
+    "first_failure",
+    "rerun_amplification",
+    "source_coverage",
+    "provenance",
+    "posture"
+  ],
+  "properties": {
+    "schema_version": {
+      "const": "aoa_stats_validation_telemetry_packet_v1"
+    },
+    "contract_version": {
+      "type": "string",
+      "pattern": "^[0-9]+\\.[0-9]+\\.[0-9]+$"
+    },
+    "owner_repo": {
+      "type": "string",
+      "minLength": 1
+    },
+    "telemetry_port_ref": {
+      "type": "string",
+      "minLength": 1
+    },
+    "observation_id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "observed_at": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "node": {
+      "$ref": "#/$defs/node"
+    },
+    "result": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "status",
+        "exit_code"
+      ],
+      "properties": {
+        "status": {
+          "enum": [
+            "pass",
+            "fail",
+            "blocked",
+            "skipped",
+            "cancelled",
+            "unknown"
+          ]
+        },
+        "exit_code": {
+          "type": [
+            "integer",
+            "null"
+          ]
+        },
+        "result_ref": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "minLength": 1
+        }
+      }
+    },
+    "candidate_identity": {
+      "$ref": "#/$defs/identity"
+    },
+    "environment_identity": {
+      "$ref": "#/$defs/identity"
+    },
+    "metrics": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "wall_ms",
+        "cpu_ms",
+        "peak_rss_bytes",
+        "io_read_bytes",
+        "io_write_bytes"
+      ],
+      "properties": {
+        "wall_ms": {
+          "$ref": "#/$defs/metric"
+        },
+        "cpu_ms": {
+          "$ref": "#/$defs/metric"
+        },
+        "peak_rss_bytes": {
+          "$ref": "#/$defs/metric"
+        },
+        "io_read_bytes": {
+          "$ref": "#/$defs/metric"
+        },
+        "io_write_bytes": {
+          "$ref": "#/$defs/metric"
+        }
+      }
+    },
+    "cache_posture": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "status"
+      ],
+      "properties": {
+        "status": {
+          "enum": [
+            "hit",
+            "miss",
+            "bypassed",
+            "not_applicable",
+            "unknown"
+          ]
+        },
+        "key_digest": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "pattern": "^sha256:[0-9a-f]{64}$"
+        },
+        "receipt_ref": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "minLength": 1
+        }
+      }
+    },
+    "receipt_posture": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "status"
+      ],
+      "properties": {
+        "status": {
+          "enum": [
+            "emitted",
+            "not_emitted",
+            "rejected",
+            "missing",
+            "unknown"
+          ]
+        },
+        "receipt_ref": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "minLength": 1
+        }
+      }
+    },
+    "first_failure": {
+      "oneOf": [
+        {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "status"
+          ],
+          "properties": {
+            "status": {
+              "const": "none"
+            }
+          }
+        },
+        {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "status",
+            "node_id",
+            "failure_class",
+            "evidence_ref"
+          ],
+          "properties": {
+            "status": {
+              "const": "observed"
+            },
+            "node_id": {
+              "type": "string",
+              "minLength": 1
+            },
+            "failure_class": {
+              "type": "string",
+              "minLength": 1
+            },
+            "evidence_ref": {
+              "type": "string",
+              "minLength": 1
+            }
+          }
+        },
+        {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "status",
+            "reason"
+          ],
+          "properties": {
+            "status": {
+              "enum": [
+                "missing",
+                "unknown",
+                "stale"
+              ]
+            },
+            "reason": {
+              "type": "string",
+              "minLength": 1
+            }
+          }
+        }
+      ]
+    },
+    "rerun_amplification": {
+      "oneOf": [
+        {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "status"
+          ],
+          "properties": {
+            "status": {
+              "const": "not_applicable"
+            }
+          }
+        },
+        {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "status",
+            "attempt_count",
+            "distinct_operation_count",
+            "repeated_attempt_count",
+            "validation_attempt_count",
+            "validation_rerun_after_repair_count",
+            "attempts_per_distinct_operation"
+          ],
+          "properties": {
+            "status": {
+              "const": "observed"
+            },
+            "attempt_count": {
+              "type": "integer",
+              "minimum": 0
+            },
+            "distinct_operation_count": {
+              "type": "integer",
+              "minimum": 1
+            },
+            "repeated_attempt_count": {
+              "type": "integer",
+              "minimum": 0
+            },
+            "validation_attempt_count": {
+              "type": "integer",
+              "minimum": 0
+            },
+            "validation_rerun_after_repair_count": {
+              "type": "integer",
+              "minimum": 0
+            },
+            "attempts_per_distinct_operation": {
+              "type": "number",
+              "minimum": 0
+            }
+          }
+        },
+        {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "status",
+            "reason"
+          ],
+          "properties": {
+            "status": {
+              "enum": [
+                "missing",
+                "unknown",
+                "stale"
+              ]
+            },
+            "reason": {
+              "type": "string",
+              "minLength": 1
+            }
+          }
+        }
+      ]
+    },
+    "source_coverage": {
+      "oneOf": [
+        {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "status",
+            "expected_owner_count",
+            "observed_owner_count"
+          ],
+          "properties": {
+            "status": {
+              "enum": [
+                "complete",
+                "partial"
+              ]
+            },
+            "expected_owner_count": {
+              "type": "integer",
+              "minimum": 0
+            },
+            "observed_owner_count": {
+              "type": "integer",
+              "minimum": 0
+            },
+            "missing_owner_repos": {
+              "type": "array",
+              "uniqueItems": true,
+              "items": {
+                "type": "string",
+                "minLength": 1
+              }
+            }
+          }
+        },
+        {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "status",
+            "reason"
+          ],
+          "properties": {
+            "status": {
+              "enum": [
+                "missing",
+                "unknown",
+                "stale"
+              ]
+            },
+            "reason": {
+              "type": "string",
+              "minLength": 1
+            },
+            "missing_owner_repos": {
+              "type": "array",
+              "uniqueItems": true,
+              "items": {
+                "type": "string",
+                "minLength": 1
+              }
+            }
+          }
+        }
+      ]
+    },
+    "provenance": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "evidence_refs",
+        "derivation_ref",
+        "source_revision"
+      ],
+      "properties": {
+        "evidence_refs": {
+          "type": "array",
+          "minItems": 1,
+          "uniqueItems": true,
+          "items": {
+            "$ref": "#/$defs/evidence_ref"
+          }
+        },
+        "derivation_ref": {
+          "type": "string",
+          "minLength": 1
+        },
+        "source_revision": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "minLength": 1
+        }
+      }
+    },
+    "posture": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "freshness",
+        "live_state",
+        "privacy",
+        "raw_content_included"
+      ],
+      "properties": {
+        "freshness": {
+          "enum": [
+            "current",
+            "reference",
+            "stale",
+            "unknown"
+          ]
+        },
+        "live_state": {
+          "enum": [
+            "reference",
+            "live"
+          ]
+        },
+        "privacy": {
+          "enum": [
+            "public",
+            "internal",
+            "sensitive"
+          ]
+        },
+        "raw_content_included": {
+          "const": false
+        }
+      }
+    }
+  },
+  "$defs": {
+    "digest": {
+      "type": "string",
+      "pattern": "^sha256:[0-9a-f]{64}$"
+    },
+    "identity": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "kind",
+        "source",
+        "digest"
+      ],
+      "properties": {
+        "kind": {
+          "type": "string",
+          "minLength": 1
+        },
+        "source": {
+          "type": "string",
+          "minLength": 1
+        },
+        "digest": {
+          "$ref": "#/$defs/digest"
+        }
+      }
+    },
+    "metric": {
+      "oneOf": [
+        {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "status",
+            "value"
+          ],
+          "properties": {
+            "status": {
+              "const": "observed"
+            },
+            "value": {
+              "type": "number",
+              "minimum": 0
+            }
+          }
+        },
+        {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "status",
+            "reason"
+          ],
+          "properties": {
+            "status": {
+              "enum": [
+                "missing",
+                "unknown",
+                "stale"
+              ]
+            },
+            "reason": {
+              "type": "string",
+              "minLength": 1
+            }
+          }
+        }
+      ]
+    },
+    "node": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "node_id",
+        "lane",
+        "semantic_class",
+        "budget_tier",
+        "validator_ref"
+      ],
+      "properties": {
+        "node_id": {
+          "type": "string",
+          "minLength": 1
+        },
+        "lane": {
+          "type": "string",
+          "minLength": 1
+        },
+        "semantic_class": {
+          "enum": [
+            "structural",
+            "local_functional_unit_property",
+            "contract_abi_api",
+            "invariant",
+            "integration",
+            "compatibility",
+            "generated_fixed_point",
+            "regression",
+            "adversarial_robustness",
+            "artifact_package_install_portable",
+            "behavioral_task_eval",
+            "system_e2e",
+            "semantic_agent_trajectory_eval"
+          ]
+        },
+        "budget_tier": {
+          "enum": [
+            "ultra_fast",
+            "fast",
+            "contextual",
+            "expensive"
+          ]
+        },
+        "validator_ref": {
+          "type": "string",
+          "minLength": 1
+        },
+        "claim_refs": {
+          "type": "array",
+          "uniqueItems": true,
+          "items": {
+            "type": "string",
+            "minLength": 1
+          }
+        }
+      }
+    },
+    "evidence_ref": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "kind",
+        "ref"
+      ],
+      "properties": {
+        "kind": {
+          "type": "string",
+          "minLength": 1
+        },
+        "ref": {
+          "type": "string",
+          "minLength": 1
+        }
+      }
+    }
+  }
+}

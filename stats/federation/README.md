@@ -16,6 +16,20 @@ A declaration-only measurement is honest when no producer exists. It is not a
 live statistic. Reference and live exports must point to owner evidence and
 retain missingness, freshness, privacy, and authority ceilings.
 
+## Validation telemetry extension
+
+An owner may add `validation_telemetry` to its local port. The extension
+declares node/lane compatibility and export posture in
+`validation-telemetry-port.schema.json`; the packet itself is the shared
+`measurement-contract/validation-telemetry-packet.schema.json`. A declaration
+without an admitted packet is `declared_only`, not measured coverage.
+
+`schemas/validation-telemetry-baseline.schema.json` and
+`scripts/build_validation_telemetry_baseline.py` provide a deterministic
+derived coverage view from an owner inventory plus explicit port inputs. The
+builder preserves unavailable owners and fields as missing, unknown, or stale
+and never turns port presence into validator health, proof, or sufficiency.
+
 Port validation follows each repository-relative packet ref from the local
 manifest, checks that the path stays inside the owner root, validates packet
 shape and semantics against the embedded measurement contract, and requires

@@ -63,6 +63,7 @@
 - [AOST-D-0016 - Authenticate And Separate Stats MCP Owner Evidence](../AOST-D-0016-authenticate-and-separate-stats-mcp-owner-evidence.md) (`docs/decisions/AOST-D-0016-authenticate-and-separate-stats-mcp-owner-evidence.md`)
 - [AOST-D-0017 - Observe Actor Responsibility Execution Without Inferring Fit](../AOST-D-0017-observe-actor-responsibility-execution-without-inferring-fit.md) (`docs/decisions/AOST-D-0017-observe-actor-responsibility-execution-without-inferring-fit.md`)
 - [AOST-D-0018 - Memory Outcomes Remain Measurement, Not Authority](../AOST-D-0018-memory-outcomes-remain-measurement-not-authority.md) (`docs/decisions/AOST-D-0018-memory-outcomes-remain-measurement-not-authority.md`)
+- [AOST-D-0019 - Owner-Safe Validation Telemetry Is a Derived Federation Extension](../AOST-D-0019-owner-safe-validation-telemetry.md) (`docs/decisions/AOST-D-0019-owner-safe-validation-telemetry.md`)
 
 ## downstream canaries
 
@@ -84,6 +85,10 @@
 ## generated-index parity
 
 - [AOST-D-0002 - Canonical Decision Lane](../AOST-D-0002-canonical-decision-lane.md) (`docs/decisions/AOST-D-0002-canonical-decision-lane.md`)
+
+## identity binding
+
+- [AOST-D-0019 - Owner-Safe Validation Telemetry Is a Derived Federation Extension](../AOST-D-0019-owner-safe-validation-telemetry.md) (`docs/decisions/AOST-D-0019-owner-safe-validation-telemetry.md`)
 
 ## intake governance
 
@@ -119,6 +124,10 @@
 - [AOST-D-0007 - Titan Reference Rosters Are Not Observed Swarm Activity](../AOST-D-0007-titan-reference-rosters-are-not-observed-swarm-activity.md) (`docs/decisions/AOST-D-0007-titan-reference-rosters-are-not-observed-swarm-activity.md`)
 - [AOST-D-0008 - Retired Outputs Remain Cleanup Tombstones, Not Active Stats](../AOST-D-0008-retired-outputs-remain-cleanup-tombstones-not-active-stats.md) (`docs/decisions/AOST-D-0008-retired-outputs-remain-cleanup-tombstones-not-active-stats.md`)
 
+## missingness
+
+- [AOST-D-0019 - Owner-Safe Validation Telemetry Is a Derived Federation Extension](../AOST-D-0019-owner-safe-validation-telemetry.md) (`docs/decisions/AOST-D-0019-owner-safe-validation-telemetry.md`)
+
 ## negative applicability
 
 - [AOST-D-0013 - aoa-stats Owner Skill Bundle](../AOST-D-0013-aoa-stats-owner-skill-bundle.md) (`docs/decisions/AOST-D-0013-aoa-stats-owner-skill-bundle.md`)
@@ -145,6 +154,10 @@
 
 - [AOST-D-0016 - Authenticate And Separate Stats MCP Owner Evidence](../AOST-D-0016-authenticate-and-separate-stats-mcp-owner-evidence.md) (`docs/decisions/AOST-D-0016-authenticate-and-separate-stats-mcp-owner-evidence.md`)
 - [AOST-D-0017 - Observe Actor Responsibility Execution Without Inferring Fit](../AOST-D-0017-observe-actor-responsibility-execution-without-inferring-fit.md) (`docs/decisions/AOST-D-0017-observe-actor-responsibility-execution-without-inferring-fit.md`)
+
+## no sufficiency promotion
+
+- [AOST-D-0019 - Owner-Safe Validation Telemetry Is a Derived Federation Extension](../AOST-D-0019-owner-safe-validation-telemetry.md) (`docs/decisions/AOST-D-0019-owner-safe-validation-telemetry.md`)
 
 ## owner evidence
 
@@ -207,6 +220,7 @@
 
 - [AOST-D-0006 - Runtime Closeout Wave Receipts Are Not Current Trial Live State](../AOST-D-0006-runtime-closeout-wave-receipts-are-not-current-trial-live-state.md) (`docs/decisions/AOST-D-0006-runtime-closeout-wave-receipts-are-not-current-trial-live-state.md`)
 - [AOST-D-0018 - Memory Outcomes Remain Measurement, Not Authority](../AOST-D-0018-memory-outcomes-remain-measurement-not-authority.md) (`docs/decisions/AOST-D-0018-memory-outcomes-remain-measurement-not-authority.md`)
+- [AOST-D-0019 - Owner-Safe Validation Telemetry Is a Derived Federation Extension](../AOST-D-0019-owner-safe-validation-telemetry.md) (`docs/decisions/AOST-D-0019-owner-safe-validation-telemetry.md`)
 
 ## source-of-truth lifecycle
 

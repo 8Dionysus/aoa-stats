@@ -11,11 +11,19 @@ publish statistically comparable facts without surrendering domain meaning to
 | measurement contract | owner-authored identity, population, unit, dimensions, aggregation, uncertainty, privacy, and lifecycle | `measurement-contract.schema.json` |
 | measurement packet | one evidence-linked observation or derived statistic made under that contract | `measurement-packet.schema.json` |
 | outcome receipt | one content-minimized C10 observation of action before/after memory, memory-use state, terminal and delayed outcomes, confounders, accidental success, harm, costs, and attribution uncertainty | `outcome-receipt.schema.json` |
+| validation telemetry packet | one owner-linked, content-minimized observation of validation-node resources, result, identity, cache/receipt posture, first failure, rerun amplification, and source coverage | `validation-telemetry-packet.schema.json` |
 
 The contract answers what may be measured. The packet answers what was
 observed, over which population and window, with which evidence and reporting
 rule. A packet never promotes itself into proof, route state, memory truth, or
 runtime authority.
+
+The validation telemetry packet is a compatibility envelope for a later
+Claim/Evidence Validation Graph shadow. It does not define the node's claim,
+semantic sufficiency, budget, acceptance barrier, or validator meaning; those
+remain with the owner. Candidate and environment identities require complete
+kind/source/digest triples. Resource fields carry explicit missing, unknown, or
+stale states and never encode an unavailable value as zero.
 
 The outcome receipt is upstream measurement input, not a verdict. The task or
 source owner owns its action and outcome facts; `aoa-stats` owns only the C10

@@ -1,0 +1,182 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://aoa-stats/stats/federation/validation-telemetry-port.schema.json",
+  "title": "OS Abyss owner-local validation telemetry port",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema_version",
+    "contract_version",
+    "packet_schema_ref",
+    "required_fields",
+    "node_lanes",
+    "exports"
+  ],
+  "properties": {
+    "schema_version": {
+      "const": "aoa_stats_validation_telemetry_port_v1"
+    },
+    "contract_version": {
+      "type": "string",
+      "pattern": "^[0-9]+\\.[0-9]+\\.[0-9]+$"
+    },
+    "packet_schema_ref": {
+      "const": "aoa-stats:stats/measurement-contract/validation-telemetry-packet.schema.json"
+    },
+    "required_fields": {
+      "type": "array",
+      "minItems": 14,
+      "maxItems": 14,
+      "uniqueItems": true,
+      "items": {
+        "enum": [
+          "wall_ms",
+          "cpu_ms",
+          "peak_rss_bytes",
+          "io_read_bytes",
+          "io_write_bytes",
+          "result",
+          "semantic_class",
+          "candidate_identity",
+          "environment_identity",
+          "cache_posture",
+          "receipt_posture",
+          "first_failure",
+          "rerun_amplification",
+          "source_coverage"
+        ]
+      }
+    },
+    "node_lanes": {
+      "type": "array",
+      "minItems": 1,
+      "uniqueItems": true,
+      "items": {
+        "$ref": "#/$defs/node_lane"
+      }
+    },
+    "exports": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/export"
+      }
+    }
+  },
+  "$defs": {
+    "node_lane": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "id",
+        "lane",
+        "semantic_class",
+        "budget_tier",
+        "validator_ref",
+        "cacheability",
+        "parallel_safety"
+      ],
+      "properties": {
+        "id": {
+          "type": "string",
+          "minLength": 1
+        },
+        "lane": {
+          "type": "string",
+          "minLength": 1
+        },
+        "semantic_class": {
+          "enum": [
+            "structural",
+            "local_functional_unit_property",
+            "contract_abi_api",
+            "invariant",
+            "integration",
+            "compatibility",
+            "generated_fixed_point",
+            "regression",
+            "adversarial_robustness",
+            "artifact_package_install_portable",
+            "behavioral_task_eval",
+            "system_e2e",
+            "semantic_agent_trajectory_eval"
+          ]
+        },
+        "budget_tier": {
+          "enum": [
+            "ultra_fast",
+            "fast",
+            "contextual",
+            "expensive"
+          ]
+        },
+        "validator_ref": {
+          "type": "string",
+          "minLength": 1
+        },
+        "claim_refs": {
+          "type": "array",
+          "uniqueItems": true,
+          "items": {
+            "type": "string",
+            "minLength": 1
+          }
+        },
+        "cacheability": {
+          "enum": [
+            "none",
+            "read_only",
+            "content_addressed",
+            "owner_defined"
+          ]
+        },
+        "parallel_safety": {
+          "enum": [
+            "safe",
+            "serialized",
+            "owner_defined"
+          ]
+        }
+      }
+    },
+    "export": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "id",
+        "posture",
+        "packet_refs",
+        "evidence_refs"
+      ],
+      "properties": {
+        "id": {
+          "type": "string",
+          "minLength": 1
+        },
+        "posture": {
+          "enum": [
+            "declaration_only",
+            "reference",
+            "live"
+          ]
+        },
+        "packet_refs": {
+          "type": "array",
+          "uniqueItems": true,
+          "items": {
+            "type": "string",
+            "minLength": 1
+          }
+        },
+        "evidence_refs": {
+          "type": "array",
+          "minItems": 1,
+          "uniqueItems": true,
+          "items": {
+            "type": "string",
+            "minLength": 1
+          }
+        }
+      }
+    }
+  }
+}

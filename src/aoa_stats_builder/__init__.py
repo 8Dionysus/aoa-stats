@@ -35,6 +35,11 @@ from .repeated_window import build_repeated_window_summary
 from .route_progression import build_route_progression_summary
 from .source_coverage import build_source_coverage_summary
 from .surface_catalog import build_summary_surface_catalog
+from .validation_telemetry import (
+    build_validation_telemetry_baseline,
+    validate_validation_telemetry_packet,
+    validate_validation_telemetry_port,
+)
 
 __all__ = [
     "CANONICAL_ENVELOPE_SCHEMA_REF",
@@ -57,6 +62,7 @@ __all__ = [
     "build_summary_surface_catalog",
     "build_surface_detection_summary",
     "build_supersession_drop_summary",
+    "build_validation_telemetry_baseline",
     "generated_from",
     "load_event_kind_registry",
     "load_receipts",
@@ -66,4 +72,6 @@ __all__ = [
     "validate_downstream_canaries",
     "validate_receipt",
     "validate_receipt_abi_governance",
+    "validate_validation_telemetry_packet",
+    "validate_validation_telemetry_port",
 ]

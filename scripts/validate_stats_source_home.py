@@ -51,6 +51,7 @@ EXPECTED_BRANCH_ENTRIES = {
         "README.md",
         "measurement-contract.schema.json",
         "measurement-packet.schema.json",
+        "validation-telemetry-packet.schema.json",
         "outcome-receipt.schema.json",
         "packet-read-request.schema.json",
         "packet-read-result.schema.json",
@@ -59,6 +60,7 @@ EXPECTED_BRANCH_ENTRIES = {
         "AGENTS.md",
         "README.md",
         "local-port.schema.json",
+        "validation-telemetry-port.schema.json",
         "owner-inventory.schema.json",
         "owner-inventory.json",
     },
@@ -106,10 +108,12 @@ INTAKE_FIXTURE = Path(
 PROTOCOL_JSON_PATHS = {
     "stats/measurement-contract/measurement-contract.schema.json",
     "stats/measurement-contract/measurement-packet.schema.json",
+    "stats/measurement-contract/validation-telemetry-packet.schema.json",
     "stats/measurement-contract/outcome-receipt.schema.json",
     "stats/measurement-contract/packet-read-request.schema.json",
     "stats/measurement-contract/packet-read-result.schema.json",
     "stats/federation/local-port.schema.json",
+    "stats/federation/validation-telemetry-port.schema.json",
     "stats/federation/owner-inventory.schema.json",
     "stats/federation/owner-inventory.json",
 }

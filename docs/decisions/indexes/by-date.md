@@ -49,3 +49,7 @@
 ## 2026-08-12
 
 - [AOST-D-0017 - Observe Actor Responsibility Execution Without Inferring Fit](../AOST-D-0017-observe-actor-responsibility-execution-without-inferring-fit.md) (`docs/decisions/AOST-D-0017-observe-actor-responsibility-execution-without-inferring-fit.md`)
+
+## 2026-08-21
+
+- [AOST-D-0019 - Owner-Safe Validation Telemetry Is a Derived Federation Extension](../AOST-D-0019-owner-safe-validation-telemetry.md) (`docs/decisions/AOST-D-0019-owner-safe-validation-telemetry.md`)
