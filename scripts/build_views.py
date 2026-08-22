@@ -448,7 +448,7 @@ def memory_movement_generated_from() -> tuple[
     catalog_objects = catalog.get("memory_objects")
     if not isinstance(catalog_objects, list):
         raise ReceiptValidationError(
-            "aoa-memo memory object min catalog must expose memory_objects"
+            "aoa-memo memory object catalog must expose memory_objects"
         )
 
     def restore_paths(

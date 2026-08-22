@@ -151,6 +151,10 @@
 
 - [AOST-D-0013 - aoa-stats Owner Skill Bundle](../AOST-D-0013-aoa-stats-owner-skill-bundle.md) (`docs/decisions/AOST-D-0013-aoa-stats-owner-skill-bundle.md`)
 
+## aoa-stats source inventory
+
+- [AOST-D-0019 - Owner-Safe Validation Telemetry Is a Derived Federation Extension](../AOST-D-0019-owner-safe-validation-telemetry.md) (`docs/decisions/AOST-D-0019-owner-safe-validation-telemetry.md`)
+
 ## ATM10-Agent
 
 - [AOST-D-0011 - Antifragility Vector Remains An Evidence-Gated Incubator](../AOST-D-0011-antifragility-vector-remains-an-evidence-gated-incubator.md) (`docs/decisions/AOST-D-0011-antifragility-vector-remains-an-evidence-gated-incubator.md`)
@@ -171,6 +175,10 @@
 
 - [AOST-D-0014 - - Routing Owner Succession](../AOST-D-0014-routing-owner-succession.md) (`docs/decisions/AOST-D-0014-routing-owner-succession.md`)
 
+## owner validation receipts
+
+- [AOST-D-0019 - Owner-Safe Validation Telemetry Is a Derived Federation Extension](../AOST-D-0019-owner-safe-validation-telemetry.md) (`docs/decisions/AOST-D-0019-owner-safe-validation-telemetry.md`)
+
 ## owner-local component refresh receipts
 
 - [AOST-D-0003 - Component Refresh Fixtures Are Not Live State](../AOST-D-0003-component-refresh-fixtures-are-not-live-state.md) (`docs/decisions/AOST-D-0003-component-refresh-fixtures-are-not-live-state.md`)
@@ -186,6 +194,10 @@
 ## owner-local stats ports
 
 - [AOST-D-0013 - aoa-stats Owner Skill Bundle](../AOST-D-0013-aoa-stats-owner-skill-bundle.md) (`docs/decisions/AOST-D-0013-aoa-stats-owner-skill-bundle.md`)
+
+## owner-local validator manifests
+
+- [AOST-D-0019 - Owner-Safe Validation Telemetry Is a Derived Federation Extension](../AOST-D-0019-owner-safe-validation-telemetry.md) (`docs/decisions/AOST-D-0019-owner-safe-validation-telemetry.md`)
 
 ## runtime observation
 

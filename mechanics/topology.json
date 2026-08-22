@@ -45,6 +45,7 @@
       ],
       "scripts": [
         "scripts/AGENTS.md",
+        "scripts/build_validation_telemetry_baseline.py",
         "scripts/build_views.py",
         "scripts/check_live_publishers.py",
         "scripts/generate_decision_indexes.py",
@@ -78,6 +79,7 @@
                 "tests/test_stats_mcp_source_identity.py",
                 "tests/test_stats_source_home.py",
                 "tests/test_stats_protocol.py",
+                "tests/test_validation_telemetry.py",
                 "tests/test_summary_surface_catalog.py",
         "tests/test_validate_nested_agents.py"
       ]
@@ -96,7 +98,8 @@
       "additional_schema_routes": [
         "schemas/stats-event-envelope.schema.json",
         "schemas/stats-mcp-source-identity-receipt.schema.json",
-        "schemas/summary-surface-catalog.schema.json"
+        "schemas/summary-surface-catalog.schema.json",
+        "schemas/validation-telemetry-baseline.schema.json"
       ],
       "additional_generated_routes": [
         "generated/summary_surface_catalog.min.json",

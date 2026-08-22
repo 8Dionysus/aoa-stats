@@ -38,7 +38,7 @@ def resolve_owner_root() -> Path:
     for candidate in candidates:
         if candidate and (
             Path(candidate)
-            / "generated/memory-objects/memory_object_catalog.min.json"
+            / "generated/memory-objects/memory_object_catalog.json"
         ).is_file():
             return Path(candidate).expanduser().resolve()
     raise RuntimeError("could not resolve the aoa-memo owner root")
@@ -160,13 +160,13 @@ def test_adapter_uses_exact_four_roots_and_sorted_discovery() -> None:
     bundle = load_memory_movement_bundle(owner_root)
 
     assert tuple(path.relative_to(owner_root).as_posix() for path in paths) == (
-        "generated/memory-objects/memory_object_catalog.min.json",
+        "generated/memory-objects/memory_object_catalog.json",
         "memo/objects",
         "memo/intake/reviewed",
         "memo/intake/receipts",
     )
     assert tuple(bundle.source["receipt_input_paths"]) == (
-        "aoa-memo/generated/memory-objects/memory_object_catalog.min.json",
+        "aoa-memo/generated/memory-objects/memory_object_catalog.json",
         "aoa-memo/memo/objects",
         "aoa-memo/memo/intake/reviewed",
         "aoa-memo/memo/intake/receipts",
@@ -178,6 +178,53 @@ def test_adapter_uses_exact_four_roots_and_sorted_discovery() -> None:
     ):
         refs = tuple(ref for ref, _ in referenced_payloads)
         assert refs == tuple(sorted(refs))
+
+
+def test_adapter_uses_full_catalog_for_historical_completeness(
+    tmp_path: Path,
+) -> None:
+    object_id = "memo.audit.2099-01-01.historical"
+    owner_root = prepare_owner_root(
+        tmp_path,
+        catalog_objects=[
+            {
+                "id": object_id,
+                "source_kind": "reviewed_corpus",
+                "current_recall_status": "historical",
+            }
+        ],
+        memory_objects=[
+            (
+                "audit-events/2099/historical/object.json",
+                {
+                    "id": object_id,
+                    "kind": "audit_event",
+                    "time": {"observed_at": "2099-01-01T00:00:00Z"},
+                    "lifecycle": {
+                        "current_recall": {"status": "historical"}
+                    },
+                },
+            )
+        ],
+    )
+    write_json(
+        owner_root / "generated/memory-objects/memory_object_catalog.min.json",
+        {
+            "source_of_truth": "aoa-memo-object-read-models-v2",
+            "memory_objects": [],
+        },
+    )
+
+    bundle = load_memory_movement_bundle(owner_root)
+    payload = build_from_bundle(bundle)
+
+    assert tuple(bundle.source["receipt_input_paths"])[0].endswith(
+        "memory_object_catalog.json"
+    )
+    assert payload["reviewed_corpus"]["object_count"] == 1
+    assert payload["reviewed_corpus"]["by_recall_status"] == {
+        "historical": 1
+    }
 
 
 def test_input_bundle_is_deeply_immutable_and_mutable_parts_are_detached() -> None:

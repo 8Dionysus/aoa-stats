@@ -21,6 +21,7 @@ from aoa_stats_builder.surface_catalog import (  # noqa: E402
 
 EXTRA_SCHEMA_ROUTES = (
     "schemas/stats-event-envelope.schema.json",
+    "schemas/validation-telemetry-baseline.schema.json",
     "stats/read-models/surface-profile.schema.json",
 )
 REPO_WIDE_TEXT_SURFACES = (

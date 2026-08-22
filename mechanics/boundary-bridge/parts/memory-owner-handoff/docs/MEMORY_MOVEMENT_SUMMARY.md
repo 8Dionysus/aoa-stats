@@ -36,7 +36,7 @@ has a tested observation route.
 
 The source adapter reads exactly four `aoa-memo` roots:
 
-- `generated/memory-objects/memory_object_catalog.min.json`
+- `generated/memory-objects/memory_object_catalog.json`
 - `memo/objects/**/object.json`
 - `memo/intake/reviewed/*.json`
 - `memo/intake/receipts/*.json`
@@ -44,8 +44,11 @@ The source adapter reads exactly four `aoa-memo` roots:
 There is no fallback to a teaching fixture, example bundle, history snapshot,
 or alternate topology. The generated catalog may contain rows marked
 `teaching_fixture`; those rows remain visibly classified and contribute only
-to `source_kind_counts`. Reviewed lifecycle and landing observations come from
-the reviewed owner roots.
+to `source_kind_counts`. The full catalog is required because the reviewed
+object corpus includes historical and withdrawn rows that the current-facing
+`memory_object_catalog.min.json` intentionally omits. The min catalog remains
+the compact current-recall surface and is not a completeness index. Reviewed
+lifecycle and landing observations come from the reviewed owner roots.
 
 The adapter recursively discovers `memo/objects/**/object.json` in sorted path
 order and discovers reviewed-intake and landing JSON files directly, also in
@@ -60,7 +63,7 @@ JSON loading. It:
 
 1. checks `source_of_truth=aoa-memo-object-read-models-v2`
 2. requires exact one-to-one agreement between discovered reviewed objects and
-   catalog rows marked `reviewed_corpus`
+   full-catalog rows marked `reviewed_corpus`
 3. rejects duplicate reviewed ids on either side
 4. chooses the latest parseable object `observed_at`, intake `created_at`, or
    receipt `landed_at`, and fails when none exists

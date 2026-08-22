@@ -1,0 +1,349 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://aoa-stats/schemas/validation-telemetry-baseline.schema.json",
+  "title": "OS Abyss derived validation telemetry coverage baseline",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema_version",
+    "contract_version",
+    "source_mode",
+    "input_posture",
+    "target_universe",
+    "owner_records",
+    "summary",
+    "provenance",
+    "authority_ceiling"
+  ],
+  "properties": {
+    "schema_version": {
+      "const": "aoa_stats_validation_telemetry_baseline_v1"
+    },
+    "contract_version": {
+      "type": "string",
+      "pattern": "^[0-9]+\\.[0-9]+\\.[0-9]+$"
+    },
+    "source_mode": {
+      "const": "owner_inventory_plus_explicit_port_inputs"
+    },
+    "input_posture": {
+      "enum": [
+        "reference_only",
+        "mixed"
+      ]
+    },
+    "target_universe": {
+      "$ref": "#/$defs/target_universe"
+    },
+    "owner_records": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "$ref": "#/$defs/owner_record"
+      }
+    },
+    "summary": {
+      "$ref": "#/$defs/summary"
+    },
+    "provenance": {
+      "$ref": "#/$defs/provenance"
+    },
+    "authority_ceiling": {
+      "type": "string",
+      "minLength": 1
+    }
+  },
+  "$defs": {
+    "target_universe": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "inventory_ref",
+        "expected_owner_repos",
+        "expected_owner_count",
+        "routed_surface_ids"
+      ],
+      "properties": {
+        "inventory_ref": {
+          "type": "string",
+          "minLength": 1
+        },
+        "expected_owner_repos": {
+          "type": "array",
+          "minItems": 1,
+          "uniqueItems": true,
+          "items": {
+            "type": "string",
+            "minLength": 1
+          }
+        },
+        "expected_owner_count": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "routed_surface_ids": {
+          "type": "array",
+          "uniqueItems": true,
+          "items": {
+            "type": "string",
+            "minLength": 1
+          }
+        }
+      }
+    },
+    "coverage": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "status",
+        "owner_count",
+        "expected_owner_count"
+      ],
+      "properties": {
+        "status": {
+          "enum": [
+            "observed",
+            "partial",
+            "missing",
+            "unknown",
+            "stale",
+            "not_applicable"
+          ]
+        },
+        "owner_count": {
+          "type": [
+            "integer",
+            "null"
+          ],
+          "minimum": 0
+        },
+        "expected_owner_count": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "owner_repos": {
+          "type": "array",
+          "uniqueItems": true,
+          "items": {
+            "type": "string",
+            "minLength": 1
+          }
+        },
+        "reason": {
+          "type": "string",
+          "minLength": 1
+        }
+      }
+    },
+    "field_coverage": {
+      "type": "object",
+      "minProperties": 14,
+      "additionalProperties": {
+        "$ref": "#/$defs/coverage"
+      }
+    },
+    "owner_record": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "owner_repo",
+        "classification",
+        "port_status",
+        "telemetry_status",
+        "port_ref",
+        "telemetry_port_ref",
+        "declared_node_count",
+        "packet_count",
+        "field_coverage"
+      ],
+      "properties": {
+        "owner_repo": {
+          "type": "string",
+          "minLength": 1
+        },
+        "classification": {
+          "enum": [
+            "implemented",
+            "routed_to_stronger_owner",
+            "not_applicable",
+            "blocked"
+          ]
+        },
+        "port_status": {
+          "enum": [
+            "observed",
+            "missing",
+            "invalid",
+            "routed_to_stronger_owner",
+            "not_applicable"
+          ]
+        },
+        "telemetry_status": {
+          "enum": [
+            "missing_port",
+            "port_without_telemetry",
+            "declared_only",
+            "reference",
+            "live",
+            "invalid",
+            "not_applicable"
+          ]
+        },
+        "port_ref": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "minLength": 1
+        },
+        "telemetry_port_ref": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "minLength": 1
+        },
+        "declared_node_count": {
+          "type": [
+            "integer",
+            "null"
+          ],
+          "minimum": 0
+        },
+        "packet_count": {
+          "type": [
+            "integer",
+            "null"
+          ],
+          "minimum": 0
+        },
+        "field_coverage": {
+          "$ref": "#/$defs/field_coverage"
+        }
+      }
+    },
+    "summary": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "expected_owner_count",
+        "port_present_count",
+        "port_missing_count",
+        "port_invalid_count",
+        "telemetry_declared_owner_count",
+        "telemetry_packet_owner_count",
+        "owner_coverage_status",
+        "telemetry_coverage_status",
+        "missing_port_owner_repos",
+        "telemetry_gap_owner_repos",
+        "field_coverage"
+      ],
+      "properties": {
+        "expected_owner_count": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "port_present_count": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "port_missing_count": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "port_invalid_count": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "telemetry_declared_owner_count": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "telemetry_packet_owner_count": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "owner_coverage_status": {
+          "enum": [
+            "complete",
+            "partial",
+            "missing",
+            "unknown"
+          ]
+        },
+        "telemetry_coverage_status": {
+          "enum": [
+            "complete",
+            "partial",
+            "missing",
+            "unknown"
+          ]
+        },
+        "missing_port_owner_repos": {
+          "type": "array",
+          "uniqueItems": true,
+          "items": {
+            "type": "string",
+            "minLength": 1
+          }
+        },
+        "telemetry_gap_owner_repos": {
+          "type": "array",
+          "uniqueItems": true,
+          "items": {
+            "type": "string",
+            "minLength": 1
+          }
+        },
+        "field_coverage": {
+          "$ref": "#/$defs/field_coverage"
+        }
+      }
+    },
+    "provenance": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "evidence_refs",
+        "derivation_ref",
+        "source_revision"
+      ],
+      "properties": {
+        "evidence_refs": {
+          "type": "array",
+          "minItems": 1,
+          "uniqueItems": true,
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+              "kind",
+              "ref"
+            ],
+            "properties": {
+              "kind": {
+                "type": "string",
+                "minLength": 1
+              },
+              "ref": {
+                "type": "string",
+                "minLength": 1
+              }
+            }
+          }
+        },
+        "derivation_ref": {
+          "type": "string",
+          "minLength": 1
+        },
+        "source_revision": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "minLength": 1
+        }
+      }
+    }
+  }
+}

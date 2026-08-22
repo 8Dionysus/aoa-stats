@@ -22,6 +22,10 @@
 
 - [AOST-D-0003 - Component Refresh Fixtures Are Not Live State](../AOST-D-0003-component-refresh-fixtures-are-not-live-state.md) (`docs/decisions/AOST-D-0003-component-refresh-fixtures-are-not-live-state.md`)
 
+## coverage baseline
+
+- [AOST-D-0019 - Owner-Safe Validation Telemetry Is a Derived Federation Extension](../AOST-D-0019-owner-safe-validation-telemetry.md) (`docs/decisions/AOST-D-0019-owner-safe-validation-telemetry.md`)
+
 ## decision lane
 
 - [AOST-D-0002 - Canonical Decision Lane](../AOST-D-0002-canonical-decision-lane.md) (`docs/decisions/AOST-D-0002-canonical-decision-lane.md`)
@@ -219,3 +223,11 @@
 
 - [AOST-D-0007 - Titan Reference Rosters Are Not Observed Swarm Activity](../AOST-D-0007-titan-reference-rosters-are-not-observed-swarm-activity.md) (`docs/decisions/AOST-D-0007-titan-reference-rosters-are-not-observed-swarm-activity.md`)
 - [AOST-D-0008 - Retired Outputs Remain Cleanup Tombstones, Not Active Stats](../AOST-D-0008-retired-outputs-remain-cleanup-tombstones-not-active-stats.md) (`docs/decisions/AOST-D-0008-retired-outputs-remain-cleanup-tombstones-not-active-stats.md`)
+
+## validation telemetry packet
+
+- [AOST-D-0019 - Owner-Safe Validation Telemetry Is a Derived Federation Extension](../AOST-D-0019-owner-safe-validation-telemetry.md) (`docs/decisions/AOST-D-0019-owner-safe-validation-telemetry.md`)
+
+## validation telemetry port
+
+- [AOST-D-0019 - Owner-Safe Validation Telemetry Is a Derived Federation Extension](../AOST-D-0019-owner-safe-validation-telemetry.md) (`docs/decisions/AOST-D-0019-owner-safe-validation-telemetry.md`)

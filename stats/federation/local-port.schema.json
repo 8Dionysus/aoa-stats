@@ -45,7 +45,8 @@
       "items": {
         "enum": [
           "aoa-stats:stats/measurement-contract/measurement-contract.schema.json",
-          "aoa-stats:stats/measurement-contract/measurement-packet.schema.json"
+          "aoa-stats:stats/measurement-contract/measurement-packet.schema.json",
+          "aoa-stats:stats/measurement-contract/validation-telemetry-packet.schema.json"
         ]
       }
     },
@@ -158,6 +159,9 @@
           }
         }
       }
+    },
+    "validation_telemetry": {
+      "$ref": "validation-telemetry-port.schema.json"
     }
   }
 }

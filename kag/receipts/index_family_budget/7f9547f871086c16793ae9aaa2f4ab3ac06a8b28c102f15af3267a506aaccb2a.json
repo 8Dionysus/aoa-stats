@@ -1,0 +1,17 @@
+{
+  "allowed_bytes": 6662681,
+  "allowed_tracked_bytes": 8907941,
+  "approved_by": "repository-owner",
+  "base_ref": "eadef646bc096285169124d995214ad13268fba3",
+  "changed_generated_bytes": 6662681,
+  "changed_generated_files": 268,
+  "decision_ref": "aoa-kag:docs/decisions/AOA-KAG-D-0017-portable-content-addressed-repository-family.md",
+  "default_limit_bytes": 1048576,
+  "head_family_digest": "7f9547f871086c16793ae9aaa2f4ab3ac06a8b28c102f15af3267a506aaccb2a",
+  "reason": "Regenerate governed aoa-stats portable v3 family after source-pinned memory movement projection for aoa-memo@e1596fb9236fb10b3ea3e803a18dee4717d8675f; hosted Repo Validation run 32545268269 rejected memory_movement_summary.min.json against this exact workflow owner source. Decision: aoa-kag:docs/decisions/AOA-KAG-D-0017-portable-content-addressed-repository-family.md",
+  "repo": "aoa-stats",
+  "schema_version": "aoa-repo-local-kag-budget-receipt-v1",
+  "scope": "generated_delta",
+  "tracked_bytes": 8907941,
+  "tracked_bytes_max": 9437184
+}

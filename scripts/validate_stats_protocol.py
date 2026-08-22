@@ -30,6 +30,10 @@ from aoa_stats_builder.schema_validation import (  # noqa: E402
     schema_issues,
     schema_registry,
 )
+from aoa_stats_builder.validation_telemetry import (  # noqa: E402
+    validate_validation_telemetry_packet,
+    validate_validation_telemetry_port,
+)
 
 MEASUREMENT_SCHEMA_PATH = Path(
     "stats/measurement-contract/measurement-contract.schema.json"
@@ -44,13 +48,22 @@ PACKET_READ_REQUEST_SCHEMA_PATH = Path(
 PACKET_READ_RESULT_SCHEMA_PATH = Path(
     "stats/measurement-contract/packet-read-result.schema.json"
 )
+VALIDATION_TELEMETRY_PACKET_SCHEMA_PATH = Path(
+    "stats/measurement-contract/validation-telemetry-packet.schema.json"
+)
 PORT_SCHEMA_PATH = Path("stats/federation/local-port.schema.json")
+VALIDATION_TELEMETRY_PORT_SCHEMA_PATH = Path(
+    "stats/federation/validation-telemetry-port.schema.json"
+)
 INVENTORY_SCHEMA_PATH = Path("stats/federation/owner-inventory.schema.json")
 INVENTORY_PATH = Path("stats/federation/owner-inventory.json")
 CENTRAL_CONTRACT_REFS = {
     "aoa-stats:stats/measurement-contract/measurement-contract.schema.json",
     "aoa-stats:stats/measurement-contract/measurement-packet.schema.json",
 }
+VALIDATION_TELEMETRY_CONTRACT_REF = (
+    "aoa-stats:stats/measurement-contract/validation-telemetry-packet.schema.json"
+)
 
 
 def _load_object(path: Path) -> tuple[dict[str, Any] | None, str | None]:
@@ -93,7 +106,9 @@ def _load_schemas(repo_root: Path) -> tuple[dict[str, dict[str, Any]], list[str]
         OUTCOME_RECEIPT_SCHEMA_PATH,
         PACKET_READ_REQUEST_SCHEMA_PATH,
         PACKET_READ_RESULT_SCHEMA_PATH,
+        VALIDATION_TELEMETRY_PACKET_SCHEMA_PATH,
         PORT_SCHEMA_PATH,
+        VALIDATION_TELEMETRY_PORT_SCHEMA_PATH,
         INVENTORY_SCHEMA_PATH,
     ):
         schema, error = _load_object(repo_root / relative)
@@ -207,8 +222,20 @@ def validate_port_payload(
     issues = _schema_issues(port_schema, port, label=label, registry=registry)
     owner_repo = port.get("owner_repo")
     refs = port.get("central_contract_refs")
-    if isinstance(refs, list) and set(refs) != CENTRAL_CONTRACT_REFS:
-        issues.append(f"{label}: central_contract_refs must contain both canonical schemas")
+    expected_refs = set(CENTRAL_CONTRACT_REFS)
+    if isinstance(port.get("validation_telemetry"), Mapping):
+        expected_refs.add(VALIDATION_TELEMETRY_CONTRACT_REF)
+    if isinstance(refs, list) and set(refs) != expected_refs:
+        issues.append(
+            f"{label}: central_contract_refs must match declared telemetry posture"
+        )
+
+    telemetry = port.get("validation_telemetry")
+    if isinstance(telemetry, Mapping):
+        issues.extend(
+            f"{label}: {issue}"
+            for issue in validate_validation_telemetry_port(telemetry)
+        )
 
     questions = port.get("questions")
     question_ids: list[str] = []
@@ -415,6 +442,90 @@ def _validate_port_packets(
     return issues
 
 
+def _validate_validation_telemetry_packets(
+    port_path: Path,
+    port: Mapping[str, Any],
+    *,
+    packet_schema: Mapping[str, Any],
+    registry: Registry[Any],
+) -> list[str]:
+    """Validate packets named by the optional owner telemetry extension."""
+
+    telemetry = port.get("validation_telemetry")
+    if not isinstance(telemetry, Mapping):
+        return []
+    label = str(port_path)
+    issues: list[str] = []
+    owner_root = _owner_root_for_port(port_path)
+    try:
+        port_ref = port_path.relative_to(owner_root).as_posix()
+    except ValueError:
+        port_ref = port_path.name
+    expected_port_refs = {
+        f"{port_ref}#/validation_telemetry",
+    }
+    owner_repo = port.get("owner_repo")
+    if isinstance(owner_repo, str) and owner_repo:
+        expected_port_refs.add(f"{owner_repo}:{port_ref}#/validation_telemetry")
+
+    observation_ids: set[str] = set()
+    for export_index, export in enumerate(telemetry.get("exports", [])):
+        if not isinstance(export, Mapping):
+            continue
+        posture = export.get("posture")
+        for packet_ref in export.get("packet_refs", []):
+            if not isinstance(packet_ref, str) or not _portable_ref(packet_ref):
+                continue
+            packet_path, resolve_error = _resolve_owner_packet_ref(
+                port_path,
+                packet_ref,
+                label=f"{label}:validation_telemetry.exports[{export_index}]",
+            )
+            if resolve_error:
+                issues.append(resolve_error)
+                continue
+            assert packet_path is not None
+            packet, packet_error = _load_object(packet_path)
+            if packet_error:
+                issues.append(packet_error)
+                continue
+            assert packet is not None
+            issues.extend(
+                _schema_issues(
+                    packet_schema,
+                    packet,
+                    label=str(packet_path),
+                    registry=registry,
+                )
+            )
+            issues.extend(
+                f"{packet_path}: {issue}"
+                for issue in validate_validation_telemetry_packet(packet)
+            )
+            if packet.get("owner_repo") != owner_repo:
+                issues.append(f"{packet_path}: owner_repo does not match local port")
+            if packet.get("telemetry_port_ref") not in expected_port_refs:
+                issues.append(
+                    f"{packet_path}: telemetry_port_ref must point to the local telemetry port"
+                )
+            packet_posture = packet.get("posture")
+            packet_live_state = (
+                packet_posture.get("live_state")
+                if isinstance(packet_posture, Mapping)
+                else None
+            )
+            if packet_live_state != posture:
+                issues.append(
+                    f"{packet_path}: posture.live_state must match export posture {posture!r}"
+                )
+            observation_id = packet.get("observation_id")
+            if isinstance(observation_id, str):
+                if observation_id in observation_ids:
+                    issues.append(f"{label}: duplicate validation observation_id {observation_id!r}")
+                observation_ids.add(observation_id)
+    return issues
+
+
 def validate(
     repo_root: Path = REPO_ROOT,
     *,
@@ -456,6 +567,14 @@ def validate(
                 path,
                 port,
                 packet_schema=schemas[PACKET_SCHEMA_PATH.as_posix()],
+                registry=registry,
+            )
+        )
+        issues.extend(
+            _validate_validation_telemetry_packets(
+                path,
+                port,
+                packet_schema=schemas[VALIDATION_TELEMETRY_PACKET_SCHEMA_PATH.as_posix()],
                 registry=registry,
             )
         )

@@ -14,7 +14,7 @@ from .receipt_abi import ReceiptValidationError
 
 
 MEMORY_MOVEMENT_INPUT_REFS = (
-    "aoa-memo/generated/memory-objects/memory_object_catalog.min.json",
+    "aoa-memo/generated/memory-objects/memory_object_catalog.json",
     "aoa-memo/memo/objects",
     "aoa-memo/memo/intake/reviewed",
     "aoa-memo/memo/intake/receipts",
@@ -109,7 +109,7 @@ def _validated_memory_movement_inputs(
     raw_catalog_objects = catalog.get("memory_objects")
     if not _is_sequence(raw_catalog_objects):
         raise ReceiptValidationError(
-            "aoa-memo memory object min catalog must expose memory_objects"
+            "aoa-memo memory object catalog must expose memory_objects"
         )
     catalog_objects = tuple(
         item for item in raw_catalog_objects if isinstance(item, Mapping)
