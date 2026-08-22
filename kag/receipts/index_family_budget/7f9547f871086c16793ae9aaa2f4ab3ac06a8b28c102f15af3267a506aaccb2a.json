@@ -1,0 +1,17 @@
+{
+  "allowed_bytes": 6662681,
+  "allowed_tracked_bytes": 8907941,
+  "approved_by": "repository-owner",
+  "base_ref": "eadef646bc096285169124d995214ad13268fba3",
+  "changed_generated_bytes": 6662681,
+  "changed_generated_files": 268,
+  "decision_ref": "aoa-kag:docs/decisions/AOA-KAG-D-0017-portable-content-addressed-repository-family.md",
+  "default_limit_bytes": 1048576,
+  "head_family_digest": "7f9547f871086c16793ae9aaa2f4ab3ac06a8b28c102f15af3267a506aaccb2a",
+  "reason": "Regenerate the governed aoa-stats portable v3 family after the exact PR #187 combined authored source refresh; the stale family must be rebuilt from source and the resulting delta exceeds the default changed-bytes budget. Decision: aoa-kag:docs/decisions/AOA-KAG-D-0017-portable-content-addressed-repository-family.md",
+  "repo": "aoa-stats",
+  "schema_version": "aoa-repo-local-kag-budget-receipt-v1",
+  "scope": "generated_delta",
+  "tracked_bytes": 8907941,
+  "tracked_bytes_max": 9437184
+}
