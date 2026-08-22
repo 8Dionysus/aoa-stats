@@ -12,7 +12,7 @@
 The source adapter reads exactly these four `aoa-memo` roots, with no example,
 fixture, history, or alternate-path fallback:
 
-1. `generated/memory-objects/memory_object_catalog.min.json`
+1. `generated/memory-objects/memory_object_catalog.json`
 2. `memo/objects/**/object.json`
 3. `memo/intake/reviewed/*.json`
 4. `memo/intake/receipts/*.json`
@@ -28,8 +28,11 @@ projection core.
 - `src/aoa_stats_builder/memory_movement.py` is the filesystem-free core. It
   has no `Path`, environment, or JSON I/O responsibility.
 - The core requires exact agreement between reviewed corpus object ids and the
-  catalog's `reviewed_corpus` ids, rejects duplicates, and refuses a bundle
-  with no observable object, intake, or landing timestamp.
+  full catalog's `reviewed_corpus` ids, rejects duplicates, and refuses a
+  bundle with no observable object, intake, or landing timestamp.
+- The current-facing `memory_object_catalog.min.json` is intentionally compact:
+  it omits historical and withdrawn recall rows and cannot establish full
+  reviewed-corpus completeness for this consumer.
 - `src/aoa_stats_builder/memory_movement_sources.py` owns path resolution,
   deterministic discovery, JSON loading, logical ref adaptation, and frozen
   bundle construction.

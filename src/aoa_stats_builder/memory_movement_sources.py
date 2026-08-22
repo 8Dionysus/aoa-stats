@@ -16,7 +16,7 @@ from .receipt_abi import ReceiptValidationError
 
 
 MEMORY_OBJECT_CATALOG = Path(
-    "generated/memory-objects/memory_object_catalog.min.json"
+    "generated/memory-objects/memory_object_catalog.json"
 )
 REVIEWED_MEMORY_OBJECT_ROOT = Path("memo/objects")
 REVIEWED_INTAKE_ROOT = Path("memo/intake/reviewed")
@@ -148,7 +148,7 @@ def load_memory_movement_bundle(memo_root: Path) -> MemoryMovementInputBundle:
         memory_movement_source_paths(memo_root)
     )
     catalog = _load_json_object(
-        catalog_path, label="aoa-memo memory object min catalog"
+        catalog_path, label="aoa-memo memory object catalog"
     )
     memory_objects = _load_memory_object_set(objects_root, memo_root=memo_root)
     reviewed_intakes = _load_json_file_set(
