@@ -1,0 +1,17 @@
+{
+  "allowed_bytes": 1291356,
+  "allowed_tracked_bytes": 8922052,
+  "approved_by": "repository-owner",
+  "base_ref": "dc608fd5de3fcaf0301f356c9efd52e2bdd350ce",
+  "changed_generated_bytes": 1291356,
+  "changed_generated_files": 45,
+  "decision_ref": "aoa-kag:docs/decisions/AOA-KAG-D-0017-portable-content-addressed-repository-family.md",
+  "default_limit_bytes": 1048576,
+  "head_family_digest": "6076209acebe237169c310bac9a965dd04f466d72be45fb32323b0e099074b2d",
+  "reason": "Close the owner-family fixed point after commit 2d31885f5241d178d9b4b808ca3f841dcd47199a: include the current owner-input pin boundary and generated-currentness repair in the final successor worktree before Repo Validation.",
+  "repo": "aoa-stats",
+  "schema_version": "aoa-repo-local-kag-budget-receipt-v1",
+  "scope": "generated_delta",
+  "tracked_bytes": 8922052,
+  "tracked_bytes_max": 9437184
+}

@@ -1,0 +1,17 @@
+{
+  "allowed_bytes": 1155525,
+  "allowed_tracked_bytes": 8921763,
+  "approved_by": "repository-owner",
+  "base_ref": "dc608fd5de3fcaf0301f356c9efd52e2bdd350ce",
+  "changed_generated_bytes": 1155525,
+  "changed_generated_files": 44,
+  "decision_ref": "aoa-kag:docs/decisions/AOA-KAG-D-0017-portable-content-addressed-repository-family.md",
+  "default_limit_bytes": 1048576,
+  "head_family_digest": "fb84b0681a8c885d4cd7b13248f7051b3bffa0af395428319b398450b6eeba0b",
+  "reason": "Refresh the governed generated-currentness boundary: pin aoa-stats validation to current exact 8Dionysus and aoa-memo owner revisions before regenerating the successor read-model and portable family.",
+  "repo": "aoa-stats",
+  "schema_version": "aoa-repo-local-kag-budget-receipt-v1",
+  "scope": "generated_delta",
+  "tracked_bytes": 8921763,
+  "tracked_bytes_max": 9437184
+}

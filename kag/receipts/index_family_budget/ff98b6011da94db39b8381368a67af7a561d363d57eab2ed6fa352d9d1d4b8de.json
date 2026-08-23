@@ -1,0 +1,17 @@
+{
+  "allowed_bytes": 1116725,
+  "allowed_tracked_bytes": 8921760,
+  "approved_by": "repository-owner",
+  "base_ref": "dc608fd5de3fcaf0301f356c9efd52e2bdd350ce",
+  "changed_generated_bytes": 1116725,
+  "changed_generated_files": 42,
+  "decision_ref": "aoa-kag:docs/decisions/AOA-KAG-D-0017-portable-content-addressed-repository-family.md",
+  "default_limit_bytes": 1048576,
+  "head_family_digest": "ff98b6011da94db39b8381368a67af7a561d363d57eab2ed6fa352d9d1d4b8de",
+  "reason": "Repair the v0.2.0 successor currentness contour: the pinned Repo Validation history-boundary sentinel rejected the existing aoa-stats portable family at dc608fd5de3fcaf0301f356c9efd52e2bdd350ce; regenerate the owner family for the governed generated-view release and preserve the standing family caps.",
+  "repo": "aoa-stats",
+  "schema_version": "aoa-repo-local-kag-budget-receipt-v1",
+  "scope": "generated_delta",
+  "tracked_bytes": 8921760,
+  "tracked_bytes_max": 9437184
+}

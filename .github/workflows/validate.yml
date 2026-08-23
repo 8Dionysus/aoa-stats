@@ -27,7 +27,7 @@ jobs:
         uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd
         with:
           repository: 8Dionysus/8Dionysus
-          ref: 0c1ee440ae585dd5439d1e644793ba7275e4384c
+          ref: 3baafa395906e93dee23a9479ef4f9aed576bd8a
           path: .deps/8Dionysus
 
       - name: Checkout aoa-agents
@@ -48,7 +48,7 @@ jobs:
         uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd
         with:
           repository: 8Dionysus/aoa-memo
-          ref: e1596fb9236fb10b3ea3e803a18dee4717d8675f
+          ref: 20737ecaee54c0196223eef07b0460c8cf0afe13
           path: .deps/aoa-memo
 
       - name: Checkout aoa-sdk
