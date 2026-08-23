@@ -385,10 +385,11 @@ _No unreleased changes._
 
 - The owner release gate, generated-view parity, repository and nested-route
   validators, source-home, mechanics, ABI, focused artifact-bundle, and full
-  root/mechanics test suites were run for release-prep and the exact landed
-  source.
-- GitHub `Repo Validation` was required on the release-prep PR and the exact
-  landed `main` commit was rechecked before publication.
+  root/mechanics test suites were run for release-prep; the final release
+  execution report keeps exact-landed and postpublish evidence separate.
+- GitHub `Repo Validation` is required on the release-prep PR; the final
+  release execution rechecks the exact landed `main` commit before
+  publication.
 - The summary-catalog artifact bundle was checked through the owner
   `--ephemeral` ABI/SBOM/trust roundtrip and fail-closed consumer gate. No
   public asset attestation is claimed unless a matching asset is attached to
