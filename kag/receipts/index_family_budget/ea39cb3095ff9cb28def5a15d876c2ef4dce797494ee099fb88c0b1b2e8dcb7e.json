@@ -1,0 +1,17 @@
+{
+  "allowed_bytes": 1324350,
+  "allowed_tracked_bytes": 8916735,
+  "approved_by": "repository-owner",
+  "base_ref": "b1726f79c9eecace248bb8b3a2886dfaee976cb5",
+  "changed_generated_bytes": 1324350,
+  "changed_generated_files": 46,
+  "decision_ref": "aoa-kag:docs/decisions/AOA-KAG-D-0017-portable-content-addressed-repository-family.md",
+  "default_limit_bytes": 1048576,
+  "head_family_digest": "ea39cb3095ff9cb28def5a15d876c2ef4dce797494ee099fb88c0b1b2e8dcb7e",
+  "reason": "Admit the bounded aoa-stats v0.2.0 release validation wording correction; regenerate the owner-local portable KAG family and preserve standing family caps.",
+  "repo": "aoa-stats",
+  "schema_version": "aoa-repo-local-kag-budget-receipt-v1",
+  "scope": "generated_delta",
+  "tracked_bytes": 8916735,
+  "tracked_bytes_max": 9437184
+}

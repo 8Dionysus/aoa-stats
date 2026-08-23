@@ -7,6 +7,20 @@ Tracking starts with the first public release-prep baseline for this repository.
 
 ## [Unreleased]
 
+_No unreleased changes._
+
+## [0.2.0] - 2026-08-22
+
+### Summary
+
+- This release establishes `aoa-stats` as an owner-bounded statistical
+  measurability layer with explicit measurement, intake, federation,
+  read-model, access, artifact, and validation-telemetry contracts.
+- The released first-parent range contains 119 landed commits after `v0.1.3`.
+  The repository remains derived and non-sovereign: it summarizes owner-owned
+  evidence without becoming workflow, proof, health, routing, runtime,
+  memory, policy, model-fit, or acceptance authority.
+
 ### Added
 
 - Added decision `AOST-D-0018`, preserving active-organ outcome receipts and
@@ -317,6 +331,83 @@ Tracking starts with the first public release-prep baseline for this repository.
 - Removed the three migration-era root documentation redirects for Candidate
   Lineage, Component Manifests, and Component Refresh after active repository
   and central provenance routes were re-grounded on their part-local owners.
+
+### Fixed
+
+- Fixed live-refresh systemd path escaping, publisher and receipt follow-ups,
+  dry-run malformed-shape handling, source-home and audit path drift,
+  decision/index parity, KAG family parity, owner-route identity, and
+  validation-telemetry source-home alignment.
+- Corrected actor live-state wording so receipt presence cannot be read as
+  runtime health, fit, success, benefit, model quality, or acceptance.
+
+### Deprecated
+
+- Deprecated the former repo-local stats MCP server, launcher, prompts,
+  resources, source-registry transport, and direct MCP dependency route in
+  favor of the stack-owned `aoa-stats-mcp`.
+- Deprecated migration-era root documentation facades and unsupported active
+  summary aliases in favor of part-local owners and authored profiles.
+
+### Removed
+
+- Removed legacy active Owner Landing, Runtime Closeout, and Titan Summon
+  output families that no longer had current owner contracts; cleanup
+  tombstones, stable slots, and contract-history schemas remain where needed.
+- Removed `requirements-mcp.txt` and copied undeclared shared skill
+  projections. Consumers use the stack-owned MCP and admitted owner-skill
+  home.
+
+### Security
+
+- Kept release and generated surfaces public-safe: no secrets, private
+  topology, raw sensitive logs, raw session payloads, or owner payload bodies
+  are included.
+- Required authenticated stack-issued v2 source identity for trusted MCP
+  captures and kept source, review, projection, and access stages separate.
+- Kept actor, outcome, and validation telemetry content-minimized and
+  owner-referenced; stats aggregates grant no policy, permission, training,
+  tenant, workflow, memory, or acceptance authority.
+
+### Included in this release
+
+- Authored stats, federation, intake, read-model, operation, public-schema,
+  and validation-telemetry contracts; deterministic builders and validators;
+  focused mechanic parts; generated catalog/read-model outputs; the admitted
+  owner skill source; release-support artifact metadata; and public route
+  documentation.
+- A first-parent reconciliation ledger covering every landed commit from
+  `v0.1.3` through the release commit is retained in the release execution
+  report; generated KAG, index, receipt, and parity churn is grouped there
+  rather than inflated into separate human bullets.
+
+### Validation
+
+- The owner release gate, generated-view parity, repository and nested-route
+  validators, source-home, mechanics, ABI, focused artifact-bundle, and full
+  root/mechanics test suites were run for release-prep; the final release
+  execution report keeps exact-landed and postpublish evidence separate.
+- GitHub `Repo Validation` is required on the release-prep PR; the final
+  release execution rechecks the exact landed `main` commit before
+  publication.
+- The summary-catalog artifact bundle was checked through the owner
+  `--ephemeral` ABI/SBOM/trust roundtrip and fail-closed consumer gate. No
+  public asset attestation is claimed unless a matching asset is attached to
+  this release.
+
+### Notes
+
+- Consumers of the retired repo-local MCP and retired active summaries must
+  migrate to `abyss-stack/aoa-stats-mcp` and the current owner/profile routes.
+- The summary catalog is a derived observability read model. Port presence,
+  event counts, generated freshness, telemetry coverage, runtime receipts,
+  or green validators do not prove owner health, central proof, causal value,
+  model fit, live freshness, deployment, rollback, or human acceptance.
+- No package-registry publication is implied. Release identity is the
+  canonical changelog, the annotated SemVer tag, and the matching GitHub
+  Release body.
+- `aoa-session-memory` remains a protected dependency and was not changed,
+  tagged, or republished. Archived repositories remain untouched.
 
 ## [0.1.3] - 2026-04-23
 
