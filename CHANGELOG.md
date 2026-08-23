@@ -30,6 +30,8 @@ _No unreleased changes._
 - Refreshed the owner-local portable KAG family through the pinned owner
   generator so the PR history-boundary sentinel and full family parity remain
   green for this successor.
+- Synchronized the README and roadmap current-release markers with the
+  `v0.2.1` release route.
 
 ### Validation
 

@@ -1,6 +1,6 @@
 # aoa-stats roadmap
 
-> Current release: `v0.2.0`
+> Current release: `v0.2.1`
 
 This is the current repo-owned direction surface. Shipped history belongs in
 `CHANGELOG.md`; durable rationale belongs in `docs/decisions/`; the public

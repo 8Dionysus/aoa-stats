@@ -1,0 +1,17 @@
+{
+  "allowed_bytes": 1217410,
+  "allowed_tracked_bytes": 8923771,
+  "approved_by": "repository-owner",
+  "base_ref": "0c703c7aa7a0d72f7103703c4f4abdd16bff56c9",
+  "changed_generated_bytes": 1217410,
+  "changed_generated_files": 44,
+  "decision_ref": "aoa-kag:docs/decisions/AOA-KAG-D-0017-portable-content-addressed-repository-family.md",
+  "default_limit_bytes": 1048576,
+  "head_family_digest": "c5bd5caabc805ac8eacbb156e6d953876a5e69a6682d811d3c730bfcbcc75f1b",
+  "reason": "Record the v0.2.1 owner release-marker commit and its generated owner-family delta at the repository-owner fixed-point boundary; retain the explicit AOA-KAG-D-0017 budget decision.",
+  "repo": "aoa-stats",
+  "schema_version": "aoa-repo-local-kag-budget-receipt-v1",
+  "scope": "generated_delta",
+  "tracked_bytes": 8923771,
+  "tracked_bytes_max": 9437184
+}
