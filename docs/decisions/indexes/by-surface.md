@@ -31,6 +31,10 @@
 
 - [AOST-D-0002 - Canonical Decision Lane](../AOST-D-0002-canonical-decision-lane.md) (`docs/decisions/AOST-D-0002-canonical-decision-lane.md`)
 
+## generated-read-model
+
+- [AOST-D-0020 - Codex Reference Builds Require Exact Owner Snapshots](../AOST-D-0020-codex-reference-builds-require-exact-owner-snapshots.md) (`docs/decisions/AOST-D-0020-codex-reference-builds-require-exact-owner-snapshots.md`)
+
 ## generated/catalog
 
 - [AOST-D-0001 - Stats Strength And Intake Governance](../AOST-D-0001-stats-strength-and-intake-governance.md) (`docs/decisions/AOST-D-0001-stats-strength-and-intake-governance.md`)
@@ -104,6 +108,10 @@
 - [AOST-D-0015 - Review Captured Stats Catalog In The Owner](../AOST-D-0015-review-captured-stats-catalog-in-the-owner.md) (`docs/decisions/AOST-D-0015-review-captured-stats-catalog-in-the-owner.md`)
 - [AOST-D-0016 - Authenticate And Separate Stats MCP Owner Evidence](../AOST-D-0016-authenticate-and-separate-stats-mcp-owner-evidence.md) (`docs/decisions/AOST-D-0016-authenticate-and-separate-stats-mcp-owner-evidence.md`)
 - [AOST-D-0017 - Observe Actor Responsibility Execution Without Inferring Fit](../AOST-D-0017-observe-actor-responsibility-execution-without-inferring-fit.md) (`docs/decisions/AOST-D-0017-observe-actor-responsibility-execution-without-inferring-fit.md`)
+
+## release-support
+
+- [AOST-D-0020 - Codex Reference Builds Require Exact Owner Snapshots](../AOST-D-0020-codex-reference-builds-require-exact-owner-snapshots.md) (`docs/decisions/AOST-D-0020-codex-reference-builds-require-exact-owner-snapshots.md`)
 
 ## repository projection
 
@@ -206,6 +214,7 @@
 - [AOST-D-0010 - Runtime Closeout Wave Snapshot Is Contract History, Not Active Observability](../AOST-D-0010-runtime-closeout-wave-snapshot-is-contract-history-not-active-observability.md) (`docs/decisions/AOST-D-0010-runtime-closeout-wave-snapshot-is-contract-history-not-active-observability.md`)
 - [AOST-D-0011 - Antifragility Vector Remains An Evidence-Gated Incubator](../AOST-D-0011-antifragility-vector-remains-an-evidence-gated-incubator.md) (`docs/decisions/AOST-D-0011-antifragility-vector-remains-an-evidence-gated-incubator.md`)
 - [AOST-D-0014 - - Routing Owner Succession](../AOST-D-0014-routing-owner-succession.md) (`docs/decisions/AOST-D-0014-routing-owner-succession.md`)
+- [AOST-D-0020 - Codex Reference Builds Require Exact Owner Snapshots](../AOST-D-0020-codex-reference-builds-require-exact-owner-snapshots.md) (`docs/decisions/AOST-D-0020-codex-reference-builds-require-exact-owner-snapshots.md`)
 
 ## stats/surface-catalog
 
@@ -219,6 +228,7 @@
 ## validation
 
 - [AOST-D-0019 - Owner-Safe Validation Telemetry Is a Derived Federation Extension](../AOST-D-0019-owner-safe-validation-telemetry.md) (`docs/decisions/AOST-D-0019-owner-safe-validation-telemetry.md`)
+- [AOST-D-0020 - Codex Reference Builds Require Exact Owner Snapshots](../AOST-D-0020-codex-reference-builds-require-exact-owner-snapshots.md) (`docs/decisions/AOST-D-0020-codex-reference-builds-require-exact-owner-snapshots.md`)
 
 ## validation boundary
 

@@ -26,6 +26,8 @@ if str(SRC_ROOT) not in sys.path:
 
 from aoa_stats_builder import codex_plane_deployment  # noqa: E402
 from aoa_stats_builder.codex_plane_deployment_sources import (  # noqa: E402
+    CODEX_PLANE_REFERENCE_OWNER,
+    CODEX_PLANE_REFERENCE_OWNER_REF,
     CodexPlaneDeploymentInputBundle,
     codex_plane_live_paths,
     codex_plane_reference_paths,
@@ -226,6 +228,15 @@ def test_authored_profile_names_reference_and_stronger_live_surfaces() -> None:
     ]
 
 
+def test_reference_pin_matches_the_validation_dependency_pin() -> None:
+    workflow = (REPO_ROOT / ".github/workflows/validate.yml").read_text(
+        encoding="utf-8"
+    )
+
+    assert CODEX_PLANE_REFERENCE_OWNER == "8Dionysus"
+    assert f"ref: {CODEX_PLANE_REFERENCE_OWNER_REF}" in workflow
+
+
 def test_root_facade_preserves_legacy_codex_plane_symbols_and_tuple() -> None:
     facade = load_build_views_module()
 
@@ -280,7 +291,10 @@ def test_reference_adapter_uses_only_the_three_owner_examples(tmp_path: Path) ->
     owner_root = tmp_path / "8Dionysus"
     write_chain(owner_root, mode="reference")
 
-    bundle = load_codex_plane_reference_bundle(owner_root)
+    bundle = load_codex_plane_reference_bundle(
+        owner_root,
+        require_exact_owner=False,
+    )
 
     assert bundle.source["receipt_input_paths"] == (
         "8Dionysus/examples/codex_plane_trust_state.example.json",
@@ -288,6 +302,17 @@ def test_reference_adapter_uses_only_the_three_owner_examples(tmp_path: Path) ->
         "8Dionysus/examples/codex_plane_rollout_receipt.example.json",
     )
     assert all("aoa-sdk" not in ref for ref in bundle.source["receipt_input_paths"])
+
+
+def test_reference_adapter_rejects_unidentified_owner_fixture(tmp_path: Path) -> None:
+    owner_root = tmp_path / "8Dionysus"
+    write_chain(owner_root, mode="reference")
+
+    with pytest.raises(
+        codex_plane_deployment.ReceiptValidationError,
+        match="must be a Git checkout",
+    ):
+        load_codex_plane_reference_bundle(owner_root)
 
 
 def test_live_mode_never_falls_back_to_available_reference_examples(
