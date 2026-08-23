@@ -9,9 +9,18 @@ Tracking starts with the first public release-prep baseline for this repository.
 
 _No unreleased changes._
 
-## [0.2.2] - 2026-08-23
+## [0.2.0] - 2026-08-23
 
 ### Summary
+
+- This is the single canonical campaign release for the same-day cleanup;
+  the former `v0.2.0`, `v0.2.1`, and `v0.2.2` release material is reconciled
+  below without changing its owner, dependency, artifact, proof, or
+  preservation boundaries.
+- The final first-parent range after `v0.1.3` contains 123 landed commits
+  through `f119805cda69b3edeb2a4c5e407368d70e68650d`; the earlier 119-commit
+  release-preparation statement is retained as historical source material and
+  the four later follow-ups are explicitly included in this consolidation.
 
 - Restored strict reproducibility for the published Codex Plane reference
   summary by binding its owner examples to the exact clean `8Dionysus`
@@ -43,15 +52,15 @@ _No unreleased changes._
   not claim live runtime freshness, rollout authority, proof, workflow
   completion, owner acceptance, or a promoted artifact verdict.
 
-## [0.2.1] - 2026-08-23
+### Reconciled source material: former `v0.2.1` published body and changelog
 
-### Summary
+#### Summary
 
 - Corrected the committed Memory Movement reference snapshot to the current
   `aoa-memo` owner corpus so the published derived view and the owner builder
   agree again.
 
-### Changed
+#### Changed
 
 - Regenerated `generated/memory_movement_summary.min.json` through the owner
   builder from the exact reviewed `aoa-memo` roots at the current owner
@@ -67,7 +76,7 @@ _No unreleased changes._
 - Synchronized the README and roadmap current-release markers with the
   `v0.2.1` release route.
 
-### Validation
+#### Validation
 
 - generated-view currentness check
 - repository surface validation
@@ -77,15 +86,15 @@ _No unreleased changes._
 - repo-local KAG incremental/full parity, family contract, and compatibility
   assembly
 
-### Notes
+#### Notes
 
 - Both affected surfaces remain committed/reference-only and derived; this
   release does not claim live runtime freshness, proof, workflow authority, or
   owner acceptance.
 
-## [0.2.0] - 2026-08-22
+### Reconciled source material: former `v0.2.0` published body and changelog
 
-### Summary
+#### Summary
 
 - This release establishes `aoa-stats` as an owner-bounded statistical
   measurability layer with explicit measurement, intake, federation,
@@ -95,7 +104,7 @@ _No unreleased changes._
   evidence without becoming workflow, proof, health, routing, runtime,
   memory, policy, model-fit, or acceptance authority.
 
-### Added
+#### Added
 
 - Added decision `AOST-D-0018`, preserving active-organ outcome receipts and
   aggregates as descriptive measurement that cannot self-promote memory,
@@ -139,7 +148,7 @@ _No unreleased changes._
   removal cannot silently renumber later authored surfaces or reuse a former
   identity.
 
-### Changed
+#### Changed
 
 - Marked the `aoa-xda-connector` owner-local stats port as implemented after
   its landing.
@@ -406,7 +415,7 @@ _No unreleased changes._
   Lineage, Component Manifests, and Component Refresh after active repository
   and central provenance routes were re-grounded on their part-local owners.
 
-### Fixed
+#### Fixed
 
 - Fixed live-refresh systemd path escaping, publisher and receipt follow-ups,
   dry-run malformed-shape handling, source-home and audit path drift,
@@ -415,7 +424,7 @@ _No unreleased changes._
 - Corrected actor live-state wording so receipt presence cannot be read as
   runtime health, fit, success, benefit, model quality, or acceptance.
 
-### Deprecated
+#### Deprecated
 
 - Deprecated the former repo-local stats MCP server, launcher, prompts,
   resources, source-registry transport, and direct MCP dependency route in
@@ -423,7 +432,7 @@ _No unreleased changes._
 - Deprecated migration-era root documentation facades and unsupported active
   summary aliases in favor of part-local owners and authored profiles.
 
-### Removed
+#### Removed
 
 - Removed legacy active Owner Landing, Runtime Closeout, and Titan Summon
   output families that no longer had current owner contracts; cleanup
@@ -432,7 +441,7 @@ _No unreleased changes._
   projections. Consumers use the stack-owned MCP and admitted owner-skill
   home.
 
-### Security
+#### Security
 
 - Kept release and generated surfaces public-safe: no secrets, private
   topology, raw sensitive logs, raw session payloads, or owner payload bodies
@@ -443,7 +452,7 @@ _No unreleased changes._
   owner-referenced; stats aggregates grant no policy, permission, training,
   tenant, workflow, memory, or acceptance authority.
 
-### Included in this release
+#### Included in this release
 
 - Authored stats, federation, intake, read-model, operation, public-schema,
   and validation-telemetry contracts; deterministic builders and validators;
@@ -455,7 +464,7 @@ _No unreleased changes._
   report; generated KAG, index, receipt, and parity churn is grouped there
   rather than inflated into separate human bullets.
 
-### Validation
+#### Validation
 
 - The owner release gate, generated-view parity, repository and nested-route
   validators, source-home, mechanics, ABI, focused artifact-bundle, and full
@@ -469,7 +478,7 @@ _No unreleased changes._
   public asset attestation is claimed unless a matching asset is attached to
   this release.
 
-### Notes
+#### Notes
 
 - Consumers of the retired repo-local MCP and retired active summaries must
   migrate to `abyss-stack/aoa-stats-mcp` and the current owner/profile routes.
@@ -482,6 +491,36 @@ _No unreleased changes._
   Release body.
 - `aoa-session-memory` remains a protected dependency and was not changed,
   tagged, or republished. Archived repositories remain untouched.
+
+### Content-conservation ledger
+
+- The three superseded same-day Release bodies are all accounted for by the
+  consolidated sections above and by the execution ledger: Release `375082557`
+  (`v0.2.0`, published `2026-08-23T01:11:54Z`, body SHA-256
+  `4378770639999301fb63e0ad7accda219d4ea072fccf6d99e9fbdb9bbac59616`),
+  Release `375169239` (`v0.2.1`, published `2026-08-23T09:36:17Z`, body
+  SHA-256 `e610993cfcad191b44250c5aef3fa8c68b82e04324a09749268a2e1f44a87fd9`),
+  and Release `375250100` (`v0.2.2`, published `2026-08-23T15:33:18Z`, body
+  SHA-256 `c8dd23f2a76ef867a60524cb2de799942a19d1f26316420cc69e71f5184d0041`).
+  Each source line is preserved verbatim, mapped to a fuller consolidated
+  point, or classified as an inherited duplicate/internal/generated churn;
+  no source line is silently discarded.
+- The tag-scoped `CHANGELOG.md` snapshots are retained in the ledger by exact
+  blob and text digests: `v0.2.0` blob `3364efb7dc2f6924bb3706b5533846533e5cf774`
+  (SHA-256 `f8c7bbebfaa353a5bd8ee0e0136cc5dfe7f114921e2325558b1fb4fdb0afc98d`),
+  `v0.2.1` blob `3e468c473c771ac5f57d894e5d9646124aca459b`
+  (SHA-256 `c3f8bb057a8c199709dd5bb90a64d7d5512f0a87030849e9852cf515538e56c1`),
+  and `v0.2.2` blob `4bb75328edf0ed83e6ac867a5612dae6e5bb7a73`
+  (SHA-256 `a5d86a7c4d95a161c85b63152b114b10309eab5903da47916b544fe6d7b004ce`).
+  Repeated cumulative sections are explicitly marked as inherited duplicates;
+  unique follow-up material is mapped to the reconciled source subsections.
+- The complete first-parent and merged-PR ledger covers every one of the 123
+  commits after `v0.1.3` through `f119805cda69b3edeb2a4c5e407368d70e68650d`,
+  including direct commits without a PR, and records capability/schema/ABI,
+  owner/routing, artifact, security/privacy, operator, generated, validation,
+  limitation, and non-claim material with its final anchor and claim limit.
+  The machine-readable line and commit rows, source hashes, and classification
+  counts are preserved in the release execution report and task-local ledger.
 
 ## [0.1.3] - 2026-04-23
 
