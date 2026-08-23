@@ -6,7 +6,7 @@ ports, and turns bounded source-owned evidence into deterministic read models.
 Those models help humans and tools see populations and movement; they do not
 become workflow, proof, route, memory, KAG, runtime, identity, or owner truth.
 
-> Current release: `v0.2.0`. See [CHANGELOG](CHANGELOG.md) for release notes.
+> Current release: `v0.2.1`. See [CHANGELOG](CHANGELOG.md) for release notes.
 
 ## Start here
 
