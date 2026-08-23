@@ -25,6 +25,9 @@ _No unreleased changes._
 - Recomputed the Codex Plane input boundary against the exact `8Dionysus`
   remote-main example snapshot. Its committed summary remains unchanged;
   the dirty, divergent local checkout is not treated as current owner input.
+- Refreshed the owner-local portable KAG family through the pinned owner
+  generator so the PR history-boundary sentinel and full family parity remain
+  green for this successor.
 
 ### Validation
 
@@ -33,6 +36,8 @@ _No unreleased changes._
 - owner test suite (`102 passed`)
 - complete repository release gate (`502 passed`, `694 subtests passed`)
 - OS Abyss summary-catalog artifact-bundle parity and ephemeral trust roundtrip
+- repo-local KAG incremental/full parity, family contract, and compatibility
+  assembly
 
 ### Notes
 
