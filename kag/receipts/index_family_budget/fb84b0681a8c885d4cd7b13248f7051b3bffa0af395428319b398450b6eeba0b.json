@@ -8,7 +8,7 @@
   "decision_ref": "aoa-kag:docs/decisions/AOA-KAG-D-0017-portable-content-addressed-repository-family.md",
   "default_limit_bytes": 1048576,
   "head_family_digest": "fb84b0681a8c885d4cd7b13248f7051b3bffa0af395428319b398450b6eeba0b",
-  "reason": "Close the owner-family fixed point after commit 4cd83c8279505d1c5cc40e17c6b13ca55874babf: rerun the pinned generated-family budget receipt against the final successor worktree so Repo Validation consumes an exact matching receipt.",
+  "reason": "Refresh the governed generated-currentness boundary: pin aoa-stats validation to current exact 8Dionysus and aoa-memo owner revisions before regenerating the successor read-model and portable family.",
   "repo": "aoa-stats",
   "schema_version": "aoa-repo-local-kag-budget-receipt-v1",
   "scope": "generated_delta",
