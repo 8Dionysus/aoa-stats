@@ -334,9 +334,6 @@ _No unreleased changes._
 
 ### Fixed
 
-- Synchronized the Codex Plane v1 `dionysus`-compatible generated summary
-  with its committed reference example so the owner builder, read model, and
-  fixture remain aligned under the pinned workspace federation.
 - Fixed live-refresh systemd path escaping, publisher and receipt follow-ups,
   dry-run malformed-shape handling, source-home and audit path drift,
   decision/index parity, KAG family parity, owner-route identity, and
