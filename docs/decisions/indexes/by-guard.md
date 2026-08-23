@@ -64,6 +64,7 @@
 - [AOST-D-0017 - Observe Actor Responsibility Execution Without Inferring Fit](../AOST-D-0017-observe-actor-responsibility-execution-without-inferring-fit.md) (`docs/decisions/AOST-D-0017-observe-actor-responsibility-execution-without-inferring-fit.md`)
 - [AOST-D-0018 - Memory Outcomes Remain Measurement, Not Authority](../AOST-D-0018-memory-outcomes-remain-measurement-not-authority.md) (`docs/decisions/AOST-D-0018-memory-outcomes-remain-measurement-not-authority.md`)
 - [AOST-D-0019 - Owner-Safe Validation Telemetry Is a Derived Federation Extension](../AOST-D-0019-owner-safe-validation-telemetry.md) (`docs/decisions/AOST-D-0019-owner-safe-validation-telemetry.md`)
+- [AOST-D-0020 - Codex Reference Builds Require Exact Owner Snapshots](../AOST-D-0020-codex-reference-builds-require-exact-owner-snapshots.md) (`docs/decisions/AOST-D-0020-codex-reference-builds-require-exact-owner-snapshots.md`)
 
 ## downstream canaries
 
@@ -85,6 +86,10 @@
 ## generated-index parity
 
 - [AOST-D-0002 - Canonical Decision Lane](../AOST-D-0002-canonical-decision-lane.md) (`docs/decisions/AOST-D-0002-canonical-decision-lane.md`)
+
+## generated-output parity
+
+- [AOST-D-0020 - Codex Reference Builds Require Exact Owner Snapshots](../AOST-D-0020-codex-reference-builds-require-exact-owner-snapshots.md) (`docs/decisions/AOST-D-0020-codex-reference-builds-require-exact-owner-snapshots.md`)
 
 ## identity binding
 
@@ -221,6 +226,10 @@
 - [AOST-D-0006 - Runtime Closeout Wave Receipts Are Not Current Trial Live State](../AOST-D-0006-runtime-closeout-wave-receipts-are-not-current-trial-live-state.md) (`docs/decisions/AOST-D-0006-runtime-closeout-wave-receipts-are-not-current-trial-live-state.md`)
 - [AOST-D-0018 - Memory Outcomes Remain Measurement, Not Authority](../AOST-D-0018-memory-outcomes-remain-measurement-not-authority.md) (`docs/decisions/AOST-D-0018-memory-outcomes-remain-measurement-not-authority.md`)
 - [AOST-D-0019 - Owner-Safe Validation Telemetry Is a Derived Federation Extension](../AOST-D-0019-owner-safe-validation-telemetry.md) (`docs/decisions/AOST-D-0019-owner-safe-validation-telemetry.md`)
+
+## source currentness
+
+- [AOST-D-0020 - Codex Reference Builds Require Exact Owner Snapshots](../AOST-D-0020-codex-reference-builds-require-exact-owner-snapshots.md) (`docs/decisions/AOST-D-0020-codex-reference-builds-require-exact-owner-snapshots.md`)
 
 ## source-of-truth lifecycle
 

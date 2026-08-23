@@ -34,6 +34,7 @@ from aoa_stats_builder.codex_plane_deployment_sources import (  # noqa: E402
     codex_plane_reference_paths,
     load_codex_plane_live_bundle,
     load_codex_plane_reference_bundle,
+    validate_codex_plane_reference_owner,
 )
 from aoa_stats_builder.codex_trusted_rollout import (  # noqa: E402
     build_codex_rollout_drift_summary as build_codex_rollout_drift_summary_from_inputs,
@@ -213,8 +214,16 @@ def load_json_object(path: Path, *, label: str) -> dict[str, Any]:
 
 
 def codex_plane_example_paths() -> tuple[Path, Path, Path]:
-    public_profile_root = repo_root_from_env("AOA_8DIONYSUS_ROOT", DEFAULT_PUBLIC_PROFILE_ROOT)
+    public_profile_root = validated_public_profile_root()
     return codex_plane_reference_paths(public_profile_root)
+
+
+def validated_public_profile_root() -> Path:
+    """Resolve only the exact clean 8Dionysus snapshot for reference views."""
+
+    return validate_codex_plane_reference_owner(
+        repo_root_from_env("AOA_8DIONYSUS_ROOT", DEFAULT_PUBLIC_PROFILE_ROOT)
+    )
 
 
 def codex_plane_input_bundle(
@@ -223,9 +232,7 @@ def codex_plane_input_bundle(
     workspace_root: Path | None = None,
 ) -> CodexPlaneDeploymentInputBundle:
     if source_mode == "reference":
-        public_profile_root = repo_root_from_env(
-            "AOA_8DIONYSUS_ROOT", DEFAULT_PUBLIC_PROFILE_ROOT
-        )
+        public_profile_root = validated_public_profile_root()
         return load_codex_plane_reference_bundle(public_profile_root)
     if source_mode == "live":
         if workspace_root is None:
@@ -254,16 +261,12 @@ def codex_plane_generated_from() -> tuple[
 
 
 def codex_trusted_rollout_input_bundle() -> CodexTrustedRolloutInputBundle:
-    public_profile_root = repo_root_from_env(
-        "AOA_8DIONYSUS_ROOT", DEFAULT_PUBLIC_PROFILE_ROOT
-    )
+    public_profile_root = validated_public_profile_root()
     return load_codex_trusted_rollout_bundle(public_profile_root)
 
 
 def rollout_cadence_input_bundle() -> RolloutCadenceInputBundle:
-    public_profile_root = repo_root_from_env(
-        "AOA_8DIONYSUS_ROOT", DEFAULT_PUBLIC_PROFILE_ROOT
-    )
+    public_profile_root = validated_public_profile_root()
     return load_rollout_cadence_reference_bundle(public_profile_root)
 
 

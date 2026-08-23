@@ -18,6 +18,12 @@ names are not drift. Stable MCP names come from the stronger
 trust/regeneration chain rather than the narrower `aoa-sdk` example, and
 non-doctor pre-apply drift does not manufacture a rollback recommendation.
 
+The adapter admits only a clean checkout at the exact pinned owner revision
+`8Dionysus@3baafa395906e93dee23a9479ef4f9aed576bd8a`. This keeps a dirty local
+workspace from changing the generated input chain or presenting a stale
+generated reader as the cause of drift; the validation workflow carries the
+same pin.
+
 The authored profile is therefore not live-capable. Local live refresh omits
 the surface and removes stale copies instead of replaying the examples under
 `state/generated/`.

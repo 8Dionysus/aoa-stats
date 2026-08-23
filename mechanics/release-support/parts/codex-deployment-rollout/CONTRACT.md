@@ -13,6 +13,11 @@ The committed `reference` mode reads exactly these owner-authored examples:
 - `8Dionysus/examples/codex_plane_regeneration_report.example.json`
 - `8Dionysus/examples/codex_plane_rollout_receipt.example.json`
 
+Reference builds bind those paths to the clean immutable
+`8Dionysus@3baafa395906e93dee23a9479ef4f9aed576bd8a` checkout. A missing,
+dirty, or differently revised checkout fails closed; a neighboring directory
+is not a valid substitute for the pinned owner snapshot.
+
 The `live` mode reads only the matching deploy-local artifacts below an
 explicit workspace root:
 
@@ -33,6 +38,8 @@ remains at `examples/codex_plane_deployment_summary.example.json`.
 
 - `codex_plane_deployment_sources.py` owns path selection, JSON loading,
   immutable input bundles, and the strict separation of reference and live I/O
+- the reference source adapter owns exact owner revision and clean-worktree
+  admission before loading the three examples
 - filesystem-free `codex_plane_deployment.py` owns chain validation and
   deterministic projection
 - `scripts/build_views.py` owns environment/default resolution, zero-argument

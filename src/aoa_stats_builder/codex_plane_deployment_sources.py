@@ -1,6 +1,7 @@
 from __future__ import annotations
 
 import json
+import subprocess
 from collections.abc import Mapping, Sequence
 from dataclasses import dataclass
 from pathlib import Path
@@ -9,6 +10,13 @@ from typing import Any
 
 from .codex_plane_deployment import validate_codex_plane_deployment_chain
 from .receipt_abi import ReceiptValidationError
+
+
+CODEX_PLANE_REFERENCE_OWNER = "8Dionysus"
+# The committed reference chain is an immutable owner snapshot.  Keep this
+# pin in the source adapter so a local checkout cannot silently redefine the
+# bytes that the generated view claims to represent.
+CODEX_PLANE_REFERENCE_OWNER_REF = "3baafa395906e93dee23a9479ef4f9aed576bd8a"
 
 
 CODEX_PLANE_TRUST_STATE_EXAMPLE = Path(
@@ -91,6 +99,69 @@ def codex_plane_live_paths(workspace_root: Path) -> tuple[Path, Path, Path]:
     )
 
 
+def validate_codex_plane_reference_owner(owner_root: Path) -> Path:
+    """Require the exact clean owner snapshot used by the reference view.
+
+    The reference adapter is intentionally filesystem-backed, but it must not
+    turn an ambient sibling checkout into an implicit source of truth.  CI
+    supplies the same pinned checkout explicitly; local builds either resolve
+    that clean snapshot or fail closed with an actionable currentness error.
+    """
+
+    resolved_root = owner_root.expanduser().resolve()
+    if not resolved_root.is_dir():
+        raise ReceiptValidationError(
+            "missing Codex Plane reference owner root: "
+            f"expected {CODEX_PLANE_REFERENCE_OWNER}@"
+            f"{CODEX_PLANE_REFERENCE_OWNER_REF} at {resolved_root}"
+        )
+
+    def run_git(*arguments: str) -> str:
+        try:
+            completed = subprocess.run(
+                ["git", "-C", str(resolved_root), *arguments],
+                capture_output=True,
+                text=True,
+                check=False,
+            )
+        except OSError as exc:
+            raise ReceiptValidationError(
+                "Codex Plane reference owner root cannot be inspected with Git: "
+                f"{resolved_root}"
+            ) from exc
+        if completed.returncode != 0:
+            raise ReceiptValidationError(
+                "Codex Plane reference owner root must be a Git checkout at "
+                f"{CODEX_PLANE_REFERENCE_OWNER}@{CODEX_PLANE_REFERENCE_OWNER_REF}: "
+                f"{resolved_root}"
+            )
+        return completed.stdout.strip()
+
+    top_level = Path(run_git("rev-parse", "--show-toplevel")).resolve()
+    if top_level != resolved_root:
+        raise ReceiptValidationError(
+            "Codex Plane reference owner root must resolve to the Git checkout "
+            f"root: expected {resolved_root}, got {top_level}"
+        )
+
+    revision = run_git("rev-parse", "--verify", "HEAD^{commit}")
+    if revision != CODEX_PLANE_REFERENCE_OWNER_REF:
+        raise ReceiptValidationError(
+            "Codex Plane reference owner revision is not the exact pinned "
+            f"{CODEX_PLANE_REFERENCE_OWNER}@{CODEX_PLANE_REFERENCE_OWNER_REF}: "
+            f"{resolved_root} has {revision or '<unavailable>'}"
+        )
+
+    dirty = run_git("status", "--porcelain=v1", "--untracked-files=all")
+    if dirty:
+        raise ReceiptValidationError(
+            "Codex Plane reference owner checkout is dirty; exact currentness "
+            f"requires a clean {CODEX_PLANE_REFERENCE_OWNER}@"
+            f"{CODEX_PLANE_REFERENCE_OWNER_REF}: {resolved_root}"
+        )
+    return resolved_root
+
+
 def _load_json_object(path: Path, *, label: str) -> dict[str, Any]:
     try:
         payload = json.loads(path.read_text(encoding="utf-8"))
@@ -133,11 +204,16 @@ def _build_bundle(
 
 def load_codex_plane_reference_bundle(
     owner_root: Path,
+    *,
+    require_exact_owner: bool = True,
 ) -> CodexPlaneDeploymentInputBundle:
     owner_root = owner_root.expanduser().resolve()
+    if require_exact_owner:
+        owner_root = validate_codex_plane_reference_owner(owner_root)
     paths = codex_plane_reference_paths(owner_root)
     refs = tuple(
-        f"8Dionysus/{path.relative_to(owner_root).as_posix()}" for path in paths
+        f"{CODEX_PLANE_REFERENCE_OWNER}/{path.relative_to(owner_root).as_posix()}"
+        for path in paths
     )
     return _build_bundle(paths=paths, source_refs=refs)
 

@@ -24,11 +24,11 @@ def test_roadmap_owns_direction_without_replaying_mutable_inventory() -> None:
     catalog = load_json("generated/summary_surface_catalog.min.json")
 
     assert (
-        "> Current release: `v0.2.1`. See [CHANGELOG](CHANGELOG.md) for release notes."
+        "> Current release: `v0.2.2`. See [CHANGELOG](CHANGELOG.md) for release notes."
         in readme
     )
     assert "## [0.1.3] - 2026-04-23" in changelog
-    assert "> Current release: `v0.2.1`" in roadmap
+    assert "> Current release: `v0.2.2`" in roadmap
     assert "federated statistical measurability" in roadmap
     assert "Priority sequence" in roadmap
     assert "alternating cross-slices" in roadmap
