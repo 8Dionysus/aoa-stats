@@ -57,3 +57,7 @@
 ## 2026-08-23
 
 - [AOST-D-0020 - Codex Reference Builds Require Exact Owner Snapshots](../AOST-D-0020-codex-reference-builds-require-exact-owner-snapshots.md) (`docs/decisions/AOST-D-0020-codex-reference-builds-require-exact-owner-snapshots.md`)
+
+## 2026-08-24
+
+- [AOST-D-0021 - Current-Main Validation Telemetry Convergence](../AOST-D-0021-current-main-validation-telemetry-convergence.md) (`docs/decisions/AOST-D-0021-current-main-validation-telemetry-convergence.md`)

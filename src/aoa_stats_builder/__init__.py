@@ -36,9 +36,17 @@ from .route_progression import build_route_progression_summary
 from .source_coverage import build_source_coverage_summary
 from .surface_catalog import build_summary_surface_catalog
 from .validation_telemetry import (
+    ValidationTelemetryAdmission,
+    ValidationTelemetryAdmissionError,
+    ValidationTelemetryAdmissionReceipt,
+    ValidationTelemetryPortSchemaValidation,
+    admit_validation_telemetry_packet,
     build_validation_telemetry_baseline,
+    validate_central_source_home_identity,
     validate_validation_telemetry_packet,
+    validate_validation_telemetry_packet_against_port,
     validate_validation_telemetry_port,
+    validate_validation_telemetry_port_schema,
 )
 
 __all__ = [
@@ -62,6 +70,11 @@ __all__ = [
     "build_summary_surface_catalog",
     "build_surface_detection_summary",
     "build_supersession_drop_summary",
+    "ValidationTelemetryAdmission",
+    "ValidationTelemetryAdmissionError",
+    "ValidationTelemetryAdmissionReceipt",
+    "ValidationTelemetryPortSchemaValidation",
+    "admit_validation_telemetry_packet",
     "build_validation_telemetry_baseline",
     "generated_from",
     "load_event_kind_registry",
@@ -72,6 +85,9 @@ __all__ = [
     "validate_downstream_canaries",
     "validate_receipt",
     "validate_receipt_abi_governance",
+    "validate_central_source_home_identity",
     "validate_validation_telemetry_packet",
+    "validate_validation_telemetry_packet_against_port",
     "validate_validation_telemetry_port",
+    "validate_validation_telemetry_port_schema",
 ]

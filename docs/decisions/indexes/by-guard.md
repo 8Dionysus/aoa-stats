@@ -14,6 +14,10 @@
 
 - [AOST-D-0016 - Authenticate And Separate Stats MCP Owner Evidence](../AOST-D-0016-authenticate-and-separate-stats-mcp-owner-evidence.md) (`docs/decisions/AOST-D-0016-authenticate-and-separate-stats-mcp-owner-evidence.md`)
 
+## batch-local replay
+
+- [AOST-D-0021 - Current-Main Validation Telemetry Convergence](../AOST-D-0021-current-main-validation-telemetry-convergence.md) (`docs/decisions/AOST-D-0021-current-main-validation-telemetry-convergence.md`)
+
 ## catalog-output parity
 
 - [AOST-D-0008 - Retired Outputs Remain Cleanup Tombstones, Not Active Stats](../AOST-D-0008-retired-outputs-remain-cleanup-tombstones-not-active-stats.md) (`docs/decisions/AOST-D-0008-retired-outputs-remain-cleanup-tombstones-not-active-stats.md`)
@@ -38,6 +42,10 @@
 ## cross-owner coherence
 
 - [AOST-D-0007 - Titan Reference Rosters Are Not Observed Swarm Activity](../AOST-D-0007-titan-reference-rosters-are-not-observed-swarm-activity.md) (`docs/decisions/AOST-D-0007-titan-reference-rosters-are-not-observed-swarm-activity.md`)
+
+## current-main compatibility
+
+- [AOST-D-0021 - Current-Main Validation Telemetry Convergence](../AOST-D-0021-current-main-validation-telemetry-convergence.md) (`docs/decisions/AOST-D-0021-current-main-validation-telemetry-convergence.md`)
 
 ## deferred lifecycle
 
@@ -65,6 +73,7 @@
 - [AOST-D-0018 - Memory Outcomes Remain Measurement, Not Authority](../AOST-D-0018-memory-outcomes-remain-measurement-not-authority.md) (`docs/decisions/AOST-D-0018-memory-outcomes-remain-measurement-not-authority.md`)
 - [AOST-D-0019 - Owner-Safe Validation Telemetry Is a Derived Federation Extension](../AOST-D-0019-owner-safe-validation-telemetry.md) (`docs/decisions/AOST-D-0019-owner-safe-validation-telemetry.md`)
 - [AOST-D-0020 - Codex Reference Builds Require Exact Owner Snapshots](../AOST-D-0020-codex-reference-builds-require-exact-owner-snapshots.md) (`docs/decisions/AOST-D-0020-codex-reference-builds-require-exact-owner-snapshots.md`)
+- [AOST-D-0021 - Current-Main Validation Telemetry Convergence](../AOST-D-0021-current-main-validation-telemetry-convergence.md) (`docs/decisions/AOST-D-0021-current-main-validation-telemetry-convergence.md`)
 
 ## downstream canaries
 
@@ -94,6 +103,7 @@
 ## identity binding
 
 - [AOST-D-0019 - Owner-Safe Validation Telemetry Is a Derived Federation Extension](../AOST-D-0019-owner-safe-validation-telemetry.md) (`docs/decisions/AOST-D-0019-owner-safe-validation-telemetry.md`)
+- [AOST-D-0021 - Current-Main Validation Telemetry Convergence](../AOST-D-0021-current-main-validation-telemetry-convergence.md) (`docs/decisions/AOST-D-0021-current-main-validation-telemetry-convergence.md`)
 
 ## intake governance
 
@@ -132,6 +142,7 @@
 ## missingness
 
 - [AOST-D-0019 - Owner-Safe Validation Telemetry Is a Derived Federation Extension](../AOST-D-0019-owner-safe-validation-telemetry.md) (`docs/decisions/AOST-D-0019-owner-safe-validation-telemetry.md`)
+- [AOST-D-0021 - Current-Main Validation Telemetry Convergence](../AOST-D-0021-current-main-validation-telemetry-convergence.md) (`docs/decisions/AOST-D-0021-current-main-validation-telemetry-convergence.md`)
 
 ## negative applicability
 
@@ -212,6 +223,10 @@
 
 - [AOST-D-0002 - Canonical Decision Lane](../AOST-D-0002-canonical-decision-lane.md) (`docs/decisions/AOST-D-0002-canonical-decision-lane.md`)
 
+## schema admission
+
+- [AOST-D-0021 - Current-Main Validation Telemetry Convergence](../AOST-D-0021-current-main-validation-telemetry-convergence.md) (`docs/decisions/AOST-D-0021-current-main-validation-telemetry-convergence.md`)
+
 ## schema-output parity
 
 - [AOST-D-0005 - Route Progression Semantic Receipts Are Not Numeric Live State](../AOST-D-0005-route-progression-semantic-receipts-are-not-numeric-live-state.md) (`docs/decisions/AOST-D-0005-route-progression-semantic-receipts-are-not-numeric-live-state.md`)
@@ -226,6 +241,7 @@
 - [AOST-D-0006 - Runtime Closeout Wave Receipts Are Not Current Trial Live State](../AOST-D-0006-runtime-closeout-wave-receipts-are-not-current-trial-live-state.md) (`docs/decisions/AOST-D-0006-runtime-closeout-wave-receipts-are-not-current-trial-live-state.md`)
 - [AOST-D-0018 - Memory Outcomes Remain Measurement, Not Authority](../AOST-D-0018-memory-outcomes-remain-measurement-not-authority.md) (`docs/decisions/AOST-D-0018-memory-outcomes-remain-measurement-not-authority.md`)
 - [AOST-D-0019 - Owner-Safe Validation Telemetry Is a Derived Federation Extension](../AOST-D-0019-owner-safe-validation-telemetry.md) (`docs/decisions/AOST-D-0019-owner-safe-validation-telemetry.md`)
+- [AOST-D-0021 - Current-Main Validation Telemetry Convergence](../AOST-D-0021-current-main-validation-telemetry-convergence.md) (`docs/decisions/AOST-D-0021-current-main-validation-telemetry-convergence.md`)
 
 ## source currentness
 

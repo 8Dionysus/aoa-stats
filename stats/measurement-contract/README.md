@@ -23,7 +23,16 @@ Claim/Evidence Validation Graph shadow. It does not define the node's claim,
 semantic sufficiency, budget, acceptance barrier, or validator meaning; those
 remain with the owner. Candidate and environment identities require complete
 kind/source/digest triples. Resource fields carry explicit missing, unknown, or
-stale states and never encode an unavailable value as zero.
+stale states and never encode an unavailable value as zero. An observed
+`first_failure` carries a non-negative numeric `time_to_first_failure_ms` (or
+an explicit missing/unknown/stale state); no failure carries a distinct
+`not_applicable` timing state. Cost is a portable reference to an
+owner-authored measurement packet, so amount, unit, basis, population, window,
+source revision, and evidence remain outside the central stats owner.
+
+Admission also requires the complete nested packet shape and coherent result,
+first-failure, evidence, posture, and missingness fields; a green schema proxy
+cannot replace those cross-field checks.
 
 The outcome receipt is upstream measurement input, not a verdict. The task or
 source owner owns its action and outcome facts; `aoa-stats` owns only the C10
@@ -87,6 +96,17 @@ truth, or require an MCP runtime.
 `scripts/validate_stats_protocol.py --outcome-receipt <path>` validates C10
 shape and pure cross-field semantics. It does not resolve or endorse any
 referenced owner fact.
+
+The typed `admit_validation_telemetry_packet` API is a lower-level pure
+boundary. Callers must pass packet-schema findings as `schema_issues` and a
+content-bound `ValidationTelemetryPortSchemaValidation` issued by the
+canonical owner protocol route for
+`stats/federation/validation-telemetry-port.schema.json`. A caller-supplied
+owner-port findings list, including an empty one, is never admission evidence;
+the typed object binds the exact port bytes and current in-memory canonical
+schema context. The API therefore does not duplicate nested
+`additionalProperties` rules or perform filesystem I/O, while schema closure
+cannot be silently bypassed by direct callers.
 
 ## Compatibility
 
