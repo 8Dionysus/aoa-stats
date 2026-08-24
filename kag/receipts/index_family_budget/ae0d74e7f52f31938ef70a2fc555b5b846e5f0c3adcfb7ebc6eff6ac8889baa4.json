@@ -1,0 +1,17 @@
+{
+  "allowed_bytes": 6741959,
+  "allowed_tracked_bytes": 9181717,
+  "approved_by": "repository-owner",
+  "base_ref": "88ff38b1b38eef939f2c5b4541cbe8363a05fc8d",
+  "changed_generated_bytes": 6741959,
+  "changed_generated_files": 263,
+  "decision_ref": "aoa-kag:docs/decisions/AOA-KAG-D-0017-portable-content-addressed-repository-family.md",
+  "default_limit_bytes": 1048576,
+  "head_family_digest": "ae0d74e7f52f31938ef70a2fc555b5b846e5f0c3adcfb7ebc6eff6ac8889baa4",
+  "reason": "Regenerate the owner-local KAG portable family for the reviewed validation-telemetry qualified-reference compatibility repair; the pinned CI generator requires exact family parity and its changed-generated-bytes budget receipt.",
+  "repo": "aoa-stats",
+  "schema_version": "aoa-repo-local-kag-budget-receipt-v1",
+  "scope": "generated_delta",
+  "tracked_bytes": 9181717,
+  "tracked_bytes_max": 9437184
+}

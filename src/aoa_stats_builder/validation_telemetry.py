@@ -353,6 +353,14 @@ def _portable_ref(value: object) -> bool:
     )
 
 
+def _ref_values(value: str | Sequence[str] | None) -> tuple[str, ...]:
+    if isinstance(value, str):
+        return (value,) if value else ()
+    if isinstance(value, Sequence) and not isinstance(value, (str, bytes)):
+        return tuple(item for item in value if isinstance(item, str) and item)
+    return ()
+
+
 def _is_number(value: object) -> bool:
     if not isinstance(value, (int, float)) or isinstance(value, bool):
         return False
@@ -466,9 +474,13 @@ def _is_authoritative_owner_input(
         ):
             return False
     telemetry_port_ref = input_entry.get("telemetry_port_ref")
-    return telemetry_port_ref is None or telemetry_port_ref == (
-        f"{port_ref}#/validation_telemetry"
-    )
+    if telemetry_port_ref is None:
+        return True
+    expected_refs = {
+        f"{port_ref}#/validation_telemetry",
+        f"{owner_repo}:{port_ref}#/validation_telemetry",
+    }
+    return telemetry_port_ref in expected_refs
 
 
 def _has_current_live_observation_binding(
@@ -848,7 +860,7 @@ def admit_validation_telemetry_packet(
     telemetry_port: Mapping[str, Any] | None,
     owner_port: Mapping[str, Any] | None = None,
     expected_owner_repo: str | None = None,
-    expected_telemetry_port_ref: str | None = None,
+    expected_telemetry_port_ref: str | Sequence[str] | None = None,
     expected_port_ref: str | None = None,
     expected_packet_ref: str | None = None,
     owner_source_ref: str | None = None,
@@ -933,9 +945,14 @@ def admit_validation_telemetry_packet(
         issues.append(f"{label}: observation_id must be non-empty")
     if not isinstance(expected_owner_repo, str) or not expected_owner_repo:
         issues.append(f"{label}: expected_owner_repo is required for admission")
-    if not isinstance(expected_telemetry_port_ref, str) or not expected_telemetry_port_ref:
+    expected_telemetry_port_refs = _ref_values(expected_telemetry_port_ref)
+    if not expected_telemetry_port_refs:
         issues.append(
             f"{label}: expected_telemetry_port_ref is required for admission"
+        )
+    elif any(not _portable_ref(ref) for ref in expected_telemetry_port_refs):
+        issues.append(
+            f"{label}: expected_telemetry_port_ref must contain portable refs"
         )
     if not isinstance(expected_port_ref, str) or not expected_port_ref:
         issues.append(f"{label}: expected_port_ref is required for admission")
@@ -972,7 +989,7 @@ def admit_validation_telemetry_packet(
                 packet,
                 telemetry_port,
                 expected_owner_repo=expected_owner_repo,
-                expected_telemetry_port_ref=expected_telemetry_port_ref,
+                expected_telemetry_port_ref=expected_telemetry_port_refs,
                 label=label,
             )
         )
@@ -1568,19 +1585,27 @@ def _validate_admission_against_current_owner_input(
         issues.append(f"{label}: receipt owner_source_ref does not match current owner input")
     if receipt.port_content_digest != _packet_digest(payload):
         issues.append(f"{label}: receipt port content digest does not match current owner input")
-    current_telemetry_ref = input_entry.get("telemetry_port_ref") or (
-        f"{current_port_ref}#/validation_telemetry"
-    )
-    if receipt.telemetry_port_ref != current_telemetry_ref:
+    current_telemetry_refs: list[str] = []
+    declared_telemetry_ref = input_entry.get("telemetry_port_ref")
+    if isinstance(declared_telemetry_ref, str) and declared_telemetry_ref:
+        current_telemetry_refs.append(declared_telemetry_ref)
+    if isinstance(current_port_ref, str) and current_port_ref:
+        canonical_telemetry_ref = f"{current_port_ref}#/validation_telemetry"
+        current_telemetry_refs.extend(
+            (
+                canonical_telemetry_ref,
+                f"{owner_repo}:{canonical_telemetry_ref}",
+            )
+        )
+    current_telemetry_refs = list(dict.fromkeys(current_telemetry_refs))
+    if receipt.telemetry_port_ref not in current_telemetry_refs:
         issues.append(f"{label}: receipt telemetry_port_ref does not match current owner input")
     issues.extend(
         validate_validation_telemetry_packet_against_port(
             admission.packet,
             telemetry_port,
             expected_owner_repo=owner_repo,
-            expected_telemetry_port_ref=(
-                current_telemetry_ref if isinstance(current_telemetry_ref, str) else None
-            ),
+            expected_telemetry_port_ref=tuple(current_telemetry_refs),
             label=label,
         )
     )

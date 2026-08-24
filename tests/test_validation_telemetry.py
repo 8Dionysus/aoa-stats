@@ -304,8 +304,16 @@ def test_owner_port_route_rejects_missing_telemetry_schema_field(tmp_path: Path)
     )
 
 
+@pytest.mark.parametrize(
+    "telemetry_port_ref",
+    (
+        "stats/port.manifest.json#/validation_telemetry",
+        "aoa-evals:stats/port.manifest.json#/validation_telemetry",
+    ),
+)
 def test_baseline_script_binds_packet_to_owner_root_and_current_port(
     tmp_path: Path,
+    telemetry_port_ref: str,
 ) -> None:
     owner_root = tmp_path / "aoa-evals"
     port_path = owner_root / "stats" / "port.manifest.json"
@@ -313,8 +321,10 @@ def test_baseline_script_binds_packet_to_owner_root_and_current_port(
     port_path.parent.mkdir(parents=True)
     packet_path.parent.mkdir(parents=True)
     port = telemetry_port()
+    packet = valid_packet()
+    packet["telemetry_port_ref"] = telemetry_port_ref
     port_path.write_text(json.dumps(port), encoding="utf-8")
-    packet_path.write_text(json.dumps(valid_packet()), encoding="utf-8")
+    packet_path.write_text(json.dumps(packet), encoding="utf-8")
     output_path = tmp_path / "baseline.json"
 
     result = subprocess.run(

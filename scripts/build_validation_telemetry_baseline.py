@@ -9,7 +9,7 @@ validator into a cross-owner sufficiency decision.
 from __future__ import annotations
 
 import argparse
-from collections.abc import Mapping
+from collections.abc import Mapping, Sequence
 import hashlib
 import json
 from pathlib import Path
@@ -53,6 +53,32 @@ def _owner_port_ref(path: Path) -> str:
     if path.name == "port.manifest.json" and path.parent.name == "stats":
         return path.relative_to(path.parent.parent).as_posix()
     return path.name
+
+
+def _telemetry_port_ref_aliases(
+    owner_repo: str | None,
+    value: str | Sequence[str] | None,
+) -> tuple[str, ...]:
+    """Keep the protocol's unqualified and owner-qualified ref forms together."""
+
+    if isinstance(value, str):
+        values = (value,)
+    elif isinstance(value, Sequence) and not isinstance(value, (str, bytes)):
+        values = tuple(item for item in value if isinstance(item, str))
+    else:
+        values = ()
+    aliases: list[str] = []
+    for ref in values:
+        if ref and ref not in aliases:
+            aliases.append(ref)
+        if (
+            owner_repo
+            and ref
+            and not ref.startswith(f"{owner_repo}:")
+            and f"{owner_repo}:{ref}" not in aliases
+        ):
+            aliases.append(f"{owner_repo}:{ref}")
+    return tuple(aliases)
 
 
 def _source_home_digest(path: Path) -> str:
@@ -166,7 +192,7 @@ def _load_packet(
     telemetry_port: Mapping[str, Any] | None,
     owner_port: Mapping[str, Any] | None,
     expected_owner_repo: str | None,
-    expected_telemetry_port_ref: str | None,
+    expected_telemetry_port_ref: str | Sequence[str] | None,
     expected_port_ref: str | None,
     expected_packet_ref: str | None,
     owner_source_ref: str | None,
@@ -394,9 +420,7 @@ def main(argv: list[str] | None = None) -> int:
             owner_port=owner_port,
             expected_owner_repo=packet_owner,
             expected_telemetry_port_ref=(
-                expected_telemetry_port_ref
-                if isinstance(expected_telemetry_port_ref, str)
-                else None
+                _telemetry_port_ref_aliases(packet_owner, expected_telemetry_port_ref)
             ),
             expected_port_ref=(
                 expected_port_ref if isinstance(expected_port_ref, str) else None
