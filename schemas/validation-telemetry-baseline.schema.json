@@ -137,7 +137,25 @@
     },
     "field_coverage": {
       "type": "object",
-      "minProperties": 14,
+      "required": [
+        "cache_posture",
+        "candidate_identity",
+        "cost",
+        "cpu_ms",
+        "environment_identity",
+        "first_failure",
+        "io_read_bytes",
+        "io_write_bytes",
+        "peak_rss_bytes",
+        "receipt_posture",
+        "rerun_amplification",
+        "result",
+        "semantic_class",
+        "source_coverage",
+        "time_to_first_failure_ms",
+        "wall_ms"
+      ],
+      "minProperties": 16,
       "additionalProperties": {
         "$ref": "#/$defs/coverage"
       }
@@ -154,6 +172,9 @@
         "telemetry_port_ref",
         "declared_node_count",
         "packet_count",
+        "identity_barrier_status",
+        "identity_group_count",
+        "identity_groups",
         "field_coverage"
       ],
       "properties": {
@@ -185,6 +206,7 @@
             "declared_only",
             "reference",
             "live",
+            "identity_incompatible",
             "invalid",
             "not_applicable"
           ]
@@ -217,8 +239,73 @@
           ],
           "minimum": 0
         },
+        "identity_barrier_status": {
+          "enum": [
+            "not_applicable",
+            "compatible",
+            "blocked"
+          ]
+        },
+        "identity_group_count": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "identity_groups": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/identity_group"
+          }
+        },
         "field_coverage": {
           "$ref": "#/$defs/field_coverage"
+        }
+      }
+    },
+    "identity_group": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "owner_source_ref",
+        "port_content_digest",
+        "candidate_digest",
+        "environment_digest",
+        "live_state",
+        "source_revision",
+        "packet_count"
+      ],
+      "properties": {
+        "owner_source_ref": {
+          "type": "string",
+          "minLength": 1
+        },
+        "port_content_digest": {
+          "type": "string",
+          "pattern": "^sha256:[0-9a-f]{64}$"
+        },
+        "candidate_digest": {
+          "type": "string",
+          "pattern": "^sha256:[0-9a-f]{64}$"
+        },
+        "environment_digest": {
+          "type": "string",
+          "pattern": "^sha256:[0-9a-f]{64}$"
+        },
+        "live_state": {
+          "enum": [
+            "reference",
+            "live"
+          ]
+        },
+        "source_revision": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "minLength": 1
+        },
+        "packet_count": {
+          "type": "integer",
+          "minimum": 1
         }
       }
     },
@@ -232,10 +319,12 @@
         "port_invalid_count",
         "telemetry_declared_owner_count",
         "telemetry_packet_owner_count",
+        "telemetry_incompatible_owner_count",
         "owner_coverage_status",
         "telemetry_coverage_status",
         "missing_port_owner_repos",
         "telemetry_gap_owner_repos",
+        "identity_barrier_owner_repos",
         "field_coverage"
       ],
       "properties": {
@@ -263,12 +352,17 @@
           "type": "integer",
           "minimum": 0
         },
+        "telemetry_incompatible_owner_count": {
+          "type": "integer",
+          "minimum": 0
+        },
         "owner_coverage_status": {
           "enum": [
             "complete",
             "partial",
             "missing",
-            "unknown"
+            "unknown",
+            "not_applicable"
           ]
         },
         "telemetry_coverage_status": {
@@ -276,7 +370,8 @@
             "complete",
             "partial",
             "missing",
-            "unknown"
+            "unknown",
+            "not_applicable"
           ]
         },
         "missing_port_owner_repos": {
@@ -288,6 +383,14 @@
           }
         },
         "telemetry_gap_owner_repos": {
+          "type": "array",
+          "uniqueItems": true,
+          "items": {
+            "type": "string",
+            "minLength": 1
+          }
+        },
+        "identity_barrier_owner_repos": {
           "type": "array",
           "uniqueItems": true,
           "items": {

@@ -21,6 +21,7 @@
     "first_failure",
     "rerun_amplification",
     "source_coverage",
+    "cost",
     "provenance",
     "posture"
   ],
@@ -181,11 +182,15 @@
           "type": "object",
           "additionalProperties": false,
           "required": [
-            "status"
+            "status",
+            "time_to_first_failure_ms"
           ],
           "properties": {
             "status": {
               "const": "none"
+            },
+            "time_to_first_failure_ms": {
+              "$ref": "#/$defs/time_to_first_failure_metric"
             }
           }
         },
@@ -196,7 +201,8 @@
             "status",
             "node_id",
             "failure_class",
-            "evidence_ref"
+            "evidence_ref",
+            "time_to_first_failure_ms"
           ],
           "properties": {
             "status": {
@@ -213,6 +219,9 @@
             "evidence_ref": {
               "type": "string",
               "minLength": 1
+            },
+            "time_to_first_failure_ms": {
+              "$ref": "#/$defs/time_to_first_failure_metric"
             }
           }
         },
@@ -384,6 +393,60 @@
         }
       ]
     },
+    "cost": {
+      "oneOf": [
+        {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "status"
+          ],
+          "properties": {
+            "status": {
+              "const": "not_applicable"
+            }
+          }
+        },
+        {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "status",
+            "measurement_ref"
+          ],
+          "properties": {
+            "status": {
+              "const": "observed"
+            },
+            "measurement_ref": {
+              "type": "string",
+              "minLength": 1
+            }
+          }
+        },
+        {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "status",
+            "reason"
+          ],
+          "properties": {
+            "status": {
+              "enum": [
+                "missing",
+                "unknown",
+                "stale"
+              ]
+            },
+            "reason": {
+              "type": "string",
+              "minLength": 1
+            }
+          }
+        }
+      ]
+    },
     "provenance": {
       "type": "object",
       "additionalProperties": false,
@@ -520,6 +583,60 @@
         }
       ]
     },
+    "time_to_first_failure_metric": {
+      "oneOf": [
+        {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "status",
+            "value"
+          ],
+          "properties": {
+            "status": {
+              "const": "observed"
+            },
+            "value": {
+              "type": "number",
+              "minimum": 0
+            }
+          }
+        },
+        {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "status"
+          ],
+          "properties": {
+            "status": {
+              "const": "not_applicable"
+            }
+          }
+        },
+        {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "status",
+            "reason"
+          ],
+          "properties": {
+            "status": {
+              "enum": [
+                "missing",
+                "unknown",
+                "stale"
+              ]
+            },
+            "reason": {
+              "type": "string",
+              "minLength": 1
+            }
+          }
+        }
+      ]
+    },
     "node": {
       "type": "object",
       "additionalProperties": false,
@@ -528,7 +645,10 @@
         "lane",
         "semantic_class",
         "budget_tier",
-        "validator_ref"
+        "validator_ref",
+        "claim_refs",
+        "evidence_refs",
+        "acceptance_barrier"
       ],
       "properties": {
         "node_id": {
@@ -570,11 +690,25 @@
         },
         "claim_refs": {
           "type": "array",
+          "minItems": 1,
           "uniqueItems": true,
           "items": {
             "type": "string",
             "minLength": 1
           }
+        },
+        "evidence_refs": {
+          "type": "array",
+          "minItems": 1,
+          "uniqueItems": true,
+          "items": {
+            "type": "string",
+            "minLength": 1
+          }
+        },
+        "acceptance_barrier": {
+          "type": "string",
+          "minLength": 1
         }
       }
     },

@@ -162,6 +162,7 @@
 ## aoa-stats source inventory
 
 - [AOST-D-0019 - Owner-Safe Validation Telemetry Is a Derived Federation Extension](../AOST-D-0019-owner-safe-validation-telemetry.md) (`docs/decisions/AOST-D-0019-owner-safe-validation-telemetry.md`)
+- [AOST-D-0021 - Current-Main Validation Telemetry Convergence](../AOST-D-0021-current-main-validation-telemetry-convergence.md) (`docs/decisions/AOST-D-0021-current-main-validation-telemetry-convergence.md`)
 
 ## ATM10-Agent
 
@@ -186,6 +187,7 @@
 ## owner validation receipts
 
 - [AOST-D-0019 - Owner-Safe Validation Telemetry Is a Derived Federation Extension](../AOST-D-0019-owner-safe-validation-telemetry.md) (`docs/decisions/AOST-D-0019-owner-safe-validation-telemetry.md`)
+- [AOST-D-0021 - Current-Main Validation Telemetry Convergence](../AOST-D-0021-current-main-validation-telemetry-convergence.md) (`docs/decisions/AOST-D-0021-current-main-validation-telemetry-convergence.md`)
 
 ## owner-local component refresh receipts
 
@@ -206,6 +208,7 @@
 ## owner-local validator manifests
 
 - [AOST-D-0019 - Owner-Safe Validation Telemetry Is a Derived Federation Extension](../AOST-D-0019-owner-safe-validation-telemetry.md) (`docs/decisions/AOST-D-0019-owner-safe-validation-telemetry.md`)
+- [AOST-D-0021 - Current-Main Validation Telemetry Convergence](../AOST-D-0021-current-main-validation-telemetry-convergence.md) (`docs/decisions/AOST-D-0021-current-main-validation-telemetry-convergence.md`)
 
 ## release validation workflow
 

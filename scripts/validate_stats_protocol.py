@@ -7,6 +7,7 @@ import argparse
 from collections.abc import Mapping
 import json
 from pathlib import Path
+import re
 import sys
 from typing import Any
 
@@ -32,6 +33,7 @@ from aoa_stats_builder.schema_validation import (  # noqa: E402
 )
 from aoa_stats_builder.validation_telemetry import (  # noqa: E402
     validate_validation_telemetry_packet,
+    validate_validation_telemetry_packet_against_port,
     validate_validation_telemetry_port,
 )
 
@@ -82,6 +84,14 @@ def _portable_ref(value: object) -> bool:
     if not isinstance(value, str) or not value:
         return False
     lowered = value.lower()
+    normalized = value.replace("\\", "/")
+    qualified = ":" in normalized and not re.match(r"^[a-zA-Z]:/", normalized)
+    if qualified:
+        _, normalized_path = normalized.split(":", 1)
+    else:
+        normalized_path = normalized
+    if qualified and any(part == ".." for part in normalized_path.split("/")):
+        return False
     return not (
         value.startswith(("/", "~"))
         or "/home/" in lowered
@@ -501,6 +511,18 @@ def _validate_validation_telemetry_packets(
             issues.extend(
                 f"{packet_path}: {issue}"
                 for issue in validate_validation_telemetry_packet(packet)
+            )
+            issues.extend(
+                f"{packet_path}: {issue}"
+                for issue in validate_validation_telemetry_packet_against_port(
+                    packet,
+                    telemetry,
+                    expected_owner_repo=str(owner_repo),
+                    expected_telemetry_port_ref=(
+                        f"{port_ref}#/validation_telemetry",
+                        f"{owner_repo}:{port_ref}#/validation_telemetry",
+                    ),
+                )
             )
             if packet.get("owner_repo") != owner_repo:
                 issues.append(f"{packet_path}: owner_repo does not match local port")

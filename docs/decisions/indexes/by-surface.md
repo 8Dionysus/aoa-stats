@@ -26,6 +26,7 @@
 ## docs/decisions
 
 - [AOST-D-0002 - Canonical Decision Lane](../AOST-D-0002-canonical-decision-lane.md) (`docs/decisions/AOST-D-0002-canonical-decision-lane.md`)
+- [AOST-D-0021 - Current-Main Validation Telemetry Convergence](../AOST-D-0021-current-main-validation-telemetry-convergence.md) (`docs/decisions/AOST-D-0021-current-main-validation-telemetry-convergence.md`)
 
 ## docs/routes
 
@@ -129,6 +130,10 @@
 
 - [AOST-D-0001 - Stats Strength And Intake Governance](../AOST-D-0001-stats-strength-and-intake-governance.md) (`docs/decisions/AOST-D-0001-stats-strength-and-intake-governance.md`)
 
+## schemas/validation
+
+- [AOST-D-0021 - Current-Main Validation Telemetry Convergence](../AOST-D-0021-current-main-validation-telemetry-convergence.md) (`docs/decisions/AOST-D-0021-current-main-validation-telemetry-convergence.md`)
+
 ## scripts/release
 
 - [AOST-D-0014 - - Routing Owner Succession](../AOST-D-0014-routing-owner-succession.md) (`docs/decisions/AOST-D-0014-routing-owner-succession.md`)
@@ -137,6 +142,7 @@
 
 - [AOST-D-0001 - Stats Strength And Intake Governance](../AOST-D-0001-stats-strength-and-intake-governance.md) (`docs/decisions/AOST-D-0001-stats-strength-and-intake-governance.md`)
 - [AOST-D-0002 - Canonical Decision Lane](../AOST-D-0002-canonical-decision-lane.md) (`docs/decisions/AOST-D-0002-canonical-decision-lane.md`)
+- [AOST-D-0021 - Current-Main Validation Telemetry Convergence](../AOST-D-0021-current-main-validation-telemetry-convergence.md) (`docs/decisions/AOST-D-0021-current-main-validation-telemetry-convergence.md`)
 
 ## security boundary
 
@@ -163,6 +169,7 @@
 ## src/core
 
 - [AOST-D-0012 - Federated Measurement Ownership and Thin Access](../AOST-D-0012-federated-measurement-ownership-and-thin-access.md) (`docs/decisions/AOST-D-0012-federated-measurement-ownership-and-thin-access.md`)
+- [AOST-D-0021 - Current-Main Validation Telemetry Convergence](../AOST-D-0021-current-main-validation-telemetry-convergence.md) (`docs/decisions/AOST-D-0021-current-main-validation-telemetry-convergence.md`)
 
 ## src/projection
 
@@ -187,6 +194,7 @@
 - [AOST-D-0014 - - Routing Owner Succession](../AOST-D-0014-routing-owner-succession.md) (`docs/decisions/AOST-D-0014-routing-owner-succession.md`)
 - [AOST-D-0018 - Memory Outcomes Remain Measurement, Not Authority](../AOST-D-0018-memory-outcomes-remain-measurement-not-authority.md) (`docs/decisions/AOST-D-0018-memory-outcomes-remain-measurement-not-authority.md`)
 - [AOST-D-0019 - Owner-Safe Validation Telemetry Is a Derived Federation Extension](../AOST-D-0019-owner-safe-validation-telemetry.md) (`docs/decisions/AOST-D-0019-owner-safe-validation-telemetry.md`)
+- [AOST-D-0021 - Current-Main Validation Telemetry Convergence](../AOST-D-0021-current-main-validation-telemetry-convergence.md) (`docs/decisions/AOST-D-0021-current-main-validation-telemetry-convergence.md`)
 
 ## stats/intake-contract
 
@@ -197,6 +205,7 @@
 - [AOST-D-0012 - Federated Measurement Ownership and Thin Access](../AOST-D-0012-federated-measurement-ownership-and-thin-access.md) (`docs/decisions/AOST-D-0012-federated-measurement-ownership-and-thin-access.md`)
 - [AOST-D-0018 - Memory Outcomes Remain Measurement, Not Authority](../AOST-D-0018-memory-outcomes-remain-measurement-not-authority.md) (`docs/decisions/AOST-D-0018-memory-outcomes-remain-measurement-not-authority.md`)
 - [AOST-D-0019 - Owner-Safe Validation Telemetry Is a Derived Federation Extension](../AOST-D-0019-owner-safe-validation-telemetry.md) (`docs/decisions/AOST-D-0019-owner-safe-validation-telemetry.md`)
+- [AOST-D-0021 - Current-Main Validation Telemetry Convergence](../AOST-D-0021-current-main-validation-telemetry-convergence.md) (`docs/decisions/AOST-D-0021-current-main-validation-telemetry-convergence.md`)
 
 ## stats/operation-contracts
 
@@ -220,6 +229,10 @@
 
 - [AOST-D-0015 - Review Captured Stats Catalog In The Owner](../AOST-D-0015-review-captured-stats-catalog-in-the-owner.md) (`docs/decisions/AOST-D-0015-review-captured-stats-catalog-in-the-owner.md`)
 - [AOST-D-0016 - Authenticate And Separate Stats MCP Owner Evidence](../AOST-D-0016-authenticate-and-separate-stats-mcp-owner-evidence.md) (`docs/decisions/AOST-D-0016-authenticate-and-separate-stats-mcp-owner-evidence.md`)
+
+## tests
+
+- [AOST-D-0021 - Current-Main Validation Telemetry Convergence](../AOST-D-0021-current-main-validation-telemetry-convergence.md) (`docs/decisions/AOST-D-0021-current-main-validation-telemetry-convergence.md`)
 
 ## tests/release-checks
 

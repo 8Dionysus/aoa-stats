@@ -25,8 +25,8 @@
     },
     "required_fields": {
       "type": "array",
-      "minItems": 14,
-      "maxItems": 14,
+      "minItems": 16,
+      "maxItems": 16,
       "uniqueItems": true,
       "items": {
         "enum": [
@@ -43,7 +43,9 @@
           "receipt_posture",
           "first_failure",
           "rerun_amplification",
-          "source_coverage"
+          "source_coverage",
+          "cost",
+          "time_to_first_failure_ms"
         ]
       }
     },
@@ -72,8 +74,12 @@
         "semantic_class",
         "budget_tier",
         "validator_ref",
+        "claim_refs",
+        "timing_contract",
         "cacheability",
-        "parallel_safety"
+        "parallel_safety",
+        "evidence_refs",
+        "acceptance_barrier"
       ],
       "properties": {
         "id": {
@@ -113,8 +119,12 @@
           "type": "string",
           "minLength": 1
         },
+        "timing_contract": {
+          "$ref": "#/$defs/timing_contract"
+        },
         "claim_refs": {
           "type": "array",
+          "minItems": 1,
           "uniqueItems": true,
           "items": {
             "type": "string",
@@ -135,6 +145,52 @@
             "serialized",
             "owner_defined"
           ]
+        },
+        "evidence_refs": {
+          "type": "array",
+          "minItems": 1,
+          "uniqueItems": true,
+          "items": {
+            "type": "string",
+            "minLength": 1
+          }
+        },
+        "acceptance_barrier": {
+          "type": "string",
+          "minLength": 1
+        }
+      }
+    },
+    "timing_contract": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "scope",
+        "measurement_ref",
+        "sample_count",
+        "p95_budget_ms"
+      ],
+      "properties": {
+        "scope": {
+          "enum": [
+            "real_validator_process",
+            "contextual_validator_process"
+          ]
+        },
+        "measurement_ref": {
+          "type": "string",
+          "minLength": 1
+        },
+        "sample_count": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "p95_budget_ms": {
+          "type": [
+            "integer",
+            "null"
+          ],
+          "minimum": 1
         }
       }
     },

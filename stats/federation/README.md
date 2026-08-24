@@ -24,11 +24,26 @@ declares node/lane compatibility and export posture in
 `measurement-contract/validation-telemetry-packet.schema.json`. A declaration
 without an admitted packet is `declared_only`, not measured coverage.
 
+The packet carries numeric `time_to_first_failure_ms` only when the owner
+observed it. Cost is intentionally a companion owner measurement reference,
+not a central currency or aggregation rule; its owner-authored measurement
+packet retains amount, unit, basis, population, window, source revision, and
+evidence.
+
+Every telemetry lane also declares a timing contract. `real_validator_process`
+measures the declared validator command itself; `contextual_validator_process`
+is an honest contextual observation and must not advertise a fast p95 budget.
+Fast lanes require a real-process p95 budget of at most one second. The
+consumer records samples and scope but does not turn timing into proof or
+acceptance.
+
 `schemas/validation-telemetry-baseline.schema.json` and
 `scripts/build_validation_telemetry_baseline.py` provide a deterministic
 derived coverage view from an owner inventory plus explicit port inputs. The
 builder preserves unavailable owners and fields as missing, unknown, or stale
 and never turns port presence into validator health, proof, or sufficiency.
+Only owner-labelled direct-source inputs (or the central source-home input)
+are admitted; generated inventory is a target universe, not owner truth.
 
 Port validation follows each repository-relative packet ref from the local
 manifest, checks that the path stays inside the owner root, validates packet
@@ -36,6 +51,11 @@ shape and semantics against the embedded measurement contract, and requires
 the packet's contract pointer and live/reference posture to match its export.
 The local manifest therefore remains the single contract source; owners do not
 need duplicate standalone contract files.
+
+An admitted packet is additionally bound to the current complete owner-port
+content digest, owner source ref, candidate/environment/source-revision
+identity, and exactly one matching export. Incompatible identity groups remain
+visible as a blocked derived projection and are never pooled.
 
 ## Integration
 
