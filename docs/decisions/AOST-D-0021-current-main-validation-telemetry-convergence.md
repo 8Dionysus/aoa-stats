@@ -29,10 +29,13 @@ live currentness, or owner acceptance.
 
 Extend the existing aoa-stats validation telemetry compatibility surface on
 current main through one owner-consistent source/schema/validator/test route.
-Require callers to pass canonical JSON-Schema findings into the pure admission
-boundary, bind admitted packets to an explicit owner port and exactly one
-declared lane/export, and preserve complete candidate/environment/source
-identity, timing/cost references, and explicit missingness states.
+Require callers to pass packet JSON-Schema findings plus a content-bound
+owner-port schema validation object issued by the canonical owner protocol
+route into the pure admission boundary. Bind admitted packets to an explicit
+owner port and exactly one declared lane/export, and preserve complete
+candidate/environment/source identity, timing/cost references, and explicit
+missingness states. A caller-supplied owner-port findings list is not
+admission evidence.
 
 Project only compatible identity groups. Block incompatible candidate,
 environment, port, source, revision, or live/reference groups instead of

@@ -1,6 +1,7 @@
 from __future__ import annotations
 
 from copy import deepcopy
+from dataclasses import replace
 import importlib.util
 import json
 import os
@@ -26,6 +27,7 @@ from aoa_stats_builder.validation_telemetry import (  # noqa: E402
     build_validation_telemetry_baseline,
     validate_validation_telemetry_packet,
     validate_validation_telemetry_port,
+    validate_validation_telemetry_port_schema,
 )
 
 PROTOCOL_PATH = REPO_ROOT / "scripts/validate_stats_protocol.py"
@@ -182,6 +184,16 @@ def valid_packet() -> dict[str, object]:
     }
 
 
+def validated_port_schema(port: dict[str, object]):
+    schemas, issues = protocol._load_schemas(REPO_ROOT)
+    assert issues == []
+    return validate_validation_telemetry_port_schema(
+        port["validation_telemetry"],
+        label="telemetry port",
+        registry=protocol._registry(schemas),
+    )
+
+
 def admitted_packet(
     packet: dict[str, object] | None = None,
     *,
@@ -201,16 +213,14 @@ def admitted_packet(
         label="packet",
         registry=registry,
     )
-    telemetry_port_schema_findings = schema_issues(
-        schemas[protocol.VALIDATION_TELEMETRY_PORT_SCHEMA_PATH.as_posix()],
-        owner_port["validation_telemetry"],
-        label="telemetry port",
-        registry=registry,
-    )
     return admit_validation_telemetry_packet(
         payload,
         schema_issues=schema_findings,
-        telemetry_port_schema_issues=telemetry_port_schema_findings,
+        telemetry_port_schema_validation=validate_validation_telemetry_port_schema(
+            owner_port["validation_telemetry"],
+            label="telemetry port",
+            registry=registry,
+        ),
         telemetry_port=owner_port["validation_telemetry"],
         owner_port=owner_port,
         expected_owner_repo=owner,
@@ -415,7 +425,11 @@ def test_direct_admission_preserves_nested_schema_findings() -> None:
         admit_validation_telemetry_packet(
             packet,
             schema_issues=schema_findings,
-            telemetry_port_schema_issues=[],
+            telemetry_port_schema_validation=validate_validation_telemetry_port_schema(
+                owner_port["validation_telemetry"],
+                label="telemetry port",
+                registry=protocol._registry(schemas),
+            ),
             telemetry_port=owner_port["validation_telemetry"],
             owner_port=owner_port,
             expected_owner_repo="aoa-evals",
@@ -445,19 +459,18 @@ def test_direct_admission_rejects_missing_telemetry_port_schema_fields(
     schemas, issues = protocol._load_schemas(REPO_ROOT)
     assert issues == []
     registry = protocol._registry(schemas)
-    port_schema_findings = schema_issues(
-        schemas[protocol.VALIDATION_TELEMETRY_PORT_SCHEMA_PATH.as_posix()],
+    port_schema_validation = validate_validation_telemetry_port_schema(
         owner_port["validation_telemetry"],
         label="telemetry port",
         registry=registry,
     )
-    assert any(missing_field in finding for finding in port_schema_findings)
+    assert any(missing_field in finding for finding in port_schema_validation.issues)
 
     with pytest.raises(ValidationTelemetryAdmissionError, match=missing_field):
         admit_validation_telemetry_packet(
             valid_packet(),
             schema_issues=[],
-            telemetry_port_schema_issues=port_schema_findings,
+            telemetry_port_schema_validation=port_schema_validation,
             telemetry_port=owner_port["validation_telemetry"],
             owner_port=owner_port,
             expected_owner_repo="aoa-evals",
@@ -466,6 +479,119 @@ def test_direct_admission_rejects_missing_telemetry_port_schema_fields(
             expected_packet_ref="reports/stats-protocol.json",
             owner_source_ref="aoa-evals:stats/port.manifest.json",
         )
+
+
+@pytest.mark.parametrize(
+    "missing_field",
+    (
+        "schema_version",
+        "contract_version",
+        "packet_schema_ref",
+        "required_fields",
+        "node_lanes",
+        "exports",
+    ),
+)
+def test_direct_admission_rejects_forged_empty_telemetry_port_schema_findings(
+    missing_field: str,
+) -> None:
+    owner_port = telemetry_port()
+    del owner_port["validation_telemetry"][missing_field]
+
+    with pytest.raises(
+        ValidationTelemetryAdmissionError,
+        match="content-bound canonical telemetry-port JSON Schema validation",
+    ):
+        admit_validation_telemetry_packet(
+            valid_packet(),
+            schema_issues=[],
+            telemetry_port_schema_issues=[],
+            telemetry_port=owner_port["validation_telemetry"],
+            owner_port=owner_port,
+            expected_owner_repo="aoa-evals",
+            expected_telemetry_port_ref="stats/port.manifest.json#/validation_telemetry",
+            expected_port_ref="stats/port.manifest.json",
+            expected_packet_ref="reports/stats-protocol.json",
+            owner_source_ref="aoa-evals:stats/port.manifest.json",
+        )
+
+
+def test_direct_admission_rejects_port_schema_validation_bound_to_different_bytes() -> None:
+    owner_port = telemetry_port()
+    validation = validated_port_schema(owner_port)
+    changed_owner_port = deepcopy(owner_port)
+    changed_owner_port["validation_telemetry"] = dict(
+        changed_owner_port["validation_telemetry"]
+    )
+    changed_owner_port["validation_telemetry"]["contract_version"] = "1.0.1"
+
+    with pytest.raises(
+        ValidationTelemetryAdmissionError,
+        match="stale or bound to different port/schema content",
+    ):
+        admit_validation_telemetry_packet(
+            valid_packet(),
+            schema_issues=[],
+            telemetry_port_schema_validation=validation,
+            telemetry_port=changed_owner_port["validation_telemetry"],
+            owner_port=changed_owner_port,
+            expected_owner_repo="aoa-evals",
+            expected_telemetry_port_ref="stats/port.manifest.json#/validation_telemetry",
+            expected_port_ref="stats/port.manifest.json",
+            expected_packet_ref="reports/stats-protocol.json",
+            owner_source_ref="aoa-evals:stats/port.manifest.json",
+        )
+
+
+def test_direct_admission_does_not_trust_forged_empty_validation_diagnostics() -> None:
+    owner_port = telemetry_port()
+    del owner_port["validation_telemetry"]["required_fields"]
+    validation = validated_port_schema(owner_port)
+    forged = replace(validation, issues=())
+
+    with pytest.raises(ValidationTelemetryAdmissionError, match="required_fields"):
+        admit_validation_telemetry_packet(
+            valid_packet(),
+            schema_issues=[],
+            telemetry_port_schema_validation=forged,
+            telemetry_port=owner_port["validation_telemetry"],
+            owner_port=owner_port,
+            expected_owner_repo="aoa-evals",
+            expected_telemetry_port_ref="stats/port.manifest.json#/validation_telemetry",
+            expected_port_ref="stats/port.manifest.json",
+            expected_packet_ref="reports/stats-protocol.json",
+            owner_source_ref="aoa-evals:stats/port.manifest.json",
+        )
+
+
+def test_direct_admission_rejects_stale_port_schema_context() -> None:
+    owner_port = telemetry_port()
+    validation = validated_port_schema(owner_port)
+    schemas, issues = protocol._load_schemas(REPO_ROOT)
+    assert issues == []
+    schema = schemas[protocol.VALIDATION_TELEMETRY_PORT_SCHEMA_PATH.as_posix()]
+    original_schema_id = schema["$id"]
+    schema["$id"] = "https://aoa-stats/stats/federation/other.schema.json"
+    try:
+        with pytest.raises(
+            ValidationTelemetryAdmissionError,
+            match="stale or bound to different port/schema content",
+        ):
+            admit_validation_telemetry_packet(
+                valid_packet(),
+                schema_issues=[],
+                telemetry_port_schema_validation=validation,
+                telemetry_port=owner_port["validation_telemetry"],
+                owner_port=owner_port,
+                expected_owner_repo="aoa-evals",
+                expected_telemetry_port_ref="stats/port.manifest.json#/validation_telemetry",
+                expected_port_ref="stats/port.manifest.json",
+                expected_packet_ref="reports/stats-protocol.json",
+                owner_source_ref="aoa-evals:stats/port.manifest.json",
+            )
+    finally:
+        schema["$id"] = original_schema_id
+        protocol._load_schemas(REPO_ROOT)
 
 
 def test_result_and_observed_first_failure_coherence_is_fail_closed() -> None:
@@ -713,24 +839,28 @@ def test_admission_receipt_binds_lane_and_keeps_acceptance_unproven() -> None:
     tampered = deepcopy(dict(admission.packet))
     tampered["node"] = dict(tampered["node"])
     tampered["node"]["claim_refs"] = ["claim:other"]
+    owner_port = telemetry_port()
+    validation = validated_port_schema(owner_port)
     with pytest.raises(ValidationTelemetryAdmissionError, match="declared telemetry lane"):
         admit_validation_telemetry_packet(
             tampered,
             schema_issues=[],
-            telemetry_port_schema_issues=[],
-            telemetry_port=telemetry_port()["validation_telemetry"],
+            telemetry_port_schema_validation=validation,
+            telemetry_port=owner_port["validation_telemetry"],
+            owner_port=owner_port,
             expected_owner_repo="aoa-evals",
             expected_telemetry_port_ref="stats/port.manifest.json#/validation_telemetry",
         )
 
 
 def test_admission_requires_explicit_owner_and_port_bindings() -> None:
+    owner_port = telemetry_port()
     with pytest.raises(ValidationTelemetryAdmissionError, match="expected_owner_repo"):
         admit_validation_telemetry_packet(
             valid_packet(),
             schema_issues=[],
-            telemetry_port_schema_issues=[],
-            telemetry_port=telemetry_port()["validation_telemetry"],
+            telemetry_port_schema_validation=validated_port_schema(owner_port),
+            telemetry_port=owner_port["validation_telemetry"],
         )
 
 

@@ -39,12 +39,14 @@ from .validation_telemetry import (
     ValidationTelemetryAdmission,
     ValidationTelemetryAdmissionError,
     ValidationTelemetryAdmissionReceipt,
+    ValidationTelemetryPortSchemaValidation,
     admit_validation_telemetry_packet,
     build_validation_telemetry_baseline,
     validate_central_source_home_identity,
     validate_validation_telemetry_packet,
     validate_validation_telemetry_packet_against_port,
     validate_validation_telemetry_port,
+    validate_validation_telemetry_port_schema,
 )
 
 __all__ = [
@@ -71,6 +73,7 @@ __all__ = [
     "ValidationTelemetryAdmission",
     "ValidationTelemetryAdmissionError",
     "ValidationTelemetryAdmissionReceipt",
+    "ValidationTelemetryPortSchemaValidation",
     "admit_validation_telemetry_packet",
     "build_validation_telemetry_baseline",
     "generated_from",
@@ -86,4 +89,5 @@ __all__ = [
     "validate_validation_telemetry_packet",
     "validate_validation_telemetry_packet_against_port",
     "validate_validation_telemetry_port",
+    "validate_validation_telemetry_port_schema",
 ]

@@ -57,6 +57,12 @@ content digest, owner source ref, candidate/environment/source-revision
 identity, and exactly one matching export. Incompatible identity groups remain
 visible as a blocked derived projection and are never pooled.
 
+The direct typed admission boundary receives owner-port schema findings only
+through the content-bound validation object produced after the canonical
+federation schema is loaded by the owner protocol route. Caller-supplied empty
+findings, a different port, or a stale schema context fail closed; semantic
+port validation remains a separate check.
+
 ## Integration
 
 Owner validation delegates local port and packet checks to the central

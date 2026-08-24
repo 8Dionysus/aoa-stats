@@ -98,13 +98,15 @@ shape and pure cross-field semantics. It does not resolve or endorse any
 referenced owner fact.
 
 The typed `admit_validation_telemetry_packet` API is a lower-level pure
-boundary and has an explicit validated-input precondition: callers must first
-run the canonical JSON Schema for
-`stats/measurement-contract/validation-telemetry-packet.schema.json` and pass
-its findings as `schema_issues` (an empty sequence means the schema check
-passed). Omitting that argument rejects admission. The API therefore does not
-duplicate nested `additionalProperties` rules, and schema closure cannot be
-silently bypassed by direct callers.
+boundary. Callers must pass packet-schema findings as `schema_issues` and a
+content-bound `ValidationTelemetryPortSchemaValidation` issued by the
+canonical owner protocol route for
+`stats/federation/validation-telemetry-port.schema.json`. A caller-supplied
+owner-port findings list, including an empty one, is never admission evidence;
+the typed object binds the exact port bytes and current in-memory canonical
+schema context. The API therefore does not duplicate nested
+`additionalProperties` rules or perform filesystem I/O, while schema closure
+cannot be silently bypassed by direct callers.
 
 ## Compatibility
 

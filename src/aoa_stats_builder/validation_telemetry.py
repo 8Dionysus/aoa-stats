@@ -17,6 +17,8 @@ import math
 import re
 from typing import Any
 
+from .schema_validation import schema_issues as canonical_schema_issues
+
 
 VALIDATION_TELEMETRY_FIELDS = (
     "cache_posture",
@@ -75,6 +77,12 @@ CENTRAL_SOURCE_HOME_STATUS = "active_source_home"
 TELEMETRY_PACKET_SCHEMA_REF = (
     "aoa-stats:stats/measurement-contract/validation-telemetry-packet.schema.json"
 )
+VALIDATION_TELEMETRY_PORT_SCHEMA_REF = (
+    "aoa-stats:stats/federation/validation-telemetry-port.schema.json"
+)
+VALIDATION_TELEMETRY_PORT_SCHEMA_ID = (
+    "https://aoa-stats/stats/federation/validation-telemetry-port.schema.json"
+)
 PACKET_REQUIRED_FIELDS = (
     "schema_version",
     "contract_version",
@@ -126,6 +134,124 @@ def _canonical_json(value: object) -> bytes:
 
 def _packet_digest(packet: Mapping[str, Any]) -> str:
     return "sha256:" + hashlib.sha256(_canonical_json(packet)).hexdigest()
+
+
+@dataclass(frozen=True)
+class _CanonicalValidationTelemetryPortSchemaContext:
+    """In-memory canonical schema context issued by the owner route."""
+
+    schema: Mapping[str, Any]
+    content_digest: str
+    epoch: object
+
+    def is_current(self) -> bool:
+        return (
+            self.schema.get("$id") == VALIDATION_TELEMETRY_PORT_SCHEMA_ID
+            and self.content_digest == _packet_digest(self.schema)
+        )
+
+
+_CANONICAL_VALIDATION_TELEMETRY_PORT_SCHEMA_CONTEXT: (
+    _CanonicalValidationTelemetryPortSchemaContext | None
+) = None
+_PORT_SCHEMA_VALIDATION_TOKEN = object()
+
+
+def _install_canonical_validation_telemetry_port_schema(
+    schema: Mapping[str, Any] | None,
+) -> None:
+    """Install or clear the exact schema object loaded by the owner route.
+
+    The protocol loader is the source-authority boundary.  Admission keeps no
+    filesystem policy; it accepts validation objects only while this exact
+    loaded schema object and its content digest remain current.
+    """
+
+    global _CANONICAL_VALIDATION_TELEMETRY_PORT_SCHEMA_CONTEXT
+    _CANONICAL_VALIDATION_TELEMETRY_PORT_SCHEMA_CONTEXT = None
+    if not isinstance(schema, Mapping):
+        return
+    if schema.get("$id") != VALIDATION_TELEMETRY_PORT_SCHEMA_ID:
+        return
+    _CANONICAL_VALIDATION_TELEMETRY_PORT_SCHEMA_CONTEXT = (
+        _CanonicalValidationTelemetryPortSchemaContext(
+            schema=schema,
+            content_digest=_packet_digest(schema),
+            epoch=object(),
+        )
+    )
+
+
+@dataclass(frozen=True)
+class ValidationTelemetryPortSchemaValidation:
+    """Opaque canonical-schema findings bound to one exact telemetry port."""
+
+    port_content_digest: str
+    schema_content_digest: str
+    schema_ref: str
+    issues: tuple[str, ...]
+    _context: _CanonicalValidationTelemetryPortSchemaContext = field(
+        repr=False, compare=False
+    )
+    _token: object = field(default=None, repr=False, compare=False)
+
+    def __post_init__(self) -> None:
+        if self._token is not _PORT_SCHEMA_VALIDATION_TOKEN:
+            raise TypeError(
+                "use validate_validation_telemetry_port_schema to create validation"
+            )
+        if self.schema_ref != VALIDATION_TELEMETRY_PORT_SCHEMA_REF:
+            raise ValueError("validation telemetry port schema ref is not canonical")
+        object.__setattr__(self, "issues", tuple(str(issue) for issue in self.issues))
+
+    def binds(self, telemetry_port: Mapping[str, Any] | None) -> bool:
+        context = _CANONICAL_VALIDATION_TELEMETRY_PORT_SCHEMA_CONTEXT
+        return (
+            isinstance(telemetry_port, Mapping)
+            and context is self._context
+            and context.is_current()
+            and self.schema_ref == VALIDATION_TELEMETRY_PORT_SCHEMA_REF
+            and self.schema_content_digest == context.content_digest
+            and self.port_content_digest == _packet_digest(telemetry_port)
+        )
+
+
+def validate_validation_telemetry_port_schema(
+    telemetry: Mapping[str, Any] | None,
+    *,
+    registry: Any | None = None,
+    label: str = "validation_telemetry",
+) -> ValidationTelemetryPortSchemaValidation:
+    """Run canonical owner-port schema validation and bind its findings.
+
+    The canonical protocol loader installs the schema context.  This pure
+    constructor performs no filesystem access and never accepts caller-supplied
+    findings, so an empty sequence cannot be used as validation evidence.
+    """
+
+    context = _CANONICAL_VALIDATION_TELEMETRY_PORT_SCHEMA_CONTEXT
+    if context is None or not context.is_current():
+        raise ValidationTelemetryAdmissionError(
+            [
+                "canonical telemetry-port schema context is unavailable or stale; "
+                "load it through the owner protocol route"
+            ]
+        )
+    payload = telemetry if isinstance(telemetry, Mapping) else {}
+    findings = canonical_schema_issues(
+        context.schema,
+        payload,
+        label=label,
+        registry=registry,
+    )
+    return ValidationTelemetryPortSchemaValidation(
+        port_content_digest=_packet_digest(payload),
+        schema_content_digest=context.content_digest,
+        schema_ref=VALIDATION_TELEMETRY_PORT_SCHEMA_REF,
+        issues=tuple(findings),
+        _context=context,
+        _token=_PORT_SCHEMA_VALIDATION_TOKEN,
+    )
 
 
 @dataclass(frozen=True)
@@ -716,6 +842,8 @@ def admit_validation_telemetry_packet(
     packet: Mapping[str, Any],
     *,
     schema_issues: Sequence[str] | None = None,
+    telemetry_port_schema_validation: ValidationTelemetryPortSchemaValidation
+    | None = None,
     telemetry_port_schema_issues: Sequence[str] | None = None,
     telemetry_port: Mapping[str, Any] | None,
     owner_port: Mapping[str, Any] | None = None,
@@ -728,12 +856,12 @@ def admit_validation_telemetry_packet(
 ) -> ValidationTelemetryAdmission:
     """Create a content-bound, non-authoritative owner-export admission.
 
-    The canonical packet and telemetry-port JSON Schema checks are separate
-    caller preconditions.  This pure function does not load or duplicate
-    either schema; callers must pass both findings (an empty sequence means
-    that check passed).  Omitting either finding set is rejected so schema
-    closure cannot be silently bypassed.  Semantic port validation remains a
-    separate check below those schema findings.
+    The packet JSON Schema findings are a caller precondition.  Owner-port
+    findings must arrive as a content-bound validation object produced by the
+    canonical owner protocol route; a caller-supplied sequence is never
+    treated as evidence.  This pure function does not load files or duplicate
+    evolving schema meaning.  Semantic port validation remains a separate
+    check below the canonical schema findings.
     """
 
     if schema_issues is None:
@@ -747,14 +875,40 @@ def admit_validation_telemetry_packet(
     if not isinstance(packet, Mapping):
         raise ValidationTelemetryAdmissionError([f"{label} must be an object"])
     issues = [str(issue) for issue in schema_issues]
-    if telemetry_port_schema_issues is None:
+    if telemetry_port_schema_issues is not None:
         issues.append(
-            f"{label}: canonical telemetry-port JSON Schema validation is a required "
-            "precondition; pass telemetry_port_schema_issues=() after validation "
-            "or pass the schema findings"
+            f"{label}: caller-supplied telemetry-port schema findings are not "
+            "admission evidence; use the content-bound canonical validation object"
+        )
+    if telemetry_port_schema_validation is None:
+        issues.append(
+            f"{label}: content-bound canonical telemetry-port JSON Schema "
+            "validation is a required precondition"
+        )
+    elif not isinstance(
+        telemetry_port_schema_validation, ValidationTelemetryPortSchemaValidation
+    ):
+        issues.append(
+            f"{label}: telemetry-port schema validation must be the canonical "
+            "typed validation object"
+        )
+    elif not telemetry_port_schema_validation.binds(telemetry_port):
+        issues.append(
+            f"{label}: telemetry-port schema validation is stale or bound to "
+            "different port/schema content"
         )
     else:
-        issues.extend(str(issue) for issue in telemetry_port_schema_issues)
+        # Re-run the in-memory canonical schema against the exact admitted
+        # bytes.  The attestation carries the binding, but its diagnostic
+        # tuple is not itself trusted evidence (for example, dataclasses.replace
+        # must not turn a real finding set into an empty one).
+        issues.extend(
+            canonical_schema_issues(
+                telemetry_port_schema_validation._context.schema,
+                telemetry_port,
+                label=f"{label}: owner telemetry port",
+            )
+        )
     if "admitted" in packet:
         issues.append(f"{label}: admitted sentinel is not a packet field")
     issues.extend(
