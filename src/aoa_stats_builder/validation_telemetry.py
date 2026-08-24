@@ -345,6 +345,50 @@ def _is_authoritative_owner_input(
     )
 
 
+def _has_current_live_observation_binding(
+    admissions: Sequence[ValidationTelemetryAdmission],
+    input_entry: Mapping[str, Any] | None,
+    *,
+    owner_repo: str,
+) -> bool:
+    """Require the existing owner-input and packet currentness bindings for live.
+
+    The baseline does not create a freshness window or an observation contract.
+    The CLI's ``input_status=observed`` is the existing owner-port validation
+    route binding; the owner port's live-capable posture, packet ``current``
+    freshness, and non-null source revision must all agree before a live
+    derived status is emitted.
+    """
+
+    if not admissions or not isinstance(input_entry, Mapping):
+        return False
+    if input_entry.get("input_status") != "observed":
+        return False
+    if not _is_authoritative_owner_input(owner_repo, input_entry):
+        return False
+    payload = input_entry.get("payload")
+    if not isinstance(payload, Mapping):
+        return False
+    evidence_posture = payload.get("evidence_posture")
+    if not isinstance(evidence_posture, Mapping) or evidence_posture.get(
+        "live_state"
+    ) not in {"mixed", "live_capable"}:
+        return False
+
+    for admission in admissions:
+        posture = admission.packet.get("posture")
+        provenance = admission.packet.get("provenance")
+        if not isinstance(posture, Mapping) or not isinstance(provenance, Mapping):
+            return False
+        if posture.get("freshness") != "current":
+            return False
+        if not isinstance(provenance.get("source_revision"), str) or not provenance.get(
+            "source_revision"
+        ):
+            return False
+    return True
+
+
 def validate_validation_telemetry_port(
     telemetry: Mapping[str, Any],
     *,
@@ -672,6 +716,7 @@ def admit_validation_telemetry_packet(
     packet: Mapping[str, Any],
     *,
     schema_issues: Sequence[str] | None = None,
+    telemetry_port_schema_issues: Sequence[str] | None = None,
     telemetry_port: Mapping[str, Any] | None,
     owner_port: Mapping[str, Any] | None = None,
     expected_owner_repo: str | None = None,
@@ -683,10 +728,12 @@ def admit_validation_telemetry_packet(
 ) -> ValidationTelemetryAdmission:
     """Create a content-bound, non-authoritative owner-export admission.
 
-    The canonical JSON Schema check is an explicit caller precondition.  This
-    pure function does not load or duplicate that schema; callers must pass
-    its findings (an empty sequence means the check passed).  Omitting the
-    findings is rejected so nested schema closure cannot be silently bypassed.
+    The canonical packet and telemetry-port JSON Schema checks are separate
+    caller preconditions.  This pure function does not load or duplicate
+    either schema; callers must pass both findings (an empty sequence means
+    that check passed).  Omitting either finding set is rejected so schema
+    closure cannot be silently bypassed.  Semantic port validation remains a
+    separate check below those schema findings.
     """
 
     if schema_issues is None:
@@ -700,6 +747,14 @@ def admit_validation_telemetry_packet(
     if not isinstance(packet, Mapping):
         raise ValidationTelemetryAdmissionError([f"{label} must be an object"])
     issues = [str(issue) for issue in schema_issues]
+    if telemetry_port_schema_issues is None:
+        issues.append(
+            f"{label}: canonical telemetry-port JSON Schema validation is a required "
+            "precondition; pass telemetry_port_schema_issues=() after validation "
+            "or pass the schema findings"
+        )
+    else:
+        issues.extend(str(issue) for issue in telemetry_port_schema_issues)
     if "admitted" in packet:
         issues.append(f"{label}: admitted sentinel is not a packet field")
     issues.extend(
@@ -1640,6 +1695,11 @@ def build_validation_telemetry_baseline(
                                 "live"
                                 if input_posture == "mixed"
                                 and identity_group_rows[0]["live_state"] == "live"
+                                and _has_current_live_observation_binding(
+                                    admissions_by_owner.get(owner_repo, []),
+                                    input_entry,
+                                    owner_repo=owner_repo,
+                                )
                                 else "reference"
                             )
                             field_coverage = _field_coverage_for_owner(owner_repo, owner_packets)

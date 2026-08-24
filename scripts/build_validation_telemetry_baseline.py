@@ -162,6 +162,7 @@ def _load_packet(
     *,
     schemas: dict[str, dict[str, Any]],
     registry: Any,
+    telemetry_port_schema: Mapping[str, Any],
     telemetry_port: Mapping[str, Any] | None,
     owner_port: Mapping[str, Any] | None,
     expected_owner_repo: str | None,
@@ -180,10 +181,17 @@ def _load_packet(
         label=str(path),
         registry=registry,
     )
+    telemetry_port_schema_findings = protocol._schema_issues(
+        telemetry_port_schema,
+        telemetry_port if isinstance(telemetry_port, Mapping) else {},
+        label=f"{path}: owner telemetry port",
+        registry=registry,
+    )
     try:
         admission = admit_validation_telemetry_packet(
             packet,
             schema_issues=[f"{path}: {issue}" for issue in schema_findings],
+            telemetry_port_schema_issues=telemetry_port_schema_findings,
             telemetry_port=telemetry_port,
             owner_port=owner_port,
             expected_owner_repo=expected_owner_repo,
@@ -383,6 +391,9 @@ def main(argv: list[str] | None = None) -> int:
             path,
             schemas=schemas,
             registry=registry,
+            telemetry_port_schema=schemas[
+                protocol.VALIDATION_TELEMETRY_PORT_SCHEMA_PATH.as_posix()
+            ],
             telemetry_port=telemetry_port if isinstance(telemetry_port, Mapping) else None,
             owner_port=owner_port,
             expected_owner_repo=packet_owner,

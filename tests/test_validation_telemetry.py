@@ -182,23 +182,35 @@ def valid_packet() -> dict[str, object]:
     }
 
 
-def admitted_packet(packet: dict[str, object] | None = None) -> ValidationTelemetryAdmission:
+def admitted_packet(
+    packet: dict[str, object] | None = None,
+    *,
+    owner_port: dict[str, object] | None = None,
+) -> ValidationTelemetryAdmission:
     payload = valid_packet() if packet is None else packet
     owner = str(payload["owner_repo"])
-    owner_port = telemetry_port()
+    owner_port = telemetry_port() if owner_port is None else deepcopy(owner_port)
     owner_port["owner_repo"] = owner
     owner_source_ref = f"{owner}:stats/port.manifest.json"
     schemas, issues = protocol._load_schemas(REPO_ROOT)
     assert issues == []
+    registry = protocol._registry(schemas)
     schema_findings = schema_issues(
         schemas[protocol.VALIDATION_TELEMETRY_PACKET_SCHEMA_PATH.as_posix()],
         payload,
         label="packet",
-        registry=protocol._registry(schemas),
+        registry=registry,
+    )
+    telemetry_port_schema_findings = schema_issues(
+        schemas[protocol.VALIDATION_TELEMETRY_PORT_SCHEMA_PATH.as_posix()],
+        owner_port["validation_telemetry"],
+        label="telemetry port",
+        registry=registry,
     )
     return admit_validation_telemetry_packet(
         payload,
         schema_issues=schema_findings,
+        telemetry_port_schema_issues=telemetry_port_schema_findings,
         telemetry_port=owner_port["validation_telemetry"],
         owner_port=owner_port,
         expected_owner_repo=owner,
@@ -218,6 +230,7 @@ def owner_input(owner: str) -> dict[str, object]:
         "source_ref": f"{owner}:stats/port.manifest.json",
         "port_ref": "stats/port.manifest.json",
         "payload": port,
+        "input_status": "observed",
     }
 
 
@@ -261,6 +274,24 @@ def test_protocol_resolves_owner_telemetry_packet_refs(tmp_path: Path) -> None:
     port_path.write_text(json.dumps(port), encoding="utf-8")
 
     assert protocol.validate(REPO_ROOT, port_paths=[port_path]) == []
+
+
+def test_owner_port_route_rejects_missing_telemetry_schema_field(tmp_path: Path) -> None:
+    owner_root = tmp_path / "aoa-evals"
+    port_path = owner_root / "stats" / "port.manifest.json"
+    port_path.parent.mkdir(parents=True)
+    port = telemetry_port()
+    del port["validation_telemetry"]["required_fields"]
+    port_path.write_text(json.dumps(port), encoding="utf-8")
+
+    issues = protocol.validate(REPO_ROOT, port_paths=[port_path])
+
+    assert any(
+        "validation_telemetry:" in issue
+        and "required_fields" in issue
+        and "required property" in issue
+        for issue in issues
+    )
 
 
 def test_baseline_script_binds_packet_to_owner_root_and_current_port(
@@ -384,6 +415,49 @@ def test_direct_admission_preserves_nested_schema_findings() -> None:
         admit_validation_telemetry_packet(
             packet,
             schema_issues=schema_findings,
+            telemetry_port_schema_issues=[],
+            telemetry_port=owner_port["validation_telemetry"],
+            owner_port=owner_port,
+            expected_owner_repo="aoa-evals",
+            expected_telemetry_port_ref="stats/port.manifest.json#/validation_telemetry",
+            expected_port_ref="stats/port.manifest.json",
+            expected_packet_ref="reports/stats-protocol.json",
+            owner_source_ref="aoa-evals:stats/port.manifest.json",
+        )
+
+
+@pytest.mark.parametrize(
+    "missing_field",
+    (
+        "schema_version",
+        "contract_version",
+        "packet_schema_ref",
+        "required_fields",
+        "node_lanes",
+        "exports",
+    ),
+)
+def test_direct_admission_rejects_missing_telemetry_port_schema_fields(
+    missing_field: str,
+) -> None:
+    owner_port = telemetry_port()
+    del owner_port["validation_telemetry"][missing_field]
+    schemas, issues = protocol._load_schemas(REPO_ROOT)
+    assert issues == []
+    registry = protocol._registry(schemas)
+    port_schema_findings = schema_issues(
+        schemas[protocol.VALIDATION_TELEMETRY_PORT_SCHEMA_PATH.as_posix()],
+        owner_port["validation_telemetry"],
+        label="telemetry port",
+        registry=registry,
+    )
+    assert any(missing_field in finding for finding in port_schema_findings)
+
+    with pytest.raises(ValidationTelemetryAdmissionError, match=missing_field):
+        admit_validation_telemetry_packet(
+            valid_packet(),
+            schema_issues=[],
+            telemetry_port_schema_issues=port_schema_findings,
             telemetry_port=owner_port["validation_telemetry"],
             owner_port=owner_port,
             expected_owner_repo="aoa-evals",
@@ -643,6 +717,7 @@ def test_admission_receipt_binds_lane_and_keeps_acceptance_unproven() -> None:
         admit_validation_telemetry_packet(
             tampered,
             schema_issues=[],
+            telemetry_port_schema_issues=[],
             telemetry_port=telemetry_port()["validation_telemetry"],
             expected_owner_repo="aoa-evals",
             expected_telemetry_port_ref="stats/port.manifest.json#/validation_telemetry",
@@ -654,6 +729,7 @@ def test_admission_requires_explicit_owner_and_port_bindings() -> None:
         admit_validation_telemetry_packet(
             valid_packet(),
             schema_issues=[],
+            telemetry_port_schema_issues=[],
             telemetry_port=telemetry_port()["validation_telemetry"],
         )
 
@@ -787,33 +863,56 @@ def test_reference_projection_does_not_claim_live_telemetry() -> None:
     packet["posture"]["live_state"] = "live"
     live_owner_port = telemetry_port()
     live_owner_port["owner_repo"] = "aoa-evals"
+    live_owner_port["evidence_posture"] = dict(live_owner_port["evidence_posture"])
+    live_owner_port["evidence_posture"]["live_state"] = "live_capable"
     live_owner_port["validation_telemetry"]["exports"][0]["posture"] = "live"
-    admission = admit_validation_telemetry_packet(
-        packet,
-        schema_issues=[],
-        telemetry_port=live_owner_port["validation_telemetry"],
-        owner_port=live_owner_port,
-        expected_owner_repo="aoa-evals",
-        expected_telemetry_port_ref="stats/port.manifest.json#/validation_telemetry",
-        expected_port_ref="stats/port.manifest.json",
-        expected_packet_ref="reports/stats-protocol.json",
-        owner_source_ref="aoa-evals:stats/port.manifest.json",
-    )
+    admission = admitted_packet(packet, owner_port=live_owner_port)
+    current = owner_input("aoa-evals")
+    current["payload"] = live_owner_port
     baseline = build_validation_telemetry_baseline(
         [{"repo_id": "aoa-evals", "classification": "implemented"}],
-        port_inputs={
-            "aoa-evals": {
-                "owner_repo": "aoa-evals",
-                "source_kind": "direct_owner_source",
-                "source_ref": "aoa-evals:stats/port.manifest.json",
-                "port_ref": "stats/port.manifest.json",
-                "payload": live_owner_port,
-            }
-        },
+        port_inputs={"aoa-evals": current},
         packets=[admission],
         input_posture="reference_only",
     )
     assert baseline["owner_records"][0]["telemetry_status"] == "reference"
+
+
+@pytest.mark.parametrize(
+    ("freshness", "input_status", "expected_status"),
+    (
+        ("stale", "observed", "reference"),
+        ("current", "not_observed", "reference"),
+        ("current", "observed", "live"),
+    ),
+)
+def test_mixed_live_projection_requires_current_observed_owner_binding(
+    freshness: str,
+    input_status: str,
+    expected_status: str,
+) -> None:
+    packet = valid_packet()
+    packet["posture"] = dict(packet["posture"])
+    packet["posture"]["freshness"] = freshness
+    packet["posture"]["live_state"] = "live"
+    live_owner_port = telemetry_port()
+    live_owner_port["owner_repo"] = "aoa-evals"
+    live_owner_port["evidence_posture"] = dict(live_owner_port["evidence_posture"])
+    live_owner_port["evidence_posture"]["live_state"] = "live_capable"
+    live_owner_port["validation_telemetry"]["exports"][0]["posture"] = "live"
+    admission = admitted_packet(packet, owner_port=live_owner_port)
+    current = owner_input("aoa-evals")
+    current["payload"] = live_owner_port
+    current["input_status"] = input_status
+
+    baseline = build_validation_telemetry_baseline(
+        [{"repo_id": "aoa-evals", "classification": "implemented"}],
+        port_inputs={"aoa-evals": current},
+        packets=[admission],
+        input_posture="mixed",
+    )
+
+    assert baseline["owner_records"][0]["telemetry_status"] == expected_status
 
 
 def test_validation_telemetry_timing_measures_the_declared_validator_process() -> None:
