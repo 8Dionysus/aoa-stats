@@ -2,6 +2,7 @@ from __future__ import annotations
 
 from collections.abc import Mapping
 import math
+import re
 from typing import Any
 
 
@@ -65,8 +66,19 @@ def _portable_ref(value: Any) -> bool:
     if not isinstance(value, str) or not value:
         return False
     lowered = value.lower()
+    normalized = value.replace("\\", "/")
+    qualified = ":" in normalized and not re.match(r"^[a-zA-Z]:/", normalized)
+    if qualified:
+        _, normalized_path = normalized.split(":", 1)
+    else:
+        normalized_path = normalized
+    if any(part == ".." for part in normalized_path.split("/")):
+        return False
     return not (
         value.startswith(("/", "~"))
+        or normalized.startswith(("/", "~"))
+        or re.match(r"^[a-zA-Z]:/", normalized) is not None
+        or (qualified and normalized_path.startswith(("/", "~")))
         or "/home/" in lowered
         or "/srv/" in lowered
         or ".aoa/sessions" in lowered
@@ -111,6 +123,11 @@ def _validate_metric(
         issues.append(f"{path}.uncertainty is not a supported uncertainty state")
     _validate_evidence_refs(evidence_refs, label=f"{path}.evidence_refs", issues=issues)
 
+    if status == "observed" and basis == "estimated" and uncertainty != "estimated":
+        issues.append(
+            f"{path}.uncertainty must be estimated when basis is estimated"
+        )
+
     if status == "observed":
         if basis in {"unknown", "not_applicable"}:
             issues.append(f"{path}.basis cannot be {basis!r} for an observed value")
@@ -130,7 +147,12 @@ def _validate_metric(
 
 
 def _validate_lifecycle_observation(
-    value: Any, *, path: str, value_field: str, issues: list[str]
+    value: Any,
+    *,
+    path: str,
+    value_field: str,
+    ref_field: str | None = None,
+    issues: list[str],
 ) -> None:
     if not isinstance(value, Mapping):
         issues.append(f"{path} must be an observation object")
@@ -138,6 +160,7 @@ def _validate_lifecycle_observation(
     status = value.get("observation_status")
     evidence_refs = value.get("evidence_refs")
     observed_value = value.get(value_field)
+    content_ref = value.get(ref_field) if ref_field is not None else None
     _validate_evidence_refs(evidence_refs, label=f"{path}.evidence_refs", issues=issues)
     if status not in METRIC_STATUSES:
         issues.append(f"{path}.observation_status is not supported")
@@ -146,12 +169,40 @@ def _validate_lifecycle_observation(
             issues.append(f"{path}.{value_field} is required when observed")
         if not isinstance(evidence_refs, list) or not evidence_refs:
             issues.append(f"{path}.evidence_refs must be non-empty when observed")
+        if ref_field is not None and not isinstance(content_ref, Mapping):
+            issues.append(f"{path}.{ref_field} is required when observed")
     else:
         if observed_value is not None:
             issues.append(f"{path}.{value_field} must remain null when {status}")
+        if ref_field is not None and content_ref is not None:
+            issues.append(f"{path}.{ref_field} must remain null when {status}")
         reason = value.get("reason")
         if not isinstance(reason, str) or not reason:
             issues.append(f"{path}.reason must explain a non-observed lifecycle field")
+
+
+def _validate_runtime_exit_code(value: Any, issues: list[str]) -> None:
+    if not isinstance(value, Mapping):
+        return
+    status = value.get("observation_status")
+    outcome = value.get("outcome")
+    exit_code = value.get("exit_code")
+    if status != "observed":
+        if exit_code is not None:
+            issues.append(
+                "runtime_outcome.exit_code must remain null when the outcome is unresolved"
+            )
+        return
+    if outcome == "success" and exit_code != 0:
+        issues.append("runtime_outcome.success requires exit_code 0")
+    elif outcome == "failure" and (
+        not isinstance(exit_code, int)
+        or isinstance(exit_code, bool)
+        or exit_code == 0
+    ):
+        issues.append("runtime_outcome.failure requires a non-zero exit_code")
+    elif outcome == "not_run" and exit_code is not None:
+        issues.append("runtime_outcome.not_run must not carry an exit_code")
 
 
 def _expected_unknown_fields(observation: Mapping[str, Any]) -> list[str]:
@@ -200,22 +251,26 @@ def validate_inference_economy_observation(
         value_field="outcome",
         issues=issues,
     )
+    _validate_runtime_exit_code(observation.get("runtime_outcome"), issues)
     _validate_lifecycle_observation(
         observation.get("eval_verdict"),
         path="eval_verdict",
         value_field="verdict",
+        ref_field="verdict_ref",
         issues=issues,
     )
     _validate_lifecycle_observation(
         observation.get("closeout"),
         path="closeout",
         value_field="state",
+        ref_field="closeout_ref",
         issues=issues,
     )
     _validate_lifecycle_observation(
         observation.get("owner_acceptance"),
         path="owner_acceptance",
         value_field="state",
+        ref_field="acceptance_ref",
         issues=issues,
     )
 

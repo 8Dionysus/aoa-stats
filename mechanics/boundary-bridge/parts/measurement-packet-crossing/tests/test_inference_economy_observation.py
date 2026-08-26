@@ -304,3 +304,70 @@ def test_complete_observation_cannot_hide_unresolved_fields() -> None:
         "complete observation cannot contain unresolved fields" in issue
         for issue in validate_inference_economy_observation(payload)
     )
+
+
+def test_observed_lifecycle_fields_require_their_owner_content_refs() -> None:
+    payload = observation()
+    payload["eval_verdict"]["verdict_ref"] = None
+    payload["closeout"]["closeout_ref"] = None
+    payload["owner_acceptance"]["acceptance_ref"] = None
+
+    issues = validate_inference_economy_observation(payload)
+
+    assert "eval_verdict.verdict_ref is required when observed" in issues
+    assert "closeout.closeout_ref is required when observed" in issues
+    assert "owner_acceptance.acceptance_ref is required when observed" in issues
+
+
+def test_portable_refs_reject_traversal_and_windows_local_paths() -> None:
+    for ref in (
+        "owner-source:../../outside.json",
+        r"owner-source:..\outside.json",
+        r"C:\private\observation.json",
+        r"\\server\share\observation.json",
+    ):
+        payload = observation()
+        payload["provenance"]["evidence_refs"][0]["ref"] = ref
+
+        assert any(
+            "portable evidence ref" in issue
+            for issue in validate_inference_economy_observation(payload)
+        ), ref
+
+
+def test_estimated_metrics_cannot_claim_exact_uncertainty() -> None:
+    payload = observation()
+    payload["tokens"]["output"]["uncertainty"] = "exact"
+
+    assert any(
+        "tokens.output.uncertainty must be estimated when basis is estimated" in issue
+        for issue in validate_inference_economy_observation(payload)
+    )
+
+
+def test_runtime_exit_codes_remain_consistent_with_outcome_status() -> None:
+    payload = observation()
+    payload["runtime_outcome"]["exit_code"] = 1
+    assert "runtime_outcome.success requires exit_code 0" in (
+        validate_inference_economy_observation(payload)
+    )
+
+    payload = observation()
+    payload["runtime_outcome"]["outcome"] = "failure"
+    payload["runtime_outcome"]["exit_code"] = 0
+    assert "runtime_outcome.failure requires a non-zero exit_code" in (
+        validate_inference_economy_observation(payload)
+    )
+
+    payload = observation()
+    payload["runtime_outcome"]["observation_status"] = "unknown"
+    payload["runtime_outcome"]["outcome"] = None
+    payload["runtime_outcome"]["exit_code"] = 0
+    payload["runtime_outcome"]["evidence_refs"] = []
+    payload["runtime_outcome"]["reason"] = "runtime result was not available"
+    payload["observation_status"] = "partial"
+    payload["unknown_fields"] = unresolved_fields(payload)
+    assert (
+        "runtime_outcome.exit_code must remain null when the outcome is unresolved"
+        in validate_inference_economy_observation(payload)
+    )
