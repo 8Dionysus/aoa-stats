@@ -2,6 +2,7 @@ from __future__ import annotations
 
 import json
 from pathlib import Path
+import subprocess
 import sys
 
 from jsonschema import Draft202012Validator, FormatChecker
@@ -192,6 +193,30 @@ def test_schema_and_complete_observation_preserve_all_economy_axes() -> None:
     assert payload["eval_verdict"]["verdict"] == "not_reviewable"
     assert payload["closeout"]["state"] == "closed"
     assert payload["owner_acceptance"]["state"] == "accepted"
+
+
+def test_protocol_cli_accepts_an_observation_file(tmp_path: Path) -> None:
+    observation_path = tmp_path / "inference-economy-observation.json"
+    observation_path.write_text(
+        json.dumps(observation()),
+        encoding="utf-8",
+    )
+
+    result = subprocess.run(
+        [
+            sys.executable,
+            str(REPO_ROOT / "scripts" / "validate_stats_protocol.py"),
+            "--inference-economy-observation",
+            str(observation_path),
+        ],
+        cwd=REPO_ROOT,
+        check=False,
+        capture_output=True,
+        text=True,
+    )
+
+    assert result.returncode == 0
+    assert result.stdout.strip() == "[ok] federated stats protocol and requested artifacts"
 
 
 def test_partial_observation_keeps_missingness_and_unknown_fields_explicit() -> None:
