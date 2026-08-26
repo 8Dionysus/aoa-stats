@@ -24,6 +24,9 @@ from aoa_stats_builder.measurement import (  # noqa: E402
     validate_packet_semantics,
     validate_packet_set,
 )
+from aoa_stats_builder.inference_economy import (  # noqa: E402
+    validate_inference_economy_observation,
+)
 from aoa_stats_builder.outcome import (  # noqa: E402
     validate_outcome_receipt_semantics,
 )
@@ -42,6 +45,9 @@ MEASUREMENT_SCHEMA_PATH = Path(
     "stats/measurement-contract/measurement-contract.schema.json"
 )
 PACKET_SCHEMA_PATH = Path("stats/measurement-contract/measurement-packet.schema.json")
+INFERENCE_ECONOMY_OBSERVATION_SCHEMA_PATH = Path(
+    "stats/measurement-contract/inference-economy-observation.schema.json"
+)
 OUTCOME_RECEIPT_SCHEMA_PATH = Path(
     "stats/measurement-contract/outcome-receipt.schema.json"
 )
@@ -115,6 +121,7 @@ def _load_schemas(repo_root: Path) -> tuple[dict[str, dict[str, Any]], list[str]
     for relative in (
         MEASUREMENT_SCHEMA_PATH,
         PACKET_SCHEMA_PATH,
+        INFERENCE_ECONOMY_OBSERVATION_SCHEMA_PATH,
         OUTCOME_RECEIPT_SCHEMA_PATH,
         PACKET_READ_REQUEST_SCHEMA_PATH,
         PACKET_READ_RESULT_SCHEMA_PATH,
@@ -561,6 +568,7 @@ def validate(
     contract_path: Path | None = None,
     packet_paths: list[Path] | None = None,
     outcome_receipt_paths: list[Path] | None = None,
+    inference_economy_observation_paths: list[Path] | None = None,
 ) -> list[str]:
     repo_root = repo_root.resolve()
     schemas, issues = _load_schemas(repo_root)
@@ -665,6 +673,25 @@ def validate(
             f"{path}: {issue}"
             for issue in validate_outcome_receipt_semantics(receipt)
         )
+    for raw_path in inference_economy_observation_paths or []:
+        path = raw_path.expanduser().resolve()
+        observation, error = _load_object(path)
+        if error:
+            issues.append(error)
+            continue
+        assert observation is not None
+        issues.extend(
+            _schema_issues(
+                schemas[INFERENCE_ECONOMY_OBSERVATION_SCHEMA_PATH.as_posix()],
+                observation,
+                label=str(path),
+                registry=registry,
+            )
+        )
+        issues.extend(
+            f"{path}: {issue}"
+            for issue in validate_inference_economy_observation(observation)
+        )
     return issues
 
 
@@ -698,6 +725,13 @@ def parse_args(argv: list[str] | None = None) -> argparse.Namespace:
         type=Path,
         help="C10 OutcomeReceipt to validate; may be repeated.",
     )
+    parser.add_argument(
+        "--inference-economy-observation",
+        action="append",
+        default=[],
+        type=Path,
+        help="Provider-neutral inference economy observation to validate; may be repeated.",
+    )
     return parser.parse_args(argv)
 
 
@@ -708,6 +742,7 @@ def main(argv: list[str] | None = None) -> int:
         contract_path=args.contract,
         packet_paths=args.packet,
         outcome_receipt_paths=args.outcome_receipt,
+        inference_economy_observation_paths=args.inference_economy_observation,
     )
     if issues:
         for issue in issues:

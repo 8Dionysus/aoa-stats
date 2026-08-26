@@ -51,6 +51,7 @@ EXPECTED_BRANCH_ENTRIES = {
         "README.md",
         "measurement-contract.schema.json",
         "measurement-packet.schema.json",
+        "inference-economy-observation.schema.json",
         "validation-telemetry-packet.schema.json",
         "outcome-receipt.schema.json",
         "packet-read-request.schema.json",
@@ -108,6 +109,7 @@ INTAKE_FIXTURE = Path(
 PROTOCOL_JSON_PATHS = {
     "stats/measurement-contract/measurement-contract.schema.json",
     "stats/measurement-contract/measurement-packet.schema.json",
+    "stats/measurement-contract/inference-economy-observation.schema.json",
     "stats/measurement-contract/validation-telemetry-packet.schema.json",
     "stats/measurement-contract/outcome-receipt.schema.json",
     "stats/measurement-contract/packet-read-request.schema.json",
