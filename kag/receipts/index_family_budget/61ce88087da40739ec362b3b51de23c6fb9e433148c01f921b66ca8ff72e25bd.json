@@ -1,0 +1,17 @@
+{
+  "allowed_bytes": 3018019,
+  "allowed_tracked_bytes": 9249441,
+  "approved_by": "repository-owner",
+  "base_ref": "b720e2ceb4db313cdc7c853e917c648fd8c56c20",
+  "changed_generated_bytes": 3018019,
+  "changed_generated_files": 95,
+  "decision_ref": "aoa-kag:docs/decisions/AOA-KAG-D-0017-portable-content-addressed-repository-family.md",
+  "default_limit_bytes": 1048576,
+  "head_family_digest": "61ce88087da40739ec362b3b51de23c6fb9e433148c01f921b66ca8ff72e25bd",
+  "reason": "Refresh the exact aoa-stats portable owner family after the provider-neutral baseline-gated inference economy observation contract; generated KAG only, preserving authored stats semantics and source-owner authority.",
+  "repo": "aoa-stats",
+  "schema_version": "aoa-repo-local-kag-budget-receipt-v1",
+  "scope": "generated_delta",
+  "tracked_bytes": 9249441,
+  "tracked_bytes_max": 9437184
+}
