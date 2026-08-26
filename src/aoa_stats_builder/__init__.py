@@ -16,6 +16,7 @@ from .growth_cycle import (
     build_fork_calibration_summary,
     build_session_growth_branch_summary,
 )
+from .inference_economy import validate_inference_economy_observation
 from .object_observation import build_object_summary
 from .receipt_abi import (
     CANONICAL_ENVELOPE_SCHEMA_REF,
@@ -70,6 +71,7 @@ __all__ = [
     "build_summary_surface_catalog",
     "build_surface_detection_summary",
     "build_supersession_drop_summary",
+    "validate_inference_economy_observation",
     "ValidationTelemetryAdmission",
     "ValidationTelemetryAdmissionError",
     "ValidationTelemetryAdmissionReceipt",

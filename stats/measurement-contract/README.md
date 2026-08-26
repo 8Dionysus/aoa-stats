@@ -10,6 +10,7 @@ publish statistically comparable facts without surrendering domain meaning to
 | --- | --- | --- |
 | measurement contract | owner-authored identity, population, unit, dimensions, aggregation, uncertainty, privacy, and lifecycle | `measurement-contract.schema.json` |
 | measurement packet | one evidence-linked observation or derived statistic made under that contract | `measurement-packet.schema.json` |
+| inference economy observation | opt-in provider-neutral execution-economy fields with explicit missingness, uncertainty, and lifecycle references | `inference-economy-observation.schema.json` |
 | outcome receipt | one content-minimized C10 observation of action before/after memory, memory-use state, terminal and delayed outcomes, confounders, accidental success, harm, costs, and attribution uncertainty | `outcome-receipt.schema.json` |
 | validation telemetry packet | one owner-linked, content-minimized observation of validation-node resources, result, identity, cache/receipt posture, first failure, rerun amplification, and source coverage | `validation-telemetry-packet.schema.json` |
 
@@ -17,6 +18,14 @@ The contract answers what may be measured. The packet answers what was
 observed, over which population and window, with which evidence and reporting
 rule. A packet never promotes itself into proof, route state, memory truth, or
 runtime authority.
+
+The inference economy observation is a contract-only, default-off shape. It
+keeps token counts, turns, model calls, tool-schema exposure, tool calls,
+intermediate volume, compactions, losses, retries, rework, and wall time
+field-addressable while retaining `provider_reported`, `exact_tokenizer`,
+`estimated`, and `unknown` bases. Runtime outcome, eval verdict, closeout, and
+owner acceptance are separate referenced observations; this shape never
+collapses them into an economy or promotion verdict.
 
 The validation telemetry packet is a compatibility envelope for a later
 Claim/Evidence Validation Graph shadow. It does not define the node's claim,

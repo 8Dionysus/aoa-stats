@@ -237,6 +237,7 @@ def test_source_home_contains_only_declared_source_records() -> None:
         "read-models/surface-profile.schema.json",
         "measurement-contract/measurement-contract.schema.json",
         "measurement-contract/measurement-packet.schema.json",
+        "measurement-contract/inference-economy-observation.schema.json",
         "measurement-contract/validation-telemetry-packet.schema.json",
         "measurement-contract/outcome-receipt.schema.json",
         "measurement-contract/packet-read-request.schema.json",
@@ -267,6 +268,30 @@ def test_source_home_contains_only_declared_source_records() -> None:
         "read-models",
         "surface-catalog",
     }
+
+
+def test_source_home_derives_branch_and_json_membership_from_manifest(
+    tmp_path: Path,
+) -> None:
+    repo_root = copy_repo(tmp_path)
+    manifest = load_repo_json(repo_root, "stats/source_home.manifest.json")
+    measurement_family = next(
+        family
+        for family in manifest["families"]
+        if family["id"] == "measurement_contract"
+    )
+    measurement_family["source_routes"].remove(
+        "stats/measurement-contract/inference-economy-observation.schema.json"
+    )
+    write_repo_json(repo_root, "stats/source_home.manifest.json", manifest)
+
+    issues = validator.validate(repo_root, require_mechanics=False)
+
+    assert any(
+        "stats/measurement-contract: entries must be exactly" in issue
+        for issue in issues
+    )
+    assert any("stats/: JSON source allowlist mismatch" in issue for issue in issues)
 
 
 def test_source_families_name_meaning_ceiling_and_current_routes() -> None:

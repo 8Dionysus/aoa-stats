@@ -9,6 +9,8 @@ ceiling.
 ## Inputs
 
 - central measurement and packet schemas under `stats/measurement-contract/`
+- the opt-in inference-economy observation schema under
+  `stats/measurement-contract/`
 - the central C10 outcome-receipt schema under `stats/measurement-contract/`
 - an owner-local contract admitted by `stats/federation/local-port.schema.json`
 - one or more evidence-linked packets written by that contract's owner
@@ -34,6 +36,9 @@ ceiling.
 - a descriptive agent-local federation aggregate over owner refs and eval
   results, with reconciled promotion, isolation, portability, consumer-zero,
   and solo-operator burden dimensions
+- a descriptive provider-neutral inference-economy observation with explicit
+  token, activity, tool, timing, missingness, uncertainty, and lifecycle refs;
+  it remains contract-only and default-off
 
 ## Invariants
 
@@ -87,6 +92,10 @@ ceiling.
   a positive burden verdict also requires review to remain inside budget
 - no aggregate value authorizes promotion, shared truth, role change,
   namespace activation, or consumer removal
+- inference-economy observations preserve provider-reported,
+  exact-tokenizer, estimated, unknown, missing, and stale states without
+  treating a descriptive observation as activation, runtime, eval, closeout,
+  promotion, or owner-acceptance authority
 
 ## Ownership
 
@@ -96,8 +105,10 @@ meaning and evidence. Task/source owners retain C10 fact meaning and
 `aoa-evals` retains attribution verdicts.
 `src/aoa_stats_builder/measurement.py` and
 `src/aoa_stats_builder/outcome.py` are the filesystem-free executable cores
-for this part. `src/aoa_stats_builder/utility.py` adds descriptive aggregation
-only. Generated views, filesystem adapters, runtime projection, proof verdict,
+for this part. `src/aoa_stats_builder/inference_economy.py` owns the pure
+cross-field semantics of the default-off economy observation;
+`src/aoa_stats_builder/utility.py` adds descriptive aggregation only.
+Generated views, filesystem adapters, runtime projection, proof verdict,
 policy proposal, and MCP remain outside this crossing.
 
 ## Versioning
@@ -106,6 +117,10 @@ C10 v1 is immutable after landing. Semantic changes require a new schema
 version, old-versus-new negative and positive fixtures, explicit consumer
 migration, and a bounded compatibility window. Contract presence never
 activates a producer or runtime consumer.
+
+The inference-economy observation v1 schema and its descriptive-only
+semantics are likewise versioned and default-off. Adding the contract never
+activates measurement, comparison, runtime, or promotion behavior.
 
 ## Crosswalk
 

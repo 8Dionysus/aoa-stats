@@ -45,55 +45,6 @@ EXPECTED_FAMILIES = {
     "operation_contracts": "stats/operation-contracts",
     "surface_catalog": "stats/surface-catalog",
 }
-EXPECTED_BRANCH_ENTRIES = {
-    "stats/measurement-contract": {
-        "AGENTS.md",
-        "README.md",
-        "measurement-contract.schema.json",
-        "measurement-packet.schema.json",
-        "validation-telemetry-packet.schema.json",
-        "outcome-receipt.schema.json",
-        "packet-read-request.schema.json",
-        "packet-read-result.schema.json",
-    },
-    "stats/federation": {
-        "AGENTS.md",
-        "README.md",
-        "local-port.schema.json",
-        "validation-telemetry-port.schema.json",
-        "owner-inventory.schema.json",
-        "owner-inventory.json",
-    },
-    "stats/intake-contract": {
-        "AGENTS.md",
-        "README.md",
-        "RECEIPT_ABI.md",
-        "event-kind-registry.json",
-        "examples",
-    },
-    "stats/read-models": {
-        "AGENTS.md",
-        "README.md",
-        "surface-profile.schema.json",
-        "active",
-        "deferred",
-        "retired",
-    },
-    "stats/operation-contracts": {
-        "AGENTS.md",
-        "README.md",
-        "active",
-        "operation-contract.schema.json",
-    },
-    "stats/surface-catalog": {
-        "AGENTS.md",
-        "README.md",
-        "CODEX_MCP.md",
-        "CONSUMER_REGROUNDING.md",
-        "SURFACE_STRENGTH_MODEL.md",
-        "runtime_capture_trust.json",
-    },
-}
 REQUIRED_ROOT_FILES = {"AGENTS.md", "README.md", "source_home.manifest.json"}
 REQUIRED_ROUTE_FIELDS = (
     "source_routes",
@@ -102,21 +53,6 @@ REQUIRED_ROUTE_FIELDS = (
     "validator_routes",
 )
 OPTIONAL_ROUTE_FIELDS = ("generated_routes", "read_only_access_routes")
-INTAKE_FIXTURE = Path(
-    "stats/intake-contract/examples/session_harvest_family.receipts.example.json"
-)
-PROTOCOL_JSON_PATHS = {
-    "stats/measurement-contract/measurement-contract.schema.json",
-    "stats/measurement-contract/measurement-packet.schema.json",
-    "stats/measurement-contract/validation-telemetry-packet.schema.json",
-    "stats/measurement-contract/outcome-receipt.schema.json",
-    "stats/measurement-contract/packet-read-request.schema.json",
-    "stats/measurement-contract/packet-read-result.schema.json",
-    "stats/federation/local-port.schema.json",
-    "stats/federation/validation-telemetry-port.schema.json",
-    "stats/federation/owner-inventory.schema.json",
-    "stats/federation/owner-inventory.json",
-}
 OPERATION_POSTURES_BY_PACKAGE = {
     "agon": ("seed_registry_compiler", "retained_compatibility_registry"),
     "experience": ("schema_example_contracts", "part_local_schema_contracts"),
@@ -148,6 +84,50 @@ def _load_object(path: Path) -> tuple[dict[str, Any] | None, str | None]:
 
 def _entries(path: Path) -> set[str]:
     return {entry.name for entry in path.iterdir()}
+
+
+def _manifest_branch_entries(
+    branch_by_id: dict[str, dict[str, Any]],
+    family_by_id: dict[str, dict[str, Any]],
+) -> dict[str, set[str]]:
+    """Derive exact branch children from the source-home route declarations."""
+
+    expected: dict[str, set[str]] = {}
+    for branch_id, branch in branch_by_id.items():
+        branch_path = branch.get("path")
+        family = family_by_id.get(branch_id)
+        entries: set[str] = set()
+        if isinstance(branch_path, str) and isinstance(family, dict):
+            prefix = branch_path.rstrip("/") + "/"
+            routes = family.get("source_routes")
+            if isinstance(routes, list):
+                for route in routes:
+                    if not isinstance(route, str) or not route.startswith(prefix):
+                        continue
+                    relative = route[len(prefix) :].strip("/")
+                    if relative:
+                        entries.add(relative.split("/", 1)[0])
+        if isinstance(branch_path, str):
+            expected[branch_path] = entries
+    return expected
+
+
+def _manifest_stats_json_routes(
+    family_by_id: dict[str, dict[str, Any]],
+) -> set[str]:
+    """Return JSON source routes declared by the canonical stats manifest."""
+
+    routes: set[str] = set()
+    for family in family_by_id.values():
+        source_routes = family.get("source_routes")
+        if not isinstance(source_routes, list):
+            continue
+        for route in source_routes:
+            if isinstance(route, str) and route.startswith("stats/") and route.endswith(
+                ".json"
+            ):
+                routes.add(route)
+    return routes
 
 
 def _string_list(value: object, *, allow_empty: bool = False) -> bool:
@@ -322,16 +302,12 @@ def _validate_stats_json_allowlist(
     deferred_paths: list[Path],
     retired_paths: list[Path],
     operation_paths: list[Path],
+    manifest_json_routes: set[str],
     issues: list[str],
 ) -> None:
     expected = {
         MANIFEST_PATH.as_posix(),
-        PROFILE_SCHEMA_PATH.as_posix(),
-        OPERATION_CONTRACT_SCHEMA_PATH.as_posix(),
-        "stats/intake-contract/event-kind-registry.json",
-        "stats/surface-catalog/runtime_capture_trust.json",
-        INTAKE_FIXTURE.as_posix(),
-        *PROTOCOL_JSON_PATHS,
+        *manifest_json_routes,
         *[path.relative_to(repo_root).as_posix() for path in active_paths],
         *[path.relative_to(repo_root).as_posix() for path in deferred_paths],
         *[path.relative_to(repo_root).as_posix() for path in retired_paths],
@@ -371,6 +347,7 @@ def _validate_profiles(
     manifest_family: dict[str, Any] | None,
     *,
     operation_paths: list[Path],
+    manifest_json_routes: set[str],
     require_mechanics: bool,
     issues: list[str],
 ) -> set[str]:
@@ -392,6 +369,7 @@ def _validate_profiles(
         deferred_paths,
         retired_paths,
         operation_paths,
+        manifest_json_routes,
         issues,
     )
 
@@ -827,16 +805,6 @@ def validate(
             f"expected={sorted(expected_root_entries)!r}, found={sorted(actual_root_entries)!r}"
         )
 
-    for branch_path, expected_entries in EXPECTED_BRANCH_ENTRIES.items():
-        branch_root = repo_root / branch_path
-        if not branch_root.is_dir():
-            issues.append(f"{branch_path}: branch directory is missing")
-        elif _entries(branch_root) != expected_entries:
-            issues.append(
-                f"{branch_path}: entries must be exactly {sorted(expected_entries)!r}, "
-                f"found {sorted(_entries(branch_root))!r}"
-            )
-
     branches = manifest.get("branches")
     if not isinstance(branches, list):
         issues.append("stats/source_home.manifest.json: branches must be a list")
@@ -971,6 +939,20 @@ def validate(
             f"{sorted(EXPECTED_FAMILIES)!r}; found {sorted(family_by_id)!r}"
         )
 
+    for branch_path, expected_entries in _manifest_branch_entries(
+        branch_by_id, family_by_id
+    ).items():
+        branch_root = repo_root / branch_path
+        if not branch_root.is_dir():
+            issues.append(f"{branch_path}: branch directory is missing")
+        elif _entries(branch_root) != expected_entries:
+            issues.append(
+                f"{branch_path}: entries must be exactly {sorted(expected_entries)!r}, "
+                f"found {sorted(_entries(branch_root))!r}"
+            )
+
+    manifest_json_routes = _manifest_stats_json_routes(family_by_id)
+
     operation_paths = _operation_contract_paths(repo_root)
     operation_routes, operation_records = _validate_operation_contracts(
         repo_root,
@@ -985,6 +967,7 @@ def validate(
         repo_root,
         family_by_id.get("read_models"),
         operation_paths=operation_paths,
+        manifest_json_routes=manifest_json_routes,
         require_mechanics=require_mechanics,
         issues=issues,
     )

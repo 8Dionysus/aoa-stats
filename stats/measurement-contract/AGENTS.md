@@ -9,7 +9,7 @@ owner-local measurement, one evidence-linked measurement packet, and one
 content-minimized action/outcome observation. It owns compatibility rules for
 those shapes, not the meaning of any owner's metric, task result, or verdict.
 
-Read `README.md`, then the two source schemas. For executable behavior, follow
+Read `README.md`, then the source schemas. For executable behavior, follow
 the reciprocal Boundary Bridge part named by `stats/source_home.manifest.json`.
 
 ## Owner law
