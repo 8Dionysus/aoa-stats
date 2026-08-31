@@ -393,6 +393,11 @@ but cannot invent another package or part.
 shape behind it. Nested cards narrow the law for a family, mechanic,
 implementation, or compatibility district.
 
+`DESIGN.AGENTS.md` is the on-demand design surface for the agent mesh itself:
+card placement, conditional reading, validation routing, and closeout shape.
+It is not inherited route law and remains weaker than active owner sources,
+manifests, topology, builders, and validators.
+
 `ROADMAP.md` owns sequencing. `docs/decisions/` owns durable rationale when it
 cannot be recovered from design and owner contracts. Generated indexes support
 lookup but do not own decisions.
