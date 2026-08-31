@@ -1,24 +1,22 @@
 # AGENTS.md
 
-## growth-cycle mechanic guidance
+## Growth Cycle mechanic guide
 
 This package implements the stats-side projection of the common
-`Agents-of-Abyss/mechanics/growth-cycle` mechanic.
+`Agents-of-Abyss/mechanics/growth-cycle` mechanic. Select a profile, event kind,
+and part through the authored source and topology routes before editing.
 
-Keep operation-specific docs, examples, supporting contracts, and focused
-tests under the nearest part. Published catalog schemas and generated read
-models may remain at repository root only when their stable public paths are
-declared in `mechanics/topology.json`.
+The parts share deterministic receipt-to-read-model rules through
+`src/aoa_stats_builder/growth_cycle.py`. Package-level proof is limited to that
+shared core and its authored profiles; operation-specific payload remains with
+the nearest part. The root build facade owns input loading, output fan-out,
+and check/write policy.
 
-The three parts share deterministic receipt-to-read-model rules through
-`src/aoa_stats_builder/growth_cycle.py`. Package-level tests are allowed only
-for that shared core and its four authored read-model profiles; operation-
-specific payload still belongs to the nearest part.
+Stats outputs are descriptive and weaker than named owner sources. Do not add
+routing, proof, gate, workflow, or owner-acceptance authority.
 
-Start from the selected profile under `stats/read-models/active/` and the
-`aoa-skills` event-kind registration before changing a projection. Keep the
-root build facade responsible for input loading, output fan-out, and
-check/write policy.
+## Conditional validation
 
-Stats outputs are descriptive and weaker than their named owner sources.
-Do not add routing, proof, gate, or workflow authority here.
+Open the selected part `VALIDATION.md` and use root `VALIDATION.md` for a
+cross-route or generated-parity check. Report receipt posture, shared-core
+coverage, and missing owner evidence.

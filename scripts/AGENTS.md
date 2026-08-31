@@ -1,40 +1,34 @@
 # AGENTS.md
-Local guidance for `scripts/` in `aoa-stats`.
-
-Read the root `AGENTS.md` first. Root scripts are repo-wide commands or stable
-compatibility entrypoints. Live refresh implementations belong to
-`mechanics/recurrence/parts/live-receipt-refresh/scripts/`; summary-catalog
-bundle validation belongs to its Release Support part.
 
 ## Local role
-Scripts should be deterministic, repo-relative, and derived-only. Prefer check
-mode for builders, especially `build_views.py --check`.
+
+Root scripts are public, compatibility, or repository-wide entrypoints. They
+adapt inputs, call source-owned builders and validators, and keep I/O, fan-out,
+and check/write policy at the edge. Reusable deterministic logic belongs in
+`src/aoa_stats_builder/` or the owning mechanic part.
 
 ## Editing posture
-Avoid hidden network calls, hidden writes, and time-dependent output. Neighbor
-source discovery must use a deterministic, testable precedence and keep
-explicit environment overrides first. When live refresh behavior changes,
-keep dry-run or explicit operator intent visible.
 
-Treat compatibility at symbol granularity. A root helper must have a current
-repo-wide caller, a documented external contract, or focused owner-part proof.
-Do not keep unused path or mutable-tuple helpers after their canonical adapter
-has moved under `src/aoa_stats_builder/`.
+Preserve explicit source-root precedence, owner attribution, missingness, and
+derived-only output posture. Builders read authored inputs and write declared
+projections; validators check their stated contract and cannot strengthen an
+upstream verdict. Live-refresh scripts require explicit operator intent and
+must not silently mutate sibling repositories.
 
-Root validators may list stable repository entrypoints directly. Derive
-stats-family and mechanic membership through their canonical validators rather
-than copying selected part docs or source payload into a second constant.
+`build_views.py` remains the compatibility build facade. `release_check.py`
+retains the complete ordered owner-local gate. Exact command sequences belong
+to the root or nearest `VALIDATION.md`, not this inherited card.
 
 ## Hard no
-Do not let a script infer owner truth from volume. Do not make refresh behavior
-silently mutate source repos.
 
-## Validation
-Run the touched script, then:
+Do not add hidden fallback paths, private credentials, ambient runtime state,
+central proof or health authority, or a second source-family or topology
+inventory. Do not treat a green script as CI, review, merge, runtime, or owner
+acceptance evidence.
 
-```bash
-python scripts/validate_mechanics_topology.py
-python scripts/validate_stats_source_home.py
-python scripts/validate_repo.py
-python -m pytest -q tests mechanics
-```
+## Conditional validation and closeout
+
+Open root `VALIDATION.md` for repository script checks and the named mechanic
+part route for moved builders or validators. Report the script surface, source
+inputs, projection outputs, checks actually run, generated parity, and any
+external or runtime evidence that remains missing.

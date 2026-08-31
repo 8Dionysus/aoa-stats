@@ -26,6 +26,7 @@ EXTRA_SCHEMA_ROUTES = (
 )
 REPO_WIDE_TEXT_SURFACES = (
     "README.md",
+    "VALIDATION.md",
     "AGENTS.md",
     "DESIGN.md",
     "stats/README.md",

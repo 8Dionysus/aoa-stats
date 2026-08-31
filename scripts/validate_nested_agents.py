@@ -4,6 +4,7 @@ from __future__ import annotations
 
 import argparse
 import json
+import re
 from dataclasses import dataclass
 from pathlib import Path
 
@@ -32,7 +33,7 @@ REQUIRED_AGENTS_DOCS: dict[str, tuple[str, ...]] = {
         'free of secrets',
     ),
     'schemas/AGENTS.md': ('Schema changes are contract changes', 'shared receipt envelope'),
-    'scripts/AGENTS.md': ('build_views.py --check', 'derived-only'),
+    'scripts/AGENTS.md': ('build_views.py', 'derived-only'),
     'skills/AGENTS.md': (
         'canonical `aoa-stats/skills/` home',
         'managed OS user-profile copy',
@@ -66,6 +67,76 @@ IGNORED_DIRS = {
     ".pytest_cache",
     ".mypy_cache",
 }
+FENCE_MARKER = "`" * 3
+RUNNABLE_FENCE_LANGS = {
+    "bash",
+    "console",
+    "fish",
+    "powershell",
+    "pwsh",
+    "sh",
+    "shell",
+    "shell-session",
+    "zsh",
+}
+SHELL_FENCE_PATTERN = re.compile(
+    r"^ {0,3}```(?:bash|console|fish|powershell|pwsh|sh|shell|shell-session|zsh)(?:\s+.*)?$",
+    re.IGNORECASE,
+)
+FENCE_OPEN_PATTERN = re.compile(
+    r"^ {0,3}" + re.escape(FENCE_MARKER) + r".*$"
+)
+COMMAND_NAME_PATTERN = (
+    r"(?:python(?:\d+(?:\.\d+)*)?|pytest|uv(?:\s+run)?|pip(?:\d+)?|"
+    r"ruff|mypy|tox|hatch|poetry|aoa|git|make|bash|sh|zsh|fish|"
+    r"powershell|pwsh|systemctl|curl|jq|rg|grep|sed|awk|find|chmod|"
+    r"mkdir|cp|mv|rm|source(?=\s+[./$~]))"
+)
+COMMAND_PREFIX_PATTERN = (
+    r"(?:[A-Z_][A-Z0-9_]*=(?:'[^'\n]*'|\"[^\"\n]*\"|\S+)[ \t]+)*"
+    r"(?:\$[ \t]+)?"
+)
+COMMAND_START_PATTERN = re.compile(
+    r"^[ \t]*(?:(?:[-*+]|\d+[.)])[ \t]+)?`?"
+    + COMMAND_PREFIX_PATTERN
+    + COMMAND_NAME_PATTERN
+    + r"(?=\s|$)",
+    re.MULTILINE,
+)
+INLINE_COMMAND_PATTERN = re.compile(
+    r"`"
+    + COMMAND_PREFIX_PATTERN
+    + COMMAND_NAME_PATTERN
+    + r"(?=\s|$)[^`\n]*`",
+    0,
+)
+FENCE_PATTERN = re.compile(
+    r"^ {0,3}```(?P<info>[^\n]*)\n(?P<body>.*?)^ {0,3}```[ \t]*$",
+    re.IGNORECASE | re.MULTILINE | re.DOTALL,
+)
+README_ROUTE_PATTERN = re.compile(
+    r"\b(?:read|open|review|start\s+with|use)\b.*\bREADME(?:\.md)?\b",
+    re.IGNORECASE,
+)
+README_CONDITIONAL_MARKERS = (
+    "when ",
+    "if ",
+    "only ",
+    "where ",
+    "as needed",
+    "needed",
+    "relevant",
+    "selected",
+    "known",
+    "target",
+    "named",
+    "for ",
+)
+PROCEDURAL_HEADING_PATTERN = re.compile(
+    r"^#{1,6}\s+(?:validation|verify|verification|checks?|testing|"
+    r"procedure|smoke)(?:\s|$)",
+    re.IGNORECASE,
+)
 
 
 @dataclass(frozen=True)
@@ -96,6 +167,122 @@ def _is_ignored(path: Path, repo_root: Path) -> bool:
     except ValueError:
         return False
     return any(part in IGNORED_DIRS for part in parts)
+
+
+def _active_agent_paths(repo_root: Path) -> list[Path]:
+    """Return the root and nested active route cards in a deterministic order."""
+
+    paths = [repo_root / "AGENTS.md"]
+    paths.extend(
+        repo_root / relative
+        for relative in sorted(discover_nested_agents(repo_root))
+    )
+    return [path for path in paths if path.is_file()]
+
+
+def _unconditional_readme_inventory_issues(path: Path, text: str) -> list[str]:
+    issues: list[str] = []
+    lines = text.splitlines()
+    for line_number, line in enumerate(lines, start=1):
+        if "readme" not in line.lower() or not README_ROUTE_PATTERN.search(line):
+            continue
+        normalized = line.lower()
+        if not any(marker in normalized for marker in README_CONDITIONAL_MARKERS):
+            issues.append(
+                f"{path}:{line_number}: unconditional README inventory"
+            )
+
+    inventory_headings = {
+        "start here",
+        "read before editing",
+        "reading order",
+        "route stack",
+        "route inventory",
+        "read before editing",
+        "reading order",
+        "required reading",
+    }
+    for index, line in enumerate(lines):
+        match = re.match(r"^#{1,6}\s+(.+?)\s*$", line)
+        if not match or match.group(1).lower() not in inventory_headings:
+            continue
+        end = index + 1
+        while end < len(lines) and not lines[end].lstrip().startswith("#"):
+            end += 1
+        section = lines[index + 1 : end]
+        if any("readme" in item.lower() for item in section) and not any(
+            any(marker in item.lower() for marker in README_CONDITIONAL_MARKERS)
+            for item in section
+        ):
+            issues.append(
+                f"{path}:{index + 1}: unconditional README inventory section"
+            )
+    return issues
+
+
+def _procedural_structure_issues(path: Path, text: str) -> list[str]:
+    """Reject executable residue while keeping semantic prose unconstrained."""
+
+    issues: list[str] = []
+    for match in FENCE_PATTERN.finditer(text):
+        info_text = match.group("info").strip()
+        info = info_text.split(None, 1)[0].lower() if info_text else ""
+        if info in RUNNABLE_FENCE_LANGS or COMMAND_START_PATTERN.search(
+            match.group("body")
+        ):
+            line_number = text.count(chr(10), 0, match.start()) + 1
+            issues.append(f"{path}:{line_number}: executable fenced block")
+    lines = text.splitlines()
+    for line_number, line in enumerate(lines, start=1):
+        if SHELL_FENCE_PATTERN.match(line):
+            issues.append(f"{path}:{line_number}: executable fenced block")
+        if COMMAND_START_PATTERN.match(line):
+            issues.append(f"{path}:{line_number}: runnable command line")
+        if INLINE_COMMAND_PATTERN.search(line):
+            issues.append(f"{path}:{line_number}: inline runnable command")
+
+    for index, line in enumerate(lines):
+        match = PROCEDURAL_HEADING_PATTERN.match(line)
+        if not match:
+            continue
+        end = index + 1
+        while end < len(lines) and not lines[end].lstrip().startswith("#"):
+            end += 1
+        if not any(item.strip() for item in lines[index + 1 : end]):
+            title = line.lstrip("#").strip()
+            issues.append(f"{path}:{index + 1}: empty procedural section {title!r}")
+
+    for index, line in enumerate(lines):
+        if not line.rstrip().endswith(":"):
+            continue
+        next_index = index + 1
+        while next_index < len(lines) and not lines[next_index].strip():
+            next_index += 1
+        next_line = lines[next_index] if next_index < len(lines) else ""
+        if (
+            next_index == len(lines)
+            or next_line.lstrip().startswith("#")
+            or FENCE_OPEN_PATTERN.match(next_line)
+        ):
+            issues.append(
+                f"{path}:{index + 1}: orphan colon lead-in before structure or EOF"
+            )
+    issues.extend(_unconditional_readme_inventory_issues(path, text))
+    return issues
+
+
+def validate_active_agent_structure(repo_root: Path) -> tuple[str, ...]:
+    """Return narrow prompt-light structural violations for active cards."""
+
+    issues: list[str] = []
+    for path in _active_agent_paths(repo_root):
+        relative = _relative(path, repo_root)
+        issues.extend(
+            _procedural_structure_issues(
+                relative, path.read_text(encoding="utf-8")
+            )
+        )
+    return tuple(issues)
 
 
 def discover_nested_agents(repo_root: Path) -> set[str]:
@@ -172,6 +359,8 @@ def validate(
         root_text = root_agents.read_text(encoding="utf-8")
         if not _has_agents_heading(root_text):
             issues.append("AGENTS.md: missing AGENTS heading")
+
+    issues.extend(validate_active_agent_structure(repo_root))
 
     for rel_path, snippets in REQUIRED_AGENTS_DOCS.items():
         path = repo_root / rel_path

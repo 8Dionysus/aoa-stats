@@ -19,7 +19,7 @@ store, runtime state home, or second copy of root contracts.
 | operation map | `../mechanics/topology.json` |
 | generated discovery | `../generated/summary_surface_catalog.min.json` |
 | rationale | `../docs/decisions/README.md` and generated indexes |
-| validation | `AGENTS.md#verify`, then the selected family or mechanic part owner |
+| validation | `../VALIDATION.md`, then the selected family or mechanic part owner |
 
 ## Shape
 
@@ -98,6 +98,6 @@ profile state, source facts, proof, routing, workflow, memory, or runtime truth.
 
 ## Validation
 
-Use [`AGENTS.md#verify`](AGENTS.md#verify), then the focused validator and tests
+Use [`../VALIDATION.md`](../VALIDATION.md), then the focused validator and tests
 owned by the family or mechanic part you change. Release closeout stays in
 [`../docs/RELEASING.md`](../docs/RELEASING.md).

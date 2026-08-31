@@ -2,105 +2,66 @@
 
 Route card for the `stats/` source home.
 
-## Scope
+## Scope and source-home law
 
-`stats/` owns the source-authored meaning of stats families: the shared
-measurement grammar, local-port compatibility, what an intake contract admits,
-what a derived surface describes, and where each family's authority stops.
+`stats/` owns the source-authored meaning of stats families, including the
+shared measurement grammar, local-port compatibility, intake admission,
+derived-surface questions, lifecycle, and authority ceilings. It does not own
+operation payloads, generated outputs, Python implementation, or source-owner
+facts; those remain in the active routes named by `source_home.manifest.json`.
 
-It does not own operation payloads, generated outputs, Python implementation,
-or source-owner facts. Those remain in the active routes named by
-`source_home.manifest.json`.
+Keep only declared source records here: intake admission records, the bounded
+intake fixture, active/deferred read-model profiles, retired cleanup tombstones,
+and non-catalog operation records. Do not add executable payload, generated
+JSON, owner-local feeds, or runtime state under `stats/`. One current payload
+has one active owner.
 
-## Start here
+## Conditional route
 
-1. `README.md`
-2. `source_home.manifest.json`
-3. the selected family's `AGENTS.md`
-4. the selected family's `README.md`
-5. every current root route named by that family
-6. every mechanics route named by that family before changing an operation
+When a source-family question is known, use `source_home.manifest.json` to
+select the family card and its authored record. When relevant to the route,
+open the family README, then follow the named schema, owner port,
+mechanic route, builder, or validator. Operation questions return to
+`mechanics/topology.json` and the nearest part.
 
-## Source-home law
+The six family routes are `measurement-contract/`, `federation/`,
+`intake-contract/`, `read-models/`, `operation-contracts/`, and
+`surface-catalog/`. This list is a stable source-home crosswalk; changing
+membership belongs in the manifest, not this card. Do not hand-maintain mutable
+surface counts or named rosters here.
+These route cards do not hand-maintain mutable status rosters.
 
-- Keep source meaning and authority ceilings here.
-- Keep shared compatibility in `measurement-contract/` and `federation/`;
-  keep owner-local definitions in each owner's root `stats/` port.
-- Keep implementation under `src/`, committed derived outputs under
-  `generated/`, canonical published schemas under `schemas/`, and public or
-  compatibility commands under `scripts/` unless their owner route changes
-  explicitly.
-- Keep only declared source records here: intake admission records, the bounded
-  intake fixture, authored active/deferred read-model profiles, retired-output
-  cleanup tombstones, and authored non-catalog operation records. Do not add
-  `__init__.py`, executable payloads, generated JSON, owner-local receipt feeds,
-  or runtime state under `stats/`.
-- One current payload has one active owner. A source-family route may point to
-  it; it must not duplicate it.
-- Treat `source_home.manifest.json` as the machine-readable crosswalk. The
-  branch READMEs explain it but do not override it.
-- Keep this source-home README and branch README files as route atlases. Exact
-  profile state belongs in the profile, operation maturity in its operation
-  record, and rationale in indexed decisions; do not hand-maintain mutable
-  surface counts or named live/reference rosters in entrypoint prose.
-- Treat each active profile's `live_state_capable` value as the source-owned
-  live-materialization selector. Mechanics may clean stale runtime copies of a
-  non-live surface, but they must not publish that surface into live state or a
-  live catalog.
-- Retired profiles are cleanup and provenance records only. They must not
-  re-enter the public catalog, committed build fanout, or live materialization.
-- Retired profiles reserve their former catalog slots. Active profiles may
-  leave gaps but must not reuse those slots or renumber unrelated surfaces.
-- Former mechanic routes on retired records are historical identifiers; only
-  active and deferred profile handoffs must resolve to active mechanic parts.
+## Lifecycle and authority
 
-## Branch routes
+- `measurement-contract/` owns portable statistical shape; owner repositories
+  retain metric meaning.
+- `federation/` owns local-port compatibility and owner-level coverage.
+- `intake-contract/` owns the shared envelope and event-kind admission below
+  source payload authority.
+- `read-models/` owns active/deferred profiles and retired tombstones.
+- `operation-contracts/` owns bounded non-catalog questions and owner return.
+- `surface-catalog/` owns compact discovery and consumer caution posture.
 
-- `measurement-contract/` owns the portable measurement, packet, and
-  content-minimized outcome-receipt grammar.
-- `federation/` owns local-port compatibility and the owner-level coverage
-  inventory.
-- `intake-contract/` owns the shared stats receipt-envelope and event-family
-  admission meaning, below each source repo's payload authority.
-- `read-models/` owns active and deferred surface profiles plus minimal retired
-  output tombstones, and hands repeatable operation to named mechanic parts.
-- `operation-contracts/` owns one bounded stats question, evidence posture,
-  authority ceiling, consumer risk, and owner-return route for each active
-  part-local observation contract that does not publish a public catalog
-  surface.
-- `surface-catalog/` owns the meaning and authority ceilings of the compact
-  generated summary-surface catalog, below every owner-local fact it indexes.
+Active profiles may be materialized live only when their source meaning and an
+observation route both exist. Deferred profiles remain evidence-gated;
+retired profiles publish no surface and reserve their former catalog slots.
+Generated, compact, MCP, adapter, and runtime surfaces remain weaker than
+authored sources and owner-local facts. Missing, stale, rejected, and
+unregistered evidence stays visible.
 
-## Cross-route law
+## Cross-route boundary
 
-Every family entry must name:
+Every family route names its meaning, source and public contracts, existing
+implementation and validation routes, generated/access companions, mechanic
+handoffs, and authority ceiling. Change source meaning with its reciprocal
+mechanic route; do not copy source meaning into mechanics or generated output.
+`stats/source_home.manifest.json` is the machine-readable source-family
+crosswalk; README files explain it but do not override it.
 
-- its source-authored meaning and owner ceiling
-- the current root source and public contract routes
-- implementation and validation routes that actually exist
-- generated or read-only access routes when applicable
-- the mechanics packages and parts that operate on the family
+## Conditional validation and closeout
 
-Changing source meaning requires checking both the current root contracts and
-the paired mechanics routes. Changing an operation belongs in `mechanics/` and
-must preserve the source-family ceiling declared here.
-
-## Current root posture
-
-The root `schemas/` and `generated/` districts remain active. This source home
-owns the transport-neutral stats read contract; the stack-owned
-`aoa-stats-mcp` service implements MCP access without becoming source
-authority.
-
-## Verify
-
-```bash
-python -m json.tool stats/source_home.manifest.json >/dev/null
-python scripts/validate_stats_protocol.py
-python scripts/validate_stats_source_home.py
-python scripts/build_views.py --check
-python scripts/validate_nested_agents.py
-python scripts/validate_repo.py
-```
-
-Run the focused validators and tests listed by the family you changed.
+Use root `VALIDATION.md` for source-home and protocol route selection, then the
+focused family or mechanic-part validation named by the manifest. Regenerate
+declared projections from authored inputs. Report source family, owner inputs,
+reciprocal mechanic, output shape, evidence class, and remaining stronger-owner
+or freshness boundary.

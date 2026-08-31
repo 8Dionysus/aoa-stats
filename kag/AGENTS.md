@@ -2,45 +2,33 @@
 
 ## Applies to
 
-This card applies to `aoa-stats/kag/` and every nested path until a nearer card
-narrows the lane.
+This card applies to the local KAG provider home and its source-linked records.
 
 ## Role
 
-`kag/` is the local KAG provider home for `aoa-stats`. It exposes compact,
-source-linked records over the authored stats source home, with generated
-catalogs and Agon observability kept as supporting projections for `aoa-kag`
-registry, composition, and MCP consumers.
+`kag/` exposes source-linked stats navigation and supporting projections. The
+authored stats source home remains primary; generated catalogs and KAG views
+are weaker access surfaces and never replace authored meaning.
 
-## Read before editing
+## Conditional route
 
-Read the root `AGENTS.md`, this card, `kag/README.md`, `kag/manifest.json`,
-`stats/source_home.manifest.json`, `stats/README.md`,
-`stats/read-models/README.md`, `README.md`,
-`generated/summary_surface_catalog.min.json`, and
-`generated/agon_kag_stats_observability_registry.min.json` before changing
-provider records.
+For a KAG question, follow the selected source record and its owner route.
+Open a local README when human orientation is material, then inspect only the
+provider record, schema, edge, or projection named by the question. The
+machine-readable stats crosswalk is `stats/source_home.manifest.json`.
 
 ## Boundaries
 
-Keep authored stats meaning and authority ceilings in `stats/`. Keep generated
-catalog and Agon observability surfaces weaker than that authored source and
-weaker than the repositories that emitted the receipts, refs, or verdicts.
-Keep shared KAG schema, registry, composition, and provider validation with
-`aoa-kag`. Keep runtime serving state with `abyss-stack` or the runtime owner
-named by the consumer.
+- Provider records retain exact source refs and owner handles.
+- KAG composition may aid lookup but cannot grant stats, proof, runtime, or
+  owner authority.
+- Do not copy owner manifests, evidence, runtime state, raw sessions, or
+  one-session worktree status here.
+- Missing, stale, or unregistered source evidence remains visible.
 
-Every provider record uses `stats/source_home.manifest.json` as its freshness
-anchor. `stats/README.md` is the return route for stats-authored meaning;
-`README.md` remains the explicit repository entry route.
+## Conditional validation and closeout
 
-## Validation
-
-Use the source-home, catalog, and part-local Agon validation routes named in
-`manifest.json`, then validate this provider through the `aoa-kag` local
-subtree validator.
-
-## Closeout
-
-Report provider records changed, both source-return routes, owner validation,
-`aoa-kag` validation, and the next MCP consumer route.
+Use the root `VALIDATION.md`, the source-home route, and the named Agon or
+provider owner checks when this district changes. Report provider records,
+source-return routes, owner validation, `aoa-kag` validation, and the next MCP
+consumer route; a projection check is not publication or acceptance evidence.

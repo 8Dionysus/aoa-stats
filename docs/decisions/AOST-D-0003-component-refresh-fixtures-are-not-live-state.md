@@ -106,7 +106,7 @@ letting any of those adapters redefine source meaning.
 
 ## Validation
 
-Decision-lane checks are owned by [`AGENTS.md#verify`](AGENTS.md#verify).
+Decision-lane checks are owned by [`../../VALIDATION.md`](../../VALIDATION.md).
 Affected source-home and mechanic checks route through their owning
 `AGENTS.md` or `VALIDATION.md`, then the root
-[`AGENTS.md#verify`](../../AGENTS.md#verify) gate.
+[`../../VALIDATION.md`](../../VALIDATION.md) gate.

@@ -25,6 +25,7 @@ as a second part-by-part map here.
   [`../README.md#current-v0-surface`](../README.md#current-v0-surface)
 - durable rationale: [`decisions/README.md`](decisions/README.md)
 - release route: [`RELEASING.md`](RELEASING.md)
+- on-demand validation: [`../VALIDATION.md`](../VALIDATION.md)
 
 Follow a profile or operation record to its `mechanic_routes`, then read the
 nearest mechanic and part route cards. Root documentation redirects are not

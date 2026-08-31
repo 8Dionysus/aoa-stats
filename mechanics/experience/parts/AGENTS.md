@@ -1,11 +1,11 @@
 # AGENTS.md
 
-Guidance for Experience parts.
+## Experience parts guide
 
-- Read `mechanics/experience/AGENTS.md` and the selected part contract first.
-- Keep `docs/`, `examples/`, `schemas/`, and `tests/` part-local.
-- Update a schema, its paired example, and its focused test together.
-- Do not add generated output or runtime state here without an explicit owner
-  and publication route.
-- Do not infer adoption, governance legitimacy, release approval, or runtime
-  health from the presence of an example.
+When a part is selected, follow the package card and its contract before
+editing. Keep `docs/`, `examples/`, `schemas/`, and `tests/` part-local.
+
+Update a schema, paired example, and focused test together. Do not add
+generated output or runtime state without an explicit owner and publication
+route. An example cannot establish adoption, governance legitimacy, release
+approval, or runtime health.

@@ -3,39 +3,36 @@
 ## Agon agent guide
 
 This package owns the `aoa-stats` implementation of the common
-`Agents-of-Abyss/mechanics/agon` mechanic. Read `../AGENTS.md`, `README.md`,
-`PARTS.md`, and `PROVENANCE.md` before editing a part.
+`Agents-of-Abyss/mechanics/agon` mechanic. When an Agon operation is selected,
+follow the package README, `PARTS.md`, provenance, and the part named by
+`mechanics/topology.json`.
 
 ## Active payload law
 
 - Active source payload belongs below `parts/<part>/`.
-- A part keeps its config, docs, examples, schemas, builders, validators, and
+- A part keeps config, docs, examples, schemas, builders, validators, and
   focused tests together.
-- The eight `generated/agon_*.min.json` files remain root-published public
-  outputs. Their builders must read part-local sources and write those exact
-  compatibility routes.
+- The root-published `generated/agon_*.min.json` compatibility outputs are
+  built from part-local sources and retain their stable paths.
 - Stable schema identities are contract identities; relocation alone is not a
   reason to rewrite them.
-- `mechanics/recurrence/parts/component-manifests/` owns the recurrence
-  declarations and Agon recurrence review boundary. They are cross-routed
-  integration surfaces, not duplicate Agon payload.
+- Agon recurrence declarations remain with the recurrence component-manifests
+  part; they are cross-routed integration surfaces, not duplicate payload.
 
-## Boundary
+## Boundary and legacy law
 
-This package derives candidate-only observability. It must not open an arena,
-issue a verdict, write a scar, execute retention, mutate rank or trust, promote
-to KAG or Tree of Sophia, schedule hidden work, or make the assistant a
-contestant.
-
-## Legacy law
+Agon observability is candidate-only. It must not open an arena, issue a
+verdict, write a scar, execute retention, mutate rank or trust, promote to KAG
+or Tree of Sophia, schedule hidden work, or make the assistant a contestant.
 
 Historical landing notes and closed quests live under `legacy/raw/`. They are
-evidence of how the active parts arrived, not active instructions. Route
-through `legacy/INDEX.md` and `legacy/former-routes.json` instead of linking to
-raw history as current guidance.
+evidence of how active parts arrived, not instructions. Use `legacy/INDEX.md`
+and `legacy/former-routes.json` for historical routing; preserve raw files
+unless the historical artifact itself is the named task.
 
-## Validation
+## Conditional validation and closeout
 
-Run the builder check, validator, and focused pytest command recorded in the
-touched part's `VALIDATION.md`. Do not validate a moved builder through its
-former root script route.
+Use the nearest Agon part `VALIDATION.md` and report builder/validator results,
+generated paths, candidate posture, and any owner or runtime evidence not
+established. A local check does not prove arena, verdict, promotion, or owner
+acceptance.

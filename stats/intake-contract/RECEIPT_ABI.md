@@ -94,7 +94,7 @@ The shared schema enum only carries active kinds.
 
 ## Verification
 
-Use [`AGENTS.md#verify`](AGENTS.md#verify) and the receipt crossing's
+Use [`../../VALIDATION.md`](../../VALIDATION.md) and the receipt crossing's
 [`VALIDATION.md`](../../mechanics/boundary-bridge/parts/receipt-abi-crossing/VALIDATION.md).
 
 Those checks cover:

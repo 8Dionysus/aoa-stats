@@ -99,7 +99,7 @@ governance blind spot at the same boundary where the canonical enum grows.
 
 ## Validation
 
-Run the decision-lane checks in [`AGENTS.md#verify`](AGENTS.md#verify), the
+Run the decision-lane checks in [`../../VALIDATION.md`](../../VALIDATION.md), the
 receipt ABI validator and focused crossing tests, source-home and protocol
 validators, and normalized canonical-to-mirror comparison. The repository
 release gate remains the final source proof; live-source activation requires a

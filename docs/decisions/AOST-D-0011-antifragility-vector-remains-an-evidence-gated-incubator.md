@@ -154,7 +154,7 @@ prestige score or implying that aoa-stats has evaluated ATM10-Agent.
 
 ## Validation
 
-Decision-lane checks are owned by [`AGENTS.md#verify`](AGENTS.md#verify).
+Decision-lane checks are owned by [`../../VALIDATION.md`](../../VALIDATION.md).
 Affected source-home and mechanic checks route through their owning
 `AGENTS.md` or `VALIDATION.md`, then the root
-[`AGENTS.md#verify`](../../AGENTS.md#verify) gate and the release runbook.
+[`../../VALIDATION.md`](../../VALIDATION.md) gate and the release runbook.

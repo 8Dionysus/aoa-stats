@@ -107,7 +107,7 @@ active access plane avoids hidden ABI and registration drift.
 
 ## Validation
 
-Decision-lane checks are owned by [`AGENTS.md#verify`](AGENTS.md#verify).
+Decision-lane checks are owned by [`../../VALIDATION.md`](../../VALIDATION.md).
 Measurement, federation, source-home, and Boundary Bridge proof route through
 their owning `AGENTS.md`, `VALIDATION.md`, and the root
-[`AGENTS.md#verify`](../../AGENTS.md#verify) gate.
+[`../../VALIDATION.md`](../../VALIDATION.md) gate.

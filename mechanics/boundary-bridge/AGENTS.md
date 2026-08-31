@@ -1,44 +1,34 @@
 # AGENTS.md
 
-## Boundary bridge agent guide
+## Boundary Bridge route card
 
-This package owns the `aoa-stats` participation in the common Boundary Bridge
-mechanic. Read `../AGENTS.md`, this package's `README.md`, `PARTS.md`, and
-`PROVENANCE.md` before editing a part.
+This package owns `aoa-stats` participation in the common Boundary Bridge
+mechanic. Select a part through `mechanics/topology.json` and the matching
+stats-family or operation record; when needed, open package README, `PARTS.md`,
+or `PROVENANCE.md` for that route's human explanation.
 
-## Active parts
+## Boundary ownership
 
-- `parts/receipt-abi-crossing/`
-- `parts/consumer-regrounding/`
-- `parts/memory-owner-handoff/`
-- `parts/measurement-packet-crossing/`
-
-## Boundary
-
-- `receipt-abi-crossing` operates on the `intake_contract` source family.
-- `consumer-regrounding` operates on the `surface_catalog` source family.
-- `memory-owner-handoff` operates on the `read_models` source family.
-- `measurement-packet-crossing` operates on the `measurement_contract` and
-  `federation` source families.
-- Payload owners retain the meaning of the facts inside a receipt.
-- Consumers retain their own policy, route, proof, and mutation decisions.
-- This package owns the stats crossing contract, not either side's stronger
-  authority.
+Receipt-ABI crossing operates on `intake_contract`; consumer regrounding on
+`surface_catalog`; memory-owner handoff on `read_models`; and
+measurement-packet crossing on `measurement_contract` and `federation`.
+Payload owners retain the meaning of receipt facts. Consumers retain policy,
+route, proof, and mutation decisions. This package owns the stats crossing
+contract, not either side's stronger authority.
 
 ## Edit law
 
-- Keep focused operation payload part-local. Retain only the public contracts,
-  generated outputs, and compatibility commands explicitly listed in
-  `../topology.json`.
-- Update `PARTS.md`, `PROVENANCE.md`, and the topology together when a part
-  route changes.
-- Update the matching stats source-family crosswalk in both directions.
-- Do not widen receipt admission without a payload owner and a bounded stats
-  consumer.
-- Do not turn a consumer warning or regrounding hint into an action verdict.
-- Do not aggregate a measurement packet across an undeclared compatibility
-  axis or turn a local definition into central domain meaning.
-- Do not turn an outcome receipt into causal proof, task-owner acceptance,
-  effect permission, or policy-training admission.
-- Follow the focused executable routes named by the touched part's
-  `VALIDATION.md`.
+- Keep focused operation payload part-local. Retain only public, generated,
+  and compatibility routes explicitly listed by topology.
+- Update package provenance, topology, and the matching stats crosswalk
+  together when a part route changes.
+- Do not widen receipt admission without a payload owner and bounded consumer.
+- Do not turn a warning into an action verdict or an outcome receipt into
+  causal proof, owner acceptance, effect permission, or training admission.
+- Do not aggregate across an undeclared compatibility axis or turn a local
+  definition into central domain meaning.
+
+## Conditional validation
+
+Use root `VALIDATION.md` for source-home/topology selection, then the nearest
+part `VALIDATION.md` for the focused crossing procedure and negative cases.

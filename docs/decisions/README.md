@@ -19,7 +19,7 @@ planning thoughts route to their owning surfaces instead.
 | output | canonical decision note, generated lookup indexes, and route back to the owning stats surface or upstream source owner |
 | owner | `docs/decisions/AGENTS.md` for lane law; decision notes for rationale; generated indexes for lookup only |
 | next route | owning generated/schema/config/example/script/test surface first, then nearest route card, `README.md`, `ROADMAP.md`, `docs/BOUNDARIES.md`, `docs/ARCHITECTURE.md`, generated lookup indexes, or the affected source owner |
-| validation | [`AGENTS.md#verify`](AGENTS.md#verify), plus the owning `AGENTS.md` or `VALIDATION.md` for the changed surface |
+| validation | [`../../VALIDATION.md`](../../VALIDATION.md), plus the owning `AGENTS.md` or `VALIDATION.md` for the changed surface |
 
 ## Authority
 
@@ -61,7 +61,7 @@ metadata:
 - [Decisions by source lane](indexes/by-source-lane.md)
 - [Decisions by validation or guard family](indexes/by-guard.md)
 
-Generation and parity commands stay in [`AGENTS.md#verify`](AGENTS.md#verify).
+Generation and parity commands stay in [`../../VALIDATION.md`](../../VALIDATION.md).
 
 ## Lookup Route
 

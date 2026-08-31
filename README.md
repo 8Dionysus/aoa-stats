@@ -10,7 +10,7 @@ become workflow, proof, route, memory, KAG, runtime, identity, or owner truth.
 
 ## Start here
 
-1. [`AGENTS.md`](AGENTS.md) — operating law and verification route
+1. [`AGENTS.md`](AGENTS.md) — operating law and route boundaries
 2. [`DESIGN.md`](DESIGN.md) — durable source/mechanics architecture
 3. [`stats/README.md`](stats/README.md) — authored stats source home
 4. [`mechanics/README.md`](mechanics/README.md) — operation and payload map
@@ -20,6 +20,7 @@ become workflow, proof, route, memory, KAG, runtime, identity, or owner truth.
 8. [`ROADMAP.md`](ROADMAP.md) and
    [`README.md#current-v0-surface`](README.md#current-v0-surface) — current contour
 9. [`docs/decisions/`](docs/decisions/) — durable rationale, not status
+10. [`VALIDATION.md`](VALIDATION.md) — on-demand focused and full checks
 
 ## Authority map
 
@@ -83,7 +84,7 @@ replay that changing part inventory.
 
 ## Build, live use, and verification
 
-Use the working gate in [`AGENTS.md#verify`](AGENTS.md#verify), then follow the
+Use the on-demand checks in [`VALIDATION.md`](VALIDATION.md), then follow the
 nearest changed family's `AGENTS.md` and mechanic part's `VALIDATION.md`.
 Script-specific working guidance stays in
 [`scripts/AGENTS.md`](scripts/AGENTS.md).
@@ -126,4 +127,4 @@ runtime.
 Use [`CONTRIBUTING.md`](CONTRIBUTING.md),
 [`docs/RELEASING.md`](docs/RELEASING.md), and
 [`CHANGELOG.md`](CHANGELOG.md). Release commands stay in the release guide;
-the normal repository gate stays in [`AGENTS.md#verify`](AGENTS.md#verify).
+the normal repository gate stays in [`VALIDATION.md`](VALIDATION.md).

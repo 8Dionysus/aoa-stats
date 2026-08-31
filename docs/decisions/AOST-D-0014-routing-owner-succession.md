@@ -78,7 +78,7 @@ not become active dependencies merely because they remain inspectable.
 
 ## Validation
 
-Validation follows [`AGENTS.md#verify`](../../AGENTS.md#verify), the federation
+Validation follows [`../../VALIDATION.md`](../../VALIDATION.md), the federation
 and operation-contract route cards, the Stress Recovery
 [`VALIDATION.md`](../../mechanics/antifragility/parts/stress-recovery-windows/VALIDATION.md),
 and the consumer-regrounding

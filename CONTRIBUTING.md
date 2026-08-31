@@ -52,7 +52,7 @@ Before opening a PR, run local validation for:
 ## Local development setup
 
 Dependency manifests live at the repository root. Run the repository gate from
-[`AGENTS.md#verify`](AGENTS.md#verify), then the
+[`VALIDATION.md`](VALIDATION.md), then the
 nearest changed family's `AGENTS.md` and mechanic part's `VALIDATION.md`.
 
 If your change touches live receipt source registration, watcher behavior, or
