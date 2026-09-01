@@ -168,6 +168,31 @@ Python APIs and GitHub workflows remain explanatory prose.
 """)
             self.assertEqual((), validator.validate_active_agent_structure(repo_root))
 
+    def test_active_agents_reject_generic_command_shapes(self) -> None:
+        with tempfile.TemporaryDirectory() as tmp:
+            repo_root = Path(tmp)
+            _write(repo_root / "AGENTS.md", """# AGENTS.md
+
+npm test
+docker compose up
+./scripts/check.sh
+~~~text
+custom-tool verify
+~~~
+Use `./scripts/check.sh` to validate.
+""")
+            issues = validator.validate_active_agent_structure(repo_root)
+            command_lines = [issue for issue in issues if "runnable command line" in issue]
+            self.assertEqual(4, len(command_lines))
+            self.assertTrue(any("inline runnable command" in issue for issue in issues))
+
+    def test_active_agents_reject_universal_for_readme_scope(self) -> None:
+        with tempfile.TemporaryDirectory() as tmp:
+            repo_root = Path(tmp)
+            _write(repo_root / "AGENTS.md", "# AGENTS.md\n\nRead `README.md` for all tasks.\n")
+            issues = validator.validate_active_agent_structure(repo_root)
+            self.assertTrue(any("unconditional README inventory" in issue for issue in issues))
+
     def test_external_dependency_agents_are_outside_repo_guidance_scope(self) -> None:
         with tempfile.TemporaryDirectory() as tmp:
             repo_root = Path(tmp)

@@ -110,6 +110,26 @@ INLINE_COMMAND_PATTERN = re.compile(
     + r"(?=\s|$)[^`\n]*`",
     0,
 )
+GENERIC_COMMAND_ACTION = (
+    r"(?:build|check|compose|down|exec|format|generate|install|lint|pull|push|"
+    r"restart|run|start|status|stop|test|uninstall|up|validate|verify)"
+)
+GENERIC_COMMAND_LINE_PATTERN = re.compile(
+    r"^[ \t]*(?:\$[ \t]+)?(?:"
+    r"\.\.?/[^\s`]+|"
+    r"[a-z][a-z0-9_.-]+[ \t]+(?:--?[a-z0-9][a-z0-9-]*|"
+    + GENERIC_COMMAND_ACTION
+    + r")(?:[ \t]+[A-Za-z0-9_./=@+:-]+){0,3}(?<![.,;!?])"
+    r")[ \t]*$"
+)
+GENERIC_INLINE_COMMAND_PATTERN = re.compile(
+    r"`(?:\$[ \t]+)?(?:"
+    r"\.\.?/[^\s`]+|"
+    r"[a-z][a-z0-9_.-]+[ \t]+(?:--?[a-z0-9][a-z0-9-]*|"
+    + GENERIC_COMMAND_ACTION
+    + r")(?:[ \t]+[A-Za-z0-9_./=@+:-]+){0,3}(?<![.,;!?])"
+    r")`"
+)
 FENCE_PATTERN = re.compile(
     r"^ {0,3}```(?P<info>[^\n]*)\n(?P<body>.*?)^ {0,3}```[ \t]*$",
     re.IGNORECASE | re.MULTILINE | re.DOTALL,
@@ -118,19 +138,12 @@ README_ROUTE_PATTERN = re.compile(
     r"\b(?:read|open|review|start\s+with|use)\b.*\bREADME(?:\.md)?\b",
     re.IGNORECASE,
 )
-README_CONDITIONAL_MARKERS = (
-    "when ",
-    "if ",
-    "only ",
-    "where ",
-    "as needed",
-    "needed",
-    "relevant",
-    "selected",
-    "known",
-    "target",
-    "named",
-    "for ",
+README_TASK_CONDITION_PATTERN = re.compile(
+    r"(?:\b(?:when|if|where)\b|"
+    r"\bonly\s+(?:when|if|for)\b|"
+    r"\b(?:as|when|if)\s+needed\b|"
+    r"\b(?:relevant|selected|known|target|named)\b)",
+    re.IGNORECASE,
 )
 PROCEDURAL_HEADING_PATTERN = re.compile(
     r"^#{1,6}\s+(?:validation|verify|verification|checks?|testing|"
@@ -186,8 +199,7 @@ def _unconditional_readme_inventory_issues(path: Path, text: str) -> list[str]:
     for line_number, line in enumerate(lines, start=1):
         if "readme" not in line.lower() or not README_ROUTE_PATTERN.search(line):
             continue
-        normalized = line.lower()
-        if not any(marker in normalized for marker in README_CONDITIONAL_MARKERS):
+        if not README_TASK_CONDITION_PATTERN.search(line):
             issues.append(
                 f"{path}:{line_number}: unconditional README inventory"
             )
@@ -211,7 +223,7 @@ def _unconditional_readme_inventory_issues(path: Path, text: str) -> list[str]:
             end += 1
         section = lines[index + 1 : end]
         if any("readme" in item.lower() for item in section) and not any(
-            any(marker in item.lower() for marker in README_CONDITIONAL_MARKERS)
+            README_TASK_CONDITION_PATTERN.search(item)
             for item in section
         ):
             issues.append(
@@ -236,9 +248,9 @@ def _procedural_structure_issues(path: Path, text: str) -> list[str]:
     for line_number, line in enumerate(lines, start=1):
         if SHELL_FENCE_PATTERN.match(line):
             issues.append(f"{path}:{line_number}: executable fenced block")
-        if COMMAND_START_PATTERN.match(line):
+        if COMMAND_START_PATTERN.match(line) or GENERIC_COMMAND_LINE_PATTERN.match(line):
             issues.append(f"{path}:{line_number}: runnable command line")
-        if INLINE_COMMAND_PATTERN.search(line):
+        if INLINE_COMMAND_PATTERN.search(line) or GENERIC_INLINE_COMMAND_PATTERN.search(line):
             issues.append(f"{path}:{line_number}: inline runnable command")
 
     for index, line in enumerate(lines):
