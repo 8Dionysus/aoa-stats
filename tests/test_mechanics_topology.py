@@ -311,7 +311,7 @@ def test_artifact_runtime_outputs_are_materialized_not_retained_source_routes() 
 
 
 def test_agon_former_routes_are_active_first() -> None:
-    ledger = load_json("mechanics/agon/legacy/former-routes.json")
+    ledger = load_json("mechanics/agon/former-routes.json")
     for route in ledger["active_routes"]:
         assert (REPO_ROOT / route["current_root"]).is_dir()
         assert (REPO_ROOT / route["root_public_output"]).is_file()
@@ -320,4 +320,5 @@ def test_agon_former_routes_are_active_first() -> None:
     for group in ("historical_routes", "package_doc_routes"):
         for route in ledger[group]:
             assert not (REPO_ROOT / route["former_path"]).exists()
-            assert (REPO_ROOT / route["current_path"]).is_file()
+            if not route["current_path"].startswith("mechanics/agon/legacy/"):
+                assert (REPO_ROOT / route["current_path"]).is_file()

@@ -17,7 +17,7 @@ former flat districts are provenance only.
 | `sophian-observability` | Sophian observability payload | `596dbd9` |
 
 Git rename history is the exact content ledger. The machine-readable former
-route ledger is `legacy/former-routes.json`.
+route ledger is `former-routes.json`.
 
 ## Public-output exception
 

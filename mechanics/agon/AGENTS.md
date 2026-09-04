@@ -27,7 +27,7 @@ or Tree of Sophia, schedule hidden work, or make the assistant a contestant.
 
 Historical landing notes and closed quests live under `legacy/raw/`. They are
 evidence of how active parts arrived, not instructions. Use `legacy/INDEX.md`
-and `legacy/former-routes.json` for historical routing; preserve raw files
+and `former-routes.json` for historical routing; preserve raw files
 unless the historical artifact itself is the named task.
 
 ## Conditional validation and closeout
