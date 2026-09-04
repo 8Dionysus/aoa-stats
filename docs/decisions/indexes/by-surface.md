@@ -10,6 +10,10 @@
 
 - [AOST-D-0013 - aoa-stats Owner Skill Bundle](../AOST-D-0013-aoa-stats-owner-skill-bundle.md) (`docs/decisions/AOST-D-0013-aoa-stats-owner-skill-bundle.md`)
 
+## archive retirement
+
+- [AOST-D-0024 - Mechanics Legacy Retirement](../AOST-D-0024-mechanics-legacy-retirement.md) (`docs/decisions/AOST-D-0024-mechanics-legacy-retirement.md`)
+
 ## config/registry
 
 - [AOST-D-0001 - Stats Strength And Intake Governance](../AOST-D-0001-stats-strength-and-intake-governance.md) (`docs/decisions/AOST-D-0001-stats-strength-and-intake-governance.md`)
@@ -94,6 +98,10 @@
 
 - [AOST-D-0004 - Live Admission Requires Refresh Observation](../AOST-D-0004-live-admission-requires-refresh-observation.md) (`docs/decisions/AOST-D-0004-live-admission-requires-refresh-observation.md`)
 - [AOST-D-0009 - Retirement Reserves Catalog Slots Without Preserving Empty Mechanics](../AOST-D-0009-retirement-reserves-catalog-slots-without-preserving-empty-mechanics.md) (`docs/decisions/AOST-D-0009-retirement-reserves-catalog-slots-without-preserving-empty-mechanics.md`)
+
+## mechanics/provenance
+
+- [AOST-D-0024 - Mechanics Legacy Retirement](../AOST-D-0024-mechanics-legacy-retirement.md) (`docs/decisions/AOST-D-0024-mechanics-legacy-retirement.md`)
 
 ## mechanics/recurrence
 
@@ -205,6 +213,10 @@
 - [AOST-D-0008 - Retired Outputs Remain Cleanup Tombstones, Not Active Stats](../AOST-D-0008-retired-outputs-remain-cleanup-tombstones-not-active-stats.md) (`docs/decisions/AOST-D-0008-retired-outputs-remain-cleanup-tombstones-not-active-stats.md`)
 - [AOST-D-0009 - Retirement Reserves Catalog Slots Without Preserving Empty Mechanics](../AOST-D-0009-retirement-reserves-catalog-slots-without-preserving-empty-mechanics.md) (`docs/decisions/AOST-D-0009-retirement-reserves-catalog-slots-without-preserving-empty-mechanics.md`)
 - [AOST-D-0010 - Runtime Closeout Wave Snapshot Is Contract History, Not Active Observability](../AOST-D-0010-runtime-closeout-wave-snapshot-is-contract-history-not-active-observability.md) (`docs/decisions/AOST-D-0010-runtime-closeout-wave-snapshot-is-contract-history-not-active-observability.md`)
+
+## stats topology
+
+- [AOST-D-0024 - Mechanics Legacy Retirement](../AOST-D-0024-mechanics-legacy-retirement.md) (`docs/decisions/AOST-D-0024-mechanics-legacy-retirement.md`)
 
 ## stats/federation
 

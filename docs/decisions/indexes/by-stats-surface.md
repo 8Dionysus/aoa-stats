@@ -68,6 +68,10 @@
 
 - [AOST-D-0013 - aoa-stats Owner Skill Bundle](../AOST-D-0013-aoa-stats-owner-skill-bundle.md) (`docs/decisions/AOST-D-0013-aoa-stats-owner-skill-bundle.md`)
 
+## former-route mapping
+
+- [AOST-D-0024 - Mechanics Legacy Retirement](../AOST-D-0024-mechanics-legacy-retirement.md) (`docs/decisions/AOST-D-0024-mechanics-legacy-retirement.md`)
+
 ## freshness projection
 
 - [AOST-D-0016 - Authenticate And Separate Stats MCP Owner Evidence](../AOST-D-0016-authenticate-and-separate-stats-mcp-owner-evidence.md) (`docs/decisions/AOST-D-0016-authenticate-and-separate-stats-mcp-owner-evidence.md`)
@@ -139,6 +143,10 @@
 
 - [AOST-D-0023 - Package Validation Owner In Topology](../AOST-D-0023-package-validation-owner-in-topology.md) (`docs/decisions/AOST-D-0023-package-validation-owner-in-topology.md`)
 
+## mechanics topology
+
+- [AOST-D-0024 - Mechanics Legacy Retirement](../AOST-D-0024-mechanics-legacy-retirement.md) (`docs/decisions/AOST-D-0024-mechanics-legacy-retirement.md`)
+
 ## Memory Movement
 
 - [AOST-D-0004 - Live Admission Requires Refresh Observation](../AOST-D-0004-live-admission-requires-refresh-observation.md) (`docs/decisions/AOST-D-0004-live-admission-requires-refresh-observation.md`)
@@ -183,6 +191,10 @@
 ## receipt ABI
 
 - [AOST-D-0001 - Stats Strength And Intake Governance](../AOST-D-0001-stats-strength-and-intake-governance.md) (`docs/decisions/AOST-D-0001-stats-strength-and-intake-governance.md`)
+
+## recurrence manifests
+
+- [AOST-D-0024 - Mechanics Legacy Retirement](../AOST-D-0024-mechanics-legacy-retirement.md) (`docs/decisions/AOST-D-0024-mechanics-legacy-retirement.md`)
 
 ## Repeated Window
 

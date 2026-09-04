@@ -10,6 +10,10 @@
 
 - [AOST-D-0011 - Antifragility Vector Remains An Evidence-Gated Incubator](../AOST-D-0011-antifragility-vector-remains-an-evidence-gated-incubator.md) (`docs/decisions/AOST-D-0011-antifragility-vector-remains-an-evidence-gated-incubator.md`)
 
+## active-route authority
+
+- [AOST-D-0024 - Mechanics Legacy Retirement](../AOST-D-0024-mechanics-legacy-retirement.md) (`docs/decisions/AOST-D-0024-mechanics-legacy-retirement.md`)
+
 ## authenticated issuer
 
 - [AOST-D-0016 - Authenticate And Separate Stats MCP Owner Evidence](../AOST-D-0016-authenticate-and-separate-stats-mcp-owner-evidence.md) (`docs/decisions/AOST-D-0016-authenticate-and-separate-stats-mcp-owner-evidence.md`)
@@ -89,9 +93,17 @@
 
 - [AOST-D-0016 - Authenticate And Separate Stats MCP Owner Evidence](../AOST-D-0016-authenticate-and-separate-stats-mcp-owner-evidence.md) (`docs/decisions/AOST-D-0016-authenticate-and-separate-stats-mcp-owner-evidence.md`)
 
+## former-name rejection
+
+- [AOST-D-0024 - Mechanics Legacy Retirement](../AOST-D-0024-mechanics-legacy-retirement.md) (`docs/decisions/AOST-D-0024-mechanics-legacy-retirement.md`)
+
 ## freshness
 
 - [AOST-D-0015 - Review Captured Stats Catalog In The Owner](../AOST-D-0015-review-captured-stats-catalog-in-the-owner.md) (`docs/decisions/AOST-D-0015-review-captured-stats-catalog-in-the-owner.md`)
+
+## generated parity
+
+- [AOST-D-0024 - Mechanics Legacy Retirement](../AOST-D-0024-mechanics-legacy-retirement.md) (`docs/decisions/AOST-D-0024-mechanics-legacy-retirement.md`)
 
 ## generated-index parity
 
@@ -100,6 +112,10 @@
 ## generated-output parity
 
 - [AOST-D-0020 - Codex Reference Builds Require Exact Owner Snapshots](../AOST-D-0020-codex-reference-builds-require-exact-owner-snapshots.md) (`docs/decisions/AOST-D-0020-codex-reference-builds-require-exact-owner-snapshots.md`)
+
+## historical recovery
+
+- [AOST-D-0024 - Mechanics Legacy Retirement](../AOST-D-0024-mechanics-legacy-retirement.md) (`docs/decisions/AOST-D-0024-mechanics-legacy-retirement.md`)
 
 ## identity binding
 

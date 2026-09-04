@@ -194,6 +194,10 @@
 - [AOST-D-0019 - Owner-Safe Validation Telemetry Is a Derived Federation Extension](../AOST-D-0019-owner-safe-validation-telemetry.md) (`docs/decisions/AOST-D-0019-owner-safe-validation-telemetry.md`)
 - [AOST-D-0021 - Current-Main Validation Telemetry Convergence](../AOST-D-0021-current-main-validation-telemetry-convergence.md) (`docs/decisions/AOST-D-0021-current-main-validation-telemetry-convergence.md`)
 
+## owner validators
+
+- [AOST-D-0024 - Mechanics Legacy Retirement](../AOST-D-0024-mechanics-legacy-retirement.md) (`docs/decisions/AOST-D-0024-mechanics-legacy-retirement.md`)
+
 ## owner-local component refresh receipts
 
 - [AOST-D-0003 - Component Refresh Fixtures Are Not Live State](../AOST-D-0003-component-refresh-fixtures-are-not-live-state.md) (`docs/decisions/AOST-D-0003-component-refresh-fixtures-are-not-live-state.md`)
@@ -220,6 +224,10 @@
 - [AOST-D-0022 - Prompt-Light Agent Routes And On-Demand Validation](../AOST-D-0022-prompt-light-agent-routes-and-on-demand-validation.md) (`docs/decisions/AOST-D-0022-prompt-light-agent-routes-and-on-demand-validation.md`)
 - [AOST-D-0023 - Package Validation Owner In Topology](../AOST-D-0023-package-validation-owner-in-topology.md) (`docs/decisions/AOST-D-0023-package-validation-owner-in-topology.md`)
 
+## recurrence component manifests
+
+- [AOST-D-0024 - Mechanics Legacy Retirement](../AOST-D-0024-mechanics-legacy-retirement.md) (`docs/decisions/AOST-D-0024-mechanics-legacy-retirement.md`)
+
 ## release validation workflow
 
 - [AOST-D-0020 - Codex Reference Builds Require Exact Owner Snapshots](../AOST-D-0020-codex-reference-builds-require-exact-owner-snapshots.md) (`docs/decisions/AOST-D-0020-codex-reference-builds-require-exact-owner-snapshots.md`)
@@ -231,6 +239,10 @@
 ## sibling decision-lane pattern
 
 - [AOST-D-0002 - Canonical Decision Lane](../AOST-D-0002-canonical-decision-lane.md) (`docs/decisions/AOST-D-0002-canonical-decision-lane.md`)
+
+## stats mechanics source
+
+- [AOST-D-0024 - Mechanics Legacy Retirement](../AOST-D-0024-mechanics-legacy-retirement.md) (`docs/decisions/AOST-D-0024-mechanics-legacy-retirement.md`)
 
 ## stats source home
 
