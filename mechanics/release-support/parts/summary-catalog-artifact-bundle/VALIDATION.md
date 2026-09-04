@@ -7,9 +7,9 @@ cross-topology checks:
 python -m pytest -q mechanics/release-support/parts/summary-catalog-artifact-bundle/tests/test_summary_catalog_artifact_bundle.py
 python scripts/validate_abyss_machine_summary_catalog_bundle.py
 python scripts/validate_abyss_machine_summary_catalog_bundle.py --ephemeral
-python scripts/build_views.py --check
-python scripts/validate_mechanics_topology.py
 ```
+
+See [Shared repository checks](../../../../VALIDATION.md#shared-repository-checks) for this repository-wide check.
 
 The direct command materializes the declared ignored `dist/` publication
 paths. Repo-level release checks use `--ephemeral` for the same full trust

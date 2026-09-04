@@ -187,6 +187,7 @@
 ## mechanics topology
 
 - [AOST-D-0022 - Prompt-Light Agent Routes And On-Demand Validation](../AOST-D-0022-prompt-light-agent-routes-and-on-demand-validation.md) (`docs/decisions/AOST-D-0022-prompt-light-agent-routes-and-on-demand-validation.md`)
+- [AOST-D-0023 - Package Validation Owner In Topology](../AOST-D-0023-package-validation-owner-in-topology.md) (`docs/decisions/AOST-D-0023-package-validation-owner-in-topology.md`)
 
 ## owner validation receipts
 
@@ -217,6 +218,7 @@
 ## owner-local validators
 
 - [AOST-D-0022 - Prompt-Light Agent Routes And On-Demand Validation](../AOST-D-0022-prompt-light-agent-routes-and-on-demand-validation.md) (`docs/decisions/AOST-D-0022-prompt-light-agent-routes-and-on-demand-validation.md`)
+- [AOST-D-0023 - Package Validation Owner In Topology](../AOST-D-0023-package-validation-owner-in-topology.md) (`docs/decisions/AOST-D-0023-package-validation-owner-in-topology.md`)
 
 ## release validation workflow
 

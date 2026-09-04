@@ -14,7 +14,8 @@ seams:
 - `src/aoa_stats_builder/core_skill_observation.py` derives both the bounded
   core-skill application view and the advisory surface-detection view from the
   same finish-stage receipt family. Its cross-part contract is exercised by
-  `mechanics/audit/tests/test_core_skill_observation.py`.
+  `mechanics/audit/tests/test_core_skill_observation.py` through the package
+  [validation route](VALIDATION.md).
 - `src/aoa_stats_builder/object_observation.py` derives occurrence and recency
   observations across the active receipt set. Its operation-specific contract
   is exercised by

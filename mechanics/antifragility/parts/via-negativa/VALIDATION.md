@@ -4,10 +4,9 @@ Run the cross-routed source and placement checks from the repository root:
 
 ```bash
 python -m pytest -q mechanics/antifragility/parts/via-negativa/tests/test_via_negativa_checklist.py
-python scripts/validate_stats_source_home.py
-python scripts/validate_mechanics_topology.py
-python -m pytest -q tests/test_stats_source_home.py tests/test_mechanics_topology.py
 ```
+
+See [Shared repository checks](../../../../VALIDATION.md#shared-repository-checks) for this repository-wide check.
 
 These checks prove the authored question, reciprocal route, checklist order,
 owner/provenance stop lines, and checklist-only source posture. The checklist

@@ -7,7 +7,10 @@ Tracking starts with the first public release-prep baseline for this repository.
 
 ## [Unreleased]
 
-_No unreleased changes._
+- Registered the Audit and Growth Cycle package validation surfaces as the
+  single owners of their genuinely shared cross-part projection suites.
+  Package-level procedure is now an explicit topology exception; part-local
+  validation remains the default.
 
 ## [0.2.0] - 2026-08-23
 

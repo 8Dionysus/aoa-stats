@@ -6,8 +6,9 @@ Run from the repository root:
 python -m json.tool schemas/repeated-window-summary.schema.json >/dev/null
 python -m json.tool generated/repeated_window_summary.min.json >/dev/null
 python -m pytest -q mechanics/recurrence/parts/repeated-window/tests/test_repeated_window.py
-python scripts/build_views.py --check
 ```
+
+See [Shared repository checks](../../../../VALIDATION.md#shared-repository-checks) for this repository-wide check.
 
 These checks cover permutation invariance, count conservation, object identity,
 input non-mutation, root-facade hook delegation, public schema validity, and

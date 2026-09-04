@@ -134,7 +134,11 @@ lifecycle. `schemas/` and `generated/` keep stable public paths.
 Root `scripts/`, `tests/`, `docs/`, `examples/`, `manifests/`, and `skills/`
 contain only repo-wide, explicit compatibility/public, or admitted callable
 surfaces. Operation-owned config, docs, examples, schemas, scripts, units, and
-focused tests live under the nearest mechanic part.
+focused tests live under the nearest mechanic part. A cross-part test may live
+at package level only for one genuinely shared core and through an explicit
+`package_payload_roots` entry. Its human procedure becomes package-owned only
+when `package_validation_surface` names the exact package `VALIDATION.md`;
+otherwise focused procedure remains part-owned.
 
 ### Existing-surface classification
 
@@ -222,6 +226,8 @@ Shared implementation does not imply shared proof ownership:
 - one part owns proof of behavior unique to its output
 - package-level tests require a genuinely shared core and an explicit
   `package_payload_roots` declaration
+- a package-level procedure additionally requires an exact
+  `package_validation_surface`; parts route to it instead of copying it
 - root tests prove repo-wide fan-out, public contracts, and compatibility
   integration rather than operation-specific branches
 

@@ -64,6 +64,66 @@ def test_package_activation_matches_topology_and_root_materialization() -> None:
     assert activation["unlisted_package_status"] == "inactive_not_mapped"
 
 
+def test_packages_with_shared_tests_declare_their_validation_owner() -> None:
+    topology = load_json("mechanics/topology.json")
+    shared_test_packages = {
+        package["path"]: package["package_validation_surface"]
+        for package in topology["active_packages"]
+        if "tests" in package["package_payload_roots"]
+    }
+
+    assert shared_test_packages == {
+        "audit": "mechanics/audit/VALIDATION.md",
+        "growth-cycle": "mechanics/growth-cycle/VALIDATION.md",
+    }
+
+
+def test_package_test_district_requires_a_declared_validation_owner(
+    tmp_path: Path,
+) -> None:
+    copied_root = copy_repo(tmp_path)
+    topology_path = copied_root / "mechanics" / "topology.json"
+    topology = json.loads(topology_path.read_text(encoding="utf-8"))
+    growth_cycle = next(
+        package
+        for package in topology["active_packages"]
+        if package["path"] == "growth-cycle"
+    )
+    growth_cycle.pop("package_validation_surface")
+    write_json(topology_path, topology)
+
+    issues = validator.validate(copied_root)
+
+    assert (
+        "mechanics/growth-cycle: package-level tests and "
+        "package_validation_surface must be declared together"
+    ) in issues
+
+
+def test_package_validation_owner_cannot_point_outside_its_package(
+    tmp_path: Path,
+) -> None:
+    copied_root = copy_repo(tmp_path)
+    topology_path = copied_root / "mechanics" / "topology.json"
+    topology = json.loads(topology_path.read_text(encoding="utf-8"))
+    growth_cycle = next(
+        package
+        for package in topology["active_packages"]
+        if package["path"] == "growth-cycle"
+    )
+    growth_cycle["package_validation_surface"] = (
+        "mechanics/recurrence/VALIDATION.md"
+    )
+    write_json(topology_path, topology)
+
+    issues = validator.validate(copied_root)
+
+    assert (
+        "mechanics/growth-cycle: package_validation_surface must be "
+        "'mechanics/growth-cycle/VALIDATION.md'"
+    ) in issues
+
+
 def test_titan_routes_to_its_real_shared_owner_not_a_nonexistent_center_package() -> None:
     topology = load_json("mechanics/topology.json")
     titan = next(package for package in topology["active_packages"] if package["path"] == "titan")

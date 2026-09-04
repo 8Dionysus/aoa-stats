@@ -54,8 +54,10 @@ for stats meaning or operation payload.
 crosswalk. `mechanics/topology.json` is the machine-readable operation and
 placement map. Human route docs explain those maps and do not override them.
 Operation payload, focused proof, config, examples, supporting schemas, and
-operator guides stay with the nearest mechanic part unless topology declares a
-stable public or compatibility route.
+operator guides stay with the nearest mechanic part. A genuinely shared
+cross-part procedure may move to a package `VALIDATION.md` only when topology
+names that exact owner; stable public or compatibility routes remain separate
+explicit exceptions.
 
 Source-family validation derives membership from the source manifest and
 mechanic membership from topology and part validation. Do not freeze selected
@@ -108,9 +110,10 @@ generated lookup, and indexed decisions rather than inherited cards.
 `VALIDATION.md` is the human entrypoint for focused checks, nested-card
 structure, source-home and topology checks, generated parity, checkpoint review,
 and the complete owner-local gate. The ordered `COMMANDS` list in
-`scripts/release_check.py` remains the complete machine gate. The nearest part
-`VALIDATION.md` owns focused procedure; `docs/RELEASING.md` owns release,
-CI, review, merge, tag, and post-landing procedure.
+`scripts/release_check.py` remains the complete machine gate. The nearest
+topology-declared package or part `VALIDATION.md` owns focused procedure;
+`docs/RELEASING.md` owns release, CI, review, merge, tag, and post-landing
+procedure.
 
 Local green checks, validation telemetry, CI, review, merge, runtime
 activation, freshness, owner acceptance, and Goal completion are separate

@@ -30,7 +30,9 @@ input-last family verdicts. These are compatibility rules, not owner truth.
 
 ## Conditional validation and closeout
 
-Open the selected part contract and `VALIDATION.md`. Report source inputs,
-ordered-input behavior, generated parity, and the boundary that remains
-outside descriptive Audit output. Do not add routing, proof, gate, or workflow
-authority.
+Open the selected part contract. For `core-skill-application` or
+`surface-strength-detection`, use the package [`VALIDATION.md`](VALIDATION.md)
+for their shared deterministic core; otherwise use the selected part
+`VALIDATION.md`. Report source inputs, ordered-input behavior, generated parity,
+and the boundary that remains outside descriptive Audit output. Do not add
+routing, proof, gate, or workflow authority.

@@ -1,14 +1,7 @@
 # Validation
 
-Run the cross-routed source and placement checks from the repository root:
-
-```bash
-python -m pytest -q mechanics/growth-cycle/tests/test_growth_cycle_projections.py
-python scripts/build_views.py --check
-python scripts/validate_stats_source_home.py
-python scripts/validate_mechanics_topology.py
-```
-
-The package-level test is intentional: it constrains the shared deterministic
-core and the root compatibility facade across all four Growth Cycle read
-models.
+This part adds no independent executable check. Use the
+[Growth Cycle shared-core route](../../VALIDATION.md), whose package-level test
+constrains the deterministic core and root compatibility facade across all
+four Growth Cycle read models. Use [shared repository checks](../../../../VALIDATION.md#shared-repository-checks)
+only when the wider repository surface is in scope.

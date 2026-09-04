@@ -32,7 +32,7 @@ become workflow, proof, route, memory, KAG, runtime, identity, or owner truth.
 | receipt admission | `stats/intake-contract/` and `schemas/stats-event-envelope.schema.json` | examples, live registry, generated summaries |
 | read-model lifecycle and meaning | `stats/read-models/{active,deferred,retired}/*.profile.json` | public catalog, generated output, MCP projection |
 | non-catalog stats contracts | `stats/operation-contracts/active/*.operation.json` | part-local payload and root compatibility routes |
-| operation ownership | `mechanics/topology.json` and nearest part cards | root compatibility routes |
+| operation and focused-validation ownership | `mechanics/topology.json` and its named package or part routes | root compatibility routes |
 | repository callable procedure | `skills/aoa-stats/SKILL.md` and `skills/port.manifest.json` | managed OS user-profile copy |
 | executable measurement semantics | `stats/measurement-contract/` as source, `src/aoa_stats_builder/measurement.py` and `src/aoa_stats_builder/outcome.py` as pure implementations | validators and access adapters |
 | stats read contract | `stats/surface-catalog/CODEX_MCP.md` | stack-owned `aoa-stats-mcp` implementation and project registration |
@@ -75,7 +75,10 @@ systemd templates, builders, validators, and focused tests live under their
 mechanic parts. `scripts/validate_mechanics_topology.py` enforces this
 placement contract. A focused test shared by several parts may live at the
 mechanic-package level only when it constrains one shared importable core and
-that package payload root is declared in `mechanics/topology.json`.
+that package payload root is declared in `mechanics/topology.json`. Its single
+package `VALIDATION.md` owner must be declared separately by the exact
+`package_validation_surface` field; an undeclared package procedure is not an
+owner.
 
 The operation route starts at [`mechanics/README.md`](mechanics/README.md); its
 machine-readable inventory and source-family crosswalk live in
@@ -85,7 +88,8 @@ replay that changing part inventory.
 ## Build, live use, and verification
 
 Use the on-demand checks in [`VALIDATION.md`](VALIDATION.md), then follow the
-nearest changed family's `AGENTS.md` and mechanic part's `VALIDATION.md`.
+nearest changed family's `AGENTS.md` and topology-declared package or part
+`VALIDATION.md`.
 Script-specific working guidance stays in
 [`scripts/AGENTS.md`](scripts/AGENTS.md).
 

@@ -114,7 +114,8 @@ def test_validation_is_the_on_demand_procedure_owner() -> None:
     validation = read_text("VALIDATION.md")
     assert "scripts/release_check.py" in validation
     assert "scripts/validate_nested_agents.py --fail-on-untracked" in validation
-    assert "nearest mechanic-part `VALIDATION.md`" in validation
+    assert "nearest topology-declared package or part `VALIDATION.md`" in validation
+    assert "Part-local validation remains the default owner" in validation
     assert "A successful check is evidence for its declared" in validation
     assert "## Checkpoint review" in validation
 

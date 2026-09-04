@@ -15,11 +15,9 @@ Then run the complete part and cross-routed placement checks:
 
 ```bash
 python -m pytest -q mechanics/antifragility/parts/stress-recovery-windows/tests
-python scripts/build_views.py --check
-python scripts/validate_stats_source_home.py
-python scripts/validate_mechanics_topology.py
-python -m pytest -q tests/test_build_views.py tests/test_stats_source_home.py tests/test_mechanics_topology.py
 ```
+
+See [Shared repository checks](../../../../VALIDATION.md#shared-repository-checks) for this repository-wide check.
 
 For live-admission changes, also run the refresh-focused suite because a green
 manual build does not prove that the owner source is observed:

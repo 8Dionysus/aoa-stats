@@ -2,11 +2,7 @@
 
 Run the cross-routed source and placement checks from the repository root:
 
-```bash
-python scripts/validate_stats_source_home.py
-python scripts/validate_mechanics_topology.py
-python -m pytest -q tests/test_stats_source_home.py tests/test_mechanics_topology.py
-```
+See [Shared repository checks](../../../../VALIDATION.md#shared-repository-checks) for this repository-wide check.
 
 These checks prove the authored question and reciprocal route. The part is
 documentation-only today; no schema, builder, live feed, or focused runtime

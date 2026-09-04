@@ -42,6 +42,9 @@ not active here unless the topology names a real local operation.
 - A focused test shared by several parts may live at package level only for
   one shared importable core and only through an explicit
   `package_payload_roots` declaration in `topology.json`.
+- Its human procedure may be owned at package level only when
+  `package_validation_surface` names that exact package `VALIDATION.md`; parts
+  link to the declared owner and do not copy the invocation.
 - Stable catalog schemas and committed generated read models stay at their
   root public paths and are owned through `stats/read-models/` profiles.
 - Exact surface lifecycle and live/reference posture stay in authored

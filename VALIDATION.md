@@ -5,6 +5,21 @@ opened after the touched source, profile, operation, mechanic, or route-card
 surface is known. Inherited `AGENTS.md` cards name the applicable owner and
 stop-lines; they do not carry executable command batteries.
 
+## Shared repository checks
+
+These repository-wide checks have one owner in this route. Surface-specific procedures link here when they need the same check.
+
+```bash
+python scripts/validate_stats_source_home.py
+python scripts/build_views.py --check
+python scripts/validate_mechanics_topology.py
+python scripts/validate_stats_protocol.py
+python scripts/validate_receipt_abi.py
+python -m pytest -q tests/test_build_views.py tests/test_stats_source_home.py tests/test_mechanics_topology.py tests/test_summary_surface_catalog.py tests/test_docs_routes.py
+```
+
+Part-local procedures own focused behavior. Cross-cutting checks above are the only repository-wide copies; use the nearest owner route for all other commands.
+
 ## Authority and procedure owners
 
 | Concern | Procedure owner |
@@ -16,7 +31,7 @@ stop-lines; they do not carry executable command batteries.
 | operation placement and focused-proof placement | `scripts/validate_mechanics_topology.py` |
 | shared statistical and receipt compatibility | `scripts/validate_stats_protocol.py` and `scripts/validate_receipt_abi.py` |
 | generated projection parity | `scripts/build_views.py --check` and the declared builders |
-| focused operation behavior | the nearest mechanic-part `VALIDATION.md` |
+| focused operation behavior | the nearest topology-declared package or part `VALIDATION.md` |
 | live publisher presence | `mechanics/recurrence/parts/live-receipt-refresh/VALIDATION.md` and its operator guide |
 | release, CI, review, and merge procedure | `docs/RELEASING.md` and the observed GitHub owner surface |
 | stats-layer eval-port procedure | the stronger `aoa-evals` owner; this repository does not copy its command |
@@ -44,14 +59,11 @@ python scripts/generate_decision_indexes.py
 python scripts/generate_decision_indexes.py --check
 python scripts/validate_decision_records.py
 python scripts/validate_nested_agents.py --fail-on-untracked
-python scripts/validate_mechanics_topology.py
-python scripts/validate_stats_source_home.py
-python scripts/validate_stats_protocol.py
-python scripts/build_views.py --check
 python -m pytest -q tests/test_docs_routes.py tests/test_validate_nested_agents.py tests/test_roadmap_parity.py
-python -m pytest -q tests/test_stats_source_home.py tests/test_mechanics_topology.py
 git diff --check
 ```
+
+See [Shared repository checks](VALIDATION.md#shared-repository-checks) for this repository-wide check.
 
 The route-card checks must report zero active executable fences, runnable
 command lines, unconditional README inventories, empty procedural sections,
@@ -61,17 +73,17 @@ card and every owner-specific semantic snippet.
 ## Focused owner routes
 
 For a source, profile, operation, or mechanic change, select the nearest
-part-local `VALIDATION.md` named by `mechanics/topology.json` and run its exact
-procedure. Part-local validation owns the ordered command sequence and its
-negative cases; do not recreate that sequence in an inherited card. For a
-schema or shared protocol change, add the matching protocol or receipt-ABI
-route from the procedure-owner table and preserve source-first regeneration.
+topology-declared package or part `VALIDATION.md` and run its exact procedure.
+Part-local validation remains the default owner. A package route owns only an
+explicitly declared cross-part procedure over one shared core; parts link to it
+instead of copying its invocation. Do not recreate either sequence in an
+inherited card. For a schema or shared protocol change, add the matching
+protocol or receipt-ABI route from the procedure-owner table and preserve
+source-first regeneration.
 
 For a shared receipt-ABI change, include this focused owner check:
 
-```bash
-python scripts/validate_receipt_abi.py
-```
+See [Shared repository checks](VALIDATION.md#shared-repository-checks) for this repository-wide check.
 
 For live-intake changes, use the live-refresh validation and operator guide.
 Current publisher availability, receipt freshness, and derived projection

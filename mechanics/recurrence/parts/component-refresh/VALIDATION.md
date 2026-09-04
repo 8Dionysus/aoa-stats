@@ -6,11 +6,9 @@ Run from the repository root:
 python -m pytest -q \
   mechanics/recurrence/parts/component-refresh/tests/test_component_refresh_summary.py \
   mechanics/recurrence/parts/component-refresh/tests/test_component_refresh_projection.py
-python -m pytest -q tests/test_summary_surface_catalog.py tests/test_docs_routes.py
-python -m pytest -q mechanics/recurrence/parts/live-receipt-refresh/tests/test_refresh_live_stats.py
-python scripts/build_views.py --check
-python scripts/validate_stats_source_home.py
 ```
+
+See the nearest owner validation route (../live-receipt-refresh/VALIDATION.md) for this procedure. See [Shared repository checks](../../../../VALIDATION.md#shared-repository-checks) for this repository-wide check.
 
 The focused part test proves route discoverability, schema/example validity,
 canonical owner-law refs, filesystem-free projection, and explicit reviewed

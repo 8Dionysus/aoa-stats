@@ -5,10 +5,11 @@
 Run from the repository root:
 
 ```bash
-python scripts/build_views.py --check
 python -m pytest -q \
   mechanics/boundary-bridge/parts/consumer-regrounding/tests/test_consumer_regrounding_signals.py
 ```
+
+See [Shared repository checks](../../../../VALIDATION.md#shared-repository-checks) for this repository-wide check.
 
 These checks constrain catalog shape, owner-truth references, authority
 ceilings, derived-signal precedence, and the consumer meaning of intake-coverage

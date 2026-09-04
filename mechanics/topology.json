@@ -459,6 +459,7 @@
       "package_payload_roots": [
         "tests"
       ],
+      "package_validation_surface": "mechanics/audit/VALIDATION.md",
       "active_part_routes": [
         {
           "path": "core-skill-application",
@@ -688,6 +689,7 @@
       "package_payload_roots": [
         "tests"
       ],
+      "package_validation_surface": "mechanics/growth-cycle/VALIDATION.md",
       "active_part_routes": [
         {
           "path": "automation-followthrough",

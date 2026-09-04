@@ -12,8 +12,9 @@ Run:
 
 ```bash
 python -m pytest -q mechanics/boundary-bridge/parts/measurement-packet-crossing/tests
-python scripts/validate_stats_protocol.py
 ```
+
+See [Shared repository checks](../../../../VALIDATION.md#shared-repository-checks) for this repository-wide check.
 
 The examples file is a positive/negative corpus container, not one receipt.
 Focused tests validate each admitted example and each named mutation

@@ -5,9 +5,10 @@
 Run from the repository root:
 
 ```bash
-python scripts/validate_receipt_abi.py
 python -m pytest -q mechanics/boundary-bridge/parts/receipt-abi-crossing/tests
 ```
+
+See [Shared repository checks](../../../../VALIDATION.md#shared-repository-checks) for this repository-wide check.
 
 The checks cover canonical envelope structure, active registry parity, the
 declared downstream mirror when available, root-facade alias parity,

@@ -26,6 +26,7 @@
 ## docs route
 
 - [AOST-D-0022 - Prompt-Light Agent Routes And On-Demand Validation](../AOST-D-0022-prompt-light-agent-routes-and-on-demand-validation.md) (`docs/decisions/AOST-D-0022-prompt-light-agent-routes-and-on-demand-validation.md`)
+- [AOST-D-0023 - Package Validation Owner In Topology](../AOST-D-0023-package-validation-owner-in-topology.md) (`docs/decisions/AOST-D-0023-package-validation-owner-in-topology.md`)
 
 ## docs/boundary
 
@@ -66,6 +67,10 @@
 
 - [AOST-D-0003 - Component Refresh Fixtures Are Not Live State](../AOST-D-0003-component-refresh-fixtures-are-not-live-state.md) (`docs/decisions/AOST-D-0003-component-refresh-fixtures-are-not-live-state.md`)
 - [AOST-D-0004 - Live Admission Requires Refresh Observation](../AOST-D-0004-live-admission-requires-refresh-observation.md) (`docs/decisions/AOST-D-0004-live-admission-requires-refresh-observation.md`)
+
+## mechanics topology
+
+- [AOST-D-0023 - Package Validation Owner In Topology](../AOST-D-0023-package-validation-owner-in-topology.md) (`docs/decisions/AOST-D-0023-package-validation-owner-in-topology.md`)
 
 ## mechanics/antifragility
 
@@ -121,6 +126,7 @@
 ## public contract
 
 - [AOST-D-0022 - Prompt-Light Agent Routes And On-Demand Validation](../AOST-D-0022-prompt-light-agent-routes-and-on-demand-validation.md) (`docs/decisions/AOST-D-0022-prompt-light-agent-routes-and-on-demand-validation.md`)
+- [AOST-D-0023 - Package Validation Owner In Topology](../AOST-D-0023-package-validation-owner-in-topology.md) (`docs/decisions/AOST-D-0023-package-validation-owner-in-topology.md`)
 
 ## release-support
 
@@ -255,6 +261,7 @@
 - [AOST-D-0019 - Owner-Safe Validation Telemetry Is a Derived Federation Extension](../AOST-D-0019-owner-safe-validation-telemetry.md) (`docs/decisions/AOST-D-0019-owner-safe-validation-telemetry.md`)
 - [AOST-D-0020 - Codex Reference Builds Require Exact Owner Snapshots](../AOST-D-0020-codex-reference-builds-require-exact-owner-snapshots.md) (`docs/decisions/AOST-D-0020-codex-reference-builds-require-exact-owner-snapshots.md`)
 - [AOST-D-0022 - Prompt-Light Agent Routes And On-Demand Validation](../AOST-D-0022-prompt-light-agent-routes-and-on-demand-validation.md) (`docs/decisions/AOST-D-0022-prompt-light-agent-routes-and-on-demand-validation.md`)
+- [AOST-D-0023 - Package Validation Owner In Topology](../AOST-D-0023-package-validation-owner-in-topology.md) (`docs/decisions/AOST-D-0023-package-validation-owner-in-topology.md`)
 
 ## validation boundary
 

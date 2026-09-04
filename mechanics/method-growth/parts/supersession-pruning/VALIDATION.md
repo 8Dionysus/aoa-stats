@@ -4,10 +4,9 @@ Run the cross-routed source and placement checks from the repository root:
 
 ```bash
 python -m pytest -q mechanics/method-growth/parts/supersession-pruning/tests/test_supersession_pruning.py
-python scripts/build_views.py --check
-python scripts/validate_stats_source_home.py
-python scripts/validate_mechanics_topology.py
 ```
+
+See [Shared repository checks](../../../../VALIDATION.md#shared-repository-checks) for this repository-wide check.
 
 The part-local suite constrains Supersession Pruning and its root compatibility
 alias. It proves that explicit turnover carried by the two retained landing

@@ -18,7 +18,8 @@ Start with `PARTS.md`, then use the selected part's `README.md`,
 
 The three parts share deterministic projection code in
 `src/aoa_stats_builder/growth_cycle.py` and focused cross-part tests in
-`mechanics/growth-cycle/tests/test_growth_cycle_projections.py`. The root
+`mechanics/growth-cycle/tests/test_growth_cycle_projections.py`; their single
+executable owner is the mechanic [validation route](VALIDATION.md). The root
 `scripts/build_views.py` remains the repo-wide build and compatibility facade.
 
 Every output is descriptive. Route choice, reviewed follow-through,

@@ -4,11 +4,9 @@ Run from the repository root:
 
 ```bash
 python -m pytest -q mechanics/audit/parts/object-observation/tests/test_object_observation.py
-python scripts/build_views.py --check
-python scripts/validate_stats_source_home.py
-python scripts/validate_mechanics_topology.py
-python -m pytest -q tests/test_build_views.py tests/test_stats_source_home.py tests/test_mechanics_topology.py
 ```
+
+See [Shared repository checks](../../../../VALIDATION.md#shared-repository-checks) for this repository-wide check.
 
 The focused part-local test covers input-first observation, temporal-latest
 receipt selection, supplied-order last evaluation/progression verdicts,

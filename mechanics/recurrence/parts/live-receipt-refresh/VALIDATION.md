@@ -47,9 +47,9 @@ The focused refresh tests must also prove:
 python scripts/check_live_publishers.py --help
 python scripts/refresh_live_stats.py --help
 python scripts/install_live_refresh_units.py --help
-python scripts/validate_stats_source_home.py
-python scripts/build_views.py --check
 ```
+
+See [Shared repository checks](../../../../VALIDATION.md#shared-repository-checks) for this repository-wide check.
 
 The tests prove that root compatibility commands load the part-local registry
 and templates while preserving deterministic refresh behavior, authored
