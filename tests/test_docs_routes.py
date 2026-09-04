@@ -58,7 +58,7 @@ def tracked_markdown_paths() -> list[Path]:
 
 def is_active_command_owner(relative_path: Path) -> bool:
     route = relative_path.as_posix()
-    if relative_path.name in {"AGENTS.md", "VALIDATION.md"}:
+    if relative_path.name == "VALIDATION.md":
         return True
     return route in PRIMARY_COMMAND_DOCS
 
@@ -88,7 +88,7 @@ def test_active_command_blocks_stay_with_working_or_validation_owners() -> None:
             violations.append(f"{relative_path}:{line}: repo command")
 
     assert not violations, (
-        "active Markdown must route runnable repository commands to AGENTS.md, "
+        "active Markdown must route runnable repository commands to "
         "VALIDATION.md, or the primary release/live/MCP guide:\n"
         + "\n".join(violations)
     )
@@ -106,6 +106,18 @@ def test_readme_and_docs_map_route_current_direction_through_roadmap() -> None:
     assert "current repo-owned direction surface" in roadmap
     assert "README.md#current-v0-surface" in roadmap
     assert "not to widen into a dashboard empire" in roadmap
+    assert "VALIDATION.md" in readme
+    assert "../VALIDATION.md" in docs_readme
+
+
+def test_validation_is_the_on_demand_procedure_owner() -> None:
+    validation = read_text("VALIDATION.md")
+    assert "scripts/release_check.py" in validation
+    assert "scripts/validate_nested_agents.py --fail-on-untracked" in validation
+    assert "nearest topology-declared package or part `VALIDATION.md`" in validation
+    assert "Part-local validation remains the default owner" in validation
+    assert "A successful check is evidence for its declared" in validation
+    assert "## Checkpoint review" in validation
 
 
 def test_decision_lane_is_visible_without_becoming_status_roster() -> None:
@@ -164,6 +176,7 @@ def test_repo_validator_does_not_copy_source_or_part_inventory() -> None:
     )
     assert isinstance(routes, tuple)
 
+    assert "VALIDATION.md" in routes
     assert all("/parts/" not in route for route in routes)
     assert {route for route in routes if route.startswith("stats/")} == {
         "stats/README.md"

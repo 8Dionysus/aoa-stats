@@ -1,17 +1,12 @@
 # AGENTS.md
 
-## Boundary bridge parts agent guide
+## Boundary Bridge parts guide
 
-Each directory below this one is an active, bounded crossing contract.
+Each child is an active, bounded crossing contract. When a part is selected,
+follow its README, contract, and validation route; verify its source-family and
+payload routes in `mechanics/topology.json` and identify the stronger owner on
+both sides.
 
-Before editing a part:
-
-1. read `../AGENTS.md` and `../PARTS.md`
-2. read the part's `README.md`, `CONTRACT.md`, and `VALIDATION.md`
-3. verify its `stats_source_family_ref` and current payload routes in
-   `mechanics/topology.json`
-4. identify the stronger owner on both sides of the crossing
-
-Do not add a part without an evidenced crossing, an explicit source-family
+Do not add a part without an evidenced crossing, explicit source-family
 crosswalk, bounded inputs and outputs, authority stop-lines, and a truthful
-validation route.
+validation route. Keep operation payload and focused proof local.

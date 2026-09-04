@@ -5,66 +5,48 @@ Route card for authored stats read-model profiles.
 ## Ownership
 
 `stats/read-models/` owns the source-authored surface profiles that say what a
-derived summary asks, which public schema and output carry it, which stronger
-owners remain authoritative, and which mechanics produce or refresh it.
+derived summary asks, which schema and output carry it, which stronger owners
+remain authoritative, and which mechanics produce or refresh it. It does not
+own Python implementation, generated output, mechanic payloads, or upstream
+facts.
 
-It does not own Python implementation, generated output, mechanic payloads,
-or the upstream facts summarized by a profile.
+## Conditional route
 
-## Read before editing
-
-1. `../AGENTS.md`
-2. `README.md`
-3. `surface-profile.schema.json`
-4. the target profile under `active/`, `deferred/`, or `retired/`
-5. every schema, output, and mechanic route named by that profile
+When a profile is selected, follow the family README, the
+`surface-profile.schema.json` schema, the target record under `active/`,
+`deferred/`, or `retired/`, and every
+schema, output, owner-input, decision, and mechanic route named by that record.
+Entering this directory alone does not require the complete profile inventory.
 
 ## Profile law
 
 - One active public catalog surface has one authored profile under `active/`.
-- Contract-only candidates live under `deferred/` until their activation
-  condition and evidence chain are real.
-- A deferred profile must expose `input_posture`, exact
-  `owner_truth_inputs`, non-empty unique `activation_gaps`,
-  `consumer_risk`, and its authority ceiling in the generated deferred
-  catalog entry. Deferred does not hide what is already real or what is still
-  missing.
-- Removed public outputs leave only a minimal tombstone under `retired/` when
-  stale committed, live, catalog, or consumer copies still need deterministic
-  cleanup. A retired profile has no builder, catalog entry, or payload archive.
-- Preserve `catalog_order`; it is a stable catalog slot, not a dense ordinal.
-  Retired profiles reserve `former_catalog_order`, active profiles may leave
-  gaps, and no later lifecycle edit may reuse or close a retired slot merely
-  to make the sequence contiguous.
-- `mechanic_routes` are source-to-operation handoffs. They do not move source
+- Contract-only candidates stay under `deferred/` with input posture, exact
+  owner-truth inputs, activation gaps, consumer risk, and an authority ceiling.
+- Removed public outputs leave only a minimal retired tombstone when cleanup
+  evidence is needed. Retired profiles have no builder, catalog entry, or
+  payload archive.
+- Preserve `catalog_order` as a stable slot. Retired profiles reserve
+  `former_catalog_order`; active profiles may leave gaps and must not reuse it.
+- `mechanic_routes` are source-to-operation handoffs and do not move source
   meaning into mechanics.
-- `live_state_capable` is executable source meaning: `true` admits the surface
-  to local live materialization, while `false` keeps it on its committed or
-  reference route and out of the live catalog.
-- Do not add Python, generated catalogs, live receipts, or copied owner
-  payloads here.
-- Change the authored profile first, then rebuild and check the generated
-  catalog.
+- `live_state_capable` is executable source meaning. `true` admits local live
+  materialization only with an observation route; `false` remains committed or
+  reference-only and out of the live catalog.
+- Do not add Python, generated catalogs, live receipts, or copied owner payloads
+  here. Change authored profiles first and rebuild declared projections.
 - Reintroducing a retired question requires a newly reviewed active profile,
-  a new reviewed slot, real owner evidence, a producer, and validation; moving
-  or copying the tombstone is not activation.
-- A retired `former_mechanic_routes` entry is provenance, not an active
-  topology backlink. Do not keep an empty mechanic part alive only to satisfy
-  a retired record.
-- Keep profile-specific status and invariants in the target profile, its
-  mechanic contract and focused tests, and an indexed decision when rationale
-  must survive. Do not copy named surface state into this family route card.
-- Derive focused proof owners from topology parts that declare a localized
-  `tests/` payload. Source-family checks route to their current test districts
-  without freezing a named part-to-file map in root tests.
-- Derive lifecycle membership from the profile directories and generated
-  catalog projection. Do not encode current profile counts in validators;
-  preserve stable active and retired catalog-slot identities instead.
+  new slot, real owner evidence, a producer, and validation.
+- Retired former mechanic routes are provenance, not active topology links.
+- Keep profile-specific status in the target profile, mechanic contract,
+  focused tests, and indexed decision. Derive focused proof ownership and
+  lifecycle membership from topology and profile directories rather than fixed
+  counts or a named part map in root tests.
+- Do not copy named surface state into this family route card.
 
-## Verification
+## Conditional validation and closeout
 
-```bash
-python scripts/validate_stats_source_home.py
-python scripts/build_views.py --check
-python -m pytest -q tests/test_stats_source_home.py tests/test_summary_surface_catalog.py
-```
+Use root `VALIDATION.md` for source-home and generated-parity selection, then
+the exact mechanic-part route. Report profile inputs, lifecycle posture,
+generated outputs, owner evidence, missing/stale conditions, and the stronger
+owner boundary.

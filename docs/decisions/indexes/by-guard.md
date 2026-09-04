@@ -74,6 +74,7 @@
 - [AOST-D-0019 - Owner-Safe Validation Telemetry Is a Derived Federation Extension](../AOST-D-0019-owner-safe-validation-telemetry.md) (`docs/decisions/AOST-D-0019-owner-safe-validation-telemetry.md`)
 - [AOST-D-0020 - Codex Reference Builds Require Exact Owner Snapshots](../AOST-D-0020-codex-reference-builds-require-exact-owner-snapshots.md) (`docs/decisions/AOST-D-0020-codex-reference-builds-require-exact-owner-snapshots.md`)
 - [AOST-D-0021 - Current-Main Validation Telemetry Convergence](../AOST-D-0021-current-main-validation-telemetry-convergence.md) (`docs/decisions/AOST-D-0021-current-main-validation-telemetry-convergence.md`)
+- [AOST-D-0022 - Prompt-Light Agent Routes And On-Demand Validation](../AOST-D-0022-prompt-light-agent-routes-and-on-demand-validation.md) (`docs/decisions/AOST-D-0022-prompt-light-agent-routes-and-on-demand-validation.md`)
 
 ## downstream canaries
 
@@ -175,6 +176,11 @@
 
 - [AOST-D-0019 - Owner-Safe Validation Telemetry Is a Derived Federation Extension](../AOST-D-0019-owner-safe-validation-telemetry.md) (`docs/decisions/AOST-D-0019-owner-safe-validation-telemetry.md`)
 
+## owner authority
+
+- [AOST-D-0022 - Prompt-Light Agent Routes And On-Demand Validation](../AOST-D-0022-prompt-light-agent-routes-and-on-demand-validation.md) (`docs/decisions/AOST-D-0022-prompt-light-agent-routes-and-on-demand-validation.md`)
+- [AOST-D-0023 - Package Validation Owner In Topology](../AOST-D-0023-package-validation-owner-in-topology.md) (`docs/decisions/AOST-D-0023-package-validation-owner-in-topology.md`)
+
 ## owner evidence
 
 - [AOST-D-0011 - Antifragility Vector Remains An Evidence-Gated Incubator](../AOST-D-0011-antifragility-vector-remains-an-evidence-gated-incubator.md) (`docs/decisions/AOST-D-0011-antifragility-vector-remains-an-evidence-gated-incubator.md`)
@@ -198,6 +204,10 @@
 
 - [AOST-D-0003 - Component Refresh Fixtures Are Not Live State](../AOST-D-0003-component-refresh-fixtures-are-not-live-state.md) (`docs/decisions/AOST-D-0003-component-refresh-fixtures-are-not-live-state.md`)
 - [AOST-D-0004 - Live Admission Requires Refresh Observation](../AOST-D-0004-live-admission-requires-refresh-observation.md) (`docs/decisions/AOST-D-0004-live-admission-requires-refresh-observation.md`)
+
+## prompt visibility
+
+- [AOST-D-0022 - Prompt-Light Agent Routes And On-Demand Validation](../AOST-D-0022-prompt-light-agent-routes-and-on-demand-validation.md) (`docs/decisions/AOST-D-0022-prompt-light-agent-routes-and-on-demand-validation.md`)
 
 ## reference-source posture
 
@@ -242,6 +252,8 @@
 - [AOST-D-0018 - Memory Outcomes Remain Measurement, Not Authority](../AOST-D-0018-memory-outcomes-remain-measurement-not-authority.md) (`docs/decisions/AOST-D-0018-memory-outcomes-remain-measurement-not-authority.md`)
 - [AOST-D-0019 - Owner-Safe Validation Telemetry Is a Derived Federation Extension](../AOST-D-0019-owner-safe-validation-telemetry.md) (`docs/decisions/AOST-D-0019-owner-safe-validation-telemetry.md`)
 - [AOST-D-0021 - Current-Main Validation Telemetry Convergence](../AOST-D-0021-current-main-validation-telemetry-convergence.md) (`docs/decisions/AOST-D-0021-current-main-validation-telemetry-convergence.md`)
+- [AOST-D-0022 - Prompt-Light Agent Routes And On-Demand Validation](../AOST-D-0022-prompt-light-agent-routes-and-on-demand-validation.md) (`docs/decisions/AOST-D-0022-prompt-light-agent-routes-and-on-demand-validation.md`)
+- [AOST-D-0023 - Package Validation Owner In Topology](../AOST-D-0023-package-validation-owner-in-topology.md) (`docs/decisions/AOST-D-0023-package-validation-owner-in-topology.md`)
 
 ## source currentness
 
@@ -267,6 +279,11 @@
 ## statistical compatibility
 
 - [AOST-D-0012 - Federated Measurement Ownership and Thin Access](../AOST-D-0012-federated-measurement-ownership-and-thin-access.md) (`docs/decisions/AOST-D-0012-federated-measurement-ownership-and-thin-access.md`)
+
+## validation completeness
+
+- [AOST-D-0022 - Prompt-Light Agent Routes And On-Demand Validation](../AOST-D-0022-prompt-light-agent-routes-and-on-demand-validation.md) (`docs/decisions/AOST-D-0022-prompt-light-agent-routes-and-on-demand-validation.md`)
+- [AOST-D-0023 - Package Validation Owner In Topology](../AOST-D-0023-package-validation-owner-in-topology.md) (`docs/decisions/AOST-D-0023-package-validation-owner-in-topology.md`)
 
 ## zero-baseline interpretation
 

@@ -67,7 +67,7 @@ owner meaning or live deployment state.
 
 ## Validation
 
-Use [`AGENTS.md#verify`](AGENTS.md#verify), the Codex Plane
+Use [`../../VALIDATION.md`](../../VALIDATION.md), the Codex Plane
 [`VALIDATION.md`](../../mechanics/release-support/parts/codex-deployment-rollout/VALIDATION.md),
 the source-home and mechanics validators, the decision-index checks, and the
 full repository release gate against the pinned dependency roots.

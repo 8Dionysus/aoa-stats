@@ -83,6 +83,6 @@ actually mean.
 
 ## Validation
 
-Decision-lane checks are owned by [`AGENTS.md#verify`](AGENTS.md#verify).
+Decision-lane checks are owned by [`../../VALIDATION.md`](../../VALIDATION.md).
 Repository checks route through the root
-[`AGENTS.md#verify`](../../AGENTS.md#verify) gate.
+[`../../VALIDATION.md`](../../VALIDATION.md) gate.

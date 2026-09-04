@@ -10,7 +10,7 @@ become workflow, proof, route, memory, KAG, runtime, identity, or owner truth.
 
 ## Start here
 
-1. [`AGENTS.md`](AGENTS.md) — operating law and verification route
+1. [`AGENTS.md`](AGENTS.md) — operating law and route boundaries
 2. [`DESIGN.md`](DESIGN.md) — durable source/mechanics architecture
 3. [`stats/README.md`](stats/README.md) — authored stats source home
 4. [`mechanics/README.md`](mechanics/README.md) — operation and payload map
@@ -20,6 +20,7 @@ become workflow, proof, route, memory, KAG, runtime, identity, or owner truth.
 8. [`ROADMAP.md`](ROADMAP.md) and
    [`README.md#current-v0-surface`](README.md#current-v0-surface) — current contour
 9. [`docs/decisions/`](docs/decisions/) — durable rationale, not status
+10. [`VALIDATION.md`](VALIDATION.md) — on-demand focused and full checks
 
 ## Authority map
 
@@ -31,7 +32,7 @@ become workflow, proof, route, memory, KAG, runtime, identity, or owner truth.
 | receipt admission | `stats/intake-contract/` and `schemas/stats-event-envelope.schema.json` | examples, live registry, generated summaries |
 | read-model lifecycle and meaning | `stats/read-models/{active,deferred,retired}/*.profile.json` | public catalog, generated output, MCP projection |
 | non-catalog stats contracts | `stats/operation-contracts/active/*.operation.json` | part-local payload and root compatibility routes |
-| operation ownership | `mechanics/topology.json` and nearest part cards | root compatibility routes |
+| operation and focused-validation ownership | `mechanics/topology.json` and its named package or part routes | root compatibility routes |
 | repository callable procedure | `skills/aoa-stats/SKILL.md` and `skills/port.manifest.json` | managed OS user-profile copy |
 | executable measurement semantics | `stats/measurement-contract/` as source, `src/aoa_stats_builder/measurement.py` and `src/aoa_stats_builder/outcome.py` as pure implementations | validators and access adapters |
 | stats read contract | `stats/surface-catalog/CODEX_MCP.md` | stack-owned `aoa-stats-mcp` implementation and project registration |
@@ -74,7 +75,10 @@ systemd templates, builders, validators, and focused tests live under their
 mechanic parts. `scripts/validate_mechanics_topology.py` enforces this
 placement contract. A focused test shared by several parts may live at the
 mechanic-package level only when it constrains one shared importable core and
-that package payload root is declared in `mechanics/topology.json`.
+that package payload root is declared in `mechanics/topology.json`. Its single
+package `VALIDATION.md` owner must be declared separately by the exact
+`package_validation_surface` field; an undeclared package procedure is not an
+owner.
 
 The operation route starts at [`mechanics/README.md`](mechanics/README.md); its
 machine-readable inventory and source-family crosswalk live in
@@ -83,8 +87,9 @@ replay that changing part inventory.
 
 ## Build, live use, and verification
 
-Use the working gate in [`AGENTS.md#verify`](AGENTS.md#verify), then follow the
-nearest changed family's `AGENTS.md` and mechanic part's `VALIDATION.md`.
+Use the on-demand checks in [`VALIDATION.md`](VALIDATION.md), then follow the
+nearest changed family's `AGENTS.md` and topology-declared package or part
+`VALIDATION.md`.
 Script-specific working guidance stays in
 [`scripts/AGENTS.md`](scripts/AGENTS.md).
 
@@ -126,4 +131,4 @@ runtime.
 Use [`CONTRIBUTING.md`](CONTRIBUTING.md),
 [`docs/RELEASING.md`](docs/RELEASING.md), and
 [`CHANGELOG.md`](CHANGELOG.md). Release commands stay in the release guide;
-the normal repository gate stays in [`AGENTS.md#verify`](AGENTS.md#verify).
+the normal repository gate stays in [`VALIDATION.md`](VALIDATION.md).

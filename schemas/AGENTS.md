@@ -1,27 +1,28 @@
 # AGENTS.md
-Local guidance for `schemas/` in `aoa-stats`.
-
-Read the root `AGENTS.md` first. Schema changes are contract changes for the
-shared receipt envelope, event families, and derived summary read models.
 
 ## Local role
-Schemas define what stats builders may accept or emit. They do not define the
-meaning of skills, eval verdicts, playbooks, agents, memo objects, or runtime
-closeouts.
+
+`schemas/` contains stable public and compatibility contracts for stats
+receipts, summaries, and validation telemetry. Schema changes are contract
+changes. The shared receipt envelope remains a schema-level boundary. Schema
+identity and boundary wording are contract concerns; payload meaning remains
+with its source owner.
 
 ## Editing posture
-Pair schema changes with examples, docs, builders, and tests. Keep required
-fields, event-kind names, refs, and surface-strength wording explicit.
+
+Read the selected authored profile, source-family record, or intake registry
+before changing a schema. Preserve identifiers, required fields, enum meaning,
+missingness, provenance, and authority ceilings. Pair a schema change with its
+declared examples, builders, and focused tests.
 
 ## Hard no
-Do not loosen contracts to accept ambiguous owner meaning. Do not create a
-universal score schema.
 
-## Validation
-Run:
+Do not make a schema imply proof, workflow, route, owner health, causality,
+policy training, or release admission. Do not copy generated output or private
+source evidence into this district.
 
-```bash
-python scripts/validate_receipt_abi.py
-python scripts/validate_repo.py
-python -m pytest -q tests
-```
+## Conditional validation
+
+Use the root `VALIDATION.md` and the nearest schema-owning mechanic or protocol
+route. Report schema checks, paired examples and tests, generated parity, and
+the owner boundary that remains outside schema validation.

@@ -1,26 +1,15 @@
 # AGENTS.md
 
-## Recurrence parts agent guide
+## Recurrence parts guide
 
-Each directory below this one is an active, bounded recurrence operation.
+Each directory below this one is an active, bounded recurrence operation. When
+a part is selected, follow its contract, README, provenance, and validation
+route; verify its source-family and payload routes in `mechanics/topology.json`.
 
-Before editing a part:
+Preserve owner-source authority and visible freshness limits. A committed
+example chain stays reference-only until a canonical owner-runtime artifact or
+receipt and an observation route exist. Do not add a part without an evidenced
+operation, explicit crosswalk, bounded input/output, and truthful validation.
 
-1. read `../AGENTS.md` and `../PARTS.md`
-2. read the part's `README.md`, `CONTRACT.md`, and `VALIDATION.md`
-3. verify its `stats_source_family_ref` and current payload routes in
-   `mechanics/topology.json`
-4. preserve owner-source authority and visible freshness limits
-
-When auditing live posture, classify the part's actual source chain before
-changing its stats profile. A committed example chain stays reference-only
-until a canonical owner-runtime artifact or receipt exists, and missing
-occurrence evidence must remain zero or absent rather than inferred from
-status.
-
-Do not add a part without an evidenced operation, an explicit source-family
-crosswalk, bounded inputs and outputs, and a truthful validation route.
-
-Part-local operation payload is canonical unless the part explicitly names a
-root public schema, generated output, or compatibility command. Do not copy a
-public exception into the part or move it merely for visual symmetry.
+Part-local payload is canonical unless topology names a root public schema,
+generated output, or compatibility route.

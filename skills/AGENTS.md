@@ -2,42 +2,27 @@
 
 ## Applies to
 
-This card applies to the canonical `aoa-stats/skills/` home.
+This card applies to the repository-local `skills/` home and its admitted
+callable bundles.
 
 ## Role
 
 This home owns only admitted repository-specific callable procedures. The
-current source is `skills/aoa-stats/SKILL.md`. Global Codex exposure is a
-managed OS user-profile copy and never source truth.
+canonical `aoa-stats/skills/` home is source; the managed OS user-profile copy
+is a projection whose identity and lifecycle come from its port manifest.
+Skills select a bounded answer, diagnosis, or evolution route and return to
+the owning stats, mechanic, or stronger external source.
 
-## Read before editing
+## Conditional route
 
-Read root `AGENTS.md`, `skills/README.md`, the target `SKILL.md`, the admission
-decision named by `port.manifest.json`, and the affected stats family or
-mechanic owner.
+When changing a bundle, open its `SKILL.md`, `port.manifest.json`, source
+handle, and affected stats or mechanic route only after the bundle and mode are
+known. Do not infer source authority, runtime currentness, proof, or owner
+acceptance from installation or prompt visibility.
 
-## Boundaries
+## Boundaries and closeout
 
-- Keep answer, diagnosis, and evolution as internal modes until held-out work
-  proves that a split adds independent value.
-- Do not copy shared `aoa-skills` bundles into this home or `.agents/`.
-- Do not keep candidates, task-local DAGs, raw trials, session notes, runtime
-  state, owner facts, tests, or generated read models here.
-- The skill routes work through `aoa-stats`; it cannot strengthen owner
-  evidence, eval verdicts, freshness, causality, or health.
-- Change canonical source first, validate the owner home, then reinstall the
-  single OS user profile through the owning `aoa-skills` route.
-
-## Validation
-
-Manual isolated, negative, held-out, and coexistence tasks decide usefulness.
-`skills-ref validate skills/aoa-stats` checks portable shape. The pinned
-`aoa-skills` composite action checks owner, manifest, source, and package
-digest; the OS installer owns installed byte/mode parity. Green output makes
-no outcome claim.
-
-## Closeout
-
-Report the mode cases exercised, strongest owner sources, OS-profile status,
-prompt-visible inspection, checks skipped, and any session-only fixtures
-removed.
+Keep source identity, version, digest, and owner return visible. Do not place
+private evidence, generated catalogs, runtime state, or sibling-owner meaning
+in a skill bundle. Report the mode, owner sources, profile posture, cases,
+checks, skipped evidence, and the stronger-owner handoff.

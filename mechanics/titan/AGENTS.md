@@ -1,14 +1,21 @@
 # AGENTS.md
 
-## titan mechanic guidance
+## Titan mechanic guide
 
 This package implements the stats-side projection of the shared owner mechanic
-at `aoa-agents/mechanics/titan`. It is not a common-center mechanic.
+at `aoa-agents/mechanics/titan`; it is not a common-center mechanic. Select the
+target through source records and `mechanics/topology.json`.
 
 Keep operation-specific docs, examples, supporting contracts, and focused
-tests under the nearest part. Published catalog schemas and generated read
-models may remain at repository root only when their stable public paths are
-declared in `mechanics/topology.json`.
+tests under the nearest part. Published schemas and generated read models may
+remain at root only where topology declares a stable public route.
 
-Stats outputs are descriptive and weaker than their named owner sources.
-Do not add routing, proof, gate, or workflow authority here.
+Stats outputs are descriptive and weaker than named owner sources. Do not add
+routing, proof, gate, workflow, identity, runtime, or owner-acceptance
+authority.
+
+## Conditional validation
+
+Use the selected part `VALIDATION.md` and root `VALIDATION.md` for cross-route
+checks. Report owner refs, source posture, generated parity, and any runtime or
+identity evidence not established.

@@ -61,3 +61,11 @@
 ## 2026-08-24
 
 - [AOST-D-0021 - Current-Main Validation Telemetry Convergence](../AOST-D-0021-current-main-validation-telemetry-convergence.md) (`docs/decisions/AOST-D-0021-current-main-validation-telemetry-convergence.md`)
+
+## 2026-08-31
+
+- [AOST-D-0022 - Prompt-Light Agent Routes And On-Demand Validation](../AOST-D-0022-prompt-light-agent-routes-and-on-demand-validation.md) (`docs/decisions/AOST-D-0022-prompt-light-agent-routes-and-on-demand-validation.md`)
+
+## 2026-09-04
+
+- [AOST-D-0023 - Package Validation Owner In Topology](../AOST-D-0023-package-validation-owner-in-topology.md) (`docs/decisions/AOST-D-0023-package-validation-owner-in-topology.md`)

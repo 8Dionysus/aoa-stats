@@ -1,14 +1,9 @@
 # Validation
 
-Run from the repository root:
-
-```bash
-python -m pytest -q mechanics/audit/tests/test_core_skill_observation.py
-python scripts/build_views.py --check
-python scripts/validate_stats_source_home.py
-python scripts/validate_mechanics_topology.py
-python -m pytest -q tests/test_build_views.py tests/test_stats_source_home.py tests/test_mechanics_topology.py
-```
+This part adds no independent executable check. Use the
+[Audit shared-core route](../../VALIDATION.md). Use
+[shared repository checks](../../../../VALIDATION.md#shared-repository-checks)
+only when the wider repository surface is in scope.
 
 The package-level test is intentional: it covers the core shared with
 `surface-strength-detection`, finish-stage filtering, deterministic grouping,

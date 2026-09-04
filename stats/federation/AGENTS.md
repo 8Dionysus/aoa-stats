@@ -4,31 +4,31 @@ Route card for the federated local-port contract and inventory.
 
 ## Scope
 
-This branch owns the compatibility shape and canonical inventory for root
+This family owns the compatibility shape and canonical inventory for root
 `stats/` ports across active OS Abyss owner repositories. It does not own any
 local question, measurement, evidence, privacy decision, or export.
 
-Read `README.md`, then `local-port.schema.json` and
-`owner-inventory.schema.json`. Follow each inventory entry to the owner before
-changing its classification or port.
+## Conditional route
+
+When a port or inventory entry is the selected task, open the family README,
+`local-port.schema.json`, `owner-inventory.schema.json`, and the named owner
+port as needed. The inventory describes durable owner routes, not host-specific
+paths or one-session work state.
 
 ## Owner law
 
-- Inventory entries describe durable owner routes, never host-specific paths or
-  one-session work state.
 - `implemented` requires an existing owner-local port or the central source
   home; `routed_to_stronger_owner` requires an explicit stronger-owner route.
-- A local port references the central schemas and authors only its own domain
+- A local port references central schemas and authors only its own domain
   meaning.
 - Missing ports remain visible. An owner exception is explicit and uncommon.
+- Do not infer owner health, proof, live export, or acceptance from port
+  presence or coverage counts.
 
-## Stop lines
+## Stop lines and validation
 
-Do not copy owner manifests, evidence, runtime state, raw sessions, migration
-notes, or current worktree status here. Do not infer owner health from port
-presence.
-
-## Verification
-
-The executable owner is `scripts/release_check.py`; cross-repo compatibility
-proof is added only after owner-local manual journeys establish its invariants.
+Do not copy owner manifests, evidence, runtime state, migration notes, raw
+sessions, or current worktree status here. The complete owner-local gate is
+owned by `scripts/release_check.py`; cross-repo compatibility proof belongs to
+the root `VALIDATION.md` route and focused owner journeys. Report the inventory
+classification, owner return, and evidence ceiling.

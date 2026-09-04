@@ -5,11 +5,10 @@ live-admission checks:
 
 ```bash
 python -m pytest -q mechanics/boundary-bridge/parts/memory-owner-handoff/tests/test_memory_movement_summary.py
-python scripts/build_views.py --check
 python -m pytest -q mechanics/recurrence/parts/live-receipt-refresh/tests/test_refresh_live_stats.py tests/test_summary_surface_catalog.py
-python scripts/validate_stats_source_home.py
-python scripts/validate_mechanics_topology.py
 ```
+
+See [Shared repository checks](../../../../VALIDATION.md#shared-repository-checks) for this repository-wide check.
 
 The focused suite proves the exact four roots, deterministic discovery,
 catalog/object exactness, timestamp refusal, deep bundle immutability,

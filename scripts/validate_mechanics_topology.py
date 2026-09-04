@@ -377,7 +377,33 @@ def validate(repo_root: Path = REPO_ROOT) -> list[str]:
         if not _string_list(package_payload_roots, allow_empty=True):
             issues.append(f"mechanics/{package_name}: package_payload_roots must be a string list")
             package_payload_roots = []
-        expected_package_entries = REQUIRED_PACKAGE_FILES | {"parts"} | set(package_payload_roots)
+        package_validation_surface = package.get("package_validation_surface")
+        validation_entries: set[str] = set()
+        has_package_tests = "tests" in package_payload_roots
+        has_package_validation = "package_validation_surface" in package
+        if has_package_tests != has_package_validation:
+            issues.append(
+                f"mechanics/{package_name}: package-level tests and "
+                "package_validation_surface must be declared together"
+            )
+        if has_package_validation:
+            validation_entries.add("VALIDATION.md")
+            expected_validation_surface = f"mechanics/{package_name}/VALIDATION.md"
+            if package_validation_surface != expected_validation_surface:
+                issues.append(
+                    f"mechanics/{package_name}: package_validation_surface must be "
+                    f"{expected_validation_surface!r}"
+                )
+            elif not (repo_root / package_validation_surface).is_file():
+                issues.append(
+                    f"mechanics/{package_name}: declared package_validation_surface is missing"
+                )
+        expected_package_entries = (
+            REQUIRED_PACKAGE_FILES
+            | {"parts"}
+            | set(package_payload_roots)
+            | validation_entries
+        )
         if package_root.is_dir() and _entries(package_root) != expected_package_entries:
             issues.append(
                 f"mechanics/{package_name}: entries mismatch; "

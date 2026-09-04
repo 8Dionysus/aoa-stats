@@ -82,5 +82,5 @@ Use:
 
 ## Validation
 
-Use [`AGENTS.md#verification`](AGENTS.md#verification), then the
+Use [`../../VALIDATION.md`](../../VALIDATION.md), then the
 `VALIDATION.md` owned by every affected mechanic part.

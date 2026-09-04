@@ -1,16 +1,10 @@
 # AGENTS.md
 
-Guidance for the `aoa-stats` Experience mechanic.
+## Experience mechanic guide
 
-Read the repository root `AGENTS.md`, `DESIGN.md`, and
-`mechanics/experience/README.md` before editing this package. Then follow the
-nearest part contract and validation route.
-
-## Local role
-
-This package owns repeatable stats-side Experience observability contracts:
-micro-friction receipts, adoption and federation readouts, governance signals,
-and release/watch/office health contracts.
+This package owns repeatable stats-side Experience observability contracts for
+friction, adoption/federation, governance, and release/watch/office signals.
+Select the target through `mechanics/topology.json` and its operation record.
 
 It does not own Experience policy, source-owner events, release approval,
 runtime state, proof verdicts, KAG promotion, or Tree of Sophia canon.
@@ -19,14 +13,15 @@ runtime state, proof verdicts, KAG promotion, or Tree of Sophia canon.
 
 - Keep authored Experience docs, examples, schemas, and focused tests inside
   their owning part.
-- Keep one active owner for every payload. Do not restore a second root copy.
-- Keep root `generated/` outputs and public stats contracts in their declared
-  publication homes; this package does not absorb them by analogy.
+- Keep one active owner for every payload and do not restore a root copy.
+- Keep declared root generated outputs and public contracts in their publication
+  homes; this package does not absorb them by analogy.
 - Preserve schema identifiers unless a separate compatibility decision changes
-  the public identity.
-- Treat examples as illustrative, never as live owner evidence.
+  public identity. Examples remain illustrative, never live evidence.
 
-## Validation
+## Conditional validation and closeout
 
-Run the focused command in each changed part's `VALIDATION.md`. For the whole
-package, run the four part-local test modules listed in `PARTS.md`.
+Open the selected part `VALIDATION.md` for exact procedure, and root
+`VALIDATION.md` when a cross-route check is needed. Report source owner,
+contract pair, focused results, and any release/runtime/proof boundary left
+unestablished.

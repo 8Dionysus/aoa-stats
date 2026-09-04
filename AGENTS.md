@@ -2,275 +2,132 @@
 
 Root route card for `aoa-stats`.
 
-## Purpose
+## Scope and role
 
 `aoa-stats` is the central statistical measurability organ of OS Abyss. It
 defines a shared measurement grammar and federates owner-local `stats/` ports,
 then consumes source-owned receipts, evidence references, and bounded verdicts
 to build deterministic read models without taking authority from their owners.
-
 Dashboards are lanterns, not sovereigns.
 
-## Owner lane
+This repository owns shared measurement compatibility, the root stats-port
+contract and coverage inventory, stats-authored read-model and non-catalog
+operation contracts, the receipt envelope and event vocabulary, deterministic
+projection, refresh, validation, derived-only access, and the admitted
+repository-local callable procedure. Owner repositories retain their questions,
+metric definitions, populations, dimensions, evidence handoffs, privacy,
+exports, and stronger domain truth.
 
-This repository owns:
+The central organ does not own workflow, proof, practice, scenario, role,
+memory, KAG, runtime, route, quest state, RPG meaning, self-agent truth, or
+owner acceptance. Counts do not create mastery, intent, causality, or proof.
 
-- the shared grammar for measurement identity, populations, units,
-  dimensions, aggregation, missingness, uncertainty, provenance, lifecycle,
-  reporting rules, privacy, and live/reference posture
-- the compatible root `stats/` port contract and owner coverage inventory
-- the stable meaning and contracts of stats-authored read models
-- one bounded question and authority ceiling for each non-catalog stats
-  operation contract
-- the shared receipt envelope and event-kind vocabulary used by those models
-- deterministic projection, refresh, validation, and derived-only access
-- the admitted repository-local `aoa-stats` callable procedure and its source
-  to Codex projection contract
+## Conditional route selection
 
-Owner repositories own their questions, metric definitions, populations,
-dimensions, evidence handoffs, privacy posture, and exports. This repository
-does not own workflow, proof, practice, scenario, role, memory, KAG, runtime,
-route, quest-state, RPG meaning, or self-agent truth. Counts do not create
-mastery, intent, causality, or owner truth.
+Inherit this card and the nearest nested `AGENTS.md` for the touched path. Open
+only the source, human map, contract, operation, mechanic, schema, builder,
+test, or owner document needed by the named question.
 
-## Start here
+1. `README.md` when public or human orientation is needed.
+2. `DESIGN.md` when repository or source/mechanics architecture changes.
+3. `stats/README.md` when a source-family question is known.
+4. `mechanics/README.md` when operation placement or payload ownership is known.
+5. `skills/README.md` when the callable interface or source projection is in scope.
+6. `ROADMAP.md` when direction, priority, or cross-slice sequencing is material.
+7. `docs/BOUNDARIES.md` or `docs/ARCHITECTURE.md` when authority or view layers matter.
+8. `docs/decisions/README.md` when durable rationale or an indexed decision is needed.
+9. `VALIDATION.md` when execution or proof selection begins.
 
-1. `README.md`
-2. `DESIGN.md`
-3. `stats/README.md` for the source-authored stats home
-4. `mechanics/README.md` for repeatable operation topology
-5. `skills/README.md` for the admitted owner-local callable interface
-6. `ROADMAP.md`
-7. `docs/BOUNDARIES.md`
-8. `docs/ARCHITECTURE.md`
-9. `docs/decisions/README.md` for durable rationale and generated lookup
-10. the nearest nested `AGENTS.md` for every path you touch
-11. `docs/history/AGENTS_ROOT_REFERENCE.md` only for historical provenance
+Entering a directory does not require its complete README, design, or package
+inventory. A local README remains a human route when its family, mechanic,
+operation, usage, archive, or contract explanation is relevant.
 
-Do not turn this root card into a profile-by-profile status roster. Exact
-surface state belongs in `stats/read-models/`; non-catalog input maturity
-belongs in `stats/operation-contracts/`; operation detail belongs in the
-owning mechanic part; rationale belongs in `docs/decisions/`.
+## Source and operation homes
 
-Apply the same rule to public entrypoints. Root `README.md` and
-`docs/ARCHITECTURE.md` may explain stable routes and derived-view structure,
-but must not duplicate changing profile counts, named lifecycle rosters, or a
-part-by-part operation map.
-
-`ROADMAP.md` owns direction, priority, and cross-slice sequencing. It routes
-exact current state to profiles, topology, generated discovery, decisions, and
-history instead of replaying surface rosters, live/retired counts, mechanic
-payload lists, or compatibility chronology.
-
-Mechanic contracts and operator guides own stable selection, refresh, cleanup,
-and failure rules. They derive exact profile membership and counts from the
-authored source records at validation or runtime; they do not freeze a complete
-live/reference/retired roster in prose. Keep a named exception only when a
-focused operation boundary needs it, and route its current posture back to the
-profile and indexed decision.
-
-## Repository contract
-
-`aoa-stats` has two cross-routed active homes:
-
-- `stats/` owns source-authored stats meaning, lifecycle, authority ceilings,
-  and source-family routes.
-- `mechanics/` owns repeatable intake, projection, refresh, validation, and
-  release operations around those sources.
-
+`stats/` owns source-authored statistical meaning, lifecycle, authority
+ceilings, and source-family routes. `mechanics/` owns repeatable intake,
+projection, refresh, validation, and release operations around those sources.
 `skills/` is a separate callable interface over those owners, not a third home
-for stats meaning or operation payload. It selects one bounded agent procedure;
-the selected mode must return to `stats/`, `mechanics/`, or a stronger external
-owner for truth and effects.
+for stats meaning or operation payload.
 
 `stats/source_home.manifest.json` is the machine-readable source-family
 crosswalk. `mechanics/topology.json` is the machine-readable operation and
-placement map. Human route docs explain those maps; they do not override them.
+placement map. Human route docs explain those maps and do not override them.
+Operation payload, focused proof, config, examples, supporting schemas, and
+operator guides stay with the nearest mechanic part. A genuinely shared
+cross-part procedure may move to a package `VALIDATION.md` only when topology
+names that exact owner; stable public or compatibility routes remain separate
+explicit exceptions.
 
-The `measurement_contract` family owns portable statistical shape. The
-`federation` family owns local-port compatibility and the durable owner-level
-coverage inventory. Neither may copy owner-local definitions or one-session
-workspace state.
+Source-family validation derives membership from the source manifest and
+mechanic membership from topology and part validation. Do not freeze selected
+family or part rosters in a root validator constant, route card, or public
+snapshot; public entrypoints must not duplicate changing profile counts.
 
-Repo-wide validators keep only stable repository entrypoints as their direct
-text inventory. Stats-family membership comes from the source manifest and
-mechanic membership from topology and part validation; do not copy selected
-family or part docs into a root validator constant.
+## Measurement and authority boundaries
 
-Apply the same rule to mechanic package membership. The topology activation
-map, active package records, and materialized root directories must agree;
-tests and route docs do not carry a second fixed package roster as machine
-truth.
+Preserve measurement identity, populations and denominators, units, dimensions,
+aggregation, missingness, uncertainty, provenance, lifecycle, reporting rules,
+privacy, and live/reference posture. `missing`, `unknown`, `stale`, `partial`,
+reference-only, rejected, and unregistered evidence remain distinct and never
+become zero, success, or owner truth.
 
-Operation payload lives under the nearest mechanic part. Root `schemas/` and
-`generated/` remain stable public districts. Root `scripts/` and `tests/`
-keep only public, compatibility, or repo-wide surfaces. Other root districts
-need an explicit public, decision, bundle, or compatibility role declared by
-an owning manifest or topology and validated by the repository gates.
+Source-owned receipts and verdicts remain stronger than stats observations.
+Validation telemetry is derived measurement under AOST-D-0019: it cannot become
+a central validation graph, sibling claim inventory, sufficiency verdict, proof
+system, release-admission authority, or replacement for owner-local gates.
+Consumers retain policy, workflow, route, proof, mutation, and acceptance
+decisions.
 
-A stable root module does not make every historical helper name permanent ABI.
-Retain a symbol-level compatibility export only for a current caller, explicit
-external contract, or focused owner-part proof. Put reusable deterministic
-logic under `src/aoa_stats_builder/`; keep I/O, CLI, fan-out, and check/write
-policy at the edge. Part-specific behavior is proved by its part, while a
-package-level test district requires a genuinely shared core and an explicit
-`package_payload_roots` declaration.
+Generated catalogs, compact outputs, MCP responses, adapters, KAG indexes,
+caches, and runtime convenience surfaces are projections or access layers. They
+remain weaker than authored profiles, schemas, manifests, receipts, and owner
+sources. Change authored inputs or declared builders first; regenerate affected
+projections and never hand-edit a generated surface as source.
 
-Source-family proof routing follows topology rather than a named part roster.
-When a part declares a localized `tests/` payload, family-level validation
-checks that the district contains focused proof and routes at least one current
-test without copying current part names into root proof.
+Live materialization requires both a current owner source and an observation
+route that notices movement. A committed example, source checkout, green
+builder, service state, or recent artifact timestamp does not establish live
+freshness, owner coverage, or acceptance.
 
-Apply the same evidence test to relocated owner references. Re-ground current
-authored consumers and fixtures on the canonical owner path before removing a
-translation alias; once no current consumer requires it, the exact source
-adapter must not preserve a hidden fallback merely because the surface remains
-reference-only. Reference posture limits publication authority, not source-ref
-precision.
+## Cross-slice and lifecycle law
 
-A root documentation redirect follows the same evidence test. Retain it only
-for a current public consumer or explicit external contract. Once active
-readers point to the part-local owner, remove the redirect from topology and
-validation; Git history and provenance bridges preserve the former path.
+For a bounded slice, identify the source-owned fact, current payload owner, and
+consumer; strengthen one real stats or mechanic boundary; update only the
+reciprocal route; localize proof; validate the crosswalk in both directions;
+and leave the next slice to reverse the lead. One authored payload has one
+active owner.
 
-Cross-owner caution and precedence guidance is operation payload when one
-mechanic applies it. Keep that guidance with the mechanic part that returns
-consumers to stronger owners; do not retain a root doc merely because its rule
-mentions several organs.
+Active profiles author public surfaces; deferred profiles are evidence-gated
+candidates; retired profiles are cleanup and provenance tombstones that reserve
+their former catalog slots. Operation records state input posture and return to
+stronger owners. Do not turn this root card into a profile-by-profile status roster.
+Exact changing status belongs in authored records, topology,
+generated lookup, and indexed decisions rather than inherited cards.
 
-Stats-authored vocabulary that constrains profile meaning belongs to the
-matching family under `stats/`. Root `docs/` may explain repository-wide
-architecture and boundaries, but it must route to the source owner instead of
-retaining a second vocabulary entrypoint or current profile status.
+## On-demand validation and landing boundary
 
-## Cross-mode law
+`VALIDATION.md` is the human entrypoint for focused checks, nested-card
+structure, source-home and topology checks, generated parity, checkpoint review,
+and the complete owner-local gate. The ordered `COMMANDS` list in
+`scripts/release_check.py` remains the complete machine gate. The nearest
+topology-declared package or part `VALIDATION.md` owns focused procedure;
+`docs/RELEASING.md` owns release, CI, review, merge, tag, and post-landing
+procedure.
 
-Grow `stats/` and `mechanics/` together, alternating which side leads each
-bounded slice:
+Local green checks, validation telemetry, CI, review, merge, runtime
+activation, freshness, owner acceptance, and Goal completion are separate
+claims. If a stronger status or authority cannot be observed, report the exact
+missing evidence and stop.
 
-1. identify the source-owned fact, current payload owner, and consumer
-2. strengthen one stats family or one evidenced mechanic part
-3. update only the reciprocal route needed on the other side
-4. localize focused payload and proof under the operation owner
-5. validate the crosswalk in both directions
-6. reverse the lead for the next slice
+## Closeout
 
-One authored payload has one active owner. Do not build empty mirror packages,
-move source meaning into mechanics, or preserve root wrappers without a real
-public or compatibility contract.
+Return the changed stats family and mechanic route, source and generated
+surfaces, owner inputs, procedure actually run, focused/full results, skipped or
+unavailable evidence, and the next stronger-owner route. Keep public, live,
+proof, runtime, and acceptance claims at their evidence ceiling.
 
-## Lifecycle and authority
-
-- `active/` read-model profiles author public catalog surfaces.
-- `deferred/` profiles author evidence-gated contract candidates, not future
-  promises or hidden activation.
-- `retired/` profiles are cleanup/provenance tombstones. They publish no
-  surface and reserve their former catalog slots.
-- `live_state_capable` is executable source meaning. Live materialization
-  requires both a current owner source and an observation route that notices
-  movement; the selector alone does not certify provenance.
-- Reintroducing a retired question requires a new reviewed active profile,
-  current owner evidence, a producer, a new reviewed slot, and validation.
-- Operation bindings must state whether inputs are current, reference-only, or
-  symbolic. Documentation and examples do not become runtime evidence.
-- Generated, compact, MCP, adapter, and runtime convenience surfaces remain
-  weaker than authored profiles and owner-local facts.
-- The stack-owned `aoa-stats-mcp` is the only MCP access implementation.
-  `aoa-stats` owns its transport-neutral read contract; `abyss-stack` owns
-  runtime transport and lifecycle. Do not reintroduce a repo-local server or
-  move statistical semantics into the access plane.
-
-For any specific surface, follow its profile or operation record, mechanic
-contract, focused validation card, and indexed decision rationale. Do not copy
-its changing status back into this root card.
-
-Source validators derive lifecycle membership from authored directories and
-catalog projection rather than fixed profile counts. They derive non-catalog
-operation membership from authored records and the reciprocal mechanics
-crosswalk rather than a fixed part count. Stable catalog slots and retired
-reservations remain intentional public identity guards; cardinality is not an
-ABI by itself.
-
-## AGENTS stack law
-
-- Root guidance owns repository identity, route choice, owner boundaries, and
-  the shortest honest verification path.
-- Nested guidance owns local contracts, local risk, exact files, and focused
-  checks.
-- Authored sources own meaning. Generated and access surfaces summarize,
-  transport, or support it.
-- Report what changed, what was verified, what was not verified, and where the
-  next cross-slice should resume.
-
-## Memory and decision routes
-
-For recall, compaction recovery, or past-session evidence, start with
-`aoa-memo` and the workspace memory route; `.aoa` evidence can rehydrate
-context but cannot override repository sources.
-
-After a meaningful structural, ownership, workflow, route-law, validator,
-public-contract, or topology change, check the decision graph and
-`docs/decisions/`. Do not create a decision merely to duplicate design prose
-or conversational context.
-
-## Derived-only rules
-
-- Counts, windows, and movement summaries stay weaker than owner-local proof.
-- Prefer evidence references over copies of owner artifacts.
-- Missing, stale, rejected, or unregistered evidence remains visible.
-- Builders and validators may enforce stats contracts but cannot strengthen an
-  upstream verdict.
-
-## GitHub landing workflow
-
-Root `AGENTS.md` owns the repository-wide branch, PR, CI, and merge route.
-`.github/AGENTS.md` owns the GitHub-native files that support it.
-
-When the user asks to commit, push, and merge:
-
-1. Start from current `origin/main`; inventory a dirty worktree before
-   carrying only the intended diff.
-2. Commit with a message naming the changed surface.
-3. Push and open a PR stating changed surfaces, validation, skipped checks, and
-   remaining risk.
-4. Wait for `Repo Validation` and every required check; repair failures on
-   the branch and wait for the replacement result.
-5. Merge through GitHub after green validation, using squash unless repository
-   settings require another method.
-6. Verify the resulting `main` push check, then validate a clean post-merge
-   worktree before closeout.
-
-If GitHub status or merge permission cannot be observed, report the exact
-blocker instead of guessing.
-
-## Verify
-
-Minimum full gate:
-
-```bash
-python scripts/release_check.py
-```
-
-For source-home, mechanics, or route-card changes, also run:
-
-```bash
-python scripts/validate_stats_source_home.py
-python scripts/validate_stats_protocol.py
-python scripts/validate_mechanics_topology.py
-python scripts/validate_nested_agents.py --fail-on-untracked
-python -m pytest -q tests/test_stats_source_home.py tests/test_mechanics_topology.py tests/test_docs_routes.py
-```
-
-Run the touched part's `VALIDATION.md` before the full gate. Refresh behavior
-changes also require the live-publisher and live-refresh checks.
-
-## Report
-
-State which stats source family and mechanic route changed, whether output
-shape or receipt registration changed, which owner repos supplied facts, what
-compatibility surface remains, and what validation ran.
-
-## Historical reference
+## Historical route
 
 `docs/history/AGENTS_ROOT_REFERENCE.md` preserves pre-refactor guidance as
 provenance. It is not an active instruction surface.

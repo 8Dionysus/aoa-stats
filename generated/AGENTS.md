@@ -1,29 +1,27 @@
 # AGENTS.md
-Local guidance for `generated/` in `aoa-stats`.
-
-Read the root `AGENTS.md` first. This directory contains machine-first derived
-summary surfaces built from source-owned receipts and bounded evidence refs.
 
 ## Local role
-Source repos own meaning. `aoa-stats` owns derived views. Generated summaries
-may illuminate movement, but they must remain weaker than owner-local source
-surfaces.
+
+`generated/` contains committed derived read models and compatibility outputs.
+Source repos own meaning. Authored profiles, schemas, manifests, mechanics, and
+owner sources retain authority; generated files support navigation and
+observation.
 
 ## Editing posture
-Do not hand-edit generated outputs. Change source receipts, schemas, or builder
-logic, then regenerate. Preserve deterministic ordering, compact shape, and
-explicit evidence/source references.
+
+Change the authored input or declared builder first, then regenerate the
+affected output and inspect its diff. Do not hand-edit generated outputs or
+copy private evidence, runtime state, or owner payloads into them.
 
 ## Hard no
-Do not turn counts, windows, or summary volume into proof of mastery, intent,
-self-agency, route authority, or live quest state.
 
-## Validation
-Run:
+Generated summaries cannot establish source freshness, owner coverage, proof,
+health, causality, workflow, release admission, or acceptance. Preserve
+missing, stale, rejected, and unregistered input states and explicit source
+references.
 
-```bash
-python scripts/build_views.py --check
-python scripts/validate_repo.py
-python scripts/validate_abyss_machine_summary_catalog_bundle.py
-python -m pytest -q tests
-```
+## Conditional validation
+
+Open the root `VALIDATION.md` for generated-parity checks and the nearest
+mechanic-part route for a focused projection. Report the authored inputs,
+builder, output paths, and what a parity check cannot prove.

@@ -48,7 +48,7 @@ contributors must not infer from this decision.
 
 ## Validation
 
-Link [`AGENTS.md#verify`](AGENTS.md#verify) and the owning `AGENTS.md` or
+Link [`../../VALIDATION.md`](../../VALIDATION.md) and the owning `AGENTS.md` or
 `VALIDATION.md` for every surface the decision describes. Record the result in
 the change or release evidence instead of copying command blocks into the
 decision note.

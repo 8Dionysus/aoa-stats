@@ -76,7 +76,7 @@ discovery or invented metrics.
 
 ## Validation
 
-Use [`AGENTS.md#verify`](AGENTS.md#verify), the measurement-contract and
+Use [`../../VALIDATION.md`](../../VALIDATION.md), the measurement-contract and
 federation route cards, the telemetry focused tests, the source-home and
 protocol validators, and the full repository release gate. Generated decision
 indexes are rebuilt from this authored note; no generated index is an

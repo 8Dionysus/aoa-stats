@@ -39,6 +39,10 @@
 
 - [AOST-D-0011 - Antifragility Vector Remains An Evidence-Gated Incubator](../AOST-D-0011-antifragility-vector-remains-an-evidence-gated-incubator.md) (`docs/decisions/AOST-D-0011-antifragility-vector-remains-an-evidence-gated-incubator.md`)
 
+## derived observability
+
+- [AOST-D-0022 - Prompt-Light Agent Routes And On-Demand Validation](../AOST-D-0022-prompt-light-agent-routes-and-on-demand-validation.md) (`docs/decisions/AOST-D-0022-prompt-light-agent-routes-and-on-demand-validation.md`)
+
 ## derived read contract
 
 - [AOST-D-0012 - Federated Measurement Ownership and Thin Access](../AOST-D-0012-federated-measurement-ownership-and-thin-access.md) (`docs/decisions/AOST-D-0012-federated-measurement-ownership-and-thin-access.md`)
@@ -81,6 +85,10 @@
 - [AOST-D-0015 - Review Captured Stats Catalog In The Owner](../AOST-D-0015-review-captured-stats-catalog-in-the-owner.md) (`docs/decisions/AOST-D-0015-review-captured-stats-catalog-in-the-owner.md`)
 - [AOST-D-0016 - Authenticate And Separate Stats MCP Owner Evidence](../AOST-D-0016-authenticate-and-separate-stats-mcp-owner-evidence.md) (`docs/decisions/AOST-D-0016-authenticate-and-separate-stats-mcp-owner-evidence.md`)
 
+## growth-cycle projections
+
+- [AOST-D-0023 - Package Validation Owner In Topology](../AOST-D-0023-package-validation-owner-in-topology.md) (`docs/decisions/AOST-D-0023-package-validation-owner-in-topology.md`)
+
 ## intake
 
 - [AOST-D-0013 - aoa-stats Owner Skill Bundle](../AOST-D-0013-aoa-stats-owner-skill-bundle.md) (`docs/decisions/AOST-D-0013-aoa-stats-owner-skill-bundle.md`)
@@ -106,6 +114,10 @@
 - [AOST-D-0005 - Route Progression Semantic Receipts Are Not Numeric Live State](../AOST-D-0005-route-progression-semantic-receipts-are-not-numeric-live-state.md) (`docs/decisions/AOST-D-0005-route-progression-semantic-receipts-are-not-numeric-live-state.md`)
 - [AOST-D-0006 - Runtime Closeout Wave Receipts Are Not Current Trial Live State](../AOST-D-0006-runtime-closeout-wave-receipts-are-not-current-trial-live-state.md) (`docs/decisions/AOST-D-0006-runtime-closeout-wave-receipts-are-not-current-trial-live-state.md`)
 
+## local agent mesh
+
+- [AOST-D-0022 - Prompt-Light Agent Routes And On-Demand Validation](../AOST-D-0022-prompt-light-agent-routes-and-on-demand-validation.md) (`docs/decisions/AOST-D-0022-prompt-light-agent-routes-and-on-demand-validation.md`)
+
 ## local live output inventory
 
 - [AOST-D-0003 - Component Refresh Fixtures Are Not Live State](../AOST-D-0003-component-refresh-fixtures-are-not-live-state.md) (`docs/decisions/AOST-D-0003-component-refresh-fixtures-are-not-live-state.md`)
@@ -122,6 +134,10 @@
 ## measurement packet
 
 - [AOST-D-0012 - Federated Measurement Ownership and Thin Access](../AOST-D-0012-federated-measurement-ownership-and-thin-access.md) (`docs/decisions/AOST-D-0012-federated-measurement-ownership-and-thin-access.md`)
+
+## mechanics package
+
+- [AOST-D-0023 - Package Validation Owner In Topology](../AOST-D-0023-package-validation-owner-in-topology.md) (`docs/decisions/AOST-D-0023-package-validation-owner-in-topology.md`)
 
 ## Memory Movement
 
@@ -149,6 +165,11 @@
 - [AOST-D-0004 - Live Admission Requires Refresh Observation](../AOST-D-0004-live-admission-requires-refresh-observation.md) (`docs/decisions/AOST-D-0004-live-admission-requires-refresh-observation.md`)
 - [AOST-D-0009 - Retirement Reserves Catalog Slots Without Preserving Empty Mechanics](../AOST-D-0009-retirement-reserves-catalog-slots-without-preserving-empty-mechanics.md) (`docs/decisions/AOST-D-0009-retirement-reserves-catalog-slots-without-preserving-empty-mechanics.md`)
 
+## owner-local validation
+
+- [AOST-D-0022 - Prompt-Light Agent Routes And On-Demand Validation](../AOST-D-0022-prompt-light-agent-routes-and-on-demand-validation.md) (`docs/decisions/AOST-D-0022-prompt-light-agent-routes-and-on-demand-validation.md`)
+- [AOST-D-0023 - Package Validation Owner In Topology](../AOST-D-0023-package-validation-owner-in-topology.md) (`docs/decisions/AOST-D-0023-package-validation-owner-in-topology.md`)
+
 ## read models
 
 - [AOST-D-0013 - aoa-stats Owner Skill Bundle](../AOST-D-0013-aoa-stats-owner-skill-bundle.md) (`docs/decisions/AOST-D-0013-aoa-stats-owner-skill-bundle.md`)
@@ -166,6 +187,10 @@
 ## Repeated Window
 
 - [AOST-D-0017 - Observe Actor Responsibility Execution Without Inferring Fit](../AOST-D-0017-observe-actor-responsibility-execution-without-inferring-fit.md) (`docs/decisions/AOST-D-0017-observe-actor-responsibility-execution-without-inferring-fit.md`)
+
+## root route
+
+- [AOST-D-0022 - Prompt-Light Agent Routes And On-Demand Validation](../AOST-D-0022-prompt-light-agent-routes-and-on-demand-validation.md) (`docs/decisions/AOST-D-0022-prompt-light-agent-routes-and-on-demand-validation.md`)
 
 ## Route Progression
 
