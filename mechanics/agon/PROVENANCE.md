@@ -17,7 +17,7 @@ former flat districts are provenance only.
 | `sophian-observability` | Sophian observability payload | `596dbd9` |
 
 Git rename history is the exact content ledger. The machine-readable former
-route ledger is `legacy/former-routes.json`.
+route ledger is `former-routes.json`.
 
 ## Public-output exception
 
@@ -28,9 +28,11 @@ stable.
 
 ## Historical raw material
 
-Nine wave landing/stop-line documents and nine closed quests are preserved in
-`legacy/raw/`. They do not compete with the active part contracts. Use
-`legacy/INDEX.md` to reach the active replacement first.
+Nine wave landing/stop-line documents and nine closed quests remain historical
+records in `former-routes.json` and the AOST-D-0024 retirement record. They do
+not compete with the active part contracts. Use this provenance bridge and
+`former-routes.json` to reach the active replacement first; recover retired
+source only from the exact baseline Git tree pinned by AOST-D-0024.
 
 ## Recurrence integration surface
 

@@ -18,7 +18,7 @@
     "mechanics/agon/parts/kag-observability/config/agon_kag_stats_observability.seed.json",
     "mechanics/agon/parts/kag-observability/docs/AGON_KAG_STATS_OBSERVABILITY.md",
     "mechanics/agon/parts/kag-observability/docs/AGON_KAG_STATS_BOUNDARY.md",
-    "mechanics/agon/legacy/raw/docs/AGON_WAVE17_STATS_LANDING.md"
+    "https://github.com/Agents-of-Abyss/aoa-stats/blob/7363480775555021f300362d0ead4d41de1826f0/mechanics/agon/legacy/raw/docs/AGON_WAVE17_STATS_LANDING.md"
   ],
   "title": "Wave XVII aoa-stats surfaces",
   "wave": "XVII"

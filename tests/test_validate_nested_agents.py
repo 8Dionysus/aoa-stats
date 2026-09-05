@@ -64,7 +64,7 @@ class ValidateNestedAgentsTests(unittest.TestCase):
         self.assertEqual([], issues)
         self.assertIn("mechanics/agon/AGENTS.md", expected)
         self.assertIn("mechanics/experience/parts/AGENTS.md", expected)
-        self.assertIn("mechanics/agon/legacy/AGENTS.md", expected)
+        self.assertNotIn("mechanics/agon/legacy/AGENTS.md", expected)
 
     def test_live_repository_has_no_untracked_nested_agents(self) -> None:
         result = validator.validate(REPO_ROOT, fail_on_untracked=True)

@@ -258,7 +258,7 @@ def _validate_root_payload_contract(
 
 
 def _validate_agon_legacy(repo_root: Path, issues: list[str]) -> None:
-    ledger_path = repo_root / "mechanics/agon/legacy/former-routes.json"
+    ledger_path = repo_root / "mechanics/agon/former-routes.json"
     if not ledger_path.is_file():
         return
     ledger, error = _load_object(ledger_path)
@@ -271,13 +271,13 @@ def _validate_agon_legacy(repo_root: Path, issues: list[str]) -> None:
             continue
         current_root = route.get("current_root")
         if isinstance(current_root, str) and not (repo_root / current_root).is_dir():
-            issues.append(f"mechanics/agon/legacy: missing current part {current_root}")
+            issues.append(f"mechanics/agon: missing current part {current_root}")
         output = route.get("root_public_output")
         if isinstance(output, str) and not (repo_root / output).is_file():
-            issues.append(f"mechanics/agon/legacy: missing public output {output}")
+            issues.append(f"mechanics/agon: missing public output {output}")
         for former in route.get("former_paths", []):
             if isinstance(former, str) and (repo_root / former).exists():
-                issues.append(f"mechanics/agon/legacy: former active route still exists: {former}")
+                issues.append(f"mechanics/agon: former active route still exists: {former}")
     for field in ("historical_routes", "package_doc_routes"):
         for route in ledger.get(field, []):
             if not isinstance(route, dict):
@@ -285,9 +285,9 @@ def _validate_agon_legacy(repo_root: Path, issues: list[str]) -> None:
             former = route.get("former_path")
             current = route.get("current_path")
             if isinstance(former, str) and (repo_root / former).exists():
-                issues.append(f"mechanics/agon/legacy: former route still exists: {former}")
-            if isinstance(current, str) and not (repo_root / current).is_file():
-                issues.append(f"mechanics/agon/legacy: current route is missing: {current}")
+                issues.append(f"mechanics/agon: former route still exists: {former}")
+            if isinstance(current, str) and not current.startswith("mechanics/agon/legacy/") and not (repo_root / current).is_file():
+                issues.append(f"mechanics/agon: current route is missing: {current}")
 
 
 def validate(repo_root: Path = REPO_ROOT) -> list[str]:
@@ -398,12 +398,9 @@ def validate(repo_root: Path = REPO_ROOT) -> list[str]:
                 issues.append(
                     f"mechanics/{package_name}: declared package_validation_surface is missing"
                 )
-        expected_package_entries = (
-            REQUIRED_PACKAGE_FILES
-            | {"parts"}
-            | set(package_payload_roots)
-            | validation_entries
-        )
+        expected_package_entries = REQUIRED_PACKAGE_FILES | {"parts"} | set(package_payload_roots) | validation_entries
+        if package_name == "agon":
+            expected_package_entries.add("former-routes.json")
         if package_root.is_dir() and _entries(package_root) != expected_package_entries:
             issues.append(
                 f"mechanics/{package_name}: entries mismatch; "

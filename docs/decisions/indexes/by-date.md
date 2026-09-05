@@ -69,3 +69,4 @@
 ## 2026-09-04
 
 - [AOST-D-0023 - Package Validation Owner In Topology](../AOST-D-0023-package-validation-owner-in-topology.md) (`docs/decisions/AOST-D-0023-package-validation-owner-in-topology.md`)
+- [AOST-D-0024 - Mechanics Legacy Retirement](../AOST-D-0024-mechanics-legacy-retirement.md) (`docs/decisions/AOST-D-0024-mechanics-legacy-retirement.md`)

@@ -57,7 +57,8 @@ not active here unless the topology names a real local operation.
   point to the owner part.
 - Root commands survive only as public, compatibility, or repo-wide
   entrypoints.
-- Historical receipts live under package-local `legacy/`; they never become
-  the first active route.
+- Historical receipts remain recoverable through the owning package
+  `PROVENANCE.md` and immutable Git history; they never become the first active
+  route.
 - The mechanics root contains only `AGENTS.md`, `README.md`, `topology.json`,
   and active package directories.

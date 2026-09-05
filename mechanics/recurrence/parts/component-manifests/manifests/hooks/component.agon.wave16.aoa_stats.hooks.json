@@ -17,7 +17,7 @@
         "mechanics/agon/parts/schools-lineages-campaigns-observability/config/agon_slc_stats_observability.seed.json",
         "mechanics/agon/parts/schools-lineages-campaigns-observability/docs/AGON_SLC_STATS_OBSERVABILITY.md",
         "mechanics/agon/parts/schools-lineages-campaigns-observability/docs/AGON_SLC_STATS_BOUNDARY.md",
-        "mechanics/agon/legacy/raw/docs/AGON_WAVE16_STATS_LANDING.md"
+        "https://github.com/Agents-of-Abyss/aoa-stats/blob/7363480775555021f300362d0ead4d41de1826f0/mechanics/agon/legacy/raw/docs/AGON_WAVE16_STATS_LANDING.md"
       ]
     }
   ],

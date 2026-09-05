@@ -219,8 +219,7 @@
       "local_status": "localized_active",
       "local_function": "Derive bounded Agon observability registries while Agon owners retain arena, verdict, scar, rank, promotion, and threshold truth.",
       "package_payload_roots": [
-        "docs",
-        "legacy"
+        "docs"
       ],
       "active_part_routes": [
         {
