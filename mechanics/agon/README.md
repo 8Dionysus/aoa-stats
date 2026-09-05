@@ -19,5 +19,7 @@ their source ownership back to the root districts.
 ## Route
 
 Start with `PARTS.md`, then read the selected part's `README.md`, `CONTRACT.md`,
-and `VALIDATION.md`. Use `PROVENANCE.md` for the active-first history and
-`legacy/INDEX.md` for former landing and quest routes.
+and `VALIDATION.md`. Use `PROVENANCE.md` and `former-routes.json` for the
+active-first historical route. Retired source is recoverable only from the
+exact baseline Git tree pinned by AOST-D-0024; no local `legacy/` archive is an
+active route.

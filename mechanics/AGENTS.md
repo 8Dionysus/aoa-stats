@@ -15,8 +15,9 @@ payload remains under the nearest mechanic part.
 - Retain a root schema, generated output, command, doc, or fixture only when
   topology declares a public, compatibility, repo-wide, port, or release role.
 - Do not duplicate an active payload at an old root path.
-- Keep package-local legacy behind `PROVENANCE.md` and an explicit legacy
-  index; raw history is never active law.
+- Keep historical recovery behind package `PROVENANCE.md` and immutable Git
+  history with the original path; no current local legacy index is required,
+  and raw history is never active law.
 - A package or part needs a real payload or declared public surface and focused
   validation; visual symmetry is insufficient.
 - Topology owns active package membership and placement. Tests and route docs
