@@ -12,6 +12,9 @@ Tracking starts with the first public release-prep baseline for this repository.
   complete release test step now uses two file-scheduled workers, with all
   required coverage and direct focused pytest commands retained.
 
+- Added bounded advisory changed-path feedback to the existing release gate;
+  topology-local tests and source-family validators are selected from authored
+  routes, while uncertain inputs retain the complete gate.
 - Registered the Audit and Growth Cycle package validation surfaces as the
   single owners of their genuinely shared cross-part projection suites.
   Package-level procedure is now an explicit topology exception; part-local

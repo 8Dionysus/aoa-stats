@@ -112,6 +112,35 @@ without increasing CPU time relative to the optimized serial suite; four workers
 were faster but used substantially more CPU. Use direct pytest options for a
 different local tradeoff rather than changing the set of required tests.
 
+## Advisory changed-path feedback
+
+For an ordinary local edit, the existing entrypoint can select affected tests:
+
+```bash
+python scripts/release_check.py --feedback \
+  --changed-path src/aoa_stats_builder/measurement.py
+```
+
+Repeat `--changed-path` for a mixed edit; the caller must provide the complete
+changed-path set because feedback does not infer unlisted changes. Selection
+reads the authored
+`stats/source_home.manifest.json` family routes and `mechanics/topology.json`:
+an exact topology part runs its existing local `tests/` files, while a shared
+stats route unions its manifest validator tests with the tests of related
+topology parts. Duplicate files are removed. Unknown, shared-ambiguous,
+malformed, mapping, runner, CI, environment, or pytest-discovery inputs print
+the reason and run the unchanged complete gate. Unsafe escaping paths are
+rejected.
+
+Feedback anchors pytest to this repository and disables ambient addopts and
+plugin autoload for deterministic local discovery; it does not add a repo
+config or change the complete gate. `--lf` is an optional retry hint within
+the selected files only; run the same command without `--lf` to recheck the
+complete selected set. This is advisory local feedback, not release, CI,
+freshness, owner acceptance, or admission evidence. Part-local feedback is
+local signal only, not proof of complete transitive dependency or owner-release
+coverage; use the full gate for broad or uncertain changes.
+
 ## Checkpoint review
 
 For a bounded change, capture the exact commit or working-tree checkpoint,
