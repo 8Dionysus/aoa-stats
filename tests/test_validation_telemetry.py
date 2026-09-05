@@ -2,6 +2,7 @@ from __future__ import annotations
 
 from copy import deepcopy
 from dataclasses import replace
+from functools import cache
 import importlib.util
 import json
 import os
@@ -42,6 +43,25 @@ def load_json(relative_path: str) -> dict[str, object]:
     payload = json.loads((REPO_ROOT / relative_path).read_text(encoding="utf-8"))
     assert isinstance(payload, dict)
     return payload
+
+
+@cache
+def _validated_fixture_schemas():
+    # These authored inputs are immutable for the packet/admission scenarios.
+    # Keep the real loader and schema-validity check, but perform them once.
+    schemas, issues = protocol._load_schemas(REPO_ROOT)
+    assert issues == []
+    return schemas
+
+
+def prepared_schemas():
+    # Each scenario gets independent mutable schemas and a fresh context epoch.
+    # Loader/currentness tests below deliberately still call the real loader.
+    schemas = deepcopy(_validated_fixture_schemas())
+    protocol._install_canonical_validation_telemetry_port_schema(
+        schemas[protocol.VALIDATION_TELEMETRY_PORT_SCHEMA_PATH.as_posix()]
+    )
+    return schemas
 
 
 def load_stats_protocol_test_module():
@@ -185,8 +205,7 @@ def valid_packet() -> dict[str, object]:
 
 
 def validated_port_schema(port: dict[str, object]):
-    schemas, issues = protocol._load_schemas(REPO_ROOT)
-    assert issues == []
+    schemas = prepared_schemas()
     return validate_validation_telemetry_port_schema(
         port["validation_telemetry"],
         label="telemetry port",
@@ -204,8 +223,7 @@ def admitted_packet(
     owner_port = telemetry_port() if owner_port is None else deepcopy(owner_port)
     owner_port["owner_repo"] = owner
     owner_source_ref = f"{owner}:stats/port.manifest.json"
-    schemas, issues = protocol._load_schemas(REPO_ROOT)
-    assert issues == []
+    schemas = prepared_schemas()
     registry = protocol._registry(schemas)
     schema_findings = schema_issues(
         schemas[protocol.VALIDATION_TELEMETRY_PACKET_SCHEMA_PATH.as_posix()],
@@ -355,8 +373,7 @@ def test_baseline_script_binds_packet_to_owner_root_and_current_port(
 
 
 def test_unknown_metric_cannot_carry_zero_as_a_proxy() -> None:
-    schemas, issues = protocol._load_schemas(REPO_ROOT)
-    assert issues == []
+    schemas = prepared_schemas()
     packet = valid_packet()
     packet["metrics"]["wall_ms"] = {"status": "unknown", "value": 0}
 
@@ -420,8 +437,7 @@ def test_direct_admission_preserves_nested_schema_findings() -> None:
     packet = valid_packet()
     packet["node"] = dict(packet["node"])
     packet["node"]["unexpected"] = True
-    schemas, issues = protocol._load_schemas(REPO_ROOT)
-    assert issues == []
+    schemas = prepared_schemas()
     schema_findings = schema_issues(
         schemas[protocol.VALIDATION_TELEMETRY_PACKET_SCHEMA_PATH.as_posix()],
         packet,
@@ -466,8 +482,7 @@ def test_direct_admission_rejects_missing_telemetry_port_schema_fields(
 ) -> None:
     owner_port = telemetry_port()
     del owner_port["validation_telemetry"][missing_field]
-    schemas, issues = protocol._load_schemas(REPO_ROOT)
-    assert issues == []
+    schemas = prepared_schemas()
     registry = protocol._registry(schemas)
     port_schema_validation = validate_validation_telemetry_port_schema(
         owner_port["validation_telemetry"],
