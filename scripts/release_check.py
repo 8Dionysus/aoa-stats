@@ -105,7 +105,7 @@ COMMANDS = [
     (
         "run root and mechanic tests",
         [sys.executable, "-m", "pytest", "-q", "tests", "mechanics",
-         "-p", "xdist.plugin", "-n", "2", "--dist", "loadfile"],
+         "-p", "xdist", "-n", "2", "--dist", "loadfile"],
     ),
 ]
 
