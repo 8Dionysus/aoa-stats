@@ -1,24 +1,24 @@
 {
-  "allowed_bytes": 8109734,
-  "allowed_tracked_bytes": 9402174,
+  "allowed_bytes": 8055377,
+  "allowed_tracked_bytes": 9403013,
   "approved_by": "repository-owner",
   "base_ref": "7363480775555021f300362d0ead4d41de1826f0",
   "candidate_identity": {
     "algorithm": "sha256:canonical-json-file-inventory-v2",
     "base_ref": "7363480775555021f300362d0ead4d41de1826f0",
     "contract_version": "aoa-kag:budget-receipt-candidate-identity-v2",
-    "excluded_path": "kag/receipts/index_family_budget/1d28b52b5abd122919fbe25eded6fd4d4078cae65e45cdb7f84066c4c85aee2d.json",
-    "family_digest": "1d28b52b5abd122919fbe25eded6fd4d4078cae65e45cdb7f84066c4c85aee2d",
+    "excluded_path": "kag/receipts/index_family_budget/ea271185fde3dcc792feb7fd9a899e1787e89ff3c78e2dc12f835c9e47517111.json",
+    "family_digest": "ea271185fde3dcc792feb7fd9a899e1787e89ff3c78e2dc12f835c9e47517111",
     "file_count": 1227,
-    "seal": "e7e8f938bf916d0f548281470f8d51527f9033671934aaf9b13e524d427d49c1",
+    "seal": "8afe93e498d004b6e2de15110a6a04b60c0b9555c158f856808a606950462c90",
     "source_epoch": "sha256:cfe4bc59aae24a4179edf87eb56752e5097c41ea19075163c26fe8469dd50131",
     "source_snapshot": "sha256:19f629bad4d083643b40e936a86e39d8ebc877a692b8160576c8213456ccfadc"
   },
-  "changed_generated_bytes": 8109734,
-  "changed_generated_files": 289,
+  "changed_generated_bytes": 8055377,
+  "changed_generated_files": 288,
   "decision_ref": "aoa-kag:docs/decisions/AOA-KAG-D-0017-portable-content-addressed-repository-family.md",
   "default_limit_bytes": 1048576,
-  "head_family_digest": "1d28b52b5abd122919fbe25eded6fd4d4078cae65e45cdb7f84066c4c85aee2d",
+  "head_family_digest": "ea271185fde3dcc792feb7fd9a899e1787e89ff3c78e2dc12f835c9e47517111",
   "head_source_snapshot": "sha256:19f629bad4d083643b40e936a86e39d8ebc877a692b8160576c8213456ccfadc",
   "producer_identity": {
     "action": {
@@ -1366,6 +1366,6 @@
   "repo": "aoa-stats",
   "schema_version": "aoa-repo-local-kag-budget-receipt-v2",
   "scope": "generated_delta",
-  "tracked_bytes": 9402174,
+  "tracked_bytes": 9403013,
   "tracked_bytes_max": 9437184
 }
