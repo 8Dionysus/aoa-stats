@@ -104,6 +104,14 @@ machine gate. This document routes to it but does not replace or expand its
 authority. `docs/RELEASING.md` owns publication sequencing, CI, review, merge,
 tag, and post-landing claims.
 
+Install `requirements-dev.txt` before running the gate. Its full test step uses
+two workers with file-aware scheduling, preserving module-local fixture reuse.
+Focused tests remain ordinary direct pytest commands; the gate still runs every
+root and mechanic test. In a local comparison, two workers reduced wall time
+without increasing CPU time relative to the optimized serial suite; four workers
+were faster but used substantially more CPU. Use direct pytest options for a
+different local tradeoff rather than changing the set of required tests.
+
 ## Checkpoint review
 
 For a bounded change, capture the exact commit or working-tree checkpoint,

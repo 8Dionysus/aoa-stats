@@ -102,7 +102,11 @@ COMMANDS = [
             "--ephemeral",
         ],
     ),
-    ("run root and mechanic tests", [sys.executable, "-m", "pytest", "-q", "tests", "mechanics"]),
+    (
+        "run root and mechanic tests",
+        [sys.executable, "-m", "pytest", "-q", "tests", "mechanics",
+         "-p", "xdist.plugin", "-n", "2", "--dist", "loadfile"],
+    ),
 ]
 
 

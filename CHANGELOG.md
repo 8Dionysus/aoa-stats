@@ -7,6 +7,11 @@ Tracking starts with the first public release-prep baseline for this repository.
 
 ## [Unreleased]
 
+- Reduced repeated schema preparation in validation-telemetry tests while
+  preserving independent schema copies and fresh admission contexts. The
+  complete release test step now uses two file-scheduled workers, with all
+  required coverage and direct focused pytest commands retained.
+
 - Registered the Audit and Growth Cycle package validation surfaces as the
   single owners of their genuinely shared cross-part projection suites.
   Package-level procedure is now an explicit topology exception; part-local
