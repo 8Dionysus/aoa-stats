@@ -59,7 +59,10 @@ def test_feedback_selects_one_topology_part_without_duplicate_files() -> None:
 
     assert reason is None
     assert selected is not None
-    assert len(selected) == 5
+    expected = release_check._part_test_files(
+        {"path": "mechanics/boundary-bridge/parts/measurement-packet-crossing"}
+    )
+    assert selected == expected
     assert len(selected) == len(set(selected))
     assert all("measurement-packet-crossing/tests/" in path for path in selected)
 
@@ -93,7 +96,16 @@ def test_feedback_unions_distinct_topology_parts() -> None:
 
     assert reason is None
     assert selected is not None
-    assert len(selected) == 2
+    expected = set(
+        release_check._part_test_files(
+            {"path": "mechanics/agon/parts/epistemic-observability"}
+        )
+    ) | set(
+        release_check._part_test_files(
+            {"path": "mechanics/recurrence/parts/component-manifests"}
+        )
+    )
+    assert set(selected) == expected
     assert any("epistemic-observability/tests/" in path for path in selected)
     assert any("component-manifests/tests/" in path for path in selected)
 

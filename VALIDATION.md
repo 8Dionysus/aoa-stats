@@ -121,7 +121,8 @@ python scripts/release_check.py --feedback \
   --changed-path src/aoa_stats_builder/measurement.py
 ```
 
-Repeat `--changed-path` for a mixed edit. Selection reads the authored
+Repeat `--changed-path` for a mixed edit; the caller must provide the complete
+changed-path set because feedback does not infer unlisted changes. Selection reads the authored
 `stats/source_home.manifest.json` family routes and `mechanics/topology.json`:
 an exact topology part runs its existing local `tests/` files, while a shared
 stats route unions its manifest validator tests with the tests of related
@@ -139,7 +140,9 @@ plugin autoload for deterministic local discovery; it does not add a repo
 config or change the complete gate. `--lf` is an optional retry hint within
 the selected files only; run the same command without `--lf` to recheck the
 complete selected set. This is advisory local feedback, not release, CI,
-freshness, owner acceptance, or admission evidence.
+freshness, owner acceptance, or admission evidence. Part-local feedback is
+local signal only, not proof of complete transitive dependency coverage; use
+the full gate for broad or uncertain changes.
 
 ## Checkpoint review
 
