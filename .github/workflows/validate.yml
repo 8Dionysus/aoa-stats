@@ -15,7 +15,7 @@ jobs:
         uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd
 
       - name: Check repository skill home
-        uses: 8Dionysus/aoa-skills/.github/actions/home-skill-port@5ea0e38a2c405274dce870fb3750ec76fd01ba23
+        uses: 8Dionysus/aoa-skills/.github/actions/home-skill-port@86720fe6aed8c6d59a8d938209032787f2670d09
 
       - name: Check repo-local KAG index family
         uses: 8Dionysus/aoa-kag/.github/actions/repo-local-kag-index@14ee1e33e43749d23c557b3ef526eca7edb36196

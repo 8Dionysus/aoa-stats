@@ -1,5 +1,5 @@
 {
-  "schema_version": "aoa_skill_home_port_v2",
+  "schema_version": "aoa_skill_home_port_v3",
   "contract_ref": "aoa-skills:schemas/skill-home-port.schema.json",
   "owner_repo": "aoa-stats",
   "owner_ref": "AGENTS.md",
@@ -13,13 +13,15 @@
       "admission_ref": "docs/decisions/AOST-D-0013-aoa-stats-owner-skill-bundle.md"
     }
   ],
-  "exposure": {
-    "runtime": "codex",
-    "scope": "user",
-    "profile": "os-user-default",
-    "mode": "profile-selected",
-    "skills": [
-      "aoa-stats"
-    ]
-  }
+  "exposures": [
+    {
+      "runtime": "codex",
+      "scope": "user",
+      "profile": "os-user-default",
+      "mode": "profile-eligible",
+      "skills": [
+        "aoa-stats"
+      ]
+    }
+  ]
 }

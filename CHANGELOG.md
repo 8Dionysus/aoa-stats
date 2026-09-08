@@ -7,6 +7,9 @@ Tracking starts with the first public release-prep baseline for this repository.
 
 ## [Unreleased]
 
+- Separate the admitted stats skill source from its Codex user exposure with
+  home-port v3, preserving the package and current profile membership.
+
 - Reduced repeated schema preparation in validation-telemetry tests while
   preserving independent schema copies and fresh admission contexts. The
   complete release test step now uses two file-scheduled workers, with all
